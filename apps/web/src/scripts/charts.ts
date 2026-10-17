@@ -1,9 +1,9 @@
 import * as echarts from "echarts/core";
-import { LineChart, BarChart, MapChart } from "echarts/charts";
-import { GridComponent, TooltipComponent, LegendComponent, VisualMapComponent, GeoComponent, AriaComponent } from "echarts/components";
+import { LineChart, BarChart, MapChart, ScatterChart, EffectScatterChart, LinesChart } from "echarts/charts";
+import { GridComponent, TooltipComponent, LegendComponent, VisualMapComponent, GeoComponent, AriaComponent, GraphicComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
 
-echarts.use([LineChart, BarChart, MapChart, GridComponent, TooltipComponent, LegendComponent, VisualMapComponent, GeoComponent, AriaComponent, CanvasRenderer]);
+echarts.use([LineChart, BarChart, MapChart, ScatterChart, EffectScatterChart, LinesChart, GraphicComponent, GridComponent, TooltipComponent, LegendComponent, VisualMapComponent, GeoComponent, AriaComponent, CanvasRenderer]);
 
 const BASE = (import.meta as any).env.BASE_URL as string;
 type Row = { geo: string; geo_label: string; partner_geo: string | null; flow: string; product_code: string | null; product_label: string | null; series: string; period: string; value: number; unit: string };
@@ -175,6 +175,7 @@ function empty(el: HTMLElement) {
 async function mount(el: HTMLElement) {
   const kind = el.dataset.chart!;
   if (kind === "map") return mapChart(el);
+  if (kind === "breeds-map") return;
   const ds = await load(el.dataset.dataset!);
   if (!ds || !ds.rows.length) return empty(el);
   const chart = echarts.init(el, null, { renderer: "canvas" });
@@ -191,3 +192,56 @@ async function mount(el: HTMLElement) {
 
 const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); mount(e.target as HTMLElement); } }), { rootMargin: "200px" });
 document.querySelectorAll<HTMLElement>("[data-chart]").forEach((el) => io.observe(el));
+
+// ---------- Breed map (solares) ----------
+type BreedPt = { slug: string; official_name: string; solar: string; lat: number; lon: number; photo?: string; photo_kind?: string;
+  herd?: { year: number; males: number; females: number; breeders: number }; catalogue_page?: number };
+
+async function breedsMap(el: HTMLElement) {
+  const t = theme();
+  const [geo, list] = await Promise.all([
+    fetch(`${BASE}geo/nuts3_pt.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+    fetch(`${BASE}data/breeds.json`).then((r) => (r.ok ? r.json() : [])).catch(() => []),
+  ]);
+  if (!geo || !list.length) return empty(el);
+  const mainland = { ...geo, features: geo.features.filter((f: any) => f.properties.name.startsWith("PT1")) };
+  echarts.registerMap("pt", mainland);
+  const azores = list.filter((b: BreedPt) => b.lon < -20);
+  const pts = list.filter((b: BreedPt) => b.lon >= -20);
+  const side = document.getElementById("map-side");
+  const show = (b: BreedPt) => {
+    if (!side) return;
+    const img = b.photo ? `<figure class="photo"><img src="${BASE}img/${b.photo}-md.webp" alt="" style="border-radius:14px;aspect-ratio:4/3;width:100%;object-fit:cover"></figure>` : "";
+    const tag = b.photo ? `<span class="chip">${b.photo_kind === "raça" ? "Fotografia da raça" : "Paisagem do solar"}</span>` : "";
+    const herd = b.herd ? `<p style="margin:0"><strong>${b.herd.females.toLocaleString("pt-PT")}</strong> fêmeas e <strong>${b.herd.males.toLocaleString("pt-PT")}</strong> machos em linha pura, em ${b.herd.breeders.toLocaleString("pt-PT")} criadores <span style="color:${t.muted}">(livro genealógico, ${b.herd.year})</span></p>` : "";
+    side.innerHTML = `${img}${tag}<h3 style="margin:6px 0 2px">${b.official_name}</h3><p style="margin:0;color:${t.muted}">Solar: ${b.solar}</p>${herd}
+      <p style="font-size:.75rem;color:${t.muted};margin:0">Fonte: Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP${b.catalogue_page ? `, p. ${b.catalogue_page}` : ""}</p>
+      <a class="btn" href="${BASE}racas/${b.slug}/">Ver a raça →</a>`;
+  };
+  const maxF = Math.max(...list.map((b: BreedPt) => b.herd?.females ?? 0), 1);
+  const size = (b: BreedPt) => 10 + 26 * Math.sqrt((b.herd?.females ?? 0) / maxF);
+  const chart = echarts.init(el, null, { renderer: "canvas" });
+  chart.setOption({
+    tooltip: { trigger: "item", backgroundColor: t.surface, borderColor: t.line, textStyle: { color: t.ink },
+      formatter: (p: any) => p.data?.b ? `<strong>${p.data.b.official_name}</strong><br>${p.data.b.solar}` : "" },
+    geo: { map: "pt", roam: false, aspectScale: 0.85, layoutCenter: ["50%", "50%"], layoutSize: "96%",
+      itemStyle: { areaColor: css("--cork-soft"), borderColor: t.surface, borderWidth: 1 }, emphasis: { disabled: true }, silent: true },
+    series: [{
+      type: "scatter", coordinateSystem: "geo", data: pts.map((b: BreedPt) => ({ name: b.official_name, value: [b.lon, b.lat], b, symbolSize: size(b) })),
+      itemStyle: { color: t.accent, borderColor: "#fff", borderWidth: 2, shadowBlur: 8, shadowColor: "rgba(0,0,0,.25)" },
+      label: { show: true, formatter: (p: any) => p.name, position: "right", color: t.ink, fontWeight: 600, fontFamily: "Public Sans", fontSize: 12,
+        textBorderColor: css("--paper"), textBorderWidth: 3 },
+      labelLayout: { hideOverlap: true }, emphasis: { scale: 1.3 },
+    }],
+    graphic: azores.length ? [{ type: "text", right: 8, top: 8, style: { text: `Açores: ${azores.map((b: BreedPt) => b.official_name).join(", ")} →`, fill: t.accent, font: "600 13px Public Sans" },
+      onclick: () => show(azores[0]) }] : [],
+  });
+  chart.on("mouseover", (p: any) => p.data?.b && show(p.data.b));
+  chart.on("click", (p: any) => p.data?.b && show(p.data.b));
+  new ResizeObserver(() => chart.resize()).observe(el);
+}
+document.querySelectorAll<HTMLElement>('[data-chart="breeds-map"]').forEach((el) => io.unobserve(el));
+document.querySelectorAll<HTMLElement>('[data-chart="breeds-map"]').forEach((el) => {
+  const o = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { o.disconnect(); breedsMap(el); } }), { rootMargin: "200px" });
+  o.observe(el);
+});

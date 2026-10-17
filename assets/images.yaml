@@ -125,7 +125,7 @@ images:
     license: "Licença Unsplash"
     source_page: "https://unsplash.com/photos/green-and-brown-mountains-under-blue-sky-during-daytime-cq-4mg-2o30"
     subject: paisagem
-  - id: lezíria
+  - id: leziria
     url: "https://images.unsplash.com/photo-1663862071280-2c60f0a5139b?w=2400&q=80"
     alt: "Planície ribeirinha no Ribatejo"
     caption: "Planície do Ribatejo"
@@ -157,3 +157,43 @@ images:
     license: "Licença Unsplash"
     source_page: "https://unsplash.com/photos/a-group-of-raw-meats-on-a-table--47X0XodINg"
     subject: carne
+  - id: monchique
+    url: "https://images.unsplash.com/photo-1646386701108-a0d08be75bdc?w=2400&q=80"
+    alt: "Pôr do sol sobre as serras de Monchique"
+    caption: "Serra de Monchique, Algarve"
+    author: "Alena Torgonskaya"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/the-sun-is-setting-over-the-mountains-in-the-distance-gVDklBKZBi8"
+    subject: paisagem
+  - id: baixo-vouga
+    url: "https://images.unsplash.com/photo-1652878818359-37d2e654fdc6?w=2400&q=80"
+    alt: "Campo de erva junto à Ria de Aveiro"
+    caption: "Campos da Ria de Aveiro (Baixo Vouga)"
+    author: "Afonso Vieira"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/a-field-of-grass-with-a-sky-in-the-background-iuE2QnlNRrY"
+    subject: paisagem
+  - id: rio-lima
+    url: "https://images.unsplash.com/photo-1676656656221-5acee0e11c25?w=2400&q=80"
+    alt: "Barco no rio Lima junto à ponte de Ponte de Lima"
+    caption: "Rio Lima, Ponte de Lima (Minho)"
+    author: "Miguel Mota Sousa"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-bridge-cCVz8RXA6gs"
+    subject: paisagem
+  - id: odemira-campo
+    url: "https://images.unsplash.com/photo-1737820926860-62ccdf7cb40b?w=2400&q=80"
+    alt: "Árvores num campo de erva no concelho de Odemira"
+    caption: "Campos de Odemira, Alentejo"
+    author: "Danny De Vylder"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/a-couple-of-trees-that-are-standing-in-the-grass-PABxyz1nXjM"
+    subject: paisagem
+  - id: arouca-vale
+    url: "https://images.unsplash.com/photo-1714162590211-2b21a221ad06?w=2400&q=80"
+    alt: "Ponte sobre um rio entre encostas verdes, Arouca"
+    caption: "Vale do Paiva, Arouca"
+    author: "Anthony R."
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/a-bridge-over-a-river-next-to-a-lush-green-hillside-yqNt0wq8uVE"
+    subject: paisagem

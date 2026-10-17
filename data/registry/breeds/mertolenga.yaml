@@ -1,71 +1,85 @@
 slug: mertolenga
-official_name: "Mertolenga"
+official_name: Mertolenga
 species: bovine
-status: yellow
-status_reason: "Name from secondary listing; confirm against DGAV/CAP catalogue (R-007)"
+status: green
+status_reason: Nome, solar e efetivo confirmados no Catálogo Oficial DGAV/CAP (texto
+  extraído em 2026-10-17)
 name_sources:
-  - source_id: S07
-    url: "https://bo.agroportal.pt/?p=755967"
-    retrieved_at: 2026-10-17
-last_verified: null
+- source_id: S07
+  url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  retrieved_at: '2026-10-17'
+last_verified: '2026-10-17'
 fields:
   geographic_origin:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: "not yet researched"
+    value: Baixo Alentejo — terras de Mértola, Alcoutim e Martinlongo
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-17'
   historical_background:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   population:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: "not yet researched"
+    value: 8 358 fêmeas e 207 machos em linha pura  em 216 criadores (livro genealógico
+      de adultos  2019)
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-17'
   physical_characteristics:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   production_systems:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   meat_characteristics:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   certifications:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   producer_organizations:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   geographic_distribution:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   photographs:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   economic_information:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   historical_trends:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
+catalogue_page: 46
+solar: Baixo Alentejo — terras de Mértola, Alcoutim e Martinlongo
+lat: 37.64
+lon: -7.66
+herd:
+  year: 2019
+  males: 207
+  females: 8358
+  breeders: 216
+  source_page: 46
+photo: mertola
+photo_kind: solar

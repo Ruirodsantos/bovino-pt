@@ -20,7 +20,9 @@ export function hasDataset(id: string): boolean {
   return fs.existsSync(path.join(PUBLIC_DATA, `${id}.json`));
 }
 
-export type Breed = { slug: string; official_name: string; status: string; status_reason?: string; region?: string | null; fields: Record<string, { value: unknown; source_id: string | null; verified_at: string | null; missing_reason?: string; source_url?: string }> };
+export type Herd = { year: number; males: number; females: number; breeders: number; source_page: number };
+export type Breed = { slug: string; official_name: string; status: string; status_reason?: string; region?: string | null;
+  herd?: Herd; solar?: string; solar_quote?: string; lat?: number; lon?: number; photo?: string; photo_kind?: "raça" | "solar"; catalogue_page?: number; name_sources?: { url: string }[]; last_verified?: string; fields: Record<string, { value: unknown; source_id: string | null; verified_at: string | null; missing_reason?: string; source_url?: string }> };
 
 export function breeds(): Breed[] {
   const dir = path.join(ROOT, "data/registry/breeds");
@@ -54,4 +56,11 @@ export function fmtDate(iso?: string | null): string {
   const d = new Date(iso.length === 7 ? iso + "-01" : iso);
   if (isNaN(+d)) return iso;
   return d.toLocaleDateString("pt-PT", iso.length === 7 ? { month: "short", year: "numeric" } : { day: "numeric", month: "short", year: "numeric" });
+}
+
+import credits from "../data/images.json";
+export function photoFor(slug: string): { id: string; kind: string } | null {
+  const b = breeds().find((x) => x.slug === slug);
+  if (!b?.photo || !(credits as Record<string, unknown>)[b.photo]) return null;
+  return { id: b.photo, kind: b.photo_kind ?? "solar" };
 }

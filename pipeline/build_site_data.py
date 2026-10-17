@@ -138,6 +138,16 @@ def main() -> int:
         stats.append({"id": "pt_slaughter", "label": "de carne de bovino produzida em matadouros portugueses", "value": s_pt[y],
                       "unit": "toneladas", "context": f"peso de carcaça, {y}", "footnote": footnote(sm, y)})
 
+    # ---- breeds for the map (only verified, sourced fields) ----
+    import glob
+    bl = []
+    for f in sorted(glob.glob(str(ROOT / "data/registry/breeds/*.yaml"))):
+        b = yaml.safe_load(open(f, encoding="utf-8"))
+        if b.get("lat") is None:
+            continue
+        bl.append({k: b.get(k) for k in ("slug", "official_name", "solar", "lat", "lon", "herd", "photo", "photo_kind", "catalogue_page")})
+    (OUT / "breeds.json").write_text(json.dumps(bl, ensure_ascii=False), encoding="utf-8")
+
     last_run = ROOT / "data/history/last_run.json"
     (OUT / "summary.json").write_text(json.dumps({
         "stats": stats, "catalog": catalog,

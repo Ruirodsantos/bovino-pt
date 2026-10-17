@@ -1,71 +1,83 @@
 slug: garvonesa
-official_name: "Garvonesa"
+official_name: Garvonesa
 species: bovine
-status: yellow
-status_reason: "Name from secondary listing; confirm against DGAV/CAP catalogue (R-007)"
+status: green
+status_reason: Nome, solar e efetivo confirmados no Catálogo Oficial DGAV/CAP (texto
+  extraído em 2026-10-17)
 name_sources:
-  - source_id: S07
-    url: "https://bo.agroportal.pt/?p=755967"
-    retrieved_at: 2026-10-17
-last_verified: null
+- source_id: S07
+  url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  retrieved_at: '2026-10-17'
+last_verified: '2026-10-17'
 fields:
   geographic_origin:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: "not yet researched"
+    value: Baixo Alentejo — Santiago do Cacém, Odemira, Ourique, Castro Verde…
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-17'
   historical_background:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   population:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: "not yet researched"
+    value: 585 fêmeas e 22 machos em linha pura  em 16 criadores (livro genealógico
+      de adultos  2019)
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-17'
   physical_characteristics:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   production_systems:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   meat_characteristics:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   certifications:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   producer_organizations:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   geographic_distribution:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   photographs:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   economic_information:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
   historical_trends:
     value: null
     source_id: null
     verified_at: null
-    missing_reason: "not yet researched"
+    missing_reason: not yet researched
+catalogue_page: 30
+solar: Baixo Alentejo — Santiago do Cacém, Odemira, Ourique, Castro Verde…
+lat: 37.75
+lon: -8.4
+herd:
+  year: 2019
+  males: 22
+  females: 585
+  breeders: 16
+  source_page: 30
