@@ -25,7 +25,7 @@ FIXTURE = {
     "status": {"5": "p"},
 }
 
-DATASET = {"id": "t_pop", "title_pt": "t", "source_id": "S02", "code": "apro_mt_lscatl",
+DATASET = {"id": "t_pop", "title_pt": "t", "source_id": "S02", "api": "eurostat", "code": "apro_mt_lscatl",
            "select": {"animals": ["~live bovine animals"], "month": ["M12"]},
            "flow": "stock", "unit": "head", "multiplier": 1000, "period_type": "year", "max_change": 0.15}
 
@@ -69,3 +69,19 @@ def test_monthly_period_normalisation():
     assert process.norm_period("2026M08") == ("2026-08", "month")
     assert process.norm_period("2026-08") == ("2026-08", "month")
     assert process.norm_period("2026") == ("2026", "year")
+
+
+def test_duplicate_periods_in_a_series_are_rejected():
+    obs = [{"geo": "PT", "series": "stock", "period": "2024", "period_type": "year", "value": 1.0, "unit": "head"},
+           {"geo": "PT", "series": "stock", "period": "2024", "period_type": "year", "value": 2.0, "unit": "head"}]
+    process.classify({"max_change": 1}, obs)
+    assert {o["status"] for o in obs} == {"red"}
+
+
+def test_sum_check_report_mode_keeps_rows_green():
+    obs = [{"geo": "PT", "period": "2024-01", "series": "export/0102/VALUE_IN_EUROS", "flow": "export", "product_code": "0102", "value": 100.0, "status": "green"},
+           {"geo": "PT", "period": "2024-01", "series": "export/01022999/VALUE_IN_EUROS", "flow": "export", "product_code": "01022999", "value": 80.0, "status": "green"}]
+    d = {"sum_check": {"total": "0102", "mode": "report"}}
+    process.sum_check(d, obs)
+    assert all(o["status"] == "green" for o in obs)
+    assert d["_coverage"]["VALUE_IN_EUROS"]["2024"] == 0.8

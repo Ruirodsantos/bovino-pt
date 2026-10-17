@@ -22,7 +22,7 @@ def test_fifteen_bovine_breeds_registered():
 
 @pytest.fixture
 def tmp_repo(tmp_path):
-    for p in ("data", "pm", "reviews", "PROJECT_STATUS.json"):
+    for p in ("data", "pm", "reviews", "content", "PROJECT_STATUS.json"):
         src = ROOT / p
         (shutil.copytree if src.is_dir() else shutil.copy)(src, tmp_path / p)
     return tmp_path

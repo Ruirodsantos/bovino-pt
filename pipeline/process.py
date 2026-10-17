@@ -82,7 +82,7 @@ def observations(d: dict, snap: Path) -> tuple[list[dict], dict]:
             unit = d.get("unit") or d["unit_by_indicator"][ind]
             mult = d.get("multiplier") or d["multiplier_by_indicator"][ind]
             flow = d.get("flow") or d["flow_by_code"][str(r.get("flow"))]
-            if d["api"] == "comext":
+            if d.get("api") == "comext":
                 series = "/".join(x for x in [flow, r.get("product"), ind] if x)
             else:   # every dimension that is not geo/time becomes part of the series key
                 extra = [f"{k}={r[k]}" for k in r if not k.endswith("_label") and k not in

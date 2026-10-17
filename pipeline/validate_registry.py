@@ -91,8 +91,27 @@ def check_status(root: Path) -> list[str]:
     return errors
 
 
+def check_discoveries(root: Path) -> list[str]:
+    """Every published discovery needs at least one source with a URL."""
+    errors: list[str] = []
+    for f in sorted((root / "content/descobertas").glob("*.md")):
+        text = f.read_text(encoding="utf-8")
+        if not text.startswith("---"):
+            errors.append(f"discovery {f.name}: missing front matter")
+            continue
+        fm = yaml.safe_load(text.split("---", 2)[1])
+        srcs = fm.get("sources") or []
+        if not srcs or not all(str(x.get("url", "")).startswith("http") for x in srcs):
+            errors.append(f"discovery {f.name}: needs at least one source with a URL")
+        if fm.get("status") not in ("verificado", "em revisão"):
+            errors.append(f"discovery {f.name}: invalid status")
+    return errors
+
+
 def main(root: Path) -> int:
     errors = check_sources(root) + check_breeds(root) + check_tasks(root) + check_status(root)
+    if (root / "content/descobertas").exists():
+        errors += check_discoveries(root)
     for e in errors:
         print(f"ERROR {e}")
     print(f"{'FAIL' if errors else 'OK'}: {len(errors)} error(s)")
