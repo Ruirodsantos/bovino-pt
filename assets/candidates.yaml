@@ -1,0 +1,55 @@
+# Candidate photos for review. Picks (after visual check) go to assets/images.yaml.
+queries:
+  - mirandesa cattle
+  - barrosã
+  - barrosa cattle
+  - maronesa
+  - arouquesa
+  - alentejana cattle
+  - mertolenga
+  - minhota cattle
+  - marinhoa
+  - garvonesa
+  - jarmelista
+  - cachena
+  - ramo grande cattle azores
+  - algarvia cattle
+  - toiro bravo portugal
+  - portuguese cattle
+  - cows portugal
+  - alentejo cows
+  - azores cows
+  - posta mirandesa
+urls:
+  unsplash:
+    - {id: u-long-horns-kyktov, image: "https://images.unsplash.com/photo-1765100480313-a1f192dba1bf?w=900", page: "https://unsplash.com/photos/brown-cow-with-long-horns-in-a-grassy-field-aGE71hz9XBk"}
+    - {id: u-trough-magalhaes, image: "https://images.unsplash.com/photo-1760523876904-9301f0eb842e?w=900", page: "https://unsplash.com/photos/cows-drinking-water-from-a-trough-on-a-grassy-hillside-Zfs-7LeUzXA"}
+    - {id: u-figueiredo, image: "https://images.unsplash.com/photo-1577759110311-099d7b4cdb41?w=900", page: "https://unsplash.com/photos/cattle-on-grass-field-during-day-S-gEtxbkqkE"}
+    - {id: u-phoze-herd, image: "https://images.unsplash.com/photo-1714685562752-9f377b7ddfdf?w=900", page: "https://unsplash.com/photos/a-herd-of-cattle-standing-on-top-of-a-lush-green-hillside-CB4hgwXOE88"}
+    - {id: u-pedrosousa-black, image: "https://images.unsplash.com/photo-1600278315719-34acbdc340be?w=900", page: "https://unsplash.com/photos/black-cow-on-green-grass-field-during-daytime-3ZemgLq2fCQ"}
+    - {id: u-sandrasilva, image: "https://images.unsplash.com/photo-1611046423680-9b985613f7a3?w=900", page: "https://unsplash.com/photos/brown-cow-on-green-grass-field-during-daytime-SVokqyXAD0M"}
+    - {id: u-dalila, image: "https://images.unsplash.com/photo-1661622735694-84f6963be438?w=900", page: "https://unsplash.com/photos/a-cow-laying-in-a-field-iT5ETu2hak0"}
+    - {id: u-laura-dry, image: "https://images.unsplash.com/photo-1692033071075-7517069f95c5?w=900", page: "https://unsplash.com/photos/a-herd-of-cattle-standing-on-top-of-a-dry-grass-field-q-k9YUsomrg"}
+    - {id: u-misty, image: "https://images.unsplash.com/photo-1759388901802-b4c6689307a7?w=900", page: "https://unsplash.com/photos/cows-grazing-in-a-misty-green-field-IClIycygbnc"}
+    - {id: u-largehorns-garcia, image: "https://images.unsplash.com/photo-1709199880597-9e0cd5948ed0?w=900", page: "https://unsplash.com/photos/a-cow-with-large-horns-standing-in-a-field-mVG9jwo4cz0"}
+    - {id: u-bulls-schwarz, image: "https://images.unsplash.com/photo-1689534153619-3a0ddc7aa113?w=900", page: "https://unsplash.com/photos/a-couple-of-bulls-that-are-standing-in-the-dirt-42p2uQDO5rI"}
+    - {id: u-santana-brown, image: "https://images.unsplash.com/photo-1558475585-489d45d4f0b6?w=900", page: "https://unsplash.com/photos/shallow-focus-photo-of-brown-cow-7Urvw4QZLuI"}
+    - {id: u-alvoeiro-valley, image: "https://images.unsplash.com/photo-1647628690577-372e0f0631e3?w=900", page: "https://unsplash.com/photos/a-lush-green-valley-surrounded-by-mountains-under-a-cloudy-sky-YLTyctRvXVg"}
+    - {id: u-zymot-montado, image: "https://images.unsplash.com/photo-1725144690048-a4f7d77fe4b8?w=900", page: "https://unsplash.com/photos/three-trees-in-a-field-with-a-blue-sky-in-the-background-ZAw72KR7U1w"}
+  meat:
+    - {id: m-kotenev-board, image: "https://images.unsplash.com/photo-1690983330536-3b0089d07cf9?w=900", page: "https://unsplash.com/photos/two-steaks-on-a-cutting-board-next-to-garlic-garlic-and-a-knife-sV8Cl0_3UcY"}
+    - {id: m-kotenev-group, image: "https://images.unsplash.com/photo-1690983323238-0b91789e1b5a?w=900", page: "https://unsplash.com/photos/a-group-of-raw-meats-on-a-table--47X0XodINg"}
+    - {id: m-trost-paper, image: "https://images.unsplash.com/photo-1728042359930-c0145f0fd442?w=900", page: "https://unsplash.com/photos/a-piece-of-meat-sitting-on-top-of-a-piece-of-paper-SckH8spaAtk"}
+    - {id: m-mackie-wood, image: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=900", page: "https://unsplash.com/photos/raw-meat-on-brown-wooden-table-QH8SHBARVVk"}
+    - {id: m-giannakakis, image: "https://images.unsplash.com/photo-1722928566022-8a6f179eab9e?w=900", page: "https://unsplash.com/photos/a-close-up-of-a-piece-of-meat-CYh21GUNQ5k"}
+    - {id: m-hamilton-sliced, image: "https://images.unsplash.com/photo-1615937691194-97dbd3f3dc29?w=900", page: "https://unsplash.com/photos/sliced-meat-on-brown-paper-GXehL5_crJ4"}
+  flickr:
+    - {id: f-barrosa-zcarlos, page: "https://www.flickr.com/photos/81522259@N04/14694419415"}
+    - {id: f-cachena-portuguese-eyes, page: "https://www.flickr.com/photos/portuguese_eyes/50433210536"}
+    - {id: f-cachena-rcannon, page: "https://www.flickr.com/photos/rcannon9921/54324226643"}
+    - {id: f-cachena-buho, page: "https://www.flickr.com/photo.gne?id=5001700898"}
+    - {id: f-cachena-crzg-calf, page: "https://www.flickr.com/photo.gne?id=8157751285"}
+    - {id: f-tourem-turismo, page: "https://www.flickr.com/photo.gne?id=17029105955"}
+    - {id: f-tourem-jodastephen, page: "https://www.flickr.com/photo.gne?id=20827943658"}
+    - {id: f-carris-caetano, page: "https://www.flickr.com/photo.gne?id=3510774495"}
+    - {id: f-montalegre-cartas, page: "https://www.flickr.com/photo.gne?id=4188102559"}
