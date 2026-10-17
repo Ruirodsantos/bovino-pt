@@ -80,10 +80,12 @@ def documents() -> None:
                 text = "\n".join(pages)
                 if len(r.content) < 15_000_000:
                     (d / "original.pdf").write_bytes(r.content)
+            elif "html" not in ctype:
+                text = r.text
             else:
                 from bs4 import BeautifulSoup
                 soup = BeautifulSoup(r.text, "html.parser")
-                for t in soup(["script", "style", "nav", "footer"]):
+                for t in soup(["script", "style", "nav", "footer"]) if "html" in ctype else []:
                     t.decompose()
                 text = soup.get_text("\n", strip=True)
                 imgs = [i.get("src") for i in BeautifulSoup(r.text, "html.parser").find_all("img") if i.get("src")]
