@@ -1,0 +1,159 @@
+# Published photos. Only free licences (Unsplash License, Pexels License, Creative Commons BY/BY-SA).
+# A photo is labelled with a breed ONLY when its source says so; otherwise the caption states place/subject only.
+images:
+  - id: hero-alentejo
+    url: "https://images.pexels.com/photos/39102622/pexels-photo-39102622.jpeg?auto=compress&w=2400"
+    alt: "Manada de bovinos num montado alentejano ao fim da tarde"
+    caption: "Bovinos num montado do Alentejo"
+    author: "Nikolaeva Nastia"
+    license: "Licença Pexels"
+    source_page: "https://www.pexels.com/photo/pastoral-scene-at-sunset-in-alentejo-portugal-39102622/"
+    subject: paisagem
+  - id: montado-pasto
+    url: "https://images.pexels.com/photos/39102624/pexels-photo-39102624.jpeg?auto=compress&w=2400"
+    alt: "Pastagem portuguesa com sobreiros e bovinos ao longe"
+    caption: "Pastagem com bovinos, Portugal"
+    author: "Nikolaeva Nastia"
+    license: "Licença Pexels"
+    source_page: "https://www.pexels.com/photo/serene-portuguese-pasture-landscape-with-cows-39102624/"
+    subject: paisagem
+  - id: cachena-retrato
+    url: "https://images.pexels.com/photos/20050808/pexels-photo-20050808.jpeg?auto=compress&w=2400"
+    alt: "Vaca de cornos longos em lira, pelagem castanho-dourada, em encosta de montanha"
+    caption: "Vaca da série «Cachena cattle with horns» do mesmo autor"
+    author: "Diogo Miranda"
+    license: "Licença Pexels"
+    source_page: "https://www.pexels.com/photo/long-horned-cow-in-close-up-20050808/"
+    subject: bovino
+  - id: cachena
+    url: "https://images.pexels.com/photos/20050812/pexels-photo-20050812.jpeg?auto=compress&w=2400"
+    alt: "Vaca Cachena de cornos longos em lira a caminhar numa encosta"
+    caption: "Vaca da raça Cachena (identificada pelo autor)"
+    author: "Diogo Miranda"
+    license: "Licença Pexels"
+    source_page: "https://www.pexels.com/photo/cachena-cattle-with-horns-20050812/"
+    subject: bovino
+    breed: cachena
+  - id: barrosa
+    url: "https://images.pexels.com/photos/26442516/pexels-photo-26442516.jpeg?auto=compress&w=2400"
+    alt: "Vacas Barrosãs de grandes cornos num caminho de montanha"
+    caption: "Vacas da raça Barrosã (identificadas pelo autor)"
+    author: "Diogo Miranda"
+    license: "Licença Pexels"
+    source_page: "https://www.pexels.com/photo/barrosa-cows-in-countryside-26442516/"
+    subject: bovino
+    breed: barrosa
+  - id: barrosa-festa
+    url: "https://www.flickr.com/photo_download.gne?id=14694419415&secret=&size=b"
+    flickr_page: "https://www.flickr.com/photos/81522259@N04/14694419415"
+    alt: "Boi Barrosão enfeitado com fitas e flores"
+    caption: "Barrosã enfeitada para uma festa (identificada pelo autor)"
+    author: "Z Carlos"
+    license: "CC BY-SA 2.0"
+    source_page: "https://www.flickr.com/photos/81522259@N04/14694419415"
+    subject: bovino
+    breed: barrosa
+  - id: tourem-manada
+    flickr_page: "https://www.flickr.com/photo.gne?id=20827943658"
+    alt: "Manada de vacas a atravessar uma ponte em Tourém, Montalegre"
+    caption: "Manada em Tourém, Montalegre (Barroso)"
+    author: "jodastephen"
+    license: "CC BY 2.0"
+    source_page: "https://www.flickr.com/photo.gne?id=20827943658"
+    subject: paisagem
+  - id: geres-descanso
+    flickr_page: "https://www.flickr.com/photo.gne?id=3510774495"
+    alt: "Vaca deitada junto a casas de granito na serra do Gerês"
+    caption: "Serra do Gerês (Minas dos Carris)"
+    author: "Pedro Nuno Caetano"
+    license: "CC BY 2.0"
+    source_page: "https://www.flickr.com/photo.gne?id=3510774495"
+    subject: bovino
+  - id: montanha-cornos
+    url: "https://images.unsplash.com/photo-1765100480313-a1f192dba1bf?w=2400&q=80"
+    alt: "Vaca castanha de cornos longos num pinhal"
+    caption: "Bovinos de montanha"
+    author: "Vitalii Kyktov"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/brown-cow-with-long-horns-in-a-grassy-field-aGE71hz9XBk"
+    subject: bovino
+  - id: outono-castanheiros
+    url: "https://images.unsplash.com/photo-1611046423680-9b985613f7a3?w=2400&q=80"
+    alt: "Bovinos a pastar entre castanheiros no outono"
+    caption: "Pastoreio de outono"
+    author: "Sandra Silva"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/brown-cow-on-green-grass-field-during-daytime-SVokqyXAD0M"
+    subject: bovino
+  - id: pasto-seco
+    url: "https://images.unsplash.com/photo-1692033071075-7517069f95c5?w=2400&q=80"
+    alt: "Bovinos vermelhos num pasto seco mediterrânico"
+    caption: "Pasto de verão"
+    author: "Laura"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/a-herd-of-cattle-standing-on-top-of-a-dry-grass-field-q-k9YUsomrg"
+    subject: bovino
+  - id: miranda-douro
+    url: "https://images.unsplash.com/photo-1646327184339-6f55d33e9ccf?w=2400&q=80"
+    alt: "Arribas do Douro em Miranda do Douro"
+    caption: "Arribas do Douro, Terras de Miranda"
+    author: "Diana Fernandes"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-mQuayfO-ErM"
+    subject: paisagem
+  - id: mertola
+    url: "https://images.unsplash.com/photo-1568472795323-838ec9c66f3c?w=2400&q=80"
+    alt: "Castelo de Mértola sobre o vale do Guadiana"
+    caption: "Mértola, vale do Guadiana"
+    author: "Michael Fleczoreck"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/a-large-hill-with-a-castle-on-top-of-it-Hx67MGIrDg8"
+    subject: paisagem
+  - id: terceira
+    url: "https://images.unsplash.com/photo-1696454138736-9d0ffdf93b9f?w=2400&q=80"
+    alt: "Vista aérea de pastagens com muros de pedra e bovinos na ilha Terceira"
+    caption: "Pastagens da ilha Terceira, Açores"
+    author: "Antonio Araujo"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/H-lXjyKlW1U"
+    subject: paisagem
+  - id: montalegre
+    url: "https://images.unsplash.com/photo-1598478965888-2116dcfa10ff?w=2400&q=80"
+    alt: "Montanhas do Barroso, Montalegre"
+    caption: "Serras do Barroso, Montalegre"
+    author: "João Martins"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/green-and-brown-mountains-under-blue-sky-during-daytime-cq-4mg-2o30"
+    subject: paisagem
+  - id: lezíria
+    url: "https://images.unsplash.com/photo-1663862071280-2c60f0a5139b?w=2400&q=80"
+    alt: "Planície ribeirinha no Ribatejo"
+    caption: "Planície do Ribatejo"
+    author: "Mitchell Begue"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/a-river-running-through-a-field-Wen_UE23TA0"
+    subject: paisagem
+  - id: carne-cortes
+    url: "https://images.unsplash.com/photo-1690983330536-3b0089d07cf9?w=2400&q=80"
+    alt: "Dois bifes crus sobre uma tábua com alho e ervas"
+    caption: "Cortes de carne de bovino (imagem ilustrativa)"
+    author: "Sergey Kotenev"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/two-steaks-on-a-cutting-board-next-to-garlic-garlic-and-a-knife-sV8Cl0_3UcY"
+    subject: carne
+  - id: carne-madeira
+    url: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=2400&q=80"
+    alt: "Dois cortes de vazia sobre tábua de madeira"
+    caption: "Cortes de carne de bovino (imagem ilustrativa)"
+    author: "Kyle Mackie"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/raw-meat-on-brown-wooden-table-QH8SHBARVVk"
+    subject: carne
+  - id: carne-variedade
+    url: "https://images.unsplash.com/photo-1690983323238-0b91789e1b5a?w=2400&q=80"
+    alt: "Vários cortes crus de carne de bovino alinhados"
+    caption: "Cortes de carne de bovino (imagem ilustrativa)"
+    author: "Sergey Kotenev"
+    license: "Licença Unsplash"
+    source_page: "https://unsplash.com/photos/a-group-of-raw-meats-on-a-table--47X0XodINg"
+    subject: carne

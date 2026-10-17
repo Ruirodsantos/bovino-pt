@@ -32,7 +32,14 @@ def images() -> None:
         if target.exists() and iid in credits:
             continue
         try:
-            r = requests.get(it["url"], headers=UA, timeout=60)
+            url = it.get("url")
+            if it.get("flickr_page"):
+                import re as _re
+                h = requests.get(it["flickr_page"], headers=UA, timeout=60).text
+                m = _re.search(r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"', h)
+                url = m.group(1) if m else url
+                url = _re.sub(r"_[a-z]\.jpg$", "_b.jpg", url) if url and "staticflickr" in url else url
+            r = requests.get(url, headers=UA, timeout=60)
             r.raise_for_status()
             im = ImageOps.exif_transpose(Image.open(io.BytesIO(r.content))).convert("RGB")
         except Exception as e:  # keep going; report the failure
