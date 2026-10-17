@@ -82,6 +82,14 @@ def documents() -> None:
             ctype = r.headers.get("content-type", "")
             if "pdf" in ctype or it["url"].lower().endswith(".pdf"):
                 import pdfplumber
+                if it.get("layout"):
+                    import subprocess, tempfile
+                    with tempfile.NamedTemporaryFile(suffix=".pdf") as tf:
+                        tf.write(r.content); tf.flush()
+                        first, last = it.get("pages", [1, 10_000])
+                        out = subprocess.run(["pdftotext", "-layout", "-f", str(first), "-l", str(last), tf.name, "-"],
+                                             capture_output=True, text=True)
+                    (d / "layout.txt").write_text(out.stdout, encoding="utf-8")
                 cols = int(it.get("columns", 1))
                 first, last = it.get("pages", [1, 10_000])
                 with pdfplumber.open(io.BytesIO(r.content)) as pdf:
