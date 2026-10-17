@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import StatCard from "../../components/StatCard.astro";
+import Photo from "../../components/Photo.astro";
 import { summary } from "../../lib/data";
 const s = summary();
 const pick = ["pt_es_live_eur", "pt_es_live_heads", "pt_beef_imports_es"].map((id) => s.stats.find((x) => x.id === id)).filter(Boolean);
@@ -22,6 +23,7 @@ const questions = [
     <p class="lede">Uma investigação independente, com dados oficiais. Não partimos do princípio de que a compra espanhola é boa ou má para Portugal: medimos o que se pode medir e mostramos o que ainda não se sabe.</p>
     <div class="grid cols-3" style="margin-top:32px">{pick.map((st) => <StatCard stat={st!} />)}</div>
   </div></section>
+  <section class="photoband"><Photo id="montanha-cornos" sizes="100vw" /></section>
 
   <section class="block"><div class="wrap">
     <h2>Animais vivos: o que atravessa a fronteira</h2>
@@ -50,6 +52,8 @@ const questions = [
 </Base>
 <script>import "../../scripts/charts.ts";</script>
 <style>
+  .photoband :global(img) { max-height: 70vh; }
+  .photoband :global(figcaption) { max-width: var(--max); margin: 0 auto; padding: 6px 16px; }
   .note { font-size: .85rem; color: var(--muted); margin-top: 10px; }
   .qs { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
   .q h3 { margin: 12px 0 6px; } .q p { color: var(--muted); font-size: .95rem; margin: 0; }

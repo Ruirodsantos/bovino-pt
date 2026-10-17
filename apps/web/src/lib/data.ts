@@ -22,7 +22,7 @@ export function hasDataset(id: string): boolean {
 
 export type Herd = { year: number; males: number; females: number; breeders: number; source_page: number };
 export type Breed = { slug: string; official_name: string; status: string; status_reason?: string; region?: string | null;
-  herd?: Herd; solar?: string; solar_quote?: string; lat?: number; lon?: number; photo?: string; photo_kind?: "raça" | "solar"; catalogue_page?: number; name_sources?: { url: string }[]; last_verified?: string; fields: Record<string, { value: unknown; source_id: string | null; verified_at: string | null; missing_reason?: string; source_url?: string }> };
+  herd?: Herd; solar?: string; solar_quote?: string; lat?: number; lon?: number; photo?: string; photo_kind?: "raça" | "solar" | "paisagem"; catalogue_page?: number; name_sources?: { url: string }[]; last_verified?: string; fields: Record<string, { value: unknown; source_id: string | null; verified_at: string | null; missing_reason?: string; source_url?: string }> };
 
 export function breeds(): Breed[] {
   const dir = path.join(ROOT, "data/registry/breeds");

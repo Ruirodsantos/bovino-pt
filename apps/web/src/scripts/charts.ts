@@ -212,7 +212,7 @@ async function breedsMap(el: HTMLElement) {
   const show = (b: BreedPt) => {
     if (!side) return;
     const img = b.photo ? `<figure class="photo"><img src="${BASE}img/${b.photo}-md.webp" alt="" style="border-radius:14px;aspect-ratio:4/3;width:100%;object-fit:cover"></figure>` : "";
-    const tag = b.photo ? `<span class="chip">${b.photo_kind === "raça" ? "Fotografia da raça" : "Paisagem do solar"}</span>` : "";
+    const tag = b.photo ? `<span class="chip">${b.photo_kind === "raça" ? "Fotografia da raça" : b.photo_kind === "paisagem" ? "Paisagem típica" : "Paisagem do solar"}</span>` : "";
     const herd = b.herd ? `<p style="margin:0"><strong>${b.herd.females.toLocaleString("pt-PT")}</strong> fêmeas e <strong>${b.herd.males.toLocaleString("pt-PT")}</strong> machos em linha pura, em ${b.herd.breeders.toLocaleString("pt-PT")} criadores <span style="color:${t.muted}">(livro genealógico, ${b.herd.year})</span></p>` : "";
     side.innerHTML = `${img}${tag}<h3 style="margin:6px 0 2px">${b.official_name}</h3><p style="margin:0;color:${t.muted}">Solar: ${b.solar}</p>${herd}
       <p style="font-size:.75rem;color:${t.muted};margin:0">Fonte: Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP${b.catalogue_page ? `, p. ${b.catalogue_page}` : ""}</p>

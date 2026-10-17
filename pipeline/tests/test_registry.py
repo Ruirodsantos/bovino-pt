@@ -31,7 +31,7 @@ def tmp_repo(tmp_path):
 def test_breed_value_without_source_is_rejected(tmp_repo):
     f = tmp_repo / "data/registry/breeds/mirandesa.yaml"
     b = yaml.safe_load(f.read_text(encoding="utf-8"))
-    b["fields"]["population"]["value"] = 12345  # invented number, no source
+    b["fields"]["population"].update(value=12345, source_id=None)  # invented number, no source
     f.write_text(yaml.safe_dump(b, allow_unicode=True), encoding="utf-8")
     assert vr.main(tmp_repo) == 1
 

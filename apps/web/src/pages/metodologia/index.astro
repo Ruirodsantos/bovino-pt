@@ -1,5 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
+import credits from "../../data/images.json";
+const photos = Object.entries(credits as Record<string, any>);
 ---
 <Base title="Método e fontes" description="Como o Atlas do Bovino Português recolhe, verifica e publica dados.">
   <article class="block" style="border-top:0"><div class="wrap narrow">
@@ -32,6 +34,9 @@ import Base from "../../layouts/Base.astro";
       <li>Em preparação: INE, GPP/SIMA (cotações semanais), MAPA (Espanha), FAOSTAT.</li>
     </ul>
     <p>Todo o código, os dados e o histórico estão públicos no <a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a>.</p>
+    <h2 id="fotografias">Fotografias</h2>
+    <p>Usamos apenas fotografias reais com licença livre: Unsplash, Pexels ou Creative Commons. Só dizemos que uma fotografia mostra uma raça quando o próprio autor a identifica. Nos outros casos, a legenda indica apenas o local.</p>
+    <ul class="credits">{photos.map(([id, c]) => <li><a href={c.source_page}>{c.caption}</a> — {c.author} · {c.license}</li>)}</ul>
   </div></article>
 </Base>
-<style>.narrow { max-width: 760px; } h2 { margin-top: 1.6em; }</style>
+<style>.credits { font-size: .85rem; } .narrow { max-width: 760px; } h2 { margin-top: 1.6em; }</style>

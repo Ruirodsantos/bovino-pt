@@ -22,7 +22,7 @@ const src = b.name_sources?.[0]?.url;
       <span class="eyebrow light">Raça bovina autóctone portuguesa · {String(i + 1).padStart(2, "0")}/15</span>
       <h1>{b.official_name}</h1>
       {b.solar && <p class="lede light">{b.solar}</p>}
-      {p && <span class="chip">{p.kind === "raça" ? "Fotografia da raça" : "Paisagem do solar da raça"}</span>}
+      {p && <span class="chip">{p.kind === "raça" ? "Fotografia da raça" : p.kind === "paisagem" ? "Paisagem típica" : "Paisagem do solar da raça"}</span>}
     </div>
   </section>
 
@@ -60,7 +60,7 @@ const src = b.name_sources?.[0]?.url;
   .bhero :global(.bh-photo figcaption) { position: absolute; right: 12px; bottom: 8px; color: rgba(255,255,255,.75); z-index: 2; }
   .bhero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.05) 30%, rgba(0,0,0,.75)); }
   .bh-empty { position: absolute; inset: 0; background: linear-gradient(135deg, #3a2f26, #1b1714); }
-  .bh-text { position: relative; z-index: 1; padding-bottom: 48px; padding-top: 120px; }
+  .bh-text { position: relative; z-index: 1; padding-bottom: 48px; padding-top: 120px; width: 100%; }
   .bh-text h1 { color: #fff; font-size: clamp(3rem, 10vw, 7rem); margin: 6px 0; }
   .light { color: rgba(255,255,255,.9) !important; } .eyebrow.light { color: #f3c9a8 !important; }
   .back { color: #fff; }
