@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "project": "Portuguese Beef Intelligence Platform",
-  "generated_at": "2026-10-17T08:57:26+00:00",
+  "generated_at": "2026-10-17T09:03:47+00:00",
   "generated_by": "pipeline/status.py (GitHub Actions)",
   "current_phase": {
     "id": "P0",
@@ -81,9 +81,9 @@
     }
   ],
   "data_collection": {
-    "last_run": "2026-10-17T08:57:24+00:00",
-    "datasets_ok": 4,
-    "datasets_total": 7,
+    "last_run": "2026-10-17T09:03:45+00:00",
+    "datasets_ok": 5,
+    "datasets_total": 6,
     "datasets": [
       {
         "dataset": "bovine_population",
@@ -92,12 +92,10 @@
         "last_period": "2025"
       },
       {
-        "dataset": "live_bovine_exports_heads",
-        "state": "failed"
-      },
-      {
-        "dataset": "live_bovine_imports_heads",
-        "state": "failed"
+        "dataset": "bovine_slaughter_heads_monthly",
+        "state": "ok",
+        "rows": 518,
+        "last_period": "2026-07"
       },
       {
         "dataset": "bovine_slaughter_tonnes",
@@ -112,28 +110,20 @@
       {
         "dataset": "trade_live_bovine_pt_es",
         "state": "ok",
-        "rows": 4947,
+        "rows": 5386,
         "last_period": "2026-08"
       },
       {
         "dataset": "trade_beef_pt_es",
         "state": "ok",
-        "rows": 2039,
+        "rows": 2080,
         "last_period": "2026-08"
       }
     ],
-    "review_queue_rows": 481,
+    "review_queue_rows": 0,
     "revisions_detected": 0
   },
   "validation_failures": [
-    {
-      "dataset": "live_bovine_exports_heads",
-      "state": "failed"
-    },
-    {
-      "dataset": "live_bovine_imports_heads",
-      "state": "failed"
-    },
     {
       "dataset": "bovine_population_regions",
       "state": "failed"
