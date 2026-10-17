@@ -3,4 +3,4 @@ documents:
   - {id: dgav-catalogo-racas-arquivo, url: "https://web.archive.org/web/20240119034536if_/https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf"}
   - {id: dgav-folheto-arouquesa, url: "https://cm-arouca.pt/wp-content/uploads/2024/02/Folheto-DGAV-Raca-Arouquesa.pdf"}
   - {id: eurostat-toc, url: "https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/txt?lang=en"}
-  - {id: dgav-catalogo-bovinos-colunas, url: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf", columns: 2, pages: [5, 66]}
+  - {id: dgav-catalogo-bovinos-v2, url: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf", columns: 2, pages: [5, 66]}

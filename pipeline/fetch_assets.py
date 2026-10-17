@@ -84,9 +84,17 @@ def documents() -> None:
                             continue
                         if cols == 1:
                             body = p.extract_text() or ""
-                        else:   # read each column separately (two-column layouts)
-                            w = p.width / cols
-                            body = "\n--- coluna ---\n".join(p.crop((k * w, 0, (k + 1) * w, p.height)).extract_text() or "" for k in range(cols))
+                        else:   # two-column layout: split at the emptiest vertical band near the middle
+                            words = p.extract_words()
+                            W = int(p.width)
+                            cover = [0] * (W + 1)
+                            for wd in words:
+                                for x in range(int(wd["x0"]), min(W, int(wd["x1"]) + 1)):
+                                    cover[x] += 1
+                            lo, hi = int(W * 0.3), int(W * 0.7)
+                            split = min(range(lo, hi), key=lambda x: (sum(cover[max(0, x - 3):x + 4]), abs(x - W / 2)))
+                            body = (p.crop((0, 0, split, p.height)).extract_text() or "") + "\n--- coluna ---\n" + \
+                                   (p.crop((split, 0, p.width, p.height)).extract_text() or "")
                         pages.append(f"=== página {i + 1} ===\n{body}")
                 text = "\n".join(pages)
                 if len(r.content) < 15_000_000:
