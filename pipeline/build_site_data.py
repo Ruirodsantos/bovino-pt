@@ -46,6 +46,20 @@ def last_12_months(s: dict[str, float]) -> tuple[float, str, str] | None:
     return sum(s[k] for k in last), last[0], last[-1]
 
 
+MESES = ["jan.", "fev.", "mar.", "abr.", "mai.", "jun.", "jul.", "ago.", "set.", "out.", "nov.", "dez."]
+
+
+def pm(period: str) -> str:
+    """'2025-09' → 'set. 2025' (pt-PT)."""
+    if len(period) == 7 and period[4] == "-":
+        return f"{MESES[int(period[5:]) - 1]} {period[:4]}"
+    return period
+
+
+def span(a: str, b: str) -> str:
+    return f"{pm(a)} – {pm(b)}"
+
+
 def footnote(meta: dict, period: str) -> dict:
     return {"source": SOURCES_LABEL.get(meta.get("source_id"), meta.get("source_id")),
             "source_code": meta.get("source_code"), "dataset": meta.get("id"),
@@ -70,7 +84,7 @@ def main() -> int:
                         ("rows", "first_period", "last_period", "publication_date", "retrieved_at", "source_code")}})
 
     # ---- headline statistics (each one only if computable from complete data) ----
-    pop, pm = load("bovine_population")
+    pop, pmeta = load("bovine_population")
     pt = series(pop, geo="PT")
     if pt:
         y = max(pt)
@@ -78,7 +92,7 @@ def main() -> int:
         stats.append({"id": "pt_population", "label": "bovinos em Portugal", "value": pt[y], "unit": "cabeças",
                       "context": f"efetivo no inquérito de novembro–dezembro de {y}",
                       "change": (pt[y] - prev) / prev if prev else None, "change_ref": str(int(y) - 1) if prev else None,
-                      "footnote": footnote(pm, f"dez. {y}")})
+                      "footnote": footnote(pmeta, f"nov.–dez. {y}")})
     trade, tm = load("trade_live_bovine_pt_es")
     eur = last_12_months(series(trade, product_code="0102", series="export/0102/VALUE_IN_EUROS"))
     if eur:
@@ -89,8 +103,8 @@ def main() -> int:
         if i >= 23:
             prev = sum(s_all[m] for m in months[i - 23:i - 11])
         stats.append({"id": "pt_es_live_eur", "label": "em bovinos vivos vendidos por Portugal a Espanha", "value": eur[0], "unit": "€",
-                      "context": f"{eur[1]} a {eur[2]} (12 meses)", "change": (eur[0] - prev) / prev if prev else None,
-                      "change_ref": "12 meses anteriores" if prev else None, "footnote": footnote(tm, f"{eur[1]} a {eur[2]}")})
+                      "context": f"{span(eur[1], eur[2])} (12 meses)", "change": (eur[0] - prev) / prev if prev else None,
+                      "change_ref": "12 meses anteriores" if prev else None, "footnote": footnote(tm, span(eur[1], eur[2]))})
     # Head counts exist only at CN8 level; their sum is a LOWER BOUND (some codes are not detailed).
     heads: dict[str, float] = {}
     for r in trade:
@@ -99,8 +113,8 @@ def main() -> int:
     t = last_12_months(heads)
     if t:
         stats.append({"id": "pt_es_live_heads", "label": "bovinos vivos atravessaram a fronteira para Espanha — pelo menos", "value": t[0],
-                      "unit": "cabeças", "context": f"{t[1]} a {t[2]} · soma das categorias detalhadas; o total real é superior",
-                      "footnote": footnote(tm, f"{t[1]} a {t[2]}")})
+                      "unit": "cabeças", "context": f"{span(t[1], t[2])} · soma das categorias detalhadas; o total real é superior",
+                      "footnote": footnote(tm, span(t[1], t[2]))})
     beef, bm = load("trade_beef_pt_es")
     imp = {}
     for code in ("0201", "0202"):
@@ -110,13 +124,13 @@ def main() -> int:
     bi = last_12_months(imp)
     if bi:
         stats.append({"id": "pt_beef_imports_es", "label": "carne de bovino que Portugal compra a Espanha", "value": bi[0] / 1000,
-                      "unit": "toneladas", "context": f"{bi[1]} a {bi[2]} · fresca, refrigerada e congelada",
-                      "footnote": footnote(bm, f"{bi[1]} a {bi[2]}")})
+                      "unit": "toneladas", "context": f"{span(bi[1], bi[2])} · fresca, refrigerada e congelada",
+                      "footnote": footnote(bm, span(bi[1], bi[2]))})
     slm, slmm = load("bovine_slaughter_heads_monthly")
     t = last_12_months(series(slm, geo="PT"))
     if t:
         stats.append({"id": "pt_slaughter_heads", "label": "bovinos abatidos em matadouros portugueses", "value": t[0], "unit": "cabeças",
-                      "context": f"{t[1]} a {t[2]} (12 meses)", "footnote": footnote(slmm, f"{t[1]} a {t[2]}")})
+                      "context": f"{span(t[1], t[2])} (12 meses)", "footnote": footnote(slmm, span(t[1], t[2]))})
     sl, sm = load("bovine_slaughter_tonnes")
     s_pt = series(sl, geo="PT")
     if s_pt:

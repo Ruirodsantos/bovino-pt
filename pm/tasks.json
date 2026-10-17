@@ -68,7 +68,7 @@
       "title": "Create GitHub repository, branch protection, CI skeleton",
       "agent": "claude",
       "priority": "high",
-      "status": "IDEA",
+      "status": "COMPLETE",
       "depends_on": [
         "D-001",
         "D-003"
@@ -76,7 +76,10 @@
       "acceptance_criteria": [
         "CI fails a PR with an invalid schema example"
       ],
-      "evidence": [],
+      "evidence": [
+        "https://github.com/Ruirodsantos/bovino-pt",
+        ".github/workflows/daily.yml"
+      ],
       "review_result": null,
       "source": "DEVELOPMENT_ROADMAP.md"
     },
@@ -85,7 +88,7 @@
       "title": "Eurostat collector (apro_mt_pheadm, apro_mt_pann)",
       "agent": "claude",
       "priority": "high",
-      "status": "READY",
+      "status": "COMPLETE",
       "depends_on": [
         "T-0101"
       ],
@@ -93,7 +96,10 @@
         "Scheduled run writes raw snapshot + manifest",
         "Validated PT and ES series match Eurostat data browser"
       ],
-      "evidence": [],
+      "evidence": [
+        "data/validated/",
+        "data/history/last_run.json (run 2026-10-17)"
+      ],
       "review_result": null,
       "source": "DEVELOPMENT_ROADMAP.md"
     },
@@ -102,7 +108,7 @@
       "title": "Comext collector CN 0102/0201/0202 PT<->ES",
       "agent": "claude",
       "priority": "high",
-      "status": "READY",
+      "status": "COMPLETE",
       "depends_on": [
         "T-0101"
       ],
@@ -110,7 +116,10 @@
         "Monthly series in heads, kg, EUR",
         "Mirror check logged"
       ],
-      "evidence": [],
+      "evidence": [
+        "data/validated/",
+        "data/history/last_run.json (run 2026-10-17)"
+      ],
       "review_result": null,
       "source": "DEVELOPMENT_ROADMAP.md"
     },
@@ -128,6 +137,37 @@
       "evidence": [],
       "review_result": null,
       "source": "DESIGN_DIRECTION.md"
+    },
+    {
+      "id": "T-0201",
+      "title": "Visual MVP: home, observatory, breeds, discoveries, data, method",
+      "agent": "claude",
+      "priority": "high",
+      "status": "REVIEW",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Site deployed with real verified data",
+        "Every number shows source and period"
+      ],
+      "evidence": [
+        "https://theaipulsehub.com/bovino-pt/"
+      ],
+      "review_result": null,
+      "source": "Rui 2026-10-17"
+    },
+    {
+      "id": "T-0202",
+      "title": "Regional bovine data (NUTS 2) for the map",
+      "agent": "claude",
+      "priority": "medium",
+      "status": "RESEARCH",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "bovine_population_regions dataset state ok"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "run 2026-10-17: agr_r_animal not disseminated"
     }
   ]
 }

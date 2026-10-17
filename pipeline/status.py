@@ -20,6 +20,6 @@ if run:
         "review_queue_rows": run["review_rows"], "revisions_detected": run["revisions"],
     }
     s["validation_failures"] = [d for d in run["datasets"] if d["state"] in ("failed", "no_data")]
-s["website_health"] = {"deployed": True, "url": "https://ruirodsantos.github.io/bovino-pt/"}
+s["website_health"] = {"deployed": True, "url": "https://theaipulsehub.com/bovino-pt/"}
 p.write_text(json.dumps(s, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 print("PROJECT_STATUS.json atualizado")

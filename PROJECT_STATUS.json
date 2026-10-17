@@ -4,9 +4,9 @@
   "generated_at": "2026-10-17T09:03:47+00:00",
   "generated_by": "pipeline/status.py (GitHub Actions)",
   "current_phase": {
-    "id": "P0",
-    "name": "Discovery",
-    "state": "deliverables_submitted_awaiting_approval"
+    "id": "P2",
+    "name": "Visual MVP live + daily automation",
+    "state": "in_progress"
   },
   "completed_deliverables": [
     {
@@ -72,12 +72,12 @@
   ],
   "blocked_tasks": [
     {
-      "id": "T-0101",
-      "reason": "Repository hosting and visibility not decided (D-001, D-003)"
-    },
-    {
       "id": "T-0003",
       "reason": "Hermes environment unknown (D-004)"
+    },
+    {
+      "id": "T-0106",
+      "reason": "INE indicator codes not identified (R-001)"
     }
   ],
   "data_collection": {
@@ -136,25 +136,18 @@
   "recent_changes": [
     {
       "date": "2026-10-17",
-      "change": "Phase 0 documents A–H written; repository skeleton created locally"
+      "change": "Public repo, daily GitHub Actions pipeline (Eurostat + Comext), site live on GitHub Pages"
+    },
+    {
+      "date": "2026-10-17",
+      "change": "Daily Claude research scheduled task created (06:52 Lisbon)"
+    },
+    {
+      "date": "2026-10-17",
+      "change": "Phase 0 documents A–H"
     }
   ],
   "outstanding_decisions": [
-    {
-      "id": "D-001",
-      "question": "Create the GitHub repository under account ruirodsantos (or an organisation)?",
-      "owner": "rui"
-    },
-    {
-      "id": "D-002",
-      "question": "Hosting: Cloudflare Pages (recommended) or GitHub Pages?",
-      "owner": "rui"
-    },
-    {
-      "id": "D-003",
-      "question": "Repository public (recommended: free CI minutes, transparency) or private?",
-      "owner": "rui"
-    },
     {
       "id": "D-004",
       "question": "What is Hermes, where does it run, and can it use Git? (integration option A/B/C)",
@@ -166,24 +159,50 @@
       "owner": "rui"
     },
     {
-      "id": "D-006",
-      "question": "Platform brand name (no domain purchase without approval)",
+      "id": "D-007",
+      "question": "Licences: code MIT, own data CC BY 4.0?",
       "owner": "rui"
     },
     {
-      "id": "D-007",
-      "question": "Licences: code MIT, own data CC BY 4.0?",
+      "id": "D-008",
+      "question": "Keep the site under theaipulsehub.com/bovino-pt/ or move to a free Cloudflare Pages subdomain (needs a free Cloudflare account)?",
       "owner": "rui"
     }
   ],
   "next_priorities": [
-    "Rui: answer D-001 to D-004",
-    "T-0104 Eurostat collector and T-0105 Comext collector (first real data)",
-    "T-0110 visual style tile for design approval",
-    "Hermes: R-001 (INE indicator codes) and R-007 (breed list confirmation)"
+    "Regional (NUTS 2) bovine data for the map — find the current Eurostat dataset code",
+    "Breed profiles via daily research run",
+    "Producer price comparison PT/ES after licence checks (R-002, R-004, R-005)",
+    "Hermes and ChatGPT connected through AGENTS.md + GitHub Issues"
   ],
   "reviews": {
     "chatgpt_reviews_completed": 0,
     "note": "No ChatGPT review has taken place yet."
-  }
+  },
+  "decisions_taken": [
+    {
+      "id": "D-001",
+      "decision": "Repository github.com/Ruirodsantos/bovino-pt",
+      "by": "rui",
+      "date": "2026-10-17"
+    },
+    {
+      "id": "D-002",
+      "decision": "GitHub Pages (free, no extra account); served at theaipulsehub.com/bovino-pt/ because of the account's custom domain",
+      "by": "rui (delegated to Claude)",
+      "date": "2026-10-17"
+    },
+    {
+      "id": "D-003",
+      "decision": "Public repository",
+      "by": "rui (delegated to Claude)",
+      "date": "2026-10-17"
+    },
+    {
+      "id": "D-006",
+      "decision": "Provisional brand: Atlas do Bovino Português (changeable)",
+      "by": "claude, delegated",
+      "date": "2026-10-17"
+    }
+  ]
 }

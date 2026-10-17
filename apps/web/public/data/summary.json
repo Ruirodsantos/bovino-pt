@@ -12,7 +12,7 @@
     "source": "Eurostat",
     "source_code": "apro_mt_lscatl",
     "dataset": "bovine_population",
-    "period": "dez. 2025",
+    "period": "nov.–dez. 2025",
     "published": "2026-10-01",
     "verified": "2026-10-17"
    }
@@ -22,14 +22,14 @@
    "label": "em bovinos vivos vendidos por Portugal a Espanha",
    "value": 73245621.0,
    "unit": "€",
-   "context": "2025-09 a 2026-08 (12 meses)",
+   "context": "set. 2025 – ago. 2026 (12 meses)",
    "change": 0.01338814894218158,
    "change_ref": "12 meses anteriores",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
     "dataset": "trade_live_bovine_pt_es",
-    "period": "2025-09 a 2026-08",
+    "period": "set. 2025 – ago. 2026",
     "published": "2026-10-16",
     "verified": "2026-10-17"
    }
@@ -39,12 +39,12 @@
    "label": "bovinos vivos atravessaram a fronteira para Espanha — pelo menos",
    "value": 36367.0,
    "unit": "cabeças",
-   "context": "2025-09 a 2026-08 · soma das categorias detalhadas; o total real é superior",
+   "context": "set. 2025 – ago. 2026 · soma das categorias detalhadas; o total real é superior",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
     "dataset": "trade_live_bovine_pt_es",
-    "period": "2025-09 a 2026-08",
+    "period": "set. 2025 – ago. 2026",
     "published": "2026-10-16",
     "verified": "2026-10-17"
    }
@@ -54,12 +54,12 @@
    "label": "carne de bovino que Portugal compra a Espanha",
    "value": 75081.997,
    "unit": "toneladas",
-   "context": "2025-09 a 2026-08 · fresca, refrigerada e congelada",
+   "context": "set. 2025 – ago. 2026 · fresca, refrigerada e congelada",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
     "dataset": "trade_beef_pt_es",
-    "period": "2025-09 a 2026-08",
+    "period": "set. 2025 – ago. 2026",
     "published": "2026-10-16",
     "verified": "2026-10-17"
    }
@@ -69,12 +69,12 @@
    "label": "bovinos abatidos em matadouros portugueses",
    "value": 349050.0,
    "unit": "cabeças",
-   "context": "2025-08 a 2026-07 (12 meses)",
+   "context": "ago. 2025 – jul. 2026 (12 meses)",
    "footnote": {
     "source": "Eurostat",
     "source_code": "apro_mt_pheadm",
     "dataset": "bovine_slaughter_heads_monthly",
-    "period": "2025-08 a 2026-07",
+    "period": "ago. 2025 – jul. 2026",
     "published": "2026-10-13",
     "verified": "2026-10-17"
    }
