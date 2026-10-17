@@ -5,12 +5,13 @@ def rnd(c):
     return [rnd(x) for x in c] if isinstance(c[0], list) else [round(c[0], 3), round(c[1], 3)]
 
 src, dst = sys.argv[1], sys.argv[2]
+keep = tuple(sys.argv[3].split(",")) if len(sys.argv) > 3 else ("PT", "ES")
 g = json.load(open(src, encoding="utf-8"))
 feats = []
 for f in g["features"]:
     p = f["properties"]
     nid = p.get("NUTS_ID") or p.get("id")
-    if not nid or nid[:2] not in ("PT", "ES"):
+    if not nid or nid[:2] not in keep:
         continue
     f["geometry"]["coordinates"] = rnd(f["geometry"]["coordinates"])
     feats.append({"type": "Feature", "properties": {"name": nid, "label": p.get("NAME_LATN") or p.get("NUTS_NAME")},

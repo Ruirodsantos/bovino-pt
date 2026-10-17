@@ -40,6 +40,10 @@ jobs:
             curl -sSfL "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_10M_2021_4326_LEVL_2.geojson" -o /tmp/nuts2.geojson
             python pipeline/geo.py /tmp/nuts2.geojson apps/web/public/geo/nuts2.json
           fi
+          if [ ! -s apps/web/public/geo/nuts3_pt.json ]; then
+            curl -sSfL "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_10M_2021_4326_LEVL_3.geojson" -o /tmp/nuts3.geojson
+            python pipeline/geo.py /tmp/nuts3.geojson apps/web/public/geo/nuts3_pt.json PT
+          fi
       - name: Validar e normalizar
         run: python pipeline/process.py
       - name: Dados do site

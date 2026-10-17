@@ -75,8 +75,19 @@ def documents() -> None:
             ctype = r.headers.get("content-type", "")
             if "pdf" in ctype or it["url"].lower().endswith(".pdf"):
                 import pdfplumber
+                cols = int(it.get("columns", 1))
+                first, last = it.get("pages", [1, 10_000])
                 with pdfplumber.open(io.BytesIO(r.content)) as pdf:
-                    pages = [f"=== página {i + 1} ===\n{p.extract_text() or ''}" for i, p in enumerate(pdf.pages)]
+                    pages = []
+                    for i, p in enumerate(pdf.pages):
+                        if not first <= i + 1 <= last:
+                            continue
+                        if cols == 1:
+                            body = p.extract_text() or ""
+                        else:   # read each column separately (two-column layouts)
+                            w = p.width / cols
+                            body = "\n--- coluna ---\n".join(p.crop((k * w, 0, (k + 1) * w, p.height)).extract_text() or "" for k in range(cols))
+                        pages.append(f"=== página {i + 1} ===\n{body}")
                 text = "\n".join(pages)
                 if len(r.content) < 15_000_000:
                     (d / "original.pdf").write_bytes(r.content)
