@@ -20,4 +20,4 @@ Em regime extensivo, em montanha, com pastagens de altitude, grandes amplitudes 
 
 O livro genealógico regista 25 machos e 193 fêmeas em 25 criadores (2019).
 
-> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente.
+> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.

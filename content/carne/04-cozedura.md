@@ -53,7 +53,7 @@ Depois do lume a carne continua a aquecer por dentro (de 3 a 5 °C em bifes, mai
 - **Frigideira de ferro**: fogo alto, pouca gordura, peça seca; juntar manteiga, alho e tomilho já no fim, com o lume mais baixo.
 - **Forno inverso (*reverse sear*)**: peças grossas vão primeiro a forno baixo (cerca de 100 a 120 °C) até estarem uns 8 a 10 °C abaixo do ponto, e só depois seladas em lume forte. Dá um ponto uniforme de ponta a ponta.
 - **Estufado**: carne selada, depois cozida lenta e coberta de líquido (vinho, caldo) a fogo muito brando, durante horas.
-- **Baixa temperatura**: peças grandes a 56 a 60 °C durante muitas horas para ficar uniforme; técnica de restaurante.
+- **Baixa temperatura e sous-vide**: técnica de restaurante em que a peça cozinha muitas horas a temperatura baixa e controlada. A segurança não depende só da temperatura: conta a temperatura realmente atingida no centro, o tempo de exposição, a espessura, a preparação (peça inteira ou picada), a conservação antes e depois e o tratamento posterior. Não use temperaturas genéricas como garantia: siga combinações de tempo e temperatura validadas por fontes oficiais de segurança alimentar (por exemplo, tabelas do USDA/FSIS, por conferir) e, em restauração, o plano HACCP do estabelecimento. A cozedura convencional, com a peça a ser medida no centro com sonda, é um caso diferente.
 
 ## Termómetro
 

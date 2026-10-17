@@ -22,4 +22,4 @@ O solar tradicional vai de Aljezur e do planalto de Monchique, pelo Barrocal, at
 
 O livro genealógico de adultos tinha, em 2019, apenas 2 machos e 2 fêmeas em linha pura, em 3 criadores. É o efetivo mais pequeno de todas as raças bovinas autóctones registadas, e justifica a classificação de raça gravemente ameaçada.
 
-> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 10. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente.
+> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 10. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.

@@ -20,4 +20,4 @@ O sistema mais tradicional é o intensivo ao ar livre: pastagem alguns meses por
 
 Explora-se sobretudo a aptidão para carne; o trabalho é residual.
 
-> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 38. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente.
+> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 38. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.

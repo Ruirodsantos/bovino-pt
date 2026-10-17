@@ -18,6 +18,6 @@ O solar é o Alentejo, com um clima continental de grandes amplitudes térmicas,
 
 ## Hoje
 
-É a raça bovina autóctone com mais fêmeas inscritas no livro genealógico, e a que tem uma presença mais forte nos distritos de Portalegre, Évora e Beja.
+Segundo os dados de 2019 do catálogo, é a raça bovina autóctone com mais fêmeas inscritas no livro genealógico (8362, contra 8358 da Mertolenga, uma diferença mínima), e a que tem uma presença mais forte nos distritos de Portalegre, Évora e Beja.
 
-> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 6. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente.
+> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 6. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.

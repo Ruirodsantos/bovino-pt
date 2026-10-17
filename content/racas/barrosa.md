@@ -20,4 +20,4 @@ Os cornos, grossos e compridos, em lira alta, são o que primeiro se vê. O pelo
 
 O catálogo indica que a Barrosã é cada vez mais explorada para carne, e refere a Denominação de Origem Protegida «Carne Barrosã». O registo exato da denominação será confirmado na base europeia eAmbrosia antes de ser mostrado como dado verificado.
 
-> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 18. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente.
+> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 18. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.

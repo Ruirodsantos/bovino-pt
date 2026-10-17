@@ -20,4 +20,4 @@ Vive de pastos pobres da serra e de rebentos de tojo, carqueja, giesta e carvalh
 
 Os concelhos com mais animais são Cinfães, Castro Daire, S. Pedro do Sul, Arouca, Vale de Cambra, Resende e Castelo de Paiva, a sul do Douro, e Baião, Amarante e Marco de Canaveses, a norte.
 
-> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 14. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente.
+> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 14. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.

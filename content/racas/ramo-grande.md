@@ -16,4 +16,4 @@ Animais de enorme estatura, esqueleto forte e articulações largas, com o terç
 
 Em pastoreio todo o ano. O criador procura fazer coincidir os picos de erva da primavera com as necessidades dos animais, e por isso as pariões concentram-se de fevereiro a maio. Hoje explora-se sobretudo para carne.
 
-> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 62. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente.
+> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 62. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.

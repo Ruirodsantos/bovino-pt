@@ -19,7 +19,7 @@ O prato é a última etapa e a que o cliente vê. Um bom produto, maturado e coz
 
 ## Cortar
 
-Peças grandes (costeleta, posta) vão à mesa inteiras e cortam-se à frente do cliente: tiras de 1 a 1,5 cm, contra a fibra, com o osso no prato como apresentação.
+Peças grandes, como determinadas costeletas ou postas, podem ser apresentadas inteiras e trinchadas à frente do cliente, consoante o conceito de serviço. Quando assim é: tiras de 1 a 1,5 cm, contra a fibra, com o osso no prato como apresentação.
 
 ## Acompanhamentos
 

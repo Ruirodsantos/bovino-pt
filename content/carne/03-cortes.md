@@ -10,7 +10,7 @@ sources:
 
 A regra de ouro: **quanto mais um músculo trabalha, mais sabor tem e mais tempo pede**. Os músculos de suporte e de movimento (pescoço, ombro, perna) são ricos em colagénio e fibra grossa; os que quase não trabalham (junto à coluna) são macios e de sabor mais discreto.
 
-Os nomes dos cortes variam entre regiões de Portugal e entre talhos. Esta tabela usa os nomes mais comuns e indica o equivalente anatómico; confirme sempre com o seu talhante.
+Os nomes dos cortes variam entre regiões de Portugal e entre talhos. Esta tabela usa os nomes mais comuns e indica o equivalente anatómico; confirme sempre com o seu talhante. Não se devem traduzir à letra cortes espanhóis, franceses, britânicos ou brasileiros: o mesmo nome pode designar peças diferentes. A localização de *vazia*, *lombo*, *lombinho* e *posta* foi corrigida após auditoria e continua por validar com um profissional de desmancha.
 
 ## Os cortes
 
@@ -19,7 +19,8 @@ Os nomes dos cortes variam entre regiões de Portugal e entre talhos. Esta tabel
 | **Lombinho** | Dentro do lombo, junto à coluna | O mais macio e de sabor mais suave | Grelha ou frigideira, rápido, mal passado a ao ponto |
 | **Lombo alto** (com ou sem osso) | Costas, parte dianteira | Marmoreado e saboroso; é o «bife da costela» sem osso ou a costeleta | Brasa, frigideira, forno depois de selar |
 | **Lombo baixo** | Costas, parte traseira | Fibra firme, gordura de cobertura | Grelha; cortar sempre contra a fibra |
-| **Vazia** | Flanco/ventre alto | Fibra grossa e bom sabor | Grelha rápida, fatiar fino contra a fibra |
+| **Vazia** | Região do lombo junto às costelas (a equivalência anatómica exata varia; **a validar com talhante**) | Fibra grossa e bom sabor | Grelha rápida, fatiar fino contra a fibra |
+| **Aba** | Flanco (parede abdominal) | Fibra comprida e muito sabor | Grelha rápida ou estufar; fatiar contra a fibra |
 | **Alcatra** | Garupa | Macia, magra, versátil | Grelha, assados, posta |
 | **Posta** | Corte espesso, tradicionalmente de alcatra ou lombo | Corte tradicional; a *posta mirandesa* é a referência | Brasa de lenha ou carvão |
 | **Acém e cachaço** | Pescoço e ombro | Muito sabor, muito colagénio | Estufados e cozidos lentos |

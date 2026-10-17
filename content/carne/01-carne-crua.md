@@ -20,7 +20,7 @@ A cor da carne de bovino vem sobretudo da **mioglobina**, a proteína que guarda
 
 - **Vermelho-arroxeado**, logo após o corte, quando a mioglobina ainda não encontrou oxigénio. Uma peça que acabou de ser aberta, ou que veio em vácuo, tem esta cor. Não é defeito.
 - **Vermelho vivo (cereja)**, poucos minutos depois de a peça ficar exposta ao ar. É a mioglobina oxigenada, a cor que associamos a carne fresca.
-- **Castanho**, quando o ferro da mioglobina oxida. Em vitrina refrigerada acontece ao fim de alguns dias. Castanho à superfície não quer dizer, por si só, que a carne esteja estragada; quer dizer que ficou muito tempo exposta. O cheiro e a viscosidade é que decidem.
+- **Castanho**, quando o ferro da mioglobina oxida. Em vitrina refrigerada acontece ao fim de alguns dias. Castanho à superfície não quer dizer, por si só, que a carne esteja estragada; quer dizer que ficou muito tempo exposta. O cheiro e a textura podem revelar sinais de deterioração, mas não permitem, isoladamente, confirmar que a carne é segura para consumo: a ausência de mau cheiro não é garantia de segurança, que depende sobretudo da cadeia de frio e do prazo de validade.
 
 Este comportamento está descrito em manuais de ciência da carne, como o *Meat Science and Nutrition* (eCampus Ontario / BCcampus), que também refere que a carne de bovino e de borrego tem mais mioglobina do que a de porco, de vitela ou de aves, e por isso é mais escura.
 

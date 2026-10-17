@@ -43,7 +43,7 @@ Peças ideais: com **osso** e **cobertura de gordura**, como um lombo alto com o
 | 60 dias ou mais | Sabor muito marcado, notas de queijo curado, fruta madura e caldo. Já não agrada a toda a gente. |
 | Perto de 100 a 160 dias | Território de poucos restaurantes no mundo, com carne de animais maduros e com muita gordura. |
 
-O restaurante **El Capricho**, em Jiménez de Jamuz (León, Espanha), é a referência ibérica da maturação longa. O Guia Michelin refere maturações «de mais de 60 dias»; o *Diario de León* refere até 160 dias. Trabalha com bois criados por si, de raças nativas, selecionados pelo chef José Gordón. Aprender com este exemplo não é copiar prazos: é perceber que a **maturação longa só funciona com animais maduros e bem cobertos de gordura**. A carne de vitela, pobre em gordura, desfaz-se em secura.
+O restaurante **El Capricho**, em Jiménez de Jamuz (León, Espanha), é a referência ibérica da maturação longa. O Guia Michelin refere maturações «de mais de 60 dias»; o *Diario de León* refere até 160 dias. Trabalha com bois criados por si, de raças nativas, selecionados pelo chef José Gordón. Aprender com este exemplo não é copiar prazos: é perceber que as maturações muito prolongadas exigem uma seleção rigorosa das peças e condições de conservação especialmente controladas. Pelo que a imprensa descreve, o El Capricho trabalha com animais adultos e bem cobertos de gordura, e uma boa cobertura ajuda a limitar as perdas por dessecação; não é uma regra que a fonte formule como absoluta.
 
 ## O custo oculto
 

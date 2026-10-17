@@ -22,4 +22,4 @@ Em regime extensivo, de pastoreio de recursos naturais. A maioria dos criadores 
 
 Os rebanhos estão sobretudo em Santiago do Cacém, Odemira, Ourique, Castro Verde, Almodôvar, Barrancos, Vila Nova de São Bento e Alcáçovas. O catálogo diz que o número de animais ainda é insuficiente para lançar um programa de melhoramento, e que a raça continua entre as muito ameaçadas.
 
-> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 30. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente.
+> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 30. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.

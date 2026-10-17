@@ -16,4 +16,4 @@ Pelagem tendendo para o preto uniforme, por vezes parda ou tigrada. É um animal
 
 Hoje o objetivo é quase só a carne, em regime extensivo. Alimenta-se de pastos naturais, em geral sob coberto de montado, restolhos, bolota e produtos de desbaste do montado. Os criadores apontam a adaptação a zonas desfavorecidas como a principal vantagem.
 
-> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 58. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente.
+> **Estado do texto:** texto original do Atlas, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 58. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.

@@ -47,7 +47,7 @@ def test_complete_task_without_evidence_is_rejected(tmp_repo):
 def test_claimed_chatgpt_review_without_file_is_rejected(tmp_repo):
     f = tmp_repo / "PROJECT_STATUS.json"
     d = json.loads(f.read_text())
-    d["reviews"]["chatgpt_reviews_completed"] = 1
+    d["reviews"]["chatgpt_reviews_completed"] = 99
     f.write_text(json.dumps(d))
     assert vr.main(tmp_repo) == 1
 
