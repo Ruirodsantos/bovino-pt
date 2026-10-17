@@ -1,0 +1,21 @@
+id: R-007
+title: Confirm the official list of 15 Portuguese bovine breeds
+requested_by: claude
+linked_task: T-0003
+priority: high
+question: >
+  Confirm, against the DGAV/CAP "Catálogo Oficial de Raças Autóctones Portuguesas" itself,
+  the official name and spelling of each of the 15 bovine breeds currently listed in
+  data/registry/breeds/, and the herd-book (livro genealógico) holding association of each.
+deliverable: >
+  One item per breed: official name, catalogue page reference, association name and website,
+  reference year of any population figure shown in the catalogue (numbers copied verbatim, with unit).
+constraints:
+  - Primary source: the catalogue (DGAV/CAP). Secondary sources only to locate it.
+  - Do not reuse catalogue photographs.
+acceptance_criteria:
+  - 15 items, each with catalogue page evidence.
+  - Any name differing from the registry listed under conflicts.
+due: null
+claimed_by: null
+claimed_at: null

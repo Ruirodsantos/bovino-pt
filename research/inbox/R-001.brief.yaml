@@ -1,0 +1,20 @@
+id: R-001
+title: Identify INE indicator codes for bovine statistics
+requested_by: claude
+linked_task: T-0106
+priority: high
+question: >
+  Which INE dissemination-database indicator codes contain (a) bovine stock (efetivo bovino),
+  (b) bovine slaughter in heads and tonnes, (c) producer price index for cattle?
+deliverable: >
+  One entry per indicator: 7-digit code, official title (pt), unit, geographic level,
+  frequency, first/last reference period, metadata URL.
+constraints:
+  - Official sources only (INE site/API).
+  - Do not estimate or fill missing values.
+acceptance_criteria:
+  - Each code resolves in the INE API metadata endpoint.
+  - Every claim has an evidence URL and retrieval date.
+due: null
+claimed_by: null
+claimed_at: null

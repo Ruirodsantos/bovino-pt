@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "research_finding.schema.json",
+  "title": "Hermes research finding",
+  "type": "object",
+  "required": ["id", "submitted_by", "submitted_at", "summary", "items", "missing", "conflicts"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^R-[0-9]{3}$"},
+    "submitted_by": {"type": "string"},
+    "submitted_at": {"type": "string"},
+    "summary": {"type": "string"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim", "type", "sources", "confidence"],
+        "properties": {
+          "claim": {"type": "string"},
+          "type": {"enum": ["fact", "data_location", "dataset", "definition", "change_alert"]},
+          "value": {"type": ["number", "string", "null"]},
+          "unit": {"type": ["string", "null"]},
+          "reference_period": {"type": ["string", "null"]},
+          "sources": {
+            "type": "array", "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["url", "retrieved_at"],
+              "properties": {
+                "url": {"type": "string"}, "title": {"type": "string"}, "publisher": {"type": "string"},
+                "retrieved_at": {"type": "string"}, "evidence_file": {"type": "string"}, "quote": {"type": "string"}
+              }
+            }
+          },
+          "confidence": {"enum": ["high", "medium", "low"]}
+        },
+        "if": {"properties": {"value": {"type": "number"}}, "required": ["value"]},
+        "then": {"required": ["unit", "reference_period"], "properties": {"unit": {"type": "string"}, "reference_period": {"type": "string"}}}
+      }
+    },
+    "missing": {"type": "array", "items": {"type": "string"}},
+    "conflicts": {"type": "array"},
+    "proposed_changes": {"type": "array"}
+  }
+}

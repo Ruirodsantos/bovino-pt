@@ -1,0 +1,71 @@
+slug: garvonesa
+official_name: "Garvonesa"
+species: bovine
+status: yellow
+status_reason: "Name from secondary listing; confirm against DGAV/CAP catalogue (R-007)"
+name_sources:
+  - source_id: S07
+    url: "https://bo.agroportal.pt/?p=755967"
+    retrieved_at: 2026-10-17
+last_verified: null
+fields:
+  geographic_origin:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  historical_background:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  population:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  physical_characteristics:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  production_systems:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  meat_characteristics:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  certifications:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  producer_organizations:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  geographic_distribution:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  photographs:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  economic_information:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"
+  historical_trends:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: "not yet researched"

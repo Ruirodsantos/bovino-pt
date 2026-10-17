@@ -1,0 +1,92 @@
+# Source registry — authoritative machine form. Explained in docs/DATA_SOURCE_REGISTRY.md
+# last_successful_check / last_data_update stay null until a CI collector run fills them.
+sources:
+  - id: S01
+    name: INE — Instituto Nacional de Estatística
+    url: https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_cont_inst&INST=322751522
+    categories: [stock, slaughter, producer_prices]
+    access_method: json_api
+    publication_frequency: varies
+    collection_frequency: weekly
+    last_successful_check: null
+    last_data_update: null
+    usage_restrictions: "Free, attribution; exact terms pending R-002"
+    reliability: A
+    collector: pipeline/collectors/ine.py
+    status: planned
+  - id: S02
+    name: Eurostat dissemination API
+    url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+    categories: [stock, slaughter, live_trade_heads]
+    access_method: sdmx_api
+    publication_frequency: monthly
+    collection_frequency: weekly
+    last_successful_check: null
+    last_data_update: null
+    usage_restrictions: "Eurostat reuse policy; exact terms pending R-002"
+    reliability: A
+    collector: pipeline/collectors/eurostat.py
+    status: planned
+  - id: S03
+    name: Eurostat Comext (CN8 trade)
+    url: https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction
+    categories: [trade_live_cattle, trade_beef]
+    access_method: sdmx_api
+    publication_frequency: monthly
+    collection_frequency: weekly
+    last_successful_check: null
+    last_data_update: null
+    usage_restrictions: "Eurostat reuse policy; exact terms pending R-002"
+    reliability: A
+    collector: pipeline/collectors/comext.py
+    status: planned
+  - id: S04
+    name: GPP / SIMA — Newsletter Bovinos
+    url: https://www.gpp.pt
+    categories: [market_prices_pt]
+    access_method: pdf
+    publication_frequency: weekly
+    collection_frequency: weekly
+    last_successful_check: null
+    last_data_update: null
+    usage_restrictions: "UNKNOWN — do not publish values before R-002"
+    reliability: B
+    collector: pipeline/collectors/sima.py
+    status: planned
+  - id: S05
+    name: MAPA (Spain) — precios medios nacionales
+    url: https://www.mapa.gob.es
+    categories: [market_prices_es]
+    access_method: pdf_or_open_data_tbc
+    publication_frequency: weekly
+    collection_frequency: weekly
+    last_successful_check: null
+    last_data_update: null
+    usage_restrictions: "CONFLICTING historic notices — confirm current terms (R-004)"
+    reliability: B
+    collector: null
+    status: research
+  - id: S06
+    name: European Commission — beef market prices
+    url: null
+    categories: [market_prices_eu]
+    access_method: tbc
+    publication_frequency: weekly
+    collection_frequency: weekly
+    last_successful_check: null
+    last_data_update: null
+    usage_restrictions: "pending R-005"
+    reliability: A
+    collector: null
+    status: research
+  - {id: S07, name: "DGAV/CAP — Catálogo Oficial de Raças Autóctones", url: "https://www.agroportal.pt/catalogo-das-racas-autoctones-disponivel-em-e-book", categories: [breeds], access_method: pdf_manual, publication_frequency: irregular, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "facts reusable with citation; images not without permission", reliability: B, collector: hermes, status: research}
+  - {id: S08, name: "DGADR + eAmbrosia — DOP/IGP", url: null, categories: [certifications], access_method: web_register, publication_frequency: irregular, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "pending", reliability: A, collector: hermes, status: research}
+  - {id: S09, name: "Breed associations (15)", url: null, categories: [breeds, organisations], access_method: web, publication_frequency: irregular, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "per site", reliability: D, collector: hermes, status: research}
+  - {id: S10, name: "INIAV — Banco Português de Germoplasma Animal", url: "https://www.iniav.pt", categories: [breeds], access_method: web, publication_frequency: irregular, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "pending", reliability: B, collector: hermes, status: backlog}
+  - {id: S11, name: FAOSTAT, url: "https://www.fao.org/faostat", categories: [stock, production, trade_global], access_method: api_and_bulk, publication_frequency: annual, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "pending R-002", reliability: A, collector: null, status: backlog}
+  - {id: S12, name: UN Comtrade, url: "https://comtradeplus.un.org", categories: [trade_global], access_method: api_free_key_optional, publication_frequency: monthly, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "free preview limits; premium tiers paid — not adopted", reliability: A, collector: null, status: backlog}
+  - {id: S13, name: "INE España", url: "https://www.ine.es", categories: [stock_es], access_method: tbc, publication_frequency: varies, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "pending R-006", reliability: A, collector: null, status: research}
+  - {id: S14, name: "DataComex (Spanish trade statistics)", url: null, categories: [trade_es], access_method: web_query_tbc, publication_frequency: monthly, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "pending R-006", reliability: A, collector: null, status: research}
+  - {id: S15, name: PORDATA, url: "https://www.pordata.pt", categories: [cross_check], access_method: web, publication_frequency: varies, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "pending", reliability: C, collector: null, status: backlog}
+  - {id: S16, name: "DGT CAOP + Eurostat GISCO (boundaries)", url: null, categories: [geodata], access_method: download, publication_frequency: annual, collection_frequency: monthly, last_successful_check: null, last_data_update: null, usage_restrictions: "attribution", reliability: A, collector: null, status: planned}
+  - {id: S17, name: "News (Agroportal and others)", url: "https://www.agroportal.pt", categories: [news], access_method: rss_or_web, publication_frequency: daily, collection_frequency: daily, last_successful_check: null, last_data_update: null, usage_restrictions: "link and summarise only", reliability: D, collector: hermes, status: backlog}

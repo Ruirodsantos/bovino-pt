@@ -1,0 +1,133 @@
+{
+  "lifecycle": [
+    "IDEA",
+    "RESEARCH",
+    "READY",
+    "IN PROGRESS",
+    "TESTING",
+    "REVIEW",
+    "APPROVED",
+    "COMPLETE"
+  ],
+  "tasks": [
+    {
+      "id": "T-0001",
+      "title": "Phase 0 documents A–H",
+      "agent": "claude",
+      "priority": "high",
+      "status": "REVIEW",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "All eight documents exist",
+        "Rui approves or requests changes"
+      ],
+      "evidence": [
+        "docs/",
+        "PROJECT_STATUS.json"
+      ],
+      "review_result": null,
+      "source": "directive §22"
+    },
+    {
+      "id": "T-0002",
+      "title": "Repository skeleton, schemas, registry seed, validator",
+      "agent": "claude",
+      "priority": "high",
+      "status": "REVIEW",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "python pipeline/validate_registry.py exits 0",
+        "pytest passes"
+      ],
+      "evidence": [
+        "pipeline/validate_registry.py",
+        "pipeline/tests/",
+        "6 tests passing, validator OK (2026-10-17)"
+      ],
+      "review_result": null,
+      "source": "directive §22"
+    },
+    {
+      "id": "T-0003",
+      "title": "Hermes integration — choose option A/B/C and run first brief",
+      "agent": "claude",
+      "priority": "high",
+      "status": "IDEA",
+      "depends_on": [
+        "D-004"
+      ],
+      "acceptance_criteria": [
+        "Hermes returns a finding for R-001 that validates against the schema"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "HERMES_INTEGRATION.md"
+    },
+    {
+      "id": "T-0101",
+      "title": "Create GitHub repository, branch protection, CI skeleton",
+      "agent": "claude",
+      "priority": "high",
+      "status": "IDEA",
+      "depends_on": [
+        "D-001",
+        "D-003"
+      ],
+      "acceptance_criteria": [
+        "CI fails a PR with an invalid schema example"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "DEVELOPMENT_ROADMAP.md"
+    },
+    {
+      "id": "T-0104",
+      "title": "Eurostat collector (apro_mt_pheadm, apro_mt_pann)",
+      "agent": "claude",
+      "priority": "high",
+      "status": "READY",
+      "depends_on": [
+        "T-0101"
+      ],
+      "acceptance_criteria": [
+        "Scheduled run writes raw snapshot + manifest",
+        "Validated PT and ES series match Eurostat data browser"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "DEVELOPMENT_ROADMAP.md"
+    },
+    {
+      "id": "T-0105",
+      "title": "Comext collector CN 0102/0201/0202 PT<->ES",
+      "agent": "claude",
+      "priority": "high",
+      "status": "READY",
+      "depends_on": [
+        "T-0101"
+      ],
+      "acceptance_criteria": [
+        "Monthly series in heads, kg, EUR",
+        "Mirror check logged"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "DEVELOPMENT_ROADMAP.md"
+    },
+    {
+      "id": "T-0110",
+      "title": "Visual style tile",
+      "agent": "claude",
+      "priority": "medium",
+      "status": "READY",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Static page with tokens, type, stat card, footnote, badge, chart, map",
+        "Rui's feedback recorded"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "DESIGN_DIRECTION.md"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "project": "Portuguese Beef Intelligence Platform",
+  "generated_at": "2026-10-17T12:00:00+04:00",
+  "generated_by": "claude (manual — automatic generation is task T-0108)",
+  "current_phase": {
+    "id": "P0",
+    "name": "Discovery",
+    "state": "deliverables_submitted_awaiting_approval"
+  },
+  "completed_deliverables": [
+    {"id": "A", "file": "docs/PROJECT_ARCHITECTURE.md", "state": "delivered", "approved": false},
+    {"id": "B", "file": "docs/DATA_SOURCE_REGISTRY.md", "state": "delivered", "approved": false},
+    {"id": "C", "file": "docs/HERMES_INTEGRATION.md", "state": "delivered", "approved": false},
+    {"id": "D", "file": "docs/CHATGPT_REVIEW_PROTOCOL.md", "state": "delivered", "approved": false},
+    {"id": "E", "file": "docs/DEVELOPMENT_ROADMAP.md", "state": "delivered", "approved": false},
+    {"id": "F", "file": "docs/DESIGN_DIRECTION.md", "state": "delivered", "approved": false},
+    {"id": "G", "file": "docs/COST_ANALYSIS.md", "state": "delivered", "approved": false},
+    {"id": "H", "file": "PROJECT_STATUS.json", "state": "delivered", "approved": false}
+  ],
+  "foundation_work_done": [
+    "Local repository skeleton (folders for data, research, reviews, pm, schemas)",
+    "JSON Schemas: observation, research finding",
+    "Source registry seed (data/registry/sources.yaml)",
+    "Breed registry seed: 15 bovine breed names, status yellow",
+    "Research briefs R-001 and R-007 drafted in research/inbox",
+    "Registry validator script with passing tests"
+  ],
+  "active_tasks": ["T-0001", "T-0002"],
+  "blocked_tasks": [
+    {"id": "T-0101", "reason": "Repository hosting and visibility not decided (D-001, D-003)"},
+    {"id": "T-0003", "reason": "Hermes environment unknown (D-004)"}
+  ],
+  "data_collection": {
+    "collectors_running": 0,
+    "sources_registered": 17,
+    "sources_with_successful_check": 0,
+    "note": "No collector has run yet. Official statistics hosts are unreachable from Claude's workspace; collectors will run in GitHub Actions."
+  },
+  "validation_failures": [],
+  "website_health": {
+    "deployed": false,
+    "url": null
+  },
+  "recent_changes": [
+    {"date": "2026-10-17", "change": "Phase 0 documents A–H written; repository skeleton created locally"}
+  ],
+  "outstanding_decisions": [
+    {"id": "D-001", "question": "Create the GitHub repository under account ruirodsantos (or an organisation)?", "owner": "rui"},
+    {"id": "D-002", "question": "Hosting: Cloudflare Pages (recommended) or GitHub Pages?", "owner": "rui"},
+    {"id": "D-003", "question": "Repository public (recommended: free CI minutes, transparency) or private?", "owner": "rui"},
+    {"id": "D-004", "question": "What is Hermes, where does it run, and can it use Git? (integration option A/B/C)", "owner": "rui"},
+    {"id": "D-005", "question": "How will ChatGPT read the project: repository access or review packets?", "owner": "rui"},
+    {"id": "D-006", "question": "Platform brand name (no domain purchase without approval)", "owner": "rui"},
+    {"id": "D-007", "question": "Licences: code MIT, own data CC BY 4.0?", "owner": "rui"}
+  ],
+  "next_priorities": [
+    "Rui: answer D-001 to D-004",
+    "T-0104 Eurostat collector and T-0105 Comext collector (first real data)",
+    "T-0110 visual style tile for design approval",
+    "Hermes: R-001 (INE indicator codes) and R-007 (breed list confirmation)"
+  ],
+  "reviews": {
+    "chatgpt_reviews_completed": 0,
+    "note": "No ChatGPT review has taken place yet."
+  }
+}
