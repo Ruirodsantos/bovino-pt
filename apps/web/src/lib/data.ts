@@ -61,6 +61,7 @@ export function fmtDate(iso?: string | null): string {
 import credits from "../data/images.json";
 export function photoFor(slug: string): { id: string; kind: string } | null {
   const b = breeds().find((x) => x.slug === slug);
-  if (!b?.photo || !(credits as Record<string, unknown>)[b.photo]) return null;
+  // Só fotografias em que o autor identifica a raça; paisagens nunca ilustram uma raça.
+  if (!b?.photo || b.photo_kind !== "raça" || !(credits as Record<string, unknown>)[b.photo]) return null;
   return { id: b.photo, kind: b.photo_kind ?? "solar" };
 }

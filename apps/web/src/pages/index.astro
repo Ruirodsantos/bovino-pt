@@ -44,7 +44,8 @@ const heroPhoto = (credits as any)["hero-alentejo"];
       <p class="lede">O solar de cada raça autóctone, segundo o Catálogo Oficial da DGAV/CAP. Passe o cursor ou toque num ponto para ver a raça e quantos animais estão inscritos no livro genealógico.</p>
       <div class="map-grid">
         <div class="card map-card"><div class="chart map" data-chart="breeds-map" role="img" aria-label="Mapa de Portugal com a localização aproximada do solar de cada raça bovina autóctone"></div>
-          <p class="note">Localização aproximada do solar (não são explorações). Fronteiras © EuroGeographics. Açores representados à parte.</p></div>
+          <div id="map-chips" class="map-chips" aria-label="Escolher raça"></div>
+          <p class="note">Localização aproximada do solar (não são explorações). Fronteiras © EuroGeographics. Açores e Madeira fora de escala geográfica.</p></div>
         <aside class="map-side" id="map-side" aria-live="polite">
           <Photo id="barrosa" sizes="(max-width: 860px) 100vw, 380px" />
           <p class="hint">Escolha uma raça no mapa.</p>
@@ -56,7 +57,7 @@ const heroPhoto = (credits as any)["hero-alentejo"];
   <section class="block">
     <div class="wrap">
       <span class="eyebrow">As raças</span>
-      <h2>15 raças autóctones, 15 paisagens</h2>
+      <h2>As 15 raças autóctones</h2>
       <div class="breeds">
         {allBreeds.map((b, i) => {
           const p = photoFor(b.slug);
@@ -176,6 +177,10 @@ const heroPhoto = (credits as any)["hero-alentejo"];
   .map-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; align-items: start; }
   @media (max-width: 860px) { .map-grid { grid-template-columns: 1fr; } }
   .chart.map { height: 640px; }
+  .map-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 14px 0; }
+  .map-chips :global(.chip-btn) { font: 600 .8rem var(--sans, "Public Sans"); padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .map-chips :global(.chip-btn[aria-pressed="true"]) { background: var(--accent); border-color: var(--accent); color: #fff; }
+  @media (max-width: 560px) { .chart.map { height: 460px; } }
   .map-side { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 10px; }
   .map-side :global(.photo img) { border-radius: var(--radius); aspect-ratio: 4/3; }
   .hint { color: var(--muted); }

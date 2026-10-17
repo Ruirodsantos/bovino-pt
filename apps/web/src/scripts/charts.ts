@@ -204,41 +204,75 @@ async function breedsMap(el: HTMLElement) {
     fetch(`${BASE}data/breeds.json`).then((r) => (r.ok ? r.json() : [])).catch(() => []),
   ]);
   if (!geo || !list.length) return empty(el);
-  const mainland = { ...geo, features: geo.features.filter((f: any) => f.properties.name.startsWith("PT1")) };
-  echarts.registerMap("pt", mainland);
-  const azores = list.filter((b: BreedPt) => b.lon < -20);
-  const pts = list.filter((b: BreedPt) => b.lon >= -20);
+  const part = (test: (n: string) => boolean) => ({ ...geo, features: geo.features.filter((f: any) => test(f.properties.name)) });
+  echarts.registerMap("pt-cont", part((n) => n.startsWith("PT1")));
+  echarts.registerMap("pt-acores", part((n) => n === "PT200"));
+  echarts.registerMap("pt-madeira", part((n) => n === "PT300"));
+  const zone = (b: BreedPt) => (b.lon < -20 ? 1 : b.lon < -15 ? 2 : 0);
   const side = document.getElementById("map-side");
-  const show = (b: BreedPt) => {
+  const chips = document.getElementById("map-chips");
+  const small = () => el.clientWidth < 560;
+  let current = "";
+  const show = (b: BreedPt, scroll = false) => {
+    current = b.slug;
+    paint();
+    if (chips) chips.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.slug === b.slug)));
     if (!side) return;
-    const img = b.photo ? `<figure class="photo"><img src="${BASE}img/${b.photo}-md.webp" alt="" style="border-radius:14px;aspect-ratio:4/3;width:100%;object-fit:cover"></figure>` : "";
-    const tag = b.photo ? `<span class="chip">${b.photo_kind === "raça" ? "Fotografia da raça" : b.photo_kind === "paisagem" ? "Paisagem típica" : "Paisagem do solar"}</span>` : "";
+    const img = b.photo && b.photo_kind === "raça" ? `<figure class="photo"><img src="${BASE}img/${b.photo}-md.webp" alt="Fotografia da raça ${b.official_name}" style="border-radius:14px;aspect-ratio:4/3;width:100%;object-fit:cover"></figure><span class="chip">Fotografia da raça</span>` : "";
     const herd = b.herd ? `<p style="margin:0"><strong>${b.herd.females.toLocaleString("pt-PT")}</strong> fêmeas e <strong>${b.herd.males.toLocaleString("pt-PT")}</strong> machos em linha pura, em ${b.herd.breeders.toLocaleString("pt-PT")} criadores <span style="color:${t.muted}">(livro genealógico, ${b.herd.year})</span></p>` : "";
-    side.innerHTML = `${img}${tag}<h3 style="margin:6px 0 2px">${b.official_name}</h3><p style="margin:0;color:${t.muted}">Solar: ${b.solar}</p>${herd}
+    side.innerHTML = `${img}<h3 style="margin:6px 0 2px">${b.official_name}</h3><p style="margin:0;color:${t.muted}">Solar: ${b.solar}</p>${herd}
       <p style="font-size:.75rem;color:${t.muted};margin:0">Fonte: Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP${b.catalogue_page ? `, p. ${b.catalogue_page}` : ""}</p>
       <a class="btn" href="${BASE}racas/${b.slug}/">Ver a raça →</a>`;
+    if (scroll && small()) side.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
   const maxF = Math.max(...list.map((b: BreedPt) => b.herd?.females ?? 0), 1);
-  const size = (b: BreedPt) => 10 + 26 * Math.sqrt((b.herd?.females ?? 0) / maxF);
+  const size = (b: BreedPt) => (small() ? 9 : 11) + (small() ? 14 : 24) * Math.sqrt((b.herd?.females ?? 0) / maxF);
   const chart = echarts.init(el, null, { renderer: "canvas" });
-  chart.setOption({
-    tooltip: { trigger: "item", backgroundColor: t.surface, borderColor: t.line, textStyle: { color: t.ink },
-      formatter: (p: any) => p.data?.b ? `<strong>${p.data.b.official_name}</strong><br>${p.data.b.solar}` : "" },
-    geo: { map: "pt", roam: false, aspectScale: 0.85, layoutCenter: ["50%", "50%"], layoutSize: "96%",
-      itemStyle: { areaColor: css("--cork-soft"), borderColor: t.surface, borderWidth: 1 }, emphasis: { disabled: true }, silent: true },
-    series: [{
-      type: "scatter", coordinateSystem: "geo", data: pts.map((b: BreedPt) => ({ name: b.official_name, value: [b.lon, b.lat], b, symbolSize: size(b) })),
-      itemStyle: { color: t.accent, borderColor: "#fff", borderWidth: 2, shadowBlur: 8, shadowColor: "rgba(0,0,0,.25)" },
-      label: { show: true, formatter: (p: any) => p.name, position: "right", color: t.ink, fontWeight: 600, fontFamily: "Public Sans", fontSize: 12,
-        textBorderColor: css("--paper"), textBorderWidth: 3 },
-      labelLayout: { hideOverlap: true }, emphasis: { scale: 1.3 },
-    }],
-    graphic: azores.length ? [{ type: "text", right: 8, top: 8, style: { text: `Açores: ${azores.map((b: BreedPt) => b.official_name).join(", ")} →`, fill: t.accent, font: "600 13px Public Sans" },
-      onclick: () => show(azores[0]) }] : [],
+  const land = { areaColor: css("--cork-soft"), borderColor: t.surface, borderWidth: 0.8 };
+  const geoBase = { roam: false, silent: true, emphasis: { disabled: true }, itemStyle: land };
+  const serie = (gi: number, z: number) => ({
+    type: "scatter", coordinateSystem: "geo", geoIndex: gi, z: 5,
+    data: list.filter((b: BreedPt) => zone(b) === z).map((b: BreedPt) => ({ name: b.official_name, value: [b.lon, b.lat], b, symbolSize: size(b),
+      itemStyle: { color: b.slug === current ? t.ink : t.accent },
+      label: { position: b.lon > -6.6 && b.lon < -6 ? "left" : "right" } })),
+    itemStyle: { color: t.accent, borderColor: "#fff", borderWidth: 2, shadowBlur: 6, shadowColor: "rgba(0,0,0,.25)" },
+    label: { show: !small(), formatter: (p: any) => p.name, position: "right", color: t.ink, fontWeight: 600, fontFamily: "Public Sans", fontSize: 12,
+      textBorderColor: css("--paper"), textBorderWidth: 3 },
+    labelLayout: { hideOverlap: true }, emphasis: { scale: 1.25 },
   });
-  chart.on("mouseover", (p: any) => p.data?.b && show(p.data.b));
-  chart.on("click", (p: any) => p.data?.b && show(p.data.b));
-  new ResizeObserver(() => chart.resize()).observe(el);
+  const layout = () => small()
+    ? { cont: { left: "36%", top: "2%", width: "62%", height: "96%" }, az: { left: "1%", top: "5%", width: "36%", height: "20%" }, ma: { left: "4%", top: "32%", width: "24%", height: "12%" },
+        t1: { left: "2%", top: "2%" }, t2: { left: "4%", top: "28%" } }
+    : { cont: { left: "42%", top: "1%", width: "56%", height: "98%" }, az: { left: "1%", top: "6%", width: "40%", height: "26%" }, ma: { left: "6%", top: "40%", width: "26%", height: "16%" },
+        t1: { left: "2%", top: "2%" }, t2: { left: "6%", top: "36%" } };
+  function paint() {
+    const L = layout();
+    chart.setOption({
+      tooltip: { trigger: "item", confine: true, backgroundColor: t.surface, borderColor: t.line, textStyle: { color: t.ink },
+        formatter: (p: any) => p.data?.b ? `<strong>${p.data.b.official_name}</strong><br>${p.data.b.solar}` : "" },
+      geo: [
+        { ...geoBase, map: "pt-cont", ...L.cont, aspectScale: 0.85 },
+        { ...geoBase, map: "pt-acores", ...L.az, aspectScale: 0.8 },
+        { ...geoBase, map: "pt-madeira", ...L.ma, aspectScale: 0.8 },
+      ],
+      series: [serie(0, 0), serie(1, 1), serie(2, 2)],
+      graphic: [
+        { type: "text", ...L.t1, style: { text: "Açores", fill: t.muted, font: "600 12px Public Sans" } },
+        { type: "text", ...L.t2, style: { text: "Madeira", fill: t.muted, font: "600 12px Public Sans" } },
+      ],
+    }, true);
+  }
+  paint();
+  if (chips) {
+    chips.innerHTML = list.map((b: BreedPt) => `<button type="button" class="chip-btn" data-slug="${b.slug}" aria-pressed="false">${b.official_name}</button>`).join("");
+    chips.querySelectorAll<HTMLButtonElement>("button").forEach((btn) => btn.addEventListener("click", () => {
+      const b = list.find((x: BreedPt) => x.slug === btn.dataset.slug); if (b) show(b, true);
+    }));
+  }
+  chart.on("mouseover", (p: any) => p.data?.b && !small() && show(p.data.b));
+  chart.on("click", (p: any) => p.data?.b && show(p.data.b, true));
+  let w = el.clientWidth;
+  new ResizeObserver(() => { chart.resize(); if (Math.abs(el.clientWidth - w) > 40) { w = el.clientWidth; paint(); } }).observe(el);
 }
 document.querySelectorAll<HTMLElement>('[data-chart="breeds-map"]').forEach((el) => io.unobserve(el));
 document.querySelectorAll<HTMLElement>('[data-chart="breeds-map"]').forEach((el) => {

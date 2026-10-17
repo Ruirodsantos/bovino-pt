@@ -13,4 +13,8 @@ const descobertas = defineCollection({
     sources: z.array(z.object({ label: z.string(), url: z.string().url() })).min(1),
   }),
 });
-export const collections = { descobertas };
+const carne = defineCollection({
+  loader: glob({ pattern: "*.md", base: "../../content/carne" }),
+  schema: z.object({ title: z.string(), order: z.number(), summary: z.string(), photo: z.string().optional(), sources: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]) }),
+});
+export const collections = { descobertas, carne };

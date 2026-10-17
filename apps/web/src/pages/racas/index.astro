@@ -14,7 +14,7 @@ const total = list.reduce((s, b) => s + (b.herd?.females ?? 0), 0);
     <div class="grid3">
       {list.map((b, i) => { const p = photoFor(b.slug); return (
         <a class="c" href={`${base}racas/${b.slug}/`}>
-          <div class="img">{p ? <Photo id={p.id} sizes="(max-width: 640px) 100vw, 380px" caption={false} /> : <div class="none">Fotografia em procura</div>}
+          <div class:list={["img", !p && "empty"]}>{p ? <Photo id={p.id} sizes="(max-width: 640px) 100vw, 380px" caption={false} /> : <div class="none">Fotografia em procura</div>}
             {p && <span class="tag">{p.kind === "raça" ? "A raça" : p.kind === "paisagem" ? "Paisagem" : "O solar"}</span>}</div>
           <div class="meta"><span class="mono num">{String(i + 1).padStart(2, "0")}</span><h2>{b.official_name}</h2>
             <p>{b.solar}</p>
@@ -30,6 +30,7 @@ const total = list.reduce((s, b) => s + (b.herd?.females ?? 0), 0);
   .img { position: relative; aspect-ratio: 3/2; background: var(--cork-soft); overflow: hidden; }
   .img :global(.photo) { position: absolute; inset: 0; }
   .img :global(.photo), .img :global(img) { height: 100%; }
+  .img.empty { aspect-ratio: auto; height: 44px; }
   .none { display: grid; place-items: center; height: 100%; color: var(--muted); font-size: .85rem; }
   .tag { position: absolute; left: 10px; top: 10px; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: rgba(0,0,0,.55); color: #fff; }
   .meta { padding: 16px 18px 20px; }
