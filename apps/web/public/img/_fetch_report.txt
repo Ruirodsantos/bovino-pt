@@ -1,5 +1,1 @@
-OK   monchique 2400x1600
-OK   baixo-vouga 2400x3197
-OK   rio-lima 2400x3200
-OK   odemira-campo 2400x1600
-OK   arouca-vale 2400x1121
+
