@@ -17,4 +17,8 @@ const carne = defineCollection({
   loader: glob({ pattern: "*.md", base: "../../content/carne" }),
   schema: z.object({ title: z.string(), order: z.number(), summary: z.string(), photo: z.string().optional(), sources: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]) }),
 });
-export const collections = { descobertas, carne };
+const racas = defineCollection({
+  loader: glob({ pattern: "*.md", base: "../../content/racas" }),
+  schema: z.object({ title: z.string(), summary: z.string(), catalogue_page: z.number().optional() }),
+});
+export const collections = { descobertas, carne, racas };
