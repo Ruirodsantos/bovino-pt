@@ -36,3 +36,11 @@ Never present correlation as causation. Never invent supplier, producer or resta
 - Commit message: `pesquisa: <assunto>`; push to `main` only for items meeting the bar, else a branch + PR.
 - If nothing meets the bar today, publish nothing and record what was tried in the PR/issue — an
   honest empty day beats a weak discovery.
+
+## Prioridades do fundador (2026-10-17, segunda ronda)
+
+1. **Texto original, não resumos de fontes.** Cada raça e cada tema da carne deve ter texto próprio, escrito em pt-PT, com fonte no fim. Resumos de uma linha com link não chegam. Ver content/racas/ e content/carne/.
+2. **Fotografia da raça** (não paisagem) em cada raça. Issue #6.
+3. **Secção A Carne** ao nível de um restaurante de topo (referência: El Capricho): crua, maturação, cortes, cozedura, serviço. Estender com novos artigos (ex.: carne de cada raça, DOP/IGP, maturação em Portugal, conservação e congelação, harmonização). Issues #7, #8, #10.
+4. **Ponte entre agentes:** Hermes pesquisa (issues `pesquisa`), ChatGPT revê (issues `revisão`, ficheiro em reviews/), Rui decide (`decisão`). Claude integra, valida e publica.
+5. Nunca afirmar valor técnico sem fonte: se não foi lido, marcar «a confirmar».
