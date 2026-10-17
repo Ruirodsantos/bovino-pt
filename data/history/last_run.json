@@ -1,35 +1,43 @@
 {
- "finished_at": "2026-10-17T08:55:27+00:00",
+ "finished_at": "2026-10-17T08:57:24+00:00",
  "datasets": [
   {
    "dataset": "bovine_population",
-   "state": "no_data"
+   "state": "ok",
+   "rows": 42,
+   "last_period": "2025"
   },
   {
    "dataset": "live_bovine_exports_heads",
-   "state": "no_data"
+   "state": "failed"
   },
   {
    "dataset": "live_bovine_imports_heads",
-   "state": "no_data"
+   "state": "failed"
   },
   {
    "dataset": "bovine_slaughter_tonnes",
-   "state": "no_data"
+   "state": "ok",
+   "rows": 42,
+   "last_period": "2025"
   },
   {
    "dataset": "bovine_population_regions",
-   "state": "no_data"
+   "state": "failed"
   },
   {
    "dataset": "trade_live_bovine_pt_es",
-   "state": "no_data"
+   "state": "ok",
+   "rows": 4947,
+   "last_period": "2026-08"
   },
   {
    "dataset": "trade_beef_pt_es",
-   "state": "no_data"
+   "state": "ok",
+   "rows": 2039,
+   "last_period": "2026-08"
   }
  ],
- "review_rows": 0,
+ "review_rows": 481,
  "revisions": 0
 }

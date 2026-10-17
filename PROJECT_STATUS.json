@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "project": "Portuguese Beef Intelligence Platform",
-  "generated_at": "2026-10-17T08:55:28+00:00",
+  "generated_at": "2026-10-17T08:57:26+00:00",
   "generated_by": "pipeline/status.py (GitHub Actions)",
   "current_phase": {
     "id": "P0",
@@ -81,70 +81,62 @@
     }
   ],
   "data_collection": {
-    "last_run": "2026-10-17T08:55:27+00:00",
-    "datasets_ok": 0,
+    "last_run": "2026-10-17T08:57:24+00:00",
+    "datasets_ok": 4,
     "datasets_total": 7,
     "datasets": [
       {
         "dataset": "bovine_population",
-        "state": "no_data"
+        "state": "ok",
+        "rows": 42,
+        "last_period": "2025"
       },
       {
         "dataset": "live_bovine_exports_heads",
-        "state": "no_data"
+        "state": "failed"
       },
       {
         "dataset": "live_bovine_imports_heads",
-        "state": "no_data"
+        "state": "failed"
       },
       {
         "dataset": "bovine_slaughter_tonnes",
-        "state": "no_data"
+        "state": "ok",
+        "rows": 42,
+        "last_period": "2025"
       },
       {
         "dataset": "bovine_population_regions",
-        "state": "no_data"
+        "state": "failed"
       },
       {
         "dataset": "trade_live_bovine_pt_es",
-        "state": "no_data"
+        "state": "ok",
+        "rows": 4947,
+        "last_period": "2026-08"
       },
       {
         "dataset": "trade_beef_pt_es",
-        "state": "no_data"
+        "state": "ok",
+        "rows": 2039,
+        "last_period": "2026-08"
       }
     ],
-    "review_queue_rows": 0,
+    "review_queue_rows": 481,
     "revisions_detected": 0
   },
   "validation_failures": [
     {
-      "dataset": "bovine_population",
-      "state": "no_data"
-    },
-    {
       "dataset": "live_bovine_exports_heads",
-      "state": "no_data"
+      "state": "failed"
     },
     {
       "dataset": "live_bovine_imports_heads",
-      "state": "no_data"
-    },
-    {
-      "dataset": "bovine_slaughter_tonnes",
-      "state": "no_data"
+      "state": "failed"
     },
     {
       "dataset": "bovine_population_regions",
-      "state": "no_data"
-    },
-    {
-      "dataset": "trade_live_bovine_pt_es",
-      "state": "no_data"
-    },
-    {
-      "dataset": "trade_beef_pt_es",
-      "state": "no_data"
+      "state": "failed"
     }
   ],
   "website_health": {

@@ -1,0 +1,13 @@
+{
+ "dataset": "bovine_population_regions",
+ "retrieved_at": "2026-10-17T08:56:38+00:00",
+ "requests": [
+  {
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/agr_r_animal?format=JSON&lang=en&sinceTimePeriod=2005&geoLevel=nuts2&animals=A2000&unit=THS_HD",
+   "status": 404,
+   "bytes": 136,
+   "error": "{ \"error\": [{\"status\": 404,\"id\": 100,\"label\": \"ERR_NOT_FOUND_4: AGR_R_ANIMAL (DATA_FLOW:ALL,1.0) is not available for dissemination.\"}]}"
+  }
+ ],
+ "used_code": null
+}

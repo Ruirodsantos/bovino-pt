@@ -1,10 +1,79 @@
 {
- "stats": [],
+ "stats": [
+  {
+   "id": "pt_population",
+   "label": "bovinos em Portugal",
+   "value": 1472090.0,
+   "unit": "cabeças",
+   "context": "efetivo em dezembro de 2025",
+   "change": -0.009966978499034912,
+   "change_ref": "2024",
+   "footnote": {
+    "source": "Eurostat",
+    "source_code": "apro_mt_lscatl",
+    "dataset": "bovine_population",
+    "period": "dez. 2025",
+    "published": "2026-10-01",
+    "verified": "2026-10-17"
+   }
+  },
+  {
+   "id": "pt_es_live_eur",
+   "label": "valor dessas exportações",
+   "value": 73245621.0,
+   "unit": "€",
+   "context": "2025-09 a 2026-08",
+   "footnote": {
+    "source": "Eurostat — Comext",
+    "source_code": "DS-045409",
+    "dataset": "trade_live_bovine_pt_es",
+    "period": "2025-09 a 2026-08",
+    "published": "2026-10-16",
+    "verified": "2026-10-17"
+   }
+  },
+  {
+   "id": "pt_beef_imports_es",
+   "label": "carne de bovino que Portugal compra a Espanha",
+   "value": 75081.997,
+   "unit": "toneladas",
+   "context": "2025-09 a 2026-08 · fresca, refrigerada e congelada",
+   "footnote": {
+    "source": "Eurostat — Comext",
+    "source_code": "DS-045409",
+    "dataset": "trade_beef_pt_es",
+    "period": "2025-09 a 2026-08",
+    "published": "2026-10-16",
+    "verified": "2026-10-17"
+   }
+  },
+  {
+   "id": "pt_slaughter",
+   "label": "de carne de bovino produzida em matadouros portugueses",
+   "value": 94300.0,
+   "unit": "toneladas",
+   "context": "peso de carcaça, 2025",
+   "footnote": {
+    "source": "Eurostat",
+    "source_code": "apro_mt_pann",
+    "dataset": "bovine_slaughter_tonnes",
+    "period": "2025",
+    "published": "2026-10-06",
+    "verified": "2026-10-17"
+   }
+  }
+ ],
  "catalog": [
   {
    "id": "bovine_population",
    "title_pt": "Efetivo bovino (dezembro)",
-   "state": "pending"
+   "state": "ok",
+   "rows": 42,
+   "first_period": "2005",
+   "last_period": "2025",
+   "publication_date": "2026-10-01",
+   "retrieved_at": "2026-10-17T08:56:31+00:00",
+   "source_code": "apro_mt_lscatl"
   },
   {
    "id": "live_bovine_exports_heads",
@@ -19,7 +88,13 @@
   {
    "id": "bovine_slaughter_tonnes",
    "title_pt": "Abates de bovinos (toneladas de carcaça)",
-   "state": "pending"
+   "state": "ok",
+   "rows": 42,
+   "first_period": "2005",
+   "last_period": "2025",
+   "publication_date": "2026-10-06",
+   "retrieved_at": "2026-10-17T08:56:37+00:00",
+   "source_code": "apro_mt_pann"
   },
   {
    "id": "bovine_population_regions",
@@ -29,47 +104,67 @@
   {
    "id": "trade_live_bovine_pt_es",
    "title_pt": "Bovinos vivos de Portugal para Espanha",
-   "state": "pending"
+   "state": "ok",
+   "rows": 4947,
+   "first_period": "2005-01",
+   "last_period": "2026-08",
+   "publication_date": "2026-10-16",
+   "retrieved_at": "2026-10-17T08:56:40+00:00",
+   "source_code": "DS-045409"
   },
   {
    "id": "trade_beef_pt_es",
    "title_pt": "Comércio de carne de bovino Portugal ↔ Espanha",
-   "state": "pending"
+   "state": "ok",
+   "rows": 2039,
+   "first_period": "2005-01",
+   "last_period": "2026-08",
+   "publication_date": "2026-10-16",
+   "retrieved_at": "2026-10-17T08:57:19+00:00",
+   "source_code": "DS-045409"
   }
  ],
  "last_run": {
-  "finished_at": "2026-10-17T08:55:27+00:00",
+  "finished_at": "2026-10-17T08:57:24+00:00",
   "datasets": [
    {
     "dataset": "bovine_population",
-    "state": "no_data"
+    "state": "ok",
+    "rows": 42,
+    "last_period": "2025"
    },
    {
     "dataset": "live_bovine_exports_heads",
-    "state": "no_data"
+    "state": "failed"
    },
    {
     "dataset": "live_bovine_imports_heads",
-    "state": "no_data"
+    "state": "failed"
    },
    {
     "dataset": "bovine_slaughter_tonnes",
-    "state": "no_data"
+    "state": "ok",
+    "rows": 42,
+    "last_period": "2025"
    },
    {
     "dataset": "bovine_population_regions",
-    "state": "no_data"
+    "state": "failed"
    },
    {
     "dataset": "trade_live_bovine_pt_es",
-    "state": "no_data"
+    "state": "ok",
+    "rows": 4947,
+    "last_period": "2026-08"
    },
    {
     "dataset": "trade_beef_pt_es",
-    "state": "no_data"
+    "state": "ok",
+    "rows": 2039,
+    "last_period": "2026-08"
    }
   ],
-  "review_rows": 0,
+  "review_rows": 481,
   "revisions": 0
  }
 }

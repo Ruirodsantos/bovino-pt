@@ -1,30 +1,17 @@
 [
  {
-  "dataset": "bovine_population",
-  "reason": "no raw snapshot yet"
- },
- {
   "dataset": "live_bovine_exports_heads",
-  "reason": "no raw snapshot yet"
+  "reason": "no rows matched selectors — check catalog files",
+  "snapshot": "data/raw/live_bovine_exports_heads/2026-10-17"
  },
  {
   "dataset": "live_bovine_imports_heads",
-  "reason": "no raw snapshot yet"
- },
- {
-  "dataset": "bovine_slaughter_tonnes",
-  "reason": "no raw snapshot yet"
+  "reason": "no rows matched selectors — check catalog files",
+  "snapshot": "data/raw/live_bovine_imports_heads/2026-10-17"
  },
  {
   "dataset": "bovine_population_regions",
-  "reason": "no raw snapshot yet"
- },
- {
-  "dataset": "trade_live_bovine_pt_es",
-  "reason": "no raw snapshot yet"
- },
- {
-  "dataset": "trade_beef_pt_es",
-  "reason": "no raw snapshot yet"
+  "reason": "no rows matched selectors — check catalog files",
+  "snapshot": "data/raw/bovine_population_regions/2026-10-17"
  }
 ]

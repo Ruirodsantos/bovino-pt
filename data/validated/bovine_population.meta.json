@@ -1,0 +1,14 @@
+{
+ "id": "bovine_population",
+ "title_pt": "Efetivo bovino (dezembro)",
+ "source_id": "S02",
+ "source_code": "apro_mt_lscatl",
+ "rows": 42,
+ "first_period": "2005",
+ "last_period": "2025",
+ "publication_date": "2026-10-01",
+ "retrieved_at": "2026-10-17T08:56:31+00:00",
+ "snapshot": "data/raw/bovine_population/2026-10-17",
+ "yellow_rows": 0,
+ "red_rows": 0
+}

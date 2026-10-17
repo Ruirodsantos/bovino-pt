@@ -1,0 +1,14 @@
+{
+ "id": "trade_beef_pt_es",
+ "title_pt": "Comércio de carne de bovino Portugal ↔ Espanha",
+ "source_id": "S03",
+ "source_code": "DS-045409",
+ "rows": 2039,
+ "first_period": "2005-01",
+ "last_period": "2026-08",
+ "publication_date": "2026-10-16",
+ "retrieved_at": "2026-10-17T08:57:19+00:00",
+ "snapshot": "data/raw/trade_beef_pt_es/2026-10-17",
+ "yellow_rows": 41,
+ "red_rows": 0
+}

@@ -1,0 +1,15 @@
+{
+ "dataset": "bovine_slaughter_tonnes",
+ "retrieved_at": "2026-10-17T08:56:37+00:00",
+ "requests": [
+  {
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apro_mt_pann?format=JSON&lang=en&sinceTimePeriod=2005&geo=PT&geo=ES&meat=B1000&unit=THS_T",
+   "status": 200,
+   "bytes": 4046,
+   "file": "response_00.json",
+   "sha256": "0630d0b9d3a82d4f707d75f8e26b2ecf49eb185a3cfa3e7855134b09308db81c",
+   "source_updated": "2026-10-06T23:00:00+0200"
+  }
+ ],
+ "used_code": "apro_mt_pann"
+}
