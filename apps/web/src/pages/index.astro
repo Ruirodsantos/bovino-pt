@@ -1,3 +1,149 @@
 ---
+import Base from "../layouts/Base.astro";
+import StatCard from "../components/StatCard.astro";
+import { summary, breeds, filledFields, fmtDate, hasDataset } from "../lib/data";
+import { getCollection } from "astro:content";
+
+const s = summary();
+const hero = s.stats.find((x) => x.id === "pt_es_live_eur");
+const others = s.stats.filter((x) => x !== hero);
+const allBreeds = breeds();
+const desc = (await getCollection("descobertas")).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
+const base = import.meta.env.BASE_URL;
+const run = s.last_run;
+const hasMap = hasDataset("bovine_population_regions");
 ---
-<html lang="pt"><body><h1>Observatório do Bovino Português</h1><p>Em construção.</p></body></html>
+<Base title="Início">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Observatório independente · dados oficiais · atualizado todos os dias</span>
+        <h1>Portugal cria.<br />Espanha compra?</h1>
+        <p class="lede">As raças, os números e o comércio do gado bovino português, contados com dados oficiais. Cada número indica a fonte e o período a que se refere.</p>
+        <p class="actions"><a class="btn primary" href={`${base}observatorio/`}>Explorar o comércio Portugal ↔ Espanha</a> <a class="btn" href={`${base}racas/`}>Conhecer as 15 raças</a></p>
+      </div>
+      {hero ? <StatCard stat={hero} big /> : <div class="empty">A primeira recolha de dados está a decorrer.</div>}
+    </div>
+    <svg class="horns" viewBox="0 0 600 160" aria-hidden="true"><path d="M20 30c120 0 190 40 240 100M580 30c-120 0-190 40-240 100" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Portugal em números</span>
+      <h2>O essencial em 10 segundos</h2>
+      <div class="grid cols-3">{others.map((st) => <StatCard stat={st} />)}</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Observatório Portugal ↔ Espanha</span>
+      <h2>Que bovinos vivos saem para Espanha — e quanto valem</h2>
+      <p class="lede">Exportações de Portugal para Espanha por categoria da Nomenclatura Combinada. Os anos incompletos estão assinalados.</p>
+      <div class="card">
+        <div class="toggle" role="group" aria-label="Medida"><button data-mode="eur" aria-pressed="true">Valor (€)</button><button data-mode="heads" aria-pressed="false">Cabeças</button></div>
+        <div class="chart tall" data-chart="live-trade" data-dataset="trade_live_bovine_pt_es" data-mode="eur" role="img" aria-label="Gráfico de barras empilhadas das exportações anuais de bovinos vivos de Portugal para Espanha por categoria"></div>
+        <p class="note">Fonte: Eurostat — Comext (DS-045409). As categorias detalhadas não cobrem todo o total oficial: a diferença aparece como "não discriminado" no valor e as cabeças são um <strong>mínimo</strong>. <a href={`${base}metodologia/#categorias`}>Porquê?</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">As raças</span>
+      <h2>15 raças autóctones, 15 histórias</h2>
+      <p class="lede">Reconhecidas oficialmente pela DGAV. Cada perfil vai sendo preenchido com informação verificada. As raças ainda em investigação estão assinaladas.</p>
+      <div class="breeds">
+        {allBreeds.map((b, i) => {
+          const n = filledFields(b);
+          return (
+            <a class="breed reveal" href={`${base}racas/${b.slug}/`} style={`--i:${i}`}>
+              <span class="num mono">{String(i + 1).padStart(2, "0")}</span>
+              <span class="name">{b.official_name}</span>
+              <span class:list={["chip", n ? "ok" : "wait"]}>{n ? `${n} factos verificados` : "Perfil em investigação"}</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap grid cols-2">
+      <div>
+        <span class="eyebrow">Efetivo</span>
+        <h2>Quantos bovinos há em Portugal e em Espanha</h2>
+        <p>Use o índice para comparar a evolução dos dois países (primeiro ano = 100). Os valores absolutos são muito diferentes.</p>
+        <div class="toggle" role="group" aria-label="Escala"><button data-mode="abs" aria-pressed="true">Cabeças</button><button data-mode="index" aria-pressed="false">Índice</button></div>
+        <div class="chart" data-chart="population" data-dataset="bovine_population" role="img" aria-label="Evolução do efetivo bovino em Portugal e Espanha"></div>
+      </div>
+      <div>
+        <span class="eyebrow">Carne de bovino</span>
+        <h2>A carne faz o caminho inverso</h2>
+        <p>Toneladas de carne de bovino (fresca, refrigerada e congelada) trocadas entre os dois países.</p>
+        <div class="chart" data-chart="beef-balance" data-dataset="trade_beef_pt_es" role="img" aria-label="Comércio anual de carne de bovino entre Portugal e Espanha em toneladas"></div>
+      </div>
+    </div>
+  </section>
+
+  {hasMap && (
+    <section class="block"><div class="wrap">
+      <span class="eyebrow">Mapa</span><h2>Onde estão os bovinos da Península</h2>
+      <div class="card"><div class="chart tall" data-chart="map" role="img" aria-label="Mapa do efetivo bovino por região"></div></div>
+    </div></section>
+  )}
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Descobertas</span>
+      <h2>Acabado de verificar</h2>
+      <div class="grid cols-3">
+        {desc.map((d) => (
+          <a class="card disc reveal" href={`${base}descobertas/${d.id}/`}>
+            <span class="date mono">{fmtDate(d.data.date.toISOString().slice(0, 10))}</span>
+            <h3>{d.data.title}</h3>
+            <p>{d.data.summary}</p>
+          </a>
+        ))}
+      </div>
+      <p><a href={`${base}descobertas/`}>Todas as descobertas →</a></p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Bastidores</span>
+      <h2>Últimas atualizações automáticas</h2>
+      {run ? (
+        <ul class="runs">
+          {s.catalog.map((c) => (
+            <li><span class:list={["chip", c.state === "ok" ? "ok" : "wait"]}>{c.state === "ok" ? "Atualizado" : "Em preparação"}</span> <strong>{c.title_pt}</strong>{c.last_period && <span class="muted"> · dados até {c.last_period} · {c.rows} valores</span>}</li>
+          ))}
+        </ul>
+      ) : <p>A primeira recolha ainda não terminou.</p>}
+      {run && <p class="muted">Última verificação: {new Date(run.finished_at).toLocaleString("pt-PT", { timeZone: "Europe/Lisbon" })} (hora de Lisboa).</p>}
+    </div>
+  </section>
+</Base>
+
+<script>import "../scripts/charts.ts";</script>
+
+<style>
+  .hero { position: relative; overflow: hidden; padding: clamp(48px, 9vw, 110px) 0 clamp(40px, 7vw, 80px); }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .horns { position: absolute; right: -40px; bottom: -30px; width: min(60vw, 640px); color: var(--cork-soft); z-index: -1; }
+  .note { font-size: .82rem; color: var(--muted); margin-top: 10px; }
+  .breeds { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 12px; }
+  .breed { display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: transform .2s, border-color .2s; transition-delay: calc(var(--i) * 30ms); }
+  .breed:hover { transform: translateY(-3px); border-color: var(--cork); }
+  .breed .num { color: var(--accent); font-size: .8rem; }
+  .breed .name { font: 600 1.45rem/1.1 var(--display); }
+  .disc { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 8px; }
+  .disc:hover { border-color: var(--cork); }
+  .disc .date { color: var(--accent); font-size: .78rem; }
+  .disc p { color: var(--muted); font-size: .95rem; margin: 0; }
+  .runs { list-style: none; padding: 0; display: grid; gap: 8px; }
+  .muted { color: var(--muted); }
+</style>

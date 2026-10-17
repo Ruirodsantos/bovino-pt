@@ -8,47 +8,35 @@ defaults:
 
 datasets:
   - id: bovine_population
-    title_pt: Efetivo bovino (dezembro)
+    title_pt: Efetivo bovino (inquérito de novembro–dezembro)
     source_id: S02
     api: eurostat
     code: apro_mt_lscatl
     params: {geo: [PT, ES], unit: THS_HD}
     select:
-      animals: ["A2000", "~live bovine animals"]
-      month: ["M12", "~december"]
+      animals: ["A2000"]
+      month: ["M11_M12", "M12"]
     flow: stock
     unit: head
     multiplier: 1000
     period_type: year
     max_change: 0.15        # >15 % year-on-year → YELLOW (review)
 
-  - id: live_bovine_exports_heads
-    title_pt: Exportações de bovinos vivos (cabeças)
+  - id: bovine_slaughter_heads_monthly
+    title_pt: Bovinos abatidos em matadouros (cabeças, mensal)
     source_id: S02
     api: eurostat
     code: apro_mt_pheadm
     params: {geo: [PT, ES], meat: B1000, unit: THS_HD}
     select:
-      meatitem: ["EL", "~total exports of live animals"]
-    flow: export
+      meatitem: ["SLAUGHT"]
+    flow: slaughter
     unit: head
     multiplier: 1000
     period_type: month
-    max_change: 1.5
-
-  - id: live_bovine_imports_heads
-    title_pt: Importações de bovinos vivos (cabeças)
-    source_id: S02
-    api: eurostat
-    code: apro_mt_pheadm
-    params: {geo: [PT, ES], meat: B1000, unit: THS_HD}
-    select:
-      meatitem: ["IL", "~total imports of live animals"]
-    flow: import
-    unit: head
-    multiplier: 1000
-    period_type: month
-    max_change: 1.5
+    max_change: 0.6
+    # Note: this dataset has no live-animal export/import values for PT/ES (checked 2026-10-17);
+    # live trade comes from Comext (trade_live_bovine_pt_es).
 
   - id: bovine_slaughter_tonnes
     title_pt: Abates de bovinos (toneladas de carcaça)
@@ -57,7 +45,7 @@ datasets:
     code: apro_mt_pann
     params: {geo: [PT, ES], meat: B1000, unit: THS_T}
     select:
-      meatitem: ["SL", "~slaughterings"]
+      meatitem: ["SLAUGHT"]
     flow: slaughter
     unit: tonne
     multiplier: 1000
@@ -68,10 +56,12 @@ datasets:
     title_pt: Efetivo bovino por região (NUTS 2)
     source_id: S02
     api: eurostat
-    code: agr_r_animal
-    params: {geoLevel: nuts2, animals: A2000, unit: THS_HD}
+    code: [agr_r_animal, ef_lsk_main, ef_lsk_bovine]   # tried in order (agr_r_animal no longer disseminated)
+    params: {geoLevel: nuts2}
+    since: "2010"
     geo_prefix: [PT, ES]
-    select: {}
+    select:
+      animals: ["A2000", "~live bovine animals", "~bovine animals"]
     flow: stock
     unit: head
     multiplier: 1000
@@ -83,7 +73,7 @@ datasets:
     source_id: S03
     api: comext
     code: [DS-045409, DS-059341]     # tried in order; the one that answers is recorded
-    params: {reporter: PT, partner: ES, product: ["0102", "01022910", "01022921", "01022929", "01022941", "01022949", "01022951", "01022959", "01022961", "01022969", "01022991", "01022999", "01022110", "01022130", "01022190", "01029020"], flow: "2", freq: M}
+    params: {reporter: PT, partner: ES, product: ["0102", "01022910", "01022921", "01022929", "01022941", "01022949", "01022951", "01022959", "01022961", "01022969", "01022991", "01022999", "01022110", "01022130", "01022190", "01029020", "01022905", "01023100", "01023910", "01023990", "01029091", "01029099"], flow: "2", freq: M}
     select:
       indicators: ["SUPPLEMENTARY_QUANTITY", "VALUE_IN_EUROS", "QUANTITY_IN_100KG"]
     flow: export
@@ -91,6 +81,9 @@ datasets:
     multiplier_by_indicator: {SUPPLEMENTARY_QUANTITY: 1, VALUE_IN_EUROS: 1, QUANTITY_IN_100KG: 100}
     period_type: month
     max_change: 3.0
+    jump_check_codes: ["0102"]
+    jump_min_abs: {eur: 1000000, kg: 500000}
+    sum_check: {total: "0102", mode: report}   # sub-codes do not fully add up (unlisted/confidential codes) → report coverage, show residual
 
   - id: trade_beef_pt_es
     title_pt: Comércio de carne de bovino Portugal ↔ Espanha
@@ -105,3 +98,5 @@ datasets:
     multiplier_by_indicator: {VALUE_IN_EUROS: 1, QUANTITY_IN_100KG: 100}
     period_type: month
     max_change: 3.0
+    jump_check_codes: ["0201", "0202"]
+    jump_min_abs: {eur: 1000000, kg: 500000}

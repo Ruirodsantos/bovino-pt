@@ -76,19 +76,31 @@ def main() -> int:
         y = max(pt)
         prev = pt.get(str(int(y) - 1))
         stats.append({"id": "pt_population", "label": "bovinos em Portugal", "value": pt[y], "unit": "cabeças",
-                      "context": f"efetivo em dezembro de {y}",
+                      "context": f"efetivo no inquérito de novembro–dezembro de {y}",
                       "change": (pt[y] - prev) / prev if prev else None, "change_ref": str(int(y) - 1) if prev else None,
                       "footnote": footnote(pm, f"dez. {y}")})
     trade, tm = load("trade_live_bovine_pt_es")
-    heads = series(trade, product_code="0102", series="export/0102/SUPPLEMENTARY_QUANTITY")
-    t = last_12_months(heads)
-    if t:
-        stats.append({"id": "pt_es_live_heads", "label": "bovinos vivos enviados para Espanha", "value": t[0], "unit": "cabeças",
-                      "context": f"últimos 12 meses com dados ({t[1]} a {t[2]})", "footnote": footnote(tm, f"{t[1]} a {t[2]}")})
     eur = last_12_months(series(trade, product_code="0102", series="export/0102/VALUE_IN_EUROS"))
     if eur:
-        stats.append({"id": "pt_es_live_eur", "label": "valor dessas exportações", "value": eur[0], "unit": "€",
-                      "context": f"{eur[1]} a {eur[2]}", "footnote": footnote(tm, f"{eur[1]} a {eur[2]}")})
+        prev = None
+        s_all = series(trade, product_code="0102", series="export/0102/VALUE_IN_EUROS")
+        months = sorted(s_all)
+        i = months.index(eur[2])
+        if i >= 23:
+            prev = sum(s_all[m] for m in months[i - 23:i - 11])
+        stats.append({"id": "pt_es_live_eur", "label": "em bovinos vivos vendidos por Portugal a Espanha", "value": eur[0], "unit": "€",
+                      "context": f"{eur[1]} a {eur[2]} (12 meses)", "change": (eur[0] - prev) / prev if prev else None,
+                      "change_ref": "12 meses anteriores" if prev else None, "footnote": footnote(tm, f"{eur[1]} a {eur[2]}")})
+    # Head counts exist only at CN8 level; their sum is a LOWER BOUND (some codes are not detailed).
+    heads: dict[str, float] = {}
+    for r in trade:
+        if r["series"].endswith("SUPPLEMENTARY_QUANTITY") and r["product_code"] != "0102":
+            heads[r["period"]] = heads.get(r["period"], 0) + r["value"]
+    t = last_12_months(heads)
+    if t:
+        stats.append({"id": "pt_es_live_heads", "label": "bovinos vivos atravessaram a fronteira para Espanha — pelo menos", "value": t[0],
+                      "unit": "cabeças", "context": f"{t[1]} a {t[2]} · soma das categorias detalhadas; o total real é superior",
+                      "footnote": footnote(tm, f"{t[1]} a {t[2]}")})
     beef, bm = load("trade_beef_pt_es")
     imp = {}
     for code in ("0201", "0202"):
@@ -100,6 +112,11 @@ def main() -> int:
         stats.append({"id": "pt_beef_imports_es", "label": "carne de bovino que Portugal compra a Espanha", "value": bi[0] / 1000,
                       "unit": "toneladas", "context": f"{bi[1]} a {bi[2]} · fresca, refrigerada e congelada",
                       "footnote": footnote(bm, f"{bi[1]} a {bi[2]}")})
+    slm, slmm = load("bovine_slaughter_heads_monthly")
+    t = last_12_months(series(slm, geo="PT"))
+    if t:
+        stats.append({"id": "pt_slaughter_heads", "label": "bovinos abatidos em matadouros portugueses", "value": t[0], "unit": "cabeças",
+                      "context": f"{t[1]} a {t[2]} (12 meses)", "footnote": footnote(slmm, f"{t[1]} a {t[2]}")})
     sl, sm = load("bovine_slaughter_tonnes")
     s_pt = series(sl, geo="PT")
     if s_pt:

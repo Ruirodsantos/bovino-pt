@@ -1,5 +1,5 @@
 {
- "finished_at": "2026-10-17T08:57:24+00:00",
+ "finished_at": "2026-10-17T09:00:15+00:00",
  "datasets": [
   {
    "dataset": "bovine_population",
@@ -8,12 +8,10 @@
    "last_period": "2025"
   },
   {
-   "dataset": "live_bovine_exports_heads",
-   "state": "failed"
-  },
-  {
-   "dataset": "live_bovine_imports_heads",
-   "state": "failed"
+   "dataset": "bovine_slaughter_heads_monthly",
+   "state": "ok",
+   "rows": 518,
+   "last_period": "2026-07"
   },
   {
    "dataset": "bovine_slaughter_tonnes",
@@ -28,16 +26,16 @@
   {
    "dataset": "trade_live_bovine_pt_es",
    "state": "ok",
-   "rows": 4947,
+   "rows": 5386,
    "last_period": "2026-08"
   },
   {
    "dataset": "trade_beef_pt_es",
    "state": "ok",
-   "rows": 2039,
+   "rows": 2080,
    "last_period": "2026-08"
   }
  ],
- "review_rows": 481,
+ "review_rows": 0,
  "revisions": 0
 }

@@ -1,0 +1,35 @@
+---
+import Base from "../../layouts/Base.astro";
+import { breeds, FIELD_LABELS, fmtDate } from "../../lib/data";
+export function getStaticPaths() { return breeds().map((b) => ({ params: { slug: b.slug }, props: { b } })); }
+const { b } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const entries = Object.entries(b.fields ?? {});
+const done = entries.filter(([, f]) => f.value !== null && f.value !== undefined && f.source_id);
+const todo = entries.filter(([, f]) => !(f.value !== null && f.value !== undefined && f.source_id));
+---
+<Base title={`Raça ${b.official_name}`} description={`Perfil da raça bovina autóctone ${b.official_name}, com fontes oficiais.`}>
+  <section class="block" style="border-top:0"><div class="wrap">
+    <a href={`${base}racas/`}>← Todas as raças</a>
+    <span class="eyebrow" style="margin-top:24px">Raça bovina autóctone portuguesa</span>
+    <h1>{b.official_name}</h1>
+    {done.length === 0 && <p class="lede">Este perfil está em investigação. Os factos aparecem aqui assim que forem confirmados numa fonte oficial, com a fonte indicada. Até lá, preferimos não mostrar nada a mostrar algo errado.</p>}
+    {done.length > 0 && (
+      <div class="grid cols-2" style="margin-top:24px">
+        {done.map(([k, f]) => (
+          <article class="card">
+            <span class="eyebrow">{FIELD_LABELS[k] ?? k}</span>
+            <p>{String(f.value)}</p>
+            <p class="src">Fonte: {f.source_url ? <a href={f.source_url}>{f.source_id}</a> : f.source_id} · verificado {fmtDate(f.verified_at)}</p>
+          </article>
+        ))}
+      </div>
+    )}
+    <h2 style="margin-top:48px">Ainda por verificar</h2>
+    <ul class="todo">{todo.map(([k]) => <li><span class="chip wait">{FIELD_LABELS[k] ?? k}</span></li>)}</ul>
+  </div></section>
+</Base>
+<style>
+  .src { font-size: .8rem; color: var(--muted); margin: 0; }
+  .todo { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+</style>

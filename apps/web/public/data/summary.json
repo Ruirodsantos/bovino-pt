@@ -5,7 +5,7 @@
    "label": "bovinos em Portugal",
    "value": 1472090.0,
    "unit": "cabeças",
-   "context": "efetivo em dezembro de 2025",
+   "context": "efetivo no inquérito de novembro–dezembro de 2025",
    "change": -0.009966978499034912,
    "change_ref": "2024",
    "footnote": {
@@ -19,10 +19,27 @@
   },
   {
    "id": "pt_es_live_eur",
-   "label": "valor dessas exportações",
+   "label": "em bovinos vivos vendidos por Portugal a Espanha",
    "value": 73245621.0,
    "unit": "€",
-   "context": "2025-09 a 2026-08",
+   "context": "2025-09 a 2026-08 (12 meses)",
+   "change": 0.01338814894218158,
+   "change_ref": "12 meses anteriores",
+   "footnote": {
+    "source": "Eurostat — Comext",
+    "source_code": "DS-045409",
+    "dataset": "trade_live_bovine_pt_es",
+    "period": "2025-09 a 2026-08",
+    "published": "2026-10-16",
+    "verified": "2026-10-17"
+   }
+  },
+  {
+   "id": "pt_es_live_heads",
+   "label": "bovinos vivos atravessaram a fronteira para Espanha — pelo menos",
+   "value": 36367.0,
+   "unit": "cabeças",
+   "context": "2025-09 a 2026-08 · soma das categorias detalhadas; o total real é superior",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
@@ -48,6 +65,21 @@
    }
   },
   {
+   "id": "pt_slaughter_heads",
+   "label": "bovinos abatidos em matadouros portugueses",
+   "value": 349050.0,
+   "unit": "cabeças",
+   "context": "2025-08 a 2026-07 (12 meses)",
+   "footnote": {
+    "source": "Eurostat",
+    "source_code": "apro_mt_pheadm",
+    "dataset": "bovine_slaughter_heads_monthly",
+    "period": "2025-08 a 2026-07",
+    "published": "2026-10-13",
+    "verified": "2026-10-17"
+   }
+  },
+  {
    "id": "pt_slaughter",
    "label": "de carne de bovino produzida em matadouros portugueses",
    "value": 94300.0,
@@ -66,7 +98,7 @@
  "catalog": [
   {
    "id": "bovine_population",
-   "title_pt": "Efetivo bovino (dezembro)",
+   "title_pt": "Efetivo bovino (inquérito de novembro–dezembro)",
    "state": "ok",
    "rows": 42,
    "first_period": "2005",
@@ -76,14 +108,15 @@
    "source_code": "apro_mt_lscatl"
   },
   {
-   "id": "live_bovine_exports_heads",
-   "title_pt": "Exportações de bovinos vivos (cabeças)",
-   "state": "pending"
-  },
-  {
-   "id": "live_bovine_imports_heads",
-   "title_pt": "Importações de bovinos vivos (cabeças)",
-   "state": "pending"
+   "id": "bovine_slaughter_heads_monthly",
+   "title_pt": "Bovinos abatidos em matadouros (cabeças, mensal)",
+   "state": "ok",
+   "rows": 518,
+   "first_period": "2005-01",
+   "last_period": "2026-07",
+   "publication_date": "2026-10-13",
+   "retrieved_at": "2026-10-17T08:56:33+00:00",
+   "source_code": "apro_mt_pheadm"
   },
   {
    "id": "bovine_slaughter_tonnes",
@@ -105,7 +138,7 @@
    "id": "trade_live_bovine_pt_es",
    "title_pt": "Bovinos vivos de Portugal para Espanha",
    "state": "ok",
-   "rows": 4947,
+   "rows": 5386,
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-16",
@@ -116,7 +149,7 @@
    "id": "trade_beef_pt_es",
    "title_pt": "Comércio de carne de bovino Portugal ↔ Espanha",
    "state": "ok",
-   "rows": 2039,
+   "rows": 2080,
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-16",
@@ -125,7 +158,7 @@
   }
  ],
  "last_run": {
-  "finished_at": "2026-10-17T08:57:24+00:00",
+  "finished_at": "2026-10-17T09:00:15+00:00",
   "datasets": [
    {
     "dataset": "bovine_population",
@@ -134,12 +167,10 @@
     "last_period": "2025"
    },
    {
-    "dataset": "live_bovine_exports_heads",
-    "state": "failed"
-   },
-   {
-    "dataset": "live_bovine_imports_heads",
-    "state": "failed"
+    "dataset": "bovine_slaughter_heads_monthly",
+    "state": "ok",
+    "rows": 518,
+    "last_period": "2026-07"
    },
    {
     "dataset": "bovine_slaughter_tonnes",
@@ -154,17 +185,17 @@
    {
     "dataset": "trade_live_bovine_pt_es",
     "state": "ok",
-    "rows": 4947,
+    "rows": 5386,
     "last_period": "2026-08"
    },
    {
     "dataset": "trade_beef_pt_es",
     "state": "ok",
-    "rows": 2039,
+    "rows": 2080,
     "last_period": "2026-08"
    }
   ],
-  "review_rows": 481,
+  "review_rows": 0,
   "revisions": 0
  }
 }

@@ -1,0 +1,26 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+import { fmtDate } from "../../lib/data";
+export async function getStaticPaths() { return (await getCollection("descobertas")).map((d) => ({ params: { id: d.id }, props: { d } })); }
+const { d } = Astro.props;
+const { Content } = await render(d);
+const base = import.meta.env.BASE_URL;
+---
+<Base title={d.data.title} description={d.data.summary}>
+  <article class="block" style="border-top:0"><div class="wrap narrow">
+    <a href={`${base}descobertas/`}>← Descobertas</a>
+    <p class="meta"><span class="mono">{fmtDate(d.data.date.toISOString().slice(0, 10))}</span> <span class:list={["chip", d.data.status === "verificado" ? "ok" : "wait"]}>{d.data.status === "verificado" ? "Verificado" : "Em revisão"}</span></p>
+    <h1>{d.data.title}</h1>
+    <p class="lede">{d.data.summary}</p>
+    <div class="prose"><Content /></div>
+    <aside class="card sources"><span class="eyebrow">Fontes</span><ul>{d.data.sources.map((s) => <li><a href={s.url}>{s.label}</a></li>)}</ul>
+      {d.data.dataset && <p>Dados completos: <a href={`${base}dados/#${d.data.dataset}`}>{d.data.dataset}</a></p>}</aside>
+  </div></article>
+</Base>
+<style>
+  .narrow { max-width: 760px; }
+  .meta { display: flex; gap: 10px; align-items: center; margin-top: 24px; color: var(--accent); }
+  .prose :global(li) { margin-bottom: 4px; }
+  .sources { margin-top: 32px; font-size: .9rem; }
+</style>

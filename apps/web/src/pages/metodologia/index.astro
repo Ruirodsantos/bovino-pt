@@ -1,0 +1,37 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+<Base title="Método e fontes" description="Como o Atlas do Bovino Português recolhe, verifica e publica dados.">
+  <article class="block" style="border-top:0"><div class="wrap narrow">
+    <span class="eyebrow">Transparência</span>
+    <h1>Como trabalhamos</h1>
+    <h2>Três regras</h2>
+    <ol>
+      <li><strong>Nenhum número sem fonte.</strong> Cada valor publicado indica a fonte, a unidade, o período a que se refere, a data de publicação e a data em que o verificámos.</li>
+      <li><strong>Não inventamos, não estimamos para preencher.</strong> Quando um dado não existe, dizemo-lo.</li>
+      <li><strong>Correlação não é causa.</strong> Mostramos o que os dados medem e assinalamos o que ainda não explicam.</li>
+    </ol>
+    <h2>Todos os dias, automaticamente</h2>
+    <p>Todas as manhãs, um processo automático consulta as fontes oficiais (Eurostat e Eurostat Comext, para já) e guarda a resposta original sem alterações. Depois verifica cada valor:</p>
+    <ul>
+      <li><span class="chip ok">Verde</span> passa todas as verificações e é publicado.</li>
+      <li><span class="chip wait">Amarelo</span> tem uma variação anormal ou uma inconsistência. Vai para revisão humana e não é publicado.</li>
+      <li><span class="chip">Vermelho</span> é inválido. É rejeitado e registado.</li>
+    </ul>
+    <p>O Eurostat substitui valores antigos quando os revê. Nós guardamos cada versão, e as revisões ficam registadas.</p>
+    <h2 id="categorias">Animais vivos: categorias e limites</h2>
+    <p>As exportações de bovinos vivos usam a <strong>Nomenclatura Combinada</strong> da UE (código 0102). Desde 2012, as subcategorias distinguem animais <em>para abate</em>, <em>outros</em> (recria e engorda), vitelos até 80 kg e <em>reprodutores de raça pura</em>. Antes de 2012 os códigos eram diferentes, por isso mostramos apenas o total.</p>
+    <p>Nas estatísticas publicadas, as subcategorias detalhadas não somam exatamente o total oficial: cobrem cerca de 73–93 % do valor, conforme o ano. A diferença aparece como "não discriminado". O número de cabeças só existe nas subcategorias, por isso o total de cabeças que apresentamos é um <strong>valor mínimo</strong>.</p>
+    <h2>Datas</h2>
+    <p>Separamos sempre três datas. O <em>período de referência</em> é o mês ou ano que o valor descreve. A <em>data de publicação</em> é quando a fonte o publicou. A <em>data de verificação</em> é quando o recolhemos. Um dado publicado em outubro sobre agosto é um dado de agosto.</p>
+    <h2>Fontes</h2>
+    <ul>
+      <li>Eurostat: efetivo bovino (apro_mt_lscatl), abates (apro_mt_pann, apro_mt_pheadm).</li>
+      <li>Eurostat Comext (DS-045409): comércio por produto NC8 entre Portugal e Espanha.</li>
+      <li>DGAV/CAP: Catálogo Oficial de Raças Autóctones Portuguesas.</li>
+      <li>Em preparação: INE, GPP/SIMA (cotações semanais), MAPA (Espanha), FAOSTAT.</li>
+    </ul>
+    <p>Todo o código, os dados e o histórico estão públicos no <a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a>.</p>
+  </div></article>
+</Base>
+<style>.narrow { max-width: 760px; } h2 { margin-top: 1.6em; }</style>

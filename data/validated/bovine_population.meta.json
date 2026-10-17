@@ -1,6 +1,6 @@
 {
  "id": "bovine_population",
- "title_pt": "Efetivo bovino (dezembro)",
+ "title_pt": "Efetivo bovino (inquérito de novembro–dezembro)",
  "source_id": "S02",
  "source_code": "apro_mt_lscatl",
  "rows": 42,
@@ -9,6 +9,7 @@
  "publication_date": "2026-10-01",
  "retrieved_at": "2026-10-17T08:56:31+00:00",
  "snapshot": "data/raw/bovine_population/2026-10-17",
+ "coverage_of_total_by_subcodes": null,
  "yellow_rows": 0,
  "red_rows": 0
 }

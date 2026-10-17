@@ -82,7 +82,12 @@ def observations(d: dict, snap: Path) -> tuple[list[dict], dict]:
             unit = d.get("unit") or d["unit_by_indicator"][ind]
             mult = d.get("multiplier") or d["multiplier_by_indicator"][ind]
             flow = d.get("flow") or d["flow_by_code"][str(r.get("flow"))]
-            series = "/".join(x for x in [flow, r.get("product"), ind] if x)
+            if d["api"] == "comext":
+                series = "/".join(x for x in [flow, r.get("product"), ind] if x)
+            else:   # every dimension that is not geo/time becomes part of the series key
+                extra = [f"{k}={r[k]}" for k in r if not k.endswith("_label") and k not in
+                         ("geo", "time", "value", "flag", "freq", "unit")]
+                series = "/".join([flow] + extra)
             obs.append({
                 "dataset_id": d["id"], "species": "bovine",
                 "geo": geo, "geo_label": r.get("geo_label") or r.get("reporter_label"),
@@ -105,20 +110,57 @@ def classify(d: dict, obs: list[dict]) -> None:
         by_series.setdefault((o["geo"], o["series"]), []).append(o)
     for rows in by_series.values():
         rows.sort(key=lambda o: o["period"])
+        seen: set[str] = set()
+        dupes = {o["period"] for o in rows if o["period"] in seen or seen.add(o["period"])}
         prev = None
         for o in rows:
             o["status"], o["status_reason"], o["verified_at"] = "green", "", now
-            if o["value"] < 0:
+            if o["period"] in dupes:
+                o["status"], o["status_reason"] = "red", "duplicate period in series (ambiguous selector)"
+            elif o["value"] < 0:
                 o["status"], o["status_reason"] = "red", "negative value"
             elif o["period_type"] == "unknown":
                 o["status"], o["status_reason"] = "red", "unparseable period"
             elif o.get("flag") and "p" in str(o["flag"]).lower():
                 o["status_reason"] = "provisional value (source flag p)"   # still green, shown as provisional
-            if o["status"] == "green" and prev is not None and prev["value"] > 0:
+            check_jump = (not d.get("jump_check_codes") or o.get("product_code") in d["jump_check_codes"]) \
+                and o["value"] >= d.get("jump_min_abs", {}).get(o["unit"], 0)   # tiny series are naturally volatile
+            if check_jump and o["status"] == "green" and prev is not None and prev["value"] > 0:
                 ch = abs(o["value"] - prev["value"]) / prev["value"]
                 if ch > d.get("max_change", 1.0):
                     o["status"], o["status_reason"] = "yellow", f"change {ch:.0%} vs {prev['period']} exceeds {d.get('max_change'):.0%}"
             prev = o
+
+
+def sum_check(d: dict, obs: list[dict]) -> None:
+    """Consistency: sub-categories must add up to the published aggregate (per period & indicator)."""
+    sc = d.get("sum_check")
+    if not sc:
+        return
+    groups: dict[tuple, dict] = {}
+    for o in obs:
+        key = (o["geo"], o["period"], o["series"].split("/")[-1], o["flow"])
+        g = groups.setdefault(key, {"total": None, "parts": []})
+        if o["product_code"] == sc["total"]:
+            g["total"] = o
+        elif str(o["product_code"]).startswith(sc["total"]):
+            g["parts"].append(o)
+    coverage: dict[str, dict[str, list[float]]] = {}
+    for (geo, period, ind, flow), g in groups.items():
+        if g["total"] is None or not g["parts"]:
+            continue
+        tot, parts = g["total"]["value"], sum(p["value"] for p in g["parts"])
+        if sc.get("mode") == "report":
+            c = coverage.setdefault(ind, {}).setdefault(period[:4], [0.0, 0.0])
+            c[0] += parts
+            c[1] += tot
+            continue
+        if tot > 0 and abs(parts - tot) / tot > sc.get("tolerance", 0.02):
+            for o in [g["total"], *g["parts"]]:
+                if o["status"] == "green":
+                    o["status"], o["status_reason"] = "yellow", f"sub-categories sum {parts:.0f} ≠ total {tot:.0f}"
+    if coverage:
+        d["_coverage"] = {ind: {y: round(a / b, 4) for y, (a, b) in sorted(ys.items()) if b} for ind, ys in coverage.items()}
 
 
 def write_csv(path: Path, rows: list[dict]) -> None:
@@ -154,6 +196,7 @@ def main() -> int:
             summary.append({"dataset": d["id"], "state": "failed"})
             continue
         classify(d, obs)
+        sum_check(d, obs)
         green = [o for o in obs if o["status"] == "green"]
         review += [o for o in obs if o["status"] == "yellow"]
         rejected += [{"dataset": d["id"], **o} for o in obs if o["status"] == "red"]
@@ -171,7 +214,7 @@ def main() -> int:
                 "first_period": periods[0] if periods else None, "last_period": periods[-1] if periods else None,
                 "publication_date": green[0]["publication_date"] if green else None,
                 "retrieved_at": manifest["retrieved_at"], "snapshot": str(snap.relative_to(ROOT)),
-                "yellow_rows": sum(o["status"] == "yellow" for o in obs), "red_rows": sum(o["status"] == "red" for o in obs)}
+                "coverage_of_total_by_subcodes": d.get("_coverage"), "yellow_rows": sum(o["status"] == "yellow" for o in obs), "red_rows": sum(o["status"] == "red" for o in obs)}
         (ROOT / "data/validated" / f"{d['id']}.meta.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False), encoding="utf-8")
         summary.append({"dataset": d["id"], "state": "ok", "rows": len(green), "last_period": meta["last_period"]})
     (hist / "review_queue.json").write_text(json.dumps(review, indent=1, ensure_ascii=False, default=str), encoding="utf-8")

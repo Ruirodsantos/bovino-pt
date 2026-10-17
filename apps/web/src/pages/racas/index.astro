@@ -1,0 +1,32 @@
+---
+import Base from "../../layouts/Base.astro";
+import { breeds, filledFields } from "../../lib/data";
+const base = import.meta.env.BASE_URL;
+const list = breeds();
+---
+<Base title="Raças" description="As 15 raças bovinas autóctones de Portugal, com perfis construídos a partir de fontes oficiais.">
+  <section class="block" style="border-top:0"><div class="wrap">
+    <span class="eyebrow">Raças autóctones</span>
+    <h1>As 15 raças bovinas de Portugal</h1>
+    <p class="lede">Reconhecidas oficialmente pela DGAV e pela CAP. Os perfis são preenchidos à medida que cada facto é verificado numa fonte oficial. Nada é preenchido por estimativa.</p>
+    <div class="list">
+      {list.map((b, i) => { const n = filledFields(b); return (
+        <a class="row" href={`${base}racas/${b.slug}/`}>
+          <span class="mono num">{String(i + 1).padStart(2, "0")}</span>
+          <span class="name">{b.official_name}</span>
+          <span class="bar"><span style={`width:${(n / 12) * 100}%`}></span></span>
+          <span class:list={["chip", n ? "ok" : "wait"]}>{n}/12 campos verificados</span>
+        </a>); })}
+    </div>
+  </div></section>
+</Base>
+<style>
+  .list { display: grid; gap: 6px; margin-top: 24px; }
+  .row { display: grid; grid-template-columns: 40px 1fr 160px auto; align-items: center; gap: 16px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: var(--ink); }
+  .row:hover { border-color: var(--cork); }
+  .num { color: var(--accent); }
+  .name { font: 600 1.3rem var(--display); }
+  .bar { height: 6px; background: var(--cork-soft); border-radius: 9px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--pasture); }
+  @media (max-width: 640px) { .row { grid-template-columns: 32px 1fr; } .bar { display: none; } .row .chip { grid-column: 2; justify-self: start; } }
+</style>

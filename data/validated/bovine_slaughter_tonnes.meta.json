@@ -9,6 +9,7 @@
  "publication_date": "2026-10-06",
  "retrieved_at": "2026-10-17T08:56:37+00:00",
  "snapshot": "data/raw/bovine_slaughter_tonnes/2026-10-17",
- "yellow_rows": 1,
+ "coverage_of_total_by_subcodes": null,
+ "yellow_rows": 0,
  "red_rows": 0
 }
