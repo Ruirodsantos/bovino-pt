@@ -1,0 +1,35 @@
+{
+ "finished_at": "2026-10-17T08:54:01+00:00",
+ "datasets": [
+  {
+   "dataset": "bovine_population",
+   "state": "no_data"
+  },
+  {
+   "dataset": "live_bovine_exports_heads",
+   "state": "no_data"
+  },
+  {
+   "dataset": "live_bovine_imports_heads",
+   "state": "no_data"
+  },
+  {
+   "dataset": "bovine_slaughter_tonnes",
+   "state": "no_data"
+  },
+  {
+   "dataset": "bovine_population_regions",
+   "state": "no_data"
+  },
+  {
+   "dataset": "trade_live_bovine_pt_es",
+   "state": "no_data"
+  },
+  {
+   "dataset": "trade_beef_pt_es",
+   "state": "no_data"
+  }
+ ],
+ "review_rows": 0,
+ "revisions": 0
+}

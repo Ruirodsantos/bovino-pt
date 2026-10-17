@@ -1,0 +1,75 @@
+{
+ "stats": [],
+ "catalog": [
+  {
+   "id": "bovine_population",
+   "title_pt": "Efetivo bovino (dezembro)",
+   "state": "pending"
+  },
+  {
+   "id": "live_bovine_exports_heads",
+   "title_pt": "Exportações de bovinos vivos (cabeças)",
+   "state": "pending"
+  },
+  {
+   "id": "live_bovine_imports_heads",
+   "title_pt": "Importações de bovinos vivos (cabeças)",
+   "state": "pending"
+  },
+  {
+   "id": "bovine_slaughter_tonnes",
+   "title_pt": "Abates de bovinos (toneladas de carcaça)",
+   "state": "pending"
+  },
+  {
+   "id": "bovine_population_regions",
+   "title_pt": "Efetivo bovino por região (NUTS 2)",
+   "state": "pending"
+  },
+  {
+   "id": "trade_live_bovine_pt_es",
+   "title_pt": "Bovinos vivos de Portugal para Espanha",
+   "state": "pending"
+  },
+  {
+   "id": "trade_beef_pt_es",
+   "title_pt": "Comércio de carne de bovino Portugal ↔ Espanha",
+   "state": "pending"
+  }
+ ],
+ "last_run": {
+  "finished_at": "2026-10-17T08:54:01+00:00",
+  "datasets": [
+   {
+    "dataset": "bovine_population",
+    "state": "no_data"
+   },
+   {
+    "dataset": "live_bovine_exports_heads",
+    "state": "no_data"
+   },
+   {
+    "dataset": "live_bovine_imports_heads",
+    "state": "no_data"
+   },
+   {
+    "dataset": "bovine_slaughter_tonnes",
+    "state": "no_data"
+   },
+   {
+    "dataset": "bovine_population_regions",
+    "state": "no_data"
+   },
+   {
+    "dataset": "trade_live_bovine_pt_es",
+    "state": "no_data"
+   },
+   {
+    "dataset": "trade_beef_pt_es",
+    "state": "no_data"
+   }
+  ],
+  "review_rows": 0,
+  "revisions": 0
+ }
+}

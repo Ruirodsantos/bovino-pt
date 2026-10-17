@@ -1,0 +1,107 @@
+# Dataset definitions. Each dataset = one API query + selectors that pick the series we publish.
+# Selectors match category CODES or LABELS (case-insensitive substring with "~" prefix).
+# The collector saves the full response + a catalogue of available categories, so a wrong
+# selector produces "no rows" (RED, visible in the run log) — never a silently wrong number.
+
+defaults:
+  since: "2005"
+
+datasets:
+  - id: bovine_population
+    title_pt: Efetivo bovino (dezembro)
+    source_id: S02
+    api: eurostat
+    code: apro_mt_lscatl
+    params: {geo: [PT, ES], unit: THS_HD}
+    select:
+      animals: ["A2000", "~live bovine animals"]
+      month: ["M12", "~december"]
+    flow: stock
+    unit: head
+    multiplier: 1000
+    period_type: year
+    max_change: 0.15        # >15 % year-on-year → YELLOW (review)
+
+  - id: live_bovine_exports_heads
+    title_pt: Exportações de bovinos vivos (cabeças)
+    source_id: S02
+    api: eurostat
+    code: apro_mt_pheadm
+    params: {geo: [PT, ES], meat: B1000, unit: THS_HD}
+    select:
+      meatitem: ["EL", "~total exports of live animals"]
+    flow: export
+    unit: head
+    multiplier: 1000
+    period_type: month
+    max_change: 1.5
+
+  - id: live_bovine_imports_heads
+    title_pt: Importações de bovinos vivos (cabeças)
+    source_id: S02
+    api: eurostat
+    code: apro_mt_pheadm
+    params: {geo: [PT, ES], meat: B1000, unit: THS_HD}
+    select:
+      meatitem: ["IL", "~total imports of live animals"]
+    flow: import
+    unit: head
+    multiplier: 1000
+    period_type: month
+    max_change: 1.5
+
+  - id: bovine_slaughter_tonnes
+    title_pt: Abates de bovinos (toneladas de carcaça)
+    source_id: S02
+    api: eurostat
+    code: apro_mt_pann
+    params: {geo: [PT, ES], meat: B1000, unit: THS_T}
+    select:
+      meatitem: ["SL", "~slaughterings"]
+    flow: slaughter
+    unit: tonne
+    multiplier: 1000
+    period_type: year
+    max_change: 0.25
+
+  - id: bovine_population_regions
+    title_pt: Efetivo bovino por região (NUTS 2)
+    source_id: S02
+    api: eurostat
+    code: agr_r_animal
+    params: {geoLevel: nuts2, animals: A2000, unit: THS_HD}
+    geo_prefix: [PT, ES]
+    select: {}
+    flow: stock
+    unit: head
+    multiplier: 1000
+    period_type: year
+    max_change: 0.30
+
+  - id: trade_live_bovine_pt_es
+    title_pt: Bovinos vivos de Portugal para Espanha
+    source_id: S03
+    api: comext
+    code: [DS-045409, DS-059341]     # tried in order; the one that answers is recorded
+    params: {reporter: PT, partner: ES, product: ["0102", "01022910", "01022921", "01022929", "01022941", "01022949", "01022951", "01022959", "01022961", "01022969", "01022991", "01022999", "01022110", "01022130", "01022190", "01029020"], flow: "2", freq: M}
+    select:
+      indicators: ["SUPPLEMENTARY_QUANTITY", "VALUE_IN_EUROS", "QUANTITY_IN_100KG"]
+    flow: export
+    unit_by_indicator: {SUPPLEMENTARY_QUANTITY: head, VALUE_IN_EUROS: eur, QUANTITY_IN_100KG: kg}
+    multiplier_by_indicator: {SUPPLEMENTARY_QUANTITY: 1, VALUE_IN_EUROS: 1, QUANTITY_IN_100KG: 100}
+    period_type: month
+    max_change: 3.0
+
+  - id: trade_beef_pt_es
+    title_pt: Comércio de carne de bovino Portugal ↔ Espanha
+    source_id: S03
+    api: comext
+    code: [DS-045409, DS-059341]
+    params: {reporter: PT, partner: ES, product: ["0201", "0202"], flow: ["1", "2"], freq: M}
+    select:
+      indicators: ["VALUE_IN_EUROS", "QUANTITY_IN_100KG"]
+    flow_by_code: {"1": import, "2": export}
+    unit_by_indicator: {VALUE_IN_EUROS: eur, QUANTITY_IN_100KG: kg}
+    multiplier_by_indicator: {VALUE_IN_EUROS: 1, QUANTITY_IN_100KG: 100}
+    period_type: month
+    max_change: 3.0

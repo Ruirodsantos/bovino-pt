@@ -1,0 +1,90 @@
+name: Atualização diária
+
+on:
+  schedule:
+    - cron: "17 5 * * *"        # todos os dias, 05:17 UTC (09:17 Dubai, 06:17 Lisboa no inverno)
+  workflow_dispatch:
+    inputs:
+      collect:
+        description: "Recolher dados das fontes oficiais"
+        default: "true"
+  push:
+    branches: [main]
+    paths: ["apps/web/**", "content/**", "pipeline/**", "data/registry/**"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r pipeline/requirements.txt
+      - name: Recolher (fontes oficiais)
+        if: github.event_name != 'push' && (github.event_name == 'schedule' || inputs.collect == 'true')
+        run: python pipeline/collect.py
+      - name: Mapas (NUTS 2, Eurostat GISCO)
+        run: |
+          mkdir -p apps/web/public/geo
+          if [ ! -s apps/web/public/geo/nuts2.json ]; then
+            curl -sSfL "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_10M_2021_4326_LEVL_2.geojson" -o /tmp/nuts2.geojson
+            python pipeline/geo.py /tmp/nuts2.geojson apps/web/public/geo/nuts2.json
+          fi
+      - name: Validar e normalizar
+        run: python pipeline/process.py
+      - name: Dados do site
+        run: python pipeline/build_site_data.py
+      - name: Testes e registos
+        run: |
+          python pipeline/validate_registry.py
+          python -m pytest -q pipeline/tests
+      - name: Estado do projeto
+        run: python pipeline/status.py
+      - name: Guardar alterações
+        run: |
+          git config user.name "bovino-pt bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A data apps/web/public/data apps/web/public/geo PROJECT_STATUS.json
+          if git diff --cached --quiet; then echo "sem alterações"; else
+            git commit -m "dados: atualização automática $(date -u +%F)"
+            git push
+          fi
+
+  site:
+    needs: data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: apps/web/package-lock.json }
+      - run: npm ci
+        working-directory: apps/web
+      - run: npm run build
+        working-directory: apps/web
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: apps/web/dist }
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  alert:
+    needs: [data, site]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh issue create -R "${{ github.repository }}" --title "Falha na atualização diária $(date -u +%F)" \
+            --body "Execução: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" --label alerta || \
+          gh issue create -R "${{ github.repository }}" --title "Falha na atualização diária $(date -u +%F)" \
+            --body "Execução: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
