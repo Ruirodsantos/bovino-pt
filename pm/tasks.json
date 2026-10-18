@@ -160,14 +160,86 @@
       "title": "Regional bovine data (NUTS 2) for the map",
       "agent": "claude",
       "priority": "medium",
-      "status": "RESEARCH",
+      "status": "IN PROGRESS",
       "depends_on": [],
       "acceptance_criteria": [
         "bovine_population_regions dataset state ok"
       ],
-      "evidence": [],
+      "evidence": [
+        "2026-10-18: códigos alternativos ef_lsk_main/ef_lsk_bovine já no registo; recolha relançada (workflow daily.yml, collect=true)"
+      ],
       "review_result": null,
       "source": "run 2026-10-17: agr_r_animal not disseminated"
+    },
+    {
+      "id": "T-0301",
+      "title": "Fotografias de raça com licença livre (13 raças em falta)",
+      "agent": "hermes",
+      "priority": "high",
+      "status": "READY",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Cada raça com photo_kind: raça, autor, URL e licença CC BY/BY-SA/CC0 registados; nunca Wikimedia"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "GitHub issue #6"
+    },
+    {
+      "id": "T-0302",
+      "title": "DOP/IGP de carne de bovino por raça (eAmbrosia)",
+      "agent": "hermes",
+      "priority": "high",
+      "status": "READY",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Nome oficial, data de registo, caderno de especificações e agrupamento para cada denominação, com fonte"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "GitHub issue #7"
+    },
+    {
+      "id": "T-0303",
+      "title": "Confirmar intervalos técnicos da maturação (content/carne/02-maturacao.md)",
+      "agent": "claude",
+      "priority": "medium",
+      "status": "READY",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Cada intervalo citado com fonte primária (página/tabela) ou marcado «a confirmar»"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "GitHub issue #8"
+    },
+    {
+      "id": "T-0304",
+      "title": "Revisão ChatGPT da secção A Carne e dos 15 perfis de raça",
+      "agent": "chatgpt",
+      "priority": "high",
+      "status": "REVIEW",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Ficheiro em reviews/ com veredicto por texto"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "GitHub issue #9"
+    },
+    {
+      "id": "T-0305",
+      "title": "Carne ao nível de El Capricho: mapa de lacunas",
+      "agent": "hermes",
+      "priority": "medium",
+      "status": "READY",
+      "depends_on": [],
+      "acceptance_criteria": [
+        "Nota em research/ e novos artigos em content/carne/, só fontes públicas, sem contactos"
+      ],
+      "evidence": [],
+      "review_result": null,
+      "source": "GitHub issue #10"
     }
   ]
 }
