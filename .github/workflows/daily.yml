@@ -32,6 +32,7 @@ jobs:
       - run: pip install -r pipeline/requirements.txt
       - name: Recolher (fontes oficiais)
         if: github.event_name != 'push' && (github.event_name == 'schedule' || inputs.collect == 'true')
+        continue-on-error: true   # fonte oficial em baixo não deve falhar a execução: o site publica-se com os últimos dados bons
         run: python pipeline/collect.py
       - name: Mapas (NUTS 2, Eurostat GISCO)
         run: |
@@ -83,7 +84,7 @@ jobs:
 
   alert:
     needs: [data, site]
-    if: failure()
+    if: failure() && github.event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - env: { GH_TOKEN: "${{ github.token }}" }
