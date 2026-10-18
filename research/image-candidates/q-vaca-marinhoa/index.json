@@ -1,6 +1,6 @@
 {
  "query": "vaca marinhoa",
- "http": 429,
+ "http": 401,
  "results": [],
- "error": "HTTP 429: <!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta nam"
+ "error": "HTTP 401: {\"detail\":\"page_size may not exceed 20 for anonymous requests\"}"
 }

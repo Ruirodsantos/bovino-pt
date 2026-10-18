@@ -1,3 +1,11 @@
-OK   mirandesa-vaca 4288x2848
-OK   mirandesa-pasto 4288x2848
-OK   mertolenga-rebanho 6240x4160
+OK   bife-rump 4591x3264
+OK   bife-embalado 4160x2768
+OK   bife-malpassado 5472x3648
+OK   bife-crosta 2576x1932
+OK   bife-prato 4256x2832
+OK   bife-tabua 3560x2670
+OK   acores-sao-jorge 4567x2970
+OK   acores-pico-estrada 6000x3643
+OK   acores-graciosa 5549x4012
+OK   acores-pico-lagoa 1920x1275
+OK   acores-corvo 3696x2448
