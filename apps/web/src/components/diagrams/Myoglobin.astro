@@ -1,0 +1,30 @@
+---
+import { tr, type Lang } from "../../i18n";
+interface Props { lang?: Lang }
+const { lang = "pt" } = Astro.props;
+const T = tr(lang);
+const st = [
+  { c: "#6B2D4A", n: T("Vermelho-arroxeado", "Purplish red"), m: T("Deoximioglobina", "Deoxymyoglobin"), f: "Fe²⁺", d: T("Sem oxigénio: peça acabada de cortar ou em vácuo.", "No oxygen: freshly cut or vacuum-packed.") },
+  { c: "#C21E2F", n: T("Vermelho vivo (cereja)", "Bright cherry red"), m: T("Oximioglobina", "Oxymyoglobin"), f: "Fe²⁺ + O₂", d: T("Minutos ao ar: a cor da carne fresca.", "Minutes in air: the colour of fresh meat.") },
+  { c: "#7A4A2C", n: T("Castanho", "Brown"), m: T("Metamioglobina", "Metmyoglobin"), f: "Fe³⁺", d: T("O ferro oxidou: muito tempo exposta ao ar.", "The iron has oxidised: long exposure to air.") },
+];
+---
+<figure class="mg">
+  <div class="row" role="img" aria-label={T("Três estados da mioglobina e a cor da carne", "Three states of myoglobin and meat colour")}>
+    {st.map((s, i) => (<>
+      <div class="s"><i style={`background:${s.c}`}></i><b>{s.n}</b><span class="m">{s.m} · {s.f}</span><span>{s.d}</span></div>
+      {i < 2 && <span class="ar" aria-hidden="true">{i === 0 ? T("+ oxigénio →", "+ oxygen →") : T("oxidação →", "oxidation →")}</span>}
+    </>))}
+  </div>
+  <figcaption>{T("Esquema ilustrativo do que se descreve no texto; as cores são aproximadas. Fonte da explicação: Meat Science and Nutrition (eCampus Ontario / BCcampus).", "Illustrative diagram of what the text describes; colours are approximate. Source of the explanation: Meat Science and Nutrition (eCampus Ontario / BCcampus).")}</figcaption>
+</figure>
+<style>
+  .mg { margin: 1.5rem 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .row { display: flex; align-items: stretch; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .s { flex: 1 1 170px; text-align: center; display: grid; gap: 4px; justify-items: center; font-size: .88rem; }
+  .s i { width: 84px; height: 84px; border-radius: 50%; box-shadow: inset 0 -10px 20px rgba(0,0,0,.25); }
+  .s b { font-weight: 600; } .s .m { color: var(--accent); font-size: .8rem; }
+  .ar { align-self: center; font-size: .78rem; color: var(--muted); }
+  figcaption { font-size: .78rem; color: var(--muted); margin-top: 1em; }
+  @media (max-width: 640px) { .ar { flex-basis: 100%; text-align: center; } }
+</style>

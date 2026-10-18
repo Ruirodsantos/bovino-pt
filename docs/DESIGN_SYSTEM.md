@@ -13,7 +13,7 @@ Estado: **protótipo em avaliação** em `/bovino-pt/prototipo/` (noindex, fora 
 Verde profundo #183C32 · Verde natural #547D55 · Marfim #F8F7F2 · Branco #FFFFFF · Dourado #C7A66A · Carvão #242824. Fundos claros nas secções informativas; verde escuro só em momentos pontuais. Verde natural e dourado nunca em texto pequeno.
 
 ## Tipografia
-Títulos: Instrument Serif. Texto: Lexend (17 px, entrelinha 1,65, linhas ≤ ~62 caracteres). Sem maiúsculas em excesso.
+Títulos: Lexend. Texto: Lexend (17 px, entrelinha 1,65, linhas ≤ ~62 caracteres). Sem maiúsculas em excesso.
 
 ## Fotografia
 Nunca outra raça nem imagens de IA. Autor, licença e origem em cada imagem. Sem foto autorizada: paisagem do território com etiqueta «foto da raça por obter» (ou fotografia provisória assinalada). WebP em 3 tamanhos, lazy-load fora da primeira dobra.

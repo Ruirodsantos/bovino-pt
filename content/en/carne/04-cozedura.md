@@ -2,6 +2,7 @@
 title: "Cooking beef: what happens from 50 to 90 °C"
 order: 4
 summary: "Degrees of doneness, the Maillard reaction, resting, salt and techniques: embers, frying pan, reverse sear and braising."
+photo: bife-crosta
 sources:
   - label: "Harold McGee, On Food and Cooking (reference work; pages to be checked)"
     url: "https://www.haroldmcgee.com/"

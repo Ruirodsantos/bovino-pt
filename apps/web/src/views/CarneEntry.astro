@@ -1,39 +1,71 @@
 ---
 import Base from "../layouts/Base.astro";
-import Photo from "../components/Photo.astro";
-import { render } from "astro:content";
+import Img from "../components/proto/Img.astro";
+import Cuts from "../components/diagrams/Cuts.astro";
+import Myoglobin from "../components/diagrams/Myoglobin.astro";
+import { marked } from "marked";
+import credits from "../data/images.json";
+const has = (id?: string) => !!id && !!(credits as Record<string, any>)[id];
 import { href, tr, type Lang } from "../i18n";
 interface Props { lang: Lang; d: any; prev?: any; next?: any }
 const { lang, d, prev, next } = Astro.props;
 const T = tr(lang);
-const { Content } = await render(d);
+// Cada secção (por ordem de aparição dos «##») pode ter uma figura: fotografia (ilustrativa) ou esquema.
+const FIG: Record<string, Record<number, { photo?: string; diagram?: string }>> = {
+  "01-carne-crua": { 0: { diagram: "myoglobin" }, 1: { photo: "bife-rump" }, 4: { photo: "bife-embalado" } },
+  "02-maturacao": { 5: { photo: "bife-prato" } },
+  "03-cortes": { 0: { diagram: "cuts" }, 1: { photo: "bife-malpassado" }, 3: { photo: "bife-tabua" } },
+  "04-cozedura": { 1: { photo: "bife-malpassado" }, 2: { photo: "bife-crosta" } },
+  "05-servir": { 0: { photo: "bife-prato" }, 2: { photo: "bife-tabua" } },
+};
+const figs = FIG[d.id] ?? {};
+const body: string = d.body ?? "";
+const parts = body.split(/\n(?=## )/);
+const intro = parts[0].startsWith("## ") ? "" : parts.shift()!;
+const secs = parts.map((p, i) => {
+  const m = p.match(/^## (.+)\n([\s\S]*)$/);
+  return { title: m ? m[1] : "", html: marked.parse(m ? m[2] : p) as string, fig: figs[i] };
+});
+const introHtml = marked.parse(intro) as string;
+const all = secs.length;
 ---
 <Base lang={lang} title={d.data.title} description={d.data.summary}>
-  <article class="block" style="border-top:0"><div class="wrap narrow">
-    <a href={href(lang, "carne/")}>← {T("A Carne", "The Meat")}</a>
-    <p class="meta"><span class="chip wait">{T("Texto original · em revisão", "Original text · under review")}</span></p>
+  <article class="sec" style="padding-top:var(--s4)"><div class="narrow" style="width:min(820px,100% - 40px)">
+    <a href={href(lang, "carne/")}>← {T("A carne", "The meat")}</a>
+    <p><span class="chip wait">{T("Texto original · em revisão", "Original text · under review")}</span></p>
     <h1>{d.data.title}</h1>
-    <p class="lede">{d.data.summary}</p>
-    {d.data.photo && <Photo id={d.data.photo} class="lead-photo" sizes="(max-width: 800px) 100vw, 760px" eager lang={lang} />}
-    <div class="prose"><Content /></div>
-    {d.data.sources.length > 0 && <aside class="card sources"><span class="eyebrow">{T("Fontes e referências", "Sources and references")}</span><ul>{d.data.sources.map((s: any) => <li><a href={s.url}>{s.label}</a></li>)}</ul></aside>}
+    <p class="lead">{d.data.summary}</p>
+    {d.data.photo && <div class="frame" style="aspect-ratio:16/9;margin:1.2rem 0"><Img id={d.data.photo} sizes="(max-width:820px) 100vw, 820px" eager credit lang={lang} /></div>}
+    {all > 3 && <nav class="toc" aria-label={T("Neste tema", "In this topic")}>{secs.map((s, i) => <a href={`#s${i}`}>{s.title}</a>)}</nav>}
+    <div class="prose" set:html={introHtml} />
+    {secs.map((s, i) => (
+      <section id={`s${i}`} class="psec">
+        <h2>{s.title}</h2>
+        {s.fig?.diagram === "myoglobin" && <Myoglobin lang={lang} />}
+        {s.fig?.diagram === "cuts" && <Cuts lang={lang} />}
+        {has(s.fig?.photo) && <figure class="frame sfig"><Img id={s.fig!.photo!} sizes="(max-width:820px) 100vw, 820px" credit lang={lang} /></figure>}
+        <div class="prose" set:html={s.html} />
+      </section>
+    ))}
+    {d.data.sources.length > 0 && <aside class="srcbox"><span class="eyebrow">{T("Fontes e referências", "Sources and references")}</span><ul>{d.data.sources.map((s: any) => <li>{s.url ? <a href={s.url} rel="noopener">{s.label} ↗</a> : s.label}</li>)}</ul></aside>}
     <nav class="pn">
-      {prev ? <a href={href(lang, `carne/${prev.id}/`)}>← {prev.data.title}</a> : <span></span>}
-      {next ? <a href={href(lang, `carne/${next.id}/`)}>{next.data.title} →</a> : <span></span>}
+      {prev ? <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `carne/${prev.id}/`)}>← {prev.data.title}</a> : <span></span>}
+      {next ? <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `carne/${next.id}/`)}>{next.data.title} →</a> : <span></span>}
     </nav>
   </div></article>
 </Base>
-<style>
-  .narrow { max-width: 760px; }
-  .meta { margin-top: 24px; }
-  .lead-photo { margin: 20px 0 28px; }
-  .lead-photo :global(img) { border-radius: var(--radius); aspect-ratio: 16/9; }
-  .prose :global(li) { margin-bottom: 4px; }
-  .prose :global(h2) { margin-top: 2.2rem; }
-  .prose :global(table) { width: 100%; border-collapse: collapse; font-size: .92rem; margin: 18px 0; display: block; overflow-x: auto; }
-  .prose :global(th), .prose :global(td) { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; min-width: 110px; }
-  .prose :global(th) { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-  .prose :global(blockquote) { margin: 28px 0 0; padding: 14px 18px; border-left: 3px solid var(--accent); background: var(--cork-soft); border-radius: 0 var(--radius) var(--radius) 0; font-size: .9rem; }
-  .sources { margin-top: 32px; font-size: .9rem; }
-  .pn { display: flex; justify-content: space-between; gap: 16px; margin-top: 40px; font-weight: 600; }
+<style is:global>
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 1.5rem; }
+  .toc a { font-size: .82rem; padding: 6px 12px; border-radius: 999px; background: var(--green-soft); text-decoration: none; color: var(--green-deep); }
+  .psec { margin-top: 2.6rem; scroll-margin-top: 130px; }
+  .sfig { margin: 0 0 1.2rem; aspect-ratio: 16/9; }
+  .prose li { margin-bottom: 4px; }
+  .prose h3 { font-size: 1.15rem; margin-top: 1.6em; }
+  .prose table { width: 100%; border-collapse: collapse; font-size: .92rem; margin: 18px 0; display: block; overflow-x: auto; }
+  .prose th, .prose td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; min-width: 110px; }
+  .prose th { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .prose blockquote { margin: 28px 0 0; padding: 14px 18px; border-left: 3px solid var(--gold); background: var(--ivory-2); border-radius: 0 16px 16px 0; font-size: .9rem; }
+  .srcbox { margin-top: 2.5rem; padding: 18px 20px; background: #fff; border: 1px solid var(--line); border-radius: 16px; font-size: .9rem; }
+  .srcbox ul { margin: .4em 0 0; padding-left: 1.1em; }
+  .pn { display: flex; justify-content: space-between; gap: 12px; margin-top: 2.5rem; flex-wrap: wrap; }
 </style>

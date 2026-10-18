@@ -1,0 +1,36 @@
+---
+import { tr, type Lang } from "../../i18n";
+interface Props { lang?: Lang }
+const { lang = "pt" } = Astro.props;
+const T = tr(lang);
+// Esquema ilustrativo (posições aproximadas). Cada zona liga-se à linha da tabela de cortes.
+const zones: { id: string; pts: string; c: string; label: string; lx: number; ly: number }[] = [
+  { id: "acem", pts: "150,175 270,150 290,185 290,300 190,290", c: "#8C5A3C", label: T("Acém e cachaço", "Neck and chuck"), lx: 225, ly: 240 },
+  { id: "pa", pts: "290,160 395,165 400,275 290,275", c: "#B4753F", label: T("Pá", "Shoulder"), lx: 342, ly: 220 },
+  { id: "peito", pts: "290,275 400,275 410,335 305,335", c: "#9C4A3C", label: T("Peito", "Brisket"), lx: 350, ly: 308 },
+  { id: "lombo-alto", pts: "400,165 530,172 530,262 400,262", c: "#C0392B", label: T("Lombo alto", "Rib / ribeye"), lx: 465, ly: 222 },
+  { id: "lombo-baixo", pts: "530,172 625,178 625,262 530,262", c: "#D4584A", label: T("Lombo baixo", "Loin / sirloin"), lx: 578, ly: 222 },
+  { id: "alcatra", pts: "625,178 745,190 740,290 625,290", c: "#A23B3B", label: T("Alcatra", "Rump"), lx: 685, ly: 240 },
+  { id: "aba", pts: "400,262 625,262 625,335 410,335", c: "#7E3B2E", label: T("Aba (flanco)", "Flank"), lx: 515, ly: 305 },
+  { id: "chambao", pts: "640,290 735,290 725,440 655,440", c: "#6B4A33", label: T("Chambão", "Shank"), lx: 690, ly: 380 },
+];
+---
+<figure class="dg">
+  <svg viewBox="0 0 900 470" role="img" aria-labelledby="cuts-t cuts-d">
+    <title id="cuts-t">{T("Esquema dos cortes de vaca", "Beef cuts diagram")}</title>
+    <desc id="cuts-d">{T("Silhueta de um bovino de lado, dividida nas zonas: acém e cachaço, pá, peito, lombo alto, lombo baixo, alcatra, aba e chambão. Esquema ilustrativo com posições aproximadas.", "Side view of a bovine divided into zones: neck and chuck, shoulder, brisket, rib, loin, rump, flank and shank. Illustrative, approximate positions.")}</desc>
+    <path d="M40,190 Q40,150 100,150 L150,168 L270,148 L400,160 L620,172 L745,185 Q790,195 795,240 L780,300 L745,300 L735,445 L650,445 L640,345 L420,345 L400,445 L320,445 L305,345 L190,300 Q170,285 140,270 L100,285 Q50,270 40,190Z" fill="#EFE7D8" stroke="#8a7f6a" stroke-width="2" stroke-linejoin="round" />
+    {zones.map((z) => <polygon points={z.pts} fill={z.c} fill-opacity=".78" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"><title>{z.label}</title></polygon>)}
+    <path d="M410,215 Q520,208 620,222" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="6 6" />
+    <text x="515" y="205" text-anchor="middle" fill="#fff" font-size="15" font-weight="600" style="paint-order:stroke;stroke:#00000066;stroke-width:3px">{T("lombinho (por dentro)", "tenderloin (inside)")}</text>
+    {zones.map((z) => <text x={z.lx} y={z.ly} text-anchor="middle" fill="#fff" font-size="16" font-weight="600" style="paint-order:stroke;stroke:#00000066;stroke-width:3px">{z.label}</text>)}
+    <circle cx="95" cy="190" r="6" fill="#242824" /><path d="M60,160 L35,120 M120,152 L135,112" stroke="#8a7f6a" stroke-width="5" stroke-linecap="round" />
+    <path d="M790,225 Q830,290 815,380" fill="none" stroke="#8a7f6a" stroke-width="7" stroke-linecap="round" /><text x="838" y="340" fill="#5b6259" font-size="14">{T("rabo", "tail")}</text>
+  </svg>
+  <figcaption>{T("Esquema ilustrativo e simplificado: as posições são aproximadas e os nomes variam entre regiões e talhos. A «vazia» está por validar com um profissional de desmancha e por isso não é marcada.", "Illustrative, simplified diagram: positions are approximate and names vary by region and butcher. «Vazia» is still to be validated with a professional butcher and is therefore not marked.")}</figcaption>
+</figure>
+<style>
+  .dg { margin: 1.5rem 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px; }
+  .dg svg { width: 100%; height: auto; display: block; }
+  .dg figcaption { font-size: .82rem; color: var(--muted); margin-top: .6em; }
+</style>

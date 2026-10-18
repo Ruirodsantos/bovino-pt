@@ -2,6 +2,7 @@
 title: "Cozer carne: o que acontece de 50 a 90 °C"
 order: 4
 summary: "Pontos de cozedura, a reação de Maillard, o descanso, o sal e as técnicas: brasa, frigideira, forno inverso e estufado."
+photo: bife-crosta
 sources:
   - label: "Harold McGee, On Food and Cooking (obra de referência; páginas a conferir)"
     url: "https://www.haroldmcgee.com/"

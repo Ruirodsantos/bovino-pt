@@ -2,7 +2,7 @@
 title: "À mesa: cortar, servir e acompanhar"
 order: 5
 summary: "O trabalho final: temperatura do prato, como cortar, sal, molhos, vinhos portugueses para cada peça."
-photo: tourem-manada
+photo: bife-prato
 sources:
   - label: "Guia Michelin — maturação e El Capricho"
     url: "https://guide.michelin.com/es/es/articulo/features/en-que-consiste-la-maduracion-de-la-carne"
@@ -40,9 +40,9 @@ Princípio: a carne magra e macia pede vinhos mais finos; a carne gorda e intens
 
 São sugestões de princípio, não receitas fixas.
 
-## O padrão a que o Atlas se propõe
+## O padrão a que o Bovino Português se propõe
 
-O restaurante El Capricho, em Jiménez de Jamuz (León), serve como referência de ambição: animal criado com um propósito, maturação longa, uma só peça bem trabalhada. O Atlas do Bovino quer reunir em português o conhecimento para alcançar esse nível com carne portuguesa: raças autóctones, criadores, maturações, cortes e confeção.
+O restaurante El Capricho, em Jiménez de Jamuz (León), serve como referência de ambição: animal criado com um propósito, maturação longa, uma só peça bem trabalhada. O Bovino Português quer reunir em português o conhecimento para alcançar esse nível com carne portuguesa: raças autóctones, criadores, maturações, cortes e confeção.
 
 Isso exige trabalho que não se faz num texto: provas, medições, visitas a criadores e a câmaras de maturação, conversas com chefs e talhantes. Estão previstas na lista de pesquisa do projeto e serão publicadas só quando verificadas.
 

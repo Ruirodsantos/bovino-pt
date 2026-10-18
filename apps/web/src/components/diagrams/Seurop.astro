@@ -1,0 +1,28 @@
+---
+import { tr, type Lang } from "../../i18n";
+interface Props { lang?: Lang }
+const { lang = "pt" } = Astro.props;
+const T = tr(lang);
+const conf = ["S", "E", "U", "R", "O", "P"], fat = [1, 2, 3, 4, 5];
+---
+<figure class="sg">
+  <div class="tbl2" role="img" aria-label={T("Grelha de classificação SEUROP: conformação (S a P) por cobertura de gordura (1 a 5)", "SEUROP grading grid: conformation (S to P) by fat cover (1 to 5)")}>
+    <div class="corner">{T("conformação ↓ · gordura →", "conformation ↓ · fat cover →")}</div>
+    {fat.map((f) => <div class="h">{f}</div>)}
+    {conf.map((c) => (<>
+      <div class="h">{c}</div>
+      {fat.map((f) => <div class:list={["c", f === 1 && "no", c !== "P" && f > 1 && "ok"]}>{c}{f}</div>)}
+    </>))}
+  </div>
+  <figcaption>{T("Classificação europeia SEUROP: conformação da carcaça (S, a melhor, a P, a mais pobre) e cobertura de gordura (1 a 5). A cor mostra, a título de exemplo, o que a Carne Ramo Grande DOP aceita: conformação S, E, U, R e O e gordura de classe 2 em diante (a classe 1 não é admitida), segundo o caderno de especificações.", "European SEUROP grading: carcass conformation (S, best, to P, poorest) and fat cover (1 to 5). Colour shows, as an example, what Carne Ramo Grande PDO accepts: conformation S, E, U, R and O and fat class 2 upwards (class 1 is not admitted), according to the product specification.")}</figcaption>
+</figure>
+<style>
+  .sg { margin: 1.5rem 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+  .tbl2 { display: grid; grid-template-columns: 1.4fr repeat(5, 1fr); gap: 4px; font-size: .85rem; text-align: center; }
+  .corner { font-size: .66rem; color: var(--muted); align-self: end; text-align: left; }
+  .h { font-weight: 600; color: var(--accent); }
+  .c { padding: 8px 0; border-radius: 8px; background: #f0eee6; color: var(--muted); }
+  .c.ok { background: #dfe9dc; color: #183C32; font-weight: 500; }
+  .c.no { background: #f0eee6; color: #aaa; text-decoration: line-through; }
+  figcaption { font-size: .8rem; color: var(--muted); margin-top: 1em; }
+</style>

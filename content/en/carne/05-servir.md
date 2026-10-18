@@ -2,7 +2,7 @@
 title: "At the table: carving, serving and accompanying"
 order: 5
 summary: "The final work: plate temperature, how to carve, salt, sauces, Portuguese wines for each cut."
-photo: tourem-manada
+photo: bife-prato
 sources:
   - label: "Michelin Guide — ageing and El Capricho"
     url: "https://guide.michelin.com/es/es/articulo/features/en-que-consiste-la-maduracion-de-la-carne"
@@ -40,9 +40,9 @@ Principle: lean, tender meat calls for finer wines; fatty, intense meat calls fo
 
 These are suggestions of principle, not fixed recipes.
 
-## The standard the Atlas sets itself
+## The standard Portuguese Cattle sets itself
 
-The restaurant El Capricho, in Jiménez de Jamuz (León), serves as a reference of ambition: an animal raised with a purpose, long ageing, a single well-worked cut. The Atlas do Bovino (Portuguese Beef Atlas) aims to gather, in Portuguese, the knowledge needed to reach that level with Portuguese beef: native breeds, breeders, ageing, cuts and cooking.
+The restaurant El Capricho, in Jiménez de Jamuz (León), serves as a reference of ambition: an animal raised with a purpose, long ageing, a single well-worked cut. Portuguese Cattle aims to gather, in Portuguese, the knowledge needed to reach that level with Portuguese beef: native breeds, breeders, ageing, cuts and cooking.
 
 This demands work that cannot be done in a text: tastings, measurements, visits to breeders and ageing chambers, conversations with chefs and butchers. They are planned in the project's research list and will be published only when verified.
 
