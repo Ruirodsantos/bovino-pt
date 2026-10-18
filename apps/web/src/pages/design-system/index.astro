@@ -1,8 +1,8 @@
 ---
-import Proto from "../../../layouts/Proto.astro";
+import Base from "../../layouts/Base.astro";
 const sw: [string, string, string][] = [["Verde profundo", "#183C32", "Fundos escuros pontuais, títulos, botões"], ["Verde natural", "#547D55", "Detalhes, estados ativos (só texto grande)"], ["Marfim luminoso", "#F8F7F2", "Fundo principal"], ["Branco", "#FFFFFF", "Cartões e painéis"], ["Dourado suave", "#C7A66A", "Realces e foco, nunca texto pequeno"], ["Carvão", "#242824", "Texto corrente"]];
 ---
-<Proto title="Design system">
+<Base title="Design system" noindex>
   <section class="ghead"><div class="wrap">
     <span class="eyebrow">Design system · protótipo</span>
     <h1 style="font-size:clamp(3rem,8vw,6rem);margin:.15em 0 .3em">Luz, terra e fotografia.</h1>
@@ -29,4 +29,4 @@ const sw: [string, string, string][] = [["Verde profundo", "#183C32", "Fundos es
     <h3 style="margin:var(--s4) 0 var(--s2)">Navegação e espaçamento</h3>
     <ul><li>Início · As raças · A carne · Da pastagem ao prato · Aprender · Observatório. Menu discreto no ecrã grande; no telemóvel, painel que desce, com teclado (Esc fecha).</li><li>Escala de espaçamento 8 · 16 · 24 · 40 · 64 · 112 px; secções com respiração generosa.</li></ul>
   </div></section>
-</Proto>
+</Base>

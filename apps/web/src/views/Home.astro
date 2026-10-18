@@ -1,58 +1,122 @@
 ---
 import Base from "../layouts/Base.astro";
-import Scene from "../components/Scene.astro";
-import Photo from "../components/Photo.astro";
-import { href, tr, type Lang } from "../i18n";
+import Img from "../components/proto/Img.astro";
+import credits from "../data/images.json";
+import { breeds, cardPhoto } from "../lib/data";
+import { href, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = tr(lang);
-const doors = [
-  { p: "da-pastagem-ao-prato/", img: "terceira", t: T("Da pastagem ao prato", "Pasture to plate"), d: T("Do nascimento ao consumidor", "From birth to consumer") },
-  { p: "carne/", img: "carne-variedade", t: T("Carne portuguesa", "Portuguese beef"), d: T("Cortes, maturação, qualidade", "Cuts, ageing, quality") },
-  { p: "racas/", img: "barrosa", t: T("As 15 raças", "The 15 breeds"), d: T("Fotografias, solares, história", "Photographs, homelands, history") },
-  { p: "aprender/", img: "outono-castanheiros", t: T("Aprender", "Learn"), d: T("Dados, descobertas, método", "Data, discoveries, method") },
+const b = import.meta.env.BASE_URL;
+const h0 = (credits as any)["mertolenga-tejo"];
+const hero = lang === "en" ? { ...h0, alt: h0.alt_en ?? h0.alt, caption: h0.caption_en ?? h0.caption } : h0;
+const names = Object.fromEntries(breeds().map((x) => [x.slug, x.official_name]));
+const strip = ["mirandesa", "barrosa", "maronesa", "cachena", "alentejana", "mertolenga"].map((s) => ({ slug: s, name: names[s], photo: cardPhoto(s) })).filter((s) => s.photo) as { slug: string; name: string; photo: { id: string; kind: string } }[];
+const stages: [string, string, string][] = lang === "en" ? [
+  ["Birth", "It all starts on the farm, with the calf next to its mother.", "In several breeds calves suckle for months before weaning."],
+  ["Rearing", "Months or years in the field, depending on breed and production system.", "Each breed has its own territory and rhythm."],
+  ["Feeding", "Pasture, forage and, when grass is short, supplements.", "For certified meats, the product specification sets what the animal may eat."],
+  ["Transport", "The animal goes to the slaughterhouse; live animals may also go on for fattening.", "Live animals and meat are two different trades: one is sold before slaughter, the other after."],
+  ["Slaughter", "Carried out in a licensed slaughterhouse under veterinary control.", ""],
+  ["Grading", "The carcase is graded for conformation and fat cover.", "This is the European SEUROP scheme, used in Portugal."],
+  ["Cutting", "The carcase is divided into joints and cuts.", "Cuts vary with the market and regional tradition."],
+  ["Distribution", "Butcher, retail chain, restaurants or direct sales.", "Each certified meat has its own labelling."],
+  ["Consumer", "It reaches the table — and with labelling and traceability you can know where it comes from.", ""],
+] : [
+  ["Nascimento", "Tudo começa na exploração, com o vitelo junto da mãe.", "Em várias raças os vitelos mamam durante meses antes do desmame."],
+  ["Criação", "Meses ou anos no campo, conforme a raça e o sistema de produção.", "Cada raça tem o seu território e o seu ritmo."],
+  ["Alimentação", "Pasto, forragens e, quando a erva não chega, complementos.", "Nas carnes certificadas, o caderno de especificações define o que o animal pode comer."],
+  ["Transporte", "O animal segue para o matadouro; há também animais vivos que seguem para engorda.", "Animais vivos e carne são dois negócios diferentes: um vende-se antes do abate, o outro depois."],
+  ["Abate", "Feito em matadouro licenciado, sob controlo veterinário.", ""],
+  ["Classificação", "A carcaça é classificada por conformação e estado de gordura.", "É a classificação europeia SEUROP, usada em Portugal."],
+  ["Desmancha", "A carcaça é dividida em peças e cortes.", "Os cortes variam consoante o mercado e a tradição regional."],
+  ["Distribuição", "Talho, grande distribuição, restauração ou venda direta.", "Cada carne certificada tem rotulagem própria."],
+  ["Consumidor", "Chega à mesa — e, com rotulagem e rastreabilidade, é possível saber de onde vem.", ""],
 ];
 ---
-<Base lang={lang} home overlay title={T("Início", "Home")} image={`${import.meta.env.BASE_URL}img/cachena-retrato-lg.webp`}
+<Base lang={lang} home overlay title={T("Início", "Home")} image={`${b}img/mertolenga-tejo-lg.webp`}
   description={T("As 15 raças bovinas autóctones de Portugal, a carne e o caminho da pastagem ao prato, com fontes oficiais.", "Portugal's 15 native cattle breeds, the meat and the path from pasture to plate, with official sources.")}>
-  <Scene id="cachena-retrato" lang={lang} h1 eager pos="50% 40%" kicker={T("Atlas do Bovino Português", "Portuguese Beef Atlas")}
-    title={T("Descubra o Bovino Português", "Discover Portuguese Cattle")}
-    text={T("As 15 raças autóctones, a carne e o caminho da pastagem ao prato.", "The 15 native breeds, the meat and the path from pasture to plate.")}
-    cue="#racas" />
-  <div id="racas"></div>
-  <Scene id="mertolenga-tejo" lang={lang} pos="50% 60%" kicker={T("Baixo Alentejo", "Lower Alentejo")} title="Mertolenga"
-    text={T("O boi de cabresto que se tornou raça.", "The halter-led ox that became a breed.")} href={href(lang, "racas/mertolenga/")} linkText={T("Conhecer a raça", "Meet the breed")} />
-  <Scene id="barrosa" lang={lang} pos="50% 30%" kicker={T("Barroso", "Barroso")} title="Barrosã"
-    text={T("A raça de grandes cornos em lira, do planalto do Barroso.", "The breed with great lyre-shaped horns, from the Barroso plateau.")} href={href(lang, "racas/barrosa/")} linkText={T("Conhecer a raça", "Meet the breed")} />
-  <Scene id="alentejana-silves" lang={lang} pos="50% 55%" kicker={T("Alentejo", "Alentejo")} title="Alentejana"
-    text={T("Uma raça moldada pelo calor e pela pobreza das pastagens do Sul.", "A breed shaped by the heat and the poor pastures of the South.")} href={href(lang, "racas/alentejana/")} linkText={T("Conhecer a raça", "Meet the breed")} />
-  <Scene id="maronesa-alvao" lang={lang} pos="50% 60%" kicker={T("Serras do Alvão e do Marão", "Alvão and Marão mountains")} title="Maronesa"
-    text={T("A «Serrana» das serras do Alvão e do Marão.", "The «Serrana» of the Alvão and Marão mountains.")} href={href(lang, "racas/maronesa/")} linkText={T("Conhecer a raça", "Meet the breed")} />
-  <Scene id="carne-cortes" lang={lang} kicker={T("A carne", "The meat")} title={T("Da pastagem ao prato", "From pasture to plate")}
-    text={T("Como se cria, como se abate, como se corta e como se serve.", "How it is raised, slaughtered, cut and served.")} href={href(lang, "da-pastagem-ao-prato/")} linkText={T("Seguir o percurso", "Follow the journey")} />
-  <section class="doors">
+  <section class="hero">
+    <img class="bg" src={`${b}img/mertolenga-tejo-lg.webp`} srcset={`${b}img/mertolenga-tejo-md.webp 900w, ${b}img/mertolenga-tejo-lg.webp 1800w`} sizes="100vw" alt={hero.alt} width={hero.width} height={hero.height} fetchpriority="high" />
+    <div class="wrap in">
+      <span class="tag">{T("Atlas do Bovino Português", "Portuguese Beef Atlas")}</span>
+      <h1>{T("15 raças.", "15 breeds.")}<br />{T("Um património extraordinário.", "An extraordinary heritage.")}</h1>
+      <a class="cue-link" href="#descobrir">{T("Começar a descobrir", "Start exploring")} <i aria-hidden="true">↓</i></a>
+    </div>
+    <p class="credit">{hero.caption} · {T("Foto", "Photo")}: <a href={hero.source_page} rel="noopener">{hero.author}</a> · {licenseLabel(lang, hero.license)}</p>
+  </section>
+
+  <section class="band" id="descobrir" aria-label={T("Descobrir Portugal", "Discover Portugal")}>
+    <Img id="montalegre" class="px" sizes="100vw" pos="50% 40%" lang={lang} />
+    <p class="q rv">{T("Do Minho aos Açores, raças que só existem aqui.", "From the Minho to the Azores, breeds found nowhere else.")}</p>
+  </section>
+
+  <section class="sec">
+    <div class="wrap"><div class="rv" style="max-width:34rem"><span class="eyebrow">{T("Conhecer as raças", "Meet the breeds")}</span><h2 style="margin:.2em 0 .4em">{T("Cada raça, uma paisagem.", "Every breed, a landscape.")}</h2></div></div>
+    <div class="strip rv" role="list" aria-label={T("Algumas raças", "Some breeds")}>
+      {strip.map((s) => (
+        <a role="listitem" href={`${href(lang, "racas/")}${s.slug}/`}>
+          <div class="frame"><Img id={s.photo.id} sizes="360px" lang={lang} /></div>
+          <h3>{s.name}</h3>
+          {s.photo.kind !== "raça" && <span class="gap">{T("Paisagem · foto da raça por obter", "Landscape · breed photo to be found")}</span>}
+        </a>
+      ))}
+    </div>
+    <div class="wrap"><a class="btn rv" href={href(lang, "racas/")}>{T("Ver as 15 raças →", "See all 15 breeds →")}</a></div>
+  </section>
+
+  <section class="band" aria-label={T("A ligação à terra", "Bound to the land")}>
+    <Img id="tourem-manada" class="px" sizes="100vw" pos="50% 55%" lang={lang} />
+    <p class="q rv">{T("A raça e a terra moldaram-se uma à outra.", "Breed and land shaped each other.")}</p>
+  </section>
+
+  <section class="sec green">
+    <div class="wrap split">
+      <div class="rv"><span class="eyebrow">{T("A carne portuguesa", "Portuguese beef")}</span><h2 style="margin:.2em 0 .5em">{T("Do campo ao talho, com nome e origem.", "From field to butcher, with a name and an origin.")}</h2>
+        <p class="lead">{T("Cortes, qualidade, maturação e as carnes com denominação de origem.", "Cuts, quality, ageing and the meats with a designation of origin.")}</p>
+        <a class="btn ghost" href={href(lang, "carne/")}>{T("Explorar a carne →", "Explore the meat →")}</a></div>
+      <div class="frame rv" style="aspect-ratio:4/3"><Img id="carne-cortes" sizes="(max-width:820px) 100vw, 600px" credit lang={lang} /></div>
+    </div>
+  </section>
+
+  <section class="sec soft" id="percurso">
     <div class="wrap">
-      <h2>{T("Por onde começar", "Where to start")}</h2>
-      <div class="door-grid">
-        {doors.map((d) => (
-          <a class="door reveal" href={href(lang, d.p)}>
-            <Photo id={d.img} sizes="(max-width: 700px) 100vw, 25vw" caption={false} lang={lang} />
-            <span class="dt"><strong>{d.t}</strong><span>{d.d}</span></span>
-          </a>
-        ))}
+      <span class="eyebrow">{T("Da pastagem ao prato", "Pasture to plate")}</span>
+      <h2 style="margin:.2em 0 .3em">{T("Nove passos. Clique em cada um.", "Nine steps. Click each one.")}</h2>
+      <div class="progress" aria-hidden="true"><i id="pg" style="width:11%"></i></div>
+      <div class="route" role="tablist" aria-label={T("Etapas do percurso", "Route stages")}>
+        {stages.map(([n], i) => <button role="tab" id={`t${i}`} aria-selected={i === 0} aria-controls="stage" tabindex={i === 0 ? 0 : -1}>{i + 1}. {n}</button>)}
+      </div>
+      <div class="stage" id="stage" role="tabpanel" aria-live="polite">
+        <h3 id="sn">{stages[0][0]}</h3><p id="st" class="lead">{stages[0][1]}</p><p id="sx">{stages[0][2]}</p>
+        <p class="note">{T("Percurso geral e possível, não um caso documentado. Os casos reais, com fonte, estão na", "A general, possible route, not a documented case. Real cases, with sources, are on the")} <a href={href(lang, "da-pastagem-ao-prato/")}>{T("página completa", "full page")}</a>.</p>
       </div>
     </div>
   </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <span class="eyebrow">{T("Continuar a descobrir", "Keep exploring")}</span>
+      <h2 style="margin:.2em 0 var(--s4)">{T("Para onde agora?", "Where next?")}</h2>
+      <div class="doors">
+        <a href={`${href(lang, "racas/")}ramo-grande/`}><h3>Ramo Grande</h3><p>{T("Uma raça dos Açores, com carne DOP.", "An Azorean breed with PDO meat.")}</p></a>
+        <a href={href(lang, "aprender/")}><h3>{T("Aprender", "Learn")}</h3><p>{T("Pequenos temas para perceber o mundo do bovino.", "Short topics to understand the world of cattle.")}</p></a>
+        <a href={href(lang, "observatorio/")}><h3>{T("Observatório", "Observatory")}</h3><p>{T("Produção, abate, comércio e séries históricas.", "Production, slaughter, trade and historical series.")}</p></a>
+        <a href={href(lang, "carne/")}><h3>{T("A carne", "The meat")}</h3><p>{T("Cortes, qualidade e certificações.", "Cuts, quality and certifications.")}</p></a>
+      </div>
+    </div>
+  </section>
+
+  <script define:vars={{ stages }}>
+    const tabs = [...document.querySelectorAll(".route button")];
+    const set = (i) => {
+      tabs.forEach((t, k) => { t.setAttribute("aria-selected", String(k === i)); t.tabIndex = k === i ? 0 : -1; });
+      document.getElementById("sn").textContent = stages[i][0];
+      document.getElementById("st").textContent = stages[i][1];
+      document.getElementById("sx").textContent = stages[i][2];
+      document.getElementById("pg").style.width = ((i + 1) / stages.length * 100) + "%";
+    };
+    tabs.forEach((t, i) => { t.addEventListener("click", () => set(i)); t.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") { const n = (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length; set(n); tabs[n].focus(); } }); });
+  </script>
 </Base>
-<style>
-  .doors { padding: clamp(56px, 9vw, 110px) 0; background: var(--paper); }
-  .door-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); margin-top: 24px; }
-  .door { position: relative; display: block; aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; background: #1c1714; }
-  .door :global(.photo) { position: absolute; inset: 0; }
-  .door :global(img) { transition: transform .8s ease; }
-  .door:hover :global(img) { transform: scale(1.06); }
-  .door::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.75)); }
-  .dt { position: absolute; z-index: 1; left: 18px; right: 18px; bottom: 16px; display: grid; gap: 2px; }
-  .dt strong { font: 500 1.25rem var(--display); }
-  .dt span { font-size: .85rem; color: rgba(255,255,255,.85); }
-</style>

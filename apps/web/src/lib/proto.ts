@@ -15,3 +15,8 @@ export const ORDEM: [string, string][] = [
   ["alentejana", "t-f"], ["minhota", "t-e"], ["marinhoa", "t-e"], ["garvonesa", "t-c"], ["algarvia", "t-c"],
   ["preta", "t-c"], ["jarmelista", "t-e"], ["brava-de-lide", "t-e"],
 ];
+export const FRASE_EN: Record<string, string> = {
+  alentejana: "The breed of the Alentejo.", algarvia: "The breed of the Algarve.", arouquesa: "The breed of the Arouca hillsides.", barrosa: "The breed of the Barroso plateau.", "brava-de-lide": "The fighting bull, from the Ribatejo to the Azores.",
+  cachena: "The breed of Peneda-Gerês.", garvonesa: "The breed of the Lower Alentejo.", jarmelista: "The breed of Jarmelo, in Guarda.", marinhoa: "The breed of the Lower Vouga.", maronesa: "The breed of the Alvão and Marão mountains.",
+  mertolenga: "The breed of Mértola.", minhota: "The breed of Entre Douro e Minho.", mirandesa: "The breed of Miranda do Douro and the posta mirandesa.", preta: "The breed south of the Tagus.", "ramo-grande": "The native breed of the Azores.",
+};

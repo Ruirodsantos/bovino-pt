@@ -1,19 +1,25 @@
 ---
+import fs from "node:fs";
+import path from "node:path";
 import Base from "../layouts/Base.astro";
-import Photo from "../components/Photo.astro";
+import Img from "../components/proto/Img.astro";
 import credits from "../data/images.json";
-import { breeds, breedEn, cardPhoto, fmtDate, num, HERO_OVERRIDE, type Breed } from "../lib/data";
+import { breeds, breedEn, cardPhoto, fmtDate, num, type Breed } from "../lib/data";
+import { TERRA, FRASE, FRASE_EN } from "../lib/proto";
 import { getEntry, render } from "astro:content";
 import { href, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { lang: Lang; b: Breed }
 const { lang, b } = Astro.props;
 const T = tr(lang);
+const base = import.meta.env.BASE_URL;
 const en = breedEn(b.slug);
 const own = cardPhoto(b.slug);
-const heroId = HERO_OVERRIDE[b.slug] ?? own?.id ?? null;
-const heroC = heroId ? (credits as Record<string, any>)[heroId] : null;
-const heroKind = HERO_OVERRIDE[b.slug] ? "paisagem" : own?.kind;
-const inset = HERO_OVERRIDE[b.slug] && own ? own.id : null;
+const heroC0 = own ? (credits as any)[own.id] : null;
+const heroC = heroC0 && lang === "en" ? { ...heroC0, alt: heroC0.alt_en ?? heroC0.alt, caption: heroC0.caption_en ?? heroC0.caption } : heroC0;
+const FRAMED = new Set(["ramo-grande-feira", "arouquesa-touro", "barrosa-festa"]);
+const framed = !own || FRAMED.has(own.id);
+const bgId = b.slug === "ramo-grande" ? "terceira" : own?.id ?? "montado-pasto";
+const isBreedPhoto = own?.kind === "raça";
 const ficha = (await getEntry(lang === "en" ? "fichas_en" : "fichas", b.slug))?.data ?? null;
 const prof = await getEntry(lang === "en" ? "racas_en" : "racas", b.slug);
 const Profile = prof ? (await render(prof)).Content : null;
@@ -22,157 +28,171 @@ const i = all.findIndex((x) => x.slug === b.slug);
 const prev = all[(i + all.length - 1) % all.length], next = all[(i + 1) % all.length];
 const solar = lang === "en" ? (en.solar ?? b.solar) : b.solar;
 const fallbackFacts = [
-  { label: T("Solar", "Homeland"), value: (solar ?? "").split(" — ")[0].split(" (")[0], note: "" },
-  ...(b.herd ? [{ label: T("Efetivo", "Herd"), value: `${num(b.herd.females, lang)} ${T("fêmeas", "females")}`, note: `${num(b.herd.males, lang)} ${T("machos", "males")} · ${num(b.herd.breeders, lang)} ${T("criadores", "breeders")} (${b.herd.year})` }] : []),
+  { label: T("Solar", "Homeland"), value: TERRA[b.slug] ?? (solar ?? "").split(" — ")[0] },
+  ...(b.herd ? [{ label: T("Efetivo", "Herd"), value: `${num(b.herd.females, lang)} ${T("fêmeas", "females")}` }, { label: T("Criadores", "Breeders"), value: num(b.herd.breeders, lang) }] : []),
 ];
-const facts = ficha?.facts ?? fallbackFacts;
-const kindTag = heroKind === "raça" ? T("Fotografia da raça", "Photograph of the breed") : heroKind ? T("Paisagem do solar · fotografia da raça em procura", "Homeland landscape · breed photograph being sought") : null;
-const pending = [T("Território", "Territory"), T("Carne", "Meat"), T("Certificação", "Certification"), T("Onde encontrar", "Where to find it"), T("Curiosidades", "Curiosities")];
+const facts = (ficha?.facts ?? fallbackFacts).map((f) => ({ label: f.label, value: f.value }));
+const intro = ficha?.intro ?? prof?.data.summary ?? "";
+const sec: Record<string, any> = ficha ? Object.fromEntries(ficha.sections.map((s) => [s.id, s])) : {};
+const NAV: Record<string, string> = lang === "en"
+  ? { historia: "History", territorio: "Territory", caracteristicas: "Characteristics", criacao: "Rearing", carne: "Meat", certificacao: "Certification", onde: "Where to find it", curiosidades: "Curiosities" }
+  : { historia: "História", territorio: "Território", caracteristicas: "Características", criacao: "Criação", carne: "Carne", certificacao: "Certificação", onde: "Onde encontrar", curiosidades: "Curiosidades" };
+const order = ["historia", "territorio", "caracteristicas", "criacao", "carne", "certificacao", "onde", "curiosidades"].filter((id) => sec[id]);
+const H2: Record<string, string> = lang === "en"
+  ? { historia: "A breed born of the islands.", territorio: "Nine islands. One production area.", caracteristicas: "Red, strong, large.", criacao: "Grazing almost all year.", carne: "Bright red and firm.", certificacao: "Carne Ramo Grande PDO.", onde: "Under research.", curiosidades: "Small curiosities." }
+  : { historia: "Uma raça nascida da ilha.", territorio: "Nove ilhas. Uma só área de produção.", caracteristicas: "Vermelha, forte, de grande porte.", criacao: "Pastoreio quase todo o ano.", carne: "Vermelho-vivo e firme.", certificacao: "Carne Ramo Grande DOP.", onde: "Em investigação.", curiosidades: "Pequenas curiosidades." };
+const rg = b.slug === "ramo-grande";
+const Src = (s?: { label: string; url: string }[]) => s;
+// Mapa esquemático dos Açores (só para o Ramo Grande), a partir da geometria NUTS do repositório.
+let islands: { name: string; d: string; x: number; y: number }[] = [], H = 0;
+if (rg) {
+  const geo = JSON.parse(fs.readFileSync(path.join(process.cwd(), "public/geo/nuts3_pt.json"), "utf-8"));
+  const polys: number[][][][] = geo.features.find((f: any) => f.properties.name === "PT200").geometry.coordinates;
+  const NAMES: [string, number, number][] = [["Santa Maria", 36.97, -25.08], ["São Miguel", 37.78, -25.5], ["Terceira", 38.72, -27.22], ["Graciosa", 39.05, -28.0], ["São Jorge", 38.65, -28.05], ["Pico", 38.47, -28.33], ["Faial", 38.58, -28.71], ["Flores", 39.45, -31.18], ["Corvo", 39.7, -31.11]];
+  const k = Math.cos(38.4 * Math.PI / 180);
+  const pts = polys.flatMap((p) => p[0]);
+  const minX = Math.min(...pts.map((p) => p[0])), maxX = Math.max(...pts.map((p) => p[0])), minY = Math.min(...pts.map((p) => p[1])), maxY = Math.max(...pts.map((p) => p[1]));
+  const sc = 880 / ((maxX - minX) * k); H = (maxY - minY) * sc + 40;
+  const X = (x: number) => 20 + (x - minX) * k * sc, Y = (y: number) => 20 + (maxY - y) * sc;
+  islands = polys.map((p) => {
+    const c = p[0]; const cx = c.reduce((a, q) => a + q[0], 0) / c.length, cy = c.reduce((a, q) => a + q[1], 0) / c.length;
+    const n = NAMES.reduce((best, m) => (Math.hypot(m[2] - cx, m[1] - cy) < Math.hypot(best[2] - cx, best[1] - cy) ? m : best))[0];
+    return { name: n, d: "M" + c.map((q) => `${X(q[0]).toFixed(1)},${Y(q[1]).toFixed(1)}`).join("L") + "Z", x: X(cx), y: Y(cy) };
+  });
+}
+const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s : null;
 ---
-<Base lang={lang} overlay title={T(`Raça ${b.official_name}`, `${b.official_name} breed`)}
-  description={ficha?.intro ?? T(`Raça bovina autóctone ${b.official_name}: solar, efetivo e história, com fontes oficiais.`, `The native ${b.official_name} cattle breed: homeland, herd size and history, with official sources.`)}
-  image={heroId ? `${import.meta.env.BASE_URL}img/${heroId}-lg.webp` : undefined}>
-  <section class="hero">
-    {heroId ? <Photo id={heroId} class="bgp" sizes="100vw" eager caption={false} lang={lang} /> : <div class="bgp empty"></div>}
-    <div class="wrap hcap">
-      <a class="back" href={href(lang, "racas/")}>← {T("Todas as raças", "All breeds")}</a>
-      <span class="kicker">{T("Raça bovina autóctone", "Native cattle breed")} · {String(i + 1).padStart(2, "0")}/15</span>
-      <h1>{b.official_name}</h1>
-      <p class="where">{solar}</p>
-      {kindTag && <span class="chip">{kindTag}</span>}
-    </div>
-    {heroC && <p class="credit-line">{lang === "en" ? (heroC.caption_en ?? heroC.caption) : heroC.caption} · {T("Foto", "Photo")}: <a href={heroC.source_page} rel="noopener">{heroC.author}</a> · {licenseLabel(lang, heroC.license)}</p>}
-  </section>
-
-  <section class="discover">
-    <div class="wrap d-grid">
-      <div class="d-text">
-        <span class="eyebrow">{T("Descobrir", "Discover")}</span>
-        <p class="intro">{ficha?.intro ?? prof?.data.summary}</p>
-        <dl class="facts">
-          {facts.map((f) => <div><dt>{f.label}</dt><dd><strong>{f.value}</strong>{f.note && <span>{f.note}</span>}</dd></div>)}
-        </dl>
-        {b.herd && <p class="src">{T("Efetivo: livro genealógico de adultos", "Herd: adult herd book")}, {b.herd.year}. {T("Fonte", "Source")}: <a href={b.name_sources?.[0]?.url}>{T("Catálogo Oficial de Raças Autóctones Portuguesas", "Official Catalogue of Portuguese Native Breeds")}</a> (DGAV/CAP), p. {b.herd.source_page}. {T("Verificado", "Verified")} {fmtDate(b.last_verified, lang)}.</p>}
+<Base lang={lang} overlay title={T(`Raça ${b.official_name}`, `${b.official_name} breed`)} description={intro}
+  image={own ? `${base}img/${own.id}-lg.webp` : undefined}>
+  <section class:list={["hero", "rg", !framed && "full"]} style="min-height:92svh">
+    <img class="bg" src={`${base}img/${bgId}-lg.webp`} srcset={`${base}img/${bgId}-md.webp 900w, ${base}img/${bgId}-lg.webp 1800w`} sizes="100vw" alt={framed ? "" : (heroC?.alt ?? "")} width={(credits as any)[bgId]?.width} height={(credits as any)[bgId]?.height} fetchpriority="high" />
+    <div class:list={["wrap", "in", framed && "rgrid"]}>
+      <div>
+        <span class="tag"><a href={href(lang, "racas/")} style="color:#fff;text-decoration:none">← {T("As raças", "The breeds")}</a> · {T("Raça autóctone", "Native breed")} · {String(i + 1).padStart(2, "0")}/15</span>
+        <h1 style="text-transform:uppercase;letter-spacing:.02em">{b.official_name}</h1>
+        <p class="sub">{lang === "en" ? FRASE_EN[b.slug] : FRASE[b.slug]}</p>
+        {intro && intro !== FRASE[b.slug] && <p class="lead" style="color:#fff;max-width:34em">{intro}</p>}
+        <dl class="facts4">{facts.slice(0, 4).map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl>
+        {!framed && !isBreedPhoto && <p style="margin-top:1.2em"><span class="gap">{T("Paisagem do solar · fotografia da raça por obter", "Homeland landscape · breed photograph to be found")}</span></p>}
       </div>
-      {inset && <Photo id={inset} class="inset" sizes="(max-width: 860px) 100vw, 50vw" lang={lang} />}
+      {framed && own && (
+        <figure class="rgfig">
+          <div class="frame" style="aspect-ratio:4/3"><Img id={own.id} sizes="(max-width:900px) 100vw, 520px" eager credit lang={lang} /></div>
+          <figcaption>
+            {isBreedPhoto ? <><span class="gap">{T("Fotografia provisória da raça", "Provisional photograph of the breed")}</span> {T("A melhor fotografia livre confirmada desta raça; procura-se uma melhor.", "The best confirmed free photograph of this breed; a better one is being sought.")}</> : <span class="gap">{T("Paisagem · foto da raça por obter", "Landscape · breed photo to be found")}</span>}
+            {rg && <> {T("Fundo: paisagem da Terceira", "Background: Terceira landscape")} ({(credits as any).terceira.author}, {licenseLabel(lang, (credits as any).terceira.license)}).</>}
+          </figcaption>
+        </figure>
+      )}
     </div>
+    {!framed && heroC && <p class="credit">{heroC.caption} · {T("Foto", "Photo")}: <a href={heroC.source_page} rel="noopener">{heroC.author}</a> · {licenseLabel(lang, heroC.license)}</p>}
   </section>
 
   {ficha ? (
-    <section class="explore" id="explorar">
-      <nav class="tabs" aria-label={T("Áreas de conhecimento", "Areas of knowledge")} data-tabs>
-        <div class="wrap tabs-in">{ficha.sections.map((s, k) => <a href={`#${s.id}`} data-tab={s.id} aria-current={k === 0 ? "true" : undefined}>{s.title}</a>)}</div>
-      </nav>
-      <div class="wrap panels">
-        {ficha.sections.map((s) => (
-          <section class="panel" id={s.id} data-panel={s.id}>
-            <span class="eyebrow">{T("Explorar", "Explore")}</span>
-            <h2>{s.title}</h2>
-            <p class="lede">{s.summary}</p>
-            <div class="dives">
-              {s.blocks.map((blk) => (
-                <details class="dive">
-                  <summary><span>{blk.title}</span>{blk.status && <span class="chip wait">{blk.status}</span>}</summary>
-                  <div class="dive-body">
-                    {blk.paras?.map((p) => <p>{p}</p>)}
-                    {blk.list && <ul>{blk.list.map((x) => <li>{x}</li>)}</ul>}
-                    {blk.table && <table><thead><tr>{blk.table.head.map((h) => <th>{h}</th>)}</tr></thead><tbody>{blk.table.rows.map((r) => <tr>{r.map((c) => <td>{c}</td>)}</tr>)}</tbody></table>}
-                    {blk.sources && <p class="srcs">{T("Fontes", "Sources")}: {blk.sources.map((x, n) => <>{n > 0 && " · "}<a href={x.url} rel="noopener">{x.label}</a></>)}</p>}
-                  </div>
-                </details>
-              ))}
+    <>
+      <div class="subnav" id="subnav"><div class="wrap" role="navigation" aria-label={T("Neste tema", "On this page")}>{order.map((id) => <a href={`#${id}`}>{NAV[id]}</a>)}</div></div>
+      {order.map((id, n) => {
+        const s = sec[id];
+        const blocks = s.blocks as any[];
+        const tone = id === "criacao" ? "green" : n % 2 === 1 ? "soft" : "";
+        return (
+          <section class:list={["sec", tone]} id={id}>
+            <div class:list={["wrap", id === "caracteristicas" || id === "carne" || id === "territorio" || id === "historia" ? "split" : "narrow"]} style={id === "certificacao" || id === "criacao" ? "width:min(820px,100% - 40px)" : undefined}>
+              {id === "caracteristicas" && own && <div class="frame rv" style="aspect-ratio:4/3"><Img id={own.id} sizes="(max-width:820px) 100vw, 600px" credit lang={lang} /></div>}
+              <div class="rv">
+                <span class="eyebrow">{NAV[id]}</span><h2 style="margin:.2em 0 .5em">{rg ? H2[id] : s.title}</h2>
+                <p class="lead">{s.summary}</p>
+                {id === "historia" && rg && (
+                  <ol class="timeline" aria-label={T("Datas-chave", "Key dates")}>
+                    <li><b>{T("Séc. XV", "15th c.")}</b> {T("Povoamento: chegam bovinos de várias regiões do continente.", "Settlement: cattle arrive from several mainland regions.")}</li>
+                    <li><b>1943</b> {T("Estudo citado no caderno de especificações sobre as raças de origem.", "Study cited in the product specification on the founding breeds.")}</li>
+                    <li><b>1996</b> {T("Criação do livro genealógico.", "Herd book created.")}</li>
+                  </ol>
+                )}
+                {id === "territorio" && rg && <ul class="legend"><li><i class="k solar"></i> {T("Solar da raça: Terceira", "Breed homeland: Terceira")}</li><li><i class="k area"></i> {T("Área geográfica da DOP: as nove ilhas do arquipélago, segundo o caderno de especificações", "PDO geographical area: all nine islands, according to the product specification")}</li></ul>}
+                <div style="margin-top:var(--s3)">
+                  {blocks.map((bl, k) => (
+                    <details class="dive" open={id === "historia" && k === 0}>
+                      <summary>{id === "historia" && k === 1 ? "" : ""}{bl.title}{bl.status && <span class="status-pill">{T("em investigação", "under research")}</span>}</summary>
+                      <div class="body">
+                        {bl.paras?.map((p: string) => <p>{p}</p>)}
+                        {bl.list && <ul>{bl.list.map((x: string) => <li>{x}</li>)}</ul>}
+                        {bl.table && <div class="tbl"><table><thead><tr>{bl.table.head.map((h: string) => <th>{h}</th>)}</tr></thead><tbody>{bl.table.rows.map((r: string[]) => <tr>{r.map((c) => <td>{c}</td>)}</tr>)}</tbody></table></div>}
+                        {srcLine(bl.sources) && <p class="srcs">{T("Fontes", "Sources")}: {bl.sources.map((x: any, q: number) => <>{q > 0 && " · "}<a href={x.url} rel="noopener">{x.label}</a></>)}</p>}
+                      </div>
+                    </details>
+                  ))}
+                </div>
+                {id === "carne" && <p class="srcs" style="margin-top:1em">{T("A fotografia de carne é ilustrativa (carne bovina em geral); não é carne desta raça.", "The meat photograph is illustrative (beef in general); it is not meat of this breed.")}</p>}
+                {id === "caracteristicas" && own && own.kind === "raça" && FRAMED.has(own.id) && <p class="srcs">{T("A fotografia mostra animais numa feira ou recinto; procura-se uma fotografia melhor da raça em pastoreio.", "The photograph shows animals at a fair or enclosure; a better photograph of the breed grazing is being sought.")}</p>}
+                {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, "da-pastagem-ao-prato/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →")}</a></p>}
+                {id === "onde" && rg && <p style="margin-top:1.5em"><a class="btn" href="https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" rel="noopener">DGADR — Carne Ramo Grande DOP ↗</a></p>}
+                {id === "onde" && <p class="srcs">{T("Não indicamos pontos de venda nem preços que não tenhamos verificado.", "We do not list points of sale or prices we have not verified.")}</p>}
+              </div>
+              {id === "territorio" && rg && (
+                <div class="mapbox rv">
+                  <svg viewBox={`0 0 920 ${H.toFixed(0)}`} role="img" aria-label={T("Mapa esquemático dos Açores com a ilha Terceira destacada", "Schematic map of the Azores with Terceira island highlighted")}>
+                    {islands.map((is) => <g><path d={is.d} fill={is.name === "Terceira" ? "#183C32" : "#7FA07F"} stroke="#fff" stroke-width="1.2" stroke-linejoin="round"><title>{is.name}</title></path><text x={is.x} y={is.y + (is.name === "Terceira" ? 26 : 22)} text-anchor="middle" style="font:500 14px var(--sans);fill:#183C32">{is.name}</text></g>)}
+                  </svg>
+                  <p class="srcs" style="margin:.6em 0 0">{T("Mapa esquemático, geometria generalizada (Eurostat/GISCO, © EuroGeographics).", "Schematic map, generalised geometry (Eurostat/GISCO, © EuroGeographics).")}</p>
+                </div>
+              )}
+              {id === "carne" && <div class="frame rv" style="aspect-ratio:4/5"><Img id="carne-madeira" sizes="(max-width:820px) 100vw, 560px" credit lang={lang} /></div>}
             </div>
-            {s.id === "certificacao" && <p class="go"><a class="btn" href={href(lang, "da-pastagem-ao-prato/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →")}</a></p>}
           </section>
-        ))}
-      </div>
-    </section>
+        );
+      })}
+    </>
   ) : (
-    <section class="block">
-      <div class="wrap narrow">
-        <span class="eyebrow">{T("Explorar", "Explore")}</span>
-        {Profile && <div class="prose"><Profile /></div>}
-        <h2 class="h2s">{T("Em investigação", "Under research")}</h2>
-        <p>{T("A ficha completa desta raça segue o modelo da do Ramo Grande e será publicada à medida que cada fonte for confirmada:", "The full profile for this breed will follow the Ramo Grande model and be published as each source is confirmed:")}</p>
-        <p>{pending.map((x) => <span class="chip wait">{x}</span>)}</p>
+    <section class="sec">
+      <div class="wrap split">
+        <div class="rv">
+          <span class="eyebrow">{T("Descobrir", "Discover")}</span><h2 style="margin:.2em 0 .5em">{T("A raça em poucas palavras", "The breed in brief")}</h2>
+          <p class="lead">{intro}</p>
+          {b.herd && <p class="srcs">{T("Efetivo: livro genealógico de adultos", "Herd: adult herd book")}, {b.herd.year}. {T("Fonte", "Source")}: <a href={b.name_sources?.[0]?.url}>{T("Catálogo Oficial de Raças Autóctones Portuguesas", "Official Catalogue of Portuguese Native Breeds")}</a> (DGAV/CAP), p. {b.herd.source_page}. {T("Verificado", "Verified")} {fmtDate(b.last_verified, lang)}.</p>}
+          {b.solar && <p class="srcs">{T("Solar", "Homeland")}: {solar}</p>}
+        </div>
+        <div class="rv">
+          {Profile && <details class="dive" open><summary>{T("Aprofundar: perfil da raça", "Go deeper: breed profile")}</summary><div class="body prose"><Profile /></div></details>}
+          <details class="dive"><summary>{T("Em investigação", "Under research")}</summary><div class="body"><p>{T("A ficha completa desta raça seguirá o modelo da do Ramo Grande (História, Território, Características, Criação, Carne, Certificação, Onde encontrar) e será publicada à medida que cada fonte for confirmada. Não publicamos o que não conseguimos verificar.", "The full profile for this breed will follow the Ramo Grande model (History, Territory, Characteristics, Rearing, Meat, Certification, Where to find it) and be published as each source is confirmed. We do not publish what we cannot verify.")}</p></div></details>
+        </div>
       </div>
     </section>
   )}
 
-  <section class="block more">
+  <section class="sec tight soft">
     <div class="wrap">
       <span class="eyebrow">{T("Continuar a descobrir", "Keep discovering")}</span>
-      <nav class="pn">
-        <a href={href(lang, `racas/${prev.slug}/`)}>← {prev.official_name}</a>
-        <a href={href(lang, "da-pastagem-ao-prato/")}>{T("Da pastagem ao prato", "Pasture to plate")}</a>
-        <a href={href(lang, `racas/${next.slug}/`)}>{next.official_name} →</a>
+      <nav class="pn" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;margin-top:var(--s2)">
+        <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `racas/${prev.slug}/`)}>← {prev.official_name}</a>
+        <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, "da-pastagem-ao-prato/")}>{T("Da pastagem ao prato", "Pasture to plate")}</a>
+        <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `racas/${next.slug}/`)}>{next.official_name} →</a>
       </nav>
     </div>
   </section>
+
+  <script>
+    const links = [...document.querySelectorAll<HTMLAnchorElement>("#subnav a")];
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) links.forEach((l) => l.classList.toggle("on", l.getAttribute("href") === "#" + e.target.id)); }), { rootMargin: "-40% 0px -55% 0px" });
+    links.forEach((l) => { const t = document.querySelector(l.getAttribute("href")!); if (t) io.observe(t); });
+  </script>
 </Base>
-<script>
-  const tabs = document.querySelector<HTMLElement>("[data-tabs]");
-  if (tabs) {
-    const links = [...tabs.querySelectorAll<HTMLAnchorElement>("a[data-tab]")];
-    const panels = [...document.querySelectorAll<HTMLElement>("[data-panel]")];
-    const show = (id: string, push = true) => {
-      document.documentElement.classList.add("js-tabs");
-      panels.forEach((p) => { p.hidden = p.dataset.panel !== id; });
-      links.forEach((l) => l.toggleAttribute("aria-current", l.dataset.tab === id));
-      if (push) history.replaceState(null, "", "#" + id);
-    };
-    const start = location.hash.slice(1);
-    show(panels.some((p) => p.dataset.panel === start) ? start : panels[0].dataset.panel!, false);
-    links.forEach((l) => l.addEventListener("click", (e) => { e.preventDefault(); show(l.dataset.tab!); document.getElementById("explorar")?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); }));
-    addEventListener("hashchange", () => { const id = location.hash.slice(1); if (panels.some((p) => p.dataset.panel === id)) show(id, false); });
-  }
-</script>
-<style>
-  .hero { position: relative; min-height: min(86svh, 780px); display: grid; align-items: end; color: #fff; overflow: hidden; isolation: isolate; background: #1c1714; margin-top: -61px; }
-  .hero :global(.bgp), .hero .bgp { position: absolute; inset: 0; z-index: -2; }
-  .hero :global(.bgp img) { object-position: 50% 40%; }
-  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(14,11,9,.35) 0%, rgba(14,11,9,0) 30%, rgba(14,11,9,.8) 100%); }
-  .hcap { width: 100%; padding-bottom: clamp(36px, 7vh, 64px); padding-top: 110px; }
-  .hcap > * { opacity: 0; transform: translateY(18px); animation: rise .9s ease forwards; }
-  .hcap > *:nth-child(2) { animation-delay: .08s; } .hcap > *:nth-child(3) { animation-delay: .16s; } .hcap > *:nth-child(4) { animation-delay: .24s; } .hcap > *:nth-child(5) { animation-delay: .32s; }
-  @media (prefers-reduced-motion: reduce) { .hcap > * { opacity: 1; transform: none; animation: none; } }
-  .hero h1 { color: #fff; font-size: clamp(3rem, 9vw, 6.5rem); margin: 0; text-shadow: 0 2px 30px rgba(0,0,0,.4); }
-  .kicker { display: block; font: 500 .8rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: #f3c9a8; margin: 10px 0 14px; }
-  .where { color: rgba(255,255,255,.92); font-size: 1.15rem; margin: .3em 0 12px; }
-  .back { color: rgba(255,255,255,.85); text-decoration: none; font-size: .9rem; display: inline-block; margin-bottom: 10px; }
-  .chip { background: rgba(255,255,255,.18); color: #fff; backdrop-filter: blur(4px); }
-  .hero .credit-line { position: absolute; right: 16px; bottom: 10px; margin: 0; font-size: .68rem; color: rgba(255,255,255,.65); max-width: 60ch; text-align: right; }
-  .hero .credit-line a { color: inherit; }
-  .discover { padding: clamp(40px, 7vw, 84px) 0; }
-  .d-grid { display: grid; gap: 40px; grid-template-columns: 1.1fr 1fr; align-items: center; }
-  @media (max-width: 860px) { .d-grid { grid-template-columns: 1fr; } }
-  .intro { font: 400 clamp(1.3rem, 2.6vw, 1.8rem)/1.4 var(--display); letter-spacing: -.01em; max-width: 30ch; margin-bottom: 1.2em; }
-  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 18px 24px; margin: 0 0 1.5em; }
-  .facts > div { border-top: 1px solid var(--line); padding-top: 10px; }
-  .facts dt { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
-  .facts dd { margin: 4px 0 0; display: grid; } .facts dd strong { font: 500 1.35rem var(--display); } .facts dd span { font-size: .82rem; color: var(--muted); }
-  .src { font-size: .78rem; color: var(--muted); }
-  .inset :global(img) { border-radius: var(--radius); aspect-ratio: 4/3; }
-  .explore { border-top: 1px solid var(--line); }
-  .tabs { position: sticky; top: var(--hd, 60px); z-index: 5; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .tabs-in { display: flex; gap: 4px; overflow-x: auto; padding-top: 8px; padding-bottom: 8px; scrollbar-width: none; }
-  .tabs-in a { white-space: nowrap; color: var(--muted); text-decoration: none; font-size: .9rem; padding: 7px 14px; border-radius: 999px; }
-  .tabs-in a[aria-current] { background: var(--ink); color: var(--paper); }
-  .panels { padding-top: clamp(32px, 5vw, 56px); padding-bottom: clamp(40px, 7vw, 90px); min-height: 60vh; }
-  .panel { scroll-margin-top: 130px; margin-bottom: 64px; }
-  :global(.js-tabs) .panel { margin-bottom: 0; }
-  .panel[hidden] { display: none; }
-  .panel .lede { max-width: 52ch; margin-bottom: 1.6em; }
-  .dive-body :global(.chip) { background: var(--cork-soft); color: var(--muted); backdrop-filter: none; }
-  summary .chip { background: var(--cork-soft); color: var(--muted); }
-  .go { margin-top: 28px; }
-  .narrow { max-width: 760px; }
-  .h2s { margin-top: 1.4em; font-size: 1.4rem; }
-  .prose :global(h2) { font-size: 1.4rem; margin-top: 1.4em; }
-  .more .pn { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .more .pn a { color: var(--ink); text-decoration: none; font-weight: 500; }
-  .block :global(.chip.wait) { background: var(--cork-soft); color: var(--muted); margin: 0 6px 6px 0; }
-</style>
 <style is:global>
-  @media (max-width: 640px) { :root { --hd: 98px; } }
+  .rg::after{background:linear-gradient(180deg,rgba(14,42,32,.82),rgba(14,42,32,.9))!important}
+  .rg.full::after{background:linear-gradient(180deg,rgba(10,30,22,.45) 0%,rgba(10,30,22,0) 32%,rgba(10,30,22,.15) 55%,rgba(10,30,22,.78) 100%)!important}
+  .rg:not(.full) .bg{filter:blur(3px) saturate(.8)}
+  .rg{align-items:center}.rg .in{padding:130px 0 70px}
+  .rg.full{align-items:end}.rg.full .in{padding:130px 0 90px}
+  .rgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,64px);align-items:center}
+  .rgrid h1,.rg h1{font-size:clamp(3rem,7vw,6rem)}
+  .rgfig{margin:0;color:#fff}.rgfig figcaption{font-size:.82rem;margin-top:.8em;opacity:.92}.rgfig .gap{margin-right:.5em}
+  @media(max-width:900px){.rgrid{grid-template-columns:1fr}}
+  .timeline{list-style:none;padding:0;margin:var(--s3) 0 0;border-left:2px solid var(--gold)}
+  .timeline li{padding:0 0 18px 20px;position:relative}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:.55em;width:12px;height:12px;border-radius:50%;background:var(--green-deep)}
+  .timeline b{display:block;font:400 1.7rem var(--display);color:var(--green-deep)}
+  .legend{list-style:none;padding:0;margin:0 0 var(--s3);font-size:.9rem}
+  .legend .k{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:8px;vertical-align:-2px}
+  .k.solar{background:#183C32}.k.area{background:#7FA07F}
+  .prose h2{font-size:1.6rem;margin:1.2em 0 .4em}
 </style>

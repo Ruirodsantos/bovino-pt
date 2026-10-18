@@ -1,10 +1,12 @@
 ---
 import credits from "../../data/images.json";
-interface Props { id: string; sizes?: string; eager?: boolean; class?: string; credit?: boolean; pos?: string }
-const { id, sizes = "100vw", eager = false, class: cls, credit = false, pos } = Astro.props;
-const c = (credits as Record<string, any>)[id];
+import type { Lang } from "../../i18n";
+interface Props { id: string; sizes?: string; eager?: boolean; class?: string; credit?: boolean; pos?: string; lang?: Lang }
+const { id, sizes = "100vw", eager = false, class: cls, credit = false, pos, lang = "pt" } = Astro.props;
+const c0 = (credits as Record<string, any>)[id];
+const c = c0 && lang === "en" ? { ...c0, alt: c0.alt_en ?? c0.alt, caption: c0.caption_en ?? c0.caption } : c0;
 const b = import.meta.env.BASE_URL;
 const s = (k: string) => `${b}img/${id}-${k}.webp`;
 ---
 {c && <img class={cls} src={s("md")} srcset={`${s("sm")} 480w, ${s("md")} 900w, ${s("lg")} 1800w`} sizes={sizes} alt={c.alt} width={c.width} height={c.height} loading={eager ? "eager" : "lazy"} decoding="async" style={pos ? `object-position:${pos}` : undefined} />}
-{c && credit && <span class="cr">{c.caption} · Foto: <a href={c.source_page} rel="noopener">{c.author}</a> · {c.license}</span>}
+{c && credit && <span class="cr">{c.caption} · {lang === "en" ? "Photo" : "Foto"}: <a href={c.source_page} rel="noopener">{c.author}</a> · {lang === "en" ? ({ "Licença Pexels": "Pexels licence", "Licença Unsplash": "Unsplash licence", "Domínio público": "Public domain" } as any)[c.license] ?? c.license : c.license}</span>}
