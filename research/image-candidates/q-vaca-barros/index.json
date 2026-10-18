@@ -1,0 +1,6 @@
+{
+ "query": "vaca barrosã",
+ "http": 401,
+ "results": [],
+ "error": "HTTP 401: {\"detail\":\"page_size may not exceed 20 for anonymous requests\"}"
+}
