@@ -24,8 +24,12 @@ jobs:
       - run: sudo apt-get install -y -qq poppler-utils >/dev/null
       - run: pip install requests pyyaml pillow pdfplumber beautifulsoup4
       - run: python pipeline/commons_candidates.py
-      - run: python pipeline/image_candidates.py
+        timeout-minutes: 8
+        continue-on-error: true
       - run: python pipeline/fetch_assets.py
+      - run: python pipeline/image_candidates.py
+        timeout-minutes: 6
+        continue-on-error: true
       - run: |
           git config user.name "bovino-pt bot"
           git config user.email "actions@users.noreply.github.com"
