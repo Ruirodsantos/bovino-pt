@@ -71,7 +71,7 @@ def collect_dataset(d: dict, since: str, today: str) -> dict:
         manifest["requests"] = []
         prev_code = code
         for i, part in enumerate(parts):
-            params = dict(d["params"])
+            params = {**d["params"], **d.get("params_by_code", {}).get(code, {})}
             if split_key:
                 params[split_key] = part
             url = build_url(d["api"], code, params, since)

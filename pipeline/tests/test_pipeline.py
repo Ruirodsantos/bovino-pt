@@ -96,3 +96,23 @@ def test_build_url_repeats_list_params_and_regions_registry_has_explicit_geo():
     d = next(x for x in reg["datasets"] if x["id"] == "bovine_population_regions")
     assert "geoLevel" not in d["params"]          # all-EU NUTS 2 extraction is too big (HTTP 413)
     assert all(len(g) == 4 and g[:2] in d["geo_prefix"] for g in d["params"]["geo"])
+
+
+def test_params_by_code_override_and_regions_pinned_to_totals(monkeypatch, tmp_path):
+    import collect
+    seen = []
+
+    class R:
+        status_code = 404
+        content = b"{}"
+        text = "{}"
+
+    monkeypatch.setattr(collect, "fetch", lambda url: seen.append(url) or R())
+    monkeypatch.setattr(collect, "ROOT", tmp_path)
+    monkeypatch.setattr(collect.time, "sleep", lambda s: None)
+    d = {"id": "x", "api": "eurostat", "code": ["a", "b"], "params": {"unit": "HD"},
+         "params_by_code": {"a": {"farmtype": "TOTAL"}, "b": {"fodder": "TOTAL"}}}
+    m = collect.collect_dataset(d, "2010", "2026-01-01")
+    assert "farmtype=TOTAL" in seen[0] and "fodder" not in seen[0]
+    assert "fodder=TOTAL" in seen[1] and "farmtype" not in seen[1]
+    assert m["used_code"] is None and m["attempts"][0]["code"] == "a"
