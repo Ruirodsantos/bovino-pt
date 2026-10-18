@@ -1,7 +1,1 @@
-[
- {
-  "dataset": "bovine_population_regions",
-  "reason": "no rows matched selectors — check catalog files",
-  "snapshot": "data/raw/bovine_population_regions/2026-10-18"
- }
-]
+[]

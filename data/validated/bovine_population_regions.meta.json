@@ -1,0 +1,15 @@
+{
+ "id": "bovine_population_regions",
+ "title_pt": "Efetivo bovino por região (NUTS 2)",
+ "source_id": "S02",
+ "source_code": "ef_lsk_main",
+ "rows": 100,
+ "first_period": "2010",
+ "last_period": "2023",
+ "publication_date": "2026-06-17",
+ "retrieved_at": "2026-10-18T06:17:14+00:00",
+ "snapshot": "data/raw/bovine_population_regions/2026-10-18",
+ "coverage_of_total_by_subcodes": null,
+ "yellow_rows": 6,
+ "red_rows": 0
+}
