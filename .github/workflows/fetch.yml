@@ -6,7 +6,7 @@ name: Buscar imagens e documentos
 on:
   push:
     branches: [main]
-    paths: ["assets/images.yaml", "assets/candidates.yaml", "research/fetch.yaml", "pipeline/fetch_assets.py", "pipeline/image_candidates.py"]
+    paths: ["assets/images.yaml", "assets/candidates.yaml", "research/fetch.yaml", "pipeline/fetch_assets.py", "pipeline/image_candidates.py", "pipeline/commons_candidates.py"]
   workflow_dispatch:
 
 permissions:
@@ -23,6 +23,7 @@ jobs:
         with: { python-version: "3.12" }
       - run: sudo apt-get install -y -qq poppler-utils >/dev/null
       - run: pip install requests pyyaml pillow pdfplumber beautifulsoup4
+      - run: python pipeline/commons_candidates.py
       - run: python pipeline/image_candidates.py
       - run: python pipeline/fetch_assets.py
       - run: |

@@ -12,7 +12,7 @@ piece of knowledge per day**, published only if it meets the bar below.
    Preferred sources: DGAV breed leaflets ("Folheto DGAV Raça …"), DGAV/CAP catalogue, herd-book
    association sites, eAmbrosia/DGADR (DOP/IGP specifications), INIAV. Fill 1–4 fields.
 4. **Photos (high priority while any breed lacks one).** Breeds without a photo: see `photo:` missing in
-   `data/registry/breeds/`. Search Pexels, Unsplash and Flickr (CC BY / BY-SA / CC0 only; never Wikimedia).
+   `data/registry/breeds/`. Search Pexels, Unsplash and Flickr (CC BY / BY-SA / CC0 / domínio público; Wikimedia Commons PERMITIDA desde 2026-10-18 por decisão do Rui, e é a primeira fonte).
    Label a photo with a breed ONLY if the author's title/description names the breed; otherwise caption the
    place. Add candidates to `assets/candidates.yaml`, review the thumbnails in `research/image-candidates/`,
    then publish via `assets/images.yaml` and set `photo` + `photo_kind` (raça | solar | paisagem).
