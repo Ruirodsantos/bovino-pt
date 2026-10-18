@@ -160,13 +160,15 @@
       "title": "Regional bovine data (NUTS 2) for the map",
       "agent": "claude",
       "priority": "medium",
-      "status": "IN PROGRESS",
+      "status": "TESTING",
       "depends_on": [],
       "acceptance_criteria": [
-        "bovine_population_regions dataset state ok"
+        "bovine_population_regions dataset state ok",
+        "Mapa usa NUTS 2024 para 2023 (PT19, PT1A–PT1D); o GeoJSON atual é NUTS 2021"
       ],
       "evidence": [
-        "2026-10-18: códigos alternativos ef_lsk_main/ef_lsk_bovine já no registo; recolha relançada (workflow daily.yml, collect=true)"
+        "2026-10-18: códigos alternativos ef_lsk_main/ef_lsk_bovine já no registo; recolha relançada (workflow daily.yml, collect=true)",
+        "2026-10-18: estado ok — 100 linhas (2010–2023) de ef_lsk_main com totais, A2000, cabeças; execução 39103484603"
       ],
       "review_result": null,
       "source": "run 2026-10-17: agr_r_animal not disseminated"
