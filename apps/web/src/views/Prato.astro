@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Img from "../components/proto/Img.astro";
 import Seurop from "../components/diagrams/Seurop.astro";
-import Cuts from "../components/diagrams/Cuts.astro";
+import Cow3D from "../components/diagrams/Cow3D.astro";
 import credits from "../data/images.json";
 import { href, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
@@ -112,7 +112,7 @@ const stages: Stage[] = [
           <h3>{T("O processo geral", "The general process")}</h3>
           {s.general.map((p) => <p>{p}</p>)}
           {s.extra === "seurop" && <Seurop lang={lang} />}
-          {s.extra === "cuts" && <Cuts lang={lang} />}
+          {s.extra === "cuts" && <Cow3D lang={lang} />}
           {s.ex.length > 0 && <>
             <h3>{T("Exemplos", "Examples")}</h3>
             <ul class="exs">{s.ex.map((e) => <li><strong>{e.slug ? <a href={href(lang, `racas/${e.slug}/`)}>{e.b}</a> : e.b}</strong> — {e.p}</li>)}</ul>
