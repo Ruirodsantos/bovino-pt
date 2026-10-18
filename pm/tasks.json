@@ -175,15 +175,17 @@
     },
     {
       "id": "T-0301",
-      "title": "Fotografias de raça com licença livre (13 raças em falta)",
+      "title": "Fotografias de raça com licença livre (8 raças em falta)",
       "agent": "hermes",
       "priority": "high",
-      "status": "READY",
+      "status": "IN PROGRESS",
       "depends_on": [],
       "acceptance_criteria": [
         "Cada raça com photo_kind: raça, autor, URL e licença CC BY/BY-SA/CC0 registados; nunca Wikimedia"
       ],
-      "evidence": [],
+      "evidence": [
+        "2026-10-18: instaladas Alentejana, Arouquesa, Maronesa, Mertolenga, Ramo Grande (Wikimedia Commons, raça indicada pelo autor). Em falta: Algarvia, Brava de Lide, Garvonesa, Jarmelista, Marinhoa, Minhota, Mirandesa, Preta. Candidatos em research/image-candidates/c-*"
+      ],
       "review_result": null,
       "source": "GitHub issue #6"
     },
