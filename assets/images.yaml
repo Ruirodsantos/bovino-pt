@@ -230,3 +230,33 @@ images:
   subject: bovino
   breed: Ramo Grande
   verified_note: "Descrição do autor na Wikimedia Commons: «An example of the Ramo Grande cattle at the 2010 Agricultural Fair in the municipality of Angra do Heroísmo (Azores)»."
+- id: mirandesa-vaca
+  url: https://upload.wikimedia.org/wikipedia/commons/7/71/Vaca_mirandesa.JPG
+  alt: "Vaca da raça Mirandesa a pastar num prado verde em Cércio, Trás-os-Montes"
+  caption: "Vaca Mirandesa em Cércio, Trás-os-Montes (2014)"
+  author: "Xemenendura"
+  license: CC BY-SA 3.0
+  source_page: https://commons.wikimedia.org/wiki/File:Vaca_mirandesa.JPG
+  subject: bovino
+  breed: Mirandesa
+  verified_note: "Descrição do autor na Wikimedia Commons: «Vaca mirandesa, Cércio, Portugal»."
+- id: mirandesa-pasto
+  url: https://upload.wikimedia.org/wikipedia/commons/5/54/Vaca_mirandesa_1.JPG
+  alt: "Animal de raça Mirandesa de pelagem escura, com cornos, a pastar em Cércio, Trás-os-Montes"
+  caption: "Animal Mirandesa a pastar em Cércio, Trás-os-Montes (2014)"
+  author: "Xemenendura"
+  license: CC BY-SA 3.0
+  source_page: https://commons.wikimedia.org/wiki/File:Vaca_mirandesa_1.JPG
+  subject: bovino
+  breed: Mirandesa
+  verified_note: "Descrição do autor na Wikimedia Commons: «Vaca mirandesa, Cércio, Tras Os Montes, Portugal»."
+- id: mertolenga-rebanho
+  url: https://upload.wikimedia.org/wikipedia/commons/9/96/Raza_Mertolengas_%284%29.jpg
+  alt: "Vaca Mertolenga malhada de castanho a comer, com um tratador ao fundo, no Alentejo"
+  caption: "Vacas Mertolengas a comer no campo (autor: Rufonavarro)"
+  author: "Rufonavarro"
+  license: CC0
+  source_page: https://commons.wikimedia.org/wiki/File:Raza_Mertolengas_(4).jpg
+  subject: bovino
+  breed: Mertolenga
+  verified_note: "Descrição do autor na Wikimedia Commons: «Raza Mertolengas, procedência portuguesa do vale do Sado e do Tejo»."
