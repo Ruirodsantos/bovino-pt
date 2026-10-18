@@ -14,7 +14,7 @@
     "dataset": "bovine_population",
     "period": "nov.–dez. 2025",
     "published": "2026-10-01",
-    "verified": "2026-10-17"
+    "verified": "2026-10-18"
    }
   },
   {
@@ -31,13 +31,13 @@
     "dataset": "trade_live_bovine_pt_es",
     "period": "set. 2025 – ago. 2026",
     "published": "2026-10-16",
-    "verified": "2026-10-17"
+    "verified": "2026-10-18"
    }
   },
   {
    "id": "pt_es_live_heads",
    "label": "bovinos vivos atravessaram a fronteira para Espanha — pelo menos",
-   "value": 36367.0,
+   "value": 45314.0,
    "unit": "cabeças",
    "context": "set. 2025 – ago. 2026 · soma das categorias detalhadas; o total real é superior",
    "footnote": {
@@ -46,7 +46,7 @@
     "dataset": "trade_live_bovine_pt_es",
     "period": "set. 2025 – ago. 2026",
     "published": "2026-10-16",
-    "verified": "2026-10-17"
+    "verified": "2026-10-18"
    }
   },
   {
@@ -61,7 +61,7 @@
     "dataset": "trade_beef_pt_es",
     "period": "set. 2025 – ago. 2026",
     "published": "2026-10-16",
-    "verified": "2026-10-17"
+    "verified": "2026-10-18"
    }
   },
   {
@@ -76,7 +76,7 @@
     "dataset": "bovine_slaughter_heads_monthly",
     "period": "ago. 2025 – jul. 2026",
     "published": "2026-10-13",
-    "verified": "2026-10-17"
+    "verified": "2026-10-18"
    }
   },
   {
@@ -91,7 +91,7 @@
     "dataset": "bovine_slaughter_tonnes",
     "period": "2025",
     "published": "2026-10-06",
-    "verified": "2026-10-17"
+    "verified": "2026-10-18"
    }
   }
  ],
@@ -104,7 +104,7 @@
    "first_period": "2005",
    "last_period": "2025",
    "publication_date": "2026-10-01",
-   "retrieved_at": "2026-10-17T08:56:31+00:00",
+   "retrieved_at": "2026-10-18T06:08:03+00:00",
    "source_code": "apro_mt_lscatl"
   },
   {
@@ -115,7 +115,7 @@
    "first_period": "2005-01",
    "last_period": "2026-07",
    "publication_date": "2026-10-13",
-   "retrieved_at": "2026-10-17T08:56:33+00:00",
+   "retrieved_at": "2026-10-18T06:08:04+00:00",
    "source_code": "apro_mt_pheadm"
   },
   {
@@ -126,7 +126,7 @@
    "first_period": "2005",
    "last_period": "2025",
    "publication_date": "2026-10-06",
-   "retrieved_at": "2026-10-17T08:56:37+00:00",
+   "retrieved_at": "2026-10-18T06:08:06+00:00",
    "source_code": "apro_mt_pann"
   },
   {
@@ -138,11 +138,11 @@
    "id": "trade_live_bovine_pt_es",
    "title_pt": "Bovinos vivos de Portugal para Espanha",
    "state": "ok",
-   "rows": 5386,
+   "rows": 6391,
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-16",
-   "retrieved_at": "2026-10-17T08:56:40+00:00",
+   "retrieved_at": "2026-10-18T06:09:12+00:00",
    "source_code": "DS-045409"
   },
   {
@@ -153,12 +153,12 @@
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-16",
-   "retrieved_at": "2026-10-17T08:57:19+00:00",
+   "retrieved_at": "2026-10-18T06:09:44+00:00",
    "source_code": "DS-045409"
   }
  ],
  "last_run": {
-  "finished_at": "2026-10-18T06:05:48+00:00",
+  "finished_at": "2026-10-18T06:09:47+00:00",
   "datasets": [
    {
     "dataset": "bovine_population",
@@ -185,7 +185,7 @@
    {
     "dataset": "trade_live_bovine_pt_es",
     "state": "ok",
-    "rows": 5386,
+    "rows": 6391,
     "last_period": "2026-08"
    },
    {

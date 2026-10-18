@@ -1,0 +1,37 @@
+{
+ "dataset": "bovine_population_regions",
+ "retrieved_at": "2026-10-18T06:08:07+00:00",
+ "requests": [
+  {
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ef_lsk_bovine?format=JSON&lang=en&sinceTimePeriod=2010&geo=PT11&geo=PT15&geo=PT16&geo=PT17&geo=PT18&geo=PT19&geo=PT1A&geo=PT1B&geo=PT1C&geo=PT1D&geo=PT20&geo=PT30&geo=ES11&geo=ES12&geo=ES13&geo=ES21&geo=ES22&geo=ES23&geo=ES24&geo=ES30&geo=ES41&geo=ES42&geo=ES43&geo=ES51&geo=ES52&geo=ES53&geo=ES61&geo=ES62&geo=ES63&geo=ES64&geo=ES70",
+   "status": 413,
+   "bytes": 142,
+   "error": "{ \"error\": [{\"status\": 413,\"id\": 413,\"label\": \"ASYNCHRONOUS_RESPONSE. Your request will be treated asynchronously. Please try again later.\"}]}"
+  }
+ ],
+ "used_code": null,
+ "attempts": [
+  {
+   "code": "agr_r_animal",
+   "requests": [
+    {
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/agr_r_animal?format=JSON&lang=en&sinceTimePeriod=2010&geo=PT11&geo=PT15&geo=PT16&geo=PT17&geo=PT18&geo=PT19&geo=PT1A&geo=PT1B&geo=PT1C&geo=PT1D&geo=PT20&geo=PT30&geo=ES11&geo=ES12&geo=ES13&geo=ES21&geo=ES22&geo=ES23&geo=ES24&geo=ES30&geo=ES41&geo=ES42&geo=ES43&geo=ES51&geo=ES52&geo=ES53&geo=ES61&geo=ES62&geo=ES63&geo=ES64&geo=ES70",
+     "status": 404,
+     "bytes": 136,
+     "error": "{ \"error\": [{\"status\": 404,\"id\": 100,\"label\": \"ERR_NOT_FOUND_4: AGR_R_ANIMAL (DATA_FLOW:ALL,1.0) is not available for dissemination.\"}]}"
+    }
+   ]
+  },
+  {
+   "code": "ef_lsk_main",
+   "requests": [
+    {
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ef_lsk_main?format=JSON&lang=en&sinceTimePeriod=2010&geo=PT11&geo=PT15&geo=PT16&geo=PT17&geo=PT18&geo=PT19&geo=PT1A&geo=PT1B&geo=PT1C&geo=PT1D&geo=PT20&geo=PT30&geo=ES11&geo=ES12&geo=ES13&geo=ES21&geo=ES22&geo=ES23&geo=ES24&geo=ES30&geo=ES41&geo=ES42&geo=ES43&geo=ES51&geo=ES52&geo=ES53&geo=ES61&geo=ES62&geo=ES63&geo=ES64&geo=ES70",
+     "status": 413,
+     "bytes": 216,
+     "error": "{ \"error\": [{\"status\": 413,\"id\": 413,\"label\": \"EXTRACTION_TOO_BIG: The requested extraction is too big, estimated 24105600 rows, max authorised is 5000000, please change your filters to reduce the extraction size\"}]}"
+    }
+   ]
+  }
+ ]
+}
