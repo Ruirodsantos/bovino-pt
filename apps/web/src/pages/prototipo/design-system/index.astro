@@ -1,0 +1,32 @@
+---
+import Proto from "../../../layouts/Proto.astro";
+const sw: [string, string, string][] = [["Verde profundo", "#183C32", "Fundos escuros pontuais, títulos, botões"], ["Verde natural", "#547D55", "Detalhes, estados ativos (só texto grande)"], ["Marfim luminoso", "#F8F7F2", "Fundo principal"], ["Branco", "#FFFFFF", "Cartões e painéis"], ["Dourado suave", "#C7A66A", "Realces e foco, nunca texto pequeno"], ["Carvão", "#242824", "Texto corrente"]];
+---
+<Proto title="Design system">
+  <section class="ghead"><div class="wrap">
+    <span class="eyebrow">Design system · protótipo</span>
+    <h1 style="font-size:clamp(3rem,8vw,6rem);margin:.15em 0 .3em">Luz, terra e fotografia.</h1>
+    <p class="lead">Um site claro e luminoso, onde a fotografia manda e o texto fica à distância de um clique.</p>
+  </div></section>
+  <section class="sec tight"><div class="wrap">
+    <h2 style="font-size:2.2rem;margin-bottom:var(--s3)">Paleta</h2>
+    <div class="swatches">{sw.map(([n, c, u]) => <div class="sw"><b style={`background:${c}`}></b><span><strong>{n}</strong><br />{c}<br /><small>{u}</small></span></div>)}</div>
+    <p class="srcs" style="margin-top:1em;color:var(--muted)">Contraste: texto carvão sobre marfim ≈ 14:1; verde profundo sobre marfim ≈ 11:1; marfim sobre verde profundo ≈ 11:1. O verde natural e o dourado não são usados em texto pequeno.</p>
+  </div></section>
+  <section class="sec tight soft"><div class="wrap">
+    <h2 style="font-size:2.2rem;margin-bottom:var(--s3)">Tipografia</h2>
+    <div class="split"><div><p class="eyebrow">Títulos · Instrument Serif</p><h2>Ramo Grande</h2><h3 style="margin-top:.5em">Subtítulo em serifa elegante</h3></div>
+    <div><p class="eyebrow">Texto · Lexend</p><p class="lead">Lexend foi desenhada para facilitar a leitura. Corpo a 17 px, entrelinha 1,65, linhas até cerca de 62 caracteres.</p><p>Texto corrente de exemplo, sem maiúsculas excessivas nem letra miúda.</p></div></div>
+  </div></section>
+  <section class="sec tight"><div class="wrap">
+    <h2 style="font-size:2.2rem;margin-bottom:var(--s3)">Componentes</h2>
+    <p><a class="btn" href="#">Botão principal</a> <a class="btn ghost" href="#" style="color:var(--green-deep)!important">Secundário</a> <span class="gap">Foto da raça por obter</span></p>
+    <details class="dive"><summary>Aprofundar: bloco expansível</summary><div class="body"><p>Três níveis de conhecimento: <strong>Descobrir</strong> (breve e visual), <strong>Explorar</strong> (explicações acessíveis) e <strong>Aprofundar</strong> (conteúdo completo com fontes). O conteúdo fechado continua no HTML e é indexável.</p></div></details>
+    <h3 style="margin:var(--s4) 0 var(--s2)">Regras de fotografia</h3>
+    <ul><li>Nunca fotografias de outra raça nem imagens geradas por IA.</li><li>Autor, licença e origem em cada imagem (sobre a foto ao passar o rato; sempre visível em ecrãs táteis).</li><li>Sem foto autorizada da raça: paisagem do território, com a etiqueta «foto da raça por obter».</li><li>Imagens WebP em três tamanhos, carregamento diferido (exceto a primeira dobra).</li></ul>
+    <h3 style="margin:var(--s4) 0 var(--s2)">Movimento</h3>
+    <ul><li>Aparecimento suave ao rolar e paralaxe subtil nas faixas fotográficas (CSS nativo, sem bibliotecas).</li><li>Tudo desativado com «reduzir movimento» ativo no sistema.</li></ul>
+    <h3 style="margin:var(--s4) 0 var(--s2)">Navegação e espaçamento</h3>
+    <ul><li>Início · As raças · A carne · Da pastagem ao prato · Aprender · Observatório. Menu discreto no ecrã grande; no telemóvel, painel que desce, com teclado (Esc fecha).</li><li>Escala de espaçamento 8 · 16 · 24 · 40 · 64 · 112 px; secções com respiração generosa.</li></ul>
+  </div></section>
+</Proto>

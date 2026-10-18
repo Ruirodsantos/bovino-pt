@@ -58,7 +58,6 @@ def images() -> None:
         report.append(f"OK   {iid} {w}x{h}")
     en_file = ROOT / "assets/images_en.yaml"
     if en_file.exists():
-        import yaml
         for k, v in (yaml.safe_load(en_file.read_text(encoding="utf-8")) or {}).items():
             if k in credits:
                 credits[k]["alt_en"], credits[k]["caption_en"] = v.get("alt"), v.get("caption")

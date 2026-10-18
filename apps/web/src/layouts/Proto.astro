@@ -1,0 +1,50 @@
+---
+import "../styles/proto.css";
+interface Props { title: string; description?: string; hero?: boolean }
+const { title, description = "Protótipo visual do Atlas do Bovino Português — em avaliação.", hero = false } = Astro.props;
+const b = import.meta.env.BASE_URL;
+const path = Astro.url.pathname;
+const nav: [string, string][] = [
+  ["prototipo/", "Início"], ["prototipo/racas/", "As raças"], ["carne/", "A carne"], ["da-pastagem-ao-prato/", "Da pastagem ao prato"], ["aprender/", "Aprender"], ["observatorio/", "Observatório"],
+];
+---
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} · Atlas do Bovino Português (protótipo)</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href={`${b}favicon.svg`} type="image/svg+xml" />
+</head>
+<body class="p">
+  <div class="proto-bar">Protótipo em avaliação · não publicado · «A carne», «Da pastagem ao prato», «Aprender» e «Observatório» abrem o site atual</div>
+  <a class="sr-only" href="#main">Saltar para o conteúdo</a>
+  <header class:list={["ph", !hero && "solid"]} id="ph" data-hero={hero}>
+    <div class="wrap bar">
+      <a class="brand" href={`${b}prototipo/`}>Atlas do Bovino Português</a>
+      <button class="burger" aria-expanded="false" aria-controls="nav">MENU</button>
+      <nav id="nav" aria-label="Principal">
+        {nav.map(([p, l]) => <a href={`${b}${p}`} aria-current={(p === "prototipo/" ? path === `${b}prototipo/` : path.startsWith(`${b}${p}`)) ? "page" : undefined}>{l}</a>)}
+      </nav>
+    </div>
+  </header>
+  <main id="main"><slot /></main>
+  <footer class="pf"><div class="wrap">
+    <p><strong>Atlas do Bovino Português</strong> — projeto independente de dados abertos. Cada número indica a fonte, o período e a data de verificação; nada é estimado.</p>
+    <p>Fotografias com autor, licença e origem indicados em cada imagem. Quando não há fotografia autorizada da raça, a imagem é identificada como paisagem e a lacuna é assinalada.</p>
+  </div></footer>
+  <script>
+    const ph = document.getElementById("ph")!;
+    const isHero = ph.dataset.hero === "true";
+    const upd = () => ph.classList.toggle("solid", !isHero || scrollY > window.innerHeight * 0.7);
+    upd(); addEventListener("scroll", upd, { passive: true });
+    const bt = ph.querySelector<HTMLButtonElement>(".burger")!;
+    bt.addEventListener("click", () => { const o = ph.classList.toggle("menu-open"); bt.setAttribute("aria-expanded", String(o)); bt.textContent = o ? "FECHAR" : "MENU"; });
+    ph.querySelectorAll("nav a").forEach((a) => a.addEventListener("click", () => ph.classList.remove("menu-open")));
+    addEventListener("keydown", (e) => { if (e.key === "Escape") ph.classList.remove("menu-open"); });
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>

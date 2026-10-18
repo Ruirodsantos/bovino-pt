@@ -1,0 +1,10 @@
+---
+import credits from "../../data/images.json";
+interface Props { id: string; sizes?: string; eager?: boolean; class?: string; credit?: boolean; pos?: string }
+const { id, sizes = "100vw", eager = false, class: cls, credit = false, pos } = Astro.props;
+const c = (credits as Record<string, any>)[id];
+const b = import.meta.env.BASE_URL;
+const s = (k: string) => `${b}img/${id}-${k}.webp`;
+---
+{c && <img class={cls} src={s("md")} srcset={`${s("sm")} 480w, ${s("md")} 900w, ${s("lg")} 1800w`} sizes={sizes} alt={c.alt} width={c.width} height={c.height} loading={eager ? "eager" : "lazy"} decoding="async" style={pos ? `object-position:${pos}` : undefined} />}
+{c && credit && <span class="cr">{c.caption} · Foto: <a href={c.source_page} rel="noopener">{c.author}</a> · {c.license}</span>}
