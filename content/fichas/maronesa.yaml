@@ -1,0 +1,82 @@
+intro: A «Serrana» das serras do Alvão e do Marão.
+facts:
+- label: Solar
+  value: Serra do Alvão e Serra do Marão
+- label: Efetivo
+  value: 3 879
+  note: '2019'
+sections:
+- id: historia
+  title: História
+  summary: Origem e percurso da raça, segundo o catálogo oficial.
+  blocks:
+  - title: A história
+    paras:
+    - A Maronesa é uma raça de montanha, primitiva e rústica. O nome oficial vem da serra do Marão, mas o catálogo diz que o nome mais certo seria Alvanesa, porque o seu verdadeiro solar é a serra do Alvão. Dentro da região chama-se «Serrana». Fora dela, em zonas de expansão, ficou conhecida por «Penato», por causa de Ribeira de Pena, centro de comércio, e por «gado carreiro», pela capacidade de trabalho.
+    - Em 1919 Bernardo Lima atribuiu a sua origem a um cruzamento de Barrosã com Mirandesa. Os estudos de genética molecular dos últimos anos apontam, segundo o catálogo, para uma ligação ao uro; o projeto não confirmou os estudos originais, pelo que a ligação fica como hipótese atribuída ao catálogo e não como facto assente. Quando a mecanização acabou com a procura de animais de trabalho, a aposta para salvar a raça foi a carne.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado do texto
+    paras:
+    - Texto original do projeto, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 42. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.
+- id: caracteristicas
+  title: Características
+  summary: Como se reconhece o animal.
+  blocks:
+  - title: Como se reconhece
+    paras:
+    - Cabeça curta e seca, de fronte larga. Os cornos saem na horizontal e depois viram para a frente e para baixo, com as pontas a subir. A cor de origem é preta com uma risca dorso-lombar avermelhada; hoje predominam as fêmeas castanhas.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Território
+  summary: O solar da raça e o efetivo registado.
+  blocks:
+  - title: Solar
+    paras:
+    - Serra do Alvão e Serra do Marão.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efetivo registado (2019)
+    paras:
+    - 3 733 fêmeas, 146 machos e 894 criadores, segundo o catálogo oficial (2019). Não são efetivos atuais.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Criação
+  summary: Como e onde se cria.
+  blocks:
+  - title: Como se cria
+    paras:
+    - 'Num sistema complexo, ligado ao relevo e às pequenas propriedades: semiestabulação e pastoreio nos animais adultos, estabulação permanente com alimentação à manjedoura nos jovens.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: A carne desta raça.
+  blocks:
+  - title: A carne
+    paras:
+    - A descrição da carne desta raça (cor, gordura, maturação, cortes) ainda não foi confirmada em fonte. Não a publicamos até haver referência.
+    status: em investigação
+- id: certificacao
+  title: Certificação
+  summary: Certificação e reconhecimentos.
+  blocks:
+  - title: Certificação
+    paras:
+    - 'Estado de DOP/IGP e outros reconhecimentos desta raça: por confirmar na lista oficial da DGADR e no eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Onde encontrar
+  summary: Onde encontrar.
+  blocks:
+  - title: Onde encontrar
+    paras:
+    - 'Pontos de venda, produtores e associação de criadores: por pesquisar. Não indicamos pontos de venda nem preços que não tenhamos verificado.'
+    status: em investigação

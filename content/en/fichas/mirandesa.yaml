@@ -1,0 +1,81 @@
+intro: The breed of Miranda do Douro and of the posta mirandesa.
+facts:
+- label: Homeland
+  value: Lands of Miranda
+- label: Herd
+  value: 4 797
+  note: '2019'
+sections:
+- id: historia
+  title: History
+  summary: Origin and path of the breed, according to the official catalogue.
+  blocks:
+  - title: The history
+    paras:
+    - 'The name comes from Miranda do Douro and the Terras de Miranda, the centre from which the breed spread. Its remote origin is debated: some derive it from wild cattle, others link it to a central European stock with a concave head, and others speak of a mixture. In the nineteenth and twentieth centuries three types were distinguished: the Mirandesa proper (municipalities of Miranda do Douro, Mogadouro and Vimioso), the Bragancesa, darker and a better milker (Bragança and Vinhais), and the Beiroa, paler (Beiras). Today even the Bragancesa''s darker coat is no longer seen. From the 1970s onwards, mechanisation and exotic breeds drove the Mirandesa back, until by the early 1990s it was found almost only in its homeland. Afterwards, the herd declined in the homeland and grew outside it, mainly in the Alentejo and the Beiras.'
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Status of the text
+    paras:
+    - Original projeto text, rewritten from the Official Catalogue of Portuguese Native Breeds (Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP, 2019), p. 54. No paragraph is copied from the catalogue. The facts have been checked against the catalogue; independent review (ChatGPT/specialist) is pending. All figures and conservation statuses are those of the 2019 catalogue, not current herd numbers; more recent official data is still to be found.
+- id: caracteristicas
+  title: Characteristics
+  summary: How to recognise the animal.
+  blocks:
+  - title: How to recognise it
+    paras:
+    - 'It is a large animal: cows weigh about 500 kg and bulls 900 kg. The coat is fair on the back and on the marrafa (forelock) and darkens to black at the extremities. Males are darker; calves are uniformly fair. The horns are whitish, darkened at the tip.'
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territory
+  summary: The breed’s homeland and registered herd.
+  blocks:
+  - title: Homeland
+    paras:
+    - Lands of Miranda (Miranda do Douro, Mogadouro, Vimioso).
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Registered herd (2019)
+    paras:
+    - 4 492 females, 305 males and 344 breeders, according to the official catalogue (2019). Not current herd numbers.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Rearing
+  summary: How and where it is raised.
+  blocks:
+  - title: How it is raised
+    paras:
+    - 'Two systems coexist: traditional semi-housing and the extensive system, which is the only one outside the homeland and is growing within it. In the extensive system, calves stay with their mothers at pasture until 5 to 7 months; they are then weaned and fattened on hay and cereals from the farm itself. The catalogue mentions the Protected Designation of Origin (PDO) «Carne Mirandesa», which will be confirmed in eAmbrosia.'
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Meat
+  summary: The meat of this breed.
+  blocks:
+  - title: The meat
+    paras:
+    - The description of this breed’s meat (colour, fat, ageing, cuts) has not yet been confirmed in a source. We do not publish it until there is a reference.
+    status: em investigação
+- id: certificacao
+  title: Certification
+  summary: Certification and recognitions.
+  blocks:
+  - title: Certification
+    paras:
+    - 'PDO/PGI status and other recognitions for this breed: to be confirmed in the official DGADR list and in eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Where to find it
+  summary: Where to find it.
+  blocks:
+  - title: Where to find it
+    paras:
+    - 'Points of sale, producers and breeders’ association: still to research. We do not list points of sale or prices we have not verified.'
+    status: em investigação

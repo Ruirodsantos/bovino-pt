@@ -1,0 +1,81 @@
+intro: O gado «charnequeiro» do Sul do Tejo, agora criado para carne.
+facts:
+- label: Solar
+  value: Sul do Tejo
+- label: Efetivo
+  value: 1 844
+  note: '2019'
+sections:
+- id: historia
+  title: História
+  summary: Origem e percurso da raça, segundo o catálogo oficial.
+  blocks:
+  - title: A história
+    paras:
+    - A partir de meados do século XIX registam-se bovinos pretos com nomes como «Gado Charnequeiro do Sul do Tejo» e «Gado da Terra». Eram sobretudo animais de tração, valorizados pela força e por tolerarem alimentação fraca e clima extremo, e pelo estrume, que fertilizava a terra; a carne contava pouco. Com a modernização agrícola, perderam a função, e nos anos 80 a entrada de raças exóticas reduziu ainda mais o efetivo, ao ponto de a raça ser considerada em vias de extinção. Sobreviveu graças a criadores que mantiveram núcleos de fêmeas puras para produzir cruzados.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado do texto
+    paras:
+    - Texto original do projeto, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 58. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.
+- id: caracteristicas
+  title: Características
+  summary: Como se reconhece o animal.
+  blocks:
+  - title: Como se reconhece
+    paras:
+    - 'Pelagem tendendo para o preto uniforme, por vezes parda ou tigrada. É um animal de grande corpulência: vacas de 400 a 600 kg e touros de 700 a 1000 kg. Os cornos são em gancho alto. Os machos têm um grande morrilho.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Território
+  summary: O solar da raça e o efetivo registado.
+  blocks:
+  - title: Solar
+    paras:
+    - Sul do Tejo — o antigo «Gado Charnequeiro do Sul do Tejo».
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efetivo registado (2019)
+    paras:
+    - 1 774 fêmeas, 70 machos e 30 criadores, segundo o catálogo oficial (2019). Não são efetivos atuais.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Criação
+  summary: Como e onde se cria.
+  blocks:
+  - title: Como se cria
+    paras:
+    - Hoje o objetivo é quase só a carne, em regime extensivo. Alimenta-se de pastos naturais, em geral sob coberto de montado, restolhos, bolota e produtos de desbaste do montado. Os criadores apontam a adaptação a zonas desfavorecidas como a principal vantagem.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: A carne desta raça.
+  blocks:
+  - title: A carne
+    paras:
+    - A descrição da carne desta raça (cor, gordura, maturação, cortes) ainda não foi confirmada em fonte. Não a publicamos até haver referência.
+    status: em investigação
+- id: certificacao
+  title: Certificação
+  summary: Certificação e reconhecimentos.
+  blocks:
+  - title: Certificação
+    paras:
+    - 'Estado de DOP/IGP e outros reconhecimentos desta raça: por confirmar na lista oficial da DGADR e no eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Onde encontrar
+  summary: Onde encontrar.
+  blocks:
+  - title: Onde encontrar
+    paras:
+    - 'Pontos de venda, produtores e associação de criadores: por pesquisar. Não indicamos pontos de venda nem preços que não tenhamos verificado.'
+    status: em investigação

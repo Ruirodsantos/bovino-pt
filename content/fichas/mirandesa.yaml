@@ -1,0 +1,81 @@
+intro: A raça de Miranda do Douro e da posta mirandesa.
+facts:
+- label: Solar
+  value: Terras de Miranda
+- label: Efetivo
+  value: 4 797
+  note: '2019'
+sections:
+- id: historia
+  title: História
+  summary: Origem e percurso da raça, segundo o catálogo oficial.
+  blocks:
+  - title: A história
+    paras:
+    - 'O nome vem de Miranda do Douro e das Terras de Miranda, o centro de onde a raça se espalhou. A origem remota discute-se: há quem a faça descender do bovino selvagem, quem a ligue a um tronco centro-europeu de cabeça côncava, e quem fale de uma mistura. Nos séculos XIX e XX distinguiram-se três tipos: a Mirandesa propriamente dita (concelhos de Miranda do Douro, Mogadouro e Vimioso), a Bragancesa, mais escura e leiteira (Bragança e Vinhais), e a Beiroa, mais clara (Beiras). Hoje já nem a pelagem mais escura da Bragancesa se vê. A partir da década de 1970, a mecanização e as raças exóticas fizeram a Mirandesa recuar, até ficar, no início dos anos 90, quase só no seu solar. Depois, o efetivo foi diminuindo no solar e crescendo fora dele, sobretudo no Alentejo e nas Beiras.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado do texto
+    paras:
+    - Texto original do projeto, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 54. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.
+- id: caracteristicas
+  title: Características
+  summary: Como se reconhece o animal.
+  blocks:
+  - title: Como se reconhece
+    paras:
+    - 'É um animal grande: as vacas pesam cerca de 500 kg e os touros 900 kg. O pelo é loiro no dorso e na marrafa e escurece até ao preto nas extremidades. Os machos são mais escuros; as crias, uniformemente loiras. Os cornos são esbranquiçados, escurecidos na ponta.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Território
+  summary: O solar da raça e o efetivo registado.
+  blocks:
+  - title: Solar
+    paras:
+    - Terras de Miranda (Miranda do Douro, Mogadouro, Vimioso).
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efetivo registado (2019)
+    paras:
+    - 4 492 fêmeas, 305 machos e 344 criadores, segundo o catálogo oficial (2019). Não são efetivos atuais.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Criação
+  summary: Como e onde se cria.
+  blocks:
+  - title: Como se cria
+    paras:
+    - 'Coexistem dois sistemas: a semiestabulação tradicional e o sistema extensivo, que é o único fora do solar e está a crescer dentro. No extensivo, os vitelos andam com as mães em pastoreio até aos 5 a 7 meses; depois são desmamados e engordados com fenos e cereais da própria exploração. O catálogo refere a Denominação de Origem Protegida «Carne Mirandesa», que será confirmada no eAmbrosia.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 54
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: A carne desta raça.
+  blocks:
+  - title: A carne
+    paras:
+    - A descrição da carne desta raça (cor, gordura, maturação, cortes) ainda não foi confirmada em fonte. Não a publicamos até haver referência.
+    status: em investigação
+- id: certificacao
+  title: Certificação
+  summary: Certificação e reconhecimentos.
+  blocks:
+  - title: Certificação
+    paras:
+    - 'Estado de DOP/IGP e outros reconhecimentos desta raça: por confirmar na lista oficial da DGADR e no eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Onde encontrar
+  summary: Onde encontrar.
+  blocks:
+  - title: Onde encontrar
+    paras:
+    - 'Pontos de venda, produtores e associação de criadores: por pesquisar. Não indicamos pontos de venda nem preços que não tenhamos verificado.'
+    status: em investigação

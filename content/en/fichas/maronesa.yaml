@@ -1,0 +1,82 @@
+intro: The «Serrana» of the Alvão and Marão mountains.
+facts:
+- label: Homeland
+  value: Serra do Alvão and Serra do Marão
+- label: Herd
+  value: 3 879
+  note: '2019'
+sections:
+- id: historia
+  title: History
+  summary: Origin and path of the breed, according to the official catalogue.
+  blocks:
+  - title: The history
+    paras:
+    - The Maronesa is a mountain breed, primitive and hardy. Its official name comes from the Serra do Marão, but the catalogue says that the more fitting name would be Alvanesa, because its true homeland is the Serra do Alvão. Within the region it is called «Serrana». Outside it, in areas of expansion, it became known as «Penato», because of Ribeira de Pena, a trading centre, and as «gado carreiro» (cart cattle), for its capacity for work.
+    - In 1919 Bernardo Lima attributed its origin to a cross between the Barrosã and the Mirandesa. Molecular genetics studies of recent years point, according to the catalogue, to a link with the aurochs (uro); the projeto has not confirmed the original studies, so the link stands as a hypothesis attributed to the catalogue and not as established fact. When mechanisation put an end to the demand for working animals, the bet to save the breed was meat.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Status of the text
+    paras:
+    - Original projeto text, rewritten from the Official Catalogue of Portuguese Native Breeds (Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP, 2019), p. 42. No paragraph is copied from the catalogue. The facts have been checked against the catalogue; independent review (ChatGPT/specialist) is pending. All figures and conservation statuses are those of the 2019 catalogue, not current herd numbers; more recent official data is still to be found.
+- id: caracteristicas
+  title: Characteristics
+  summary: How to recognise the animal.
+  blocks:
+  - title: How to recognise it
+    paras:
+    - A short, lean head with a broad forehead. The horns come out horizontally and then turn forwards and downwards, with the tips curving up. The original colour is black with a reddish stripe along the back and loins; today brown females predominate.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territory
+  summary: The breed’s homeland and registered herd.
+  blocks:
+  - title: Homeland
+    paras:
+    - Serra do Alvão and Serra do Marão.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Registered herd (2019)
+    paras:
+    - 3 733 females, 146 males and 894 breeders, according to the official catalogue (2019). Not current herd numbers.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Rearing
+  summary: How and where it is raised.
+  blocks:
+  - title: How it is raised
+    paras:
+    - 'In a complex system tied to the terrain and to small landholdings: semi-housing and grazing for adult animals, permanent housing with manger feeding for the young.'
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Meat
+  summary: The meat of this breed.
+  blocks:
+  - title: The meat
+    paras:
+    - The description of this breed’s meat (colour, fat, ageing, cuts) has not yet been confirmed in a source. We do not publish it until there is a reference.
+    status: em investigação
+- id: certificacao
+  title: Certification
+  summary: Certification and recognitions.
+  blocks:
+  - title: Certification
+    paras:
+    - 'PDO/PGI status and other recognitions for this breed: to be confirmed in the official DGADR list and in eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Where to find it
+  summary: Where to find it.
+  blocks:
+  - title: Where to find it
+    paras:
+    - 'Points of sale, producers and breeders’ association: still to research. We do not list points of sale or prices we have not verified.'
+    status: em investigação

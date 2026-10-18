@@ -1,0 +1,73 @@
+intro: 'A única raça portuguesa de tripla aptidão: carne, leite e trabalho.'
+facts:
+- label: Solar
+  value: Entre Douro e Minho
+- label: Efetivo
+  value: 6 076
+  note: '2019'
+sections:
+- id: historia
+  title: História
+  summary: Origem e percurso da raça, segundo o catálogo oficial.
+  blocks:
+  - title: A história
+    paras:
+    - Durante muito tempo chamou-se Minhota ou Galega. No início do registo zootécnico adotou-se o nome Galega, que durou até 2002 e ainda é comum entre os criadores. Para a distinguir da Rubia Gallega, a espanhola, o nome oficial passou a Minhota. O livro genealógico arrancou em 1997, e a partir de 2001 passou a produzir-se sémen de touros minhotos; em 2002 foi reconhecido o perigo de extinção e abriu-se a candidatura dos criadores às medidas agroambientais.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado do texto
+    paras:
+    - Texto original do projeto, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 50. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.
+- id: caracteristicas
+  title: Características
+  summary: Como se reconhece o animal.
+  blocks:
+  - title: Como se reconhece
+    paras:
+    - O pelo é flavo, do vermelho claro ao palha. Os cornos, de tamanho médio, saem quase na horizontal e dobram para trás e depois para a frente. É uma raça de corpulência média a grande, de silhueta retangular.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Território
+  summary: O solar da raça e o efetivo registado.
+  blocks:
+  - title: Solar
+    paras:
+    - Entre Douro e Minho.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efetivo registado (2019)
+    paras:
+    - 5 912 fêmeas, 164 machos e 1 721 criadores, segundo o catálogo oficial (2019). Não são efetivos atuais.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: A carne desta raça.
+  blocks:
+  - title: A carne
+    paras:
+    - 'O catálogo é aqui mais concreto do que para outras raças. O principal produto é a vitela, vendida em média aos 6,2 ± 1,15 meses; 52,5 % dos abates de animais Minhotos dão carcaças de categoria V (animais com menos de 8 meses), com peso médio de carcaça de 149,6 ± 31,41 kg. A produção de machos castrados, com grande tradição em algumas regiões, tem tendência a recuperar: os animais são castrados entre os 6 e os 8 meses, atingem grande desenvolvimento e abatem-se normalmente depois dos três anos. A carcaça tem excelente conformação e a carne é de elevada tenrura. O catálogo aponta a exportação para Espanha, que absorve grande parte da produção, como um dos motivos para a recuperação dos castrados. Estes valores são do catálogo (2019 ou anterior).'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: certificacao
+  title: Certificação
+  summary: Certificação e reconhecimentos.
+  blocks:
+  - title: Certificação
+    paras:
+    - 'Estado de DOP/IGP e outros reconhecimentos desta raça: por confirmar na lista oficial da DGADR e no eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Onde encontrar
+  summary: Onde encontrar.
+  blocks:
+  - title: Onde encontrar
+    paras:
+    - 'Pontos de venda, produtores e associação de criadores: por pesquisar. Não indicamos pontos de venda nem preços que não tenhamos verificado.'
+    status: em investigação

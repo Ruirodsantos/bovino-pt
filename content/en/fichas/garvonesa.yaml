@@ -1,0 +1,88 @@
+intro: The «farruscos» of the Alentejo coast and the south-west.
+facts:
+- label: Homeland
+  value: Baixo Alentejo
+- label: Herd
+  value: '607'
+  note: '2019'
+sections:
+- id: historia
+  title: History
+  summary: Origin and path of the breed, according to the official catalogue.
+  blocks:
+  - title: The history
+    paras:
+    - The Garvonesa comes from the transition zones between the plains of the Alentejo and the hills of the Algarve. The name comes from the Garvão fair. It was known as «gado chamusco» or «farrusco», because of its dark coat with its characteristic distribution. It was valued for its hardiness and good temperament in fieldwork, and when mechanisation arrived it was gradually replaced by breeds that produced more meat. It came close to extinction.
+    - Since 1994, the Associação de Agricultores do Campo Branco and the Parque Natural do Sudoeste Alentejano e Costa Vicentina have worked on its conservation, and the herd has been growing slowly.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Today
+    paras:
+    - The herds are mainly in Santiago do Cacém, Odemira, Ourique, Castro Verde, Almodôvar, Barrancos, Vila Nova de São Bento and Alcáçovas. The catalogue says the number of animals is still insufficient to launch an improvement programme, and that the breed remains among the severely threatened.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Status of the text
+    paras:
+    - Original projeto text, rewritten from the Official Catalogue of Portuguese Native Breeds (Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP, 2019), p. 30. No paragraph is copied from the catalogue. The facts have been checked against the catalogue; independent review (ChatGPT/specialist) is pending. All figures and conservation statuses are those of the 2019 catalogue, not current herd numbers; more recent official data is still to be found.
+- id: caracteristicas
+  title: Characteristics
+  summary: How to recognise the animal.
+  blocks:
+  - title: How to recognise it
+    paras:
+    - In females, a reddish-brown coat, with black muzzle, withers and extremities and a lighter back. In males, black predominates. The horns are white, darkened at the tips.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territory
+  summary: The breed’s homeland and registered herd.
+  blocks:
+  - title: Homeland
+    paras:
+    - Baixo Alentejo — Santiago do Cacém, Odemira, Ourique, Castro Verde….
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Registered herd (2019)
+    paras:
+    - 585 females, 22 males and 16 breeders, according to the official catalogue (2019). Not current herd numbers.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Rearing
+  summary: How and where it is raised.
+  blocks:
+  - title: How it is raised
+    paras:
+    - In an extensive system, grazing on natural resources. Most breeders also use sown pastures, and hay, cereals and concentrates when pasture runs short.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Meat
+  summary: The meat of this breed.
+  blocks:
+  - title: The meat
+    paras:
+    - The description of this breed’s meat (colour, fat, ageing, cuts) has not yet been confirmed in a source. We do not publish it until there is a reference.
+    status: em investigação
+- id: certificacao
+  title: Certification
+  summary: Certification and recognitions.
+  blocks:
+  - title: Certification
+    paras:
+    - 'PDO/PGI status and other recognitions for this breed: to be confirmed in the official DGADR list and in eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Where to find it
+  summary: Where to find it.
+  blocks:
+  - title: Where to find it
+    paras:
+    - 'Points of sale, producers and breeders’ association: still to research. We do not list points of sale or prices we have not verified.'
+    status: em investigação

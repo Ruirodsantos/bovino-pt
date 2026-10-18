@@ -1,0 +1,87 @@
+intro: The breed of the slopes between the Vouga and the Douro.
+facts:
+- label: Homeland
+  value: Mountain slopes between the Vouga and Douro valleys
+- label: Herd
+  value: 3 814
+  note: '2019'
+sections:
+- id: historia
+  title: History
+  summary: Origin and path of the breed, according to the official catalogue.
+  blocks:
+  - title: The history
+    paras:
+    - 'The Arouquesa is a mountain breed. It has never strayed far from the territory where it originated: the slopes between the Vouga valley and the Douro. The name may come from the aurochs, the wild ancestor of cattle, now extinct, or from the town of Arouca; authors differ. In the past, local varieties were recognised, with names such as Sulanos (S. Pedro do Sul), Paivotos (river Paiva), Caramuleiros (Serra do Caramulo) and Canaveses (Marco de Canaveses and Baião).'
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Today
+    paras:
+    - The municipalities with the most animals are Cinfães, Castro Daire, S. Pedro do Sul, Arouca, Vale de Cambra, Resende and Castelo de Paiva, south of the Douro, and Baião, Amarante and Marco de Canaveses, to the north.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Status of the text
+    paras:
+    - Original projeto text, rewritten from the Official Catalogue of Portuguese Native Breeds (Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP, 2019), p. 14. No paragraph is copied from the catalogue. The facts have been checked against the catalogue; independent review (ChatGPT/specialist) is pending. All figures and conservation statuses are those of the 2019 catalogue, not current herd numbers; more recent official data is still to be found.
+- id: caracteristicas
+  title: Characteristics
+  summary: How to recognise the animal.
+  blocks:
+  - title: How to recognise it
+    paras:
+    - It is a small to medium-sized breed, with rounded forms and a docile but lively expression. The coat is brown, from straw to cherry-red, darker around the eyes and ears. The horns are shaped like a low lyre, pale for most of their length with dark tips.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territory
+  summary: The breed’s homeland and registered herd.
+  blocks:
+  - title: Homeland
+    paras:
+    - Mountain slopes between the Vouga and Douro valleys (Arouca, Cinfães, Castro Daire…).
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Registered herd (2019)
+    paras:
+    - 3 680 females, 134 males and 3 315 breeders, according to the official catalogue (2019). Not current herd numbers.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Rearing
+  summary: How and where it is raised.
+  blocks:
+  - title: How it is raised
+    paras:
+    - 'It lives on the poor mountain pastures and on shoots of gorse, carqueja, broom and oak. Systems vary: grazing on common land (rare today), permanent housing, housing only in winter, or a semi-extensive regime in which the animals only sleep in the byre. The catalogue highlights three aptitudes: meat, work and milk.'
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Meat
+  summary: The meat of this breed.
+  blocks:
+  - title: The meat
+    paras:
+    - The description of this breed’s meat (colour, fat, ageing, cuts) has not yet been confirmed in a source. We do not publish it until there is a reference.
+    status: em investigação
+- id: certificacao
+  title: Certification
+  summary: Certification and recognitions.
+  blocks:
+  - title: Certification
+    paras:
+    - 'PDO/PGI status and other recognitions for this breed: to be confirmed in the official DGADR list and in eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Where to find it
+  summary: Where to find it.
+  blocks:
+  - title: Where to find it
+    paras:
+    - 'Points of sale, producers and breeders’ association: still to research. We do not list points of sale or prices we have not verified.'
+    status: em investigação

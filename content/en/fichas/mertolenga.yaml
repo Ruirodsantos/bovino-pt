@@ -1,0 +1,81 @@
+intro: The lead ox that became a breed.
+facts:
+- label: Homeland
+  value: Baixo Alentejo
+- label: Herd
+  value: 8 565
+  note: '2019'
+sections:
+- id: historia
+  title: History
+  summary: Origin and path of the breed, according to the official catalogue.
+  blocks:
+  - title: The history
+    paras:
+    - 'The Mertolenga comes from the Baixo Alentejo, from the lands of Mértola, Alcoutim and Martim Longo. It was known as the «boi de cabresto» (halter ox): the tame animal that accompanied the fighting cattle in the Ribatejo. Around 1900, when the border was opened to livestock from the two Iberian countries, spotted cattle came from Spain, with a reputation for hardiness. In the first decades of the twentieth century, the rice-growing areas of the Tejo, the Sado and the Sorraia needed an energetic animal that the other breeds did not supply, and the red bragado type emerged, linked to Coruche. The blending of several lines, with a roan type («mil-flores»), consolidated the breed, and the Herdade da Abóboda served as the site of standardisation.'
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Status of the text
+    paras:
+    - Original projeto text, rewritten from the Official Catalogue of Portuguese Native Breeds (Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP, 2019), p. 46. No paragraph is copied from the catalogue. The facts have been checked against the catalogue; independent review (ChatGPT/specialist) is pending. All figures and conservation statuses are those of the 2019 catalogue, not current herd numbers; more recent official data is still to be found.
+- id: caracteristicas
+  title: Characteristics
+  summary: How to recognise the animal.
+  blocks:
+  - title: How to recognise it
+    paras:
+    - The coat may be red, roan, spotted red or red-spotted. The horns are fine, white, dark-tipped, hooked or in a low lyre. It is a medium-sized animal with a fine skeleton and a nervous temperament.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territory
+  summary: The breed’s homeland and registered herd.
+  blocks:
+  - title: Homeland
+    paras:
+    - Baixo Alentejo — lands of Mértola, Alcoutim and Martinlongo.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Registered herd (2019)
+    paras:
+    - 8 358 females, 207 males and 216 breeders, according to the official catalogue (2019). Not current herd numbers.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Rearing
+  summary: How and where it is raised.
+  blocks:
+  - title: How it is raised
+    paras:
+    - The catalogue highlights its hardiness, ease of calving, productive longevity and good maternal ability, which makes it a good mother for maternal lines.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Meat
+  summary: The meat of this breed.
+  blocks:
+  - title: The meat
+    paras:
+    - The description of this breed’s meat (colour, fat, ageing, cuts) has not yet been confirmed in a source. We do not publish it until there is a reference.
+    status: em investigação
+- id: certificacao
+  title: Certification
+  summary: Certification and recognitions.
+  blocks:
+  - title: Certification
+    paras:
+    - 'PDO/PGI status and other recognitions for this breed: to be confirmed in the official DGADR list and in eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Where to find it
+  summary: Where to find it.
+  blocks:
+  - title: Where to find it
+    paras:
+    - 'Points of sale, producers and breeders’ association: still to research. We do not list points of sale or prices we have not verified.'
+    status: em investigação

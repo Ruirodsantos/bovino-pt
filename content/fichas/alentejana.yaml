@@ -1,0 +1,87 @@
+intro: Uma raça moldada pelo calor e pela pobreza das pastagens do Sul.
+facts:
+- label: Solar
+  value: Alentejo
+- label: Efetivo
+  value: 8 562
+  note: '2019'
+sections:
+- id: historia
+  title: História
+  summary: Origem e percurso da raça, segundo o catálogo oficial.
+  blocks:
+  - title: A história
+    paras:
+    - 'A Alentejana é a raça do sul continental por excelência. Durante muito tempo foi, acima de tudo, animal de trabalho: puxava arados e carros numa agricultura que dependia da força dos bois. Com a mecanização e o crescimento da procura de carne, a segunda metade do século XX trouxe a tentação de a substituir ou cruzar com raças estrangeiras, numa corrida por animais de crescimento mais rápido. A raça resistiu, e hoje é criada sobretudo para carne.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoje
+    paras:
+    - Segundo os dados de 2019 do catálogo, é a raça bovina autóctone com mais fêmeas inscritas no livro genealógico (8362, contra 8358 da Mertolenga, uma diferença mínima), e a que tem uma presença mais forte nos distritos de Portalegre, Évora e Beja.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado do texto
+    paras:
+    - Texto original do projeto, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 6. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.
+- id: caracteristicas
+  title: Características
+  summary: Como se reconhece o animal.
+  blocks:
+  - title: Como se reconhece
+    paras:
+    - 'O pelo é vermelho, de um tom escuro (retinto) a um mais claro (trigueiro), sem pelos brancos ou pretos misturados. O sinal mais característico é a barbela, a prega de pele sob o pescoço, com várias dobras. Segundo o catálogo, é uma adaptação ao calor: aumenta a superfície por onde o animal se refresca. Os cornos são de um branco sujo, com as pontas quase pretas.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Território
+  summary: O solar da raça e o efetivo registado.
+  blocks:
+  - title: Solar
+    paras:
+    - Alentejo — sobretudo distritos de Portalegre, Évora e Beja.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efetivo registado (2019)
+    paras:
+    - 8 362 fêmeas, 200 machos e 133 criadores, segundo o catálogo oficial (2019). Não são efetivos atuais.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Criação
+  summary: Como e onde se cria.
+  blocks:
+  - title: Como se cria
+    paras:
+    - O solar é o Alentejo, com um clima continental de grandes amplitudes térmicas, pouca chuva concentrada no inverno e verões longos e secos. As pastagens pobres levaram a raça a desenvolver um aparelho digestivo volumoso e um esqueleto robusto. O catálogo nota que, desde que passou a ser criada só para carne, a conformação, antes muito desequilibrada para a frente, tem melhorado.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: A carne desta raça.
+  blocks:
+  - title: A carne
+    paras:
+    - A descrição da carne desta raça (cor, gordura, maturação, cortes) ainda não foi confirmada em fonte. Não a publicamos até haver referência.
+    status: em investigação
+- id: certificacao
+  title: Certificação
+  summary: Certificação e reconhecimentos.
+  blocks:
+  - title: Certificação
+    paras:
+    - 'Estado de DOP/IGP e outros reconhecimentos desta raça: por confirmar na lista oficial da DGADR e no eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Onde encontrar
+  summary: Onde encontrar.
+  blocks:
+  - title: Onde encontrar
+    paras:
+    - 'Pontos de venda, produtores e associação de criadores: por pesquisar. Não indicamos pontos de venda nem preços que não tenhamos verificado.'
+    status: em investigação

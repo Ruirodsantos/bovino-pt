@@ -1,0 +1,87 @@
+intro: A raça que se julgou extinta e que os criadores da Guarda levantaram.
+facts:
+- label: Solar
+  value: Antigo concelho do Jarmelo
+- label: Efetivo
+  value: '218'
+  note: '2019'
+sections:
+- id: historia
+  title: História
+  summary: Origem e percurso da raça, segundo o catálogo oficial.
+  blocks:
+  - title: A história
+    paras:
+    - Em 1870, o arrolamento do gado descrevia a raça Jarmelista, concentrada no antigo concelho de Jarmelo (hoje parte da Guarda), como a melhor do distrito, talvez do país. Depois, em cerca de cinquenta anos, sofreu um declínio tão grande que em 1954 um autor a dava por extinta. O que a salvou foi a persistência das gentes da região e da associação de criadores (Acriguarda), que identificaram os animais com as características da raça. Em 2006, um estudo com 185 caracteres morfológicos nas fêmeas e 170 nos machos mostrou que formam um grupo distinto e independente de todas as outras raças autóctones.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoje
+    paras:
+    - O livro genealógico regista 25 machos e 193 fêmeas em 25 criadores (2019).
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado do texto
+    paras:
+    - Texto original do projeto, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.
+- id: caracteristicas
+  title: Características
+  summary: Como se reconhece o animal.
+  blocks:
+  - title: Como se reconhece
+    paras:
+    - É um bovino comprido, de estatura grande e esqueleto fino, de pelo amarelo claro com as extremidades mais escuras. Os machos costumam ser mais escuros. Os cornos são médios, claros e de ponta escura. As pernas são altas.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Território
+  summary: O solar da raça e o efetivo registado.
+  blocks:
+  - title: Solar
+    paras:
+    - Antigo concelho do Jarmelo, hoje Guarda.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efetivo registado (2019)
+    paras:
+    - 193 fêmeas, 25 machos e 25 criadores, segundo o catálogo oficial (2019). Não são efetivos atuais.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Criação
+  summary: Como e onde se cria.
+  blocks:
+  - title: Como se cria
+    paras:
+    - Em regime extensivo, em montanha, com pastagens de altitude, grandes amplitudes térmicas e muitas explorações pequenas com poucos animais. É muito rústica e dócil, e resiste melhor do que outras raças criadas no mesmo sistema, segundo o catálogo.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: A carne desta raça.
+  blocks:
+  - title: A carne
+    paras:
+    - A descrição da carne desta raça (cor, gordura, maturação, cortes) ainda não foi confirmada em fonte. Não a publicamos até haver referência.
+    status: em investigação
+- id: certificacao
+  title: Certificação
+  summary: Certificação e reconhecimentos.
+  blocks:
+  - title: Certificação
+    paras:
+    - 'Estado de DOP/IGP e outros reconhecimentos desta raça: por confirmar na lista oficial da DGADR e no eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Onde encontrar
+  summary: Onde encontrar.
+  blocks:
+  - title: Onde encontrar
+    paras:
+    - 'Pontos de venda, produtores e associação de criadores: por pesquisar. Não indicamos pontos de venda nem preços que não tenhamos verificado.'
+    status: em investigação

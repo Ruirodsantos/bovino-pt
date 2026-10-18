@@ -1,0 +1,73 @@
+intro: 'The only Portuguese breed with triple aptitude: meat, milk and work.'
+facts:
+- label: Homeland
+  value: Entre Douro e Minho
+- label: Herd
+  value: 6 076
+  note: '2019'
+sections:
+- id: historia
+  title: History
+  summary: Origin and path of the breed, according to the official catalogue.
+  blocks:
+  - title: The history
+    paras:
+    - For a long time it was called Minhota or Galega. At the start of zootechnical registration the name Galega was adopted; it lasted until 2002 and is still common among breeders. To distinguish it from the Spanish Rubia Gallega, the official name became Minhota. The herd book began in 1997, and from 2001 semen from Minhota bulls began to be produced; in 2002 the danger of extinction was recognised and breeders were able to apply for agri-environmental measures.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Status of the text
+    paras:
+    - Original projeto text, rewritten from the Official Catalogue of Portuguese Native Breeds (Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP, 2019), p. 50. No paragraph is copied from the catalogue. The facts have been checked against the catalogue; independent review (ChatGPT/specialist) is pending. All figures and conservation statuses are those of the 2019 catalogue, not current herd numbers; more recent official data is still to be found.
+- id: caracteristicas
+  title: Characteristics
+  summary: How to recognise the animal.
+  blocks:
+  - title: How to recognise it
+    paras:
+    - The coat is fawn (flavo), from light red to straw. The horns, of medium size, come out almost horizontally and bend backwards and then forwards. It is a breed of medium to large build, with a rectangular silhouette.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territory
+  summary: The breed’s homeland and registered herd.
+  blocks:
+  - title: Homeland
+    paras:
+    - Entre Douro e Minho.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Registered herd (2019)
+    paras:
+    - 5 912 females, 164 males and 1 721 breeders, according to the official catalogue (2019). Not current herd numbers.
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Meat
+  summary: The meat of this breed.
+  blocks:
+  - title: The meat
+    paras:
+    - 'Here the catalogue is more concrete than for other breeds. The main product is veal, sold on average at 6.2 ± 1.15 months; 52.5% of slaughtered Minhota animals yield category V carcasses (animals under 8 months), with an average carcass weight of 149.6 ± 31.41 kg. The production of castrated males, long traditional in some regions, tends to be recovering: the animals are castrated between 6 and 8 months, reach great size and are normally slaughtered after three years of age. The carcass has excellent conformation and the meat is highly tender. The catalogue points to exports to Spain, which absorbs a large part of production, as one of the reasons for the recovery of castrated males. These values are from the catalogue (2019 or earlier).'
+    sources:
+    - label: Official Catalogue of Portuguese Native Breeds (DGAV/CAP, 2019), p. 50
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: certificacao
+  title: Certification
+  summary: Certification and recognitions.
+  blocks:
+  - title: Certification
+    paras:
+    - 'PDO/PGI status and other recognitions for this breed: to be confirmed in the official DGADR list and in eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Where to find it
+  summary: Where to find it.
+  blocks:
+  - title: Where to find it
+    paras:
+    - 'Points of sale, producers and breeders’ association: still to research. We do not list points of sale or prices we have not verified.'
+    status: em investigação

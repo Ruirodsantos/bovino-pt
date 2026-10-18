@@ -1,0 +1,87 @@
+intro: Um dos bovinos mais pequenos do mundo, na serra da Peneda-Gerês.
+facts:
+- label: Solar
+  value: Parque Nacional da Peneda-Gerês
+- label: Efetivo
+  value: 6 126
+  note: '2019'
+sections:
+- id: historia
+  title: História
+  summary: Origem e percurso da raça, segundo o catálogo oficial.
+  blocks:
+  - title: A história
+    paras:
+    - 'A Cachena viveu durante séculos isolada na alta montanha, em efetivos pequenos, e só ganhou um nome na literatura oficial em 1981, numa monografia sobre os bovinos portugueses. Terá evoluído dos mesmos animais que deram origem à Barrosã, mas selecionados pelo frio e pela escassez: só sobreviviam os mais rústicos, capazes de passar invernos duros na serra sem ajuda humana. O registo zootécnico começou em 1994 e o livro genealógico, que a reconheceu como raça autóctone, em 1998. Em 2010 o efetivo mal passava as 2500 fêmeas e os 140 machos.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoje
+    paras:
+    - O catálogo considera-a em risco de extinção. Os animais estão distribuídos por 10 distritos e 26 concelhos, com predomínio de Viana do Castelo (Arcos de Valdevez é o centro), mas também com um efetivo numeroso no Sul (Beja e Évora).
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado do texto
+    paras:
+    - Texto original do projeto, reescrito a partir do Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 26. Nenhum parágrafo é cópia do catálogo. Os factos foram conferidos com o catálogo; a revisão independente (ChatGPT/especialista) está pendente. Todos os números e estados de conservação são os do catálogo de 2019, não efetivos atuais; dados oficiais mais recentes por procurar.
+- id: caracteristicas
+  title: Características
+  summary: Como se reconhece o animal.
+  blocks:
+  - title: Como se reconhece
+    paras:
+    - 'É pequena: a altura ao garrote pode ficar abaixo de 1,10 m. Os cornos de secção redonda crescem para cima e para os lados como um parafuso, ao contrário da lira da Barrosã. A cabeça é comprida e de perfil reto. O pelo é castanho-claro, e no inverno cobre-se de pelagem grossa.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Território
+  summary: O solar da raça e o efetivo registado.
+  blocks:
+  - title: Solar
+    paras:
+    - Parque Nacional da Peneda-Gerês (Arcos de Valdevez).
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efetivo registado (2019)
+    paras:
+    - 5 869 fêmeas, 257 machos e 662 criadores, segundo o catálogo oficial (2019). Não são efetivos atuais.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Criação
+  summary: Como e onde se cria.
+  blocks:
+  - title: Como se cria
+    paras:
+    - É uma raça de alta montanha, de temperamento bravio e com forte instinto maternal. O solar fica no Parque Nacional da Peneda-Gerês, entre Castro Laboreiro e a serra da Mourela.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: A carne desta raça.
+  blocks:
+  - title: A carne
+    paras:
+    - A descrição da carne desta raça (cor, gordura, maturação, cortes) ainda não foi confirmada em fonte. Não a publicamos até haver referência.
+    status: em investigação
+- id: certificacao
+  title: Certificação
+  summary: Certificação e reconhecimentos.
+  blocks:
+  - title: Certificação
+    paras:
+    - 'Estado de DOP/IGP e outros reconhecimentos desta raça: por confirmar na lista oficial da DGADR e no eAmbrosia.'
+    status: em investigação
+- id: onde
+  title: Onde encontrar
+  summary: Onde encontrar.
+  blocks:
+  - title: Onde encontrar
+    paras:
+    - 'Pontos de venda, produtores e associação de criadores: por pesquisar. Não indicamos pontos de venda nem preços que não tenhamos verificado.'
+    status: em investigação
