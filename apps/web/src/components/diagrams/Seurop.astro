@@ -11,10 +11,10 @@ const conf = ["S", "E", "U", "R", "O", "P"], fat = [1, 2, 3, 4, 5];
     {fat.map((f) => <div class="h">{f}</div>)}
     {conf.map((c) => (<>
       <div class="h">{c}</div>
-      {fat.map((f) => <div class:list={["c", f === 1 && "no", c !== "P" && f > 1 && "ok"]}>{c}{f}</div>)}
+      {fat.map((f) => <div class:list={["c", ]}>{c}{f}</div>)}
     </>))}
   </div>
-  <figcaption>{T("Classificação europeia SEUROP: conformação da carcaça (S, a melhor, a P, a mais pobre) e cobertura de gordura (1 a 5). A cor mostra, a título de exemplo, o que a Carne Ramo Grande DOP aceita: conformação S, E, U, R e O e gordura de classe 2 em diante (a classe 1 não é admitida), segundo o caderno de especificações.", "European SEUROP grading: carcass conformation (S, best, to P, poorest) and fat cover (1 to 5). Colour shows, as an example, what Carne Ramo Grande PDO accepts: conformation S, E, U, R and O and fat class 2 upwards (class 1 is not admitted), according to the product specification.")}</figcaption>
+  <figcaption>{T("Classificação europeia SEUROP: conformação da carcaça (S, a melhor, a P, a mais pobre) e cobertura de gordura (1 a 5). Algumas denominações de origem restringem as classes aceites; consulte sempre o caderno de especificações de cada produto.", "European SEUROP grading: carcass conformation (S, best, to P, poorest) and fat cover (1 to 5). Some designations of origin restrict the accepted classes; always check the specification document of each product.")}</figcaption>
 </figure>
 <style>
   .sg { margin: 1.5rem 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
