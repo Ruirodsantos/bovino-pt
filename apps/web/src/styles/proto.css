@@ -158,3 +158,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .sw{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff}.sw b{display:block;height:90px}.sw span{display:block;padding:10px 12px;font-size:.82rem}
 
 .p .tile{color:#fff}.p .strip a{color:var(--char)}
+.rgrid>*,.split>*{min-width:0}
+.facts4{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+@media(max-width:600px){.facts4{grid-template-columns:1fr 1fr}.proto-bar{font-size:.66rem;padding:4px 10px;bottom:8px}}
