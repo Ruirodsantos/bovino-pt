@@ -1,6 +1,6 @@
 {
  "dataset": "trade_live_bovine_pt_es",
- "retrieved_at": "2026-10-18T09:40:03+00:00",
+ "retrieved_at": "2026-10-18T11:42:59+00:00",
  "requests": [
   {
    "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=0102&flow=2&freq=M",
