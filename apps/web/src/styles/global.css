@@ -1,6 +1,4 @@
-@import "@fontsource-variable/fraunces/opsz.css";
-@import "@fontsource/public-sans/400.css";
-@import "@fontsource/public-sans/600.css";
+@import "@fontsource-variable/lexend";
 @import "@fontsource/ibm-plex-mono/400.css";
 
 :root {
@@ -16,8 +14,8 @@
   --cork-soft: #efe4d2;
   --ok: #4f6b3a;
   --warn: #9a6a12;
-  --display: "Fraunces Variable", Georgia, serif;
-  --sans: "Public Sans", system-ui, sans-serif;
+  --display: "Lexend Variable", system-ui, sans-serif;
+  --sans: "Lexend Variable", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --radius: 14px;
   --max: 1180px;
@@ -38,12 +36,12 @@
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--sans); }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.7 var(--sans); }
 img, svg { max-width: 100%; }
 a { color: var(--accent); text-underline-offset: 3px; }
-h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 .5em; }
-h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); font-variation-settings: "opsz" 144; }
-h2 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-variation-settings: "opsz" 96; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 .5em; }
+h1 { font-size: clamp(2.1rem, 5.4vw, 3.8rem); }
+h2 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); }
 h3 { font-size: 1.25rem; }
 p { margin: 0 0 1em; max-width: 68ch; }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }

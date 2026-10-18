@@ -28,12 +28,12 @@ function theme() {
 function axisStyle(t: ReturnType<typeof theme>) {
   return {
     axisLine: { lineStyle: { color: t.line } }, axisTick: { show: false },
-    axisLabel: { color: t.muted, fontFamily: "Public Sans" }, splitLine: { lineStyle: { color: t.line, type: "dashed" as const } },
+    axisLabel: { color: t.muted, fontFamily: "Lexend Variable" }, splitLine: { lineStyle: { color: t.line, type: "dashed" as const } },
   };
 }
 function baseOpt(t: ReturnType<typeof theme>) {
   return {
-    textStyle: { fontFamily: "Public Sans", color: t.ink },
+    textStyle: { fontFamily: "Lexend Variable", color: t.ink },
     grid: { left: 8, right: 16, top: 40, bottom: 8, containLabel: true },
     tooltip: { trigger: "axis" as const, backgroundColor: t.surface, borderColor: t.line, textStyle: { color: t.ink } },
     legend: { top: 0, left: 0, textStyle: { color: t.muted }, icon: "roundRect" },
@@ -241,7 +241,7 @@ async function breedsMap(el: HTMLElement) {
       itemStyle: { color: b.slug === current ? t.ink : t.accent },
       label: { position: b.lon > -6.6 && b.lon < -6 ? "left" : "right" } })),
     itemStyle: { color: t.accent, borderColor: "#fff", borderWidth: 2, shadowBlur: 6, shadowColor: "rgba(0,0,0,.25)" },
-    label: { show: !small(), formatter: (p: any) => p.name, position: "right", color: t.ink, fontWeight: 600, fontFamily: "Public Sans", fontSize: 12,
+    label: { show: !small(), formatter: (p: any) => p.name, position: "right", color: t.ink, fontWeight: 600, fontFamily: "Lexend Variable", fontSize: 12,
       textBorderColor: css("--paper"), textBorderWidth: 3 },
     labelLayout: { hideOverlap: true }, emphasis: { scale: 1.25 },
   });
@@ -262,8 +262,8 @@ async function breedsMap(el: HTMLElement) {
       ],
       series: [serie(0, 0), serie(1, 1), serie(2, 2)],
       graphic: [
-        { type: "text", ...L.t1, style: { text: T("Açores", "Azores"), fill: t.muted, font: "600 12px Public Sans" } },
-        { type: "text", ...L.t2, style: { text: "Madeira", fill: t.muted, font: "600 12px Public Sans" } },
+        { type: "text", ...L.t1, style: { text: T("Açores", "Azores"), fill: t.muted, font: "600 12px Lexend Variable" } },
+        { type: "text", ...L.t2, style: { text: "Madeira", fill: t.muted, font: "600 12px Lexend Variable" } },
       ],
     }, true);
   }
