@@ -37,6 +37,12 @@ const sec: Record<string, any> = ficha ? Object.fromEntries(ficha.sections.map((
 const NAV: Record<string, string> = lang === "en"
   ? { historia: "History", territorio: "Territory", caracteristicas: "Characteristics", criacao: "Rearing", carne: "Meat", certificacao: "Certification", onde: "Where to find it", curiosidades: "Curiosities" }
   : { historia: "História", territorio: "Território", caracteristicas: "Características", criacao: "Criação", carne: "Carne", certificacao: "Certificação", onde: "Onde encontrar", curiosidades: "Curiosidades" };
+const SECFIG: Record<string, string> = { historia: "acores-sao-jorge", criacao: "acores-pico-lagoa", certificacao: "bife-prato", onde: "carne-variedade", curiosidades: "acores-corvo" };
+const MORE: Record<string, { l: string; u: string }[]> = {
+  historia: [{ l: "Catálogo de raças autóctones (DGAV/CAP)", u: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf" }],
+  criacao: [{ l: "Caderno de especificações (DGADR)", u: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }],
+  certificacao: [{ l: "Carne Ramo Grande DOP (DGADR)", u: "https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" }, { l: "Caderno de especificações (PDF)", u: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }],
+};
 const order = ["historia", "territorio", "caracteristicas", "criacao", "carne", "certificacao", "onde", "curiosidades"].filter((id) => sec[id]);
 const H2: Record<string, string> = lang === "en"
   ? { historia: "A breed born of the islands.", territorio: "Nine islands. One production area.", caracteristicas: "Red, strong, large.", criacao: "Grazing almost all year.", carne: "Bright red and firm.", certificacao: "Carne Ramo Grande PDO.", onde: "Under research.", curiosidades: "Small curiosities." }
@@ -97,6 +103,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
         const tone = id === "criacao" ? "green" : n % 2 === 1 ? "soft" : "";
         return (
           <section class:list={["sec", tone]} id={id}>
+            {rg && SECFIG[id] && id !== "historia" && <figure class="frame rv secfig" style="width:min(820px,100% - 40px);margin:0 auto var(--s3);aspect-ratio:21/9"><Img id={SECFIG[id]} sizes="(max-width:820px) 100vw, 820px" credit lang={lang} /></figure>}
             <div class:list={["wrap", id === "caracteristicas" || id === "carne" || id === "territorio" || id === "historia" ? "split" : "narrow"]} style={id === "certificacao" || id === "criacao" ? "width:min(820px,100% - 40px)" : undefined}>
               {id === "caracteristicas" && own && <div class="frame rv" style="aspect-ratio:4/3"><Img id={own.id} sizes="(max-width:820px) 100vw, 600px" credit lang={lang} /></div>}
               <div class="rv">
@@ -123,6 +130,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                     </details>
                   ))}
                 </div>
+                {rg && MORE[id] && <p class="srcs" style="margin-top:1em"><strong>{T("Saber mais", "Learn more")}:</strong> {MORE[id].map((x, q) => <>{q > 0 && " · "}<a href={x.u} rel="noopener">{x.l} ↗</a></>)}</p>}
                 {id === "carne" && <p class="srcs" style="margin-top:1em">{T("A fotografia de carne é ilustrativa (carne bovina em geral); não é carne desta raça.", "The meat photograph is illustrative (beef in general); it is not meat of this breed.")}</p>}
                 {id === "caracteristicas" && own && own.kind === "raça" && FRAMED.has(own.id) && <p class="srcs">{T("A fotografia mostra animais numa feira ou recinto; procura-se uma fotografia melhor da raça em pastoreio.", "The photograph shows animals at a fair or enclosure; a better photograph of the breed grazing is being sought.")}</p>}
                 {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, "da-pastagem-ao-prato/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →")}</a></p>}
@@ -137,6 +145,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                   <p class="srcs" style="margin:.6em 0 0">{T("Mapa esquemático, geometria generalizada (Eurostat/GISCO, © EuroGeographics).", "Schematic map, generalised geometry (Eurostat/GISCO, © EuroGeographics).")}</p>
                 </div>
               )}
+              {id === "historia" && rg && <div class="frame rv" style="aspect-ratio:4/5"><Img id="acores-sao-jorge" sizes="(max-width:820px) 100vw, 560px" credit lang={lang} /></div>}
               {id === "carne" && <div class="frame rv" style="aspect-ratio:4/5"><Img id="carne-madeira" sizes="(max-width:820px) 100vw, 560px" credit lang={lang} /></div>}
             </div>
           </section>
