@@ -34,16 +34,16 @@ const stages: [string, string, string][] = lang === "en" ? [
   ["Consumidor", "Chega à mesa — e, com rotulagem e rastreabilidade, é possível saber de onde vem.", ""],
 ];
 ---
-<Base lang={lang} home overlay title={T("Início", "Home")} image={`${b}img/mertolenga-tejo-lg.webp`}
+<Base lang={lang} home overlay title={T("Início", "Home")} image={`${b}img/home-hero-ia-lg.webp`}
   description={T("As 15 raças bovinas autóctones de Portugal, a carne e o caminho da pastagem ao prato, com fontes oficiais.", "Portugal's 15 native cattle breeds, the meat and the path from pasture to plate, with official sources.")}>
   <section class="hero">
-    <img class="bg" src={`${b}img/mertolenga-tejo-lg.webp`} srcset={`${b}img/mertolenga-tejo-md.webp 900w, ${b}img/mertolenga-tejo-lg.webp 1800w`} sizes="100vw" alt={hero.alt} width={hero.width} height={hero.height} fetchpriority="high" />
+    <img class="bg" src={`${b}img/home-hero-ia-lg.webp`} srcset={`${b}img/home-hero-ia-sm.webp 480w, ${b}img/home-hero-ia-md.webp 900w, ${b}img/home-hero-ia-lg.webp 1672w`} sizes="100vw" alt={T("Vacas castanhas ao nascer do sol sobre um vale com rio e aldeia (ilustração gerada por IA)", "Brown cows at sunrise above a valley with a river and village (AI-generated illustration)")} width="1672" height="941" fetchpriority="high" />
     <div class="wrap in">
       <span class="tag">{T("Bovino Português", "Portuguese Cattle")}</span>
       <h1>{T("15 raças.", "15 breeds.")}<br />{T("Um património extraordinário.", "An extraordinary heritage.")}</h1>
       <a class="cue-link" href="#descobrir">{T("Começar a descobrir", "Start exploring")} <i aria-hidden="true">↓</i></a>
     </div>
-    <p class="credit">{hero.caption} · {T("Foto", "Photo")}: <a href={hero.source_page} rel="noopener">{hero.author}</a> · {licenseLabel(lang, hero.license)}</p>
+    <p class="credit">{T("Ilustração gerada por IA; não representa uma raça específica.", "AI-generated illustration; it does not depict a specific breed.")}</p>
   </section>
 
   <section class="band" id="descobrir" aria-label={T("Descobrir Portugal", "Discover Portugal")}>
