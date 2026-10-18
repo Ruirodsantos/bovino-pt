@@ -15,59 +15,87 @@ const BARROSA = "https://www.ptpt.pt/en/produtos/68";
 const CARNAL = "https://ptpt.pt/en/produtos/8";
 const eur = (c: string) => `https://eur-lex.europa.eu/legal-content/${lang === "en" ? "EN" : "PT"}/TXT/?uri=CELEX:${c}`;
 const L = (l: string, u: string) => ({ l, u });
-type Stage = { id: string; t: string; img?: string; imgs?: string; general: string[]; main: string[]; azores: string[]; maybe: string[]; links: { l: string; u: string }[]; extra?: "seurop" | "cuts" };
+type Ex = { b: string; slug?: string; p: string };
+type Stage = { id: string; t: string; img?: string; general: string[]; ex: Ex[]; maybe: string[]; links: { l: string; u: string }[]; extra?: "seurop" | "cuts" };
 const stages: Stage[] = [
   { id: "nascimento", t: T("Nascimento", "Birth"), img: "mertolenga-rebanho",
-    general: [T("O percurso começa numa vaca de cria. Nos sistemas de carne, o vitelo vive junto da mãe e mama durante os primeiros meses; nos sistemas de leite, é separado mais cedo. Cada animal tem de ser identificado (brinco auricular e registo) pouco depois de nascer, e é essa identificação que permite seguir o animal até ao prato.", "The journey starts with a suckler cow. In beef systems the calf stays with its mother and nurses for its first months; in dairy systems it is separated earlier. Every animal must be identified (ear tag and registration) soon after birth, and that identification is what lets it be traced all the way to the plate.")],
-    main: [T("Nas raças autóctones do continente, como a Mertolenga ou a Alentejana, os partos e as desmamas acompanham o ciclo das pastagens do montado.", "In mainland native breeds such as the Mertolenga or the Alentejana, calvings and weanings follow the cycle of the montado pastures.")],
-    azores: [T("Ramo Grande: os partos concentram-se de fevereiro a maio, para que o pico de erva da primavera coincida com as necessidades dos animais; os vitelos mamam pelo menos três meses e são desmamados aos 6–7 meses.", "Ramo Grande: calvings are concentrated from February to May so that the spring grass peak matches the animals' needs; calves suckle for at least three months and are weaned at 6–7 months.")],
-    maybe: [T("Em ambas as regiões há também vitelos de bovinos leiteiros e de cruzamentos; a sua proporção por ilha ainda não está documentada aqui.", "Both regions also have calves from dairy cattle and crosses; their share by island is not documented here yet.")],
-    links: [L(T("Catálogo das raças autóctones (DGAV/CAP)", "Native breeds catalogue (DGAV/CAP)"), CAT), L(T("Caderno de especificações Ramo Grande DOP", "Ramo Grande PDO specification"), CAD)] },
-  { id: "criacao", t: T("Criação", "Rearing"), img: "acores-pico-estrada",
+    general: [T("O percurso começa numa vaca de cria. Nos sistemas de carne, o vitelo vive junto da mãe e mama durante os primeiros meses; nos sistemas de leite, é separado mais cedo. Cada animal tem de ser identificado (brinco auricular e registo) pouco depois de nascer, e é essa identificação que permite seguir o animal até ao prato.", "The route starts with a suckler cow. In beef systems the calf stays with its mother and nurses for its first months; in dairy systems it is separated earlier. Every animal must be identified (ear tag and registration) soon after birth, and that identification is what lets it be traced all the way to the plate.")],
+    ex: [
+      { b: "Mertolenga", slug: "mertolenga", p: T("O catálogo destaca a facilidade de parto, a longevidade produtiva e a boa capacidade maternal da raça.", "The catalogue highlights the breed's easy calving, productive longevity and good mothering ability.") },
+      { b: "Mirandesa", slug: "mirandesa", p: T("No sistema extensivo, os vitelos andam com as mães em pastoreio até aos 5 a 7 meses e só então são desmamados.", "In the extensive system, calves stay with their mothers at pasture until 5 to 7 months and are only then weaned.") },
+      { b: "Cachena", slug: "cachena", p: T("Raça de alta montanha, de forte instinto maternal.", "A high-mountain breed with a strong maternal instinct.") },
+      { b: "Ramo Grande", slug: "ramo-grande", p: T("Nos Açores, os partos concentram-se de fevereiro a maio, para o pico de erva da primavera coincidir com as necessidades dos animais.", "In the Azores, calvings are concentrated from February to May so that the spring grass peak matches the animals' needs.") },
+    ],
+    maybe: [T("Em todas as regiões há também vitelos de bovinos leiteiros e de cruzamentos; a sua proporção ainda não está documentada aqui.", "In every region there are also calves from dairy cattle and crosses; their share is not documented here yet.")],
+    links: [L(T("Catálogo das raças autóctones (DGAV/CAP)", "Native breeds catalogue (DGAV/CAP)"), CAT)] },
+  { id: "criacao", t: T("Criação", "Rearing"), img: "montalegre",
     general: [T("Em sistemas extensivos os animais pastam ao ar livre durante grande parte do ano; em sistemas intensivos passam mais tempo em estábulo ou em parque. A raça, o clima e o que o criador pretende produzir (vitelo, novilho, vaca de refugo, boi) decidem o sistema.", "In extensive systems animals graze outdoors for much of the year; in intensive systems they spend more time indoors or in pens. Breed, climate and what the farmer wants to produce (veal, young bullock, culled cow, ox) decide the system.")],
-    main: [T("Barrosã DOP: a zona de produção abrange 21 concelhos do Norte (entre eles Montalegre, Boticas, Ponte de Lima e Vieira do Minho).", "Barrosã PDO: the production area covers 21 municipalities in the north (among them Montalegre, Boticas, Ponte de Lima and Vieira do Minho)."), T("Carnalentejana DOP: zona de produção nos distritos de Beja, Évora e Portalegre e em vários concelhos limítrofes.", "Carnalentejana PDO: production area in the districts of Beja, Évora and Portalegre and several neighbouring municipalities.")],
-    azores: [T("Ramo Grande: criação em pastoreio quase todo o ano, num sistema extensivo tradicional. Em 2019, o livro genealógico da raça tinha 581 criadores.", "Ramo Grande: raised at pasture almost all year, in a traditional extensive system. In 2019 the breed's herd book had 581 breeders.")],
-    maybe: [T("Falta documentar a dimensão média das explorações e o peso dos sistemas intensivos de leite, importantes em várias ilhas.", "Still to document: average farm size and the weight of intensive dairy systems, important on several islands.")],
-    links: [L(T("Carne Barrosã DOP", "Carne Barrosã PDO"), BARROSA), L("Carnalentejana DOP", CARNAL), L("DGADR · Ramo Grande DOP", DGADR)] },
+    ex: [
+      { b: "Barrosã", slug: "barrosa", p: T("Sistema extensivo, em montanha e meia encosta, aproveitando a carqueja e o tojo. A zona de produção da Carne Barrosã DOP abrange 21 concelhos do Norte.", "Extensive system on mountain and mid-slope land, using heather and gorse. The production area of Carne Barrosã PDO covers 21 municipalities in the north.") },
+      { b: "Arouquesa", slug: "arouquesa", p: T("Os sistemas variam: pastoreio em baldios (raro hoje), estabulação permanente, estabulação só no inverno ou regime semi-extensivo.", "Systems vary: grazing on common land (rare today), permanent housing, housing only in winter, or a semi-extensive regime.") },
+      { b: "Maronesa", slug: "maronesa", p: T("Semiestabulação e pastoreio nos adultos; estabulação permanente, com alimentação à manjedoura, nos jovens.", "Part-housing and grazing for adults; permanent housing with manger feeding for the young.") },
+      { b: "Alentejana", slug: "alentejana", p: T("Clima continental, pouca chuva e verões secos: as pastagens pobres moldaram um animal robusto. A Carnalentejana DOP cobre os distritos de Beja, Évora e Portalegre e concelhos vizinhos.", "Continental climate, little rain and dry summers: poor pastures shaped a robust animal. Carnalentejana PDO covers the districts of Beja, Évora and Portalegre and neighbouring municipalities.") },
+      { b: "Marinhoa", slug: "marinhoa", p: T("O sistema mais tradicional é o intensivo ao ar livre: pastagem alguns meses por ano e regresso diário ao estábulo.", "The most traditional system is intensive outdoors: pasture for some months a year and a daily return to the barn.") },
+      { b: "Ramo Grande", slug: "ramo-grande", p: T("Pastoreio quase todo o ano, num sistema extensivo tradicional.", "At pasture almost all year, in a traditional extensive system.") },
+    ],
+    maybe: [T("Falta documentar a dimensão média das explorações e o peso dos sistemas intensivos de leite.", "Still to document: average farm size and the weight of intensive dairy systems.")],
+    links: [L(T("Carne Barrosã DOP", "Carne Barrosã PDO"), BARROSA), L("Carnalentejana DOP", CARNAL), L(T("Catálogo DGAV/CAP", "DGAV/CAP catalogue"), CAT)] },
   { id: "alimentacao", t: T("Alimentação", "Feeding"), img: "acores-pico-lagoa",
     general: [T("A base da dieta é a erva: fresca no pasto, ou conservada em feno ou silagem para as épocas secas e frias. Os alimentos compostos (cereais, proteaginosas) completam a dieta quando o pasto não chega. A alimentação influencia a cor da gordura e o sabor da carne.", "The basis of the diet is grass: fresh at pasture, or preserved as hay or silage for dry and cold seasons. Compound feeds (cereals, protein crops) complete the diet when pasture falls short. Feeding influences fat colour and meat flavour.")],
-    main: [T("No continente, o montado e as pastagens de lameiro fornecem erva e bolota; no verão seco do Sul recorre-se a feno e a alimentos suplementares. Os pormenores de cada DOP estão nos respetivos cadernos de especificações.", "On the mainland, montado and meadow pastures provide grass and acorns; in the dry southern summer hay and supplements are used. The details of each PDO are in its specification document.")],
-    azores: [T("Ramo Grande: pastagens permanentes ou melhoradas de gramíneas e leguminosas, silagem de erva, feno, milho e subprodutos da exploração; alimentos compostos só quando o pasto não chega, e alimentos vindos de fora dos Açores no máximo 50 % da matéria seca, em média anual.", "Ramo Grande: permanent or improved grass-and-legume pastures, grass silage, hay, maize and farm by-products; compound feeds only when pasture is short, and feed from outside the Azores at most 50% of dry matter, as an annual average.")],
-    maybe: [], links: [L(T("Caderno de especificações Ramo Grande DOP", "Ramo Grande PDO specification"), CAD)] },
+    ex: [
+      { b: "Arouquesa", slug: "arouquesa", p: T("Vive de pastos pobres da serra e de rebentos de tojo, carqueja, giesta e carvalho.", "It lives on poor mountain pasture and shoots of gorse, heather, broom and oak.") },
+      { b: "Mirandesa", slug: "mirandesa", p: T("Depois do desmame, os vitelos são engordados com fenos e cereais da própria exploração.", "After weaning, calves are fattened on hay and cereals from the farm itself.") },
+      { b: "Marinhoa", slug: "marinhoa", p: T("Pastagens naturais ou semeadas, complementadas com cereais, palhas e leguminosas.", "Natural or sown pastures, supplemented with cereals, straw and legumes.") },
+      { b: "Ramo Grande", slug: "ramo-grande", p: T("Pastagens de gramíneas e leguminosas, silagem de erva, feno e milho; alimentos vindos de fora dos Açores no máximo 50 % da matéria seca, em média anual.", "Grass-and-legume pastures, grass silage, hay and maize; feed from outside the Azores at most 50% of dry matter, as an annual average.") },
+    ],
+    maybe: [], links: [L(T("Caderno Ramo Grande DOP", "Ramo Grande PDO specification"), CAD), L(T("Catálogo DGAV/CAP", "DGAV/CAP catalogue"), CAT)] },
   { id: "transporte", t: T("Transporte", "Transport"), img: "acores-graciosa",
     general: [T("Os animais vivos seguem para o matadouro ou para outra exploração em camiões licenciados, com regras europeias sobre duração, descanso, água, espaço e aptidão dos animais (Regulamento (CE) n.º 1/2005). Nas ilhas, o transporte pode incluir uma viagem marítima.", "Live animals travel to the abattoir or another farm in licensed vehicles, under European rules on duration, rest, water, space and fitness of the animals (Regulation (EC) No 1/2005). On islands the journey may include a sea crossing.")],
-    main: [T("No continente, a distância ao matadouro é um dos fatores que decidem onde os criadores vendem; a rede de matadouros e os percursos concretos de cada DOP ainda não estão documentados aqui.", "On the mainland, the distance to the abattoir is one of the factors that decide where farmers sell; the abattoir network and the actual routes of each PDO are not documented here yet.")],
-    azores: [T("Ramo Grande DOP: os animais das explorações aprovadas são separados e agrupados em lotes de abate nas abegoarias, e têm de ser abatidos nos Açores.", "Ramo Grande PDO: animals from approved farms are separated and grouped into slaughter lots at the abegoarias, and must be slaughtered in the Azores.")],
-    maybe: [T("Possível, mas não documentado: o envio de bovinos vivos entre ilhas ou para o continente. Os dados de comércio de bovinos vivos entre Portugal e Espanha estão no Observatório.", "Possible but not documented: shipping live cattle between islands or to the mainland. Trade data on live cattle between Portugal and Spain is in the Observatory.")],
+    ex: [
+      { b: "Minhota", slug: "minhota", p: T("O catálogo aponta a exportação para Espanha, que absorve grande parte da produção, como um dos motivos da recuperação dos bois castrados.", "The catalogue points to exports to Spain, which absorbs much of the output, as one reason for the recovery of castrated oxen.") },
+      { b: "Ramo Grande", slug: "ramo-grande", p: T("Na DOP, os animais das explorações aprovadas são agrupados em lotes de abate nas abegoarias e têm de ser abatidos nos Açores.", "Under the PDO, animals from approved farms are grouped into slaughter lots at the abegoarias and must be slaughtered in the Azores.") },
+    ],
+    maybe: [T("Por documentar: os percursos concretos até ao matadouro em cada região e o envio de bovinos entre ilhas ou para o continente. Os dados de comércio de bovinos vivos entre Portugal e Espanha estão no Observatório.", "To document: the actual routes to the abattoir in each region and shipping cattle between islands or to the mainland. Data on live cattle trade between Portugal and Spain is in the Observatory.")],
     links: [L(T("Regulamento (CE) n.º 1/2005", "Regulation (EC) No 1/2005"), eur("32005R0001")), L(T("Observatório", "Observatory"), href(lang, "observatorio/"))] },
-  { id: "abate", t: T("Abate", "Slaughter"), img: "acores-corvo",
+  { id: "abate", t: T("Abate", "Slaughter"), img: "bife-rump",
     general: [T("O abate faz-se em matadouros licenciados, com inspeção veterinária e regras de bem-estar no atordoamento e na sangria (Regulamento (CE) n.º 1099/2009). Daqui em diante já não se fala de animais vivos mas de carcaças: a unidade passa a ser o peso de carne, não a cabeça de gado.", "Slaughter takes place in licensed abattoirs, with veterinary inspection and welfare rules for stunning and bleeding (Regulation (EC) No 1099/2009). From here on we no longer speak of live animals but of carcasses: the unit becomes weight of meat, not head of cattle.")],
-    main: [T("Para a Carne Barrosã DOP e a Carnalentejana DOP, o abate e a desmancha têm de decorrer dentro das condições definidas nos respetivos cadernos; a lista de matadouros aprovados deve ser consultada em cada caderno.", "For Carne Barrosã PDO and Carnalentejana PDO, slaughter and cutting must follow the conditions set in their specification documents; the list of approved abattoirs should be checked in each document.")],
-    azores: [T("Para ser Carne Ramo Grande DOP, o animal tem de ser abatido nos Açores.", "To be Carne Ramo Grande PDO, the animal must be slaughtered in the Azores.")],
-    maybe: [T("Por documentar: a entidade, a capacidade e os volumes do matadouro da Terceira, e o destino da carne abatida em cada ilha.", "To document: the operator, capacity and volumes of the Terceira abattoir, and where the meat slaughtered on each island goes.")],
-    links: [L(T("Regulamento (CE) n.º 1099/2009", "Regulation (EC) No 1099/2009"), eur("32009R1099")), L(T("Abate de bovinos (Observatório)", "Cattle slaughter (Observatory)"), href(lang, "observatorio/"))] },
+    ex: [
+      { b: "Minhota", slug: "minhota", p: T("O catálogo refere vitelas vendidas em média aos 6,2 meses, com carcaças de peso médio de 149,6 kg, e bois castrados abatidos normalmente depois dos três anos.", "The catalogue reports veal sold at an average of 6.2 months, with an average carcass weight of 149.6 kg, and castrated oxen normally slaughtered after three years.") },
+      { b: "Barrosã e Alentejana", p: T("A Carne Barrosã DOP e a Carnalentejana DOP seguem as condições de abate e de desmancha dos respetivos cadernos de especificações.", "Carne Barrosã PDO and Carnalentejana PDO follow the slaughter and cutting conditions in their specification documents.") },
+      { b: "Ramo Grande", slug: "ramo-grande", p: T("Para ser DOP, o animal tem de ser abatido nos Açores.", "To be PDO, the animal must be slaughtered in the Azores.") },
+    ],
+    maybe: [T("Por documentar: a rede de matadouros e os volumes por região, incluindo o matadouro da Terceira.", "To document: the abattoir network and volumes by region, including the Terceira abattoir.")],
+    links: [L(T("Regulamento (CE) n.º 1099/2009", "Regulation (EC) No 1099/2009"), eur("32009R1099")), L(T("Abates no Observatório", "Slaughter data in the Observatory"), href(lang, "observatorio/"))] },
   { id: "classificacao", t: T("Classificação", "Grading"), img: "carne-madeira", extra: "seurop",
     general: [T("Depois do abate, a carcaça é classificada por um classificador oficial segundo a escala europeia SEUROP: uma letra para a conformação (a forma e o desenvolvimento muscular) e um número de 1 a 5 para a cobertura de gordura (Regulamento (UE) n.º 1308/2013). A classificação é a base do preço pago ao produtor.", "After slaughter the carcass is graded by an official classifier on the European SEUROP scale: a letter for conformation (shape and muscle development) and a number from 1 to 5 for fat cover (Regulation (EU) No 1308/2013). Grading is the basis of the price paid to the producer.")],
-    main: [T("Aplica-se do mesmo modo no continente; as DOP podem restringir as classes aceites.", "It applies in the same way on the mainland; PDOs may restrict the accepted classes.")],
-    azores: [T("Ramo Grande DOP aceita as conformações S, E, U, R e O (e P nalgumas categorias) e não admite a classe de gordura 1.", "Ramo Grande PDO accepts conformations S, E, U, R and O (and P in some categories) and does not admit fat class 1.")],
-    maybe: [], links: [L(T("Regulamento (UE) n.º 1308/2013", "Regulation (EU) No 1308/2013"), eur("32013R1308")), L(T("Caderno Ramo Grande DOP", "Ramo Grande PDO specification"), CAD)] },
+    ex: [
+      { b: "Minhota", slug: "minhota", p: T("O catálogo refere que 52,5 % dos abates de animais Minhotos dão carcaças de categoria V (animais com menos de 8 meses).", "The catalogue states that 52.5% of Minhota slaughters give category V carcasses (animals under 8 months).") },
+      { b: "Ramo Grande", slug: "ramo-grande", p: T("A DOP aceita as conformações S, E, U, R e O (e P nalgumas categorias) e não admite a classe de gordura 1; é o exemplo usado no esquema acima.", "The PDO accepts conformations S, E, U, R and O (and P in some categories) and does not admit fat class 1; it is the example used in the diagram above.") },
+    ],
+    maybe: [], links: [L(T("Regulamento (UE) n.º 1308/2013", "Regulation (EU) No 1308/2013"), eur("32013R1308"))] },
   { id: "desmancha", t: T("Desmancha", "Cutting"), img: "carne-cortes", extra: "cuts",
-    general: [T("A carcaça arrefece e matura em câmara; depois é dividida em quartos, peças e cortes. É aqui que a mesma vaca dá o lombo, a vazia, o acém ou a carne para estufar, e se decide o que vai para bife e o que vai para guisado ou carne picada.", "The carcass chills and ages in a cold room; it is then divided into quarters, primals and cuts. This is where one animal gives the loin, flank, chuck or stewing meat, and where it is decided what becomes steak and what becomes stew or mince.")],
-    main: [T("Os nomes dos cortes variam de região para região; o esquema abaixo usa uma nomenclatura comum e está em revisão.", "Cut names vary from region to region; the diagram below uses a common nomenclature and is under review.")],
-    azores: [T("Ramo Grande DOP: a desossa só pode fazer-se 48 a 144 horas depois do abate. Apresentações permitidas: carcaças, meias-carcaças, quartos, peças inteiras ou fatiadas e carne picada embalada.", "Ramo Grande PDO: deboning may only take place 48 to 144 hours after slaughter. Permitted presentations: carcasses, half-carcasses, quarters, whole or sliced cuts and packaged minced meat.")],
+    general: [T("A carcaça arrefece e matura em câmara; depois é dividida em quartos, peças e cortes. É aqui que a mesma vaca dá o lombo, a vazia, o acém ou a carne para estufar, e se decide o que vai para bife e o que vai para guisado ou carne picada. Os nomes dos cortes variam de região para região; o esquema usa uma nomenclatura comum e está em revisão.", "The carcass chills and ages in a cold room; it is then divided into quarters, primals and cuts. This is where one animal gives the loin, flank, chuck or stewing meat, and where it is decided what becomes steak and what becomes stew or mince. Cut names vary from region to region; the diagram uses a common nomenclature and is under review.")],
+    ex: [
+      { b: "Ramo Grande", slug: "ramo-grande", p: T("Na DOP, a desossa só pode fazer-se 48 a 144 horas depois do abate.", "Under the PDO, deboning may only take place 48 to 144 hours after slaughter.") },
+      { b: "Carnalentejana", p: T("Além da carne fresca, a DOP tem linhas embaladas de carne picada, almôndegas e hambúrgueres.", "Besides fresh meat, the PDO has packaged lines of mince, meatballs and burgers.") },
+    ],
     maybe: [], links: [L(T("Guia de cortes", "Cuts guide"), href(lang, "carne/03-cortes/")), L(T("Maturação", "Ageing"), href(lang, "carne/02-maturacao/"))] },
   { id: "distribuicao", t: T("Distribuição", "Distribution"), img: "carne-variedade",
     general: [T("A carne chega ao consumidor por talhos, supermercados, restauração e venda direta. A rotulagem da carne de bovino é obrigatória e inclui o número de identificação do animal ou do lote, o país de nascimento, de criação e de abate, e o número de aprovação do matadouro e do centro de corte (Regulamento (CE) n.º 1760/2000).", "Beef reaches the consumer through butchers, supermarkets, restaurants and direct sales. Beef labelling is mandatory and includes the animal or batch reference, the country of birth, rearing and slaughter, and the approval number of the abattoir and cutting plant (Regulation (EC) No 1760/2000).")],
-    main: [T("As DOP do continente (Barrosã, Carnalentejana) vendem-se sob a sua denominação; a Carnalentejana tem, por exemplo, linhas de carne picada, almôndegas e hambúrgueres embalados.", "Mainland PDOs (Barrosã, Carnalentejana) are sold under their designation; Carnalentejana, for example, has lines of packaged mince, meatballs and burgers.")],
-    azores: [T("Toda a carne vendida como DOP tem de levar a menção «Carne Ramo Grande DOP» ou a denominação completa.", "All meat sold as PDO must carry the wording «Carne Ramo Grande DOP» or the full designation.")],
-    maybe: [T("Por documentar: o comércio entre ilhas e para o continente.", "To document: trade between islands and to the mainland.")],
-    links: [L(T("Regulamento (CE) n.º 1760/2000", "Regulation (EC) No 1760/2000"), eur("32000R1760")), L(T("Comércio de carne Portugal–Espanha", "Portugal–Spain meat trade"), href(lang, "observatorio/"))] },
+    ex: [
+      { b: "Barrosã", slug: "barrosa", p: T("A Carne Barrosã DOP tem como entidade produtora indicada a CAPOLIB, a cooperativa agrícola de Boticas.", "Carne Barrosã PDO lists CAPOLIB, the Boticas agricultural cooperative, as its producer.") },
+      { b: "Ramo Grande", slug: "ramo-grande", p: T("Toda a carne vendida como DOP tem de levar a menção «Carne Ramo Grande DOP» ou a denominação completa.", "All meat sold as PDO must carry the wording «Carne Ramo Grande DOP» or the full designation.") },
+    ],
+    maybe: [T("Por documentar: o comércio entre regiões e para o estrangeiro, para além dos dados do Observatório.", "To document: trade between regions and abroad, beyond the Observatory data.")],
+    links: [L(T("Regulamento (CE) n.º 1760/2000", "Regulation (EC) No 1760/2000"), eur("32000R1760")), L(T("Comércio de carne no Observatório", "Meat trade in the Observatory"), href(lang, "observatorio/"))] },
   { id: "consumidor", t: T("Consumidor", "Consumer"), img: "bife-prato",
     general: [T("No fim do percurso, o rótulo e a denominação dizem de onde vem a carne. Cozinhar bem uma boa peça é a última etapa: ponto, descanso e corte decidem o resultado tanto como a raça.", "At the end of the route, the label and designation say where the meat comes from. Cooking a good cut well is the last stage: doneness, resting and slicing decide the result as much as the breed.")],
-    main: [T("Os produtos DOP do continente podem ser procurados nos talhos e nas cooperativas dos próprios cadernos (por exemplo, CAPOLIB para a Barrosã).", "Mainland PDO products can be sought at the butchers and cooperatives named in the documents themselves (for example CAPOLIB for Barrosã).")],
-    azores: [T("A carne de Ramo Grande foi tradicionalmente a preferida para os pratos das «funções» do Espírito Santo.", "Ramo Grande beef was traditionally the preferred meat for the dishes at the Holy Spirit «funções».")],
-    maybe: [T("Por documentar: pontos de venda atuais da Carne Ramo Grande DOP.", "To document: current points of sale for Carne Ramo Grande PDO.")],
-    links: [L(T("Cozedura", "Cooking"), href(lang, "carne/04-cozedura/")), L(T("Servir", "Serving"), href(lang, "carne/05-servir/")), L("DGADR", DGADR)] },
+    ex: [
+      { b: "Mirandesa", slug: "mirandesa", p: T("A posta mirandesa é o prato que dá fama à raça.", "The posta mirandesa is the dish that gives the breed its fame.") },
+      { b: "Ramo Grande", slug: "ramo-grande", p: T("Foi tradicionalmente a carne preferida para os pratos das «funções» do Espírito Santo.", "It was traditionally the preferred meat for the dishes at the Holy Spirit «funções».") },
+    ],
+    maybe: [T("Por documentar: pontos de venda atuais das carnes DOP.", "To document: current points of sale for PDO meats.")],
+    links: [L(T("Cozedura", "Cooking"), href(lang, "carne/04-cozedura/")), L(T("Servir", "Serving"), href(lang, "carne/05-servir/")), L(T("Raças", "Breeds"), href(lang, "racas/"))] },
 ];
 ---
 <Base lang={lang} overlay title={T("Da pastagem ao prato", "From pasture to plate")} description={T("As nove etapas do percurso do bovino e da carne em Portugal, do nascimento ao consumidor, com exemplos do continente e dos Açores.", "The nine stages of the journey of cattle and beef in Portugal, from birth to consumer, with examples from the mainland and the Azores.")}>
@@ -76,7 +104,7 @@ const stages: Stage[] = [
     <div class="hero-in">
       <span class="eyebrow">{T("Do continente aos Açores", "From the mainland to the Azores")}</span>
       <h1>{T("Da pastagem ao prato", "From pasture to plate")}</h1>
-      <p>{T("Nove etapas, do nascimento ao consumidor. Em cada uma: o processo geral, um exemplo do continente, um exemplo dos Açores, e o que ainda está por documentar.", "Nine stages, from birth to consumer. In each: the general process, a mainland example, an Azores example, and what is still to be documented.")}</p>
+      <p>{T("Nove etapas, do nascimento ao consumidor. Em cada uma: o processo geral, exemplos de várias raças e regiões, e o que ainda está por documentar.", "Nine stages, from birth to consumer. In each: the general process, examples from several breeds and regions, and what is still to be documented.")}</p>
       <a class="cue-link" href="#etapas">{T("Ver as etapas ↓", "See the stages ↓")}</a>
     </div>
   </header>
@@ -96,10 +124,10 @@ const stages: Stage[] = [
           {s.general.map((p) => <p>{p}</p>)}
           {s.extra === "seurop" && <Seurop lang={lang} />}
           {s.extra === "cuts" && <Cuts lang={lang} />}
-          <div class="two">
-            <div><h3><span class="chip ok">{T("Continente", "Mainland")}</span></h3>{s.main.map((p) => <p>{p}</p>)}</div>
-            <div><h3><span class="chip ok">{T("Açores", "Azores")}</span></h3>{s.azores.map((p) => <p>{p}</p>)}</div>
-          </div>
+          {s.ex.length > 0 && <>
+            <h3>{T("Exemplos", "Examples")}</h3>
+            <ul class="exs">{s.ex.map((e) => <li><strong>{e.slug ? <a href={href(lang, `racas/${e.slug}/`)}>{e.b}</a> : e.b}</strong> — {e.p}</li>)}</ul>
+          </>}
           {s.maybe.length > 0 && <div class="maybe"><span class="chip wait">{T("Possível / por documentar", "Possible / to document")}</span>{s.maybe.map((p) => <p>{p}</p>)}</div>}
           <p class="links"><strong>{T("Saber mais", "Learn more")}:</strong> {s.links.map((x, n) => <>{n > 0 && " · "}<a href={x.u} rel={x.u.startsWith("http") ? "noopener" : undefined}>{x.l}{x.u.startsWith("http") ? " ↗" : ""}</a></>)}</p>
         </div>
@@ -127,7 +155,7 @@ const stages: Stage[] = [
   .stg-fig .frame { aspect-ratio: 4/5; position: sticky; top: 100px; margin: 0; }
   .stg-fig .frame img { width: 100%; height: 100%; object-fit: cover; }
   .stg-body h3 { font-size: 1rem; margin: 1.4em 0 .4em; color: var(--muted); font-weight: 500; }
-  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px; }
+  .exs { padding-left: 1.1em; } .exs li { margin-bottom: .6em; }
   .maybe { margin-top: 1rem; padding: 14px 16px; border-radius: 14px; background: var(--ivory-2); border: 1px dashed var(--gold); }
   .links { margin-top: 1.2rem; font-size: .92rem; }
   .note { margin-top: 3rem; padding: 28px; background: #fff; border: 1px solid var(--line); border-radius: 20px; }
