@@ -262,5 +262,65 @@
   "verified_note": null,
   "width": 2400,
   "height": 3200
+ },
+ "alentejana-silves": {
+  "alt": "Manada de vacas da raça Alentejana num prado em Silves, com garças-vaqueiras",
+  "caption": "Vacas da raça Alentejana, Silves (Algarve), outubro de 2017 — raça identificada pelo autor",
+  "author": "Notafly",
+  "license": "CC BY-SA 4.0",
+  "source_page": "https://commons.wikimedia.org/wiki/File:SilvesOctober2017_(22).jpg",
+  "subject": "bovino",
+  "breed": "Alentejana",
+  "verified_note": "Descrição do autor na Wikimedia Commons: «Cattle egrets and Alentejana cattle». Recortada da fotografia original.",
+  "width": 2778,
+  "height": 1116
+ },
+ "arouquesa-touro": {
+  "alt": "Touro da raça Arouquesa, pelagem castanho-avermelhada, de corpo inteiro num prado",
+  "caption": "Touro da raça Arouquesa (2004)",
+  "author": "Susanne Maeder (Susimaeder)",
+  "license": "CC BY-SA 3.0",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Arouquesa2.jpg",
+  "subject": "bovino",
+  "breed": "Arouquesa",
+  "verified_note": "Descrição do autor na Wikimedia Commons: «Arouquesa Bull»; categoria «Arouquesa cattle».",
+  "width": 1024,
+  "height": 768
+ },
+ "maronesa-alvao": {
+  "alt": "Três bovinos da raça Maronesa, de pelagem escura e cornos em lira, numa charneca com tojo florido",
+  "caption": "Vacas Maronesas no Alvão (2013)",
+  "author": "Psilvestre",
+  "license": "CC BY-SA 3.0",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Maronesas_no_Alv%C3%A3o.JPG",
+  "subject": "bovino",
+  "breed": "Maronesa",
+  "verified_note": "Descrição do autor na Wikimedia Commons: «A vaca maronesa é caraterística do Alvão.»",
+  "width": 1600,
+  "height": 1200
+ },
+ "mertolenga-tejo": {
+  "alt": "Vaca Mertolenga de pelagem clara malhada de castanho, num campo aberto do estuário do Tejo",
+  "caption": "Vacas Mertolengas no estuário do Tejo (2015)",
+  "author": "Joao 1968",
+  "license": "CC BY-SA 3.0",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Rede_Natura_2000_-_S%C3%ADtio_do_Estu%C3%A1rio_do_Tejo_06.jpg",
+  "subject": "bovino",
+  "breed": "Mertolenga",
+  "verified_note": "Descrição do autor na Wikimedia Commons: «Vacas Mertolengas» (Wiki Loves Earth 2015).",
+  "width": 4000,
+  "height": 2250
+ },
+ "ramo-grande-feira": {
+  "alt": "Bovino da raça Ramo Grande, pelagem vermelha, num recinto da feira agrícola de Angra do Heroísmo",
+  "caption": "Bovino da raça Ramo Grande na Feira Agrícola de Angra do Heroísmo, Terceira (Açores), 2010",
+  "author": "Carlos Luis M C da Cruz",
+  "license": "Domínio público",
+  "source_page": "https://commons.wikimedia.org/wiki/File:2010_jun_05_feira_agricola_004.JPG",
+  "subject": "bovino",
+  "breed": "Ramo Grande",
+  "verified_note": "Descrição do autor na Wikimedia Commons: «An example of the Ramo Grande cattle at the 2010 Agricultural Fair in the municipality of Angra do Heroísmo (Azores)».",
+  "width": 2818,
+  "height": 2036
  }
 }
