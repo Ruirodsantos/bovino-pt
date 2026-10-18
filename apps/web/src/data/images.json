@@ -376,5 +376,47 @@
   "height": 2036,
   "alt_en": "Ramo Grande breed bovine, red coat, in an enclosure at the agricultural fair of Angra do Heroísmo",
   "caption_en": "Ramo Grande breed bovine at the Agricultural Fair of Angra do Heroísmo, Terceira (Azores), 2010"
+ },
+ "mirandesa-vaca": {
+  "alt": "Vaca da raça Mirandesa a pastar num prado verde em Cércio, Trás-os-Montes",
+  "caption": "Vaca Mirandesa em Cércio, Trás-os-Montes (2014)",
+  "author": "Xemenendura",
+  "license": "CC BY-SA 3.0",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Vaca_mirandesa.JPG",
+  "subject": "bovino",
+  "breed": "Mirandesa",
+  "verified_note": "Descrição do autor na Wikimedia Commons: «Vaca mirandesa, Cércio, Portugal».",
+  "width": 4288,
+  "height": 2848,
+  "alt_en": "Mirandesa cow grazing on a green meadow at Cércio, Trás-os-Montes",
+  "caption_en": "Mirandesa cow at Cércio, Trás-os-Montes (2014)"
+ },
+ "mirandesa-pasto": {
+  "alt": "Animal de raça Mirandesa de pelagem escura, com cornos, a pastar em Cércio, Trás-os-Montes",
+  "caption": "Animal Mirandesa a pastar em Cércio, Trás-os-Montes (2014)",
+  "author": "Xemenendura",
+  "license": "CC BY-SA 3.0",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Vaca_mirandesa_1.JPG",
+  "subject": "bovino",
+  "breed": "Mirandesa",
+  "verified_note": "Descrição do autor na Wikimedia Commons: «Vaca mirandesa, Cércio, Tras Os Montes, Portugal».",
+  "width": 4288,
+  "height": 2848,
+  "alt_en": "Dark Mirandesa animal with horns grazing at Cércio, Trás-os-Montes",
+  "caption_en": "Mirandesa animal grazing at Cércio, Trás-os-Montes (2014)"
+ },
+ "mertolenga-rebanho": {
+  "alt": "Vaca Mertolenga malhada de castanho a comer, com um tratador ao fundo, no Alentejo",
+  "caption": "Vacas Mertolengas a comer no campo (autor: Rufonavarro)",
+  "author": "Rufonavarro",
+  "license": "CC0",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Raza_Mertolengas_(4).jpg",
+  "subject": "bovino",
+  "breed": "Mertolenga",
+  "verified_note": "Descrição do autor na Wikimedia Commons: «Raza Mertolengas, procedência portuguesa do vale do Sado e do Tejo».",
+  "width": 6240,
+  "height": 4160,
+  "alt_en": "Spotted Mertolenga cow feeding, with a herder in the background",
+  "caption_en": "Mertolenga cows feeding in the field"
  }
 }

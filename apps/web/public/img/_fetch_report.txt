@@ -1,1 +1,3 @@
-
+OK   mirandesa-vaca 4288x2848
+OK   mirandesa-pasto 4288x2848
+OK   mertolenga-rebanho 6240x4160
