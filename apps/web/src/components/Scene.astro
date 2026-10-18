@@ -1,0 +1,21 @@
+---
+import Photo from "./Photo.astro";
+import credits from "../data/images.json";
+import { licenseLabel, tr, type Lang } from "../i18n";
+interface Props { id: string; lang: Lang; kicker?: string; title: string; text?: string; href?: string; linkText?: string; pos?: string; eager?: boolean; h1?: boolean; cue?: string; }
+const { id, lang, kicker, title, text, href, linkText, pos = "50% 50%", eager = false, h1 = false, cue } = Astro.props;
+const T = tr(lang);
+const c = (credits as Record<string, any>)[id];
+const cap = c && lang === "en" ? (c.caption_en ?? c.caption) : c?.caption;
+---
+<section class="scene" style={`--pos:${pos}`}>
+  <Photo id={id} sizes="100vw" caption={false} eager={eager} lang={lang} />
+  <div class="wrap cap">
+    {kicker && <span class="kicker">{kicker}</span>}
+    {h1 ? <h1>{title}</h1> : <h2>{title}</h2>}
+    {text && <p>{text}</p>}
+    {href && <p><a class="link-arrow" href={href}>{linkText} <span aria-hidden="true">→</span></a></p>}
+  </div>
+  {cue && <a class="cue" href={cue}>{T("Descobrir", "Discover")} ↓</a>}
+  {c && <p class="credit-line">{cap} · {T("Foto", "Photo")}: <a href={c.source_page} rel="noopener">{c.author}</a> · {licenseLabel(lang, c.license)}</p>}
+</section>

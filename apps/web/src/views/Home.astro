@@ -1,219 +1,58 @@
 ---
 import Base from "../layouts/Base.astro";
-import StatCard from "../components/StatCard.astro";
+import Scene from "../components/Scene.astro";
 import Photo from "../components/Photo.astro";
-import { summary, breeds, breedEn, fmtDate, num, photoFor } from "../lib/data";
-import { getCollection } from "astro:content";
-import credits from "../data/images.json";
-import { href, licenseLabel, tr, type Lang } from "../i18n";
-
+import { href, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = tr(lang);
-const s = summary();
-const hero = s.stats.find((x) => x.id === "pt_es_live_eur");
-const others = s.stats.filter((x) => x !== hero);
-const allBreeds = breeds();
-const desc = (await getCollection(lang === "en" ? "descobertas_en" : "descobertas")).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
-const base = import.meta.env.BASE_URL;
-const run = s.last_run;
-const heroPhoto0 = (credits as any)["hero-alentejo"];
-const heroPhoto = heroPhoto0 && lang === "en" ? { ...heroPhoto0, caption: heroPhoto0.caption_en ?? heroPhoto0.caption } : heroPhoto0;
+const doors = [
+  { p: "da-pastagem-ao-prato/", img: "terceira", t: T("Da pastagem ao prato", "Pasture to plate"), d: T("Do nascimento ao consumidor", "From birth to consumer") },
+  { p: "carne/", img: "carne-variedade", t: T("Carne portuguesa", "Portuguese beef"), d: T("Cortes, maturação, qualidade", "Cuts, ageing, quality") },
+  { p: "racas/", img: "barrosa", t: T("As 15 raças", "The 15 breeds"), d: T("Fotografias, solares, história", "Photographs, homelands, history") },
+  { p: "aprender/", img: "outono-castanheiros", t: T("Aprender", "Learn"), d: T("Dados, descobertas, método", "Data, discoveries, method") },
+];
 ---
-<Base lang={lang} home title={T("Início", "Home")}>
-  <section class="hero" style={heroPhoto ? `--bg:url(${base}img/hero-alentejo-lg.webp)` : ""}>
-    <div class="wrap hero-grid">
-      <div class="hero-text">
-        <span class="eyebrow light">{T("Observatório independente · dados oficiais · atualizado todos os dias", "Independent observatory · official data · updated every day")}</span>
-        <h1>{lang === "en" ? <>Portugal raises.<br />Spain buys?</> : <>Portugal cria.<br />Espanha compra?</>}</h1>
-        <p class="lede light">{T("As 15 raças, os números e o comércio do gado bovino português. Cada número indica a fonte e o período a que se refere.", "The 15 breeds, the numbers and the trade in Portuguese cattle. Every number states its source and the period it refers to.")}</p>
-        <p class="actions"><a class="btn primary" href={href(lang, "observatorio/")}>{T("Explorar o comércio Portugal ↔ Espanha", "Explore the Portugal ↔ Spain trade")}</a> <a class="btn ghost" href={href(lang, "racas/")}>{T("Conhecer as 15 raças", "Meet the 15 breeds")}</a></p>
-      </div>
-      {hero && <div class="hero-stat"><StatCard stat={hero} big lang={lang} /></div>}
-    </div>
-    {heroPhoto && <p class="hero-credit">{heroPhoto.caption} · {T("Foto", "Photo")}: <a href={heroPhoto.source_page}>{heroPhoto.author}</a> ({licenseLabel(lang, heroPhoto.license)})</p>}
-  </section>
-
-  <section class="block numbers">
+<Base lang={lang} home overlay title={T("Início", "Home")} image={`${import.meta.env.BASE_URL}img/cachena-retrato-lg.webp`}
+  description={T("As 15 raças bovinas autóctones de Portugal, a carne e o caminho da pastagem ao prato, com fontes oficiais.", "Portugal's 15 native cattle breeds, the meat and the path from pasture to plate, with official sources.")}>
+  <Scene id="cachena-retrato" lang={lang} h1 eager pos="50% 40%" kicker={T("Atlas do Bovino Português", "Portuguese Beef Atlas")}
+    title={T("Descubra o Bovino Português", "Discover Portuguese Cattle")}
+    text={T("As 15 raças autóctones, a carne e o caminho da pastagem ao prato.", "The 15 native breeds, the meat and the path from pasture to plate.")}
+    cue="#racas" />
+  <div id="racas"></div>
+  <Scene id="mertolenga-tejo" lang={lang} pos="50% 60%" kicker={T("Baixo Alentejo", "Lower Alentejo")} title="Mertolenga"
+    text={T("O boi de cabresto que se tornou raça.", "The halter-led ox that became a breed.")} href={href(lang, "racas/mertolenga/")} linkText={T("Conhecer a raça", "Meet the breed")} />
+  <Scene id="barrosa" lang={lang} pos="50% 30%" kicker={T("Barroso", "Barroso")} title="Barrosã"
+    text={T("A raça de grandes cornos em lira, do planalto do Barroso.", "The breed with great lyre-shaped horns, from the Barroso plateau.")} href={href(lang, "racas/barrosa/")} linkText={T("Conhecer a raça", "Meet the breed")} />
+  <Scene id="alentejana-silves" lang={lang} pos="50% 55%" kicker={T("Alentejo", "Alentejo")} title="Alentejana"
+    text={T("Uma raça moldada pelo calor e pela pobreza das pastagens do Sul.", "A breed shaped by the heat and the poor pastures of the South.")} href={href(lang, "racas/alentejana/")} linkText={T("Conhecer a raça", "Meet the breed")} />
+  <Scene id="maronesa-alvao" lang={lang} pos="50% 60%" kicker={T("Serras do Alvão e do Marão", "Alvão and Marão mountains")} title="Maronesa"
+    text={T("A «Serrana» das serras do Alvão e do Marão.", "The «Serrana» of the Alvão and Marão mountains.")} href={href(lang, "racas/maronesa/")} linkText={T("Conhecer a raça", "Meet the breed")} />
+  <Scene id="carne-cortes" lang={lang} kicker={T("A carne", "The meat")} title={T("Da pastagem ao prato", "From pasture to plate")}
+    text={T("Como se cria, como se abate, como se corta e como se serve.", "How it is raised, slaughtered, cut and served.")} href={href(lang, "da-pastagem-ao-prato/")} linkText={T("Seguir o percurso", "Follow the journey")} />
+  <section class="doors">
     <div class="wrap">
-      <span class="eyebrow">{T("Portugal em números", "Portugal in numbers")}</span>
-      <h2>{T("O essencial em 10 segundos", "The essentials in 10 seconds")}</h2>
-      <div class="grid cols-3">{others.map((st) => <StatCard stat={st} lang={lang} />)}</div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <span class="eyebrow">{T("Mapa", "Map")}</span>
-      <h2>{T("De onde vem cada raça", "Where each breed comes from")}</h2>
-      <p class="lede">{T("O solar de cada raça autóctone, segundo o Catálogo Oficial da DGAV/CAP. Passe o cursor ou toque num ponto para ver a raça e quantos animais estão inscritos no livro genealógico.", "The homeland of each native breed, according to the official DGAV/CAP Catalogue. Hover over or tap a point to see the breed and how many animals are registered in the herd book.")}</p>
-      <div class="map-grid">
-        <div class="card map-card"><div class="chart map" data-chart="breeds-map" role="img" aria-label={T("Mapa de Portugal com a localização aproximada do solar de cada raça bovina autóctone", "Map of Portugal showing the approximate homeland of each native cattle breed")}></div>
-          <div id="map-chips" class="map-chips" aria-label={T("Escolher raça", "Choose a breed")}></div>
-          <p class="note">{T("Localização aproximada do solar (não são explorações). Fronteiras © EuroGeographics. Açores e Madeira fora de escala geográfica.", "Approximate location of each homeland (not farms). Boundaries © EuroGeographics. Azores and Madeira are not shown to geographic scale.")}</p></div>
-        <aside class="map-side" id="map-side" aria-live="polite">
-          <Photo id="barrosa" sizes="(max-width: 860px) 100vw, 380px" lang={lang} />
-          <p class="hint">{T("Escolha uma raça no mapa.", "Choose a breed on the map.")}</p>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <span class="eyebrow">{T("As raças", "The breeds")}</span>
-      <h2>{T("As 15 raças autóctones", "The 15 native breeds")}</h2>
-      <div class="breeds">
-        {allBreeds.map((b, i) => {
-          const p = photoFor(b.slug);
-          return (
-            <a class="breed reveal" href={href(lang, `racas/${b.slug}/`)} style={`--i:${i}`}>
-              <div class="thumb">
-                {p ? <Photo id={p.id} sizes="(max-width: 640px) 50vw, 240px" caption={false} lang={lang} /> : <div class="nophoto">{T("Fotografia em procura", "Photograph being sought")}</div>}
-                {p && <span class:list={["tag", p.kind]}>{p.kind === "raça" ? T("A raça", "The breed") : p.kind === "paisagem" ? T("Paisagem", "Landscape") : T("O solar", "The homeland")}</span>}
-              </div>
-              <span class="num mono">{String(i + 1).padStart(2, "0")}</span>
-              <span class="name">{b.official_name}</span>
-              {b.herd && <span class="herd">{num(b.herd.females, lang)} {T("fêmeas inscritas", "females registered")} ({b.herd.year})</span>}
-            </a>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-
-  <section class="block split">
-    <div class="wrap split-grid">
-      <Photo id="tourem-manada" class="split-photo" sizes="(max-width: 860px) 100vw, 50vw" lang={lang} />
-      <div>
-        <span class="eyebrow">{T("Observatório Portugal ↔ Espanha", "Portugal ↔ Spain observatory")}</span>
-        <h2>{T("Que bovinos vivos saem para Espanha — e quanto valem", "Which live cattle go to Spain — and what they are worth")}</h2>
-        <p>{T("Exportações de Portugal para Espanha por categoria da Nomenclatura Combinada. Os anos incompletos estão assinalados.", "Exports from Portugal to Spain by Combined Nomenclature category. Incomplete years are marked.")}</p>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="card">
-        <div class="toggle" role="group" aria-label={T("Medida", "Measure")}><button data-mode="eur" aria-pressed="true">{T("Valor (€)", "Value (€)")}</button><button data-mode="heads" aria-pressed="false">{T("Cabeças", "Head")}</button></div>
-        <div class="chart tall" data-chart="live-trade" data-dataset="trade_live_bovine_pt_es" data-mode="eur" role="img" aria-label={T("Exportações anuais de bovinos vivos de Portugal para Espanha por categoria", "Annual exports of live cattle from Portugal to Spain by category")}></div>
-        <p class="note">{T("Fonte: Eurostat — Comext (DS-045409). As categorias detalhadas não cobrem todo o total oficial: a diferença aparece como \"não discriminado\" e as cabeças são um ", "Source: Eurostat — Comext (DS-045409). The detailed categories do not cover the whole official total: the difference appears as \"not broken down\" and the head counts are a ")}<strong>{T("mínimo", "minimum")}</strong>. <a href={href(lang, "metodologia/#categorias")}>{T("Porquê?", "Why?")}</a></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap grid cols-2">
-      <div>
-        <span class="eyebrow">{T("Efetivo", "Herd")}</span>
-        <h2>{T("Quantos bovinos há em Portugal e em Espanha", "How many cattle there are in Portugal and Spain")}</h2>
-        <div class="toggle" role="group" aria-label={T("Escala", "Scale")}><button data-mode="abs" aria-pressed="true">{T("Cabeças", "Head")}</button><button data-mode="index" aria-pressed="false">{T("Índice", "Index")}</button></div>
-        <div class="chart" data-chart="population" data-dataset="bovine_population" role="img" aria-label={T("Evolução do efetivo bovino em Portugal e Espanha", "Trend in the cattle herd in Portugal and Spain")}></div>
-      </div>
-      <div>
-        <span class="eyebrow">{T("Carne de bovino", "Beef")}</span>
-        <h2>{T("A carne faz o caminho inverso", "The meat travels the other way")}</h2>
-        <div class="chart" data-chart="beef-balance" data-dataset="trade_beef_pt_es" role="img" aria-label={T("Comércio anual de carne de bovino entre Portugal e Espanha em toneladas", "Annual beef trade between Portugal and Spain, in tonnes")}></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="band-photos">
-      <Photo id="carne-cortes" sizes="33vw" caption={false} lang={lang} />
-      <Photo id="outono-castanheiros" sizes="33vw" caption={false} lang={lang} />
-      <Photo id="carne-madeira" sizes="33vw" caption={false} lang={lang} />
-    </div>
-    <div class="wrap band-text">
-      <span class="eyebrow light">{T("Da pastagem ao prato", "From pasture to plate")}</span>
-      <h2>{T("Carne com nome de raça e de território", "Meat named after a breed and a territory")}</h2>
-      <p class="lede light">{T("Várias raças autóctones dão origem a carnes com Denominação de Origem Protegida, como a Carne Barrosã, que o catálogo da DGAV refere. A lista completa está a ser confirmada no registo oficial da União Europeia.", "Several native breeds give rise to meats with a Protected Designation of Origin (PDO), such as Carne Barrosã, which the DGAV catalogue mentions. The full list is being confirmed in the European Union's official register.")}</p>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <span class="eyebrow">{T("Descobertas", "Discoveries")}</span>
-      <h2>{T("Acabado de verificar", "Just verified")}</h2>
-      <div class="grid cols-3">
-        {desc.map((d) => (
-          <a class="card disc reveal" href={href(lang, `descobertas/${d.id}/`)}>
-            <span class="date mono">{fmtDate(d.data.date.toISOString().slice(0, 10), lang)}</span>
-            <h3>{d.data.title}</h3>
-            <p>{d.data.summary}</p>
+      <h2>{T("Por onde começar", "Where to start")}</h2>
+      <div class="door-grid">
+        {doors.map((d) => (
+          <a class="door reveal" href={href(lang, d.p)}>
+            <Photo id={d.img} sizes="(max-width: 700px) 100vw, 25vw" caption={false} lang={lang} />
+            <span class="dt"><strong>{d.t}</strong><span>{d.d}</span></span>
           </a>
         ))}
       </div>
-      <p><a href={href(lang, "descobertas/")}>{T("Todas as descobertas →", "All discoveries →")}</a></p>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <span class="eyebrow">{T("Bastidores", "Behind the scenes")}</span>
-      <h2>{T("Últimas atualizações automáticas", "Latest automatic updates")}</h2>
-      {run && (
-        <ul class="runs">
-          {s.catalog.map((c) => (
-            <li><span class:list={["chip", c.state === "ok" ? "ok" : "wait"]}>{c.state === "ok" ? T("Atualizado", "Updated") : T("Em preparação", "In preparation")}</span> <strong>{lang === "en" ? (c.title_en ?? c.title_pt) : c.title_pt}</strong>{c.last_period && <span class="muted"> · {T("dados até", "data up to")} {c.last_period} · {c.rows} {T("valores", "values")}</span>}</li>
-          ))}
-        </ul>
-      )}
-      {run && <p class="muted">{T("Última verificação", "Last check")}: {new Date(run.finished_at).toLocaleString(lang === "en" ? "en-GB" : "pt-PT", { timeZone: "Europe/Lisbon" })} ({T("hora de Lisboa", "Lisbon time")}).</p>}
     </div>
   </section>
 </Base>
-<script>import "../scripts/charts.ts";</script>
-
 <style>
-  .hero { position: relative; min-height: min(92vh, 860px); display: flex; flex-direction: column; justify-content: flex-end; padding: 120px 0 28px; color: #fff;
-    background: linear-gradient(180deg, rgba(15,12,10,.15) 0%, rgba(15,12,10,.35) 45%, rgba(15,12,10,.82) 100%), var(--bg, #2b241d) center 60% / cover no-repeat; margin-top: -61px; }
-  .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: end; width: 100%; }
-  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .hero { min-height: auto; padding-top: 140px; } }
-  .hero h1 { color: #fff; font-size: clamp(2.8rem, 8vw, 6rem); text-shadow: 0 2px 30px rgba(0,0,0,.35); }
-  .light { color: rgba(255,255,255,.88) !important; }
-  .eyebrow.light { color: #f3c9a8 !important; }
-  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
-  .btn.primary { background: #fff; color: #1e1b18; border-color: #fff; }
-  .btn.ghost { color: #fff; border-color: rgba(255,255,255,.7); }
-  .hero-stat :global(.stat) { background: color-mix(in srgb, var(--surface) 94%, transparent); color: var(--ink); backdrop-filter: blur(6px); }
-  .hero-credit { position: relative; margin: 18px auto 0; max-width: var(--max); padding: 0 16px; width: 100%; font-size: .72rem; color: rgba(255,255,255,.7); }
-  .hero-credit a { color: inherit; }
-  .numbers { border-top: 0; }
-  .map-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; align-items: start; }
-  @media (max-width: 860px) { .map-grid { grid-template-columns: 1fr; } }
-  .chart.map { height: 640px; }
-  .map-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 14px 0; }
-  .map-chips :global(.chip-btn) { font: 600 .8rem var(--sans); padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
-  .map-chips :global(.chip-btn[aria-pressed="true"]) { background: var(--accent); border-color: var(--accent); color: #fff; }
-  @media (max-width: 560px) { .chart.map { height: 460px; } }
-  .map-side { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 10px; }
-  .map-side :global(.photo img) { border-radius: var(--radius); aspect-ratio: 4/3; }
-  .hint { color: var(--muted); }
-  .note { font-size: .8rem; color: var(--muted); margin-top: 10px; }
-  .breeds { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(46%, 220px), 1fr)); gap: 14px; }
-  .breed { display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: var(--ink); }
-  .thumb { position: relative; aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden; background: var(--cork-soft); }
-  .thumb :global(.photo) { position: absolute; inset: 0; }
-  .thumb :global(.photo img) { width: 100%; height: 100%; }
-  .thumb :global(img) { transition: transform .6s ease; }
-  .breed:hover .thumb :global(img) { transform: scale(1.05); }
-  .nophoto { display: grid; place-items: center; height: 100%; color: var(--muted); font-size: .85rem; text-align: center; padding: 12px; }
-  .tag { position: absolute; left: 10px; top: 10px; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: rgba(0,0,0,.55); color: #fff; }
-  .tag.raça { background: var(--pasture); }
-  .num { color: var(--accent); font-size: .78rem; margin-top: 4px; }
-  .name { font: 600 1.4rem/1.1 var(--display); }
-  .herd { font-size: .82rem; color: var(--muted); }
-  .split { border-top: 1px solid var(--line); }
-  .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; margin-bottom: 24px; }
-  .split-grid :global(.split-photo img) { border-radius: var(--radius); aspect-ratio: 16/10; }
-  @media (max-width: 860px) { .split-grid { grid-template-columns: 1fr; } }
-  .band { position: relative; color: #fff; background: #1b1714; }
-  .band-photos { display: grid; grid-template-columns: repeat(3, 1fr); height: clamp(260px, 38vw, 460px); opacity: .55; }
-  .band-photos :global(.photo), .band-photos :global(img) { height: 100%; }
-  .band-text { position: absolute; inset: auto 0 0 0; padding-bottom: clamp(24px, 5vw, 56px); }
-  .band h2 { color: #fff; }
-  .disc { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 8px; }
-  .disc .date { color: var(--accent); font-size: .78rem; }
-  .disc p { color: var(--muted); font-size: .95rem; margin: 0; }
-  .runs { list-style: none; padding: 0; display: grid; gap: 8px; }
-  .muted { color: var(--muted); }
+  .doors { padding: clamp(56px, 9vw, 110px) 0; background: var(--paper); }
+  .door-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); margin-top: 24px; }
+  .door { position: relative; display: block; aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; background: #1c1714; }
+  .door :global(.photo) { position: absolute; inset: 0; }
+  .door :global(img) { transition: transform .8s ease; }
+  .door:hover :global(img) { transform: scale(1.06); }
+  .door::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.75)); }
+  .dt { position: absolute; z-index: 1; left: 18px; right: 18px; bottom: 16px; display: grid; gap: 2px; }
+  .dt strong { font: 500 1.25rem var(--display); }
+  .dt span { font-size: .85rem; color: rgba(255,255,255,.85); }
 </style>

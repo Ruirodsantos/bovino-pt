@@ -1,249 +1,333 @@
 {
-  "lifecycle": [
-    "IDEA",
-    "RESEARCH",
-    "READY",
-    "IN PROGRESS",
-    "TESTING",
-    "REVIEW",
-    "APPROVED",
-    "COMPLETE"
-  ],
-  "tasks": [
-    {
-      "id": "T-0001",
-      "title": "Phase 0 documents A–H",
-      "agent": "claude",
-      "priority": "high",
-      "status": "REVIEW",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "All eight documents exist",
-        "Rui approves or requests changes"
-      ],
-      "evidence": [
-        "docs/",
-        "PROJECT_STATUS.json"
-      ],
-      "review_result": null,
-      "source": "directive §22"
-    },
-    {
-      "id": "T-0002",
-      "title": "Repository skeleton, schemas, registry seed, validator",
-      "agent": "claude",
-      "priority": "high",
-      "status": "REVIEW",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "python pipeline/validate_registry.py exits 0",
-        "pytest passes"
-      ],
-      "evidence": [
-        "pipeline/validate_registry.py",
-        "pipeline/tests/",
-        "6 tests passing, validator OK (2026-10-17)"
-      ],
-      "review_result": null,
-      "source": "directive §22"
-    },
-    {
-      "id": "T-0003",
-      "title": "Hermes integration — choose option A/B/C and run first brief",
-      "agent": "claude",
-      "priority": "high",
-      "status": "IDEA",
-      "depends_on": [
-        "D-004"
-      ],
-      "acceptance_criteria": [
-        "Hermes returns a finding for R-001 that validates against the schema"
-      ],
-      "evidence": [],
-      "review_result": null,
-      "source": "HERMES_INTEGRATION.md"
-    },
-    {
-      "id": "T-0101",
-      "title": "Create GitHub repository, branch protection, CI skeleton",
-      "agent": "claude",
-      "priority": "high",
-      "status": "COMPLETE",
-      "depends_on": [
-        "D-001",
-        "D-003"
-      ],
-      "acceptance_criteria": [
-        "CI fails a PR with an invalid schema example"
-      ],
-      "evidence": [
-        "https://github.com/Ruirodsantos/bovino-pt",
-        ".github/workflows/daily.yml"
-      ],
-      "review_result": null,
-      "source": "DEVELOPMENT_ROADMAP.md"
-    },
-    {
-      "id": "T-0104",
-      "title": "Eurostat collector (apro_mt_pheadm, apro_mt_pann)",
-      "agent": "claude",
-      "priority": "high",
-      "status": "COMPLETE",
-      "depends_on": [
-        "T-0101"
-      ],
-      "acceptance_criteria": [
-        "Scheduled run writes raw snapshot + manifest",
-        "Validated PT and ES series match Eurostat data browser"
-      ],
-      "evidence": [
-        "data/validated/",
-        "data/history/last_run.json (run 2026-10-17)"
-      ],
-      "review_result": null,
-      "source": "DEVELOPMENT_ROADMAP.md"
-    },
-    {
-      "id": "T-0105",
-      "title": "Comext collector CN 0102/0201/0202 PT<->ES",
-      "agent": "claude",
-      "priority": "high",
-      "status": "COMPLETE",
-      "depends_on": [
-        "T-0101"
-      ],
-      "acceptance_criteria": [
-        "Monthly series in heads, kg, EUR",
-        "Mirror check logged"
-      ],
-      "evidence": [
-        "data/validated/",
-        "data/history/last_run.json (run 2026-10-17)"
-      ],
-      "review_result": null,
-      "source": "DEVELOPMENT_ROADMAP.md"
-    },
-    {
-      "id": "T-0110",
-      "title": "Visual style tile",
-      "agent": "claude",
-      "priority": "medium",
-      "status": "READY",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "Static page with tokens, type, stat card, footnote, badge, chart, map",
-        "Rui's feedback recorded"
-      ],
-      "evidence": [],
-      "review_result": null,
-      "source": "DESIGN_DIRECTION.md"
-    },
-    {
-      "id": "T-0201",
-      "title": "Visual MVP: home, observatory, breeds, discoveries, data, method",
-      "agent": "claude",
-      "priority": "high",
-      "status": "REVIEW",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "Site deployed with real verified data",
-        "Every number shows source and period"
-      ],
-      "evidence": [
-        "https://theaipulsehub.com/bovino-pt/"
-      ],
-      "review_result": null,
-      "source": "Rui 2026-10-17"
-    },
-    {
-      "id": "T-0202",
-      "title": "Regional bovine data (NUTS 2) for the map",
-      "agent": "claude",
-      "priority": "medium",
-      "status": "TESTING",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "bovine_population_regions dataset state ok",
-        "Mapa usa NUTS 2024 para 2023 (PT19, PT1A–PT1D); o GeoJSON atual é NUTS 2021"
-      ],
-      "evidence": [
-        "2026-10-18: códigos alternativos ef_lsk_main/ef_lsk_bovine já no registo; recolha relançada (workflow daily.yml, collect=true)",
-        "2026-10-18: estado ok — 100 linhas (2010–2023) de ef_lsk_main com totais, A2000, cabeças; execução 39103484603"
-      ],
-      "review_result": null,
-      "source": "run 2026-10-17: agr_r_animal not disseminated"
-    },
-    {
-      "id": "T-0301",
-      "title": "Fotografias de raça com licença livre (8 raças em falta)",
-      "agent": "hermes",
-      "priority": "high",
-      "status": "IN PROGRESS",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "Cada raça com photo_kind: raça, autor, URL e licença CC BY/BY-SA/CC0 registados; nunca Wikimedia"
-      ],
-      "evidence": [
-        "2026-10-18: instaladas Alentejana, Arouquesa, Maronesa, Mertolenga, Ramo Grande (Wikimedia Commons, raça indicada pelo autor). Em falta: Algarvia, Brava de Lide, Garvonesa, Jarmelista, Marinhoa, Minhota, Mirandesa, Preta. Candidatos em research/image-candidates/c-*"
-      ],
-      "review_result": null,
-      "source": "GitHub issue #6"
-    },
-    {
-      "id": "T-0302",
-      "title": "DOP/IGP de carne de bovino por raça (eAmbrosia)",
-      "agent": "hermes",
-      "priority": "high",
-      "status": "READY",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "Nome oficial, data de registo, caderno de especificações e agrupamento para cada denominação, com fonte"
-      ],
-      "evidence": [],
-      "review_result": null,
-      "source": "GitHub issue #7"
-    },
-    {
-      "id": "T-0303",
-      "title": "Confirmar intervalos técnicos da maturação (content/carne/02-maturacao.md)",
-      "agent": "claude",
-      "priority": "medium",
-      "status": "READY",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "Cada intervalo citado com fonte primária (página/tabela) ou marcado «a confirmar»"
-      ],
-      "evidence": [],
-      "review_result": null,
-      "source": "GitHub issue #8"
-    },
-    {
-      "id": "T-0304",
-      "title": "Revisão ChatGPT da secção A Carne e dos 15 perfis de raça",
-      "agent": "chatgpt",
-      "priority": "high",
-      "status": "REVIEW",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "Ficheiro em reviews/ com veredicto por texto"
-      ],
-      "evidence": [],
-      "review_result": null,
-      "source": "GitHub issue #9"
-    },
-    {
-      "id": "T-0305",
-      "title": "Carne ao nível de El Capricho: mapa de lacunas",
-      "agent": "hermes",
-      "priority": "medium",
-      "status": "READY",
-      "depends_on": [],
-      "acceptance_criteria": [
-        "Nota em research/ e novos artigos em content/carne/, só fontes públicas, sem contactos"
-      ],
-      "evidence": [],
-      "review_result": null,
-      "source": "GitHub issue #10"
-    }
-  ]
+ "lifecycle": [
+  "IDEA",
+  "RESEARCH",
+  "READY",
+  "IN PROGRESS",
+  "TESTING",
+  "REVIEW",
+  "APPROVED",
+  "COMPLETE"
+ ],
+ "tasks": [
+  {
+   "id": "T-0001",
+   "title": "Phase 0 documents A–H",
+   "agent": "claude",
+   "priority": "high",
+   "status": "REVIEW",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "All eight documents exist",
+    "Rui approves or requests changes"
+   ],
+   "evidence": [
+    "docs/",
+    "PROJECT_STATUS.json"
+   ],
+   "review_result": null,
+   "source": "directive §22"
+  },
+  {
+   "id": "T-0002",
+   "title": "Repository skeleton, schemas, registry seed, validator",
+   "agent": "claude",
+   "priority": "high",
+   "status": "REVIEW",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "python pipeline/validate_registry.py exits 0",
+    "pytest passes"
+   ],
+   "evidence": [
+    "pipeline/validate_registry.py",
+    "pipeline/tests/",
+    "6 tests passing, validator OK (2026-10-17)"
+   ],
+   "review_result": null,
+   "source": "directive §22"
+  },
+  {
+   "id": "T-0003",
+   "title": "Hermes integration — choose option A/B/C and run first brief",
+   "agent": "claude",
+   "priority": "high",
+   "status": "IDEA",
+   "depends_on": [
+    "D-004"
+   ],
+   "acceptance_criteria": [
+    "Hermes returns a finding for R-001 that validates against the schema"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "HERMES_INTEGRATION.md"
+  },
+  {
+   "id": "T-0101",
+   "title": "Create GitHub repository, branch protection, CI skeleton",
+   "agent": "claude",
+   "priority": "high",
+   "status": "COMPLETE",
+   "depends_on": [
+    "D-001",
+    "D-003"
+   ],
+   "acceptance_criteria": [
+    "CI fails a PR with an invalid schema example"
+   ],
+   "evidence": [
+    "https://github.com/Ruirodsantos/bovino-pt",
+    ".github/workflows/daily.yml"
+   ],
+   "review_result": null,
+   "source": "DEVELOPMENT_ROADMAP.md"
+  },
+  {
+   "id": "T-0104",
+   "title": "Eurostat collector (apro_mt_pheadm, apro_mt_pann)",
+   "agent": "claude",
+   "priority": "high",
+   "status": "COMPLETE",
+   "depends_on": [
+    "T-0101"
+   ],
+   "acceptance_criteria": [
+    "Scheduled run writes raw snapshot + manifest",
+    "Validated PT and ES series match Eurostat data browser"
+   ],
+   "evidence": [
+    "data/validated/",
+    "data/history/last_run.json (run 2026-10-17)"
+   ],
+   "review_result": null,
+   "source": "DEVELOPMENT_ROADMAP.md"
+  },
+  {
+   "id": "T-0105",
+   "title": "Comext collector CN 0102/0201/0202 PT<->ES",
+   "agent": "claude",
+   "priority": "high",
+   "status": "COMPLETE",
+   "depends_on": [
+    "T-0101"
+   ],
+   "acceptance_criteria": [
+    "Monthly series in heads, kg, EUR",
+    "Mirror check logged"
+   ],
+   "evidence": [
+    "data/validated/",
+    "data/history/last_run.json (run 2026-10-17)"
+   ],
+   "review_result": null,
+   "source": "DEVELOPMENT_ROADMAP.md"
+  },
+  {
+   "id": "T-0110",
+   "title": "Visual style tile",
+   "agent": "claude",
+   "priority": "medium",
+   "status": "READY",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Static page with tokens, type, stat card, footnote, badge, chart, map",
+    "Rui's feedback recorded"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "DESIGN_DIRECTION.md"
+  },
+  {
+   "id": "T-0201",
+   "title": "Visual MVP: home, observatory, breeds, discoveries, data, method",
+   "agent": "claude",
+   "priority": "high",
+   "status": "REVIEW",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Site deployed with real verified data",
+    "Every number shows source and period"
+   ],
+   "evidence": [
+    "https://theaipulsehub.com/bovino-pt/"
+   ],
+   "review_result": null,
+   "source": "Rui 2026-10-17"
+  },
+  {
+   "id": "T-0202",
+   "title": "Regional bovine data (NUTS 2) for the map",
+   "agent": "claude",
+   "priority": "medium",
+   "status": "TESTING",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "bovine_population_regions dataset state ok",
+    "Mapa usa NUTS 2024 para 2023 (PT19, PT1A–PT1D); o GeoJSON atual é NUTS 2021"
+   ],
+   "evidence": [
+    "2026-10-18: códigos alternativos ef_lsk_main/ef_lsk_bovine já no registo; recolha relançada (workflow daily.yml, collect=true)",
+    "2026-10-18: estado ok — 100 linhas (2010–2023) de ef_lsk_main com totais, A2000, cabeças; execução 39103484603"
+   ],
+   "review_result": null,
+   "source": "run 2026-10-17: agr_r_animal not disseminated"
+  },
+  {
+   "id": "T-0301",
+   "title": "Fotografias de raça com licença livre (8 raças em falta)",
+   "agent": "hermes",
+   "priority": "high",
+   "status": "IN PROGRESS",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Cada raça com photo_kind: raça, autor, URL e licença CC BY/BY-SA/CC0 registados; nunca Wikimedia"
+   ],
+   "evidence": [
+    "2026-10-18: instaladas Alentejana, Arouquesa, Maronesa, Mertolenga, Ramo Grande (Wikimedia Commons, raça indicada pelo autor). Em falta: Algarvia, Brava de Lide, Garvonesa, Jarmelista, Marinhoa, Minhota, Mirandesa, Preta. Candidatos em research/image-candidates/c-*"
+   ],
+   "review_result": null,
+   "source": "GitHub issue #6"
+  },
+  {
+   "id": "T-0302",
+   "title": "DOP/IGP de carne de bovino por raça (eAmbrosia)",
+   "agent": "hermes",
+   "priority": "high",
+   "status": "READY",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Nome oficial, data de registo, caderno de especificações e agrupamento para cada denominação, com fonte"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "GitHub issue #7"
+  },
+  {
+   "id": "T-0303",
+   "title": "Confirmar intervalos técnicos da maturação (content/carne/02-maturacao.md)",
+   "agent": "claude",
+   "priority": "medium",
+   "status": "READY",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Cada intervalo citado com fonte primária (página/tabela) ou marcado «a confirmar»"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "GitHub issue #8"
+  },
+  {
+   "id": "T-0304",
+   "title": "Revisão ChatGPT da secção A Carne e dos 15 perfis de raça",
+   "agent": "chatgpt",
+   "priority": "high",
+   "status": "REVIEW",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Ficheiro em reviews/ com veredicto por texto"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "GitHub issue #9"
+  },
+  {
+   "id": "T-0305",
+   "title": "Carne ao nível de El Capricho: mapa de lacunas",
+   "agent": "hermes",
+   "priority": "medium",
+   "status": "READY",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Nota em research/ e novos artigos em content/carne/, só fontes públicas, sem contactos"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "GitHub issue #10"
+  },
+  {
+   "id": "T-0401",
+   "title": "Nova arquitetura visual: início, galeria de raças, menu de quatro áreas",
+   "agent": "claude",
+   "priority": "high",
+   "status": "TESTING",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Início em ecrã inteiro com 6 cenas, galeria com filtro por região, menu Raças/Carne/Da pastagem ao prato/Aprender, bilingue"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "Rui, 2026-10-18 (nova visão editorial)"
+  },
+  {
+   "id": "T-0402",
+   "title": "Ficha completa Ramo Grande (3 níveis) com fontes DGADR/caderno/catálogo",
+   "agent": "claude",
+   "priority": "high",
+   "status": "TESTING",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "8 áreas, blocos expansíveis, cada bloco com fonte; lacunas marcadas em investigação"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "Rui, 2026-10-18 (nova visão editorial)"
+  },
+  {
+   "id": "T-0403",
+   "title": "Da pastagem ao prato: percurso interativo e caso Terceira",
+   "agent": "claude",
+   "priority": "high",
+   "status": "TESTING",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "8 etapas; separar processo geral de confirmado; lista do que falta investigar"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "Rui, 2026-10-18 (nova visão editorial)"
+  },
+  {
+   "id": "T-0404",
+   "title": "Fichas das outras 14 raças no modelo Ramo Grande",
+   "agent": "hermes",
+   "priority": "high",
+   "status": "READY",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "content/fichas/<slug>.yaml com fonte por bloco, só fontes públicas"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "Rui, 2026-10-18 (nova visão editorial)"
+  },
+  {
+   "id": "T-0405",
+   "title": "Fotografias melhores (Ramo Grande e 8 raças em falta)",
+   "agent": "claude",
+   "priority": "high",
+   "status": "BLOCKED",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Contacto com associações/fotógrafos exige aprovação de Rui"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "Rui, 2026-10-18 (nova visão editorial)"
+  },
+  {
+   "id": "T-0406",
+   "title": "Enciclopédia da carne: 10 temas em falta",
+   "agent": "hermes",
+   "priority": "medium",
+   "status": "READY",
+   "depends_on": [],
+   "acceptance_criteria": [
+    "Artigos curtos com fonte; ligações a partir das raças"
+   ],
+   "evidence": [],
+   "review_result": null,
+   "source": "Rui, 2026-10-18 (nova visão editorial)"
+  }
+ ]
 }

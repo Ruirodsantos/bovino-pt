@@ -1,0 +1,119 @@
+---
+import Base from "../layouts/Base.astro";
+import Scene from "../components/Scene.astro";
+import { href, tr, type Lang } from "../i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = tr(lang);
+const CAD = "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf";
+const DGADR = "https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop";
+const CAT = "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf";
+const src = (l: string, u: string) => ({ l, u });
+const stages = [
+  { id: "nascimento", t: T("Nascimento", "Birth"),
+    general: T("O vitelo nasce de uma vaca de cria e, nos primeiros meses, vive junto da mãe, que o amamenta.", "The calf is born to a suckler cow and, for its first months, lives with its mother, which nurses it."),
+    known: [T("Os partos do Ramo Grande concentram-se de fevereiro a maio, para que os picos de erva da primavera coincidam com as necessidades dos animais.", "Ramo Grande calving is concentrated from February to May, so that the spring grass peak matches the animals' needs."), T("Os vitelos mamam pelo menos três meses e são desmamados aos 6–7 meses.", "Calves suckle for at least three months and are weaned at 6–7 months.")],
+    srcs: [src(T("Catálogo DGAV/CAP, p. 62", "DGAV/CAP Catalogue, p. 62"), CAT), src(T("Caderno de especificações", "Specification document"), CAD)], todo: [] },
+  { id: "criacao", t: T("Criação", "Rearing"),
+    general: T("Em sistemas extensivos os animais pastam ao ar livre; noutros passam parte da vida em estábulo. A escolha depende da raça, do clima e do que o criador pretende produzir.", "In extensive systems animals graze outdoors; in others they spend part of their lives indoors. The choice depends on the breed, the climate and what the farmer wants to produce."),
+    known: [T("O Ramo Grande cria-se em pastoreio quase todo o ano, num sistema extensivo tradicional.", "Ramo Grande are raised at pasture almost all year, in a traditional extensive system."), T("Em 2019, o livro genealógico da raça tinha 581 criadores.", "In 2019 the breed's herd book had 581 breeders.")],
+    srcs: [src("DGADR", DGADR), src(T("Catálogo DGAV/CAP", "DGAV/CAP Catalogue"), CAT)], todo: [T("Dimensão média das explorações da Terceira", "Average size of Terceira farms")] },
+  { id: "alimentacao", t: T("Alimentação", "Feeding"),
+    general: T("A base da alimentação de um bovino é erva, fresca ou conservada em feno ou silagem; os alimentos compostos completam a dieta.", "The basis of a bovine's diet is grass, fresh or preserved as hay or silage; compound feeds complete the diet."),
+    known: [T("Pastagens permanentes ou melhoradas de gramíneas e leguminosas, disponíveis todo o ano.", "Permanent or improved grass-and-legume pastures, available all year."), T("Silagem de erva, feno, milho e subprodutos da exploração; alimentos compostos só quando o pasto não chega.", "Grass silage, hay, maize and farm by-products; compound feeds only when pasture is short."), T("Alimentos de fora dos Açores: no máximo 50 % da matéria seca, em média anual.", "Feed from outside the Azores: at most 50% of dry matter, as an annual average.")],
+    srcs: [src(T("Caderno de especificações", "Specification document"), CAD)], todo: [] },
+  { id: "transporte", t: T("Transporte", "Transport"),
+    general: T("O transporte de animais vivos está sujeito a regras europeias de bem-estar e de identificação. (Processo geral, em revisão.)", "Transporting live animals is subject to European welfare and identification rules. (General process, under review.)"),
+    known: [T("Os animais das explorações aprovadas são separados e agrupados em lotes de abate nas abegoarias.", "Animals from approved farms are separated and grouped into slaughter lots at the abegoarias (grouping facilities).")],
+    srcs: [src(T("Caderno de especificações", "Specification document"), CAD)],
+    todo: [T("Transporte entre ilhas e para o continente", "Transport between islands and to the mainland"), T("Percurso de bovinos vivos da Terceira", "Route of live cattle from Terceira")] },
+  { id: "abate", t: T("Abate", "Slaughter"),
+    general: T("Os bovinos são abatidos em matadouros licenciados. A carcaça é classificada pela conformação e pela cobertura de gordura (escala EUROP) e arrefece antes de ser desmanchada.", "Cattle are slaughtered in licensed abattoirs. The carcass is graded for conformation and fat cover (EUROP scale) and chilled before it is cut up."),
+    known: [T("Para ser DOP, o animal tem de ser abatido nos Açores.", "To be PDO, the animal must be slaughtered in the Azores."), T("Conformação aceite: S, E, U, R e O (e P nalgumas categorias); cobertura de gordura de classe 1 não é admitida.", "Accepted conformation: S, E, U, R and O (and P in some categories); fat cover class 1 is not admitted.")],
+    srcs: [src(T("Caderno de especificações", "Specification document"), CAD)], todo: [T("Matadouro da Terceira: entidade, capacidade e volumes", "Terceira abattoir: operator, capacity and volumes")] },
+  { id: "desmancha", t: T("Desmancha", "Cutting"),
+    general: T("A desmancha separa a carcaça em peças e cortes. A carne precisa de arrefecer antes de ser desossada.", "Cutting separates the carcass into primals and cuts. The meat needs to chill before it is boned."),
+    known: [T("A desossa só pode fazer-se 48 a 144 horas depois do abate.", "Deboning may only take place 48 to 144 hours after slaughter."), T("Apresentações: carcaças, meias-carcaças, quartos, peças inteiras ou fatiadas e carne picada embalada.", "Presentations: carcasses, half-carcasses, quarters, whole or sliced cuts and packaged minced meat.")],
+    srcs: [src(T("Caderno de especificações", "Specification document"), CAD)], todo: [T("Cortes usados e nomes locais", "Cuts used and local names")] },
+  { id: "distribuicao", t: T("Distribuição", "Distribution"),
+    general: T("A carne chega ao consumidor por talhos, supermercados, restauração e vendas diretas.", "The meat reaches the consumer through butchers, supermarkets, restaurants and direct sales."),
+    known: [T("Toda a carne vendida como DOP tem de levar a menção «Carne Ramo Grande DOP» ou a denominação completa.", "All meat sold as PDO must carry the wording «Carne Ramo Grande DOP» or the full designation.")],
+    srcs: [src(T("Caderno de especificações", "Specification document"), CAD)],
+    todo: [T("Comercialização entre ilhas", "Trade between islands"), T("Comercialização para o continente", "Trade to the mainland")] },
+  { id: "consumidor", t: T("Consumidor", "Consumer"),
+    general: T("O rótulo e a denominação são a forma de o consumidor reconhecer a origem e a certificação da carne.", "The label and the designation are how consumers recognise the meat's origin and certification."),
+    known: [T("A carne de Ramo Grande foi tradicionalmente a preferida para os pratos das «funções» do Espírito Santo.", "Ramo Grande beef was traditionally the preferred meat for the dishes at the Holy Spirit «funções».")],
+    srcs: [src("DGADR", DGADR)], todo: [T("Onde comprar Carne Ramo Grande DOP", "Where to buy Carne Ramo Grande PDO")] },
+];
+const cases: [string, string][] = [
+  [T("Raça Ramo Grande", "Ramo Grande breed"), "ok"], [T("Carne Ramo Grande DOP (caderno de especificações)", "Carne Ramo Grande PDO (specification document)"), "ok"],
+  [T("Criação de bovinos na Terceira", "Cattle farming on Terceira"), "parcial"], [T("Bovinos leiteiros Holstein-Frísios", "Holstein-Friesian dairy cattle"), "todo"],
+  [T("Cruzamentos com Angus, Limousine e Charolês", "Crosses with Angus, Limousin and Charolais"), "todo"], [T("Matadouro da Terceira", "Terceira abattoir"), "todo"],
+  [T("Transporte de bovinos vivos", "Transport of live cattle"), "todo"], [T("Comercialização entre ilhas e para o continente", "Trade between islands and to the mainland"), "todo"],
+];
+const st = (s: string) => s === "ok" ? T("Confirmado", "Confirmed") : s === "parcial" ? T("Em parte", "Partly") : T("Por investigar", "To research");
+---
+<Base lang={lang} overlay title={T("Da pastagem ao prato", "From pasture to plate")} description={T("O percurso do bovino e da carne, do nascimento ao consumidor, com o caso da ilha Terceira e do Ramo Grande.", "The journey of cattle and beef, from birth to consumer, with the case of Terceira island and the Ramo Grande.")}>
+  <Scene id="terceira" lang={lang} h1 eager kicker={T("Caso de estudo · Terceira, Açores", "Case study · Terceira, Azores")} title={T("Da pastagem ao prato", "From pasture to plate")}
+    text={T("Oito etapas, do nascimento ao consumidor. Escolha uma.", "Eight stages, from birth to consumer. Choose one.")} cue="#percurso" />
+  <section class="block journey" id="percurso">
+    <div class="wrap">
+      <ol class="steps" role="tablist" aria-label={T("Etapas", "Stages")}>
+        {stages.map((s, i) => <li><button type="button" role="tab" data-step={s.id} aria-selected={i === 0 ? "true" : "false"}><span class="n">{String(i + 1).padStart(2, "0")}</span>{s.t}</button></li>)}
+      </ol>
+      <div class="stage-wrap">
+        {stages.map((s, i) => (
+          <article class="stage" id={s.id} data-stage={s.id} role="tabpanel" hidden={false}>
+            <h2>{s.t}</h2>
+            <div class="cols">
+              <div><span class="tag general">{T("Processo geral", "General process")}</span><p>{s.general}</p></div>
+              <div><span class="tag ok">{T("Confirmado · Ramo Grande DOP", "Confirmed · Ramo Grande PDO")}</span>
+                <ul>{s.known.map((k) => <li>{k}</li>)}</ul>
+                <p class="srcs">{T("Fontes", "Sources")}: {s.srcs.map((x, n) => <>{n > 0 && " · "}<a href={x.u} rel="noopener">{x.l}</a></>)}</p></div>
+              {s.todo.length > 0 && <div><span class="tag wait">{T("Por investigar", "To research")}</span><ul>{s.todo.map((k) => <li>{k}</li>)}</ul></div>}
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="rule">{T("Distinguimos sempre o que é um processo geral do que está confirmado para um percurso comercial concreto. Só publicamos o segundo com fonte.", "We always separate what is a general process from what is confirmed for a specific commercial route. We only publish the latter with a source.")}</p>
+    </div>
+  </section>
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">{T("Caso de estudo", "Case study")}</span>
+      <h2>{T("Terceira: o que já sabemos", "Terceira: what we already know")}</h2>
+      <ul class="cases">{cases.map(([t, s]) => <li><span class:list={["chip", s === "ok" ? "ok" : "wait"]}>{st(s)}</span> {t}</li>)}</ul>
+      <p><a class="btn" href={href(lang, "racas/ramo-grande/")}>{T("Conhecer o Ramo Grande →", "Meet the Ramo Grande →")}</a></p>
+    </div>
+  </section>
+</Base>
+<script>
+  const btns = [...document.querySelectorAll<HTMLButtonElement>("[data-step]")];
+  const stages = [...document.querySelectorAll<HTMLElement>("[data-stage]")];
+  const show = (id: string, push = true) => {
+    document.documentElement.classList.add("js-steps");
+    stages.forEach((s) => { s.hidden = s.dataset.stage !== id; });
+    btns.forEach((b) => b.setAttribute("aria-selected", String(b.dataset.step === id)));
+    if (push) history.replaceState(null, "", "#" + id);
+  };
+  const h = location.hash.slice(1);
+  show(stages.some((s) => s.dataset.stage === h) ? h : stages[0].dataset.stage!, false);
+  btns.forEach((b) => b.addEventListener("click", () => show(b.dataset.step!)));
+</script>
+<style>
+  .journey { border-top: 0; }
+  .steps { list-style: none; padding: 0; margin: 0 0 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+  .steps button { width: 100%; text-align: left; font: 500 .95rem var(--sans); padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; display: grid; gap: 4px; }
+  .steps button[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .n { font: 400 .72rem var(--mono); opacity: .7; }
+  .stage[hidden] { display: none; }
+  .stage h2 { margin-bottom: .6em; }
+  .cols { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .tag { display: inline-block; font: 500 .72rem var(--sans); letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; background: var(--cork-soft); color: var(--muted); }
+  .tag.ok { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+  .tag.wait { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  .cols ul { padding-left: 1.1em; margin: 0 0 .8em; }
+  .srcs { font-size: .78rem; color: var(--muted); } .srcs a { color: inherit; }
+  .rule { margin-top: 40px; color: var(--muted); font-size: .9rem; }
+  .cases { list-style: none; padding: 0; display: grid; gap: 10px; max-width: 70ch; }
+</style>

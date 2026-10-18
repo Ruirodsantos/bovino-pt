@@ -69,3 +69,50 @@ section.block { padding: clamp(48px, 8vw, 96px) 0; border-top: 1px solid var(--l
   .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
 }
+
+/* ---------- Visual storytelling (scenes, reveals, expandable depth) ---------- */
+.scene { position: relative; min-height: 100svh; display: grid; align-items: end; color: #fff; overflow: hidden; isolation: isolate; background: #1c1714; }
+.scene > figure.photo, .scene > .bg { position: absolute; inset: 0; z-index: -2; }
+.scene > figure.photo img, .scene > .bg img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.scene::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(14,11,9,.18) 0%, rgba(14,11,9,0) 35%, rgba(14,11,9,.78) 100%); }
+.scene .cap { padding-top: 0; padding-bottom: clamp(36px, 7vh, 72px); }
+.scene h2, .scene h1 { color: #fff; text-shadow: 0 2px 28px rgba(0,0,0,.4); margin-bottom: .25em; }
+.scene .kicker { font: 500 .8rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: #f3c9a8; margin-bottom: 14px; display: block; }
+.scene p { color: rgba(255,255,255,.9); }
+.scene .credit-line { position: absolute; right: 16px; bottom: 10px; font-size: .68rem; color: rgba(255,255,255,.6); margin: 0; max-width: none; }
+.scene .credit-line a { color: inherit; }
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,.55); padding-bottom: 3px; transition: gap .25s ease; }
+.link-arrow:hover { gap: 14px; }
+.cue { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.75); text-decoration: none; }
+details.dive { border-top: 1px solid var(--line); }
+details.dive:last-of-type { border-bottom: 1px solid var(--line); }
+details.dive > summary { list-style: none; cursor: pointer; padding: 18px 4px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font: 500 1.05rem var(--display); }
+details.dive > summary::-webkit-details-marker { display: none; }
+details.dive > summary::after { content: "+"; font-size: 1.4rem; color: var(--accent); transition: transform .25s ease; }
+details.dive[open] > summary::after { transform: rotate(45deg); }
+details.dive > .dive-body { padding: 0 4px 22px; max-width: 70ch; }
+details.dive .dive-body p { margin-bottom: .8em; }
+.dive-body ul { padding-left: 1.2em; margin: 0 0 1em; }
+.dive-body table { border-collapse: collapse; width: 100%; font-size: .92rem; margin: 0 0 1em; }
+.dive-body th, .dive-body td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.dive-body th { color: var(--muted); font-weight: 500; font-size: .8rem; }
+.srcs { font-size: .8rem; color: var(--muted); }
+.srcs a { color: inherit; }
+@media (prefers-reduced-motion: no-preference) {
+  .scene .cap > * { opacity: 0; transform: translateY(18px); animation: rise .9s ease forwards; }
+  .scene .cap > *:nth-child(2) { animation-delay: .12s; } .scene .cap > *:nth-child(3) { animation-delay: .24s; } .scene .cap > *:nth-child(4) { animation-delay: .36s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @supports (animation-timeline: view()) {
+    .scene > figure.photo img, .scene > .bg img { animation: drift linear both; animation-timeline: view(); animation-range: cover; transform-origin: center; }
+    @keyframes drift { from { transform: scale(1.12) translateY(-3%); } to { transform: scale(1) translateY(3%); } }
+    .scene .cap > * { animation: rise-view linear both; animation-timeline: view(); animation-range: entry 5% entry 55%; opacity: 1; transform: none; animation-delay: 0s; }
+    @keyframes rise-view { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  }
+}
+
+body.ov main > .scene:first-child { margin-top: -61px; }
+.scene .cap { width: 100%; padding-left: 16px; padding-right: 16px; }
+@media (max-width: 640px) {
+  .scene .credit-line { left: 16px; right: 16px; text-align: left; bottom: 8px; }
+  .cue { display: none; }
+}

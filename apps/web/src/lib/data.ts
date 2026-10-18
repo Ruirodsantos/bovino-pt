@@ -80,3 +80,23 @@ export function photoFor(slug: string): { id: string; kind: string } | null {
   if (!b?.photo || b.photo_kind !== "raça" || !(credits as Record<string, unknown>)[b.photo]) return null;
   return { id: b.photo, kind: b.photo_kind ?? "solar" };
 }
+
+/** Region filter for the breeds gallery, derived from each breed's catalogue homeland (see Breed.solar). */
+export const REGIONS: Record<string, string[]> = {
+  alentejana: ["sul"], algarvia: ["sul"], arouquesa: ["norte", "centro"], barrosa: ["norte"], "brava-de-lide": ["centro", "sul", "ilhas"],
+  cachena: ["norte"], garvonesa: ["sul"], jarmelista: ["centro"], marinhoa: ["centro"], maronesa: ["norte"], mertolenga: ["sul"],
+  minhota: ["norte"], mirandesa: ["norte"], preta: ["sul"], "ramo-grande": ["ilhas"],
+};
+export const REGION_LABELS = (lang: Lang): Record<string, string> => lang === "en"
+  ? { norte: "North", centro: "Centre", sul: "Alentejo and Algarve", ilhas: "Islands" }
+  : { norte: "Norte", centro: "Centro", sul: "Alentejo e Algarve", ilhas: "Ilhas" };
+
+/** Best available image for a breed card: the breed itself, else a landscape of its homeland (clearly tagged), else none. */
+export function cardPhoto(slug: string): { id: string; kind: "raça" | "solar" | "paisagem" } | null {
+  const b = breeds().find((x) => x.slug === slug);
+  if (!b?.photo || !(credits as Record<string, unknown>)[b.photo]) return null;
+  return { id: b.photo, kind: (b.photo_kind ?? "solar") as any };
+}
+
+/** Where the page hero should be a landscape (e.g. when the only breed photo is cluttered); the breed photo then appears in level 1. */
+export const HERO_OVERRIDE: Record<string, string> = {};

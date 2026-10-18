@@ -1,17 +1,19 @@
 ---
 import "../styles/global.css";
 import { BASE, href, htmlLang, switchTo, tr, type Lang } from "../i18n";
-interface Props { title: string; description?: string; lang?: Lang; home?: boolean; }
-const { title, lang = "pt", home = false } = Astro.props;
+interface Props { title: string; description?: string; lang?: Lang; home?: boolean; overlay?: boolean; image?: string; }
+const { title, lang = "pt", home = false, overlay = false, image } = Astro.props;
 const T = tr(lang);
 const description = Astro.props.description ?? T("Dados oficiais, raças autóctones e o comércio de bovinos entre Portugal e Espanha — atualizado todos os dias.", "Official data, native breeds and the cattle trade between Portugal and Spain — updated every day.");
 const base = BASE;
 const path = Astro.url.pathname;
 const pre = href(lang);
 const brand = T("Atlas do Bovino Português", "Portuguese Beef Atlas");
-const nav: [string, string][] = [
-  ["carne/", T("A Carne", "The Meat")], ["racas/", T("Raças", "Breeds")], ["observatorio/", T("Portugal ↔ Espanha", "Portugal ↔ Spain")],
-  ["descobertas/", T("Descobertas", "Discoveries")], ["dados/", T("Dados", "Data")], ["metodologia/", T("Método", "Method")],
+const nav: [string, string, string[]][] = [
+  ["racas/", T("Raças", "Breeds"), ["racas/"]],
+  ["carne/", T("Carne portuguesa", "Portuguese beef"), ["carne/"]],
+  ["da-pastagem-ao-prato/", T("Da pastagem ao prato", "Pasture to plate"), ["da-pastagem-ao-prato/"]],
+  ["aprender/", T("Aprender", "Learn"), ["aprender/", "dados/", "observatorio/", "descobertas/", "metodologia/"]],
 ];
 const fullTitle = home ? brand : `${title} · ${brand}`;
 const other: Lang = lang === "en" ? "pt" : "en";
@@ -30,10 +32,11 @@ const alt = { pt: switchTo(Astro.url, lang, "pt"), en: switchTo(Astro.url, lang,
   <link rel="alternate" hreflang="x-default" href={new URL(alt.pt, Astro.site)} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
+  {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
   <meta property="og:locale" content={lang === "en" ? "en_GB" : "pt_PT"} />
   <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
 </head>
-<body data-lang={lang}>
+<body data-lang={lang} class:list={[overlay && "ov"]}>
   <a class="sr-only" href="#main">{T("Saltar para o conteúdo", "Skip to content")}</a>
   <header class="site">
     <div class="wrap bar">
@@ -41,7 +44,7 @@ const alt = { pt: switchTo(Astro.url, lang, "pt"), en: switchTo(Astro.url, lang,
         {lang === "en" ? <span>Portuguese <em>Beef</em> Atlas</span> : <span>Atlas do <em>Bovino</em> Português</span>}
       </a>
       <nav aria-label={T("Principal", "Main")}>
-        {nav.map(([p, label]) => <a href={`${pre}${p}`} aria-current={path.startsWith(`${pre}${p}`) ? "page" : undefined}>{label}</a>)}
+        {nav.map(([p, label, group]) => <a href={`${pre}${p}`} aria-current={group.some((g) => path.startsWith(`${pre}${g}`)) ? "page" : undefined}>{label}</a>)}
         <a class="lang" href={alt[other]} hreflang={other === "en" ? "en" : "pt-PT"} lang={other === "en" ? "en" : "pt-PT"} aria-label={T("Read this page in English", "Ler esta página em português")}>{other === "en" ? "EN" : "PT"}</a>
       </nav>
     </div>
@@ -54,6 +57,9 @@ const alt = { pt: switchTo(Astro.url, lang, "pt"), en: switchTo(Astro.url, lang,
     </div>
   </footer>
   <script>
+    const hd = document.querySelector("header.site");
+    const onScroll = () => hd?.classList.toggle("scrolled", window.scrollY > 40);
+    onScroll(); addEventListener("scroll", onScroll, { passive: true });
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px" });
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   </script>
@@ -68,6 +74,11 @@ const alt = { pt: switchTo(Astro.url, lang, "pt"), en: switchTo(Astro.url, lang,
   nav { display: flex; gap: 4px; flex-wrap: wrap; }
   nav a { color: var(--muted); text-decoration: none; font-size: .92rem; padding: 6px 10px; border-radius: 999px; }
   nav a:hover, nav a[aria-current] { color: var(--ink); background: var(--cork-soft); }
+  body.ov header.site:not(.scrolled) { background: transparent; border-bottom-color: transparent; backdrop-filter: none; }
+  body.ov header.site:not(.scrolled) .brand, body.ov header.site:not(.scrolled) nav a { color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+  body.ov header.site:not(.scrolled) .brand em { color: #f3c9a8; }
+  body.ov header.site:not(.scrolled) nav a[aria-current], body.ov header.site:not(.scrolled) nav a:hover { background: rgba(255,255,255,.18); }
+  header.site { transition: background .3s ease, border-color .3s ease; }
   nav a.lang { border: 1px solid var(--line); font-weight: 600; letter-spacing: .04em; margin-left: 6px; }
   footer.site { border-top: 1px solid var(--line); padding: 40px 0 60px; font-size: .9rem; }
   .muted { color: var(--muted); }

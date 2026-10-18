@@ -1,0 +1,60 @@
+---
+import Base from "../layouts/Base.astro";
+import Photo from "../components/Photo.astro";
+import { href, tr, type Lang } from "../i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = tr(lang);
+const tiles = [
+  { p: "carne/", img: "carne-variedade", t: T("Enciclopédia da carne", "Beef encyclopedia"), d: T("Cortes, maturação, cozedura e serviço.", "Cuts, ageing, cooking and serving.") },
+  { p: "observatorio/", img: "montanha-cornos", t: T("Portugal ↔ Espanha", "Portugal ↔ Spain"), d: T("Quem compra e quem vende bovinos.", "Who buys and sells cattle.") },
+  { p: "dados/", img: "pasto-seco", t: T("Dados", "Data"), d: T("Todos os conjuntos, com fonte e download.", "Every dataset, with source and download.") },
+  { p: "descobertas/", img: "outono-castanheiros", t: T("Descobertas", "Discoveries"), d: T("O que foi verificado esta semana.", "What was verified this week.") },
+  { p: "metodologia/", img: "montado-pasto", t: T("Método e fontes", "Method and sources"), d: T("Como verificamos cada número.", "How we verify every number.") },
+];
+const topics: [string, string?][] = [
+  [T("Vaca, boi, touro, vitelo e novilho", "Cow, ox, bull, calf and young bull")], [T("Raças autóctones e estrangeiras", "Native and foreign breeds")],
+  [T("Bovinos leiteiros e de carne", "Dairy and beef cattle")], [T("Cruzamentos", "Crossbreeding")], [T("Sistemas de criação e pastoreio", "Farming systems and grazing")],
+  [T("Transporte e matadouros", "Transport and abattoirs")], [T("Classificação das carcaças", "Carcass classification")],
+  [T("Cortes de carne", "Cuts of beef"), "carne/03-cortes/"], [T("Maturação", "Ageing"), "carne/02-maturacao/"], [T("Marmoreado e qualidade", "Marbling and quality"), "carne/01-carne-crua/"],
+  [T("Cozedura", "Cooking"), "carne/04-cozedura/"], [T("Gastronomia e serviço", "Gastronomy and serving"), "carne/05-servir/"],
+  [T("DOP e IGP", "PDO and PGI"), "racas/ramo-grande/#certificacao"], [T("Rastreabilidade", "Traceability"), "racas/ramo-grande/#certificacao"],
+  [T("Preços e comercialização", "Prices and trade"), "observatorio/"],
+];
+---
+<Base lang={lang} title={T("Aprender", "Learn")} description={T("Enciclopédia da carne, dados oficiais, descobertas e método do Atlas do Bovino Português.", "Beef encyclopedia, official data, discoveries and method of the Portuguese Beef Atlas.")}>
+  <section class="top"><div class="wrap">
+    <span class="eyebrow">{T("Aprender", "Learn")}</span>
+    <h1>{T("Do pouco ao muito, ao seu ritmo", "From a little to a lot, at your own pace")}</h1>
+  </div></section>
+  <section class="wrap tiles">
+    {tiles.map((x) => (
+      <a class="tile reveal" href={href(lang, x.p)}>
+        <Photo id={x.img} sizes="(max-width: 700px) 100vw, 33vw" caption={false} lang={lang} />
+        <span class="tt"><strong>{x.t}</strong><span>{x.d}</span></span>
+      </a>
+    ))}
+  </section>
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">{T("Enciclopédia da carne", "Beef encyclopedia")}</span>
+      <h2>{T("Os temas", "The topics")}</h2>
+      <ul class="topics">
+        {topics.map(([t, p]) => <li>{p ? <a href={href(lang, p)}>{t}</a> : <span>{t}</span>} {!p && <span class="chip wait">{T("em preparação", "in preparation")}</span>}</li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+<style>
+  .top { padding: 120px 0 8px; }
+  .tiles { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); padding-bottom: 56px; }
+  .tile { position: relative; display: block; aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden; color: #fff; text-decoration: none; background: #1c1714; }
+  .tile :global(.photo) { position: absolute; inset: 0; }
+  .tile :global(img) { transition: transform .8s ease; } .tile:hover :global(img) { transform: scale(1.05); }
+  .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.78)); }
+  .tt { position: absolute; z-index: 1; left: 18px; right: 18px; bottom: 16px; display: grid; gap: 2px; }
+  .tt strong { font: 500 1.3rem var(--display); } .tt span { font-size: .88rem; color: rgba(255,255,255,.88); }
+  .topics { list-style: none; padding: 0; display: grid; gap: 4px 28px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+  .topics li { padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; align-items: center; justify-content: space-between; }
+  .topics a { color: var(--ink); text-decoration: none; font-weight: 500; } .topics a::after { content: " →"; color: var(--accent); }
+</style>

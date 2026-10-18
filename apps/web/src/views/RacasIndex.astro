@@ -1,44 +1,88 @@
 ---
 import Base from "../layouts/Base.astro";
 import Photo from "../components/Photo.astro";
-import { breeds, breedEn, num, photoFor } from "../lib/data";
+import { breeds, breedEn, cardPhoto, REGIONS, REGION_LABELS } from "../lib/data";
+import { getCollection } from "astro:content";
 import { href, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = tr(lang);
 const list = breeds();
-const total = list.reduce((s, b) => s + (b.herd?.females ?? 0), 0);
+const prof = new Map((await getCollection(lang === "en" ? "racas_en" : "racas")).map((e) => [e.id, e.data.summary]));
+const labels = REGION_LABELS(lang);
+const place = (slug: string, solar?: string) => (lang === "en" ? breedEn(slug).solar ?? solar : solar) ?? "";
 ---
-<Base lang={lang} title={T("Raças", "Breeds")} description={T("As 15 raças bovinas autóctones de Portugal: solar, efetivo e fotografias.", "Portugal's 15 native cattle breeds: homeland, herd size and photographs.")}>
-  <section class="block" style="border-top:0"><div class="wrap">
-    <span class="eyebrow">{T("Raças autóctones", "Native breeds")}</span>
-    <h1>{T("As 15 raças bovinas de Portugal", "Portugal's 15 cattle breeds")}</h1>
-    <p class="lede">{T("Reconhecidas oficialmente pela DGAV e pela CAP. Juntas, tinham", "Officially recognised by DGAV and CAP. Together, they had")} {num(total, lang)} {T("fêmeas inscritas em linha pura no livro genealógico em 2019. Fonte: Catálogo Oficial de Raças Autóctones Portuguesas.", "pure-line females registered in the herd book in 2019. Source: Official Catalogue of Portuguese Native Breeds (Catálogo Oficial de Raças Autóctones Portuguesas).")}</p>
-    <div class="grid3">
-      {list.map((b, i) => { const p = photoFor(b.slug); return (
-        <a class="c" href={href(lang, `racas/${b.slug}/`)}>
-          <div class:list={["img", !p && "empty"]}>{p ? <Photo id={p.id} sizes="(max-width: 640px) 100vw, 380px" caption={false} lang={lang} /> : <div class="none">{T("Fotografia em procura", "Photograph being sought")}</div>}
-            {p && <span class="tag">{p.kind === "raça" ? T("A raça", "The breed") : p.kind === "paisagem" ? T("Paisagem", "Landscape") : T("O solar", "The homeland")}</span>}</div>
-          <div class="meta"><span class="mono num">{String(i + 1).padStart(2, "0")}</span><h2>{b.official_name}</h2>
-            <p>{lang === "en" ? (breedEn(b.slug).solar ?? b.solar) : b.solar}</p>
-            {b.herd && <p class="h"><strong>{num(b.herd.females, lang)}</strong> {T("fêmeas", "females")} · <strong>{num(b.herd.breeders, lang)}</strong> {T("criadores", "breeders")} (2019)</p>}</div>
+<Base lang={lang} title={T("Raças", "Breeds")} description={T("As 15 raças bovinas autóctones de Portugal: fotografias, solar e história.", "Portugal's 15 native cattle breeds: photographs, homeland and history.")}>
+  <section class="intro">
+    <div class="wrap">
+      <span class="eyebrow">{T("Raças autóctones", "Native breeds")}</span>
+      <h1>{T("As 15 raças bovinas de Portugal", "Portugal's 15 cattle breeds")}</h1>
+      <div class="filters" role="group" aria-label={T("Filtrar por região", "Filter by region")} data-filters>
+        <button type="button" data-r="todas" aria-pressed="true">{T("Todas", "All")}</button>
+        {Object.entries(labels).map(([k, v]) => <button type="button" data-r={k} aria-pressed="false">{v}</button>)}
+      </div>
+    </div>
+  </section>
+  <section class="gallery">
+    <div class="wrap g">
+      {list.map((b, i) => { const p = cardPhoto(b.slug); return (
+        <a class="tile reveal" href={href(lang, `racas/${b.slug}/`)} data-regions={REGIONS[b.slug].join(" ")} style={`--i:${i % 3}`}>
+          <div class:list={["ph", !p && "empty"]}>
+            {p ? <Photo id={p.id} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 380px" caption={false} lang={lang} /> : <span class="soon">{T("Fotografia em procura", "Photograph being sought")}</span>}
+            {p && p.kind !== "raça" && <span class="tag">{T("Paisagem do solar · foto da raça em procura", "Homeland landscape · breed photo being sought")}</span>}
+          </div>
+          <div class="tx"><h2>{b.official_name}</h2><p class="where">{place(b.slug, b.solar)}</p><p class="sum">{prof.get(b.slug)}</p></div>
         </a>); })}
     </div>
-  </div></section>
+  </section>
+  <section class="block map" id="mapa">
+    <div class="wrap">
+      <span class="eyebrow">{T("Mapa", "Map")}</span>
+      <h2>{T("De onde vem cada raça", "Where each breed comes from")}</h2>
+      <p class="lede">{T("O solar de cada raça, segundo o Catálogo Oficial da DGAV/CAP. Toque num ponto para ver a raça.", "The homeland of each breed, according to the official DGAV/CAP Catalogue. Tap a point to see the breed.")}</p>
+      <div class="map-grid">
+        <div class="card map-card"><div class="chart map" data-chart="breeds-map" role="img" aria-label={T("Mapa de Portugal com a localização aproximada do solar de cada raça bovina autóctone", "Map of Portugal showing the approximate homeland of each native cattle breed")}></div>
+          <div id="map-chips" class="map-chips" aria-label={T("Escolher raça", "Choose a breed")}></div>
+          <p class="note">{T("Localização aproximada do solar (não são explorações). Fronteiras © EuroGeographics. Açores e Madeira fora de escala geográfica.", "Approximate location of each homeland (not farms). Boundaries © EuroGeographics. Azores and Madeira are not shown to geographic scale.")}</p></div>
+        <aside class="map-side" id="map-side" aria-live="polite"><Photo id="barrosa" sizes="(max-width: 860px) 100vw, 380px" lang={lang} /><p class="hint">{T("Escolha uma raça no mapa.", "Choose a breed on the map.")}</p></aside>
+      </div>
+    </div>
+  </section>
 </Base>
+<script>
+  document.querySelectorAll<HTMLElement>("[data-filters] button").forEach((b) => b.addEventListener("click", () => {
+    const r = b.dataset.r!;
+    document.querySelectorAll("[data-filters] button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    document.querySelectorAll<HTMLElement>(".tile").forEach((t) => { t.hidden = r !== "todas" && !(t.dataset.regions ?? "").split(" ").includes(r); });
+  }));
+  const mapEl = document.querySelector("[data-chart='breeds-map']");
+  if (mapEl) { const o = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { o.disconnect(); import("../scripts/charts.ts"); } }, { rootMargin: "400px" }); o.observe(mapEl); }
+</script>
 <style>
-  .grid3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 20px; margin-top: 32px; }
-  .c { text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
-  .c:hover { border-color: var(--cork); }
-  .img { position: relative; aspect-ratio: 3/2; background: var(--cork-soft); overflow: hidden; }
-  .img :global(.photo) { position: absolute; inset: 0; }
-  .img :global(.photo), .img :global(img) { height: 100%; }
-  .img.empty { aspect-ratio: auto; height: 44px; }
-  .none { display: grid; place-items: center; height: 100%; color: var(--muted); font-size: .85rem; }
-  .tag { position: absolute; left: 10px; top: 10px; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: rgba(0,0,0,.55); color: #fff; }
-  .meta { padding: 16px 18px 20px; }
-  .num { color: var(--accent); font-size: .8rem; }
-  h2 { font-size: 1.6rem; margin: 4px 0 6px; }
-  .meta p { margin: 0 0 6px; color: var(--muted); font-size: .92rem; }
-  .h { color: var(--ink) !important; }
+  .intro { padding: 120px 0 24px; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+  .filters button { font: 500 .88rem var(--sans); padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .g { display: grid; gap: 28px 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); padding-bottom: 40px; }
+  .tile[hidden] { display: none; }
+  .tile { display: block; color: var(--ink); text-decoration: none; }
+  .ph { position: relative; aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden; background: var(--cork-soft); }
+  .ph :global(.photo) { position: absolute; inset: 0; }
+  .ph :global(img) { transition: transform .9s ease; }
+  .tile:hover .ph :global(img) { transform: scale(1.05); }
+  .ph.empty { display: grid; place-items: center; }
+  .soon { color: var(--muted); font-size: .9rem; padding: 20px; text-align: center; }
+  .tag { position: absolute; left: 10px; bottom: 10px; right: 10px; font-size: .72rem; padding: 4px 9px; border-radius: 8px; background: rgba(0,0,0,.6); color: #fff; width: fit-content; }
+  .tx { padding-top: 12px; } .tx h2 { font-size: 1.5rem; margin: 0; }
+  .where { margin: 2px 0 6px; color: var(--accent); font-size: .85rem; }
+  .sum { margin: 0; color: var(--muted); font-size: .95rem; }
+  .map-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; align-items: start; }
+  @media (max-width: 860px) { .map-grid { grid-template-columns: 1fr; } }
+  .chart.map { height: 640px; } @media (max-width: 560px) { .chart.map { height: 460px; } }
+  .map-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 14px 0; }
+  .map-chips :global(.chip-btn) { font: 500 .8rem var(--sans); padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .map-chips :global(.chip-btn[aria-pressed="true"]) { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .map-side { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 10px; }
+  .map-side :global(.photo img) { border-radius: var(--radius); aspect-ratio: 4/3; }
+  .hint, .note { color: var(--muted); font-size: .85rem; }
 </style>

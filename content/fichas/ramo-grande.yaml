@@ -1,0 +1,187 @@
+intro: "A raça dos Açores, de grande porte e pelo vermelho, criada em pastoreio quase todo o ano. A sua carne tem Denominação de Origem Protegida."
+facts:
+  - { label: "Solar", value: "Terceira, Açores", note: "Praia da Vitória" }
+  - { label: "Pelo", value: "Vermelho", note: "de intensidade variável" }
+  - { label: "Efetivo", value: "679 fêmeas", note: "84 machos · 581 criadores (2019)" }
+  - { label: "Carne", value: "DOP", note: "Carne Ramo Grande" }
+sections:
+  - id: historia
+    title: História
+    summary: "Descende dos bovinos levados do continente no povoamento do século XV e adaptou-se às ilhas ao longo de séculos."
+    blocks:
+      - title: Origem da raça
+        paras:
+          - "No povoamento dos Açores, no século XV, chegaram bovinos de várias regiões do continente. Na Terceira, os primeiros povoadores eram de origem minhota e algarvia e trouxeram os animais que conheciam. O isolamento e a vida em ilha foram moldando um tipo avermelhado, a «raça da terra», de onde saiu o Ramo Grande."
+          - "As fontes não indicam exatamente as mesmas raças de partida. O catálogo oficial refere a Alentejana, a Mirandesa, a Minhota e a Algarvia. O caderno de especificações cita um estudo de 1943 (Leitão e outros) que aponta a Minhota, a Alentejana, a Mirandesa e a Flamenga, com o papel principal para a Alentejana. O nome vem de uma zona da Terceira."
+        sources:
+          - { label: "Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP), p. 62", url: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf" }
+          - { label: "Caderno de especificações Carne Ramo Grande DOP (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Utilização tradicional
+        paras:
+          - "Os machos serviam para reprodução durante uma ou duas épocas e depois eram castrados e treinados para o trabalho do campo e para a carga. A raça deu também carne e leite. Hoje explora-se sobretudo para carne."
+        sources:
+          - { label: "Carne Ramo Grande DOP (DGADR)", url: "https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" }
+      - title: Importância cultural
+        paras:
+          - "Os animais eram tratados quase como membros da família e estão ligados às festas do Espírito Santo e aos desfiles etnográficos das ilhas. A carne de Ramo Grande foi tradicionalmente a preferida para os pratos servidos nas «funções» do Espírito Santo, e cada ilha e cada localidade tem as suas receitas."
+        sources:
+          - { label: "Carne Ramo Grande DOP (DGADR)", url: "https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" }
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Livro genealógico
+        paras:
+          - "O livro genealógico foi criado em 1996 e é gerido pela Direção Regional da Agricultura dos Açores. Em 2019 tinha 679 fêmeas e 84 machos em linha pura, em 581 criadores."
+        sources:
+          - { label: "Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP), p. 62", url: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf" }
+      - title: Documentação histórica
+        paras:
+          - "O caderno de especificações cita, na bibliografia, textos de Gaspar Frutuoso (século XVI), de Bettencourt (1887) e de Bruges (1915), que regista bois enviados para o matadouro de Lisboa com quatro a cinco anos."
+          - "Em investigação: ler as obras originais antes de as citar diretamente."
+        status: em investigação
+        sources:
+          - { label: "Caderno de especificações (DGADR), bibliografia", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+  - id: caracteristicas
+    title: Características
+    summary: "Animais de grande estatura, esqueleto forte e pelo vermelho."
+    blocks:
+      - title: Como se reconhece
+        paras:
+          - "O catálogo descreve animais de enorme estatura, com esqueleto forte e articulações largas, e o terço anterior mais desenvolvido, o que se liga às excecionais qualidades de trabalho da raça. O pelo é vermelho, mais ou menos intenso: na Terceira domina o vermelho flavo, em São Jorge o vermelho cereja."
+        sources:
+          - { label: "Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP), p. 62", url: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf" }
+      - title: Pesos e medidas
+        paras: ["Em investigação: nenhuma das fontes lidas indica pesos médios nem alturas."]
+        status: em investigação
+  - id: territorio
+    title: Território
+    summary: "Pastagem verde todos os dias do ano, num clima marítimo ameno."
+    blocks:
+      - title: Onde se cria
+        paras:
+          - "O solar da raça é a ilha Terceira, na Praia da Vitória. O caderno de especificações indica que é em São Jorge que existe a maior população. A área da DOP abrange as nove ilhas: Santa Maria, São Miguel, Terceira, Graciosa, São Jorge, Pico, Faial, Flores e Corvo."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Clima e solo
+        paras:
+          - "O caderno descreve um clima marítimo temperado, com pequenas amplitudes térmicas, humidade e pluviosidade elevadas, e solos vulcânicos de textura franca, franco-arenosa ou franco-argilosa, ricos em matéria orgânica e em potássio. Há pasto disponível os 365 dias do ano."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+  - id: criacao
+    title: Criação e alimentação
+    summary: "Pastoreio quase todo o ano, com complementos quando a erva não chega."
+    blocks:
+      - title: Pastagem
+        paras:
+          - "A base é o pastoreio direto em pastagens permanentes ou melhoradas de gramíneas e leguminosas, entre as quais azevém-perene (Lolium perenne), azevém-italiano (Lolium multiflorum), trevo-branco (Trifolium repens), trevo-violeta (Trifolium pratense) e panasco (Dactylis glomerata)."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Vitelos
+        paras:
+          - "Mamam leite materno pelo menos três meses, pastam com as mães e são desmamados aos 6–7 meses. O criador procura fazer coincidir os picos de erva da primavera com as necessidades dos animais, por isso os partos concentram-se de fevereiro a maio."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+          - { label: "Catálogo Oficial (DGAV/CAP), p. 62", url: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf" }
+      - title: Adultos
+        paras:
+          - "Comem erva fresca, com silagem de erva, feno, milho verde ou silagem de milho e subprodutos da exploração. Quando o pasto não chega, por exemplo no acabamento ou com mau tempo, podem receber alimentos compostos."
+          - "Os alimentos vindos de fora dos Açores não podem passar de 50 % da matéria seca da dieta, em média anual."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Lotes de abate
+        paras:
+          - "Os animais das explorações aprovadas são separados e agrupados em lotes de abate nas abegoarias (instalações de agrupamento)."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+  - id: carne
+    title: Carne
+    summary: "Vermelho-vivo, firme, com gordura branco-pérola que não é untuosa ao toque."
+    blocks:
+      - title: Como é a carne
+        paras:
+          - "A cor é vermelho-vivo e escurece em contacto com o ar e com a idade do animal. A textura é firme, por causa do tecido conjuntivo entre os feixes de fibras, e o cheiro é aromático. A gordura é bem distribuída (debaixo da pele, na cavidade, entre os músculos e dentro deles), branco-pérola, firme depois de a carcaça arrefecer e não untuosa ao toque. O caderno descreve-a como tenra, suculenta e saborosa, e considera o vitelão e o novilho os mais tenros."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Idade e categoria dos animais
+        table:
+          head: ["Categoria", "Código", "Idade", "Carcaça mínima"]
+          rows:
+            - ["Vitelão", "Z", "8 a menos de 12 meses", "110 kg"]
+            - ["Novilho (macho inteiro)", "A", "12 a menos de 24 meses", "130 kg"]
+            - ["Novilha", "E", "12 meses ou mais", "120 kg"]
+            - ["Touro", "B", "24 meses ou mais", "200 kg"]
+            - ["Castrado", "C", "12 meses ou mais", "130 kg"]
+            - ["Vaca (que já pariu)", "D", "—", "200 kg"]
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Classificação das carcaças
+        paras:
+          - "No novilho, no touro e no castrado aceitam-se as classes de conformação S, E, U, R e O; nas outras categorias também se aceita a classe P, tendo em conta a morfologia e o modo de criação da raça. As carcaças com cobertura de gordura de classe 1 não são admitidas."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Desmancha e apresentação
+        paras:
+          - "A desossa só pode fazer-se entre 48 e 144 horas depois do abate, para garantir o arrefecimento necessário. A carne pode ser apresentada em carcaças, meias-carcaças, quartos, peças inteiras ou fatiadas e carne picada embalada, sempre com a menção «CARNE RAMO GRANDE – DENOMINAÇÃO DE ORIGEM PROTEGIDA» ou «CARNE RAMO GRANDE DOP»."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Cortes, maturação e gastronomia
+        paras: ["Em investigação: as fontes lidas não descrevem cortes, maturação nem receitas concretas. A DGADR refere apenas os pratos das funções do Espírito Santo."]
+        status: em investigação
+  - id: certificacao
+    title: Certificação
+    summary: "Carne Ramo Grande é uma DOP: liga o produto à raça e aos Açores."
+    blocks:
+      - title: O que é uma DOP
+        paras:
+          - "A Denominação de Origem Protegida é o regime europeu com a ligação mais forte ao local: segundo a Comissão Europeia, todas as fases de produção, transformação e preparação têm de decorrer na região. Na IGP basta uma das fases."
+        sources:
+          - { label: "Comissão Europeia — Geographical indications and quality schemes explained", url: "https://agriculture.ec.europa.eu/farming/geographical-indications-and-quality-schemes/geographical-indications-and-quality-schemes-explained_en" }
+      - title: Requisitos
+        list:
+          - "Animais da raça Ramo Grande, inscritos no livro genealógico."
+          - "Nascidos, criados e abatidos nos Açores."
+          - "Alimentação com base no pastoreio; alimentos de fora dos Açores até 50 % da matéria seca anual."
+          - "Categorias de idade e pesos mínimos de carcaça definidos no caderno."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Área geográfica
+        paras: ["As nove ilhas dos Açores."]
+        sources:
+          - { label: "Carne Ramo Grande DOP (DGADR)", url: "https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" }
+      - title: Caderno de especificações
+        paras: ["O documento oficial descreve o produto, a área, a prova de origem, o modo de produção, o abate, a rotulagem e a ligação ao meio. Classifica-o na classe 1.1 (carne fresca e miudezas), segundo o anexo XI do Regulamento de Execução (UE) n.º 668/2014. A versão e a data do próprio caderno não vêm indicadas no documento que lemos."]
+        sources:
+          - { label: "Caderno de especificações Carne Ramo Grande DOP (PDF, DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Entidades responsáveis
+        list:
+          - "Agrupamento de produtores: Associação de Criadores de Bovinos da Raça Ramo Grande."
+          - "Controlo e certificação: IAMA, IPR (Instituto de Alimentação e Mercados Agrícolas), segundo a DGADR. O caderno fala numa entidade a quem a autoridade competente delega estas funções, sem a nomear."
+        sources:
+          - { label: "Carne Ramo Grande DOP (DGADR)", url: "https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" }
+      - title: Controlo e rastreabilidade
+        paras:
+          - "Os produtores comprometem-se por escrito perante o agrupamento gestor a cumprir o caderno e a colocar toda a exploração sob controlo. O registo no livro genealógico e o abate em matadouros da área permitem rastrear a origem."
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Registo europeu
+        paras: ["A denominação consta do registo europeu eAmbrosia com o número EUGI00000017632."]
+        sources:
+          - { label: "eAmbrosia — EUGI00000017632", url: "https://ec.europa.eu/agriculture/eambrosia/geographical-indications-register/details/EUGI00000017632" }
+          - { label: "GI View — EUGI00000017632", url: "https://www.tmdn.org/giview/gi/EUGI00000017632" }
+  - id: onde
+    title: Onde encontrar
+    summary: "Em investigação."
+    blocks:
+      - title: Pontos de venda
+        paras: ["Em investigação: a página da DGADR não lista pontos de venda nem faz vendas. Os talhos, o matadouro e a comercialização entre ilhas e para o continente só serão publicados com fonte."]
+        status: em investigação
+  - id: curiosidades
+    title: Curiosidades
+    summary: "Um nome de lugar, um boi de trabalho e uma festa."
+    blocks:
+      - title: Do lugar ao nome
+        paras: ["Ramo Grande é o nome de uma zona da ilha Terceira e deu nome à raça."]
+        sources:
+          - { label: "Caderno de especificações (DGADR)", url: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }
+      - title: Dois vermelhos
+        paras: ["Na Terceira domina o vermelho flavo e em São Jorge o vermelho cereja."]
+        sources:
+          - { label: "Catálogo Oficial (DGAV/CAP), p. 62", url: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf" }
