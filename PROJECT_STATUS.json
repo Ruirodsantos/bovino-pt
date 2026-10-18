@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "project": "Portuguese Beef Intelligence Platform",
-  "generated_at": "2026-10-18T14:17:42+00:00",
+  "generated_at": "2026-10-18T15:30:57+00:00",
   "generated_by": "pipeline/status.py (GitHub Actions)",
   "current_phase": {
     "id": "P2",
@@ -88,7 +88,7 @@
     }
   ],
   "data_collection": {
-    "last_run": "2026-10-18T14:17:40+00:00",
+    "last_run": "2026-10-18T15:30:57+00:00",
     "datasets_ok": 6,
     "datasets_total": 6,
     "datasets": [
