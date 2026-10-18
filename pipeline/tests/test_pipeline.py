@@ -85,3 +85,14 @@ def test_sum_check_report_mode_keeps_rows_green():
     process.sum_check(d, obs)
     assert all(o["status"] == "green" for o in obs)
     assert d["_coverage"]["VALUE_IN_EUROS"]["2024"] == 0.8
+
+
+def test_build_url_repeats_list_params_and_regions_registry_has_explicit_geo():
+    import collect
+    import yaml
+    url = collect.build_url("eurostat", "ef_lsk_bovine", {"geo": ["PT11", "ES11"]}, "2010")
+    assert "geo=PT11&geo=ES11" in url and "sinceTimePeriod=2010" in url
+    reg = yaml.safe_load((Path(__file__).resolve().parents[2] / "data/registry/datasets.yaml").read_text(encoding="utf-8"))
+    d = next(x for x in reg["datasets"] if x["id"] == "bovine_population_regions")
+    assert "geoLevel" not in d["params"]          # all-EU NUTS 2 extraction is too big (HTTP 413)
+    assert all(len(g) == 4 and g[:2] in d["geo_prefix"] for g in d["params"]["geo"])

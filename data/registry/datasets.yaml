@@ -57,7 +57,12 @@ datasets:
     source_id: S02
     api: eurostat
     code: [agr_r_animal, ef_lsk_main, ef_lsk_bovine]   # tried in order (agr_r_animal no longer disseminated)
-    params: {geoLevel: nuts2}
+    # Explicit NUTS 2 list (2021 + 2024 PT codes): geoLevel=nuts2 for all EU made ef_lsk_* exceed the
+    # 5 000 000-row API limit (HTTP 413 EXTRACTION_TOO_BIG, run 2026-10-18).
+    params:
+      geo: [PT11, PT15, PT16, PT17, PT18, PT19, PT1A, PT1B, PT1C, PT1D, PT20, PT30,
+            ES11, ES12, ES13, ES21, ES22, ES23, ES24, ES30, ES41, ES42, ES43, ES51, ES52, ES53,
+            ES61, ES62, ES63, ES64, ES70]
     since: "2010"
     geo_prefix: [PT, ES]
     select:

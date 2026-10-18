@@ -62,10 +62,14 @@ def collect_dataset(d: dict, since: str, today: str) -> dict:
     split_key = "product" if d["api"] == "comext" and isinstance(d["params"].get("product"), list) else None
     parts = d["params"][split_key] if split_key else [None]
     manifest = {"dataset": d["id"], "retrieved_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-                "requests": [], "used_code": None}
+                "requests": [], "used_code": None, "attempts": []}
+    prev_code = None
     for code in codes:
         ok_any = False
+        if manifest["requests"]:   # keep the failed attempt of the previous code for diagnosis
+            manifest["attempts"].append({"code": prev_code, "requests": manifest["requests"]})
         manifest["requests"] = []
+        prev_code = code
         for i, part in enumerate(parts):
             params = dict(d["params"])
             if split_key:
