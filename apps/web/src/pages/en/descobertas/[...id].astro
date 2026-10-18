@@ -1,0 +1,7 @@
+---
+import DescobertaEntry from "../../../views/DescobertaEntry.astro";
+import { getCollection } from "astro:content";
+export async function getStaticPaths() { return (await getCollection("descobertas_en")).map((d) => ({ params: { id: d.id }, props: { d } })); }
+const { d } = Astro.props;
+---
+<DescobertaEntry lang="en" d={d} />

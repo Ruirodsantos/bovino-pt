@@ -1,0 +1,88 @@
+_field_labels:
+  geographic_origin: Homeland (region of origin)
+  historical_background: History
+  population: Herd
+  physical_characteristics: Characteristics
+  production_systems: Production system
+  meat_characteristics: The meat
+  certifications: Certifications (PDO/PGI)
+  producer_organizations: Breeders' association
+  geographic_distribution: Distribution
+  photographs: Photographs
+  economic_information: Economy
+  historical_trends: Trend over time
+alentejana:
+  solar: Alentejo — mainly the districts of Portalegre, Évora and Beja
+  fields:
+    geographic_origin: Alentejo — mainly the districts of Portalegre, Évora and Beja
+    population: 8,362 females and 200 males in pure line, with 133 breeders (adult herd book, 2019)
+algarvia:
+  solar: Algarve — from Aljezur and Monchique to the Barrocal and Castro Marim
+  fields:
+    geographic_origin: Algarve — from Aljezur and Monchique to the Barrocal and Castro Marim
+    population: 2 females and 2 males in pure line, with 3 breeders (adult herd book, 2019)
+arouquesa:
+  solar: Mountain slopes between the Vouga and Douro valleys (Arouca, Cinfães, Castro Daire…)
+  fields:
+    geographic_origin: Mountain slopes between the Vouga and Douro valleys (Arouca, Cinfães, Castro Daire…)
+    population: 3,680 females and 134 males in pure line, with 3,315 breeders (adult herd book, 2019)
+barrosa:
+  solar: Upland areas of the Barroso
+  fields:
+    geographic_origin: Upland areas of the Barroso
+    population: 6,775 females and 355 males in pure line, with 1,926 breeders (adult herd book, 2019)
+brava-de-lide:
+  solar: Ribatejo and Oeste, Alentejo, Beiras and the Azores
+  fields:
+    geographic_origin: Ribatejo and Oeste, Alentejo, Beiras and the Azores
+    population: 5,938 females and 475 males in pure line, with 97 breeders (adult herd book, 2019)
+cachena:
+  solar: Peneda-Gerês National Park (Arcos de Valdevez)
+  fields:
+    geographic_origin: Peneda-Gerês National Park (Arcos de Valdevez)
+    population: 5,869 females and 257 males in pure line, with 662 breeders (adult herd book, 2019)
+garvonesa:
+  solar: Baixo Alentejo — Santiago do Cacém, Odemira, Ourique, Castro Verde…
+  fields:
+    geographic_origin: Baixo Alentejo — Santiago do Cacém, Odemira, Ourique, Castro Verde…
+    population: 585 females and 22 males in pure line, with 16 breeders (adult herd book, 2019)
+jarmelista:
+  solar: The former municipality of Jarmelo, now Guarda
+  fields:
+    geographic_origin: The former municipality of Jarmelo, now Guarda
+    population: 193 females and 25 males in pure line, with 25 breeders (adult herd book, 2019)
+marinhoa:
+  solar: Lands of the Vouga, Cértima and Antuã estuary (Baixo Vouga)
+  fields:
+    geographic_origin: Lands of the Vouga, Cértima and Antuã estuary (Baixo Vouga)
+    population: 884 females and 91 males in pure line, with 280 breeders (adult herd book, 2019)
+maronesa:
+  solar: Serra do Alvão and Serra do Marão
+  fields:
+    geographic_origin: Serra do Alvão and Serra do Marão
+    population: 3,733 females and 146 males in pure line, with 894 breeders (adult herd book, 2019)
+mertolenga:
+  solar: Baixo Alentejo — lands of Mértola, Alcoutim and Martinlongo
+  fields:
+    geographic_origin: Baixo Alentejo — lands of Mértola, Alcoutim and Martinlongo
+    population: 8,358 females and 207 males in pure line, with 216 breeders (adult herd book, 2019)
+minhota:
+  solar: Entre Douro e Minho
+  fields:
+    geographic_origin: Entre Douro e Minho
+    population: 5,912 females and 164 males in pure line, with 1,721 breeders (adult herd book, 2019)
+mirandesa:
+  solar: Lands of Miranda (Miranda do Douro, Mogadouro, Vimioso)
+  fields:
+    geographic_origin: Lands of Miranda (Miranda do Douro, Mogadouro, Vimioso)
+    population: 4,492 females and 305 males in pure line, with 344 breeders (adult herd book, 2019)
+preta:
+  solar: South of the Tagus — the former «Gado Charnequeiro do Sul do Tejo» (heathland cattle of the south Tagus)
+  fields:
+    geographic_origin: South of the Tagus — the former «Gado Charnequeiro do Sul do Tejo» (heathland cattle of the south Tagus)
+    population: 1,774 females and 70 males in pure line, with 30 breeders (adult herd book, 2019)
+ramo-grande:
+  solar: Terceira Island, Azores (Praia da Vitória)
+  fields:
+    geographic_origin: Terceira Island, Azores (Praia da Vitória)
+    population: 679 females and 84 males in pure line, with 581 breeders (adult herd book, 2019)

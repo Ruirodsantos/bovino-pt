@@ -1,21 +1,28 @@
 ---
-import { fmt, fmtDate, type Stat } from "../lib/data";
-interface Props { stat: Stat; big?: boolean }
-const { stat, big = false } = Astro.props;
-const display = fmt(stat.value, stat.unit);
-const unitShown = stat.unit === "€" || display.includes("milhões") ? (stat.unit === "€" ? "" : stat.unit) : stat.unit;
+import { fmt, fmtDate, num, type Stat } from "../lib/data";
+import { href, tr, type Lang } from "../i18n";
+interface Props { stat: Stat; big?: boolean; lang?: Lang }
+const { stat, big = false, lang = "pt" } = Astro.props;
+const T = tr(lang);
+const display = fmt(stat.value, stat.unit, lang);
+const UNITS: Record<string, string> = { "cabeças": "head", "toneladas": "tonnes" };
+const unit = lang === "en" ? (UNITS[stat.unit] ?? stat.unit) : stat.unit;
+const unitShown = stat.unit === "€" ? "" : unit;
+const label = lang === "en" ? (stat.label_en ?? stat.label) : stat.label;
+const context = lang === "en" ? (stat.context_en ?? stat.context) : stat.context;
+const changeRef = lang === "en" ? (stat.change_ref_en ?? stat.change_ref) : stat.change_ref;
+const period = lang === "en" ? (stat.footnote.period_en ?? stat.footnote.period) : stat.footnote.period;
 const ch = stat.change;
-const base = import.meta.env.BASE_URL;
 ---
 <article class:list={["stat card reveal", { big }]}>
   <div class="value" data-count={stat.value} data-unit={stat.unit}>{display}<span class="unit"> {unitShown}</span></div>
-  <div class="label">{stat.label}</div>
-  <div class="context">{stat.context}
-    {typeof ch === "number" && <span class:list={["delta", ch >= 0 ? "up" : "down"]}>{ch >= 0 ? "▲" : "▼"} {Math.abs(ch * 100).toLocaleString("pt-PT", { maximumFractionDigits: 1 })}% vs {stat.change_ref}</span>}
+  <div class="label">{label}</div>
+  <div class="context">{context}
+    {typeof ch === "number" && <span class:list={["delta", ch >= 0 ? "up" : "down"]}>{ch >= 0 ? "▲" : "▼"} {num(Math.abs(ch * 100), lang, 1)}% {T("vs", "vs")} {changeRef}</span>}
   </div>
   <footer>
-    <span class="chip ok">Verificado</span>
-    <span>Fonte: {stat.footnote.source} (<a href={`${base}dados/#${stat.footnote.dataset}`} class="mono">{stat.footnote.source_code}</a>) · Ref.: {stat.footnote.period} · Publicado: {fmtDate(stat.footnote.published)} · Verificado: {fmtDate(stat.footnote.verified)}</span>
+    <span class="chip ok">{T("Verificado", "Verified")}</span>
+    <span>{T("Fonte", "Source")}: {stat.footnote.source} (<a href={href(lang, `dados/#${stat.footnote.dataset}`)} class="mono">{stat.footnote.source_code}</a>) · {T("Ref.", "Ref.")}: {period} · {T("Publicado", "Published")}: {fmtDate(stat.footnote.published, lang)} · {T("Verificado", "Verified")}: {fmtDate(stat.footnote.verified, lang)}</span>
   </footer>
 </article>
 <style>

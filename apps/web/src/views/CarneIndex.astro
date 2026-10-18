@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import Photo from "../components/Photo.astro";
+import { getCollection } from "astro:content";
+import { href, tr, type Lang } from "../i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = tr(lang);
+const all = (await getCollection(lang === "en" ? "carne_en" : "carne")).sort((a, b) => a.data.order - b.data.order);
+---
+<Base lang={lang} title={T("A Carne", "The Meat")} description={T("A carne de bovino por dentro: crua, maturada, cozinhada e servida ao nível dos melhores restaurantes.", "Beef from the inside: raw, aged, cooked and served at the level of the best restaurants.")}>
+  <section class="block" style="border-top:0"><div class="wrap">
+    <span class="eyebrow">{T("A Carne", "The Meat")}</span>
+    <h1>{T("Conhecer a carne como quem a serve", "Know the meat the way those who serve it do")}</h1>
+    <p class="lede">{T("Do animal ao prato: o que se vê na carne crua, o que a maturação faz, o que acontece ao lume e como se serve. Escrito para quem quer chegar ao nível dos melhores restaurantes ibéricos.", "From animal to plate: what you see in raw meat, what ageing does, what happens over the heat and how it is served. Written for those who want to reach the level of the best Iberian restaurants.")}</p>
+    <p class="muted">{T("Todos os textos são originais e estão ", "All texts are original and are ")}<strong>{T("em revisão", "under review")}</strong>{T(": são escritos a partir de ciência da carne de referência, e as fontes estão listadas no fim de cada página. Onde um valor ainda não foi conferido, o texto di-lo.", ": they are written from reference meat science, and the sources are listed at the end of each page. Where a value has not yet been checked, the text says so.")}</p>
+    <div class="cards">
+      {all.map((d) => (
+        <a class="card c" href={href(lang, `carne/${d.id}/`)}>
+          {d.data.photo && <Photo id={d.data.photo} class="cph" sizes="(max-width: 700px) 100vw, 360px" caption={false} lang={lang} />}
+          <div class="cb"><span class="eyebrow">{String(d.data.order).padStart(2, "0")}</span><h2>{d.data.title}</h2><p>{d.data.summary}</p></div>
+        </a>
+      ))}
+    </div>
+  </div></section>
+</Base>
+<style>
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; margin-top: 28px; }
+  .c { padding: 0; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+  .c :global(.cph) { aspect-ratio: 16/10; }
+  .c :global(.cph img) { height: 100%; }
+  .cb { padding: 16px 18px 20px; }
+  .cb h2 { font-size: 1.25rem; margin: 4px 0 8px; }
+  .cb p { margin: 0; color: var(--muted); font-size: .92rem; }
+</style>

@@ -9,6 +9,7 @@ defaults:
 datasets:
   - id: bovine_population
     title_pt: Efetivo bovino (inquérito de novembro–dezembro)
+    title_en: Cattle herd (November–December survey)
     source_id: S02
     api: eurostat
     code: apro_mt_lscatl
@@ -24,6 +25,7 @@ datasets:
 
   - id: bovine_slaughter_heads_monthly
     title_pt: Bovinos abatidos em matadouros (cabeças, mensal)
+    title_en: Cattle slaughtered in abattoirs (head, monthly)
     source_id: S02
     api: eurostat
     code: apro_mt_pheadm
@@ -40,6 +42,7 @@ datasets:
 
   - id: bovine_slaughter_tonnes
     title_pt: Abates de bovinos (toneladas de carcaça)
+    title_en: Cattle slaughter (tonnes of carcass)
     source_id: S02
     api: eurostat
     code: apro_mt_pann
@@ -54,6 +57,7 @@ datasets:
 
   - id: bovine_population_regions
     title_pt: Efetivo bovino por região (NUTS 2)
+    title_en: Cattle herd by region (NUTS 2)
     source_id: S02
     api: eurostat
     code: [ef_lsk_main, ef_lsk_bovine]   # tried in order (agr_r_animal no longer disseminated, 404)
@@ -84,6 +88,7 @@ datasets:
 
   - id: trade_live_bovine_pt_es
     title_pt: Bovinos vivos de Portugal para Espanha
+    title_en: Live cattle from Portugal to Spain
     source_id: S03
     api: comext
     code: [DS-045409, DS-059341]     # tried in order; the one that answers is recorded
@@ -101,6 +106,7 @@ datasets:
 
   - id: trade_beef_pt_es
     title_pt: Comércio de carne de bovino Portugal ↔ Espanha
+    title_en: Beef trade Portugal ↔ Spain
     source_id: S03
     api: comext
     code: [DS-045409, DS-059341]

@@ -1,0 +1,36 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { fmtDate } from "../lib/data";
+import { href, tr, type Lang } from "../i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = tr(lang);
+const all = (await getCollection(lang === "en" ? "descobertas_en" : "descobertas")).sort((a, b) => +b.data.date - +a.data.date);
+---
+<Base lang={lang} title={T("Descobertas", "Discoveries")} description={T("Novas descobertas sobre o bovino português, verificadas e com fontes, todos os dias.", "New, verified and sourced discoveries about Portuguese cattle, every day.")}>
+  <section class="block" style="border-top:0"><div class="wrap">
+    <span class="eyebrow">{T("Diário de investigação", "Research journal")}</span>
+    <h1>{T("Descobertas", "Discoveries")}</h1>
+    <p class="lede">{T("Uma nova peça de conhecimento quase todos os dias: um número que mudou, um facto confirmado, uma pergunta respondida. Todas indicam as fontes.", "A new piece of knowledge almost every day: a number that changed, a confirmed fact, a question answered. All state their sources.")}</p>
+    <ol class="feed">
+      {all.map((d) => (
+        <li><a href={href(lang, `descobertas/${d.id}/`)}>
+          <span class="mono date">{fmtDate(d.data.date.toISOString().slice(0, 10), lang)}</span>
+          <h2>{d.data.title}</h2><p>{d.data.summary}</p>
+          <span>{d.data.tags.map((t) => <span class="chip">{t}</span>)}</span>
+        </a></li>
+      ))}
+    </ol>
+  </div></section>
+</Base>
+<style>
+  .feed { list-style: none; padding: 0; margin: 32px 0 0; border-left: 2px solid var(--line); }
+  .feed li { padding: 0 0 32px 24px; position: relative; }
+  .feed li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .feed a { color: var(--ink); text-decoration: none; display: block; }
+  .feed h2 { font-size: 1.5rem; margin: 6px 0; }
+  .feed p { color: var(--muted); }
+  .date { color: var(--accent); font-size: .8rem; }
+  .chip { margin-right: 6px; }
+</style>

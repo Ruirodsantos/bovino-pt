@@ -1,8 +1,10 @@
 ---
 import credits from "../data/images.json";
-interface Props { id: string; sizes?: string; class?: string; caption?: boolean; eager?: boolean; }
-const { id, sizes = "100vw", class: cls, caption = true, eager = false } = Astro.props;
-const c = (credits as Record<string, any>)[id];
+import { licenseLabel, type Lang } from "../i18n";
+interface Props { id: string; sizes?: string; class?: string; caption?: boolean; eager?: boolean; lang?: Lang; }
+const { id, sizes = "100vw", class: cls, caption = true, eager = false, lang = "pt" } = Astro.props;
+const c0 = (credits as Record<string, any>)[id];
+const c = c0 && lang === "en" ? { ...c0, alt: c0.alt_en ?? c0.alt, caption: c0.caption_en ?? c0.caption } : c0;
 const base = import.meta.env.BASE_URL;
 const src = (s: string) => `${base}img/${id}-${s}.webp`;
 ---
@@ -10,7 +12,7 @@ const src = (s: string) => `${base}img/${id}-${s}.webp`;
   <figure class:list={["photo", cls]}>
     <img src={src("md")} srcset={`${src("sm")} 480w, ${src("md")} 900w, ${src("lg")} 1800w`} sizes={sizes}
       alt={c.alt} width={c.width} height={c.height} loading={eager ? "eager" : "lazy"} decoding="async" />
-    {caption && <figcaption>{c.caption && <span>{c.caption}</span>} <span class="credit">Foto: <a href={c.source_page} rel="noopener">{c.author}</a> · {c.license}</span></figcaption>}
+    {caption && <figcaption>{c.caption && <span>{c.caption}</span>} <span class="credit">{lang === "en" ? "Photo" : "Foto"}: <a href={c.source_page} rel="noopener">{c.author}</a> · {licenseLabel(lang, c.license)}</span></figcaption>}
   </figure>
 )}
 <style>

@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+import Photo from "../components/Photo.astro";
+import { breeds, breedEn, fieldLabels, fmtDate, num, photoFor, type Breed } from "../lib/data";
+import { getEntry, render } from "astro:content";
+import { href, tr, type Lang } from "../i18n";
+interface Props { lang: Lang; b: Breed }
+const { lang, b } = Astro.props;
+const T = tr(lang);
+const en = breedEn(b.slug);
+const labels = fieldLabels(lang);
+const p = photoFor(b.slug);
+const entries = Object.entries(b.fields ?? {});
+const done = entries.filter(([k, f]) => f.value !== null && f.value !== undefined && f.source_id && !["geographic_origin", "population"].includes(k));
+const todo = entries.filter(([, f]) => !(f.value !== null && f.value !== undefined && f.source_id));
+const all = breeds();
+const i = all.findIndex((x) => x.slug === b.slug);
+const prev = all[(i + all.length - 1) % all.length], next = all[(i + 1) % all.length];
+const src = b.name_sources?.[0]?.url;
+const prof = await getEntry(lang === "en" ? "racas_en" : "racas", b.slug);
+const Profile = prof ? (await render(prof)).Content : null;
+const solar = lang === "en" ? (en.solar ?? b.solar) : b.solar;
+const valueOf = (k: string, v: unknown) => (lang === "en" && en.fields?.[k]) ? en.fields[k] : String(v);
+---
+<Base lang={lang} title={T(`Raça ${b.official_name}`, `${b.official_name} breed`)} description={T(`Raça bovina autóctone ${b.official_name}: solar, efetivo e história, com fontes oficiais.`, `The native ${b.official_name} cattle breed: homeland, herd size and history, with official sources.`)}>
+  <section class="bhero">
+    {p ? <Photo id={p.id} class="bh-photo" sizes="100vw" eager lang={lang} /> : <div class="bh-empty"></div>}
+    <div class="wrap bh-text">
+      <a class="back" href={href(lang, "racas/")}>{T("← Todas as raças", "← All breeds")}</a>
+      <span class="eyebrow light">{T("Raça bovina autóctone portuguesa", "Native Portuguese cattle breed")} · {String(i + 1).padStart(2, "0")}/15</span>
+      <h1>{b.official_name}</h1>
+      {solar && <p class="lede light">{solar}</p>}
+      {p && <span class="chip">{p.kind === "raça" ? T("Fotografia da raça", "Photograph of the breed") : p.kind === "paisagem" ? T("Paisagem típica", "Typical landscape") : T("Paisagem do solar da raça", "Landscape of the breed's homeland")}</span>}
+    </div>
+  </section>
+
+  {b.herd && (
+    <section class="block" style="border-top:0"><div class="wrap">
+      <div class="facts">
+        <div><span class="big">{num(b.herd.females, lang)}</span><span>{T("fêmeas em linha pura", "pure-line females")}</span></div>
+        <div><span class="big">{num(b.herd.males, lang)}</span><span>{T("machos", "males")}</span></div>
+        <div><span class="big">{num(b.herd.breeders, lang)}</span><span>{T("criadores", "breeders")}</span></div>
+      </div>
+      <p class="src">{T("Livro genealógico de adultos", "Adult herd book")}, {b.herd.year}. {T("Fonte", "Source")}: <a href={src}>{T("Catálogo Oficial de Raças Autóctones Portuguesas", "Official Catalogue of Portuguese Native Breeds")}</a> (DGAV/CAP), p. {b.herd.source_page}. {T("Verificado", "Verified")} {fmtDate(b.last_verified, lang)}.</p>
+    </div></section>
+  )}
+
+  {Profile && (
+    <section class="block"><div class="wrap narrow">
+      <p class="lede">{prof!.data.summary}</p>
+      <div class="prose"><Profile /></div>
+    </div></section>
+  )}
+
+  {done.length > 0 && (
+    <section class="block"><div class="wrap grid cols-2">
+      {done.map(([k, f]) => (
+        <article class="card"><span class="eyebrow">{labels[k] ?? k}</span><p>{valueOf(k, f.value)}</p>
+          <p class="src">{T("Fonte", "Source")}: {f.source_url ? <a href={f.source_url}>{f.source_id}</a> : f.source_id} · {T("verificado", "verified")} {fmtDate(f.verified_at, lang)}</p></article>
+      ))}
+    </div></section>
+  )}
+
+  <section class="block"><div class="wrap">
+    <h2>{T("Em investigação", "Under research")}</h2>
+    <p>{T("A investigação diária vai acrescentando estes temas, sempre com fonte indicada:", "Daily research keeps adding these topics, always with a stated source:")}</p>
+    <ul class="todo">{todo.map(([k]) => <li><span class="chip wait">{labels[k] ?? k}</span></li>)}</ul>
+    <nav class="pn"><a href={href(lang, `racas/${prev.slug}/`)}>← {prev.official_name}</a><a href={href(lang, `racas/${next.slug}/`)}>{next.official_name} →</a></nav>
+  </div></section>
+</Base>
+<style>
+  .narrow { max-width: 760px; }
+  .prose :global(h2) { margin-top: 2rem; }
+  .prose :global(blockquote) { margin: 28px 0 0; padding: 14px 18px; border-left: 3px solid var(--accent); background: var(--cork-soft); border-radius: 0 var(--radius) var(--radius) 0; font-size: .9rem; }
+  .bhero { position: relative; min-height: min(78vh, 720px); display: flex; align-items: flex-end; color: #fff; background: #1b1714; margin-top: -61px; overflow: hidden; }
+  .bhero :global(.bh-photo) { position: absolute; inset: 0; }
+  .bhero :global(.bh-photo img) { height: 100%; }
+  .bhero :global(.bh-photo figcaption) { position: absolute; right: 12px; bottom: 8px; color: rgba(255,255,255,.75); z-index: 2; }
+  .bhero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.05) 30%, rgba(0,0,0,.75)); }
+  .bh-empty { position: absolute; inset: 0; background: linear-gradient(135deg, #3a2f26, #1b1714); }
+  .bh-text { position: relative; z-index: 1; padding-bottom: 48px; padding-top: 120px; width: 100%; }
+  .bh-text h1 { color: #fff; font-size: clamp(3rem, 10vw, 7rem); margin: 6px 0; }
+  .light { color: rgba(255,255,255,.9) !important; } .eyebrow.light { color: #f3c9a8 !important; }
+  .back { color: #fff; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .facts > div { display: flex; flex-direction: column; border-left: 3px solid var(--accent); padding-left: 16px; }
+  .big { font: 600 clamp(2.4rem, 6vw, 4rem)/1 var(--display); }
+  @media (max-width: 640px) { .facts { grid-template-columns: 1fr; } }
+  .src { font-size: .8rem; color: var(--muted); margin-top: 12px; }
+  .todo { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .pn { display: flex; justify-content: space-between; margin-top: 40px; font-weight: 600; }
+</style>

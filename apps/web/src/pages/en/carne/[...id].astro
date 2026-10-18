@@ -1,0 +1,10 @@
+---
+import CarneEntry from "../../../views/CarneEntry.astro";
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+  const all = (await getCollection("carne_en")).sort((a, b) => a.data.order - b.data.order);
+  return all.map((d, i) => ({ params: { id: d.id }, props: { d, prev: all[i - 1], next: all[i + 1] } }));
+}
+const { d, prev, next } = Astro.props;
+---
+<CarneEntry lang="en" d={d} prev={prev} next={next} />

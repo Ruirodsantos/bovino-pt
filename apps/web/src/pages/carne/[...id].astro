@@ -1,41 +1,10 @@
 ---
-import Base from "../../layouts/Base.astro";
-import Photo from "../../components/Photo.astro";
-import { getCollection, render } from "astro:content";
+import CarneEntry from "../../views/CarneEntry.astro";
+import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const all = (await getCollection("carne")).sort((a, b) => a.data.order - b.data.order);
   return all.map((d, i) => ({ params: { id: d.id }, props: { d, prev: all[i - 1], next: all[i + 1] } }));
 }
 const { d, prev, next } = Astro.props;
-const { Content } = await render(d);
-const base = import.meta.env.BASE_URL;
 ---
-<Base title={d.data.title} description={d.data.summary}>
-  <article class="block" style="border-top:0"><div class="wrap narrow">
-    <a href={`${base}carne/`}>← A Carne</a>
-    <p class="meta"><span class="chip wait">Texto original · em revisão</span></p>
-    <h1>{d.data.title}</h1>
-    <p class="lede">{d.data.summary}</p>
-    {d.data.photo && <Photo id={d.data.photo} class="lead-photo" sizes="(max-width: 800px) 100vw, 760px" eager />}
-    <div class="prose"><Content /></div>
-    {d.data.sources.length > 0 && <aside class="card sources"><span class="eyebrow">Fontes e referências</span><ul>{d.data.sources.map((s) => <li><a href={s.url}>{s.label}</a></li>)}</ul></aside>}
-    <nav class="pn">
-      {prev ? <a href={`${base}carne/${prev.id}/`}>← {prev.data.title}</a> : <span></span>}
-      {next ? <a href={`${base}carne/${next.id}/`}>{next.data.title} →</a> : <span></span>}
-    </nav>
-  </div></article>
-</Base>
-<style>
-  .narrow { max-width: 760px; }
-  .meta { margin-top: 24px; }
-  .lead-photo { margin: 20px 0 28px; }
-  .lead-photo :global(img) { border-radius: var(--radius); aspect-ratio: 16/9; }
-  .prose :global(li) { margin-bottom: 4px; }
-  .prose :global(h2) { margin-top: 2.2rem; }
-  .prose :global(table) { width: 100%; border-collapse: collapse; font-size: .92rem; margin: 18px 0; display: block; overflow-x: auto; }
-  .prose :global(th), .prose :global(td) { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; min-width: 110px; }
-  .prose :global(th) { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-  .prose :global(blockquote) { margin: 28px 0 0; padding: 14px 18px; border-left: 3px solid var(--accent); background: var(--cork-soft); border-radius: 0 var(--radius) var(--radius) 0; font-size: .9rem; }
-  .sources { margin-top: 32px; font-size: .9rem; }
-  .pn { display: flex; justify-content: space-between; gap: 16px; margin-top: 40px; font-weight: 600; }
-</style>
+<CarneEntry lang="pt" d={d} prev={prev} next={next} />

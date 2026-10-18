@@ -9,7 +9,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 2400
+  "height": 2400,
+  "alt_en": "A herd of cattle in an Alentejo montado at the end of the day",
+  "caption_en": "Cattle in an Alentejo montado"
  },
  "montado-pasto": {
   "alt": "Pastagem portuguesa com sobreiros e bovinos ao longe",
@@ -21,7 +23,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 2400
+  "height": 2400,
+  "alt_en": "Portuguese pasture with cork oaks and cattle in the distance",
+  "caption_en": "Pasture with cattle, Portugal"
  },
  "cachena-retrato": {
   "alt": "Vaca de cornos longos em lira, pelagem castanho-dourada, em encosta de montanha",
@@ -33,7 +37,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 1600
+  "height": 1600,
+  "alt_en": "Cow with long lyre-shaped horns and golden-brown coat on a mountain slope",
+  "caption_en": "Cow from the author's series «Cachena cattle with horns»"
  },
  "cachena": {
   "alt": "Vaca Cachena de cornos longos em lira a caminhar numa encosta",
@@ -45,7 +51,9 @@
   "breed": "cachena",
   "verified_note": null,
   "width": 2400,
-  "height": 3600
+  "height": 3600,
+  "alt_en": "Cachena cow with long lyre-shaped horns walking on a hillside",
+  "caption_en": "Cachena breed cow (breed identified by the author)"
  },
  "barrosa": {
   "alt": "Vacas Barrosãs de grandes cornos num caminho de montanha",
@@ -57,7 +65,9 @@
   "breed": "barrosa",
   "verified_note": null,
   "width": 2400,
-  "height": 3600
+  "height": 3600,
+  "alt_en": "Barrosã cows with large horns on a mountain track",
+  "caption_en": "Barrosã breed cows (breed identified by the author)"
  },
  "barrosa-festa": {
   "alt": "Boi Barrosão enfeitado com fitas e flores",
@@ -69,7 +79,9 @@
   "breed": "barrosa",
   "verified_note": null,
   "width": 1024,
-  "height": 768
+  "height": 768,
+  "alt_en": "Barrosão ox decorated with ribbons and flowers",
+  "caption_en": "Barrosã decorated for a festival (breed identified by the author)"
  },
  "tourem-manada": {
   "alt": "Manada de vacas a atravessar uma ponte em Tourém, Montalegre",
@@ -81,7 +93,9 @@
   "breed": null,
   "verified_note": null,
   "width": 1024,
-  "height": 768
+  "height": 768,
+  "alt_en": "Herd of cows crossing a bridge in Tourém, Montalegre",
+  "caption_en": "Herd in Tourém, Montalegre (Barroso)"
  },
  "geres-descanso": {
   "alt": "Vaca deitada junto a casas de granito na serra do Gerês",
@@ -93,7 +107,9 @@
   "breed": null,
   "verified_note": null,
   "width": 1024,
-  "height": 768
+  "height": 768,
+  "alt_en": "Cow lying beside granite houses in the Gerês mountains",
+  "caption_en": "Serra do Gerês (Minas dos Carris)"
  },
  "montanha-cornos": {
   "alt": "Vaca castanha de cornos longos num pinhal",
@@ -105,7 +121,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 1601
+  "height": 1601,
+  "alt_en": "Brown cow with long horns in a pine wood",
+  "caption_en": "Mountain cattle"
  },
  "outono-castanheiros": {
   "alt": "Bovinos a pastar entre castanheiros no outono",
@@ -117,7 +135,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 1607
+  "height": 1607,
+  "alt_en": "Cattle grazing among chestnut trees in autumn",
+  "caption_en": "Autumn grazing"
  },
  "pasto-seco": {
   "alt": "Bovinos vermelhos num pasto seco mediterrânico",
@@ -129,7 +149,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 1600
+  "height": 1600,
+  "alt_en": "Red cattle on a dry Mediterranean pasture",
+  "caption_en": "Summer pasture"
  },
  "miranda-douro": {
   "alt": "Arribas do Douro em Miranda do Douro",
@@ -141,7 +163,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 3600
+  "height": 3600,
+  "alt_en": "Douro cliffs at Miranda do Douro",
+  "caption_en": "Douro cliffs, Terras de Miranda"
  },
  "mertola": {
   "alt": "Castelo de Mértola sobre o vale do Guadiana",
@@ -153,7 +177,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 752
+  "height": 752,
+  "alt_en": "Mértola Castle above the Guadiana valley",
+  "caption_en": "Mértola, Guadiana valley"
  },
  "terceira": {
   "alt": "Vista aérea de pastagens com muros de pedra e bovinos na ilha Terceira",
@@ -165,7 +191,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 1599
+  "height": 1599,
+  "alt_en": "Aerial view of pastures with stone walls and cattle on Terceira Island",
+  "caption_en": "Pastures on Terceira Island, Azores"
  },
  "montalegre": {
   "alt": "Montanhas do Barroso, Montalegre",
@@ -177,7 +205,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 4267
+  "height": 4267,
+  "alt_en": "Mountains of the Barroso, Montalegre",
+  "caption_en": "Mountains of the Barroso, Montalegre"
  },
  "carne-cortes": {
   "alt": "Dois bifes crus sobre uma tábua com alho e ervas",
@@ -189,7 +219,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 1600
+  "height": 1600,
+  "alt_en": "Two raw steaks on a board with garlic and herbs",
+  "caption_en": "Beef cuts (illustrative image)"
  },
  "carne-madeira": {
   "alt": "Dois cortes de vazia sobre tábua de madeira",
@@ -201,7 +233,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 1600
+  "height": 1600,
+  "alt_en": "Two cuts of flank steak (vazia) on a wooden board",
+  "caption_en": "Beef cuts (illustrative image)"
  },
  "carne-variedade": {
   "alt": "Vários cortes crus de carne de bovino alinhados",
@@ -213,7 +247,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 1631
+  "height": 1631,
+  "alt_en": "Several raw cuts of beef lined up",
+  "caption_en": "Beef cuts (illustrative image)"
  },
  "leziria": {
   "alt": "Planície ribeirinha no Ribatejo",
@@ -225,7 +261,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 3600
+  "height": 3600,
+  "alt_en": "Riverside plain in the Ribatejo",
+  "caption_en": "Ribatejo plain"
  },
  "monchique": {
   "alt": "Pôr do sol sobre as serras de Monchique",
@@ -237,7 +275,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 1600
+  "height": 1600,
+  "alt_en": "Sunset over the Monchique mountains",
+  "caption_en": "Serra de Monchique, Algarve"
  },
  "baixo-vouga": {
   "alt": "Campo de erva junto à Ria de Aveiro",
@@ -249,7 +289,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 3197
+  "height": 3197,
+  "alt_en": "Grass field beside the Ria de Aveiro",
+  "caption_en": "Fields of the Ria de Aveiro (Baixo Vouga)"
  },
  "rio-lima": {
   "alt": "Barco no rio Lima junto à ponte de Ponte de Lima",
@@ -261,7 +303,9 @@
   "breed": null,
   "verified_note": null,
   "width": 2400,
-  "height": 3200
+  "height": 3200,
+  "alt_en": "Boat on the Lima river next to the bridge at Ponte de Lima",
+  "caption_en": "Lima river, Ponte de Lima (Minho)"
  },
  "alentejana-silves": {
   "alt": "Manada de vacas da raça Alentejana num prado em Silves, com garças-vaqueiras",
@@ -273,7 +317,9 @@
   "breed": "Alentejana",
   "verified_note": "Descrição do autor na Wikimedia Commons: «Cattle egrets and Alentejana cattle». Recortada da fotografia original.",
   "width": 2778,
-  "height": 1116
+  "height": 1116,
+  "alt_en": "Herd of Alentejana breed cows in a meadow in Silves, with cattle egrets",
+  "caption_en": "Alentejana breed cows, Silves (Algarve), October 2017 — breed identified by the author"
  },
  "arouquesa-touro": {
   "alt": "Touro da raça Arouquesa, pelagem castanho-avermelhada, de corpo inteiro num prado",
@@ -285,7 +331,9 @@
   "breed": "Arouquesa",
   "verified_note": "Descrição do autor na Wikimedia Commons: «Arouquesa Bull»; categoria «Arouquesa cattle».",
   "width": 1024,
-  "height": 768
+  "height": 768,
+  "alt_en": "Full-length bull of the Arouquesa breed, reddish-brown coat, in a meadow",
+  "caption_en": "Arouquesa breed bull (2004)"
  },
  "maronesa-alvao": {
   "alt": "Três bovinos da raça Maronesa, de pelagem escura e cornos em lira, numa charneca com tojo florido",
@@ -297,7 +345,9 @@
   "breed": "Maronesa",
   "verified_note": "Descrição do autor na Wikimedia Commons: «A vaca maronesa é caraterística do Alvão.»",
   "width": 1600,
-  "height": 1200
+  "height": 1200,
+  "alt_en": "Three Maronesa breed cattle, dark coat and lyre-shaped horns, on a heath with flowering gorse",
+  "caption_en": "Maronesa cows in the Alvão (2013)"
  },
  "mertolenga-tejo": {
   "alt": "Vaca Mertolenga de pelagem clara malhada de castanho, num campo aberto do estuário do Tejo",
@@ -309,7 +359,9 @@
   "breed": "Mertolenga",
   "verified_note": "Descrição do autor na Wikimedia Commons: «Vacas Mertolengas» (Wiki Loves Earth 2015).",
   "width": 4000,
-  "height": 2250
+  "height": 2250,
+  "alt_en": "Mertolenga cow with a pale coat spotted with brown, in an open field of the Tagus estuary",
+  "caption_en": "Mertolenga cows in the Tagus estuary (2015)"
  },
  "ramo-grande-feira": {
   "alt": "Bovino da raça Ramo Grande, pelagem vermelha, num recinto da feira agrícola de Angra do Heroísmo",
@@ -321,6 +373,8 @@
   "breed": "Ramo Grande",
   "verified_note": "Descrição do autor na Wikimedia Commons: «An example of the Ramo Grande cattle at the 2010 Agricultural Fair in the municipality of Angra do Heroísmo (Azores)».",
   "width": 2818,
-  "height": 2036
+  "height": 2036,
+  "alt_en": "Ramo Grande breed bovine, red coat, in an enclosure at the agricultural fair of Angra do Heroísmo",
+  "caption_en": "Ramo Grande breed bovine at the Agricultural Fair of Angra do Heroísmo, Terceira (Azores), 2010"
  }
 }

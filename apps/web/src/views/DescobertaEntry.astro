@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import { render } from "astro:content";
+import { fmtDate } from "../lib/data";
+import { href, tr, type Lang } from "../i18n";
+interface Props { lang: Lang; d: any }
+const { lang, d } = Astro.props;
+const T = tr(lang);
+const { Content } = await render(d);
+---
+<Base lang={lang} title={d.data.title} description={d.data.summary}>
+  <article class="block" style="border-top:0"><div class="wrap narrow">
+    <a href={href(lang, "descobertas/")}>← {T("Descobertas", "Discoveries")}</a>
+    <p class="meta"><span class="mono">{fmtDate(d.data.date.toISOString().slice(0, 10), lang)}</span> <span class:list={["chip", d.data.status === "verificado" ? "ok" : "wait"]}>{d.data.status === "verificado" ? T("Verificado", "Verified") : T("Em revisão", "Under review")}</span></p>
+    <h1>{d.data.title}</h1>
+    <p class="lede">{d.data.summary}</p>
+    <div class="prose"><Content /></div>
+    <aside class="card sources"><span class="eyebrow">{T("Fontes", "Sources")}</span><ul>{d.data.sources.map((s: any) => <li><a href={s.url}>{s.label}</a></li>)}</ul>
+      {d.data.dataset && <p>{T("Dados completos", "Full data")}: <a href={href(lang, `dados/#${d.data.dataset}`)}>{d.data.dataset}</a></p>}</aside>
+  </div></article>
+</Base>
+<style>
+  .narrow { max-width: 760px; }
+  .meta { display: flex; gap: 10px; align-items: center; margin-top: 24px; color: var(--accent); }
+  .prose :global(li) { margin-bottom: 4px; }
+  .sources { margin-top: 32px; font-size: .9rem; }
+</style>

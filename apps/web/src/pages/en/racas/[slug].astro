@@ -1,0 +1,7 @@
+---
+import RacaPage from "../../../views/RacaPage.astro";
+import { breeds } from "../../../lib/data";
+export function getStaticPaths() { return breeds().map((b) => ({ params: { slug: b.slug }, props: { b } })); }
+const { b } = Astro.props;
+---
+<RacaPage lang="en" b={b} />

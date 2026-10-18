@@ -1,0 +1,46 @@
+---
+import Base from "../layouts/Base.astro";
+import credits from "../data/images.json";
+import { tr, type Lang } from "../i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = tr(lang);
+const photos = Object.entries(credits as Record<string, any>);
+---
+<Base lang={lang} title={T("Método e fontes", "Method and sources")} description={T("Como o Atlas do Bovino Português recolhe, verifica e publica dados.", "How the Portuguese Beef Atlas collects, verifies and publishes data.")}>
+  <article class="block" style="border-top:0"><div class="wrap narrow">
+    <span class="eyebrow">{T("Transparência", "Transparency")}</span>
+    <h1>{T("Como trabalhamos", "How we work")}</h1>
+    <h2>{T("Três regras", "Three rules")}</h2>
+    <ol>
+      <li><strong>{T("Nenhum número sem fonte.", "No number without a source.")}</strong> {T("Cada valor publicado indica a fonte, a unidade, o período a que se refere, a data de publicação e a data em que o verificámos.", "Every published value states its source, unit, the period it refers to, its publication date and the date we verified it.")}</li>
+      <li><strong>{T("Não inventamos, não estimamos para preencher.", "We do not invent or estimate to fill gaps.")}</strong> {T("Quando um dado não existe, dizemo-lo.", "When data does not exist, we say so.")}</li>
+      <li><strong>{T("Correlação não é causa.", "Correlation is not causation.")}</strong> {T("Mostramos o que os dados medem e assinalamos o que ainda não explicam.", "We show what the data measure and flag what they do not yet explain.")}</li>
+    </ol>
+    <h2>{T("Todos os dias, automaticamente", "Every day, automatically")}</h2>
+    <p>{T("Todas as manhãs, um processo automático consulta as fontes oficiais (Eurostat e Eurostat Comext, para já) e guarda a resposta original sem alterações. Depois verifica cada valor:", "Every morning, an automated process queries the official sources (Eurostat and Eurostat Comext, for now) and stores the original response unchanged. It then checks every value:")}</p>
+    <ul>
+      <li><span class="chip ok">{T("Verde", "Green")}</span> {T("passa todas as verificações e é publicado.", "passes every check and is published.")}</li>
+      <li><span class="chip wait">{T("Amarelo", "Yellow")}</span> {T("tem uma variação anormal ou uma inconsistência. Vai para revisão humana e não é publicado.", "has an abnormal change or an inconsistency. It goes to human review and is not published.")}</li>
+      <li><span class="chip">{T("Vermelho", "Red")}</span> {T("é inválido. É rejeitado e registado.", "is invalid. It is rejected and logged.")}</li>
+    </ul>
+    <p>{T("O Eurostat substitui valores antigos quando os revê. Nós guardamos cada versão, e as revisões ficam registadas.", "Eurostat replaces old values when it revises them. We keep every version, and revisions are logged.")}</p>
+    <h2 id="categorias">{T("Animais vivos: categorias e limites", "Live animals: categories and limits")}</h2>
+    <p>{T("As exportações de bovinos vivos usam a ", "Live cattle exports use the EU ")}<strong>{T("Nomenclatura Combinada", "Combined Nomenclature")}</strong>{T(" da UE (código 0102). Desde 2012, as subcategorias distinguem animais ", " (code 0102). Since 2012, the subcategories distinguish animals ")}<em>{T("para abate", "for slaughter")}</em>, <em>{T("outros", "others")}</em> {T("(recria e engorda), vitelos até 80 kg e ", "(rearing and fattening), calves up to 80 kg and ")}<em>{T("reprodutores de raça pura", "pure-bred breeding animals")}</em>. {T("Antes de 2012 os códigos eram diferentes, por isso mostramos apenas o total.", "Before 2012 the codes were different, so we show only the total.")}</p>
+    <p>{T("Nas estatísticas publicadas, as subcategorias detalhadas não somam exatamente o total oficial: cobrem cerca de 73–93 % do valor, conforme o ano. A diferença aparece como \"não discriminado\". O número de cabeças só existe nas subcategorias, por isso o total de cabeças que apresentamos é um ", "In the published statistics, the detailed subcategories do not add up exactly to the official total: they cover about 73–93% of the value, depending on the year. The difference appears as \"not specified\". Head counts exist only in the subcategories, so the total number of head we present is a ")}<strong>{T("valor mínimo", "minimum value")}</strong>.</p>
+    <h2>{T("Datas", "Dates")}</h2>
+    <p>{T("Separamos sempre três datas. O ", "We always keep three dates apart. The ")}<em>{T("período de referência", "reference period")}</em> {T("é o mês ou ano que o valor descreve. A ", "is the month or year the value describes. The ")}<em>{T("data de publicação", "publication date")}</em> {T("é quando a fonte o publicou. A ", "is when the source published it. The ")}<em>{T("data de verificação", "verification date")}</em> {T("é quando o recolhemos. Um dado publicado em outubro sobre agosto é um dado de agosto.", "is when we collected it. A figure published in October about August is an August figure.")}</p>
+    <h2>{T("Fontes", "Sources")}</h2>
+    <ul>
+      <li>{T("Eurostat: efetivo bovino (apro_mt_lscatl), abates (apro_mt_pann, apro_mt_pheadm).", "Eurostat: cattle herd (apro_mt_lscatl), slaughter (apro_mt_pann, apro_mt_pheadm).")}</li>
+      <li>{T("Eurostat Comext (DS-045409): comércio por produto NC8 entre Portugal e Espanha.", "Eurostat Comext (DS-045409): trade by CN8 product between Portugal and Spain.")}</li>
+      <li>{T("DGAV/CAP: Catálogo Oficial de Raças Autóctones Portuguesas.", "DGAV/CAP: Official Catalogue of Portuguese Native Breeds.")}</li>
+      <li>{T("Em preparação: INE, GPP/SIMA (cotações semanais), MAPA (Espanha), FAOSTAT.", "In preparation: INE, GPP/SIMA (weekly prices), MAPA (Spain), FAOSTAT.")}</li>
+    </ul>
+    <p>{T("Todo o código, os dados e o histórico estão públicos no ", "All code, data and history are public on ")}<a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a>.</p>
+    <h2 id="fotografias">{T("Fotografias", "Photographs")}</h2>
+    <p>{T("Usamos apenas fotografias reais com licença livre: Unsplash, Pexels, Wikimedia Commons ou Creative Commons. Só dizemos que uma fotografia mostra uma raça quando o próprio autor a identifica. Nos outros casos, a legenda indica apenas o local.", "We use only real photographs under a free licence: Unsplash, Pexels, Wikimedia Commons or Creative Commons. We only say a photograph shows a breed when the author identifies it as such. Otherwise, the caption gives only the place.")}</p>
+    <ul class="credits">{photos.map(([id, c]) => <li><a href={c.source_page}>{lang === "en" ? (c.caption_en ?? c.caption) : c.caption}</a> — {c.author} · {c.license}</li>)}</ul>
+  </div></article>
+</Base>
+<style>.credits { font-size: .85rem; } .narrow { max-width: 760px; } h2 { margin-top: 1.6em; }</style>

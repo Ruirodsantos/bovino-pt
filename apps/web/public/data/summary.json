@@ -5,6 +5,8 @@
    "label": "bovinos em Portugal",
    "value": 1472090.0,
    "unit": "cabeças",
+   "label_en": "cattle in Portugal",
+   "context_en": "herd in the November–December survey, 2025",
    "context": "efetivo no inquérito de novembro–dezembro de 2025",
    "change": -0.009966978499034912,
    "change_ref": "2024",
@@ -13,6 +15,7 @@
     "source_code": "apro_mt_lscatl",
     "dataset": "bovine_population",
     "period": "nov.–dez. 2025",
+    "period_en": "Nov–Dec 2025",
     "published": "2026-10-01",
     "verified": "2026-10-18"
    }
@@ -22,14 +25,18 @@
    "label": "em bovinos vivos vendidos por Portugal a Espanha",
    "value": 73245621.0,
    "unit": "€",
+   "label_en": "worth of live cattle sold by Portugal to Spain",
+   "context_en": "Sep 2025 – Aug 2026 (12 months)",
    "context": "set. 2025 – ago. 2026 (12 meses)",
    "change": 0.01338814894218158,
    "change_ref": "12 meses anteriores",
+   "change_ref_en": "the previous 12 months",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
     "dataset": "trade_live_bovine_pt_es",
     "period": "set. 2025 – ago. 2026",
+    "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-16",
     "verified": "2026-10-18"
    }
@@ -39,12 +46,15 @@
    "label": "bovinos vivos atravessaram a fronteira para Espanha — pelo menos",
    "value": 45314.0,
    "unit": "cabeças",
+   "label_en": "live cattle crossed the border into Spain — at least",
+   "context_en": "Sep 2025 – Aug 2026 · sum of the detailed categories; the real total is higher",
    "context": "set. 2025 – ago. 2026 · soma das categorias detalhadas; o total real é superior",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
     "dataset": "trade_live_bovine_pt_es",
     "period": "set. 2025 – ago. 2026",
+    "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-16",
     "verified": "2026-10-18"
    }
@@ -54,12 +64,15 @@
    "label": "carne de bovino que Portugal compra a Espanha",
    "value": 75081.997,
    "unit": "toneladas",
+   "label_en": "of beef that Portugal buys from Spain",
+   "context_en": "Sep 2025 – Aug 2026 · fresh, chilled and frozen",
    "context": "set. 2025 – ago. 2026 · fresca, refrigerada e congelada",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
     "dataset": "trade_beef_pt_es",
     "period": "set. 2025 – ago. 2026",
+    "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-16",
     "verified": "2026-10-18"
    }
@@ -69,12 +82,15 @@
    "label": "bovinos abatidos em matadouros portugueses",
    "value": 349050.0,
    "unit": "cabeças",
+   "label_en": "cattle slaughtered in Portuguese abattoirs",
+   "context_en": "Aug 2025 – Jul 2026 (12 months)",
    "context": "ago. 2025 – jul. 2026 (12 meses)",
    "footnote": {
     "source": "Eurostat",
     "source_code": "apro_mt_pheadm",
     "dataset": "bovine_slaughter_heads_monthly",
     "period": "ago. 2025 – jul. 2026",
+    "period_en": "Aug 2025 – Jul 2026",
     "published": "2026-10-13",
     "verified": "2026-10-18"
    }
@@ -84,12 +100,15 @@
    "label": "de carne de bovino produzida em matadouros portugueses",
    "value": 94300.0,
    "unit": "toneladas",
+   "label_en": "of beef produced in Portuguese abattoirs",
+   "context_en": "carcass weight, 2025",
    "context": "peso de carcaça, 2025",
    "footnote": {
     "source": "Eurostat",
     "source_code": "apro_mt_pann",
     "dataset": "bovine_slaughter_tonnes",
     "period": "2025",
+    "period_en": "2025",
     "published": "2026-10-06",
     "verified": "2026-10-18"
    }
@@ -99,6 +118,7 @@
   {
    "id": "bovine_population",
    "title_pt": "Efetivo bovino (inquérito de novembro–dezembro)",
+   "title_en": "Cattle herd (November–December survey)",
    "state": "ok",
    "rows": 42,
    "first_period": "2005",
@@ -110,6 +130,7 @@
   {
    "id": "bovine_slaughter_heads_monthly",
    "title_pt": "Bovinos abatidos em matadouros (cabeças, mensal)",
+   "title_en": "Cattle slaughtered in abattoirs (head, monthly)",
    "state": "ok",
    "rows": 518,
    "first_period": "2005-01",
@@ -121,6 +142,7 @@
   {
    "id": "bovine_slaughter_tonnes",
    "title_pt": "Abates de bovinos (toneladas de carcaça)",
+   "title_en": "Cattle slaughter (tonnes of carcass)",
    "state": "ok",
    "rows": 42,
    "first_period": "2005",
@@ -132,6 +154,7 @@
   {
    "id": "bovine_population_regions",
    "title_pt": "Efetivo bovino por região (NUTS 2)",
+   "title_en": "Cattle herd by region (NUTS 2)",
    "state": "ok",
    "rows": 100,
    "first_period": "2010",
@@ -143,6 +166,7 @@
   {
    "id": "trade_live_bovine_pt_es",
    "title_pt": "Bovinos vivos de Portugal para Espanha",
+   "title_en": "Live cattle from Portugal to Spain",
    "state": "ok",
    "rows": 6391,
    "first_period": "2005-01",
@@ -154,6 +178,7 @@
   {
    "id": "trade_beef_pt_es",
    "title_pt": "Comércio de carne de bovino Portugal ↔ Espanha",
+   "title_en": "Beef trade Portugal ↔ Spain",
    "state": "ok",
    "rows": 2080,
    "first_period": "2005-01",

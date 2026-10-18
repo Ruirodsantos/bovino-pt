@@ -56,6 +56,12 @@ def images() -> None:
         credits[iid] = {k: it.get(k) for k in ("alt", "caption", "author", "license", "source_page", "subject", "breed", "verified_note")}
         credits[iid].update(width=w, height=h)
         report.append(f"OK   {iid} {w}x{h}")
+    en_file = ROOT / "assets/images_en.yaml"
+    if en_file.exists():
+        import yaml
+        for k, v in (yaml.safe_load(en_file.read_text(encoding="utf-8")) or {}).items():
+            if k in credits:
+                credits[k]["alt_en"], credits[k]["caption_en"] = v.get("alt"), v.get("caption")
     CREDITS.parent.mkdir(parents=True, exist_ok=True)
     CREDITS.write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8")
     print("\n".join(report))

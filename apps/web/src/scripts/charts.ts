@@ -15,9 +15,12 @@ function load(id: string): Promise<DS | null> {
   return cache.get(id)!;
 }
 const css = (v: string) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const nf = new Intl.NumberFormat("pt-PT", { maximumFractionDigits: 0 });
-const nfc = new Intl.NumberFormat("pt-PT", { notation: "compact", maximumFractionDigits: 1 });
-const MONTHS = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+const EN = document.documentElement.lang.startsWith("en");
+const LOC = EN ? "en-GB" : "pt-PT";
+const T = (pt: string, en: string) => (EN ? en : pt);
+const nf = new Intl.NumberFormat(LOC, { maximumFractionDigits: 0 });
+const nfc = new Intl.NumberFormat(LOC, { notation: "compact", maximumFractionDigits: 1 });
+const MONTHS = EN ? ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"] : ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
 
 function theme() {
   return { ink: css("--ink"), muted: css("--muted"), line: css("--line"), pasture: css("--pasture"), schist: css("--schist"), accent: css("--accent"), cork: css("--cork"), surface: css("--surface") };
@@ -43,7 +46,7 @@ function annual(rows: Row[]): { years: string[]; label: (y: string) => string; s
   const monthsByYear = new Map<string, Set<string>>();
   rows.forEach((r) => { const y = r.period.slice(0, 4); if (!monthsByYear.has(y)) monthsByYear.set(y, new Set()); monthsByYear.get(y)!.add(r.period); });
   const years = [...monthsByYear.keys()].sort();
-  const label = (y: string) => { const n = monthsByYear.get(y)!.size; return n >= 12 ? y : `${y} (jan–${MONTHS[n - 1]})`; };
+  const label = (y: string) => { const n = monthsByYear.get(y)!.size; return n >= 12 ? y : `${y} (${MONTHS[0]}–${MONTHS[n - 1]})`; };
   const sum = (f: (r: Row) => boolean) => years.map((y) => rows.filter((r) => r.period.startsWith(y) && f(r)).reduce((a, r) => a + r.value, 0));
   return { years, label, sum };
 }
@@ -51,11 +54,11 @@ function annual(rows: Row[]): { years: string[]; label: (y: string) => string; s
 // CN 0102 groups (Combined Nomenclature). Official labels are shown in the data table.
 export function cnGroup(code: string): string | null {
   if (code === "0102") return null; // aggregate
-  if (code.startsWith("010221") || code === "01029020" || code.startsWith("0102 21")) return "Reprodutores de raça pura";
-  if (code === "01022910") return "Vitelos até 80 kg";
-  if (["01022921", "01022941", "01022951", "01022961", "01022991"].includes(code)) return "Para abate";
-  if (["01022929", "01022949", "01022959", "01022969", "01022999"].includes(code)) return "Outros (recria / engorda)";
-  return "Outras categorias";
+  if (code.startsWith("010221") || code === "01029020" || code.startsWith("0102 21")) return T("Reprodutores de raça pura", "Pure-bred breeding animals");
+  if (code === "01022910") return T("Vitelos até 80 kg", "Calves up to 80 kg");
+  if (["01022921", "01022941", "01022951", "01022961", "01022991"].includes(code)) return T("Para abate", "For slaughter");
+  if (["01022929", "01022949", "01022959", "01022969", "01022999"].includes(code)) return T("Outros (recria / engorda)", "Others (rearing / fattening)");
+  return T("Outras categorias", "Other categories");
 }
 const GROUP_COLORS = ["--pasture", "--cork", "--accent", "--schist", "--muted"];
 
@@ -68,14 +71,14 @@ const renderers: Record<string, (el: HTMLElement, ds: DS, mode: string) => any> 
       const s = new Map(ds.rows.filter((r) => r.geo === g).map((r) => [r.period, r.value]));
       const first = periods.map((p) => s.get(p)).find((v) => v != null) ?? 1;
       return {
-        name: g === "PT" ? "Portugal" : "Espanha", type: "line", smooth: true, showSymbol: false, lineStyle: { width: 3 },
+        name: g === "PT" ? "Portugal" : T("Espanha", "Spain"), type: "line", smooth: true, showSymbol: false, lineStyle: { width: 3 },
         color: i === 0 ? t.pasture : t.schist,
         data: periods.map((p) => { const v = s.get(p); return v == null ? null : mode === "index" ? +(100 * v / first).toFixed(1) : v; }),
       };
     });
     return {
       ...baseOpt(t),
-      tooltip: { ...baseOpt(t).tooltip, valueFormatter: (v: number) => (v == null ? "—" : mode === "index" ? `${v.toLocaleString("pt-PT")}` : `${nf.format(v)} cabeças`) },
+      tooltip: { ...baseOpt(t).tooltip, valueFormatter: (v: number) => (v == null ? "—" : mode === "index" ? `${v.toLocaleString(LOC)}` : `${nf.format(v)} ${T("cabeças", "head")}`) },
       xAxis: { type: "category", data: periods, ...axisStyle(t) },
       yAxis: { type: "value", scale: mode === "index", ...axisStyle(t), axisLabel: { ...axisStyle(t).axisLabel, formatter: (v: number) => (mode === "index" ? `${v}` : nfc.format(v)) } },
       series,
@@ -95,13 +98,13 @@ const renderers: Record<string, (el: HTMLElement, ds: DS, mode: string) => any> 
       const totals = ds.rows.filter((r) => r.product_code === "0102" && r.series.endsWith(ind));
       const tot = a.years.map((y) => totals.filter((r) => r.period.startsWith(y)).reduce((s, r) => s + r.value, 0));
       const parts = a.years.map((_, i) => series.reduce((s, x) => s + x.data[i], 0));
-      series.push({ name: "Não discriminado / anterior a 2012", type: "bar", stack: "t", barMaxWidth: 34, color: t.line,
+      series.push({ name: T("Não discriminado / anterior a 2012", "Not specified / before 2012"), type: "bar", stack: "t", barMaxWidth: 34, color: t.line,
         data: tot.map((v, i) => Math.max(0, v - parts[i])) });
     }
     series[series.length - 1].itemStyle = { borderRadius: [4, 4, 0, 0] };
     return {
       ...baseOpt(t),
-      tooltip: { ...baseOpt(t).tooltip, valueFormatter: (v: number) => (mode === "eur" ? `${nfc.format(v)} €` : `${nf.format(v)} cabeças`) },
+      tooltip: { ...baseOpt(t).tooltip, valueFormatter: (v: number) => (mode === "eur" ? `${nfc.format(v)} €` : `${nf.format(v)} ${T("cabeças", "head")}`) },
       xAxis: { type: "category", data: a.years.map(a.label), ...axisStyle(t) },
       yAxis: { type: "value", ...axisStyle(t), axisLabel: { ...axisStyle(t).axisLabel, formatter: (v: number) => nfc.format(v) } },
       series,
@@ -119,8 +122,8 @@ const renderers: Record<string, (el: HTMLElement, ds: DS, mode: string) => any> 
       xAxis: { type: "category", data: a.years.map(a.label), ...axisStyle(t) },
       yAxis: { type: "value", ...axisStyle(t), axisLabel: { ...axisStyle(t).axisLabel, formatter: (v: number) => `${nfc.format(v)} t` } },
       series: [
-        { name: "Portugal compra a Espanha", type: "bar", color: t.schist, barMaxWidth: 22, itemStyle: { borderRadius: [4, 4, 0, 0] }, data: tonnes("import") },
-        { name: "Portugal vende a Espanha", type: "bar", color: t.pasture, barMaxWidth: 22, itemStyle: { borderRadius: [4, 4, 0, 0] }, data: tonnes("export") },
+        { name: T("Portugal compra a Espanha", "Portugal buys from Spain"), type: "bar", color: t.schist, barMaxWidth: 22, itemStyle: { borderRadius: [4, 4, 0, 0] }, data: tonnes("import") },
+        { name: T("Portugal vende a Espanha", "Portugal sells to Spain"), type: "bar", color: t.pasture, barMaxWidth: 22, itemStyle: { borderRadius: [4, 4, 0, 0] }, data: tonnes("export") },
       ],
     };
   },
@@ -131,10 +134,10 @@ const renderers: Record<string, (el: HTMLElement, ds: DS, mode: string) => any> 
     const a = annual(rows);
     return {
       ...baseOpt(t), legend: { show: false },
-      tooltip: { ...baseOpt(t).tooltip, valueFormatter: (v: number) => `${nf.format(v)} cabeças` },
+      tooltip: { ...baseOpt(t).tooltip, valueFormatter: (v: number) => `${nf.format(v)} ${T("cabeças", "head")}` },
       xAxis: { type: "category", data: a.years.map(a.label), ...axisStyle(t) },
       yAxis: { type: "value", ...axisStyle(t), axisLabel: { ...axisStyle(t).axisLabel, formatter: (v: number) => nfc.format(v) } },
-      series: [{ name: "Portugal — exportações de bovinos vivos (todos os destinos)", type: "bar", color: t.accent, barMaxWidth: 26, itemStyle: { borderRadius: [4, 4, 0, 0] }, data: a.sum(() => true) }],
+      series: [{ name: T("Portugal — exportações de bovinos vivos (todos os destinos)", "Portugal — live cattle exports (all destinations)"), type: "bar", color: t.accent, barMaxWidth: 26, itemStyle: { borderRadius: [4, 4, 0, 0] }, data: a.sum(() => true) }],
     };
   },
 };
@@ -156,20 +159,20 @@ async function mapChart(el: HTMLElement) {
   const chart = echarts.init(el, null, { renderer: "canvas" });
   chart.setOption({
     tooltip: { trigger: "item", backgroundColor: t.surface, borderColor: t.line, textStyle: { color: t.ink },
-      formatter: (p: any) => `<strong>${labels.get(p.name) ?? p.name}</strong><br>${p.value ? nf.format(p.value) + " bovinos" : "sem dados"}<br><span style="color:${t.muted}">ref. ${yearOf.get(p.name) ?? "—"}</span>` },
+      formatter: (p: any) => `<strong>${labels.get(p.name) ?? p.name}</strong><br>${p.value ? nf.format(p.value) + T(" bovinos", " cattle") : T("sem dados", "no data")}<br><span style="color:${t.muted}">${T("ref.", "ref.")} ${yearOf.get(p.name) ?? "—"}</span>` },
     visualMap: { min: 0, max, left: 0, bottom: 0, calculable: false, orient: "horizontal", itemWidth: 12, itemHeight: 140,
       text: [nfc.format(max), "0"], textStyle: { color: t.muted }, inRange: { color: [css("--cork-soft"), t.cork, t.accent] } },
     series: [{ type: "map", map: "iberia", roam: false, aspectScale: 0.85, data, nameProperty: "name",
       itemStyle: { borderColor: t.surface, borderWidth: 0.8, areaColor: css("--cork-soft") },
       emphasis: { label: { show: false }, itemStyle: { areaColor: t.pasture } }, select: { disabled: true } }],
-    aria: { enabled: true, description: `Mapa do efetivo bovino por região NUTS 2 de Portugal e Espanha, último ano disponível até ${year}.` },
+    aria: { enabled: true, description: T(`Mapa do efetivo bovino por região NUTS 2 de Portugal e Espanha, último ano disponível até ${year}.`, `Map of the cattle herd by NUTS 2 region of Portugal and Spain, latest year available up to ${year}.`) },
   });
   new ResizeObserver(() => chart.resize()).observe(el);
 }
 
 function empty(el: HTMLElement) {
   el.classList.remove("chart");
-  el.innerHTML = `<div class="empty">Os dados deste gráfico chegam na próxima atualização automática. Nenhum valor é mostrado antes de ser verificado.</div>`;
+  el.innerHTML = `<div class="empty">${T("Os dados deste gráfico chegam na próxima atualização automática. Nenhum valor é mostrado antes de ser verificado.", "The data for this chart will arrive with the next automatic update. No value is shown before it is verified.")}</div>`;
 }
 
 async function mount(el: HTMLElement) {
@@ -194,7 +197,7 @@ const io = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.
 document.querySelectorAll<HTMLElement>("[data-chart]").forEach((el) => io.observe(el));
 
 // ---------- Breed map (solares) ----------
-type BreedPt = { slug: string; official_name: string; solar: string; lat: number; lon: number; photo?: string; photo_kind?: string;
+type BreedPt = { slug: string; official_name: string; solar: string; solar_en?: string; lat: number; lon: number; photo?: string; photo_kind?: string;
   herd?: { year: number; males: number; females: number; breeders: number }; catalogue_page?: number };
 
 async function breedsMap(el: HTMLElement) {
@@ -218,11 +221,13 @@ async function breedsMap(el: HTMLElement) {
     paint();
     if (chips) chips.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.slug === b.slug)));
     if (!side) return;
-    const img = b.photo && b.photo_kind === "raça" ? `<figure class="photo"><img src="${BASE}img/${b.photo}-md.webp" alt="Fotografia da raça ${b.official_name}" style="border-radius:14px;aspect-ratio:4/3;width:100%;object-fit:cover"></figure><span class="chip">Fotografia da raça</span>` : "";
-    const herd = b.herd ? `<p style="margin:0"><strong>${b.herd.females.toLocaleString("pt-PT")}</strong> fêmeas e <strong>${b.herd.males.toLocaleString("pt-PT")}</strong> machos em linha pura, em ${b.herd.breeders.toLocaleString("pt-PT")} criadores <span style="color:${t.muted}">(livro genealógico, ${b.herd.year})</span></p>` : "";
-    side.innerHTML = `${img}<h3 style="margin:6px 0 2px">${b.official_name}</h3><p style="margin:0;color:${t.muted}">Solar: ${b.solar}</p>${herd}
-      <p style="font-size:.75rem;color:${t.muted};margin:0">Fonte: Catálogo Oficial de Raças Autóctones Portuguesas, DGAV/CAP${b.catalogue_page ? `, p. ${b.catalogue_page}` : ""}</p>
-      <a class="btn" href="${BASE}racas/${b.slug}/">Ver a raça →</a>`;
+    const solar = EN ? (b.solar_en ?? b.solar) : b.solar;
+    const PFX = EN ? `${BASE}en/` : BASE;
+    const img = b.photo && b.photo_kind === "raça" ? `<figure class="photo"><img src="${BASE}img/${b.photo}-md.webp" alt="${T("Fotografia da raça", "Photograph of the breed")} ${b.official_name}" style="border-radius:14px;aspect-ratio:4/3;width:100%;object-fit:cover"></figure><span class="chip">${T("Fotografia da raça", "Photograph of the breed")}</span>` : "";
+    const herd = b.herd ? `<p style="margin:0"><strong>${b.herd.females.toLocaleString(LOC)}</strong> ${T("fêmeas e", "females and")} <strong>${b.herd.males.toLocaleString(LOC)}</strong> ${T("machos em linha pura, em", "males in pure line, in")} ${b.herd.breeders.toLocaleString(LOC)} ${T("criadores", "breeders")} <span style="color:${t.muted}">(${T("livro genealógico", "herd book")}, ${b.herd.year})</span></p>` : "";
+    side.innerHTML = `${img}<h3 style="margin:6px 0 2px">${b.official_name}</h3><p style="margin:0;color:${t.muted}">${T("Solar", "Homeland")}: ${solar}</p>${herd}
+      <p style="font-size:.75rem;color:${t.muted};margin:0">${T("Fonte: Catálogo Oficial de Raças Autóctones Portuguesas", "Source: Official Catalogue of Portuguese Native Breeds")}, DGAV/CAP${b.catalogue_page ? `, p. ${b.catalogue_page}` : ""}</p>
+      <a class="btn" href="${PFX}racas/${b.slug}/">${T("Ver a raça →", "See the breed →")}</a>`;
     if (scroll && small()) side.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
   const maxF = Math.max(...list.map((b: BreedPt) => b.herd?.females ?? 0), 1);
@@ -249,7 +254,7 @@ async function breedsMap(el: HTMLElement) {
     const L = layout();
     chart.setOption({
       tooltip: { trigger: "item", confine: true, backgroundColor: t.surface, borderColor: t.line, textStyle: { color: t.ink },
-        formatter: (p: any) => p.data?.b ? `<strong>${p.data.b.official_name}</strong><br>${p.data.b.solar}` : "" },
+        formatter: (p: any) => p.data?.b ? `<strong>${p.data.b.official_name}</strong><br>${EN ? (p.data.b.solar_en ?? p.data.b.solar) : p.data.b.solar}` : "" },
       geo: [
         { ...geoBase, map: "pt-cont", ...L.cont, aspectScale: 0.85 },
         { ...geoBase, map: "pt-acores", ...L.az, aspectScale: 0.8 },
@@ -257,7 +262,7 @@ async function breedsMap(el: HTMLElement) {
       ],
       series: [serie(0, 0), serie(1, 1), serie(2, 2)],
       graphic: [
-        { type: "text", ...L.t1, style: { text: "Açores", fill: t.muted, font: "600 12px Public Sans" } },
+        { type: "text", ...L.t1, style: { text: T("Açores", "Azores"), fill: t.muted, font: "600 12px Public Sans" } },
         { type: "text", ...L.t2, style: { text: "Madeira", fill: t.muted, font: "600 12px Public Sans" } },
       ],
     }, true);

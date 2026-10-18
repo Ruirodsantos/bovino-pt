@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import StatCard from "../components/StatCard.astro";
+import Photo from "../components/Photo.astro";
+import { summary } from "../lib/data";
+import { href, tr, type Lang } from "../i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = tr(lang);
+const s = summary();
+const pick = ["pt_es_live_eur", "pt_es_live_heads", "pt_beef_imports_es"].map((id) => s.stats.find((x) => x.id === id)).filter(Boolean);
+const questions = [
+  [T("Quantos bovinos vivos Portugal exporta para Espanha?", "How many live cattle does Portugal export to Spain?"), "parcial", T("Em valor: sim, oficial e completo. Em cabeças: apenas um mínimo, porque nem todas as categorias trazem contagem.", "By value: yes, official and complete. By head: only a minimum, because not every category carries a count.")],
+  [T("Como evoluiu nos últimos 20 anos?", "How has it evolved over the last 20 years?"), "sim", T("Série mensal desde 2005 (valor) e desde 2012 por categoria.", "Monthly series since 2005 (value) and since 2012 by category.")],
+  [T("Que categorias de animais são exportadas?", "Which categories of animals are exported?"), "sim", T("Categorias da Nomenclatura Combinada: para abate, recria/engorda, vitelos e reprodutores de raça pura.", "Combined Nomenclature categories: for slaughter, rearing/fattening, calves and pure-bred breeding animals.")],
+  [T("Quanta carne de bovino Portugal compra e vende a Espanha?", "How much beef does Portugal buy from and sell to Spain?"), "sim", T("Comércio mensal de carne fresca, refrigerada e congelada.", "Monthly trade in fresh, chilled and frozen meat.")],
+  [T("Como se comparam os preços ao produtor nos dois países?", "How do producer prices compare in the two countries?"), "em curso", T("A aguardar a verificação das condições de reutilização das cotações (SIMA/GPP, MAPA, Comissão Europeia).", "Awaiting verification of the reuse terms for price quotations (SIMA/GPP, MAPA, European Commission).")],
+  [T("Quanto valor fica em Portugal?", "How much value stays in Portugal?"), "em curso", T("Requer dados de abate, transformação e preços. A metodologia será revista antes de publicar.", "Requires slaughter, processing and price data. The methodology will be reviewed before publication.")],
+  [T("Que raças estão envolvidas?", "Which breeds are involved?"), "em aberto", T("As estatísticas de comércio não identificam a raça. Será preciso investigar outras fontes.", "Trade statistics do not identify the breed. Other sources will have to be investigated.")],
+];
+const label = (st: string) => st === "sim" ? T("Respondida com dados", "Answered with data") : st === "parcial" ? T("Resposta parcial", "Partial answer") : st === "em curso" ? T("Em curso", "In progress") : T("Em aberto", "Open");
+---
+<Base lang={lang} title={T("Portugal ↔ Espanha", "Portugal ↔ Spain")} description={T("Observatório do comércio de bovinos entre Portugal e Espanha: animais vivos, carne, preços e quem ganha com isso.", "Observatory of cattle trade between Portugal and Spain: live animals, meat, prices and who benefits.")}>
+  <section class="block" style="border-top:0"><div class="wrap">
+    <span class="eyebrow">{T("Investigação nº 1 · Observatório do Bovino Português", "Investigation no. 1 · Portuguese Cattle Observatory")}</span>
+    <h1>{T("Portugal cria, Espanha compra: quem ganha?", "Portugal raises, Spain buys: who benefits?")}</h1>
+    <p class="lede">{T("Uma investigação independente, com dados oficiais. Não partimos do princípio de que a compra espanhola é boa ou má para Portugal: medimos o que se pode medir e mostramos o que ainda não se sabe.", "An independent investigation using official data. We do not assume that Spanish buying is good or bad for Portugal: we measure what can be measured and show what is not yet known.")}</p>
+    <div class="grid cols-3" style="margin-top:32px">{pick.map((st) => <StatCard stat={st!} lang={lang} />)}</div>
+  </div></section>
+  <section class="photoband"><Photo id="montanha-cornos" sizes="100vw" lang={lang} /></section>
+
+  <section class="block"><div class="wrap">
+    <h2>{T("Animais vivos: o que atravessa a fronteira", "Live animals: what crosses the border")}</h2>
+    <div class="card">
+      <div class="toggle" role="group" aria-label={T("Medida", "Measure")}><button data-mode="eur" aria-pressed="true">{T("Valor (€)", "Value (€)")}</button><button data-mode="heads" aria-pressed="false">{T("Cabeças", "Head")}</button></div>
+      <div class="chart tall" data-chart="live-trade" data-dataset="trade_live_bovine_pt_es" data-mode="eur" role="img" aria-label={T("Exportações anuais de bovinos vivos de Portugal para Espanha por categoria", "Annual live cattle exports from Portugal to Spain by category")}></div>
+    </div>
+    <p class="note">{T("Exportações declaradas por Portugal (Eurostat Comext). Animais vivos (NC 0102) e carne (NC 0201/0202) são produtos diferentes e nunca são somados.", "Exports reported by Portugal (Eurostat Comext). Live animals (CN 0102) and meat (CN 0201/0202) are different products and are never added together.")}</p>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <h2>{T("Carne: o caminho inverso", "Meat: the opposite direction")}</h2>
+    <div class="card"><div class="chart" data-chart="beef-balance" data-dataset="trade_beef_pt_es" role="img" aria-label={T("Comércio de carne de bovino entre Portugal e Espanha", "Beef trade between Portugal and Spain")}></div></div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <h2>{T("As perguntas da investigação", "The research questions")}</h2>
+    <p>{T("Em que ponto estamos em cada pergunta:", "Where we stand on each question:")}</p>
+    <div class="qs">
+      {questions.map(([q, st, note]) => (
+        <div class="q card"><span class:list={["chip", st === "sim" ? "ok" : "wait"]}>{label(st)}</span><h3>{q}</h3><p>{note}</p></div>
+      ))}
+    </div>
+    <p><a href={href(lang, "metodologia/")}>{T("Como trabalhamos →", "How we work →")}</a></p>
+  </div></section>
+</Base>
+<script>import "../scripts/charts.ts";</script>
+<style>
+  .photoband :global(img) { max-height: 70vh; }
+  .photoband :global(figcaption) { max-width: var(--max); margin: 0 auto; padding: 6px 16px; }
+  .note { font-size: .85rem; color: var(--muted); margin-top: 10px; }
+  .qs { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+  .q h3 { margin: 12px 0 6px; } .q p { color: var(--muted); font-size: .95rem; margin: 0; }
+</style>
