@@ -306,10 +306,11 @@
    "title": "Fotografias melhores (Ramo Grande e 8 raças em falta)",
    "agent": "claude",
    "priority": "high",
-   "status": "BLOCKED",
+   "status": "RESEARCH",
    "depends_on": [],
    "acceptance_criteria": [
-    "Contacto com associações/fotógrafos exige aprovação de Rui"
+    "Colheita via categorias da Wikimedia Commons em curso (fetch.yml)",
+    "Contacto com associações/fotógrafos BLOQUEADO até aprovação de Rui"
    ],
    "evidence": [],
    "review_result": null,
