@@ -11,6 +11,7 @@ from __future__ import annotations
 import io
 import json
 import re
+import time
 from pathlib import Path
 
 import requests
@@ -52,18 +53,27 @@ def main() -> None:
     cfg = yaml.safe_load((ROOT / "assets/candidates.yaml").read_text(encoding="utf-8"))
     for q in cfg.get("queries", []):
         d = OUT / f"q-{slug(q)}"
-        if (d / "index.json").exists():
-            continue
+        prev = d / "index.json"
+        if prev.exists() and json.loads(prev.read_text(encoding="utf-8")).get("results"):
+            continue          # only finished (non-empty) searches are skipped; empty/failed ones are retried
         d.mkdir(parents=True, exist_ok=True)
-        idx = []
-        try:
-            j = requests.get("https://api.openverse.org/v1/images/", params={"q": q, "page_size": 30, "license_type": "commercial"},
-                             headers=UA, timeout=40).json()
-        except Exception as e:
-            j = {"results": [], "error": str(e)}
+        idx, j, status = [], {"results": []}, None
+        for attempt in range(3):
+            try:
+                r = requests.get("https://api.openverse.org/v1/images/",
+                                 params={"q": q, "page_size": 40, "license_type": "commercial", "mature": "false"},
+                                 headers=UA, timeout=40)
+                status = r.status_code
+                if r.status_code == 200:
+                    j = r.json()
+                    break
+                j = {"results": [], "error": f"HTTP {r.status_code}: {r.text[:200]}"}
+            except Exception as e:
+                j = {"results": [], "error": str(e)}
+            time.sleep(5 * (attempt + 1))
         n = 0
         for x in j.get("results", []):
-            if x.get("source") in EXCLUDE or n >= 12:
+            if x.get("source") in EXCLUDE or n >= 15:
                 continue
             p = d / f"{n:02d}.jpg"
             if thumb(x.get("thumbnail") or x["url"], p):
@@ -71,8 +81,9 @@ def main() -> None:
                             "title": x.get("title"), "creator": x.get("creator"), "image": x.get("url"),
                             "page": x.get("foreign_landing_url"), "tags": [t.get("name") for t in (x.get("tags") or [])][:12]})
                 n += 1
-        (d / "index.json").write_text(json.dumps({"query": q, "results": idx, "error": j.get("error")}, ensure_ascii=False, indent=1), encoding="utf-8")
-        print("query", q, len(idx))
+        (d / "index.json").write_text(json.dumps({"query": q, "http": status, "results": idx, "error": j.get("error")}, ensure_ascii=False, indent=1), encoding="utf-8")
+        print("query", q, status, len(idx), j.get("error") or "")
+        time.sleep(2)
     for grp, items in (cfg.get("urls") or {}).items():
         d = OUT / f"u-{slug(grp)}"
         d.mkdir(parents=True, exist_ok=True)
