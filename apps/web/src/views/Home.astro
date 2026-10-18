@@ -43,15 +43,9 @@ const stages: [string, string, string][] = lang === "en" ? [
       <h1>{T("15 raças.", "15 breeds.")}<br />{T("Um património extraordinário.", "An extraordinary heritage.")}</h1>
       <a class="cue-link" href="#descobrir">{T("Começar a descobrir", "Start exploring")} <i aria-hidden="true">↓</i></a>
     </div>
-    <p class="credit">{T("Ilustração gerada por IA; não representa uma raça específica.", "AI-generated illustration; it does not depict a specific breed.")}</p>
   </section>
 
-  <section class="band" id="descobrir" aria-label={T("Descobrir Portugal", "Discover Portugal")}>
-    <Img id="montalegre" class="px" sizes="100vw" pos="50% 40%" lang={lang} />
-    <p class="q rv">{T("Do Minho aos Açores, raças que só existem aqui.", "From the Minho to the Azores, breeds found nowhere else.")}</p>
-  </section>
-
-  <section class="sec">
+  <section class="sec" id="descobrir">
     <div class="wrap"><div class="rv" style="max-width:34rem"><span class="eyebrow">{T("Conhecer as raças", "Meet the breeds")}</span><h2 style="margin:.2em 0 .4em">{T("Cada raça, uma paisagem.", "Every breed, a landscape.")}</h2></div></div>
     <div class="strip rv" role="list" aria-label={T("Algumas raças", "Some breeds")}>
       {strip.map((s) => (
@@ -66,7 +60,7 @@ const stages: [string, string, string][] = lang === "en" ? [
   </section>
 
   <section class="band" aria-label={T("A ligação à terra", "Bound to the land")}>
-    <Img id="tourem-manada" class="px" sizes="100vw" pos="50% 55%" lang={lang} />
+    <img class="px" src={`${b}img/home-band-ia-lg.webp`} srcset={`${b}img/home-band-ia-sm.webp 480w, ${b}img/home-band-ia-md.webp 900w, ${b}img/home-band-ia-lg.webp 1672w`} sizes="100vw" alt={T("Pastor com cães e vacas castanhas a descer um caminho de aldeia em pedra", "Shepherd with a dog and brown cows walking down a stone village lane")} width="1672" height="941" loading="lazy" style="object-position:50% 55%" />
     <p class="q rv">{T("A raça e a terra moldaram-se uma à outra.", "Breed and land shaped each other.")}</p>
   </section>
 
