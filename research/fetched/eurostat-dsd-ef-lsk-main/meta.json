@@ -1,0 +1,5 @@
+{
+ "url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/dataflow/ESTAT/EF_LSK_MAIN/latest?references=descendants&detail=referencepartial",
+ "id": "eurostat-dsd-ef-lsk-main",
+ "status": 200
+}
