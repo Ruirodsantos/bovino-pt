@@ -1,13 +1,11 @@
 @import "@fontsource-variable/lexend";
-@import "@fontsource/instrument-serif/400.css";
-@import "@fontsource/instrument-serif/400-italic.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 
 :root {
   --ink: #242824; --paper: #F8F7F2; --surface: #ffffff; --line: #DEDACB; --muted: #5B6259;
   --accent: #183C32; --pasture: #547D55; --schist: #3e5466; --cork: #C7A66A; --cork-soft: #EFEDE3;
   --ok: #3f6a43; --warn: #8a5f10;
-  --display: "Instrument Serif", Georgia, serif; --sans: "Lexend Variable", system-ui, sans-serif;
+  --display: "Lexend Variable", system-ui, sans-serif; --sans: "Lexend Variable", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace; --radius: 16px; --max: 1180px;
   color-scheme: light;
 }
@@ -17,7 +15,7 @@ html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.65 var(--sans); }
 img, svg { max-width: 100%; }
 a { color: var(--accent); text-underline-offset: 3px; }
-h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 .5em; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 .5em; }
 h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); }
 h2 { font-size: clamp(2rem, 4.2vw, 3rem); }
 h3 { font-size: 1.6rem; }

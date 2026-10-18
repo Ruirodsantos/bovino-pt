@@ -88,3 +88,36 @@ mirandesa-pasto:
 mertolenga-rebanho:
   alt: "Spotted Mertolenga cow feeding, with a herder in the background"
   caption: "Mertolenga cows feeding in the field"
+bife-rump:
+  alt: "Two raw beef steaks with the marbling visible"
+  caption: "Raw beef steaks showing the marbling (illustrative)"
+bife-embalado:
+  alt: "Packaged and labelled beef steaks at the point of sale"
+  caption: "Packaged, labelled steaks at the point of sale (illustrative)"
+bife-malpassado:
+  alt: "Sliced steak, pink in the centre, with vegetables"
+  caption: "Sliced steak, pink in the centre (illustrative)"
+bife-crosta:
+  alt: "Grilled steak with a dark crust"
+  caption: "Grilled steak with a Maillard crust (illustrative)"
+bife-prato:
+  alt: "Beef fillet with mushrooms, plated"
+  caption: "Plated beef fillet with mushrooms (illustrative)"
+bife-tabua:
+  alt: "Beef steak served on a wooden board with potatoes and vegetables"
+  caption: "Steak served on a wooden board (illustrative)"
+acores-sao-jorge:
+  alt: "Green pastures on São Jorge island with Pico in the background"
+  caption: "Pastures on São Jorge, with Pico in the background"
+acores-pico-estrada:
+  alt: "Cattle on a mountain road on Pico island, between stone walls"
+  caption: "Cattle on a road on Pico island, Azores (breed not identified)"
+acores-graciosa:
+  alt: "Cattle grazing on a hillside above the sea, Graciosa island"
+  caption: "Cattle grazing on Graciosa, Azores (breed not identified)"
+acores-pico-lagoa:
+  alt: "A reddish cow by Lagoa do Capitão with Pico mountain behind"
+  caption: "Lagoa do Capitão and Pico mountain, Pico island"
+acores-corvo:
+  alt: "Cow on a green meadow inside the crater of Corvo island"
+  caption: "Pasture in the Corvo crater, Azores (breed not identified)"

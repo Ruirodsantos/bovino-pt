@@ -7,7 +7,7 @@ const { lang } = Astro.props;
 const T = tr(lang);
 const photos = Object.entries(credits as Record<string, any>);
 ---
-<Base lang={lang} title={T("Método e fontes", "Method and sources")} description={T("Como o Atlas do Bovino Português recolhe, verifica e publica dados.", "How the Portuguese Beef Atlas collects, verifies and publishes data.")}>
+<Base lang={lang} title={T("Método e fontes", "Method and sources")} description={T("Como o Bovino Português recolhe, verifica e publica dados.", "How the Portuguese Cattle collects, verifies and publishes data.")}>
   <article class="block" style="border-top:0"><div class="wrap narrow">
     <span class="eyebrow">{T("Transparência", "Transparency")}</span>
     <h1>{T("Como trabalhamos", "How we work")}</h1>

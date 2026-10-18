@@ -260,3 +260,113 @@ images:
   subject: bovino
   breed: Mertolenga
   verified_note: "Descrição do autor na Wikimedia Commons: «Raza Mertolengas, procedência portuguesa do vale do Sado e do Tejo»."
+- id: bife-rump
+  url: https://upload.wikimedia.org/wikipedia/commons/1/12/Australisches_Rumpsteak.jpg
+  alt: "Dois bifes de carne de vaca crus, com o veio de gordura visível"
+  caption: "Bifes de carne de vaca crus, com a gordura entremeada à vista (ilustrativo)"
+  author: "Alice Wiegand"
+  license: CC BY-SA 4.0
+  source_page: https://commons.wikimedia.org/wiki/File:Australisches_Rumpsteak.jpg
+  subject: carne
+  breed: null
+  verified_note: "Wikimedia Commons: Australisches Rumpsteak.jpg; ilustração, não identifica a raça."
+- id: bife-embalado
+  url: https://upload.wikimedia.org/wikipedia/commons/7/70/Australian_beef_porterhouse_steak.jpg
+  alt: "Bifes de carne de vaca embalados numa banca, com etiqueta"
+  caption: "Bifes embalados e etiquetados no ponto de venda (ilustrativo)"
+  author: "Maksym Kozlenko"
+  license: CC BY-SA 4.0
+  source_page: https://commons.wikimedia.org/wiki/File:Australian_beef_porterhouse_steak.jpg
+  subject: carne
+  breed: null
+  verified_note: "Wikimedia Commons: Australian beef porterhouse steak.jpg; ilustração, não identifica a raça."
+- id: bife-malpassado
+  url: https://upload.wikimedia.org/wikipedia/commons/a/a5/Beef_steak_%2811888070325%29.jpg
+  alt: "Bife cortado em fatias, rosado ao centro, com legumes"
+  caption: "Bife cortado em fatias, rosado ao centro (ilustrativo)"
+  author: "pelican from Tokyo, Japan"
+  license: CC BY-SA 2.0
+  source_page: https://commons.wikimedia.org/wiki/File:Beef_steak_(11888070325).jpg
+  subject: carne
+  breed: null
+  verified_note: "Wikimedia Commons: Beef steak (11888070325).jpg; ilustração, não identifica a raça."
+- id: bife-crosta
+  url: https://upload.wikimedia.org/wikipedia/commons/2/22/ArgentinaSteak.jpg
+  alt: "Bife grelhado com crosta escura"
+  caption: "Bife grelhado, com a crosta da reação de Maillard (ilustrativo)"
+  author: "Niels Elgaard Larsen -  (WT-shared) Elgaard at  wts wikivoyage"
+  license: CC BY-SA 4.0
+  source_page: https://commons.wikimedia.org/wiki/File:ArgentinaSteak.jpg
+  subject: carne
+  breed: null
+  verified_note: "Wikimedia Commons: ArgentinaSteak.jpg; ilustração, não identifica a raça."
+- id: bife-prato
+  url: https://upload.wikimedia.org/wikipedia/commons/2/2b/Beef_fillet_steak_with_mushrooms.jpg
+  alt: "Lombinho de vaca com cogumelos, empratado"
+  caption: "Lombo de vaca empratado com cogumelos (ilustrativo)"
+  author: "Archie MacDonald52"
+  license: CC BY-SA 3.0
+  source_page: https://commons.wikimedia.org/wiki/File:Beef_fillet_steak_with_mushrooms.jpg
+  subject: carne
+  breed: null
+  verified_note: "Wikimedia Commons: Beef fillet steak with mushrooms.jpg; ilustração, não identifica a raça."
+- id: bife-tabua
+  url: https://upload.wikimedia.org/wikipedia/commons/4/45/A_angus_beef_steak_with_potato_slices_and_vegetables.jpg
+  alt: "Bife de vaca servido numa tábua com batata e legumes"
+  caption: "Bife servido em tábua de madeira (ilustrativo)"
+  author: "Geoffreyrabbit"
+  license: CC BY-SA 4.0
+  source_page: https://commons.wikimedia.org/wiki/File:A_angus_beef_steak_with_potato_slices_and_vegetables.jpg
+  subject: carne
+  breed: null
+  verified_note: "Wikimedia Commons: A angus beef steak with potato slices and vegetables.jpg; ilustração, não identifica a raça."
+- id: acores-sao-jorge
+  url: https://upload.wikimedia.org/wikipedia/commons/0/00/A%C3%A7ores_2010-07-19_%285046777538%29.jpg
+  alt: "Pastagens verdes na ilha de São Jorge, com a ilha do Pico ao fundo"
+  caption: "Pastagens em São Jorge, com o Pico ao fundo"
+  author: "Guillaume Baviere from Helsingborg, Sweden"
+  license: CC BY 2.0
+  source_page: https://commons.wikimedia.org/wiki/File:A%C3%A7ores_2010-07-19_(5046777538).jpg
+  subject: paisagem
+  breed: null
+  verified_note: "Wikimedia Commons: Açores 2010-07-19 (5046777538).jpg; ilustração, não identifica a raça."
+- id: acores-pico-estrada
+  url: https://upload.wikimedia.org/wikipedia/commons/2/2d/Cattle_%28Bos_taurus%29_block_a_narrow_mountain_road%2C_Pico_Island%2C_Azores%2C_Portugal_%28PPL3-Altered%29_julesvernex2.jpg
+  alt: "Bovinos numa estrada de montanha da ilha do Pico, entre muros de pedra"
+  caption: "Gado numa estrada da ilha do Pico, Açores (raça não identificada)"
+  author: "Jules Verne Times Two"
+  license: CC BY-SA 4.0
+  source_page: https://commons.wikimedia.org/wiki/File:Cattle_(Bos_taurus)_block_a_narrow_mountain_road,_Pico_Island,_Azores,_Portugal_(PPL3-Altered)_julesvernex2.jpg
+  subject: paisagem
+  breed: null
+  verified_note: "Wikimedia Commons: Cattle (Bos taurus) block a narrow mountain road, Pico Island, Azores, Portugal (PPL3-Altered) julesvernex2.jpg; ilustração, não identifica a raça."
+- id: acores-graciosa
+  url: https://upload.wikimedia.org/wikipedia/commons/f/f7/Cattle_grazing_near_Caldeirinha%2C_Graciosa_Island%2C_Azores%2C_Portugal_%28PPL1-Corrected%29_julesvernex2-3.jpg
+  alt: "Bovinos a pastar numa encosta sobre o mar, na ilha Graciosa"
+  caption: "Gado a pastar na Graciosa, Açores (raça não identificada)"
+  author: "Jules Verne Times Two"
+  license: CC BY-SA 4.0
+  source_page: https://commons.wikimedia.org/wiki/File:Cattle_grazing_near_Caldeirinha,_Graciosa_Island,_Azores,_Portugal_(PPL1-Corrected)_julesvernex2-3.jpg
+  subject: paisagem
+  breed: null
+  verified_note: "Wikimedia Commons: Cattle grazing near Caldeirinha, Graciosa Island, Azores, Portugal (PPL1-Corrected) julesvernex2-3.jpg; ilustração, não identifica a raça."
+- id: acores-pico-lagoa
+  url: https://upload.wikimedia.org/wikipedia/commons/f/fc/Reflexo_do_Mundo_A%C3%A7oriano.jpg
+  alt: "Vaca ruiva junto à Lagoa do Capitão, com a montanha do Pico ao fundo"
+  caption: "Lagoa do Capitão e a montanha do Pico, ilha do Pico"
+  author: "João Coutinho"
+  license: CC BY-SA 4.0
+  source_page: https://commons.wikimedia.org/wiki/File:Reflexo_do_Mundo_A%C3%A7oriano.jpg
+  subject: paisagem
+  breed: null
+  verified_note: "Wikimedia Commons: Reflexo do Mundo Açoriano.jpg; ilustração, não identifica a raça."
+- id: acores-corvo
+  url: https://upload.wikimedia.org/wikipedia/commons/a/ad/The_Corvo_island_collection_XLI_%2849110877337%29.jpg
+  alt: "Vaca num prado verde dentro da cratera da ilha do Corvo"
+  caption: "Pasto na cratera do Corvo, Açores (raça não identificada)"
+  author: "Pedro from Maia (Porto), Portugal"
+  license: CC BY 2.0
+  source_page: https://commons.wikimedia.org/wiki/File:The_Corvo_island_collection_XLI_(49110877337).jpg
+  subject: paisagem
+  breed: null
+  verified_note: "Wikimedia Commons: The Corvo island collection XLI (49110877337).jpg; ilustração, não identifica a raça."
