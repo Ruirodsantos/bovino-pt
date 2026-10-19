@@ -168,7 +168,8 @@
    ],
    "evidence": [
     "2026-10-18: códigos alternativos ef_lsk_main/ef_lsk_bovine já no registo; recolha relançada (workflow daily.yml, collect=true)",
-    "2026-10-18: estado ok — 100 linhas (2010–2023) de ef_lsk_main com totais, A2000, cabeças; execução 39103484603"
+    "2026-10-18: estado ok — 100 linhas (2010–2023) de ef_lsk_main com totais, A2000, cabeças; execução 39103484603",
+    "2026-10-19: bovine_population_regions ok (ef_lsk_main, 100 linhas, último período 2023); descoberta content/descobertas/2026-10-19-alentejo-acores-bovinos-regioes.md (critério do mapa NUTS 2024 não verificado nesta sessão)"
    ],
    "review_result": null,
    "source": "run 2026-10-17: agr_r_animal not disseminated"
