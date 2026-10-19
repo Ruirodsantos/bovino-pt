@@ -20,7 +20,7 @@ Cut names vary between regions of Portugal and between butchers. This table uses
 | **Lombo alto** (with or without bone) | Back, front part | Marbled and flavourful; it is the boneless "rib steak" or the *costeleta* (bone-in) | Embers, frying pan, oven after searing |
 | **Lombo baixo** | Back, rear part | Firm fibre, cover fat | Grill; always slice against the grain |
 | **Vazia** | Region of the loin next to the ribs (the exact anatomical equivalence varies; **to be validated with a butcher**) | Coarse fibre and good flavour | Quick grill, slice thinly against the grain |
-| **Aba** | Flank (abdominal wall) | Long fibre and plenty of flavour | Quick grill or braise; slice against the grain |
+| **Aba** | Flank (abdominal wall) | Long fibre and plenty of flavour | Quick grill or braise; slice [against the grain](../against-the-grain/) |
 | **Alcatra** | Rump | Tender, lean, versatile | Grill, roasts, *posta* |
 | **Posta** | Thick cut, traditionally from the *alcatra* or *lombo* | Traditional cut; the *posta mirandesa* is the reference | Wood or charcoal embers |
 | **Acém e cachaço** | Neck and shoulder | Plenty of flavour, plenty of collagen | Stews and slow-cooked dishes |
@@ -42,3 +42,5 @@ Bone conducts heat differently, protects the meat around it and, during ageing, 
 For embers and frying pan, a steak for two should be at least 3 to 4 cm. Any thinner and it dries out before it develops a crust.
 
 > **Status of the text:** original editorial text, under review. Cut names and anatomical equivalences may vary by region and butcher; to be validated with a professional butcher.
+
+> Do you know how to slice this meat so it is more tender? [How to cut against the grain](../against-the-grain/).
