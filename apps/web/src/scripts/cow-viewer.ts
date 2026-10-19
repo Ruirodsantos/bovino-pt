@@ -45,10 +45,7 @@ export async function startViewer({ root, base, model, onProgress, onState }: Op
   const loader = new GLTFLoader(); loader.setDRACOLoader(draco); loader.setMeshoptDecoder(MeshoptDecoder);
 
   let url = model; let manifest: Manifest | null = null;
-  if (!url) {
-    try { const r = await fetch(`${base}models/cow.json`, { cache: "no-cache" }); if (!r.ok) throw 0; manifest = await r.json(); url = `${base}models/${manifest!.file}`; }
-    catch { onState?.("missing"); }
-  }
+  if (!url) url = `${base}models/cow.glb`;
   let content: THREE.Object3D | null = null; let radius = 3;
   const frame = (obj: THREE.Object3D) => {
     const box = new THREE.Box3().setFromObject(obj); const size = box.getSize(new THREE.Vector3()); const c = box.getCenter(new THREE.Vector3());
