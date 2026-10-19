@@ -7,7 +7,7 @@ const { lang } = Astro.props;
 const T = tr(lang);
 // Imagem educativa fornecida pelo projeto (a favor / contra a fibra). Mostra-se inteira, sem texto por cima.
 const exts = ["webp", "jpg", "jpeg", "png"];
-const found = exts.find((e) => existsSync(new URL(`../../public/img/fibra-a-favor-contra.${e}`, import.meta.url)));
+const found = exts.find((e) => existsSync(`${process.cwd()}/public/img/fibra-a-favor-contra.${e}`));
 const img = found ? `${import.meta.env.BASE_URL}img/fibra-a-favor-contra.${found}` : null;
 const steps = [
   T("Observa atentamente a superfície da carne.", "Look closely at the surface of the meat."),
