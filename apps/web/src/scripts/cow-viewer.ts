@@ -69,7 +69,11 @@ export async function startViewer({ root, base, model, onProgress, onState }: Op
       content = gltf.scene; content.traverse((o: any) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; if (o.material?.map) o.material.map.anisotropy = renderer.capabilities.getMaxAnisotropy(); } });
       scene.add(content); frame(content); onState?.("ready");
       if (gltf.animations?.length) { const mix = new THREE.AnimationMixer(content); mix.clipAction(gltf.animations[0]).play(); (renderer as any)._mix = mix; }
-    } catch (e) { console.error(e); onState?.("error", String(e)); }
+    } catch (e) {
+      // Metadados presentes mas ficheiro GLB ainda por colocar: tratar como «falta o modelo», não como erro.
+      const exists = await fetch(url, { method: "HEAD", cache: "no-cache" }).then((r) => r.ok).catch(() => false);
+      if (!exists) onState?.("missing"); else { console.error(e); onState?.("error", String(e)); }
+    }
   }
 
   const resize = () => { const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; const pr = renderer.getPixelRatio(); if (canvas.width !== Math.round(w * pr) || canvas.height !== Math.round(h * pr)) { renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); } };
