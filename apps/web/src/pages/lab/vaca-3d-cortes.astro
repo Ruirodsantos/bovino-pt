@@ -1,0 +1,132 @@
+---
+import Base from "../../layouts/Base.astro";
+import { CUTS, FONTES, PENDENTES } from "../../scripts/cow-anatomy/cuts-data";
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Demonstração · Os cortes no animal" description="Demonstração interna: cortes de bovino sobre o modelo 3D." noindex>
+  <main class="lab pad">
+    <section class="viewer" id="viewer" data-mode="animal">
+      <canvas tabindex="0" aria-label="Bovino em três dimensões. Arraste para rodar, use a roda ou dois dedos para aproximar. No modo «Os cortes», clique numa região para ver a ficha."></canvas>
+      <div class="vh">
+        <span class="eyebrow">Demonstração · Fase 2</span>
+        <h1 id="title">O animal</h1>
+        <p class="lede" id="lede">Rode e aproxime o animal. Passe ao modo «Os cortes» para ver onde nasce cada peça.</p>
+      </div>
+      <div class="modes" role="tablist" aria-label="Modo de visualização">
+        <button role="tab" id="m-animal" aria-selected="true">O animal</button>
+        <button role="tab" id="m-cortes" aria-selected="false">Os cortes</button>
+        <button role="tab" id="m-pecas" aria-selected="false" disabled title="Em preparação">Peças separadas <small>em breve</small></button>
+      </div>
+      <div class="tip" id="tip" hidden></div>
+      <p class="hint" id="hint">Arraste para rodar · roda ou dois dedos para aproximar</p>
+      <div class="loading" id="loading" hidden><div class="bar"><i id="bar"></i></div><span>A carregar o modelo…</span></div>
+      <div class="state" id="state" hidden></div>
+
+      <nav class="list" id="list" aria-label="Cortes" hidden>
+        <ul>{CUTS.map((c) => <li><button data-id={c.id}><i style={`background:${c.cor}`}></i>{c.nome}</button></li>)}</ul>
+      </nav>
+
+      <aside class="panel" id="panel" hidden aria-live="polite">
+        <button class="x" id="close" aria-label="Fechar ficha">×</button>
+        <span class="eyebrow" id="p-cat"></span>
+        <h2 id="p-name"></h2>
+        <div class="flag" id="p-flag" hidden></div>
+        <dl id="p-dl"></dl>
+        <figure class="foto" id="p-foto"><div class="fph"><span>Fotografia real do corte</span><small>Em recolha: apenas fotografias com licença livre, com autor e fonte indicados.</small></div></figure>
+        <details class="src"><summary>Fontes consultadas</summary><ul id="p-src"></ul></details>
+      </aside>
+    </section>
+    <details class="pend pad"><summary>Peças por localizar no modelo</summary>
+      <ul>{PENDENTES.map((p) => <li><strong>{p.nome}</strong>: {p.porque}</li>)}</ul></details>
+  </main>
+</Base>
+<script define:vars={{ CUTS, FONTES }}>
+  window.__CUTS = CUTS; window.__FONTES = FONTES;
+</script>
+<script>
+  import { startCutsViewer } from "../../scripts/cow-anatomy/viewer.ts";
+  const base = import.meta.env.BASE_URL;
+  const $ = (id: string) => document.getElementById(id)!;
+  const CUTS: any[] = (window as any).__CUTS, FONTES: any = (window as any).__FONTES;
+  const byId = new Map(CUTS.map((c) => [c.id, c]));
+  const loading = $("loading"), bar = $("bar"), state = $("state"), root = $("viewer");
+  const panel = $("panel"), tip = $("tip"), list = $("list");
+  const q = new URLSearchParams(location.search);
+  const rows: [string, string][] = [["onde", "Localização anatómica"], ["caracteristicas", "Características da carne"], ["textura", "Textura"], ["gordura", "Teor de gordura"], ["metodos", "Melhores métodos de confeção"], ["pratos", "Pratos tradicionais portugueses"]];
+  const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]!));
+  const fill = (id: string) => {
+    panel.scrollTop = 0;
+    const c = byId.get(id); $("p-name").textContent = c.nome; $("p-cat").textContent = c.categoria || "Corte de bovino";
+    const f = $("p-flag"); f.hidden = !(c.estado === "validar"); f.textContent = c.nota ? `A validar · ${c.nota}` : "A validar";
+    $("p-dl").innerHTML = rows.map(([k, l]) => `<dt>${l}</dt><dd class="${c[k] === "Por validar" ? "pv" : ""}">${esc(c[k])}</dd>`).join("");
+    $("p-src").innerHTML = c.fontes.map((s: string) => `<li><a href="${FONTES[s].url}" target="_blank" rel="noopener">${esc(FONTES[s].nome)}</a></li>`).join("");
+    list.querySelectorAll("button").forEach((b) => b.classList.toggle("on", (b as HTMLElement).dataset.id === id));
+  };
+  let v: any = null;
+  const show = (id: string | null) => { panel.hidden = !id; root.classList.toggle("sel", !!id); if (id) fill(id); list.querySelectorAll("button").forEach((b) => b.classList.toggle("on", (b as HTMLElement).dataset.id === id)); };
+  v = await startCutsViewer({
+    root, base, model: q.get("model") || undefined,
+    onProgress: (p) => { (bar as HTMLElement).style.width = `${Math.round(p * 100)}%`; },
+    onState: (s, m) => { loading.hidden = s !== "loading"; if (s === "error") { state.hidden = false; state.textContent = m === "WebGL" ? "Este navegador não suporta WebGL." : "Não foi possível carregar o modelo."; } },
+    onHover: (id) => { if (!id) { tip.hidden = true; return; } tip.hidden = false; tip.textContent = byId.get(id).nome; },
+    onSelect: (id) => { show(id); if (id) tip.hidden = true; },
+  });
+  (window as any).__viewer = v;
+  document.addEventListener("pointermove", (e) => { tip.style.transform = `translate(${e.clientX + 14}px, ${e.clientY + 14}px)`; });
+  const setMode = (m: "animal" | "cortes") => {
+    v?.setMode(m); root.dataset.mode = m;
+    $("m-animal").setAttribute("aria-selected", String(m === "animal")); $("m-cortes").setAttribute("aria-selected", String(m === "cortes"));
+    list.hidden = m !== "cortes"; if (m === "animal") { panel.hidden = true; tip.hidden = true; }
+    $("title").textContent = m === "animal" ? "O animal" : "Os cortes";
+    $("lede").textContent = m === "animal" ? "Rode e aproxime o animal. Passe ao modo «Os cortes» para ver onde nasce cada peça." : "Cada região assenta na própria superfície do modelo. Passe o cursor e clique para abrir a ficha.";
+    $("hint").textContent = m === "cortes" ? "Clique numa região para a escolher · clique outra vez para voltar" : "Arraste para rodar · roda ou dois dedos para aproximar";
+  };
+  $("m-animal").onclick = () => setMode("animal"); $("m-cortes").onclick = () => setMode("cortes");
+  $("close").onclick = () => v?.select(v.getSelected());
+  list.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { const id = (b as HTMLElement).dataset.id!; if (v.getSelected() !== id) v.select(id); }));
+  addEventListener("keydown", (e) => { if (e.key === "Escape" && v?.getSelected()) v.select(v.getSelected()); });
+  if (q.get("modo") === "cortes") setMode("cortes");
+  if (q.get("corte")) { setMode("cortes"); v?.select(q.get("corte")); }
+</script>
+<style is:global>
+  .lab { padding: 0 !important; }
+  .viewer { position: relative; height: 100svh; min-height: 600px; background: radial-gradient(ellipse 80% 70% at 50% 45%, #fbf9f3 0%, #f1ece0 70%, #e6dfcf 100%); overflow: hidden; }
+  .viewer canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; outline: none; }
+  .vh { position: absolute; left: clamp(20px, 5vw, 64px); top: clamp(96px, 14vh, 140px); pointer-events: none; max-width: 22rem; }
+  .vh h1 { margin: .2em 0 .35em; font-size: clamp(1.8rem, 4vw, 3rem); }
+  .lede { margin: 0; color: var(--muted); font-size: .95rem; line-height: 1.5; }
+  .modes { position: absolute; left: 50%; transform: translateX(-50%); bottom: 56px; display: flex; gap: 4px; padding: 4px; background: #fffc; backdrop-filter: blur(8px); border: 1px solid var(--line); border-radius: 999px; }
+  .modes button { font: inherit; font-size: .88rem; padding: 9px 18px; border: 0; border-radius: 999px; background: transparent; color: var(--char); cursor: pointer; transition: background .3s var(--ease), color .3s var(--ease); }
+  .modes button[aria-selected="true"] { background: var(--green-deep); color: var(--ivory); }
+  .modes button:disabled { opacity: .45; cursor: not-allowed; } .modes small { font-size: .7rem; opacity: .8; margin-left: 4px; }
+  .hint { position: absolute; left: 50%; transform: translateX(-50%); bottom: 18px; margin: 0; font-size: .82rem; color: var(--muted); text-align: center; pointer-events: none; width: max-content; max-width: 90vw; }
+  .tip { position: fixed; left: 0; top: 0; z-index: 5; pointer-events: none; background: var(--green-deep); color: var(--ivory); font-size: .8rem; padding: 5px 10px; border-radius: 6px; }
+  .loading { position: absolute; inset: auto 0 45% 0; display: grid; place-items: center; gap: 10px; color: var(--muted); font-size: .9rem; }
+  .loading[hidden], .state[hidden], .tip[hidden], .panel[hidden], .list[hidden] { display: none; }
+  .loading .bar { width: min(260px, 60vw); height: 3px; background: #0001; border-radius: 3px; overflow: hidden; } .loading .bar i { display: block; height: 100%; width: 0; background: var(--green-deep); transition: width .2s; }
+  .state { position: absolute; inset: 40% 0 auto 0; margin: 0 auto; width: min(520px, 88vw); text-align: center; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+  .list { position: absolute; left: clamp(20px, 5vw, 64px); top: max(330px, 46%); max-height: calc(100% - max(330px, 46%) - 110px); overflow: auto; }
+  .list ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .list button { display: flex; align-items: center; gap: 9px; width: 100%; font: inherit; font-size: .85rem; text-align: left; padding: 5px 10px; border: 0; border-radius: 6px; background: transparent; color: var(--char); cursor: pointer; }
+  .list button:hover, .list button.on { background: #fffd; } .list button.on { font-weight: 600; }
+  .list i { width: 10px; height: 10px; border-radius: 50%; flex: none; opacity: .85; }
+  .panel { position: absolute; right: clamp(12px, 3vw, 40px); top: clamp(88px, 12vh, 120px); bottom: 110px; width: min(380px, calc(100vw - 24px)); overflow: auto; background: #fffffff2; backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 18px; box-shadow: 0 18px 50px -24px #183c3266; animation: pin .5s var(--ease); }
+  @keyframes pin { from { opacity: 0; transform: translateX(14px); } }
+  .panel h2 { margin: .15em 0 .5em; font-size: 1.7rem; }
+  .panel .x { position: absolute; right: 12px; top: 8px; border: 0; background: none; font-size: 1.6rem; line-height: 1; color: var(--muted); cursor: pointer; }
+  .panel dl { margin: 0; } .panel dt { font-size: .68rem; letter-spacing: .09em; text-transform: uppercase; color: var(--green); margin-top: 12px; }
+  .panel dd { margin: 2px 0 0; font-size: .92rem; line-height: 1.5; } .panel dd.pv { color: var(--muted); font-style: italic; }
+  .flag { background: #f7efdc; border: 1px solid var(--gold); color: #5a4a22; border-radius: 8px; font-size: .8rem; line-height: 1.4; padding: 8px 10px; margin-bottom: 4px; }
+  .foto { margin: 16px 0 6px; } .foto .fph { aspect-ratio: 16/8; border: 1px dashed var(--line); border-radius: 10px; background: var(--ivory-2); display: grid; place-content: center; text-align: center; gap: 4px; padding: 12px; color: var(--muted); font-size: .85rem; } .foto small { font-size: .72rem; }
+  .src { font-size: .78rem; color: var(--muted); } .src ul { padding-left: 1.1em; margin: 6px 0 0; }
+  .pend { padding-block: 18px; max-width: 60rem; margin: 0 auto; font-size: .9rem; color: var(--muted); }
+  .viewer.sel .lede { display: none; }
+  @media (max-width: 760px) {
+    .vh { top: 76px; max-width: 70vw; } .lede { display: none; }
+    .modes { bottom: 44px; } .modes button { padding: 8px 12px; font-size: .8rem; }
+    .list { top: auto; bottom: 108px; left: 8px; right: 8px; transform: none; max-height: none; overflow-x: auto; } .list ul { display: flex; gap: 4px; } .list button { white-space: nowrap; background: #fffc; border-radius: 999px; }
+    .panel { top: auto; bottom: 0; right: 0; left: 0; width: auto; max-height: 55vh; border-radius: 18px 18px 0 0; }
+    .viewer.sel .lede, .viewer.sel .tip { display: none; }
+    .viewer.sel .modes, .viewer.sel .hint, .viewer.sel .list { display: none; }
+  }
+</style>
