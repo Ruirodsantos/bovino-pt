@@ -36,7 +36,7 @@ const base = import.meta.env.BASE_URL;
   });
   if (v?.manifest) {
     const m = v.manifest; $("credit").hidden = false;
-    $("creditBody").innerHTML = `<p><strong>${m.title}</strong><br>Autor: ${m.author}<br>Licença: <a href="${m.license_url ?? m.source_url}" rel="noopener">${m.license}</a><br><a href="${m.source_url}" rel="noopener">Fonte ↗</a></p>`;
+    $("creditBody").innerHTML = `<p><strong>${m.title}</strong><br>Autor: ${m.author}<br>Licença: <a href="${m.license_url ?? m.source_url}" rel="noopener">${m.license}</a><br><a href="${m.source_url}" rel="noopener">Fonte ↗</a>${m.notes ? `<br><em>${m.notes}</em>` : ""}</p>`;
   }
   (window as any).__viewer = v;
   setTimeout(() => ($("hint").style.opacity = "0"), 9000);

@@ -54,8 +54,8 @@ export async function startViewer({ root, base, model, onProgress, onState }: Op
     const box = new THREE.Box3().setFromObject(obj); const size = box.getSize(new THREE.Vector3()); const c = box.getCenter(new THREE.Vector3());
     obj.position.sub(new THREE.Vector3(c.x, box.min.y, c.z)); // pousa no chão, centrado
     radius = Math.max(size.x, size.z) * 0.5; const h = size.y;
-    controls.target.set(0, h * 0.42, 0);
-    const dist = (Math.max(size.x, size.y) * 0.62) / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    controls.target.set(radius * 0.08, h * 0.4, 0);
+    const dist = (Math.max(size.x, size.y) * 0.76) / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
     camera.position.set(-dist * 0.78, h * 0.62, dist * 0.82);
     controls.minDistance = dist * 0.28; controls.maxDistance = dist * 1.7; controls.update();
     sun.position.set(radius * 2.2, h * 3.2, radius * 1.6); sun.target.position.set(0, h * 0.3, 0);
