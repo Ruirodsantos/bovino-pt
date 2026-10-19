@@ -64,6 +64,38 @@ const stages: [string, string, string][] = lang === "en" ? [
     <p class="q rv">{T("A raça e a terra moldaram-se uma à outra.", "Breed and land shaped each other.")}</p>
   </section>
 
+  <section class="sec soft" aria-label="O respeito pelo animal">
+    <div class="wrap split">
+      <div class="rv"><span class="eyebrow">{T("Respeito pelo animal", "Respect for the animal")}</span>
+        <h2>{T("Tudo começa muito antes da mesa.", "It begins long before the table.")}</h2>
+        <p class="lead">{T("Conhecer o animal, o território e o trabalho de quem o cria é parte essencial de apreciar a carne. O bem-estar não é um detalhe: merece atenção ao longo de toda a vida do bovino.", "Knowing the animal, its landscape and the people who raise it is essential to appreciating beef. Welfare matters throughout the animal's life.")}</p>
+        <a class="btn ghost" href={href(lang, "da-pastagem-ao-prato/")}>{T("Acompanhar o percurso →", "Follow the journey →")}</a>
+      </div>
+      <div class="frame rv" style="aspect-ratio:4/3"><Img id="mertolenga-tejo" sizes="(max-width:820px) 100vw, 600px" lang={lang} /></div>
+    </div>
+  </section>
+
+  <section class="atlas-story" aria-label={T("Valorizar o que é nosso", "Value what is ours")}>
+    <img src={`${b}img/maronesa-alvao-lg.webp`} alt={T("Paisagem de montanha associada à criação bovina", "Mountain landscape associated with cattle farming")} loading="lazy" />
+    <div class="atlas-story-content rv">
+      <span class="eyebrow">{T("Um património vivo", "A living heritage")}</span>
+      <h2>{T("Antes de procurar o melhor lá fora, conheçamos o que temos cá dentro.", "Before looking abroad for the best, discover what we have at home.")}</h2>
+      <p>{T("A qualidade não se mede pela bandeira. Conhecer as raças, os criadores, o território e a origem é o primeiro passo para reconhecer o valor da carne portuguesa — e de quem preserva este património.", "Quality is not determined by a flag. Understanding breeds, farmers, landscape and origin is the first step towards appreciating Portuguese beef and those who preserve this heritage.")}</p>
+      <a class="btn" href={href(lang, "racas/")}>{T("Conhecer as raças →", "Explore the breeds →")}</a>
+    </div>
+  </section>
+
+  <section class="sec atlas-table" id="a-mesa">
+    <div class="wrap">
+      <div class="rv"><span class="eyebrow">{T("À volta da mesa", "Around the table")}</span><h2>{T("A carne é só o começo.", "Beef is just the beginning.")}</h2><p class="lead">{T("Do corte ao lume, do acompanhamento à partilha: descobrir o que torna uma refeição memorável.", "From cut to fire, from side dishes to sharing: discover what makes a meal memorable.")}</p></div>
+      <div class="atlas-cards">
+        <a href={href(lang, "carne/")} class="atlas-card rv"><img src={`${b}img/bife-tabua-lg.webp`} loading="lazy" alt={T("Peça de carne numa tábua", "Beef on a board")} /><span>{T("01 · Escolher a peça", "01 · Choose the cut")}</span><strong>{T("Conhecer antes de comprar", "Understand before buying")}</strong></a>
+        <a href={href(lang, "carne/contra-a-fibra/")} class="atlas-card rv"><img src={`${b}img/bife-crosta-lg.webp`} loading="lazy" alt={T("Carne preparada para servir", "Beef prepared for serving")} /><span>{T("02 · Preparar e cortar", "02 · Prepare and slice")}</span><strong>{T("Pequenos gestos, grandes diferenças", "Small steps, big differences")}</strong></a>
+        <a href={href(lang, "aprender/")} class="atlas-card rv"><img src={`${b}img/bife-prato-lg.webp`} loading="lazy" alt={T("Prato de carne preparado", "Prepared beef dish")} /><span>{T("03 · Servir e partilhar", "03 · Serve and share")}</span><strong>{T("A cultura também se senta à mesa", "Culture has a seat at the table")}</strong></a>
+      </div>
+    </div>
+  </section>
+
   <section class="sec green">
     <div class="wrap split">
       <div class="rv"><span class="eyebrow">{T("A carne portuguesa", "Portuguese beef")}</span><h2 style="margin:.2em 0 .5em">{T("Do campo ao talho, com nome e origem.", "From field to butcher, with a name and an origin.")}</h2>
@@ -76,7 +108,7 @@ const stages: [string, string, string][] = lang === "en" ? [
   <section class="sec soft" id="percurso">
     <div class="wrap">
       <span class="eyebrow">{T("Da pastagem ao prato", "Pasture to plate")}</span>
-      <h2 style="margin:.2em 0 .3em">{T("Nove passos. Clique em cada um.", "Nine steps. Click each one.")}</h2>
+      <h2 style="margin:.2em 0 .3em">{T("Nove momentos de uma viagem.", "Nine moments in a journey.")}</h2>
       <div class="progress" aria-hidden="true"><i id="pg" style="width:11%"></i></div>
       <div class="route" role="tablist" aria-label={T("Etapas do percurso", "Route stages")}>
         {stages.map(([n], i) => <button role="tab" id={`t${i}`} aria-selected={i === 0} aria-controls="stage" tabindex={i === 0 ? 0 : -1}>{i + 1}. {n}</button>)}
@@ -114,3 +146,36 @@ const stages: [string, string, string][] = lang === "en" ? [
       if (e.key === "ArrowRight" || e.key === "ArrowLeft") { const n = (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length; set(n); tabs[n].focus(); } }); });
   </script>
 </Base>
+
+<style>
+  /* Editorial rhythm: a calmer, more readable journey after the untouched hero. */
+  #descobrir { padding-block: clamp(5rem, 10vw, 9rem); }
+  #descobrir .strip { margin-block: clamp(2rem, 5vw, 4rem); }
+  #percurso .route { scroll-margin-top: 6rem; }
+  @media (max-width: 700px) {
+    #descobrir { padding-block: 4rem; }
+    #percurso .route { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:1rem; }
+    #percurso .route button { flex:0 0 auto; scroll-snap-align:start; }
+  }
+</style>
+
+<style>
+  .atlas-story{position:relative;min-height:85svh;display:flex;align-items:center;isolation:isolate;background:#202c22;color:#fff;overflow:hidden}
+  .atlas-story>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .atlas-story:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,24,16,.83),rgba(9,24,16,.26));z-index:-1}
+  .atlas-story-content{width:min(650px,calc(100% - 3rem));margin-left:max(1.5rem,calc((100vw - 1180px)/2));padding:6rem 0}
+  .atlas-story .eyebrow{color:#cfe3c8}
+  .atlas-story h2{font-size:clamp(2.5rem,5vw,5rem);line-height:1.12;margin:1rem 0 1.5rem;color:#fff}
+  .atlas-story p{font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.7;max-width:37rem}
+  .atlas-story .btn{margin-top:1.5rem}
+  .atlas-table{padding-block:clamp(5rem,10vw,9rem)}
+  .atlas-table h2{margin:.5rem 0 1rem}
+  .atlas-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin-top:3rem}
+  .atlas-card{display:flex;flex-direction:column;gap:.75rem;text-decoration:none;color:inherit;min-width:0}
+  .atlas-card img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .5s}
+  .atlas-card:hover img{transform:scale(1.025)}
+  .atlas-card span{font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;opacity:.65}
+  .atlas-card strong{font-size:clamp(1.1rem,1.7vw,1.5rem);font-weight:550}
+  @media(max-width:700px){.atlas-story{min-height:78svh}.atlas-story:before{background:linear-gradient(0deg,rgba(9,24,16,.9),rgba(9,24,16,.25))}.atlas-story-content{align-self:flex-end;padding:4rem 0}.atlas-cards{grid-template-columns:1fr;gap:2.5rem}.atlas-card img{aspect-ratio:5/3}}
+  @media(prefers-reduced-motion:reduce){.atlas-card img{transition:none}}
+</style>
