@@ -1,0 +1,98 @@
+---
+import Base from "../layouts/Base.astro";
+import { existsSync } from "node:fs";
+import { href, tr, type Lang } from "../i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = tr(lang);
+// Imagem educativa fornecida pelo projeto (a favor / contra a fibra). Mostra-se inteira, sem texto por cima.
+const exts = ["webp", "jpg", "jpeg", "png"];
+const found = exts.find((e) => existsSync(new URL(`../../public/img/fibra-a-favor-contra.${e}`, import.meta.url)));
+const img = found ? `${import.meta.env.BASE_URL}img/fibra-a-favor-contra.${found}` : null;
+const steps = [
+  T("Observa atentamente a superfície da carne.", "Look closely at the surface of the meat."),
+  T("Procura as pequenas linhas paralelas que mostram a direção das fibras.", "Look for the small parallel lines that show the direction of the fibres."),
+  T("Imagina uma linha que atravesse essas fibras perpendicularmente.", "Imagine a line crossing those fibres at right angles."),
+  T("Posiciona a faca nessa direção.", "Place the knife along that line."),
+  T("Corta fatias de espessura uniforme, atravessando as fibras.", "Cut slices of even thickness, across the fibres."),
+];
+const more = [
+  { q: T("O que são as fibras musculares?", "What are muscle fibres?"),
+    a: [T("São estruturas alongadas que constituem os músculos do animal. Na carne de bovino vêem-se muitas vezes como pequenas linhas paralelas à superfície, que indicam a direção predominante das fibras.", "They are the elongated structures that make up the animal's muscles. In beef they often show as small parallel lines on the surface, marking the main direction of the fibres."),
+        T("Em alguns cortes são muito evidentes; noutros, sobretudo em músculos mais tenros ou de fibra fina, podem ser difíceis de identificar.", "In some cuts they are very obvious; in others, especially tender or fine-grained muscles, they can be hard to see.")] },
+  { q: T("Porque é que alguns cortes são mais tenros?", "Why are some cuts more tender?"),
+    a: [T("A tenrura depende de vários fatores: o músculo de origem, a quantidade e as características do tecido conjuntivo, a maturação, a temperatura e o tempo de confeção, a espessura das fatias e a direção do corte.", "Tenderness depends on several factors: the muscle it comes from, the amount and nature of connective tissue, ageing, cooking temperature and time, slice thickness and the direction of the cut."),
+        T("Cortar contra a fibra melhora sobretudo a facilidade de mastigação, mas não substitui uma confeção adequada.", "Cutting against the grain mainly makes the meat easier to chew; it does not replace proper cooking.")] },
+  { q: T("Em que cortes esta técnica faz mais diferença?", "Which cuts benefit most?"),
+    a: [T("Sobretudo em carnes de fibra longa ou grossa, como a fraldinha, a aba e outros cortes semelhantes.", "Mainly in long- or coarse-fibred meat, such as the fraldinha, the aba and similar cuts."),
+        T("Também se aplica à vazia e ao lombo baixo, embora o efeito seja menos evidente em cortes naturalmente tenros. Observa a orientação das fibras em cada peça: pode variar entre músculos e cortes comerciais.", "It also applies to the vazia and the lower loin, though the effect is less obvious in naturally tender cuts. Check the fibre direction on each piece: it can vary between muscles and commercial cuts.")] },
+  { q: T("A confeção influencia a tenrura?", "Does cooking affect tenderness?"),
+    a: [T("Sim, muito. Uma carne com bastante tecido conjuntivo pode precisar de uma confeção lenta e prolongada para ficar tenra, e cortá-la contra a fibra não compensa uma confeção inadequada.", "Yes, a lot. Meat with plenty of connective tissue may need slow, prolonged cooking to become tender, and slicing it against the grain will not make up for unsuitable cooking.")] },
+];
+---
+<Base lang={lang} title={T("Como cortar carne contra a fibra", "How to cut meat against the grain")} description={T("Um pequeno detalhe que pode fazer uma grande diferença na tenrura.", "A small detail that can make a big difference to tenderness.")}>
+  <article class="fb">
+    <header class="fb-hero reveal">
+      <a class="back" href={href(lang, "carne/")}>← {T("A carne", "The meat")}</a>
+      <span class="eyebrow">{T("A carne · técnica", "The meat · technique")}</span>
+      <h1>{T("Como cortar carne contra a fibra", "How to cut meat against the grain")}</h1>
+      <p class="sub">{T("Um pequeno detalhe que pode fazer uma grande diferença na tenrura.", "A small detail that can make a big difference to tenderness.")}</p>
+      <p class="intro">{T("A carne é feita de fibras musculares que seguem determinadas direções. A orientação da faca em relação a elas muda a facilidade com que mastigamos cada fatia, mesmo quando a carne foi cozinhada exatamente da mesma forma.", "Meat is made of muscle fibres that run in particular directions. How the knife meets them changes how easily each slice is chewed, even when the meat was cooked in exactly the same way.")}</p>
+    </header>
+
+    <figure class="fb-img reveal">
+      {img ? <img src={img} alt={T("Comparação entre cortar a favor da fibra (a vermelho) e contra a fibra (a verde).", "Comparison of cutting with the grain (red) and against the grain (green).")} loading="eager" decoding="async" />
+           : <div class="miss">{T("Imagem educativa por colocar", "Educational image to be added")}<small>public/img/fibra-a-favor-contra.(webp|jpg|png)</small></div>}
+    </figure>
+
+    <div class="fb-two reveal">
+      <div class="no"><span class="eyebrow">{T("A favor da fibra", "With the grain")}</span><p>{T("As fibras permanecem longas, tornando a carne potencialmente mais difícil de mastigar.", "The fibres stay long, which can make the meat harder to chew.")}</p></div>
+      <div class="yes"><span class="eyebrow">{T("Contra a fibra", "Against the grain")}</span><p>{T("As fibras ficam mais curtas, facilitando a mastigação e dando maior sensação de tenrura.", "The fibres end up shorter, making the meat easier to chew and more tender in the mouth.")}</p></div>
+    </div>
+
+    <section class="fb-acc reveal">
+      <details open>
+        <summary>{T("Como descubro a direção das fibras?", "How do I find the direction of the fibres?")}</summary>
+        <ol>{steps.map((s) => <li>{s}</li>)}</ol>
+        <p class="rule">{T("Se as fibras seguem na horizontal, corta na vertical. Se seguem na vertical, corta na horizontal. Se mudarem de direção ao longo da peça, ajusta a faca.", "If the fibres run horizontally, cut vertically. If they run vertically, cut horizontally. If they change direction along the piece, adjust the knife.")}</p>
+      </details>
+    </section>
+
+    <section class="fb-more reveal">
+      <h2>{T("Queres saber mais?", "Want to know more?")}</h2>
+      {more.map((m) => <details><summary>{m.q}</summary>{m.a.map((p) => <p>{p}</p>)}</details>)}
+    </section>
+    <p class="fb-note"><span class="chip wait">{T("Texto original · em revisão", "Original text · under review")}</span></p>
+  </article>
+</Base>
+<style is:global>
+  .fb { width: min(980px, 100% - 40px); margin: 0 auto; padding: var(--s4, 40px) 0 80px; }
+  .fb .back { font-size: .9rem; text-decoration: none; color: var(--green-deep); }
+  .fb-hero h1 { margin: .3em 0 .2em; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.1; }
+  .fb .sub { font-size: 1.2rem; color: var(--green-deep); margin: 0 0 1rem; }
+  .fb .intro { max-width: 40rem; color: var(--muted); line-height: 1.65; }
+  .fb-img { margin: 2.2rem 0; }
+  .fb-img img { display: block; width: 100%; height: auto; border-radius: 16px; }
+  .fb-img .miss { border: 1px dashed var(--line); border-radius: 16px; background: var(--ivory-2); aspect-ratio: 16/9; display: grid; place-content: center; text-align: center; gap: 6px; color: var(--muted); } .fb-img small { font-size: .75rem; }
+  .fb-two { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 5vw, 56px); margin: 1rem 0 2.6rem; }
+  .fb-two > div { padding-top: 14px; border-top: 2px solid var(--line); } .fb-two .yes { border-color: var(--green); } .fb-two .no { border-color: #b5524a; }
+  .fb-two p { margin: .5em 0 0; line-height: 1.6; }
+  .fb details { border-top: 1px solid var(--line); padding: 16px 0; } .fb details:last-child { border-bottom: 1px solid var(--line); }
+  .fb summary { cursor: pointer; font-weight: 500; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; align-items: center; min-height: 44px; }
+  .fb summary::-webkit-details-marker { display: none; } .fb summary::after { content: "+"; font-size: 1.4rem; color: var(--green); transition: transform .3s var(--ease); }
+  .fb details[open] > summary::after { transform: rotate(45deg); }
+  .fb summary:focus-visible { outline: 2px solid var(--green-deep); outline-offset: 4px; border-radius: 6px; }
+  .fb details p, .fb details li { line-height: 1.65; max-width: 42rem; } .fb details ol { padding-left: 1.3em; }
+  .fb .rule { background: var(--ivory-2); border-left: 3px solid var(--gold); padding: 12px 16px; border-radius: 0 12px 12px 0; }
+  .fb-more h2 { font-size: 1.5rem; margin: 3rem 0 .8rem; }
+  .fb-note { margin-top: 2rem; }
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .reveal.in, .no-js .reveal { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  @media (max-width: 640px) { .fb-two { grid-template-columns: 1fr; } }
+</style>
+<script>
+  const els = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) els.forEach((e) => e.classList.add("in"));
+  else { const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.12 }); els.forEach((e) => io.observe(e)); }
+</script>

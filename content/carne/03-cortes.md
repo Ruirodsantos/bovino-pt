@@ -20,7 +20,7 @@ Os nomes dos cortes variam entre regiões de Portugal e entre talhos. Esta tabel
 | **Lombo alto** (com ou sem osso) | Costas, parte dianteira | Marmoreado e saboroso; é o «bife da costela» sem osso ou a costeleta | Brasa, frigideira, forno depois de selar |
 | **Lombo baixo** | Costas, parte traseira | Fibra firme, gordura de cobertura | Grelha; cortar sempre contra a fibra |
 | **Vazia** | Região do lombo junto às costelas (a equivalência anatómica exata varia; **a validar com talhante**) | Fibra grossa e bom sabor | Grelha rápida, fatiar fino contra a fibra |
-| **Aba** | Flanco (parede abdominal) | Fibra comprida e muito sabor | Grelha rápida ou estufar; fatiar contra a fibra |
+| **Aba** | Flanco (parede abdominal) | Fibra comprida e muito sabor | Grelha rápida ou estufar; fatiar [contra a fibra](../contra-a-fibra/) |
 | **Alcatra** | Garupa | Macia, magra, versátil | Grelha, assados, posta |
 | **Posta** | Corte espesso, tradicionalmente de alcatra ou lombo | Corte tradicional; a *posta mirandesa* é a referência | Brasa de lenha ou carvão |
 | **Acém e cachaço** | Pescoço e ombro | Muito sabor, muito colagénio | Estufados e cozidos lentos |
@@ -42,3 +42,5 @@ O osso conduz o calor de forma diferente, protege a carne que o rodeia e, durant
 Para brasa e frigideira, um bife para dois deve ter pelo menos 3 a 4 cm. Mais fino seca antes de ganhar crosta.
 
 > **Estado do texto:** texto editorial original, em revisão. Nomes de cortes e equivalências anatómicas podem variar por região e talho; a validar com um talhante profissional.
+
+> Sabes como cortar esta carne para ficar mais tenra? [Como cortar contra a fibra](../contra-a-fibra/).

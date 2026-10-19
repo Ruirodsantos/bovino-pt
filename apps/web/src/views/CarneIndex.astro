@@ -21,6 +21,9 @@ const all = (await getCollection(lang === "en" ? "carne_en" : "carne")).sort((a,
           <div class="cb"><span class="eyebrow">{String(d.data.order).padStart(2, "0")}</span><h2>{d.data.title}</h2><p>{d.data.summary}</p></div>
         </a>
       ))}
+      <a class="card c" href={href(lang, lang === "en" ? "carne/against-the-grain/" : "carne/contra-a-fibra/")}>
+        <div class="cb"><span class="eyebrow">{T("Técnica", "Technique")}</span><h2>{T("Como cortar carne contra a fibra", "How to cut meat against the grain")}</h2><p>{T("Um pequeno detalhe que pode fazer uma grande diferença na tenrura.", "A small detail that can make a big difference to tenderness.")}</p></div>
+      </a>
     </div>
   </div></section>
 </Base>
