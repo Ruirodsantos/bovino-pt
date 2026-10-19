@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Img from "../components/proto/Img.astro";
-import Cow3D from "../components/diagrams/Cow3D.astro";
+import CortesViewer from "../components/diagrams/CortesViewer.astro";
 import Myoglobin from "../components/diagrams/Myoglobin.astro";
 import { marked } from "marked";
 import credits from "../data/images.json";
@@ -42,7 +42,7 @@ const all = secs.length;
       <section id={`s${i}`} class="psec">
         <h2>{s.title}</h2>
         {s.fig?.diagram === "myoglobin" && <Myoglobin lang={lang} />}
-        {s.fig?.diagram === "cuts" && <Cow3D lang={lang} />}
+        {s.fig?.diagram === "cuts" && <CortesViewer lang={lang} />}
         {has(s.fig?.photo) && <figure class="frame sfig"><Img id={s.fig!.photo!} sizes="(max-width:820px) 100vw, 820px" credit lang={lang} /></figure>}
         <div class="prose" set:html={s.html} />
       </section>

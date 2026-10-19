@@ -1,8 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import Img from "../components/proto/Img.astro";
-import Seurop from "../components/diagrams/Seurop.astro";
-import Cow3D from "../components/diagrams/Cow3D.astro";
+import Classificacao from "../components/diagrams/Classificacao.astro";
+import CortesViewer from "../components/diagrams/CortesViewer.astro";
 import credits from "../data/images.json";
 import { href, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
@@ -14,7 +14,7 @@ const CARNAL = "https://ptpt.pt/en/produtos/8";
 const eur = (c: string) => `https://eur-lex.europa.eu/legal-content/${lang === "en" ? "EN" : "PT"}/TXT/?uri=CELEX:${c}`;
 const L = (l: string, u: string) => ({ l, u });
 type Ex = { b: string; slug?: string; p: string };
-type Stage = { id: string; t: string; img?: string; general: string[]; ex: Ex[]; maybe: string[]; links: { l: string; u: string }[]; extra?: "seurop" | "cuts" };
+type Stage = { id: string; t: string; img?: string; general: string[]; ex: Ex[]; maybe: string[]; links: { l: string; u: string }[]; extra?: "classificacao" | "cuts" };
 const stages: Stage[] = [
   { id: "nascimento", t: T("Nascimento", "Birth"), img: "mertolenga-rebanho",
     general: [T("O percurso começa numa vaca de cria. Nos sistemas de carne, o vitelo vive junto da mãe e mama durante os primeiros meses; nos sistemas de leite, é separado mais cedo. Cada animal tem de ser identificado (brinco auricular e registo) pouco depois de nascer, e é essa identificação que permite seguir o animal até ao prato.", "The route starts with a suckler cow. In beef systems the calf stays with its mother and nurses for its first months; in dairy systems it is separated earlier. Every animal must be identified (ear tag and registration) soon after birth, and that identification is what lets it be traced all the way to the plate.")],
@@ -59,7 +59,7 @@ const stages: Stage[] = [
     ],
     maybe: [T("Por documentar: a rede de matadouros e os volumes por região.", "To document: the abattoir network and volumes by region.")],
     links: [L(T("Regulamento (CE) n.º 1099/2009", "Regulation (EC) No 1099/2009"), eur("32009R1099")), L(T("Abates no Observatório", "Slaughter data in the Observatory"), href(lang, "observatorio/"))] },
-  { id: "classificacao", t: T("Classificação", "Grading"), img: "carne-madeira", extra: "seurop",
+  { id: "classificacao", t: T("Classificação", "Grading"), img: "carne-madeira", extra: "classificacao",
     general: [T("Depois do abate, a carcaça é classificada por um classificador oficial segundo a escala europeia SEUROP: uma letra para a conformação (a forma e o desenvolvimento muscular) e um número de 1 a 5 para a cobertura de gordura (Regulamento (UE) n.º 1308/2013). A classificação é a base do preço pago ao produtor.", "After slaughter the carcass is graded by an official classifier on the European SEUROP scale: a letter for conformation (shape and muscle development) and a number from 1 to 5 for fat cover (Regulation (EU) No 1308/2013). Grading is the basis of the price paid to the producer.")],
     ex: [
       { b: "Minhota", slug: "minhota", p: T("O catálogo refere que 52,5 % dos abates de animais Minhotos dão carcaças de categoria V (animais com menos de 8 meses).", "The catalogue states that 52.5% of Minhota slaughters give category V carcasses (animals under 8 months).") },
@@ -104,15 +104,29 @@ const stages: Stage[] = [
       <span class="chip wait">{T("Possível / por documentar", "Possible / to document")}</span> {T("hipótese plausível que ainda não confirmámos; não é afirmação.", "a plausible hypothesis we have not confirmed; it is not a claim.")}
     </div>
     {stages.map((s, i) => (
-      <article class="stg" id={s.id}>
+      s.extra === "classificacao" ? (
+      <article class="stg stg-wide" id={s.id}>
+        <div class="stg-body">
+          <span class="eyebrow">{T("Etapa", "Stage")} {i + 1} / 9 · {s.t}</span>
+          <h2>{T("Como saber se estamos a comprar boa carne?", "How do we know we are buying good meat?")}</h2>
+          <p class="lead">{T("Da etiqueta do supermercado à classificação das carcaças: aprende a interpretar a informação e a escolher carne com mais confiança.", "From the supermarket label to carcass grading: learn to read the information and choose meat with more confidence.")}</p>
+          <Classificacao lang={lang} />
+          {s.ex.length > 0 && <>
+            <h3>{T("Exemplos", "Examples")}</h3>
+            <ul class="exs">{s.ex.map((e) => <li><strong>{e.slug ? <a href={href(lang, `racas/${e.slug}/`)}>{e.b}</a> : e.b}</strong> — {e.p}</li>)}</ul>
+          </>}
+          <p class="links"><strong>{T("Saber mais", "Learn more")}:</strong> {s.links.map((x, n) => <>{n > 0 && " · "}<a href={x.u} rel={x.u.startsWith("http") ? "noopener" : undefined}>{x.l}{x.u.startsWith("http") ? " ↗" : ""}</a></>)}</p>
+        </div>
+      </article>
+      ) : (
+      <article class={s.extra === "cuts" ? "stg stg-wide" : "stg"} id={s.id}>
         <div class="stg-fig">{s.img && (credits as Record<string, any>)[s.img] && <figure class="frame"><Img id={s.img} sizes="(max-width:900px) 100vw, 420px" credit lang={lang} /></figure>}</div>
         <div class="stg-body">
           <span class="eyebrow">{T("Etapa", "Stage")} {i + 1} / 9</span>
           <h2>{s.t}</h2>
           <h3>{T("O processo geral", "The general process")}</h3>
           {s.general.map((p) => <p>{p}</p>)}
-          {s.extra === "seurop" && <Seurop lang={lang} />}
-          {s.extra === "cuts" && <Cow3D lang={lang} />}
+          {s.extra === "cuts" && <CortesViewer lang={lang} />}
           {s.ex.length > 0 && <>
             <h3>{T("Exemplos", "Examples")}</h3>
             <ul class="exs">{s.ex.map((e) => <li><strong>{e.slug ? <a href={href(lang, `racas/${e.slug}/`)}>{e.b}</a> : e.b}</strong> — {e.p}</li>)}</ul>
@@ -121,6 +135,7 @@ const stages: Stage[] = [
           <p class="links"><strong>{T("Saber mais", "Learn more")}:</strong> {s.links.map((x, n) => <>{n > 0 && " · "}<a href={x.u} rel={x.u.startsWith("http") ? "noopener" : undefined}>{x.l}{x.u.startsWith("http") ? " ↗" : ""}</a></>)}</p>
         </div>
       </article>
+      )
     ))}
     <aside class="note">
       <h2>{T("Animais vivos ou carne?", "Live animals or meat?")}</h2>
@@ -149,5 +164,6 @@ const stages: Stage[] = [
   .links { margin-top: 1.2rem; font-size: .92rem; }
   .note { margin-top: 3rem; padding: 28px; background: #fff; border: 1px solid var(--line); border-radius: 20px; }
   .note .small { font-size: .85rem; color: var(--muted); }
+  .stg-wide { grid-template-columns: minmax(0, 1fr); } .stg-wide > .stg-fig { display: none; } .stg-wide .lead { font-size: 1.1rem; max-width: 46rem; color: var(--green-deep); }
   @media (max-width: 860px) { .stg { grid-template-columns: 1fr; } .stg-fig .frame { position: static; aspect-ratio: 16/9; } }
 </style>

@@ -1,0 +1,114 @@
+---
+import { CUTS } from "../../scripts/cow-anatomy/cuts-data";
+import { tr, type Lang } from "../../i18n";
+interface Props { lang?: Lang }
+const { lang = "pt" } = Astro.props;
+const T = tr(lang);
+---
+<figure class="cv" data-cv>
+  <div class="cv-stage">
+    <canvas tabindex="0" aria-label={T("Bovino em três dimensões. Arraste para rodar, use a roda ou dois dedos para aproximar. Clique numa região para ver a ficha do corte.", "Bovine in three dimensions. Drag to rotate, use the wheel or two fingers to zoom. Click a region to see the cut’s card.")}></canvas>
+    <div class="cv-modes" role="tablist" aria-label={T("Modo de visualização", "View mode")}>
+      <button role="tab" data-mode="animal" aria-selected="false">{T("O animal", "The animal")}</button>
+      <button role="tab" data-mode="cortes" aria-selected="true">{T("Os cortes", "The cuts")}</button>
+    </div>
+    <div class="cv-tip" hidden></div>
+    <p class="cv-hint">{T("Arraste para rodar · Ctrl + roda ou dois dedos para aproximar · clique numa região", "Drag to rotate · Ctrl + wheel or two fingers to zoom · click a region")}</p>
+    <div class="cv-loading" hidden><div class="bar"><i></i></div><span>{T("A carregar o modelo 3D…", "Loading the 3D model…")}</span></div>
+    <div class="cv-state" hidden></div>
+    <nav class="cv-list" aria-label={T("Cortes", "Cuts")}><ul>{CUTS.map((c) => <li><button data-id={c.id}><i style={`background:${c.cor}`}></i>{c.nome}</button></li>)}</ul></nav>
+    <aside class="cv-panel" hidden aria-live="polite">
+      <button class="x" aria-label={T("Fechar ficha", "Close card")}>×</button>
+      <span class="eyebrow cv-cat"></span>
+      <h3 class="cv-name"></h3>
+      <div class="cv-flag" hidden></div>
+      <dl class="cv-dl"></dl>
+      <details class="cv-src"><summary>{T("Fontes consultadas", "Sources consulted")}</summary><ul class="cv-srcl"></ul></details>
+    </aside>
+  </div>
+  <figcaption>{T("Modelo 3D de um bovino com as regiões sobrepostas à própria superfície. Os limites são aproximados e os nomes dos cortes variam entre regiões e talhos; as peças assinaladas «a validar» aguardam confirmação de um profissional de desmancha. A fotografia real de cada corte está em recolha.", "3D model of a bovine with the regions laid on its own surface. Boundaries are approximate and cut names vary between regions and butchers; pieces marked “to be validated” await confirmation by a cutting professional. A real photograph of each cut is being sourced.")}</figcaption>
+  <script type="application/json" data-lang-json set:html={JSON.stringify({ lang })} />
+</figure>
+
+<script>
+  import { startCutsViewer } from "../../scripts/cow-anatomy/viewer.ts";
+  import { CUTS, FONTES } from "../../scripts/cow-anatomy/cuts-data";
+  const base = import.meta.env.BASE_URL;
+  const rows: [string, string, string][] = [["onde", "Localização anatómica", "Anatomical location"], ["caracteristicas", "Características da carne", "Meat characteristics"], ["textura", "Textura", "Texture"], ["gordura", "Teor de gordura", "Fat content"], ["metodos", "Melhores métodos de confeção", "Best cooking methods"], ["pratos", "Pratos tradicionais portugueses", "Traditional Portuguese dishes"]];
+  const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]!));
+  const byId = new Map(CUTS.map((c) => [c.id, c]));
+  document.querySelectorAll<HTMLElement>("[data-cv]").forEach((root) => {
+    const en = JSON.parse(root.querySelector("[data-lang-json]")!.textContent || "{}").lang === "en";
+    const $ = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
+    const panel = $(".cv-panel"), tip = $(".cv-tip"), loading = $(".cv-loading"), state = $(".cv-state"), list = $(".cv-list");
+    let v: any = null, started = false;
+    const show = (id: string | null) => {
+      panel.hidden = !id; root.classList.toggle("sel", !!id);
+      list.querySelectorAll("button").forEach((b) => b.classList.toggle("on", (b as HTMLElement).dataset.id === id));
+      if (!id) return; const c: any = byId.get(id)!; panel.scrollTop = 0;
+      $(".cv-name").textContent = c.nome; $(".cv-cat").textContent = c.categoria || (en ? "Beef cut" : "Corte de bovino");
+      const f = $(".cv-flag"); f.hidden = c.estado !== "validar"; f.textContent = (en ? "To be validated" : "A validar") + (c.nota ? " · " + c.nota : "");
+      $(".cv-dl").innerHTML = rows.map(([k, pt, e]) => `<dt>${en ? e : pt}</dt><dd class="${c[k] === "Por validar" ? "pv" : ""}">${esc(c[k] === "Por validar" && en ? "To be validated" : c[k])}</dd>`).join("");
+      $(".cv-srcl").innerHTML = c.fontes.map((s: string) => `<li><a href="${(FONTES as any)[s].url}" target="_blank" rel="noopener">${esc((FONTES as any)[s].nome)}</a></li>`).join("");
+    };
+    const setMode = (m: "animal" | "cortes") => {
+      v?.setMode(m); root.dataset.mode = m;
+      root.querySelectorAll<HTMLElement>("[data-mode]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.mode === m)));
+      list.hidden = m !== "cortes"; if (m === "animal") { panel.hidden = true; tip.hidden = true; root.classList.remove("sel"); }
+    };
+    const start = async () => {
+      if (started) return; started = true;
+      v = await startCutsViewer({
+        root: $(".cv-stage"), base, embed: true,
+        onProgress: (p) => { ($(".cv-loading .bar i") as HTMLElement).style.width = `${Math.round(p * 100)}%`; },
+        onState: (s, m) => { loading.hidden = s !== "loading"; if (s === "error") { state.hidden = false; state.textContent = m === "WebGL" ? (en ? "This browser does not support WebGL." : "Este navegador não suporta WebGL.") : (en ? "Could not load the model." : "Não foi possível carregar o modelo."); } },
+        onHover: (id) => { if (!id) { tip.hidden = true; return; } tip.hidden = false; tip.textContent = byId.get(id)!.nome; },
+        onSelect: (id) => { show(id); if (id) tip.hidden = true; },
+      });
+      (root as any).__v = v; setMode("cortes");
+    };
+    root.querySelectorAll<HTMLElement>("[data-mode]").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode as any)));
+    $(".cv-panel .x").addEventListener("click", () => v?.select(v.getSelected()));
+    list.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { const id = (b as HTMLElement).dataset.id!; if (v && v.getSelected() !== id) v.select(id); }));
+    root.addEventListener("pointermove", (e) => { tip.style.transform = `translate(${(e as PointerEvent).clientX + 14}px, ${(e as PointerEvent).clientY + 14}px)`; });
+    root.addEventListener("keydown", (e) => { if ((e as KeyboardEvent).key === "Escape" && v?.getSelected()) v.select(v.getSelected()); });
+    list.hidden = true;
+    new IntersectionObserver((es, io) => { if (es[0].isIntersecting) { io.disconnect(); start(); } }, { rootMargin: "300px" }).observe(root);
+  });
+</script>
+
+<style is:global>
+  .cv { margin: 1.5rem 0; }
+  .cv-stage { position: relative; height: clamp(520px, 78svh, 760px); border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: radial-gradient(ellipse 80% 70% at 50% 45%, #fbf9f3 0%, #f1ece0 70%, #e6dfcf 100%); }
+  .cv-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; outline: none; }
+  .cv-stage canvas:active { cursor: grabbing; }
+  .cv-modes { position: absolute; left: 14px; top: 14px; display: flex; gap: 4px; padding: 4px; background: #fffc; backdrop-filter: blur(8px); border: 1px solid var(--line); border-radius: 999px; }
+  .cv-modes button { font: inherit; font-size: .85rem; padding: 8px 16px; border: 0; border-radius: 999px; background: transparent; color: var(--char); cursor: pointer; min-height: 36px; }
+  .cv-modes button[aria-selected="true"] { background: var(--green-deep); color: var(--ivory); }
+  .cv-hint { position: absolute; left: 50%; transform: translateX(-50%); bottom: 12px; margin: 0; font-size: .78rem; color: var(--muted); text-align: center; pointer-events: none; width: max-content; max-width: 92%; }
+  .cv-tip { position: fixed; left: 0; top: 0; z-index: 5; pointer-events: none; background: var(--green-deep); color: var(--ivory); font-size: .8rem; padding: 5px 10px; border-radius: 6px; }
+  .cv-loading { position: absolute; inset: auto 0 45% 0; display: grid; place-items: center; gap: 10px; color: var(--muted); font-size: .9rem; }
+  .cv-loading[hidden], .cv-state[hidden], .cv-tip[hidden], .cv-panel[hidden], .cv-list[hidden], .cv-flag[hidden] { display: none; }
+  .cv-loading .bar { width: min(260px, 60vw); height: 3px; background: #0001; border-radius: 3px; overflow: hidden; } .cv-loading .bar i { display: block; height: 100%; width: 0; background: var(--green-deep); transition: width .2s; }
+  .cv-state { position: absolute; inset: 40% 0 auto 0; margin: 0 auto; width: min(420px, 88%); text-align: center; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+  .cv-list { position: absolute; left: 10px; top: 64px; bottom: 40px; overflow: auto; }
+  .cv-list ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .cv-list button { display: flex; align-items: center; gap: 8px; width: 100%; font: inherit; font-size: .82rem; text-align: left; padding: 5px 10px; border: 0; border-radius: 6px; background: transparent; color: var(--char); cursor: pointer; }
+  .cv-list button:hover, .cv-list button.on { background: #fffd; } .cv-list button.on { font-weight: 600; }
+  .cv-list i { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .cv-panel { position: absolute; right: 12px; top: 12px; bottom: 36px; width: min(340px, calc(100% - 24px)); overflow: auto; background: #fffffff2; backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 14px; box-shadow: 0 18px 50px -24px #183c3266; animation: cvpin .5s var(--ease); }
+  @keyframes cvpin { from { opacity: 0; transform: translateX(14px); } }
+  .cv-panel h3 { margin: .15em 0 .5em; font-size: 1.5rem; }
+  .cv-panel .x { position: absolute; right: 10px; top: 6px; border: 0; background: none; font-size: 1.6rem; line-height: 1; color: var(--muted); cursor: pointer; }
+  .cv-dl { margin: 0; } .cv-dl dt { font-size: .66rem; letter-spacing: .09em; text-transform: uppercase; color: var(--green); margin-top: 11px; }
+  .cv-dl dd { margin: 2px 0 0; font-size: .9rem; line-height: 1.5; } .cv-dl dd.pv { color: var(--muted); font-style: italic; }
+  .cv-flag { background: #f7efdc; border: 1px solid var(--gold); color: #5a4a22; border-radius: 8px; font-size: .78rem; line-height: 1.4; padding: 8px 10px; margin-bottom: 4px; }
+  .cv-src { font-size: .76rem; color: var(--muted); margin-top: 12px; } .cv-src ul { padding-left: 1.1em; margin: 6px 0 0; }
+  .cv figcaption { font-size: .8rem; color: var(--muted); margin-top: .8rem; max-width: 52rem; }
+  @media (max-width: 760px) {
+    .cv-stage { height: clamp(560px, 86svh, 720px); }
+    .cv-list { top: auto; bottom: 34px; left: 6px; right: 6px; } .cv-list ul { display: flex; gap: 4px; overflow-x: auto; } .cv-list button { white-space: nowrap; background: #fffc; border-radius: 999px; width: auto; min-height: 36px; }
+    .cv-panel { top: auto; bottom: 0; right: 0; left: 0; width: auto; max-height: 58%; border-radius: 16px 16px 0 0; }
+    .cv.sel .cv-hint, .cv.sel .cv-list { display: none; }
+  }
+</style>
