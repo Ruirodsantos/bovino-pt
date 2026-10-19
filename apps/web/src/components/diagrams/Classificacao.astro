@@ -1,0 +1,275 @@
+---
+import Img from "../proto/Img.astro";
+import { href, tr, type Lang } from "../../i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = tr(lang);
+const b = import.meta.env.BASE_URL;
+const eur = (c: string) => `https://eur-lex.europa.eu/legal-content/${lang === "en" ? "EN" : "PT"}/TXT/?uri=CELEX:${c}`;
+
+// 2. Etiqueta ilustrativa: sem números reais. «oblig» = exigido por regulamento da UE; «hab» = habitual; «fac» = facultativo.
+const labelItems = [
+  { id: "origem", t: T("Origem", "Origin"), tag: "oblig", s: T("Indica onde o animal nasceu, foi criado e abatido.", "Says where the animal was born, reared and slaughtered."), m: T("A origem permite conhecer a proveniência, mas não determina, por si só, a qualidade gastronómica.", "Origin tells you where the meat comes from, but on its own it does not determine eating quality.") },
+  { id: "lote", t: T("Lote ou referência", "Lot or reference"), tag: "oblig", s: T("Permite relacionar a carne com o animal ou grupo de animais de origem.", "Links the meat to the animal or group of animals it came from."), m: T("É essencial para a rastreabilidade e para eventuais recolhas de produtos.", "It is essential for traceability and for any product recalls.") },
+  { id: "abate", t: T("Estabelecimento de abate", "Slaughterhouse"), tag: "oblig", s: T("Identifica o matadouro autorizado onde o animal foi abatido.", "Identifies the approved slaughterhouse where the animal was slaughtered."), m: T("Aparece como «Abatido em», com o país e o número de aprovação do estabelecimento.", "Shown as “Slaughtered in”, with the country and the approval number of the establishment.") },
+  { id: "desmancha", t: T("Estabelecimento de desmancha", "Cutting plant"), tag: "oblig", s: T("Identifica o estabelecimento autorizado onde a carcaça foi cortada em peças.", "Identifies the approved establishment where the carcass was cut into pieces."), m: T("Aparece como «Desmancha em», com o país e o número de aprovação.", "Shown as “Cut in”, with the country and the approval number.") },
+  { id: "corte", t: T("Denominação do corte", "Name of the cut"), tag: "hab", s: T("Permite identificar a peça de carne adquirida.", "Lets you identify the piece of meat you are buying."), m: T("Exemplos: vazia, alcatra, lombo, acém. Os nomes variam entre regiões e talhos.", "Examples: vazia, alcatra, lombo, acém. Names vary between regions and butchers.") + " " },
+  { id: "validade", t: T("Data de validade", "Date mark"), tag: "oblig", s: T("A indicação «Consumir até» é fundamental para a segurança alimentar.", "The “Use by” date is essential for food safety."), m: T("O consumidor deve respeitar a data e as condições de conservação.", "Consumers should respect the date and the storage conditions.") },
+];
+const tagTxt: Record<string, string> = { oblig: T("Obrigatório na UE", "Required in the EU"), hab: T("Habitual", "Usual"), fac: T("Facultativo", "Optional") };
+
+// 4. Cartões visuais
+// 5. SEUROP
+const conf = [
+  ["S", T("Superior", "Superior"), T("desenvolvimento muscular excecional, com perfis muito arredondados", "exceptional muscle development, with very rounded profiles")],
+  ["E", T("Excelente", "Excellent"), T("musculatura excelente, com perfis muito arredondados", "excellent muscling, with very rounded profiles")],
+  ["U", T("Muito boa", "Very good"), T("musculatura muito boa, com perfis arredondados", "very good muscling, with rounded profiles")],
+  ["R", T("Boa", "Good"), T("boa musculatura, com perfis tendencialmente retilíneos", "good muscling, with generally straight profiles")],
+  ["O", T("Razoável", "Fair"), T("musculatura razoável, com perfis retilíneos a côncavos", "fair muscling, with straight to concave profiles")],
+  ["P", T("Fraca", "Poor"), T("musculatura fraca, com perfis côncavos", "poor muscling, with concave profiles")],
+];
+const fat = [
+  ["1", T("Muito fraca", "Very low"), T("cobertura de gordura muito fraca ou inexistente", "very low or no fat cover")],
+  ["2", T("Fraca", "Slight"), T("cobertura de gordura fraca", "slight fat cover")],
+  ["3", T("Média", "Average"), T("cobertura de gordura média", "average fat cover")],
+  ["4", T("Forte", "High"), T("cobertura de gordura forte", "high fat cover")],
+  ["5", T("Muito forte", "Very high"), T("cobertura de gordura muito forte", "very high fat cover")],
+];
+const factors = [
+  { t: T("Raça e genética", "Breed and genetics"), s: T("Podem influenciar o desenvolvimento muscular, a composição da carcaça e determinadas características da carne.", "They can influence muscle development, carcass composition and certain meat traits."), m: T("Raças e cruzamentos diferentes podem dar carcaças e carnes diferentes. Cada raça autóctone portuguesa tem a sua página no Atlas.", "Different breeds and crosses can give different carcasses and meat. Each native Portuguese breed has its own page in the Atlas."), l: [T("Ver as raças", "See the breeds"), href(lang, "racas/")] },
+  { t: T("Idade do animal", "Age of the animal"), s: T("Pode influenciar a cor, a estrutura do tecido conjuntivo e outras características da carne.", "It can influence colour, the structure of connective tissue and other meat traits."), m: T("A idade não é, em geral, indicada na embalagem; a categoria da carcaça (por exemplo, vitelo ou boi) é registada no abate.", "Age is not usually shown on the pack; the carcass category (for example veal or ox) is recorded at slaughter.") },
+  { t: T("Alimentação", "Feed"), s: T("Pode influenciar a composição da gordura e determinadas características sensoriais.", "It can influence fat composition and certain sensory traits."), m: T("Os efeitos dependem do sistema de produção. Certificações como a DOP e a IGP podem fixar regras de alimentação no caderno de especificações.", "Effects depend on the production system. Designations such as PDO and PGI can set feeding rules in their specification document.") },
+  { t: T("Maturação", "Ageing"), s: T("Em condições controladas, pode melhorar a tenrura e desenvolver características de sabor.", "Under controlled conditions it can improve tenderness and develop flavour."), m: T("Não é, em geral, indicada na embalagem.", "It is not usually shown on the pack."), l: [T("A maturação no Atlas", "Ageing in the Atlas"), href(lang, "carne/02-maturacao/")] },
+  { t: T("Corte", "Cut"), s: T("Diferentes músculos possuem características distintas de fibras e tecido conjuntivo.", "Different muscles have different fibres and connective tissue."), m: T("Um corte mais económico pode dar um excelente resultado quando preparado corretamente.", "A cheaper cut can give an excellent result when prepared properly."), l: [T("Guia de cortes", "Cuts guide"), href(lang, "carne/03-cortes/")] },
+  { t: T("Preparação", "Preparation"), s: T("A temperatura, o tempo e o método de confeção têm uma influência decisiva no resultado final.", "Temperature, time and cooking method have a decisive influence on the final result."), m: T("Também a forma de cortar conta.", "How you slice it matters too.") , l: [T("Como cortar contra a fibra", "How to cut against the grain"), href(lang, lang === "en" ? "carne/against-the-grain/" : "carne/contra-a-fibra/")] },
+];
+const tips = [
+  [T("Escolhe primeiro o corte.", "Choose the cut first."), T("Pensa na receita antes de escolher a carne.", "Think about the recipe before choosing the meat.")],
+  [T("Verifica a origem.", "Check the origin."), T("Confirma onde o animal nasceu, foi criado e abatido.", "Check where the animal was born, reared and slaughtered.")],
+  [T("Observa a gordura.", "Look at the fat."), T("O marmoreado pode contribuir para a suculência e o sabor, dependendo do corte.", "Marbling can add juiciness and flavour, depending on the cut.")],
+  [T("Confirma a conservação.", "Check storage."), T("Verifica a validade, a integridade da embalagem e as condições de refrigeração.", "Check the date, that the pack is intact and the refrigeration.")],
+  [T("Não confundas preço com qualidade.", "Do not confuse price with quality."), T("Uma carne mais cara não é necessariamente mais adequada à tua receita ou às tuas preferências.", "A more expensive meat is not necessarily better suited to your recipe or your taste.")],
+];
+const concepts = [
+  [T("Classificação da carcaça", "Carcass grading"), T("Descreve a conformação muscular e a cobertura de gordura.", "Describes muscle conformation and fat cover.")],
+  [T("Rastreabilidade", "Traceability"), T("Permite identificar a proveniência da carne e acompanhar o produto ao longo da cadeia de produção.", "Makes it possible to identify where the meat comes from and follow the product along the production chain.")],
+  [T("Certificação de origem", "Origin certification"), T("Identifica produtos que cumprem determinados requisitos de produção, origem e controlo.", "Identifies products that meet certain production, origin and control requirements.")],
+  [T("Qualidade gastronómica", "Eating quality"), T("Relaciona-se com características como tenrura, sabor, suculência e textura.", "Relates to traits such as tenderness, flavour, juiciness and texture.")],
+];
+const D = { // textos usados pelo script
+  noInfo: T("Não tenho informação suficiente", "I don’t have enough information"),
+  cons: T("O que significa para o consumidor?", "What does it mean for the consumer?"),
+  consTxt: T("Esta classificação descreve características da carcaça, mas não permite determinar diretamente a tenrura, o sabor ou a qualidade gastronómica de um bife.", "This grade describes characteristics of the carcass, but it does not directly tell you the tenderness, flavour or eating quality of a steak."),
+  confL: T("Conformação", "Conformation"), fatL: T("Gordura", "Fat"),
+};
+---
+<div class="cl" data-lang={lang}>
+  <!-- 1. Introdução -->
+  <section class="cl-s cl-intro reveal">
+    <h3>{T("Toda a carne de bovino é igual?", "Is all beef the same?")}</h3>
+    <p class="sub">{T("Duas embalagens podem parecer iguais, ter a mesma origem e apresentar preços muito diferentes. Mas será que a mais cara é necessariamente melhor?", "Two packs can look the same, have the same origin and very different prices. But is the dearer one necessarily better?")}</p>
+    <p>{T("Antes de chegar ao supermercado, a carne de bovino passa por diferentes processos de avaliação e classificação. Alguns ajudam a identificar as características físicas da carcaça. Outros permitem conhecer a origem e garantir a rastreabilidade.", "Before it reaches the supermarket, beef goes through different assessment and grading processes. Some help identify the physical characteristics of the carcass. Others make it possible to know the origin and guarantee traceability.")}</p>
+    <p>{T("Mas há um detalhe importante: nem todas estas informações chegam ao consumidor.", "But there is an important detail: not all of this information reaches the consumer.")}</p>
+    <a class="cl-btn" href="#cl-embalagem" data-scroll>{T("Descobrir como escolher melhor", "Find out how to choose better")} ↓</a>
+  </section>
+
+  <!-- 2. Embalagem -->
+  <section class="cl-s reveal" id="cl-embalagem">
+    <span class="eyebrow">{T("No supermercado", "In the supermarket")}</span>
+    <h3>{T("O que nos diz realmente uma embalagem de carne?", "What does a pack of meat really tell us?")}</h3>
+    <p>{T("Num supermercado português encontramos normalmente a origem, o corte, o peso, o preço e a validade. Raramente encontramos a raça, a maturação ou a classificação da carcaça.", "In a Portuguese supermarket we normally find the origin, the cut, the weight, the price and the date. We rarely find the breed, the ageing or the carcass grade.")}</p>
+    <div class="pk">
+      <div class="label" role="group" aria-label={T("Etiqueta ilustrativa de uma embalagem de carne de bovino", "Illustrative label of a beef pack")}>
+        <span class="lt">{T("Esquema ilustrativo", "Illustration")}</span>
+        <button class="pt" data-pt="corte"><b>{T("Bifes da vazia", "Vazia steaks")}</b></button>
+        <button class="pt" data-pt="origem">{T("Origem: Portugal", "Origin: Portugal")}</button>
+        <button class="pt" data-pt="lote">{T("Lote / referência: ·····", "Lot / reference: ·····")}</button>
+        <button class="pt" data-pt="abate">{T("Abatido em: Portugal (n.º ·····)", "Slaughtered in: Portugal (no. ·····)")}</button>
+        <button class="pt" data-pt="desmancha">{T("Desmancha em: Portugal (n.º ·····)", "Cut in: Portugal (no. ·····)")}</button>
+        <button class="pt" data-pt="validade">{T("Consumir até: ··/··/····", "Use by: ··/··/····")}</button>
+        <small>{T("Os números e as datas estão propositadamente em branco.", "Numbers and dates are deliberately left blank.")}</small>
+      </div>
+      <div class="pk-out" aria-live="polite" id="pk-out"><p class="muted">{T("Toca numa linha da etiqueta para ver o que significa.", "Tap a line on the label to see what it means.")}</p></div>
+    </div>
+    <script type="application/json" id="pk-data" set:html={JSON.stringify(Object.fromEntries(labelItems.map((i) => [i.id, { t: i.t, s: i.s, m: i.m, tag: tagTxt[i.tag], k: i.tag }])))} />
+    <details class="cl-card"><summary>{T("O que a etiqueta normalmente não revela", "What the label does not normally tell you")}</summary>
+      <p>{T("Raça do animal, idade exata, classificação SEUROP, tempo de maturação, nível de gordura intramuscular e tenrura.", "Breed of the animal, exact age, SEUROP grade, ageing time, level of intramuscular fat and tenderness.")}</p>
+      <p>{T("Estes elementos podem influenciar as características da carne, mas não são, em geral, informações obrigatórias na embalagem.", "These can influence the meat, but they are not, in general, mandatory information on the pack.")}</p>
+      <p class="fine">{T("Fontes: Regulamento (CE) n.º 1760/2000, artigo 13.º (rotulagem da carne de bovino) e Regulamento (UE) n.º 1169/2011 (informação alimentar). Os produtos não pré-embalados seguem regras próprias de informação no ponto de venda.", "Sources: Regulation (EC) No 1760/2000, Article 13 (beef labelling) and Regulation (EU) No 1169/2011 (food information). Non-prepacked products follow their own rules for information at the point of sale.")} <a href={eur("32000R1760")} rel="noopener">1760/2000 ↗</a> · <a href={eur("32011R1169")} rel="noopener">1169/2011 ↗</a></p>
+    </details>
+  </section>
+
+  <!-- 3. Quiz -->
+  <section class="cl-s reveal" id="cl-quiz">
+    <span class="eyebrow">{T("Experimenta", "Try it")}</span>
+    <h3>{T("Consegues identificar a melhor carne?", "Can you spot the better meat?")}</h3>
+    <div class="qz">
+      <div class="qp"><b>A</b><span>{T("Bifes da vazia", "Vazia steaks")}</span><span>{T("Origem: Portugal", "Origin: Portugal")}</span><span>400 g</span><span>6,00 €</span><strong>15,00 €/kg</strong></div>
+      <div class="qp"><b>B</b><span>{T("Bifes da vazia", "Vazia steaks")}</span><span>{T("Origem: Portugal", "Origin: Portugal")}</span><span>400 g</span><span>10,00 €</span><strong>25,00 €/kg</strong></div>
+    </div>
+    <p class="q">{T("Qual escolherias?", "Which would you choose?")}</p>
+    <div class="qb" role="group"><button data-q="A">A — 15 €/kg</button><button data-q="B">B — 25 €/kg</button><button data-q="X">{D.noInfo}</button></div>
+    <div class="qa" id="qa" hidden aria-live="polite">
+      <p><strong>{T("Com estas informações, não é possível determinar qual tem melhor qualidade gastronómica.", "With this information, it is not possible to tell which has better eating quality.")}</strong></p>
+      <p>{T("Sabemos que ambas são vazia de bovino com origem portuguesa. Mas não sabemos:", "We know both are beef vazia from Portugal. But we do not know:")}</p>
+      <ul>{[T("a raça ou o cruzamento", "the breed or cross"), T("a idade do animal", "the age of the animal"), T("o processo de maturação", "the ageing process"), T("a tenrura", "the tenderness"), T("a quantidade de gordura intramuscular", "the amount of intramuscular fat"), T("as condições específicas de produção", "the specific production conditions")].map((x) => <li>{x}</li>)}</ul>
+      <p>{T("A carne mais cara não é necessariamente a melhor. E a carne mais barata não é necessariamente inferior.", "The dearer meat is not necessarily the better. And the cheaper meat is not necessarily worse.")}</p>
+      <p class="fine">{T("Os preços apresentados são meramente ilustrativos.", "The prices shown are purely illustrative.")}</p>
+    </div>
+  </section>
+
+  <!-- 4. Avaliar a olho -->
+  <section class="cl-s reveal">
+    <span class="eyebrow">{T("Antes de comprar", "Before you buy")}</span>
+    <h3>{T("O que podemos observar antes de comprar?", "What can we look at before buying?")}</h3>
+    <div class="cards4">
+      <article class="vc"><figure class="fr"><Img id="bife-rump" sizes="(max-width:700px) 100vw, 480px" credit lang={lang} /></figure>
+        <h4>{T("Gordura intramuscular", "Intramuscular fat")}</h4><p>{T("Os pequenos veios de gordura distribuídos pelo músculo podem contribuir para a suculência, o sabor e a sensação de tenrura.", "The small veins of fat spread through the muscle can contribute to juiciness, flavour and a sense of tenderness.")}</p>
+        <details><summary>{T("Saber mais", "Learn more")}</summary><p>{T("O marmoreado não é o mesmo que a gordura exterior da peça. A quantidade ideal depende do corte, do método de preparação e das preferências pessoais.", "Marbling is not the same as the outer fat of the piece. The ideal amount depends on the cut, the method of preparation and personal taste.")}</p></details></article>
+      <article class="vc"><figure class="fr two"><img src={`${b}img/classif/t-bone.jpg`} alt={T("Peça de T-bone crua, vermelho vivo", "Raw T-bone, bright red")} loading="lazy" /><img src={`${b}img/classif/vazia.jpg`} alt={T("Peça de flank steak crua, vermelho mais escuro", "Raw flank steak, darker red")} loading="lazy" /></figure>
+        <span class="cr">{T("Fotos: MCB (CC BY-SA 2.5) e Bortz60 (CC BY-SA 3.0), Wikimedia Commons. Cortes e luz diferentes: servem só para mostrar que o vermelho varia.", "Photos: MCB (CC BY-SA 2.5) and Bortz60 (CC BY-SA 3.0), Wikimedia Commons. Different cuts and lighting: they only show that red varies.")}</span>
+        <h4>{T("Cor da carne", "Colour of the meat")}</h4><p>{T("A carne de bovino pode apresentar diferentes tonalidades de vermelho. Uma cor mais escura não significa necessariamente carne estragada, e uma cor mais viva não garante maior frescura.", "Beef can show different shades of red. A darker colour does not necessarily mean spoiled meat, and a brighter colour does not guarantee freshness.")}</p>
+        <details><summary>{T("Saber mais", "Learn more")}</summary><p>{T("A cor depende de vários fatores, incluindo a idade do animal, a concentração de mioglobina, a exposição ao oxigénio e o tipo de embalagem.", "Colour depends on several factors, including the age of the animal, the concentration of myoglobin, exposure to oxygen and the type of packaging.")}</p></details></article>
+      <article class="vc"><figure class="fr fph2"><span>{T("Fotografia por recolher", "Photo to be sourced")}<small>{T("embalagem com algum líquido, de fonte livre", "pack with some liquid, from a free source")}</small></span></figure>
+        <h4>{T("Líquido na embalagem", "Liquid in the pack")}</h4><p>{T("É normal que a carne liberte alguma água durante a conservação. Uma quantidade elevada pode estar associada a maior perda de líquidos, mas não permite, isoladamente, determinar a qualidade ou a segurança do produto.", "It is normal for meat to release some water during storage. A large amount can be associated with greater fluid loss, but on its own it does not tell you the quality or safety of the product.")}</p></article>
+      <article class="vc"><figure class="fr"><Img id="carne-variedade" sizes="(max-width:700px) 100vw, 480px" credit lang={lang} /></figure>
+        <h4>{T("O corte certo", "The right cut")}</h4><p>{T("Nem todos os cortes são adequados às mesmas receitas. Um corte mais económico pode produzir um excelente resultado quando preparado corretamente.", "Not all cuts suit the same recipes. A cheaper cut can give an excellent result when prepared properly.")}</p>
+        <details><summary>{T("Saber mais", "Learn more")}</summary><p>{T("Os músculos que mais trabalham têm mais tecido conjuntivo e colagénio: pedem cozedura lenta e húmida, que transforma o colagénio em gelatina e torna a carne tenra.", "Muscles that work most have more connective tissue and collagen: they need slow, moist cooking, which turns collagen into gelatine and makes the meat tender.")} <a href={href(lang, "carne/03-cortes/")}>{T("Ver o guia de cortes →", "See the cuts guide →")}</a></p></details></article>
+    </div>
+  </section>
+
+  <!-- 5. SEUROP -->
+  <section class="cl-s reveal" id="cl-seurop">
+    <span class="eyebrow">{T("Nível técnico", "Technical level")}</span>
+    <h3>{T("Então o que é a classificação SEUROP?", "So what is SEUROP grading?")}</h3>
+    <p>{T("Depois do abate, as carcaças de bovinos abrangidas pelo sistema europeu de classificação são avaliadas segundo duas características: a conformação muscular e a cobertura de gordura. Esta avaliação ajuda a caracterizar e comercializar as carcaças. Não é uma classificação direta do sabor ou da tenrura da carne.", "After slaughter, the carcasses of bovines covered by the European grading system are assessed on two characteristics: muscle conformation and fat cover. This helps describe and trade carcasses. It is not a direct grade of the flavour or tenderness of the meat.")}</p>
+    <div class="sg2">
+      <div><h4>{T("A · Conformação", "A · Conformation")}</h4><ul class="scale">{conf.map(([c, n, d]) => <li><b>{c}</b> {n}</li>)}</ul></div>
+      <div><h4>{T("B · Gordura", "B · Fat")}</h4><ul class="scale">{fat.map(([c, n, d]) => <li><b>{c}</b> {n}</li>)}</ul><p class="fine">{T("Avalia a cobertura de gordura da carcaça, não o marmoreado dos bifes.", "It assesses the fat cover of the carcass, not the marbling of the steaks.")}</p></div>
+    </div>
+    <p class="fine">{T("Ilustrações ou fotografias oficiais de carcaças para cada classe: em recolha (não usamos imagens de animais vivos nem geradas por IA).", "Official illustrations or photographs of carcasses for each class: being sourced (we use neither live-animal images nor AI-generated images).")}</p>
+    <h4>{T("C · Tabela SEUROP: escolhe uma combinação", "C · SEUROP table: pick a combination")}</h4>
+    <div class="grid" role="grid" aria-label={T("Tabela SEUROP", "SEUROP table")}>
+      <div class="gh corner">{T("conformação ↓ · gordura →", "conformation ↓ · fat →")}</div>
+      {fat.map(([f]) => <div class="gh">{f}</div>)}
+      {conf.map(([c]) => <><div class="gh">{c}</div>{fat.map(([f]) => <button class="gc" data-s={`${c}${f}`}>{c}{f}</button>)}</>)}
+    </div>
+    <div class="sg-out" id="sg-out" aria-live="polite"><p class="muted">{T("Escolhe uma célula da tabela, por exemplo R3.", "Pick a cell in the table, for example R3.")}</p></div>
+    <p class="warn">{T("As classes de conformação e gordura não constituem, por si só, uma escala de qualidade gastronómica.", "The conformation and fat classes are not, on their own, a scale of eating quality.")}</p>
+    <script type="application/json" id="sg-data" set:html={JSON.stringify({ conf: Object.fromEntries(conf.map(([c, n, d]) => [c, [n, d]])), fat: Object.fromEntries(fat.map(([c, n, d]) => [c, [n, d]])), D })} />
+    <p class="fine">{T("Fontes: Regulamento (UE) n.º 1308/2013 e Regulamento Delegado (UE) 2017/1182. A classificação não é obrigatória em matadouros pequenos (menos de 150 bovinos adultos por semana, em média anual), nos termos do regulamento.", "Sources: Regulation (EU) No 1308/2013 and Delegated Regulation (EU) 2017/1182. Grading is not compulsory in small slaughterhouses (fewer than 150 adult bovines a week, annual average), under the regulation.")} <a href={eur("32013R1308")} rel="noopener">1308/2013 ↗</a> · <a href={eur("32017R1182")} rel="noopener">2017/1182 ↗</a></p>
+  </section>
+
+  <!-- 6. SEUROP na embalagem -->
+  <section class="cl-s reveal">
+    <h3>{T("Porque não encontro S2, R3 ou U3 no supermercado?", "Why can’t I find S2, R3 or U3 in the supermarket?")}</h3>
+    <p>{T("Porque a classificação SEUROP é utilizada principalmente na avaliação e comercialização de carcaças. Não existe uma obrigação geral de a apresentar nas embalagens de carne de bovino vendidas ao consumidor. Por isso, é normal que uma embalagem de bifes não indique qualquer código SEUROP.", "Because SEUROP grading is used mainly to assess and trade carcasses. There is no general obligation to show it on beef packs sold to consumers. So it is normal for a pack of steaks to carry no SEUROP code.")}</p>
+    <details class="cl-card"><summary>{T("Saber mais: quatro conceitos que não se devem confundir", "Learn more: four concepts not to be confused")}</summary>
+      <dl>{concepts.map(([a, d]) => <><dt>{a}</dt><dd>{d}</dd></>)}</dl>
+      <figure class="aus"><Img id="bife-embalado" sizes="(max-width:700px) 100vw, 520px" credit lang={lang} /><figcaption>{T("Exemplo de fora de Portugal: embalagens de um supermercado australiano, com o selo do sistema australiano de classificação de qualidade (MSA). Em Portugal, a etiqueta não traz, em geral, um selo deste tipo.", "An example from outside Portugal: packs in an Australian supermarket, with the seal of the Australian eating-quality grading scheme (MSA). In Portugal the label does not generally carry a seal of this kind.")}</figcaption></figure>
+    </details>
+  </section>
+
+  <!-- 7. DOP / IGP -->
+  <section class="cl-s reveal">
+    <h3>{T("Uma carne certificada é necessariamente melhor?", "Is certified meat necessarily better?")}</h3>
+    <p>{T("Portugal possui carnes de bovino com Denominação de Origem Protegida (DOP) e Indicação Geográfica Protegida (IGP). Estas certificações identificam produtos que cumprem regras específicas relacionadas com a origem e a produção.", "Portugal has beef with Protected Designation of Origin (PDO) and Protected Geographical Indication (PGI). These certifications identify products that meet specific rules on origin and production.")}</p>
+    <div class="two">
+      <div class="vc2"><h4>DOP</h4><p>{T("Produtos cuja qualidade ou características estão essencial ou exclusivamente ligadas a um meio geográfico específico, incluindo fatores naturais e humanos, e cujas fases de produção relevantes decorrem na área definida.", "Products whose quality or characteristics are essentially or exclusively due to a particular geographical environment, including natural and human factors, and whose relevant production steps take place in the defined area.")}</p></div>
+      <div class="vc2"><h4>IGP</h4><p>{T("Produtos cuja qualidade, reputação ou outra característica está associada à origem geográfica, exigindo que pelo menos uma das fases de produção ocorra na área delimitada.", "Products whose quality, reputation or other characteristic is linked to their geographical origin, requiring at least one of the production steps to take place in the defined area.")}</p></div>
+    </div>
+    <p>{T("Uma certificação DOP ou IGP não significa automaticamente que todos os consumidores irão considerar essa carne mais saborosa ou tenra. Significa que o produto respeita um conjunto de regras verificáveis.", "A PDO or PGI does not automatically mean every consumer will find that meat tastier or more tender. It means the product follows a set of verifiable rules.")}</p>
+    <p><a href={href(lang, "racas/")}>{T("Ver as raças e as carnes certificadas →", "See the breeds and certified meats →")}</a></p>
+    <p class="fine">{T("Definições segundo o regime europeu de indicações geográficas (Regulamento (UE) n.º 1151/2012, hoje substituído pelo Regulamento (UE) 2024/1143). Texto em revisão face ao novo regulamento.", "Definitions under the European geographical-indications scheme (Regulation (EU) No 1151/2012, now replaced by Regulation (EU) 2024/1143). Wording under review against the new regulation.")} <a href={eur("32024R1143")} rel="noopener">2024/1143 ↗</a></p>
+  </section>
+
+  <!-- 8. Fatores -->
+  <section class="cl-s reveal">
+    <h3>{T("Porque é que dois bifes podem ser tão diferentes?", "Why can two steaks be so different?")}</h3>
+    <div class="fx">{factors.map((f) => (
+      <details class="fxi"><summary><b>{f.t}</b><span>{f.s}</span></summary><p>{f.m}{f.l && <> <a href={f.l[1]}>{f.l[0]} →</a></>}</p></details>
+    ))}</div>
+  </section>
+
+  <!-- 9. Guia prático -->
+  <section class="cl-s reveal cl-end">
+    <h3>{T("Na próxima vez que comprares carne, lembra-te disto.", "Next time you buy meat, remember this.")}</h3>
+    <ol class="tips">{tips.map(([a, d]) => <li><strong>{a}</strong><span>{d}</span></li>)}</ol>
+    <p class="final">{T("Comprar melhor não significa necessariamente comprar mais caro. Significa compreender aquilo que estamos a comprar.", "Buying better does not necessarily mean paying more. It means understanding what we are buying.")}</p>
+    <p class="fine"><span class="chip wait">{T("Texto original · em revisão", "Original text · under review")}</span></p>
+  </section>
+</div>
+
+<style is:global>
+  .cl { grid-column: 1 / -1; }
+  .cl-s { padding: 2.2rem 0; border-top: 1px solid var(--line); max-width: 52rem; }
+  .cl-s:first-child { border-top: 0; }
+  .stg-body .cl h3, .cl h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); margin: .2em 0 .5em; line-height: 1.2; color: var(--char); font-weight: 500; }
+  .cl h4 { font-size: 1.05rem; margin: 1.2em 0 .4em; }
+  .cl .sub { font-size: 1.1rem; color: var(--green-deep); }
+  .cl .fine { font-size: .8rem; color: var(--muted); }
+  .cl-btn { display: inline-block; margin-top: .6rem; padding: 12px 20px; border-radius: 999px; background: var(--green-deep); color: var(--ivory) !important; text-decoration: none; font-weight: 500; }
+  .cl-card { margin-top: 1.2rem; border: 1px solid var(--line); border-radius: 14px; padding: 4px 16px; background: #fff; }
+  .cl details > summary { cursor: pointer; padding: 12px 0; font-weight: 500; list-style: none; display: flex; justify-content: space-between; gap: 12px; min-height: 44px; align-items: center; }
+  .cl details > summary::-webkit-details-marker { display: none; } .cl details > summary::after { content: "+"; font-size: 1.3rem; color: var(--green); transition: transform .3s var(--ease); flex: none; }
+  .cl details[open] > summary::after { transform: rotate(45deg); }
+  .cl summary:focus-visible, .cl button:focus-visible, .cl a:focus-visible { outline: 2px solid var(--green-deep); outline-offset: 3px; border-radius: 6px; }
+  .pk { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; margin-top: 1rem; }
+  .label { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 34px 14px 12px; display: grid; gap: 6px; box-shadow: 0 10px 30px -22px #183c3299; }
+  .label .lt { position: absolute; top: 10px; left: 14px; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .pt { font: inherit; font-size: .92rem; text-align: left; background: var(--ivory-2); border: 1px solid transparent; border-radius: 8px; padding: 9px 12px; cursor: pointer; color: var(--char); min-height: 44px; }
+  .pt:hover, .pt.on { border-color: var(--green); background: var(--green-soft); }
+  .pk-out { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; min-height: 9rem; }
+  .pk-out h4 { margin: 0 0 .3em; } .tg { display: inline-block; font-size: .66rem; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; background: var(--green-soft); color: var(--green-deep); margin-bottom: 6px; } .tg.hab { background: #f3ead2; color: #6b5517; }
+  .qz { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1rem 0; }
+  .qp { border: 1px solid var(--line); background: #fff; border-radius: 14px; padding: 14px 16px; display: grid; gap: 2px; font-size: .95rem; } .qp b { font-size: 1.5rem; color: var(--green); } .qp strong { font-size: 1.1rem; margin-top: 6px; }
+  .q { font-weight: 500; margin: .8rem 0 .4rem; }
+  .qb { display: flex; flex-wrap: wrap; gap: 8px; } .qb button { font: inherit; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--green-deep); background: transparent; color: var(--green-deep); cursor: pointer; min-height: 44px; }
+  .qb button:hover, .qb button.on { background: var(--green-deep); color: var(--ivory); }
+  .qa { margin-top: 1rem; padding: 16px 18px; border-left: 3px solid var(--gold); background: var(--ivory-2); border-radius: 0 12px 12px 0; } .qa[hidden] { display: none; }
+  .cards4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 1rem; } .cl-s:has(.cards4) { max-width: none; }
+  .vc h4 { margin-top: .8em; } .vc p { font-size: .94rem; margin: .3em 0; } .vc .cr, .aus .cr { display: block; font-size: .7rem; color: var(--muted); margin-top: 4px; }
+  .fr { margin: 0; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; background: var(--ivory-2); } .fr img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fr.two { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; } .fr.fph2 { display: grid; place-content: center; text-align: center; color: var(--muted); border: 1px dashed var(--line); font-size: .9rem; } .fr.fph2 small { display: block; font-size: .72rem; }
+  .vc .cr { margin-bottom: 6px; }
+  .scale { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: .95rem; } .scale b { display: inline-block; width: 1.6em; color: var(--green); }
+  .sg2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid { display: grid; grid-template-columns: 1.3fr repeat(5, 1fr); gap: 4px; text-align: center; margin: .6rem 0; max-width: 34rem; }
+  .gh { font-weight: 600; color: var(--green); font-size: .85rem; align-self: center; } .gh.corner { font-size: .62rem; font-weight: 400; color: var(--muted); text-align: left; }
+  .gc { font: inherit; font-size: .85rem; padding: 10px 0; border-radius: 8px; border: 0; background: #f0eee6; color: var(--char); cursor: pointer; min-height: 40px; } .gc:hover { background: var(--green-soft); } .gc.on { background: var(--green-deep); color: var(--ivory); }
+  .sg-out { border: 1px solid var(--line); background: #fff; border-radius: 12px; padding: 14px 18px; max-width: 34rem; } .sg-out p { margin: .3em 0; }
+  .warn { font-size: .88rem; padding: 10px 14px; border-radius: 10px; background: #f7efdc; border: 1px solid var(--gold); max-width: 34rem; }
+  .cl dl { margin: 0; } .cl dt { font-weight: 600; margin-top: .8em; } .cl dd { margin: .15em 0 0; }
+  .aus { margin: 1.2rem 0 .6rem; } .aus img { width: 100%; max-width: 30rem; border-radius: 12px; display: block; } .aus figcaption { font-size: .85rem; color: var(--muted); margin-top: 6px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 1rem 0; } .vc2 { border-top: 2px solid var(--green); padding-top: 8px; } .vc2 h4 { margin-top: 0; }
+  .fxi { border-top: 1px solid var(--line); } .fxi:last-child { border-bottom: 1px solid var(--line); } .fxi summary { display: grid !important; grid-template-columns: 1fr auto; gap: 2px 12px; } .fxi summary span { grid-column: 1; font-weight: 400; font-size: .92rem; color: var(--muted); } .fxi summary::after { grid-column: 2; grid-row: 1 / span 2; }
+  .tips { list-style: none; counter-reset: t; padding: 0; display: grid; gap: 10px; } .tips li { counter-increment: t; display: grid; grid-template-columns: 2.2rem 1fr; gap: 0 8px; } .tips li::before { content: counter(t); grid-row: 1 / span 2; font-size: 1.6rem; color: var(--gold); line-height: 1; } .tips span { color: var(--muted); font-size: .95rem; }
+  .final { font-size: 1.2rem; color: var(--green-deep); margin-top: 1.4rem; max-width: 36rem; }
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .8s var(--ease), transform .8s var(--ease); } .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  @media (max-width: 700px) { .pk, .qz, .cards4, .sg2, .two { grid-template-columns: 1fr; } .grid { grid-template-columns: 1.1fr repeat(5, 1fr); } }
+</style>
+<script>
+  const root = document.querySelector<HTMLElement>(".cl");
+  if (root) {
+    const J = (id: string) => JSON.parse(document.getElementById(id)!.textContent || "{}");
+    const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]!));
+    const pk = J("pk-data"), out = document.getElementById("pk-out")!;
+    root.querySelectorAll<HTMLButtonElement>(".pt").forEach((b) => b.addEventListener("click", () => {
+      root.querySelectorAll(".pt").forEach((x) => x.classList.toggle("on", x === b));
+      const d = pk[b.dataset.pt!]; out.innerHTML = `<span class="tg ${d.k}">${esc(d.tag)}</span><h4>${esc(d.t)}</h4><p>${esc(d.s)}</p><p>${esc(d.m)}</p>`;
+    }));
+    const qa = document.getElementById("qa")!;
+    root.querySelectorAll<HTMLButtonElement>("[data-q]").forEach((b) => b.addEventListener("click", () => { root.querySelectorAll("[data-q]").forEach((x) => x.classList.toggle("on", x === b)); qa.hidden = false; }));
+    const sg = J("sg-data"), so = document.getElementById("sg-out")!;
+    root.querySelectorAll<HTMLButtonElement>(".gc").forEach((b) => b.addEventListener("click", () => {
+      root.querySelectorAll(".gc").forEach((x) => x.classList.toggle("on", x === b));
+      const k = b.dataset.s!, c = sg.conf[k[0]], f = sg.fat[k[1]];
+      so.innerHTML = `<h4 style="margin-top:0">${k}</h4><p><b>${esc(sg.D.confL)} ${k[0]}</b> (${esc(c[0])}): ${esc(c[1])}.</p><p><b>${esc(sg.D.fatL)} ${k[1]}</b> (${esc(f[0])}): ${esc(f[1])}.</p><p><b>${esc(sg.D.cons)}</b><br>${esc(sg.D.consTxt)}</p>`;
+    }));
+    root.querySelectorAll<HTMLAnchorElement>("[data-scroll]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); const t = document.querySelector(a.getAttribute("href")!); t?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }));
+    const els = root.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) els.forEach((e) => e.classList.add("in"));
+    else { const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.08 }); els.forEach((e) => io.observe(e)); }
+  }
+</script>

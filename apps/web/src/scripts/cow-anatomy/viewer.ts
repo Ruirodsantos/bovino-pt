@@ -13,14 +13,14 @@ import { CUTS } from "./cuts-data";
 
 export type Piece = { id: string; pivot: THREE.Group; mesh: THREE.Mesh; triangles: number; centre: THREE.Vector3 };
 type Opts = {
-  root: HTMLElement; base: string; model?: string; reducedModel?: boolean;
+  root: HTMLElement; base: string; model?: string; embed?: boolean; reducedModel?: boolean;
   onProgress?: (p: number) => void; onState?: (s: "loading" | "ready" | "error", msg?: string) => void;
   onHover?: (id: string | null) => void; onSelect?: (id: string | null) => void;
 };
 
 const cutById = new Map(CUTS.map((c) => [c.id, c]));
 
-export async function startCutsViewer({ root, base, model, onProgress, onState, onHover, onSelect }: Opts) {
+export async function startCutsViewer({ root, base, model, embed, onProgress, onState, onHover, onSelect }: Opts) {
   const canvas = root.querySelector("canvas")!;
   if (!(canvas.getContext("webgl2") || canvas.getContext("webgl"))) { onState?.("error", "WebGL"); return null; }
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
@@ -39,6 +39,8 @@ export async function startCutsViewer({ root, base, model, onProgress, onState, 
   scene.add(sun, sun.target);
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), new THREE.ShadowMaterial({ opacity: 0.22 })); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
 
+  // Em páginas com scroll, a roda só aproxima com Ctrl/⌘ (senão a página deve continuar a rolar).
+  if (embed) canvas.addEventListener("wheel", (e) => { if (!(e.ctrlKey || e.metaKey)) e.stopImmediatePropagation(); }, { capture: true });
   const controls = new OrbitControls(camera, canvas);
   controls.enableDamping = true; controls.dampingFactor = 0.07; controls.enablePan = false; controls.rotateSpeed = 0.7; controls.zoomSpeed = 0.7;
   controls.maxPolarAngle = Math.PI / 2 - 0.02; controls.minPolarAngle = 0.25;
