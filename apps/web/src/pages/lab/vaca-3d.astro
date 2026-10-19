@@ -1,0 +1,59 @@
+---
+import Base from "../../layouts/Base.astro";
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Protótipo 3D · O animal" description="Protótipo interno do visualizador 3D (Modo 1: o animal)." noindex>
+  <main class="lab pad">
+    <section class="viewer" id="viewer">
+      <canvas aria-label="Bovino em três dimensões. Arraste para rodar, use a roda ou dois dedos para aproximar."></canvas>
+      <div class="vh">
+        <span class="eyebrow">Protótipo · Modo 1 · O animal</span>
+        <h1>Rodar o animal</h1>
+      </div>
+      <p class="hint" id="hint">Arraste para rodar · roda ou dois dedos para aproximar</p>
+      <div class="loading" id="loading" hidden><div class="bar"><i id="bar"></i></div><span>A carregar o modelo…</span></div>
+      <div class="state" id="state" hidden></div>
+      <details class="credit" id="credit" hidden><summary>Modelo e licença</summary><div id="creditBody"></div></details>
+    </section>
+  </main>
+</Base>
+<script>
+  import { startViewer } from "../../scripts/cow-viewer.ts";
+  const base = import.meta.env.BASE_URL;
+  const $ = (id: string) => document.getElementById(id)!;
+  const q = new URLSearchParams(location.search);
+  const loading = $("loading"), bar = $("bar"), state = $("state");
+  const msg = (t: string, html = false) => { state.hidden = false; html ? (state.innerHTML = t) : (state.textContent = t); };
+  const v = await startViewer({
+    root: $("viewer"), base, model: q.get("model") || undefined,
+    onProgress: (p) => { (bar as HTMLElement).style.width = `${Math.round(p * 100)}%`; },
+    onState: (s, m) => {
+      loading.hidden = s !== "loading";
+      if (s === "missing") msg("<strong>Falta o modelo 3D.</strong> O visualizador está pronto; coloque o ficheiro <code>cow.glb</code> e <code>cow.json</code> (autor, licença, fonte) em <code>public/models/</code>.", true);
+      if (s === "error") msg(m === "WebGL" ? "Este navegador não suporta WebGL." : "Não foi possível carregar o modelo.");
+      if (s === "ready") state.hidden = true;
+    },
+  });
+  if (v?.manifest) {
+    const m = v.manifest; $("credit").hidden = false;
+    $("creditBody").innerHTML = `<p><strong>${m.title}</strong><br>Autor: ${m.author}<br>Licença: <a href="${m.license_url ?? m.source_url}" rel="noopener">${m.license}</a><br><a href="${m.source_url}" rel="noopener">Fonte ↗</a></p>`;
+  }
+  (window as any).__viewer = v;
+  setTimeout(() => ($("hint").style.opacity = "0"), 9000);
+</script>
+<style is:global>
+  .lab { padding: 0 !important; }
+  .viewer { position: relative; height: 100svh; min-height: 560px; background: radial-gradient(ellipse 80% 70% at 50% 45%, #fbf9f3 0%, #f1ece0 70%, #e6dfcf 100%); overflow: hidden; }
+  .viewer canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; outline: none; }
+  .viewer canvas:active { cursor: grabbing; }
+  .vh { position: absolute; left: clamp(20px, 5vw, 64px); top: clamp(96px, 14vh, 140px); pointer-events: none; max-width: 24rem; }
+  .vh h1 { margin: .2em 0 0; font-size: clamp(1.8rem, 4vw, 3rem); }
+  .hint { position: absolute; left: 50%; transform: translateX(-50%); bottom: 22px; margin: 0; font-size: .85rem; color: var(--muted); background: #ffffffcc; padding: 7px 14px; border-radius: 999px; transition: opacity .8s; pointer-events: none; text-align: center; }
+  .loading { position: absolute; inset: auto 0 45% 0; display: grid; place-items: center; gap: 10px; color: var(--muted); font-size: .9rem; }
+  .loading[hidden], .state[hidden] { display: none; }
+  .loading .bar { width: min(260px, 60vw); height: 3px; background: #0001; border-radius: 3px; overflow: hidden; } .loading .bar i { display: block; height: 100%; width: 0; background: var(--green-deep); transition: width .2s; }
+  .state { position: absolute; inset: 40% 0 auto 0; margin: 0 auto; width: min(520px, 88vw); text-align: center; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; font-size: .95rem; }
+  .credit { position: absolute; right: 16px; bottom: 16px; font-size: .78rem; background: #ffffffe6; border-radius: 12px; padding: 8px 12px; max-width: min(320px, calc(100vw - 32px)); }
+  .credit summary { cursor: pointer; color: var(--muted); } .credit p { margin: .6em 0 0; }
+  @media (max-width: 700px) { .vh { top: 84px; } .hint { bottom: 70px; } }
+</style>
