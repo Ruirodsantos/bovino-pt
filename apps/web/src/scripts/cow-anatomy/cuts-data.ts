@@ -1,0 +1,112 @@
+// Conteúdo do painel de cada corte (pt-PT). Só entra o que está numa fonte consultada; onde as fontes divergem fica dito,
+// e onde não dizem nada fica «Por validar». Nenhuma fonte é norma oficial de desmancha: ver docs/3D_CORTES_FONTES.md.
+export const PV = "Por validar";
+
+export type Foto = { src: string; autor: string; licenca: string; url: string; nota?: string };
+export type Cut = {
+  id: string; nome: string; cor: string;
+  onde: string; caracteristicas: string; textura: string; gordura: string; metodos: string; pratos: string;
+  categoria?: string;
+  /** «fontes» = fontes consultadas concordam no essencial; «validar» = posição ou definição a confirmar com um talhante. */
+  estado: "fontes" | "validar"; nota?: string; fontes: string[]; foto?: Foto;
+};
+
+export const FONTES: Record<string, { nome: string; url: string }> = {
+  im: { nome: "Irmãos Monteiro, «Cortes de Bovino»", url: "https://irmaosmonteiro.pt/cortes-de-bovino/" },
+  gh: { nome: "Gestão Hoteleira, «As partes da vaca»", url: "https://gestaohoteleira.blogs.sapo.pt/as-partes-da-vaca-38826" },
+  bm: { nome: "Bourmet, «Cortes de vaca em Portugal»", url: "https://bourmet.pt/cozinha-explicada/ingredientes/cortes-vaca-portugal" },
+  sp: { nome: "The Sounds of Portuguese, «Beef cuts in Portugal»", url: "https://thesoundsofportuguese.com/portugal-beef-cuts-in-portugal/" },
+  mb: { nome: "Matadouros da Beira Litoral, «Chã de fora»", url: "https://matadourosbl.pt/produto/cha-de-fora/" },
+  pj: { nome: "Projeto: guia de cortes (texto editorial em revisão)", url: "../../carne/" },
+};
+
+export const CUTS: Cut[] = [
+  { id: "cachaco", nome: "Cachaço", cor: "#8b5e5b", estado: "fontes", fontes: ["im", "gh", "sp"], categoria: "2.ª categoria",
+    onde: "Pescoço, entre a cabeça e a pá.",
+    caracteristicas: "Carne saborosa que dá consistência gelatinosa aos molhos.",
+    textura: "Macia e tenra depois de cozedura lenta.", gordura: "Gordura entremeada.",
+    metodos: "Cozedura lenta: estufar, guisar ou cozer.",
+    pratos: "Cozidos e caldos, guisados e estufados; também picada para hambúrgueres e almôndegas." },
+  { id: "acem", nome: "Acém", cor: "#b0714e", estado: "fontes", fontes: ["im", "gh", "sp"], categoria: "1.ª categoria (a coberta do acém é de 2.ª)",
+    onde: "Parte superior do dianteiro, por trás do pescoço e por cima da pá; inclui parte da zona das costelas.",
+    caracteristicas: "Divide-se em acém comprido, acém redondo e coberta do acém (menos tenra). As fontes divergem: uma descreve-o como magro e fibroso, outra como suculento e com mais gordura nos bifes.",
+    textura: "Fibrosa, de sabor intenso.", gordura: "As fontes divergem: de magro a com mais gordura.",
+    metodos: "Estufar e assar lentamente; os bifes podem fritar-se ou grelhar-se.",
+    pratos: "Estufados, assados, grelhados e costeletas." },
+  { id: "pa", nome: "Pá", cor: "#c2a15a", estado: "fontes", fontes: ["im", "gh", "sp"], categoria: "1.ª categoria",
+    onde: "Ombro.",
+    caracteristicas: "Versátil e suculenta. Uma fonte diz que é muito tenra; outra, que precisa de tempo para amolecer.",
+    textura: "Tenra ou firme, consoante a fonte; pede cozedura prolongada.", gordura: PV,
+    metodos: "Cozedura prolongada; em bifes, salteada ou grelhada.",
+    pratos: "Cozidos, assados, bife de cebolada; também picada." },
+  { id: "peito", nome: "Peito", cor: "#6a8f8a", estado: "validar", fontes: ["im", "gh", "bm"], categoria: "Maçã do peito: 1.ª · peito do alto: 2.ª · prego do peito: 3.ª",
+    nota: "Região aproximada: a maçã do peito, o peito do alto e o prego do peito não estão separados no modelo.",
+    onde: "Parte inferior e frontal do tronco, entre as mãos. Divide-se em maçã do peito, peito do alto e prego do peito.",
+    caracteristicas: "A maçã do peito é muito saborosa; o peito do alto e o prego do peito são mais rijos.",
+    textura: "Densa e rica em colagénio (maçã do peito, sem osso).", gordura: "Com gordura.",
+    metodos: "Cozedura lenta: guisar, estufar, brasear ou assar no forno, desossado e enrolado.",
+    pratos: "Guisados, caldos e assados; a maçã do peito também em pudins e picada." },
+  { id: "vazia", nome: "Vazia", cor: "#9c4f45", estado: "validar", fontes: ["im", "gh", "bm", "pj"],
+    nota: "Posição a validar com um talhante. Em Portugal «vazia» e «lombo» usam-se de formas diferentes consoante o talho. O lombo (filé) fica por baixo, junto à coluna, e não se vê à superfície.",
+    onde: "Zona do lombo, junto às costelas, sob o dorso.",
+    caracteristicas: "Bifes altos e pesados, com bom equilíbrio entre maciez e sabor.",
+    textura: "Tenra.", gordura: "As fontes divergem: capa de gordura que mantém a suculência (uma) ou quase sem gordura (outra).",
+    metodos: "Grelhar, assar ou fritar; bifes grossos à brasa; fatiar contra a fibra.",
+    pratos: "Bife da vazia, rosbife de vazia, T-bone." },
+  { id: "aba", nome: "Aba", cor: "#cf9468", estado: "validar", fontes: ["im", "gh", "sp"],
+    nota: "Limites aproximados. A aba grossa e a aba delgada não estão separadas no modelo.",
+    onde: "Flanco (parede do abdómen), por baixo da vazia.",
+    caracteristicas: "A aba grossa (ou carregada) é mais saborosa e de 2.ª categoria; a aba delgada é mais fibrosa e dura (3.ª).",
+    textura: "Fibra comprida; a delgada é dura.", gordura: PV,
+    metodos: "Cozer e estufar; a delgada serve para caldos.",
+    pratos: "Cozido à portuguesa (aba grossa); caldos e estufados." },
+  { id: "alcatra", nome: "Alcatra", cor: "#8a9a62", estado: "fontes", fontes: ["im", "gh", "bm", "sp"], categoria: "1.ª categoria",
+    onde: "Garupa: zona traseira do dorso, sobre a anca.",
+    caracteristicas: "Carne magra e macia; a zona da picanha tem capa de gordura.",
+    textura: "Macia.", gordura: "Magra, com capa de gordura na zona da picanha.",
+    metodos: "Grelhar, fritar, assar ou estufar.",
+    pratos: "Bifes, assados, estufados, bifes picados; cozido." },
+  { id: "cha-de-fora", nome: "Chã de fora", cor: "#4f6682", estado: "validar", fontes: ["gh", "mb", "sp"], categoria: "1.ª categoria",
+    nota: "Limites aproximados. Do lado de fora da coxa distinguem-se ainda a rabadilha e o ganso redondo, que as fontes não localizam com rigor.",
+    onde: "Parte exterior da coxa, na traseira do animal. A parte interior chama-se chã de dentro.",
+    caracteristicas: "As fontes divergem: uma descreve-a como macia e suculenta, outra como seca, a lardear com toucinho. Dela extrai-se o ganso redondo.",
+    textura: "Macia ou seca, consoante a fonte.", gordura: "Teor moderado de gordura.",
+    metodos: "Estufar, guisar ou assar; também grelhados.",
+    pratos: "Bifes, assados lardeados, estufados." },
+  { id: "pojadouro", nome: "Pojadouro", cor: "#8a6a8f", estado: "validar", fontes: ["gh"], categoria: "1.ª qualidade",
+    nota: "Superfície interna da coxa, só visível entre as pernas; os limites com a chã de fora são aproximados.",
+    onde: "Parte interna e posterior da coxa (também chamada chã de dentro).",
+    caracteristicas: "Carne muito suculenta.",
+    textura: PV, gordura: PV,
+    metodos: "Grelhar, estufar ou guisar.",
+    pratos: "Bifes com molho, estufados e guisados." },
+  { id: "chambao", nome: "Chambão", cor: "#5c7d68", estado: "fontes", fontes: ["gh", "bm", "sp"],
+    onde: "Perna, acima da mão: nos membros da frente e de trás.",
+    caracteristicas: "Osso com tutano e músculo rico em gelatina; exige cozedura prolongada.",
+    textura: "Gelatinosa.", gordura: PV,
+    metodos: "Cozedura longa e húmida.",
+    pratos: "Caldos, cozido, estufados e guisados; em rodelas, o osso buco." },
+  { id: "mao", nome: "Mão", cor: "#9a9486", estado: "fontes", fontes: ["gh", "sp"],
+    onde: "Pata: a «mão» de vaca é o pé do animal, por baixo do chambão.",
+    caracteristicas: "Consistência macia e gelatinosa.",
+    textura: "Macia e gelatinosa.", gordura: PV,
+    metodos: "Estufar e guisar.",
+    pratos: "Estufada com massa e guisados." },
+  { id: "rabo", nome: "Rabo", cor: "#6e5a49", estado: "fontes", fontes: ["bm", "pj"],
+    onde: "Cauda.",
+    caracteristicas: "Gelatinoso; pede cerca de 3 horas de cozedura.",
+    textura: "Gelatinosa.", gordura: PV,
+    metodos: "Cozedura longa e húmida, estufado com vinho tinto.",
+    pratos: "Rabo de boi estufado com vinho tinto; sopa e caldo." },
+];
+
+/** Peças que as fontes nomeiam mas que não se desenham na pele (interiores, subdivisões ou posição não indicada). */
+export const PENDENTES: { nome: string; porque: string }[] = [
+  { nome: "Lombo (filé, lombinho)", porque: "Interior, junto à coluna, por baixo da vazia: só se vê ao separar as peças (modo 3)." },
+  { nome: "Rabadilha", porque: "As fontes consultadas não indicam a localização." },
+  { nome: "Ganso redondo", porque: "Extrai-se da chã de fora; não é uma região à superfície." },
+  { nome: "Fios / nispo", porque: "Posição por validar com um talhante." },
+  { nome: "Osso buco", porque: "São rodelas do chambão, não uma região." },
+  { nome: "Maçã do peito · prego do peito", porque: "Subdivisões do peito, sem limites indicados." },
+  { nome: "Acém comprido · acém redondo · coberta", porque: "Subdivisões do acém, sem limites indicados." },
+];
