@@ -168,5 +168,10 @@ const stages: Stage[] = [
   .note .small { font-size: .85rem; color: var(--muted); }
   .stg-wide { grid-template-columns: minmax(0, 1fr); } .stg-wide > .stg-fig { display: none; } .stg-wide .lead { font-size: 1.1rem; max-width: 46rem; color: var(--green-deep); }
   @media (max-width: 860px) { .stg { grid-template-columns: 1fr; } .stg-fig .frame { position: static; aspect-ratio: 16/9; } }
-  .ph-hero .eyebrow{color:#e6efdc;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .ph-hero .eyebrow{color:#e6efdc}
+  /* Capa: mostrar a fotografia inteira; o texto fica por baixo */
+  .ph-hero{display:block;min-height:0}
+  .ph-hero .bg{position:static;display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+  .ph-hero::after{display:none}
+  .ph-hero .hero-in{padding:clamp(28px,4vw,56px) 0 clamp(36px,5vw,64px)}
 </style>
