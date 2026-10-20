@@ -89,17 +89,18 @@ const stages: Stage[] = [
 ---
 <Base lang={lang} overlay title={T("Da pastagem ao prato", "From pasture to plate")} description={T("As nove etapas do percurso do bovino e da carne em Portugal, do nascimento ao consumidor, com exemplos de várias raças e regiões.", "The nine stages of the journey of cattle and beef in Portugal, from birth to consumer, with examples from several breeds and regions.")}>
   <header class="hero ph-hero">
-    <Img id="tourem-manada" sizes="100vw" eager lang={lang} class="bg" />
+    <Img id="mirandesa-pasto" sizes="100vw" eager lang={lang} class="bg" />
     <div class="hero-in">
       <span class="eyebrow">{T("Do Minho ao Algarve e às ilhas", "From the Minho to the Algarve and the islands")}</span>
       <h1>{T("Da pastagem ao prato", "From pasture to plate")}</h1>
-      <p>{T("Nove etapas, do nascimento ao consumidor. Em cada uma: o processo geral, exemplos de várias raças e regiões, e o que ainda está por documentar.", "Nine stages, from birth to consumer. In each: the general process, examples from several breeds and regions, and what is still to be documented.")}</p>
+      <p>{T("Uma viagem pela vida do animal, pelo trabalho de quem o cria e pelo caminho que a carne percorre até chegar à mesa.", "Follow the animal’s life, the people who raise it, and the journey of beef to the table.")}</p>
       <a class="cue-link" href="#etapas">{T("Ver as etapas ↓", "See the stages ↓")}</a>
     </div>
   </header>
   <section class="sec" id="etapas"><div class="narrow" style="width:min(1060px,100% - 40px)">
+    <p class="journey-lead">{T("Percorra as nove etapas pela ordem natural. Em cada uma, descubra o essencial primeiro e aprofunde apenas se quiser.", "Follow the nine stages in their natural order. Start with the essentials and explore further when you wish.")}</p>
     <nav class="stepnav" aria-label={T("Etapas", "Stages")}>{stages.map((s, i) => <a href={`#${s.id}`}><span>{String(i + 1).padStart(2, "0")}</span>{s.t}</a>)}</nav>
-    <div class="legend">
+    <div class="legend" style="display:none">
       <span class="chip ok">{T("Documentado", "Documented")}</span> {T("com fonte, ligada no fim do bloco.", "with a source, linked at the end of the block.")}
       <span class="chip wait">{T("Possível / por documentar", "Possible / to document")}</span> {T("hipótese plausível que ainda não confirmámos; não é afirmação.", "a plausible hypothesis we have not confirmed; it is not a claim.")}
     </div>
@@ -111,10 +112,10 @@ const stages: Stage[] = [
           <h2>{T("Como saber se estamos a comprar boa carne?", "How do we know we are buying good meat?")}</h2>
           <p class="lead">{T("Da etiqueta do supermercado à classificação das carcaças: aprende a interpretar a informação e a escolher carne com mais confiança.", "From the supermarket label to carcass grading: learn to read the information and choose meat with more confidence.")}</p>
           <Classificacao lang={lang} />
-          {s.ex.length > 0 && <>
+          {s.ex.length > 0 && <details class="stage-detail"><summary>{T("Exemplos e histórias das raças", "Breed examples and stories")}</summary>
             <h3>{T("Exemplos", "Examples")}</h3>
             <ul class="exs">{s.ex.map((e) => <li><strong>{e.slug ? <a href={href(lang, `racas/${e.slug}/`)}>{e.b}</a> : e.b}</strong> — {e.p}</li>)}</ul>
-          </>}
+          </details>}
           <p class="links"><strong>{T("Saber mais", "Learn more")}:</strong> {s.links.map((x, n) => <>{n > 0 && " · "}<a href={x.u} rel={x.u.startsWith("http") ? "noopener" : undefined}>{x.l}{x.u.startsWith("http") ? " ↗" : ""}</a></>)}</p>
         </div>
       </article>
@@ -124,13 +125,13 @@ const stages: Stage[] = [
         <div class="stg-body">
           <span class="eyebrow">{T("Etapa", "Stage")} {i + 1} / 9</span>
           <h2>{s.t}</h2>
-          <h3>{T("O processo geral", "The general process")}</h3>
+
           {s.general.map((p) => <p>{p}</p>)}
           {s.extra === "cuts" && <CortesViewer lang={lang} />}
-          {s.ex.length > 0 && <>
+          {s.ex.length > 0 && <details class="stage-detail"><summary>{T("Exemplos de raças", "Breed examples")}</summary>
             <h3>{T("Exemplos", "Examples")}</h3>
             <ul class="exs">{s.ex.map((e) => <li><strong>{e.slug ? <a href={href(lang, `racas/${e.slug}/`)}>{e.b}</a> : e.b}</strong> — {e.p}</li>)}</ul>
-          </>}
+          </details>}
           {s.maybe.length > 0 && <div class="maybe"><span class="chip wait">{T("Possível / por documentar", "Possible / to document")}</span>{s.maybe.map((p) => <p>{p}</p>)}</div>}
           <p class="links"><strong>{T("Saber mais", "Learn more")}:</strong> {s.links.map((x, n) => <>{n > 0 && " · "}<a href={x.u} rel={x.u.startsWith("http") ? "noopener" : undefined}>{x.l}{x.u.startsWith("http") ? " ↗" : ""}</a></>)}</p>
         </div>
@@ -146,6 +147,7 @@ const stages: Stage[] = [
   </div></section>
 </Base>
 <style is:global>
+  .journey-lead{font-size:1.15rem;line-height:1.8;max-width:670px;margin:0 0 2.5rem}.stage-detail{margin-top:1.5rem;padding:1rem 1.3rem;border:1px solid var(--line);border-radius:14px}.stage-detail summary{cursor:pointer;font-weight:650}.maybe{margin-top:1rem;opacity:.85}.stepnav{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}.stepnav a{flex:0 0 auto;scroll-snap-align:start;min-width:110px}.stg{padding:clamp(3rem,7vw,7rem) 0!important;gap:clamp(2rem,5vw,5rem)!important}.stg-body>p{line-height:1.85}.stg-body h2{font-size:clamp(2.1rem,3.6vw,3.5rem)}
   .ph-hero { position: relative; min-height: 62vh; display: grid; align-items: end; color: #fff; overflow: hidden; background: var(--green-deep); }
   .ph-hero .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ph-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)); }
@@ -166,4 +168,5 @@ const stages: Stage[] = [
   .note .small { font-size: .85rem; color: var(--muted); }
   .stg-wide { grid-template-columns: minmax(0, 1fr); } .stg-wide > .stg-fig { display: none; } .stg-wide .lead { font-size: 1.1rem; max-width: 46rem; color: var(--green-deep); }
   @media (max-width: 860px) { .stg { grid-template-columns: 1fr; } .stg-fig .frame { position: static; aspect-ratio: 16/9; } }
+  .ph-hero .eyebrow{color:#e6efdc;text-shadow:0 1px 6px rgba(0,0,0,.6)}
 </style>
