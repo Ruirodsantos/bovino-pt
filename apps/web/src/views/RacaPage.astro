@@ -18,7 +18,7 @@ const heroC0 = own ? (credits as any)[own.id] : null;
 const heroC = heroC0 && lang === "en" ? { ...heroC0, alt: heroC0.alt_en ?? heroC0.alt, caption: heroC0.caption_en ?? heroC0.caption } : heroC0;
 const FRAMED = new Set(["ramo-grande-feira", "arouquesa-touro", "barrosa-festa"]);
 const framed = !own || FRAMED.has(own.id);
-const bgId = b.slug === "ramo-grande" ? "terceira" : own?.id ?? "montado-pasto";
+const bgId = b.slug === "ramo-grande" ? "reflexo-mundo-acoriano" : own?.id ?? "montado-pasto";
 const isBreedPhoto = own?.kind === "raça";
 const ficha = (await getEntry(lang === "en" ? "fichas_en" : "fichas", b.slug))?.data ?? null;
 const prof = await getEntry(lang === "en" ? "racas_en" : "racas", b.slug);
@@ -70,7 +70,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
 ---
 <Base lang={lang} overlay title={T(`Raça ${b.official_name}`, `${b.official_name} breed`)} description={intro}
   image={own ? `${base}img/${own.id}-lg.webp` : undefined}>
-  <section class:list={["hero", "rg", !framed && "full"]} style="min-height:92svh">
+  <section class:list={["hero", "rg", b.slug === "ramo-grande" && "rg-pico", !framed && "full"]} style="min-height:92svh">
     <img class="bg" src={`${base}img/${bgId}-lg.webp`} srcset={`${base}img/${bgId}-md.webp 900w, ${base}img/${bgId}-lg.webp 1800w`} sizes="100vw" alt={framed ? "" : (heroC?.alt ?? "")} width={(credits as any)[bgId]?.width} height={(credits as any)[bgId]?.height} fetchpriority="high" />
     <div class:list={["wrap", "in", framed && "rgrid"]}>
       <div>
@@ -86,7 +86,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
           <div class="frame" style="aspect-ratio:4/3"><Img id={own.id} sizes="(max-width:900px) 100vw, 520px" eager credit lang={lang} /></div>
           <figcaption>
             {isBreedPhoto ? <><span class="gap">{T("Fotografia provisória da raça", "Provisional photograph of the breed")}</span> {T("A melhor fotografia livre confirmada desta raça; procura-se uma melhor.", "The best confirmed free photograph of this breed; a better one is being sought.")}</> : <span class="gap">{T("Paisagem · foto da raça por obter", "Landscape · breed photo to be found")}</span>}
-            {rg && <> {T("Fundo: paisagem da Terceira", "Background: Terceira landscape")} ({(credits as any).terceira.author}, {licenseLabel(lang, (credits as any).terceira.license)}).</>}
+            {rg && <> {T("Fundo: Lagoa do Capitão, Pico", "Background: Lagoa do Capitão, Pico")} ({(credits as any)[bgId].author}, {licenseLabel(lang, (credits as any)[bgId].license)}).</>}
           </figcaption>
         </figure>
       )}
@@ -188,6 +188,9 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
 </Base>
 <style is:global>
   .rg::after{background:linear-gradient(180deg,rgba(14,42,32,.82),rgba(14,42,32,.9))!important}
+  .rg.rg-pico:not(.full) .bg{filter:none!important}
+  .rg-pico::after{background:linear-gradient(90deg,rgba(10,30,22,.78) 0%,rgba(10,30,22,.45) 55%,rgba(10,30,22,.15) 100%),linear-gradient(180deg,rgba(10,30,22,.5),transparent 25%)!important}
+  @media(max-width:900px){.rg-pico::after{background:linear-gradient(180deg,rgba(10,30,22,.6),rgba(10,30,22,.72))!important}}
   .rg.full::after{background:linear-gradient(180deg,rgba(10,30,22,.45) 0%,rgba(10,30,22,0) 32%,rgba(10,30,22,.15) 55%,rgba(10,30,22,.78) 100%)!important}
   .rg:not(.full) .bg{filter:blur(3px) saturate(.8)}
   .rg{align-items:center}.rg .in{padding:130px 0 70px}
