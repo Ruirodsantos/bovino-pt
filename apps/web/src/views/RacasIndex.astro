@@ -21,30 +21,7 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
     <span class="eyebrow">{T("15 raças autóctones", "15 native breeds")}</span>
     <h1 style="font-size:clamp(2.2rem,6vw,4.4rem);margin:.15em 0 .3em">{T("As raças", "The breeds")}</h1>
     <p class="lead">{T("Escolha uma paisagem e siga a raça que a habita.", "Pick a landscape and follow the breed that lives there.")}</p>
-    <div class="filters" role="group" aria-label={T("Filtrar por região", "Filter by region")}>
-      <button aria-pressed="true" data-r="">{T("Todas", "All")}</button>
-      {Object.entries(labels).map(([k, v]) => <button aria-pressed="false" data-r={k}>{v}</button>)}
-    </div>
   </div></section>
-  <section class="atlas-landscapes" aria-label={T("Paisagens de Portugal", "Portuguese landscapes")}>
-    <figure class="atlas-landscape"><img src={`${import.meta.env.BASE_URL}img/paisagem-alentejo-ia-lg.webp`} alt={T("Interpretação artística das planícies alentejanas, com bovinos sob um sobreiro", "Artistic interpretation of Alentejo plains with cattle and cork oaks")} loading="lazy" /><figcaption><span>{T("Portugal continental", "Mainland Portugal")}</span><strong>{T("A luz do Alentejo", "The light of Alentejo")}</strong><small>{T("Paisagem ilustrativa criada com IA", "AI-generated illustrative landscape")}</small></figcaption></figure>
-    <figure class="atlas-landscape"><img src={`${import.meta.env.BASE_URL}img/paisagem-terceira-ia-lg.webp`} alt={T("Interpretação artística de pastagens verdes e bovinos na ilha Terceira", "Artistic interpretation of green pasture and cattle on Terceira") } loading="lazy" /><figcaption><span>{T("Açores", "Azores")}</span><strong>{T("A força verde da Terceira", "Terceira's green landscape")}</strong><small>{T("Paisagem ilustrativa criada com IA", "AI-generated illustrative landscape")}</small></figcaption></figure>
-  </section>
-  <section class="wrap" style="padding-bottom:var(--s5)">
-    <div class="mosaic">
-      {tiles.map((t) => (
-        <a class:list={["btile", t.size, !t.photo && "nophoto"]} id={t.slug} data-regions={t.regions.join(" ")} href={`${href(lang, "racas/")}${t.slug}/`}>
-          {t.photo && <Img id={t.photo.id} sizes="(max-width:820px) 100vw, 60vw" lang={lang} />}
-          {t.photo && t.photo.kind !== "raça" && <span class="gap">{T("Paisagem · foto da raça por obter", "Landscape · breed photo to be found")}</span>}
-          {!t.photo && <span class="gap">{T("Foto da raça por obter", "Breed photo to be found")}</span>}
-          <div class="t"><span class="r">{TERRA[t.slug]}</span><h3>{t.name}</h3><p class="s">{lang === "en" ? FRASE_EN[t.slug] : FRASE[t.slug]}</p></div>
-        </a>
-      ))}
-    </div>
-    <p class="srcs" style="margin-top:var(--s4);color:var(--muted);font-size:.88rem;max-width:62ch">
-      {T(`${gaps.length} das 15 raças ainda não têm fotografia própria autorizada: ${gaps.map((g) => g.name).join(", ")}. Nesses casos mostra-se uma paisagem do território, claramente assinalada, nunca uma fotografia de outra raça.`, `${gaps.length} of the 15 breeds still have no authorised photograph of their own: ${gaps.map((g) => g.name).join(", ")}. In those cases a landscape of the territory is shown, clearly labelled, never a photograph of another breed.`)}
-    </p>
-  </section>
   <section class="block map" id="mapa">
     <div class="wrap">
       <span class="eyebrow">{T("Mapa", "Map")}</span>
@@ -58,14 +35,25 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
       </div>
     </div>
   </section>
+  <section class="terceira-immersive" aria-label="Paisagem inspirada na ilha Terceira"><img src={`${import.meta.env.BASE_URL}img/paisagem-terceira-ia-lg.webp`} alt="Paisagem artística de pastagens verdes na ilha Terceira"/><div class="terceira-message"><span>{T("Açores · Portugal", "Azores · Portugal")}</span><h2>{T("Há lugares onde a terra ainda dita o ritmo da vida.", "Some places still follow the rhythm of the land.")}</h2></div></section>
+  <section class="wrap" style="padding-bottom:var(--s5)">
+    <div class="mosaic">
+      {tiles.map((t) => (
+        <a class:list={["btile", t.size, !t.photo && "nophoto"]} id={t.slug} data-regions={t.regions.join(" ")} href={`${href(lang, "racas/")}${t.slug}/`}>
+          {t.photo && <Img id={t.photo.id} sizes="(max-width:820px) 100vw, 60vw" lang={lang} />}
+          {t.photo && t.photo.kind !== "raça" && <span class="gap">{T("Paisagem · foto da raça por obter", "Landscape · breed photo to be found")}</span>}
+          {!t.photo && <span class="gap">{T("Foto da raça por obter", "Breed photo to be found")}</span>}
+          <div class="t"><span class="r">{TERRA[t.slug]}</span><h3>{t.name}</h3><p class="s">{lang === "en" ? FRASE_EN[t.slug] : FRASE[t.slug]}</p></div>
+        </a>
+      ))}
+    </div>
+    <p class="srcs" style="margin-top:var(--s4);color:var(--muted);font-size:.88rem;max-width:62ch">
+      {T(`${gaps.length} das 15 raças ainda não têm fotografia própria autorizada: ${gaps.map((g) => g.name).join(", ")}. Nesses casos mostra-se uma paisagem do território, nunca uma fotografia de outra raça. As duas paisagens de grande formato (Terceira e Alentejo) são ilustrações geradas por IA, não fotografias documentais.`, `${gaps.length} of the 15 breeds still have no authorised photograph of their own: ${gaps.map((g) => g.name).join(", ")}. In those cases a landscape of the territory is shown, never a photograph of another breed. The two large landscapes (Terceira and Alentejo) are AI-generated illustrations, not documentary photographs.`)}
+    </p>
+  </section>
+  <section class="alentejo-ending"><img src={`${import.meta.env.BASE_URL}img/paisagem-alentejo-ia-lg.webp`} alt="Paisagem artística das planícies alentejanas" loading="lazy"/><div><span>{T("Alentejo", "Alentejo")}</span><h2>{T("A mesma terra. Outras paisagens. Histórias que merecem ser contadas.", "The same land. Different landscapes. Stories worth telling.")}</h2></div></section>
 </Base>
 <script>
-  const btns = [...document.querySelectorAll<HTMLButtonElement>(".filters button")];
-  btns.forEach((bt) => bt.addEventListener("click", () => {
-    btns.forEach((x) => x.setAttribute("aria-pressed", String(x === bt)));
-    const r = bt.dataset.r;
-    document.querySelectorAll<HTMLElement>(".btile").forEach((t) => { t.hidden = !!r && !(t.dataset.regions ?? "").split(" ").includes(r); });
-  }));
   const mapEl = document.querySelector("[data-chart='breeds-map']");
   if (mapEl) { const o = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { o.disconnect(); import("../scripts/charts.ts"); } }, { rootMargin: "400px" }); o.observe(mapEl); }
 </script>
@@ -82,5 +70,12 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
 </style>
 
 <style>
-.atlas-landscapes{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;background:#f3f1e9}.atlas-landscape{position:relative;margin:0;min-height:clamp(360px,44vw,680px);overflow:hidden;background:#1c3229}.atlas-landscape img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.5s ease}.atlas-landscape:hover img{transform:scale(1.035)}.atlas-landscape:after{content:"";position:absolute;inset:30% 0 0;background:linear-gradient(transparent,rgba(7,26,21,.72))}.atlas-landscape figcaption{position:absolute;bottom:clamp(24px,4vw,65px);left:clamp(24px,4vw,65px);right:24px;color:white;z-index:1;display:flex;flex-direction:column;gap:9px}.atlas-landscape figcaption span{font-size:.8rem;letter-spacing:.19em;text-transform:uppercase}.atlas-landscape figcaption strong{font-size:clamp(1.9rem,3vw,3.4rem);font-weight:500;line-height:1.15}.atlas-landscape figcaption small{font-size:.74rem;opacity:.8}@media(max-width:760px){.atlas-landscapes{grid-template-columns:1fr}.atlas-landscape{min-height:420px}}
+.terceira-immersive,.alentejo-ending{position:relative;min-height: min(95svh,950px);overflow:hidden;background:#163b35;display:flex;align-items:flex-end;color:white}
+.terceira-immersive img,.alentejo-ending img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.terceira-immersive:after,.alentejo-ending:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04) 25%,rgba(5,28,22,.7) 100%)}
+.terceira-message,.alentejo-ending>div{position:relative;z-index:1;width:min(1120px,90%);margin:0 auto;padding:0 0 clamp(65px,10vh,145px)}
+.terceira-message span,.alentejo-ending span{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase}
+.terceira-message h2,.alentejo-ending h2{font-size:clamp(2.4rem,5.2vw,5.7rem);line-height:1.12;max-width:18ch;font-weight:500;margin:18px 0 0;color:white}
+.alentejo-ending{min-height:75svh}
+@media(max-width:700px){.terceira-immersive{min-height:80svh}.terceira-message h2,.alentejo-ending h2{font-size:clamp(2rem,9vw,3.5rem)}}
 </style>

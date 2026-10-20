@@ -9,30 +9,26 @@ const T = tr(lang);
 const all = (await getCollection(lang === "en" ? "carne_en" : "carne")).sort((a, b) => a.data.order - b.data.order);
 ---
 <Base lang={lang} title={T("A Carne", "The Meat")} description={T("A carne de bovino por dentro: crua, maturada, cozinhada e servida ao nível dos melhores restaurantes.", "Beef from the inside: raw, aged, cooked and served at the level of the best restaurants.")}>
-  <section class="block" style="border-top:0"><div class="wrap">
-    <span class="eyebrow">{T("A Carne", "The Meat")}</span>
-    <h1>{T("Conhecer a carne como quem a serve", "Know the meat the way those who serve it do")}</h1>
-    <p class="lede">{T("Do animal ao prato: o que se vê na carne crua, o que a maturação faz, o que acontece ao lume e como se serve. Escrito para quem quer chegar ao nível dos melhores restaurantes ibéricos.", "From animal to plate: what you see in raw meat, what ageing does, what happens over the heat and how it is served. Written for those who want to reach the level of the best Iberian restaurants.")}</p>
-    <p class="muted">{T("Todos os textos são originais e estão ", "All texts are original and are ")}<strong>{T("em revisão", "under review")}</strong>{T(": são escritos a partir de ciência da carne de referência, e as fontes estão listadas no fim de cada página. Onde um valor ainda não foi conferido, o texto di-lo.", ": they are written from reference meat science, and the sources are listed at the end of each page. Where a value has not yet been checked, the text says so.")}</p>
-    <div class="cards">
-      {all.map((d) => (
-        <a class="card c" href={href(lang, `carne/${d.id}/`)}>
-          {d.data.photo && <Photo id={d.data.photo} class="cph" sizes="(max-width: 700px) 100vw, 360px" caption={false} lang={lang} />}
-          <div class="cb"><span class="eyebrow">{String(d.data.order).padStart(2, "0")}</span><h2>{d.data.title}</h2><p>{d.data.summary}</p></div>
-        </a>
-      ))}
-      <a class="card c" href={href(lang, lang === "en" ? "carne/against-the-grain/" : "carne/contra-a-fibra/")}>
-        <div class="cb"><span class="eyebrow">{T("Técnica", "Technique")}</span><h2>{T("Como cortar carne contra a fibra", "How to cut meat against the grain")}</h2><p>{T("Um pequeno detalhe que pode fazer uma grande diferença na tenrura.", "A small detail that can make a big difference to tenderness.")}</p></div>
-      </a>
-    </div>
+  <section class="meat-hero"><img src={`${import.meta.env.BASE_URL}img/carne-madeira-lg.webp`} alt="Carne de bovino sobre madeira, pronta para preparar"/><div class="meat-hero-text"><span class="eyebrow">{T("A carne portuguesa", "Portuguese beef")}</span><h1>{T("Da origem ao sabor.", "From origin to flavour.")}</h1><p>{T("Conhecer. Escolher. Preparar. Saborear.", "Understand. Choose. Prepare. Savour.")}</p></div></section>
+  <section class="meat-journey wrap"><p class="meat-intro">{T("Cinco formas de conhecer melhor aquilo que chega à nossa mesa.", "Five ways to understand what reaches our table.")}</p><div class="meat-links">
+    {all.map((d, i) => <a href={href(lang, `carne/${d.id}/`)} class="meat-link"><span class="number">{String(i+1).padStart(2,"0")}</span><h2>{lang === "en" ? (["Cuts", "Raw meat", "Ageing", "Cooking", "Serving"][i] ?? d.data.title) : (["Cortes", "Carne crua", "Maturar", "Cozinhar", "Servir"][i] ?? d.data.title)}</h2><span class="arrow" aria-hidden="true">↗</span></a>)}
+    <a class="meat-link" href={href(lang, lang === "en" ? "carne/against-the-grain/" : "carne/contra-a-fibra/")}><span class="number">+</span><h2>{T("Contra a fibra", "Against the grain")}</h2><span class="arrow" aria-hidden="true">↗</span></a>
   </div></section>
 </Base>
 <style>
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; margin-top: 28px; }
-  .c { padding: 0; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
-  .c :global(.cph) { aspect-ratio: 16/10; }
-  .c :global(.cph img) { height: 100%; }
-  .cb { padding: 16px 18px 20px; }
-  .cb h2 { font-size: 1.25rem; margin: 4px 0 8px; }
-  .cb p { margin: 0; color: var(--muted); font-size: .92rem; }
+.meat-hero{min-height:clamp(580px,92svh,1000px);position:relative;display:flex;align-items:flex-end;color:white;background:#241c17;overflow:hidden}
+.meat-hero .eyebrow{color:#e6efdc!important;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.meat-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.78)}
+.meat-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(12,19,15,.8))}
+.meat-hero-text{position:relative;z-index:1;width:min(1140px,88%);margin:0 auto;padding-bottom:clamp(80px,12vh,150px)}
+.meat-hero-text h1{color:white;font-size:clamp(3rem,7vw,7rem);line-height:1.06;max-width:12ch;margin:16px 0}
+.meat-hero-text p{font-size:clamp(1.1rem,2vw,1.55rem);margin:0}
+.meat-journey{padding-top:clamp(70px,10vw,150px);padding-bottom:clamp(80px,12vw,180px)}
+.meat-intro{font-size:clamp(1.2rem,2vw,1.8rem);max-width:32ch;margin-bottom:55px}
+.meat-link{display:grid;grid-template-columns:70px 1fr 50px;gap:20px;align-items:center;text-decoration:none;color:inherit;border-top:1px solid var(--line);padding:clamp(22px,3.5vw,44px) 0;transition:padding .3s,background .3s}
+.meat-link:last-child{border-bottom:1px solid var(--line)}
+.meat-link:hover{padding-left:18px;background:rgba(40,80,60,.035)}
+.meat-link h2{font-size:clamp(1.8rem,4.4vw,4.3rem);font-weight:500;line-height:1.1;margin:0}
+.meat-link .number{font-size:.9rem;color:var(--muted)}.meat-link .arrow{font-size:1.8rem;justify-self:end}
+@media(max-width:650px){.meat-link{grid-template-columns:34px 1fr 25px;gap:12px}.meat-hero{min-height:75svh}}
 </style>
