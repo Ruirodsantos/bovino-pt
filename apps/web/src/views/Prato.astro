@@ -172,6 +172,11 @@ const stages: Stage[] = [
   /* Capa: mostrar a fotografia inteira; o texto fica por baixo */
   .ph-hero{display:block;min-height:0}
   .ph-hero .bg{position:static;display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
-  .ph-hero::after{display:none}
-  .ph-hero .hero-in{padding:clamp(28px,4vw,56px) 0 clamp(36px,5vw,64px)}
+  .ph-hero::after{display:block;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.1) 35%,rgba(0,0,0,.7) 100%)}
+  .ph-hero .hero-in{position:absolute;left:0;right:0;bottom:0;margin:0 auto;padding:0 0 clamp(14px,3.5vw,48px)}
+  .ph-hero h1{font-size:clamp(1.5rem,5.5vw,4.6rem)}
+  .ph-hero .hero-in p{font-size:clamp(.8rem,1.5vw,1.15rem)}
+  @media(max-width:700px){.ph-hero .hero-in p,.ph-hero .cue-link,.meat-hero-text p{display:none}}
+  .ph-hero .eyebrow{color:#e6efdc}
+
 </style>

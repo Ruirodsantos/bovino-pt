@@ -78,9 +78,10 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
 .terceira-message h2,.alentejo-ending h2{font-size:clamp(2.4rem,5.2vw,5.7rem);line-height:1.12;max-width:18ch;font-weight:500;margin:18px 0 0;color:white}
 .alentejo-ending{min-height:75svh}
 @media(max-width:700px){.terceira-immersive{min-height:80svh}.terceira-message h2,.alentejo-ending h2{font-size:clamp(2rem,9vw,3.5rem)}}
-.terceira-immersive{display:block!important;min-height:0!important;background:#163b35}
-.terceira-immersive img{position:static!important;display:block;width:100%;height:auto!important;aspect-ratio:16/9;object-fit:contain}
-.terceira-immersive:after{display:none!important}
-.terceira-immersive .terceira-message{padding:clamp(28px,5vw,64px) 0 clamp(36px,6vw,80px)}
-.terceira-immersive .terceira-message h2{max-width:22ch;font-size:clamp(1.9rem,4.2vw,4rem)}
+.terceira-immersive{display:block!important;min-height:0!important;background:#163b35;position:relative}
+.terceira-immersive img{position:static!important;display:block;width:100%;height:auto!important;aspect-ratio:16/9;object-fit:cover}
+.terceira-immersive:after{display:block!important;background:linear-gradient(180deg,transparent 45%,rgba(5,28,22,.72) 100%)}
+.terceira-immersive .terceira-message{position:absolute;left:0;right:0;bottom:0;padding:0 0 clamp(14px,3.5vw,56px)}
+.terceira-immersive .terceira-message h2{max-width:22ch;font-size:clamp(1.15rem,3.8vw,3.6rem);margin-top:8px;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+.terceira-immersive .terceira-message span{font-size:clamp(.62rem,1.2vw,.8rem);text-shadow:0 1px 6px rgba(0,0,0,.6)}
 </style>

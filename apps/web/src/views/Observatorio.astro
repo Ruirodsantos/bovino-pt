@@ -21,13 +21,13 @@ const questions = [
 const label = (st: string) => st === "sim" ? T("Respondida com dados", "Answered with data") : st === "parcial" ? T("Resposta parcial", "Partial answer") : st === "em curso" ? T("Em curso", "In progress") : T("Em aberto", "Open");
 ---
 <Base lang={lang} title={T("Portugal ↔ Espanha", "Portugal ↔ Spain")} description={T("Observatório do comércio de bovinos entre Portugal e Espanha: animais vivos, carne, preços e quem ganha com isso.", "Observatory of cattle trade between Portugal and Spain: live animals, meat, prices and who benefits.")}>
+  <section class="photoband"><Photo id="montanha-cornos" sizes="100vw" lang={lang} /></section>
   <section class="block" style="border-top:0"><div class="wrap">
     <span class="eyebrow">{T("Investigação nº 1 · Observatório do Bovino Português", "Investigation no. 1 · Portuguese Cattle Observatory")}</span>
     <h1>{T("Portugal cria, Espanha compra: quem ganha?", "Portugal raises, Spain buys: who benefits?")}</h1>
     <p class="lede">{T("Uma investigação independente, com dados oficiais. Não partimos do princípio de que a compra espanhola é boa ou má para Portugal: medimos o que se pode medir e mostramos o que ainda não se sabe.", "An independent investigation using official data. We do not assume that Spanish buying is good or bad for Portugal: we measure what can be measured and show what is not yet known.")}</p>
     <div class="grid cols-3" style="margin-top:32px">{pick.map((st) => <StatCard stat={st!} lang={lang} />)}</div>
   </div></section>
-  <section class="photoband"><Photo id="montanha-cornos" sizes="100vw" lang={lang} /></section>
 
   <section class="block"><div class="wrap">
     <h2>{T("Animais vivos: o que atravessa a fronteira", "Live animals: what crosses the border")}</h2>
