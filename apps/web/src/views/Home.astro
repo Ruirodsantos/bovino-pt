@@ -78,24 +78,6 @@ const stages: [string, string, string][] = lang === "en" ? [
     </div>
   </section>
 
-  <section class="sec green">
-    <div class="wrap split">
-      <div class="rv"><span class="eyebrow">{T("A carne portuguesa", "Portuguese beef")}</span><h2 style="margin:.2em 0 .5em">{T("Do campo ao talho, com nome e origem.", "From field to butcher, with a name and an origin.")}</h2>
-        <p class="lead">{T("Cortes, qualidade, maturação e as carnes com denominação de origem.", "Cuts, quality, ageing and the meats with a designation of origin.")}</p>
-        <a class="btn ghost" href={href(lang, "carne/")}>{T("Explorar a carne →", "Explore the meat →")}</a></div>
-      <div class="frame rv" style="aspect-ratio:4/3"><Img id="carne-cortes" sizes="(max-width:820px) 100vw, 600px" credit lang={lang} /></div>
-    </div>
-  </section>
-
-  <section class="journey-table">
-    <div class="journey-table-photo"><img src={`${b}img/bife-tabua-lg.webp`} loading="lazy" alt={T("Carne preparada sobre uma tábua", "Beef prepared on a board")} /></div>
-    <div class="journey-table-copy"><span class="eyebrow">{T("À volta da mesa", "Around the table")}</span>
-      <h2>{T("Da origem ao sabor.", "From origin to flavour.")}</h2>
-      <p>{T("Um bom corte, o fogo certo e o tempo de partilhar. Aprenda a escolher, preparar e servir — sem perder de vista a origem.", "A good cut, the right heat and time to share. Learn to choose, cook and serve — without forgetting the origin.")}</p>
-      <a class="journey-next" href={href(lang,"carne/")}>{T("Explorar a carne →", "Explore beef →")}</a>
-    </div>
-  </section>
-
 <style>
 .journey-opening{display:grid;grid-template-columns:1fr 1.1fr;background:#f5f2e9;color:#263e30;min-height:78vh}
 .journey-opening-copy{padding:clamp(4rem,8vw,9rem) clamp(1.5rem,6vw,7rem);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}

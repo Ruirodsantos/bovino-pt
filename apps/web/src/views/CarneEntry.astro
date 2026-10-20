@@ -36,6 +36,7 @@ const all = secs.length;
     <h1>{d.data.title}</h1>
     <p class="lead">{d.data.summary}</p>
     {d.data.photo && <div class="frame" style="aspect-ratio:16/9;margin:1.2rem 0"><Img id={d.data.photo} sizes="(max-width:820px) 100vw, 820px" eager credit lang={lang} /></div>}
+    {d.id === "03-cortes" && <div class="cuts-extras"><a class="btn" href={href(lang, "anatomia-cortes/")}>{T("Explorar anatomia e cortes em 3D →", "Explore 3D anatomy and cuts →")}</a><a class="btn ghost" href={href(lang, lang === "en" ? "carne/against-the-grain/" : "carne/contra-a-fibra/")}>{T("Aprender a cortar contra a fibra →", "Learn to slice against the grain →")}</a></div>}
     {all > 3 && <nav class="toc" aria-label={T("Neste tema", "In this topic")}>{secs.map((s, i) => <a href={`#s${i}`}>{s.title}</a>)}</nav>}
     <div class="prose" set:html={introHtml} />
     {secs.map((s, i) => (

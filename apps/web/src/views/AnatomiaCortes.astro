@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+import CortesViewer from "../components/diagrams/CortesViewer.astro";
+import { href, tr, type Lang } from "../i18n";
+interface Props { lang: Lang }
+const {lang} = Astro.props;
+const T = tr(lang);
+---
+<Base lang={lang} title={T("Anatomia e cortes", "Anatomy and cuts")} description={T("Explore os cortes do bovino num modelo tridimensional educativo.", "Explore cattle cuts with an educational 3D model.")}>
+  <section class="anatomy-head"><div class="wrap"><a href={href(lang,"carne/03-cortes/")}>← {T("Voltar aos cortes", "Back to cuts")}</a><span class="eyebrow">{T("Explorar o bovino", "Explore the animal")}</span><h1>{T("Anatomia e cortes", "Anatomy and cuts")}</h1><p>{T("Rode o modelo, selecione uma região e descubra os cortes. No telemóvel, rode o ecrã para uma experiência mais ampla.", "Rotate the model and select a region. On mobile, rotate your device for a wider view.")}</p><button class="wide-btn" id="wide-3d" type="button">{T("Explorar em ecrã inteiro ↗", "Explore fullscreen ↗")}</button></div></section>
+  <div class="anatomy-stage" id="anatomy-stage"><button type="button" class="close-btn" id="close-3d" aria-label={T("Fechar ecrã inteiro", "Close fullscreen")}>✕</button><CortesViewer lang={lang}/></div>
+</Base>
+<script>
+ const stage=document.getElementById('anatomy-stage');
+ document.getElementById('wide-3d')?.addEventListener('click',async()=>{try{await stage?.requestFullscreen(); const orientation=screen.orientation as any; if(orientation?.lock) await orientation.lock('landscape').catch(()=>{});}catch{stage?.classList.add('expanded');}});
+ document.getElementById('close-3d')?.addEventListener('click',()=>{if(document.fullscreenElement)document.exitFullscreen();stage?.classList.remove('expanded');});
+</script>
+<style>
+.anatomy-head{padding:clamp(5rem,9vw,9rem) 0 3rem;background:#edf0e7}.anatomy-head .wrap{max-width:980px}.anatomy-head .eyebrow{display:block;margin-top:2rem}.anatomy-head h1{font-size:clamp(2.6rem,6vw,5.5rem);margin:.2em 0}.anatomy-head p{max-width:680px;font-size:1.15rem}.wide-btn{padding:14px 22px;border:1px solid #204b3b;border-radius:40px;background:#204b3b;color:white;cursor:pointer}.anatomy-stage{padding:3rem 4vw;background:#f7f5ef;min-height:65vh}.anatomy-stage:fullscreen,.anatomy-stage.expanded{background:#f7f5ef;overflow:auto;width:100vw;height:100vh;padding:3rem 2vw}.anatomy-stage:fullscreen :global(.cv-stage),.anatomy-stage.expanded :global(.cv-stage){min-height:75vh}.close-btn{display:none;position:fixed;top:14px;right:14px;z-index:50;border:0;border-radius:50%;padding:12px;background:#183b30;color:white}.anatomy-stage:fullscreen .close-btn,.anatomy-stage.expanded .close-btn{display:block}@media(max-width:700px){.anatomy-stage{padding:1rem}.anatomy-head{padding-top:4rem}}
+</style>

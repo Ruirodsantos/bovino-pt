@@ -17,6 +17,7 @@ const tiles = ORDEM.map(([slug, size]) => {
 const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
 ---
 <Base lang={lang} title={T("As raças", "The breeds")} description={T("As 15 raças bovinas autóctones de Portugal: fotografias, solar e história.", "Portugal's 15 native cattle breeds: photographs, homeland and history.")}>
+  <section class="terceira-immersive" aria-label="Paisagem inspirada na ilha Terceira"><img src={`${import.meta.env.BASE_URL}img/paisagem-terceira-ia-lg.webp`} alt="Paisagem artística de pastagens verdes na ilha Terceira"/><div class="terceira-message"><span>{T("Açores · Portugal", "Azores · Portugal")}</span><h2>{T("Há lugares onde a terra ainda dita o ritmo da vida.", "Some places still follow the rhythm of the land.")}</h2></div></section>
   <section class="ghead"><div class="wrap">
     <span class="eyebrow">{T("15 raças autóctones", "15 native breeds")}</span>
     <h1 style="font-size:clamp(2.2rem,6vw,4.4rem);margin:.15em 0 .3em">{T("As raças", "The breeds")}</h1>
@@ -35,7 +36,6 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
       </div>
     </div>
   </section>
-  <section class="terceira-immersive" aria-label="Paisagem inspirada na ilha Terceira"><img src={`${import.meta.env.BASE_URL}img/paisagem-terceira-ia-lg.webp`} alt="Paisagem artística de pastagens verdes na ilha Terceira"/><div class="terceira-message"><span>{T("Açores · Portugal", "Azores · Portugal")}</span><h2>{T("Há lugares onde a terra ainda dita o ritmo da vida.", "Some places still follow the rhythm of the land.")}</h2></div></section>
   <section class="wrap" style="padding-bottom:var(--s5)">
     <div class="mosaic">
       {tiles.map((t) => (
