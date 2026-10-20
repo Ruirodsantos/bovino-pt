@@ -2,13 +2,12 @@ slug: garvonesa
 official_name: Garvonesa
 species: bovine
 status: green
-status_reason: Nome, solar e efetivo confirmados no Catálogo Oficial DGAV/CAP (texto
-  extraído em 2026-10-17)
+status_reason: Nome, solar e efetivo confirmados no Catálogo Oficial DGAV/CAP (texto extraído em 2026-10-17)
 name_sources:
 - source_id: S07
   url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
   retrieved_at: '2026-10-17'
-last_verified: '2026-10-17'
+last_verified: '2026-10-20'
 fields:
   geographic_origin:
     value: Baixo Alentejo — Santiago do Cacém, Odemira, Ourique, Castro Verde…
@@ -16,26 +15,35 @@ fields:
     source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
     verified_at: '2026-10-17'
   historical_background:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: not yet researched
+    value: Predominava nas zonas de transição entre as planícies do Sul (solar da Alentejana) e as serras
+      do solar da Algarvia. O nome liga-se à feira de Garvão; foi preferida para o trabalho no campo pela
+      força de tração e bom temperamento, e perdeu interesse com a mecanização. Desde 1994 há um esforço
+      de conservação da Associação de Agricultores do Campo Branco e do Parque Natural do Sudoeste Alentejano
+      e Costa Vicentina (catálogo DGAV/CAP, p. 31).
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-20'
   population:
-    value: 585 fêmeas e 22 machos em linha pura  em 16 criadores (livro genealógico
-      de adultos  2019)
+    value: 585 fêmeas e 22 machos em linha pura  em 16 criadores (livro genealógico de adultos  2019)
     source_id: S07
     source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
     verified_at: '2026-10-17'
   physical_characteristics:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: not yet researched
+    value: Animais eumétricos, de perfil convexo e longilíneos. Fêmea de pelagem castanho-avermelhada,
+      dorso mais claro, chanfro, cernelha e extremidades pretas; macho de cor preta dominante. Cornos
+      brancos, escurecidos nas pontas. Os nomes populares «gado chamusco» e «gado farrusco» vêm dos tons
+      muito escuros da pelagem (catálogo DGAV/CAP, p. 31).
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-20'
   production_systems:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: not yet researched
+    value: Sistema extensivo, com base no pastoreio de recursos naturais; a maioria dos criadores recorre
+      também a pastagens semeadas e suplementa os animais com fenos, cereais e alimentos concentrados
+      nas épocas de maior escassez de pasto. O uso como animal de trabalho acabou há muitos anos (catálogo
+      DGAV/CAP, p. 31).
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-20'
   meat_characteristics:
     value: null
     source_id: null
