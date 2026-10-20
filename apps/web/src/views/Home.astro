@@ -70,7 +70,7 @@ const stages: [string, string, string][] = lang === "en" ? [
   </section>
 
   <section class="journey-welfare">
-    <img src={`${b}img/geres-descanso-lg.webp`} alt={T("Paisagem de montanha e vida rural", "Mountain landscape and rural life")} loading="lazy" />
+    <img src={`${b}img/paisagem-alentejo-ia-lg.webp`} alt={T("Interpretação artística de bovinos a pastar no Alentejo, criada com IA", "AI-generated artistic interpretation of cattle grazing in Alentejo")} loading="lazy" />
     <div class="journey-welfare-copy"><span class="eyebrow">{T("Antes da carne, há uma vida", "Before the meat, there is a life")}</span>
       <h2>{T("O respeito começa no campo.", "Respect begins in the field.")}</h2>
       <p>{T("Conhecer as condições de criação, o bem-estar dos animais e o trabalho dos produtores ajuda-nos a compreender o verdadeiro valor daquilo que chega à mesa.", "Understanding rearing conditions, animal welfare and farmers' work helps us appreciate what reaches the table.")}</p>
@@ -106,7 +106,7 @@ const stages: [string, string, string][] = lang === "en" ? [
 .journey-opening-photo img,.journey-table-photo img,.journey-welfare>img{width:100%;height:100%;object-fit:cover;display:block}
 .journey-welfare{position:relative;min-height:78vh;display:flex;align-items:center;color:white;background:#21382d;overflow:hidden}
 .journey-welfare>img{position:absolute;inset:0;filter:brightness(.57)}
-.journey-welfare-copy{position:relative;z-index:1;padding:clamp(4rem,8vw,9rem) max(24px,calc((100vw - 1150px)/2));max-width:850px}
+.journey-welfare-copy{position:relative;z-index:1;padding:clamp(4rem,8vw,9rem) clamp(24px,8vw,150px);width:min(100%,880px);box-sizing:border-box}.journey-welfare-copy p{max-width:54ch}.journey-welfare>img{object-position:center 45%}
 .journey-table{display:grid;grid-template-columns:1.1fr 1fr;background:#243d31;color:#fff;min-height:650px}
 .journey-table-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(3rem,7vw,7rem)}
 @media(max-width:760px){.journey-opening,.journey-table{grid-template-columns:1fr}.journey-opening-photo{min-height:48vh;order:-1}.journey-opening-copy,.journey-table-copy{padding:3.5rem 1.5rem 4.5rem}.journey-table-photo{min-height:43vh}.journey-welfare{min-height:70vh}.journey-welfare-copy{padding:5rem 1.5rem}}
