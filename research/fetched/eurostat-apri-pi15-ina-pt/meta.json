@@ -1,0 +1,5 @@
+{
+ "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apri_pi15_ina?format=JSON&lang=en&geo=PT&p_adj=NI&unit=I15",
+ "id": "eurostat-apri-pi15-ina-pt",
+ "status": 404
+}

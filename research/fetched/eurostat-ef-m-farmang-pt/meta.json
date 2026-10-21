@@ -1,0 +1,5 @@
+{
+ "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ef_m_farmang?format=JSON&lang=en&geo=PT&geo=EU27_2020",
+ "id": "eurostat-ef-m-farmang-pt",
+ "status": 200
+}
