@@ -1,0 +1,349 @@
+---
+import Base from "../layouts/Base.astro";
+import Img from "../components/proto/Img.astro";
+import credits from "../data/images.json";
+import { href, licenseLabel, tr, type Lang } from "../i18n";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = tr(lang);
+const b = import.meta.env.BASE_URL;
+const cr = (id: string) => {
+  const c0 = (credits as Record<string, any>)[id];
+  if (!c0) return "";
+  const cap = lang === "en" ? c0.caption_en ?? c0.caption : c0.caption;
+  return `${cap} · ${T("Foto", "Photo")}: ${c0.author} · ${licenseLabel(lang, c0.license)}`;
+};
+const crUrl = (id: string) => (credits as Record<string, any>)[id]?.source_page;
+
+// Fontes (cada número no texto tem uma destas fontes, com ano de referência)
+const S = {
+  ra2019: { l: T("INE — Recenseamento Agrícola 2019, resultados definitivos (publicação de 31.03.2021)", "Statistics Portugal (INE) — Agricultural Census 2019, final results (published 31.03.2021)"), u: "https://www.agroportal.pt/wp-content/uploads/2021/03/31RA2019.pdf", n: T("cópia integral da publicação do INE alojada pela Agroportal", "full copy of the INE publication hosted by Agroportal") },
+  drem: { l: T("DREM — Recenseamento Agrícola 2019, Região Autónoma da Madeira (2022), que cita a média nacional de 64 anos", "DREM — Agricultural Census 2019, Madeira (2022), citing the national average of 64 years"), u: "https://estatistica.madeira.gov.pt/download-now/economica/agricultura-floresta-e-pesca/recenseamento-agricola-pt/recenseamento-agricola-publicacoes-pt/send/361-estruturas-das-exploracoes-agricolas-publicacoes/14692-recenseamento-agricola-2019pdf.html" },
+  cat: { l: T("DGAV/CAP — Catálogo Oficial das Raças Autóctones Portuguesas (livros genealógicos, 2019)", "DGAV/CAP — Official Catalogue of Portuguese Native Breeds (herd books, 2019)"), u: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf" },
+  dgadr: { l: T("DGADR — Produtos tradicionais com nome protegido: carne de bovino (consultado a 21.10.2026)", "DGADR — Traditional products with protected names: beef (consulted 21.10.2026)"), u: "https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino" },
+  gpp: { l: T("GPP — PEPAC, ficha da intervenção E.7.1 Apoio à Instalação de Jovens Agricultores", "GPP — CAP Strategic Plan, intervention sheet E.7.1 Support for the Setting-up of Young Farmers"), u: "https://www.gpp.pt/images/PEPAC/Fichas_PEPAC/Intervencoes_PEPAC/E_7_1.pdf" },
+  lsk: { l: T("Eurostat — ef_lsk_main, explorações com bovinos e número de bovinos, Portugal, 2005–2023 (atualizado a 17.06.2026)", "Eurostat — ef_lsk_main, holdings with cattle and number of cattle, Portugal, 2005–2023 (updated 17.06.2026)"), u: "https://ec.europa.eu/eurostat/databrowser/view/ef_lsk_main/default/table" },
+  mgr: { l: T("Eurostat — ef_m_farmang, explorações por idade do dirigente, Portugal e UE-27, 2010–2023 (atualizado a 17.06.2026)", "Eurostat — ef_m_farmang, farms by age of the manager, Portugal and EU-27, 2010–2023 (updated 17.06.2026)"), u: "https://ec.europa.eu/eurostat/databrowser/view/ef_m_farmang/default/table" },
+  rot: { l: T("Regulamento (CE) n.º 1760/2000 — identificação e registo de bovinos e rotulagem da carne", "Regulation (EC) No 1760/2000 — identification and registration of cattle and beef labelling"), u: `https://eur-lex.europa.eu/legal-content/${lang === "en" ? "EN" : "PT"}/TXT/?uri=CELEX:32000R1760` },
+};
+const ordem = ["ra2019", "drem", "cat", "dgadr", "gpp", "rot", "lsk", "mgr"] as const;
+const num = Object.fromEntries(ordem.map((k, i) => [k, i + 1])) as Record<(typeof ordem)[number], number>;
+
+const vida = lang === "en" ? [
+  "Long before daybreak, someone is already at work.",
+  "There are no guaranteed weekends. Animals don’t take public holidays. There is no day when the land stops needing care.",
+  "For generations, Portuguese farmers have kept alive breeds, landscapes and knowledge that cannot be learned from books.",
+  "But many now face a hard question: who will carry on this work tomorrow?",
+] : [
+  "Muito antes de o dia nascer, já há quem esteja a trabalhar.",
+  "Não há fins de semana garantidos. Não há feriados para os animais. Não há dias em que a terra deixe de precisar de cuidados.",
+  "Durante gerações, os criadores portugueses preservaram raças, paisagens e conhecimentos que não se aprendem nos livros.",
+  "Mas muitos enfrentam hoje uma pergunta difícil: quem continuará este trabalho amanhã?",
+];
+
+const quote = T("Há quem passe uma vida inteira a cuidar da terra. E quem cuida deles?", "Some people spend a whole lifetime caring for the land. And who cares for them?");
+const iaNote = T("Ilustração editorial gerada por IA. Não retrata um agricultor real.", "AI-generated editorial illustration. It does not depict a real farmer.");
+---
+<Base lang={lang} overlay title={T("Os Guardiões da Terra", "Guardians of the Land")} image={`${b}img/guardiao-ia-lg.webp`}
+  description={T("Uma homenagem aos agricultores e criadores de bovinos de Portugal: o seu trabalho, as dificuldades que enfrentam e o que o país pode perder se esta atividade desaparecer.", "A tribute to Portugal's farmers and cattle breeders: their work, the difficulties they face and what the country could lose if this activity disappears.")}>
+
+  <!-- 1. Capa -->
+  <header class="gt-cover">
+    <img class="gt-cover-img" src={`${b}img/guardiao-ia-lg.webp`} srcset={`${b}img/guardiao-ia-sm.webp 480w, ${b}img/guardiao-ia-md.webp 900w, ${b}img/guardiao-ia-lg.webp 1536w`}
+      sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" width="1536" height="1024" fetchpriority="high"
+      alt={T("Ilustração: pastor idoso de boné e casaco encerado, apoiado numa vara, olha para a câmara; atrás, vacas castanhas, um muro de pedra e serras", "Illustration: an elderly shepherd in a cap and waxed jacket leans on a staff and looks at the camera; behind him, brown cows, a stone wall and hills")} />
+    <div class="gt-cover-in">
+      <h1 class="gt-kicker">{T("Os Guardiões da Terra", "Guardians of the Land")}</h1>
+      <p class="gt-quote">«{quote}»</p>
+    </div>
+    <span class="gt-ia">{iaNote}</span>
+  </header>
+
+  <!-- 2. Uma vida inteira -->
+  <section class="gt-vida" aria-labelledby="gt-vida-t">
+    <div class="gt-narrow">
+      <h2 id="gt-vida-t" class="gt-h rv">{T("Uma vida inteira", "A whole lifetime")}</h2>
+      {vida.map((p, i) => <p class:list={["gt-line rv", i === vida.length - 1 && "gt-line-last"]} style={`transition-delay:${i * 90}ms`}>{p}</p>)}
+      <p class="gt-fact rv">{T("Em 2019, os produtores agrícolas portugueses tinham, em média, ", "In 2019, Portuguese farmers were on average ")}<strong>{T("64 anos", "64 years old")}</strong>{T(". Quase dois terços do efetivo bovino eram explorados em regime extensivo.", ". Almost two thirds of the cattle herd was farmed extensively.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 1", "Source 1")}>{num.ra2019}</a></p>
+    </div>
+  </section>
+
+  <!-- 3. O peso de continuar -->
+  <section class="gt-peso" aria-labelledby="gt-peso-t">
+    <div class="gt-wrap gt-intro rv">
+      <span class="eyebrow">{T("Cinco capítulos", "Five chapters")}</span>
+      <h2 id="gt-peso-t" class="gt-h">{T("O peso de continuar", "The weight of carrying on")}</h2>
+      <p class="gt-lead">{T("Criar bovinos é um trabalho de longo prazo: uma vaca demora anos a dar o primeiro vitelo, e uma decisão tomada hoje só se vê nos animais daqui a muito tempo. Estas são as dificuldades que mais pesam.", "Raising cattle is long-term work: a cow takes years to produce her first calf, and a decision taken today only shows in the herd much later. These are the difficulties that weigh most.")}</p>
+    </div>
+
+    <!-- 3.1 Custos -->
+    <article class="gt-ch gt-ch-split">
+      <figure class="gt-ch-fig rv"><Img id="outono-castanheiros" sizes="(max-width:860px) 100vw, 60vw" lang={lang} /><figcaption><a href={crUrl("outono-castanheiros")} rel="noopener">{cr("outono-castanheiros")}</a></figcaption></figure>
+      <div class="gt-ch-txt rv">
+        <span class="gt-num">01</span>
+        <h3>{T("Custos de produção", "Production costs")}</h3>
+        <p>{T("A maior parte do ano, os animais comem o que a terra dá. Mas quando o pasto não chega — no fim do verão ou no inverno —, é preciso comprar ou produzir feno, silagem, cereais e rações. É, em muitas explorações, a maior fatura.", "For most of the year the animals eat what the land provides. But when grass runs short — at the end of summer or in winter — hay, silage, cereals and feed must be bought or grown. On many farms that is the biggest bill.")}</p>
+        <p>{T("Somam-se o gasóleo dos tratores, a eletricidade, a água, as vedações, as máquinas, o veterinário e a manutenção de caminhos, abrigos e bebedouros. São custos que se pagam todos os meses, enquanto a venda de um vitelo acontece uma vez, ao fim de muitos meses de trabalho.", "Then come tractor diesel, electricity, water, fences, machinery, the vet, and upkeep of tracks, shelters and troughs. These costs are paid every month, while a calf is sold once, after many months of work.")}</p>
+        <p class="gt-tag">{T("Enquadramento editorial. Os índices oficiais de preços dos meios de produção serão acrescentados ao Observatório.", "Editorial framing. Official input price indices will be added to the Observatory.")}</p>
+      </div>
+    </article>
+
+    <!-- 3.2 Preço -->
+    <article class="gt-ch gt-ch-band">
+      <figure class="gt-band-fig rv"><Img id="bife-embalado" sizes="100vw" lang={lang} pos="center 40%" /><figcaption><a href={crUrl("bife-embalado")} rel="noopener">{cr("bife-embalado")}</a></figcaption></figure>
+      <div class="gt-wrap gt-band-txt">
+        <div class="rv"><span class="gt-num">02</span><h3>{T("O preço de vender", "The price of selling")}</h3></div>
+        <div class="gt-cols rv">
+          <p>{T("O criador vende, em geral, um animal vivo. O consumidor compra um bife embalado. Entre os dois há transporte, abate, classificação, desmancha, frio, embalagem, distribuição, loja e impostos — e cada etapa tem custos reais.", "The farmer usually sells a live animal. The consumer buys a packed steak. In between come transport, slaughter, grading, cutting, cold storage, packing, distribution, the shop and taxes — and each step has real costs.")}</p>
+          <p>{T("Além disso, uma carcaça não é só lombo: tem partes muito procuradas e outras pouco valorizadas, e o preço do quilo no talho reflete esse equilíbrio. Por isso, comparar diretamente o preço pago ao produtor com o preço na prateleira não diz, só por si, quem fica com quê.", "And a carcass is not all sirloin: some parts are in high demand and others far less, and the price per kilo at the counter reflects that balance. So comparing the farmer's price directly with the shelf price does not, on its own, say who keeps what.")}</p>
+          <p>{T("O que sabemos é que muitos criadores sentem que o preço que recebem não acompanha o trabalho e os custos. Medir essa diferença com rigor é uma das perguntas abertas do nosso ", "What we do know is that many farmers feel the price they receive does not keep up with their work and costs. Measuring that gap rigorously is one of the open questions in our ")}<a href={href(lang, "observatorio/")}>{T("Observatório", "Observatory")}</a>{T(". Não publicaremos margens sem dados oficiais.", ". We will not publish margins without official data.")}</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3.3 Burocracia -->
+    <article class="gt-ch gt-ch-split gt-ch-dark gt-rev">
+      <figure class="gt-ch-fig rv"><Img id="ramo-grande-feira" sizes="(max-width:860px) 100vw, 55vw" lang={lang} /><figcaption><a href={crUrl("ramo-grande-feira")} rel="noopener">{cr("ramo-grande-feira")}</a></figcaption></figure>
+      <div class="gt-ch-txt rv">
+        <span class="gt-num">03</span>
+        <h3>{T("Burocracia", "Paperwork")}</h3>
+        <p>{T("Cada bovino tem de ser identificado com brincos e registado; nascimentos, movimentos, vendas e mortes são comunicados. É esta rastreabilidade, exigida pelas regras europeias, que permite saber de onde vem a carne que comemos.", "Every bovine must be ear-tagged and registered; births, movements, sales and deaths are reported. This traceability, required by European rules, is what lets us know where our meat comes from.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 6", "Source 6")}>{num.rot}</a></p>
+        <p>{T("Há ainda controlos sanitários, registos de medicamentos, licenças, declarações e candidaturas a apoios, com prazos e plataformas próprias.", "There are also health checks, medicine records, licences, declarations and applications for support, each with its own deadlines and platforms.")}</p>
+        <p>{T("Muitas destas exigências são necessárias e protegem animais e consumidores. Mas, para uma pequena exploração familiar, sem ninguém dedicado ao escritório, podem significar noites e fins de semana passados entre papéis.", "Many of these requirements are necessary and protect animals and consumers. But on a small family farm, with nobody dedicated to the office, they can mean nights and weekends spent on paperwork.")}</p>
+      </div>
+    </article>
+
+    <!-- 3.4 Envelhecimento -->
+    <article class="gt-ch gt-ch-full">
+      <figure class="gt-full-fig"><Img id="mertolenga-rebanho" sizes="100vw" lang={lang} pos="center 45%" />
+        <blockquote class="gt-full-q rv"><span class="gt-num">04</span>{T("Em metade das explorações agrícolas portuguesas, quem as dirige tem 65 anos ou mais.", "On half of Portugal's farms, the person in charge is 65 or older.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 8", "Source 8")}>{num.mgr}</a></blockquote>
+      </figure>
+      <p class="gt-cap gt-wrap"><a href={crUrl("mertolenga-rebanho")} rel="noopener">{cr("mertolenga-rebanho")}</a></p>
+      <div class="gt-narrow gt-full-txt rv">
+        <h3>{T("Envelhecimento e sucessão", "Ageing and succession")}</h3>
+        <p>{T("Segundo o Recenseamento Agrícola de 2019, os produtores tinham em média 64 anos e 46,3 % só tinham concluído o primeiro nível do ensino básico; 53 % tinham formação agrícola exclusivamente prática. Havia 290 mil explorações, menos 15 mil do que em 2009, e a mão de obra agrícola caiu 14,4 % face a 2009, refletindo a redução do trabalho familiar.", "According to the 2019 Agricultural Census, farmers were on average 64 years old and 46.3 % had only completed the first stage of basic education; 53 % had purely practical agricultural training. There were 290 thousand farms, 15 thousand fewer than in 2009, and the farm workforce fell 14.4 % compared with 2009, reflecting less family labour.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fontes 1 e 2", "Sources 1 and 2")}>{num.ra2019},{num.drem}</a></p>
+        <p>{T("Os dados do Eurostat mostram o mesmo de outro ângulo: em 2023, em 51,9 % das explorações agrícolas portuguesas o dirigente tinha 65 anos ou mais, e só em 4,9 % tinha menos de 40. Em 2020, a média da União Europeia era de 33,2 % com 65 anos ou mais (Portugal: 50,3 %).", "Eurostat data show the same from another angle: in 2023, on 51.9 % of Portuguese farms the manager was 65 or older, and on only 4.9 % under 40. In 2020 the EU average was 33.2 % aged 65 or older (Portugal: 50.3 %).")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 8", "Source 8")}>{num.mgr}</a></p>
+        <p>{T("Muito do saber de um criador — ler o tempo, conhecer cada animal, saber onde há água em agosto — passa de pais para filhos, no campo. Quando não há quem continue, esse saber pode perder-se com a exploração.", "Much of a farmer's knowledge — reading the weather, knowing each animal, knowing where there is water in August — passes from parent to child, in the field. When no one carries on, that knowledge can be lost along with the farm.")}</p>
+      </div>
+    </article>
+
+    <!-- 3.5 Clima -->
+    <article class="gt-ch gt-ch-split gt-ch-soft">
+      <figure class="gt-ch-fig gt-tall rv"><Img id="pasto-seco" sizes="(max-width:860px) 100vw, 50vw" lang={lang} /><figcaption><a href={crUrl("pasto-seco")} rel="noopener">{cr("pasto-seco")}</a></figcaption></figure>
+      <div class="gt-ch-txt rv">
+        <span class="gt-num">05</span>
+        <h3>{T("Clima e território", "Climate and land")}</h3>
+        <p>{T("Num ano de seca, o pasto seca mais cedo e a erva não volta a tempo. É preciso alimentar os animais durante mais meses com o que se compra ou se guardou, e garantir água em charcas, poços e bebedouros.", "In a drought year, pasture dries earlier and grass doesn't return in time. Animals must be fed for more months on what was bought or stored, and water secured in ponds, wells and troughs.")}</p>
+        <p>{T("Os incêndios podem destruir pastagens, vedações e abrigos numa tarde. E as mudanças nas chuvas e nas temperaturas obrigam a repensar quando e onde os animais pastam.", "Wildfires can destroy pasture, fences and shelters in an afternoon. And changing rainfall and temperatures force farmers to rethink when and where animals graze.")}</p>
+        <p class="gt-tag">{T("Enquadramento editorial, sem quantificação nesta fase.", "Editorial framing, not yet quantified.")}</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- 4. O que está em risco -->
+  <section class="gt-risco" aria-labelledby="gt-risco-t">
+    <div class="gt-wrap">
+      <span class="eyebrow rv">{T("O que está em risco", "What is at stake")}</span>
+      <h2 id="gt-risco-t" class="gt-h gt-h-wide rv">{T("Quando um criador desiste, perdemos mais do que uma exploração.", "When a farmer gives up, we lose more than a farm.")}</h2>
+      <p class="gt-lead rv">{T("Entre 2005 e 2023, o número de explorações com bovinos em Portugal passou de 61 830 para 31 620 — quase metade. O número de animais não caiu: eram 1 315 440 em 2005 e 1 439 710 em 2023. Há hoje menos criadores, cada um com mais animais em média.", "Between 2005 and 2023 the number of farms with cattle in Portugal fell from 61,830 to 31,620 — almost half. The number of animals did not fall: 1,315,440 in 2005 and 1,439,710 in 2023. Today there are fewer farmers, each with more animals on average.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 7", "Source 7")}>{num.lsk}</a></p>
+    </div>
+    <div class="gt-mosaic gt-wrap">
+      <figure class="m1 rv"><Img id="montalegre" sizes="(max-width:860px) 100vw, 40vw" lang={lang} /><figcaption>{cr("montalegre")}</figcaption></figure>
+      <figure class="m2 rv"><Img id="barrosa-festa" sizes="(max-width:860px) 100vw, 55vw" lang={lang} /><figcaption>{cr("barrosa-festa")}</figcaption></figure>
+      <figure class="m3 rv"><Img id="tourem-manada" sizes="(max-width:860px) 100vw, 55vw" lang={lang} /><figcaption>{cr("tourem-manada")}</figcaption></figure>
+    </div>
+    <div class="gt-wrap gt-risk-list">
+      <div class="rv"><h3>{T("As raças", "The breeds")}</h3><p>{T("Algumas raças autóctones dependem de muito poucas pessoas. Em 2019, o livro genealógico de adultos da Algarvia tinha 2 machos e 2 fêmeas em linha pura, em 3 criadores; o da Garvonesa, 16 criadores; o da Jarmelista, 25.", "Some native breeds depend on very few people. In 2019 the Algarvia adult herd book listed 2 purebred males and 2 females, with 3 breeders; the Garvonesa, 16 breeders; the Jarmelista, 25.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 3", "Source 3")}>{num.cat}</a></p></div>
+      <div class="rv"><h3>{T("O saber", "Knowledge")}</h3><p>{T("Maneio, ofícios, calendários de pastoreio e nomes de lugares que só se aprendem com quem os viveu.", "Herd management, crafts, grazing calendars and place names that can only be learned from those who lived them.")}</p></div>
+      <div class="rv"><h3>{T("As comunidades", "Communities")}</h3><p>{T("Em muitas aldeias, a criação de gado mantém pessoas, feiras e serviços. Nem todas as situações são iguais, mas cada exploração que fecha pesa na vida local.", "In many villages, cattle farming keeps people, fairs and services going. Situations differ, but every farm that closes weighs on local life.")}</p></div>
+      <div class="rv"><h3>{T("A paisagem", "The landscape")}</h3><p>{T("Lameiros, montados e pastagens de montanha são, em parte, obra do pastoreio. Sem animais, muitos destes espaços mudam.", "Meadows, cork-oak pastures and mountain grazing land are partly the work of grazing. Without animals, many of these places change.")}</p></div>
+      <div class="rv"><h3>{T("A mesa", "The table")}</h3><p>{T("Pratos e carnes ligados a um lugar e a uma raça só existem enquanto houver quem crie esses animais.", "Dishes and meats tied to a place and a breed only exist while someone raises those animals.")}</p></div>
+    </div>
+  </section>
+
+  <!-- 5. Ainda há futuro -->
+  <section class="gt-futuro" aria-labelledby="gt-futuro-t">
+    <figure class="gt-futuro-fig"><Img id="terceira" sizes="100vw" lang={lang} pos="center 60%" /><figcaption class="gt-wrap">{cr("terceira")}</figcaption></figure>
+    <div class="gt-wrap gt-futuro-in">
+      <div class="gt-futuro-head rv">
+        <span class="eyebrow">{T("Esperança", "Hope")}</span>
+        <h2 id="gt-futuro-t" class="gt-h">{T("Ainda há futuro para a nossa terra.", "There is still a future for our land.")}</h2>
+      </div>
+      <ol class="gt-paths">
+        <li class="rv"><h3>{T("Carnes com nome e origem", "Meats with a name and an origin")}</h3><p>{T("Portugal tem 14 carnes de bovino com nome protegido na lista da DGADR: 11 com Denominação de Origem Protegida (DOP) — como a Carne Barrosã, a Carnalentejana, a Carne Mirandesa ou a Carne Ramo Grande — e 3 com Indicação Geográfica Protegida (IGP), como a Vitela de Lafões. Ligam o preço a uma raça, a um território e a regras de produção.", "Portugal has 14 beef products with a protected name on the DGADR list: 11 Protected Designations of Origin (PDO) — such as Carne Barrosã, Carnalentejana, Carne Mirandesa and Carne Ramo Grande — and 3 Protected Geographical Indications (PGI), such as Vitela de Lafões. They tie price to a breed, a territory and production rules.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 4", "Source 4")}>{num.dgadr}</a></p></li>
+        <li class="rv"><h3>{T("Associações de criadores", "Breeders’ associations")}</h3><p>{T("As associações de cada raça gerem os livros genealógicos, que registam os animais em linha pura e permitem conservar e melhorar a raça. Na Cachena, por exemplo, o registo zootécnico começou em 1994 e o livro genealógico em 1998.", "Each breed's association keeps its herd book, which records purebred animals and makes it possible to conserve and improve the breed. For the Cachena, for example, zootechnical recording began in 1994 and the herd book in 1998.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 3", "Source 3")}>{num.cat}</a></p></li>
+        <li class="rv"><h3>{T("Novas gerações", "New generations")}</h3><p>{T("O plano estratégico da PAC em Portugal inclui um apoio à instalação de jovens agricultores, entre os 18 e os 40 anos, que assumem pela primeira vez a gestão de uma exploração.", "Portugal's CAP Strategic Plan includes support for young farmers aged 18 to 40 who take over the management of a farm for the first time.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 5", "Source 5")}>{num.gpp}</a></p></li>
+        <li class="rv"><h3>{T("Venda mais próxima", "Selling closer to home")}</h3><p>{T("Venda direta, talhos de proximidade, cabazes e restaurantes que compram a criadores conhecidos encurtam a distância entre quem produz e quem come.", "Direct sales, local butchers, box schemes and restaurants buying from known farmers shorten the distance between those who produce and those who eat.")}</p></li>
+        <li class="rv"><h3>{T("Conhecimento e reconhecimento", "Knowledge and recognition")}</h3><p>{T("Formação, técnicas de pastoreio, registo de dados e novas ferramentas ajudam a produzir melhor. E reconhecer publicamente este trabalho também conta.", "Training, grazing techniques, record-keeping and new tools help farmers produce better. And publicly recognising this work matters too.")}</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6. O nosso papel -->
+  <section class="gt-papel" aria-labelledby="gt-papel-t">
+    <div class="gt-papel-grid gt-wrap">
+      <div class="gt-papel-head rv">
+        <h2 id="gt-papel-t" class="gt-h">{T("O nosso papel", "Our part")}</h2>
+        <p class="gt-lead">{T("Cada compra é uma pequena escolha. Feita com informação, pode ajudar a dar valor a quem cria.", "Every purchase is a small choice. Made with information, it can help give value to those who raise the animals.")}</p>
+        <figure class="gt-papel-fig"><Img id="maronesa-alvao" sizes="(max-width:860px) 100vw, 40vw" lang={lang} /><figcaption>{cr("maronesa-alvao")}</figcaption></figure>
+      </div>
+      <ol class="gt-steps">
+        <li class="rv"><strong>{T("Ler o rótulo.", "Read the label.")}</strong> {T("A rotulagem da carne de bovino indica onde o animal nasceu, foi criado e abatido.", "Beef labels state where the animal was born, reared and slaughtered.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 6", "Source 6")}>{num.rot}</a> <a href={href(lang, "carne/")}>{T("Saber mais sobre a carne →", "More about the meat →")}</a></li>
+        <li class="rv"><strong>{T("Conhecer as raças.", "Get to know the breeds.")}</strong> {T("Cada uma tem a sua terra e a sua história.", "Each has its own land and its own story.")} <a href={href(lang, "racas/")}>{T("As 15 raças autóctones →", "The 15 native breeds →")}</a></li>
+        <li class="rv"><strong>{T("Compreender as certificações.", "Understand certifications.")}</strong> {T("DOP e IGP garantem uma origem e um caderno de especificações controlado — não garantem, só por si, mais qualidade em todos os aspetos.", "PDO and PGI guarantee an origin and a controlled product specification — they do not, by themselves, guarantee higher quality in every respect.")}</li>
+        <li class="rv"><strong>{T("Perguntar.", "Ask.")}</strong> {T("No talho ou no restaurante, perguntar de onde vem a carne mostra que a origem importa.", "At the butcher's or in a restaurant, asking where the meat comes from shows that origin matters.")}</li>
+        <li class="rv"><strong>{T("Comprar diretamente, quando possível.", "Buy direct when you can.")}</strong> {T("Em feiras, mercados ou na própria exploração.", "At fairs, markets or on the farm itself.")}</li>
+      </ol>
+    </div>
+    <p class="gt-narrow gt-honest rv">{T("Uma nota de honestidade: ser produzida em Portugal não torna uma carne automaticamente melhor, mais sustentável ou com mais bem-estar animal. O que defendemos é a escolha informada.", "A note of honesty: being produced in Portugal does not automatically make a meat better, more sustainable or higher in animal welfare. What we stand for is informed choice.")}</p>
+  </section>
+
+  <!-- Fontes -->
+  <section class="gt-fontes" id="gt-fontes" aria-labelledby="gt-fontes-t">
+    <div class="gt-narrow">
+      <h2 id="gt-fontes-t">{T("Fontes e notas", "Sources and notes")}</h2>
+      <ol>{ordem.map((k) => { const s = (S as any)[k]; return <li><a href={s.u} rel="noopener">{s.l} ↗</a>{s.n && <span> — {s.n}</span>}</li>; })}</ol>
+      <p>{T("Os números citados têm fonte e ano de referência. Os parágrafos sem número de fonte são texto editorial de enquadramento: descrevem realidades conhecidas do setor, sem as quantificar, e não devem ser lidos como dados. Não usamos testemunhos nem citações de pessoas reais. Os inquéritos às explorações agrícolas do Eurostat mudaram de método ao longo dos anos (limiares e cobertura); por isso comparamos sobretudo a tendência, não diferenças pequenas.", "Figures quoted carry a source and a reference year. Paragraphs without a source number are editorial framing: they describe well-known realities of the sector without quantifying them and should not be read as data. We do not use testimonies or quotes from real people. Eurostat farm surveys have changed method over the years (thresholds and coverage), so we compare the trend rather than small differences.")}</p>
+      <p>{T("A imagem do pastor é uma ilustração gerada por IA, usada como imagem editorial; não representa um agricultor real. As restantes fotografias indicam autor, licença e origem.", "The image of the shepherd is an AI-generated illustration used as an editorial image; it does not represent a real farmer. The other photographs credit author, licence and source.")}</p>
+    </div>
+  </section>
+
+  <!-- 7. Homenagem -->
+  <section class="gt-fim" aria-label={T("Homenagem", "Tribute")}>
+    <Img id="montado-pasto" sizes="100vw" lang={lang} class="gt-fim-img" pos="center 72%" />
+    <div class="gt-fim-in rv">
+      <p class="gt-fim-q">«{T("Enquanto houver quem cuide da terra, haverá histórias que merecem continuar.", "As long as there are people who care for the land, there will be stories worth carrying on.")}»</p>
+      <p class="gt-fim-s">{T("Uma homenagem aos agricultores e criadores de Portugal.", "A tribute to the farmers and breeders of Portugal.")}</p>
+    </div>
+    <span class="gt-fim-cr"><a href={crUrl("montado-pasto")} rel="noopener">{cr("montado-pasto")}</a></span>
+  </section>
+</Base>
+
+<style>
+  .gt-wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+  .gt-narrow{width:min(720px,100% - 40px);margin-inline:auto}
+  .gt-h{font-weight:400!important;letter-spacing:-.035em!important;font-size:clamp(2.3rem,5vw,4.6rem)!important;line-height:1.06!important;color:var(--green-deep)}
+  .gt-lead{font-size:clamp(1.08rem,1.5vw,1.28rem);line-height:1.8;max-width:40em;font-weight:300}
+  .gt-ref{display:inline-block;font-size:.68em;vertical-align:super;line-height:0;margin-left:.15em;text-decoration:none;color:inherit;opacity:.75;font-weight:600}
+  .gt-ref:hover{opacity:1;text-decoration:underline}
+  .gt-tag{font-size:.82rem;color:var(--muted);border-left:2px solid var(--gold);padding-left:.8em}
+  .gt-num{display:block;font:300 .95rem var(--sans);letter-spacing:.2em;color:var(--gold);margin-bottom:.9rem}
+  figcaption,.gt-cap{font-size:.72rem;color:var(--muted);padding-top:.5rem;line-height:1.4}
+  figcaption a,.gt-cap a{color:inherit;text-decoration:none}
+  figure{margin:0}
+
+  /* Capa */
+  .gt-cover{position:relative;height:100svh;min-height:560px;overflow:hidden;background:#1d2420;color:#fff}
+  .gt-cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 30%}
+  .gt-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,18,15,.32) 0%,rgba(12,18,15,0) 22%,rgba(12,18,15,0) 52%,rgba(12,18,15,.62) 100%);pointer-events:none}
+  .gt-cover-in{position:absolute;z-index:2;right:clamp(20px,6vw,96px);bottom:clamp(48px,11vh,120px);width:min(34rem,44vw);text-align:left}
+  .gt-kicker{font:500 clamp(.8rem,1.1vw,.95rem) var(--sans)!important;letter-spacing:.32em!important;text-transform:uppercase;color:#fff;margin:0 0 1.2rem!important}
+  .gt-quote{font:300 clamp(1.6rem,2.9vw,2.7rem)/1.25 var(--display);letter-spacing:-.02em;margin:0;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+  .gt-ia{position:absolute;z-index:2;left:20px;bottom:14px;font-size:.68rem;color:rgba(255,255,255,.8)}
+  @media (max-aspect-ratio: 1/1){
+    .gt-cover-img{object-position:31% 22%}
+    .gt-cover::after{background:linear-gradient(180deg,rgba(12,18,15,.3) 0%,rgba(12,18,15,0) 18%,rgba(12,18,15,0) 50%,rgba(12,18,15,.78) 100%)}
+    .gt-cover-in{left:20px;right:20px;width:auto;bottom:56px}
+    .gt-quote{font-size:clamp(1.45rem,6.2vw,2rem)}
+  }
+
+  /* Uma vida inteira */
+  .gt-vida{background:var(--ivory);padding:clamp(6rem,14vw,12rem) 0 clamp(5rem,10vw,9rem)}
+  .gt-vida .gt-h{margin-bottom:clamp(2.5rem,6vw,4.5rem)!important}
+  .gt-line{font:300 clamp(1.35rem,2.4vw,1.95rem)/1.5 var(--display);letter-spacing:-.015em;color:var(--char);margin:0 0 1.6em!important}
+  .gt-line-last{color:var(--green-deep);font-weight:400}
+  .gt-fact{margin-top:3rem!important;padding-top:1.6rem;border-top:1px solid var(--line);color:var(--muted);font-size:1rem;max-width:36em}
+
+  /* O peso de continuar */
+  .gt-peso{background:var(--white);padding:clamp(5rem,10vw,9rem) 0 0}
+  .gt-intro{margin-bottom:clamp(3rem,7vw,6rem)}
+  .gt-ch h3{font:400 clamp(1.9rem,3.4vw,3rem)/1.1 var(--display)!important;letter-spacing:-.03em!important;color:var(--green-deep);margin-bottom:1.2rem!important}
+  .gt-ch p{line-height:1.85}
+  .gt-ch-split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:center;padding:clamp(3rem,7vw,7rem) max(20px,calc((100% - 1240px)/2))}
+  .gt-ch-split.gt-rev{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+  .gt-ch-split.gt-rev .gt-ch-fig{order:2}
+  .gt-ch-fig :global(img){width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+  .gt-ch-fig.gt-tall :global(img){aspect-ratio:4/5}
+  .gt-ch-txt{max-width:36rem}
+  .gt-ch-dark{background:var(--green-deep);color:#E9ECE4}
+  .gt-ch-dark h3{color:#fff!important}.gt-ch-dark a{color:#fff}.gt-ch-dark figcaption{color:rgba(255,255,255,.7)}
+  .gt-ch-soft{background:#F3EFE3}
+  .gt-ch-band{padding:clamp(2rem,5vw,4rem) 0 clamp(4rem,8vw,7rem)}
+  .gt-band-fig :global(img){width:100%;height:clamp(260px,52vh,560px);object-fit:cover;display:block}
+  .gt-band-fig figcaption{width:min(1240px,100% - 40px);margin-inline:auto}
+  .gt-band-txt{margin-top:clamp(2rem,5vw,4rem)}
+  .gt-cols{columns:3 18rem;column-gap:clamp(2rem,4vw,3.5rem)}
+  .gt-cols p{break-inside:avoid}
+  .gt-ch-full{padding:clamp(3rem,6vw,5rem) 0 clamp(4rem,8vw,7rem)}
+  .gt-full-fig{position:relative}
+  .gt-full-fig :global(img){width:100%;height:clamp(420px,88vh,900px);object-fit:cover;display:block}
+  .gt-full-fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.6) 100%);pointer-events:none}
+  .gt-full-q{position:absolute;z-index:1;left:max(20px,calc((100% - 1240px)/2));bottom:clamp(28px,7vh,72px);margin:0;max-width:min(26ch,90%);color:#fff;font:300 clamp(1.5rem,3.2vw,2.8rem)/1.2 var(--display);letter-spacing:-.02em}
+  .gt-full-txt{margin-top:clamp(2.5rem,6vw,4.5rem)}
+
+  /* Em risco */
+  .gt-risco{background:var(--ivory-2);padding:clamp(5rem,10vw,9rem) 0}
+  .gt-h-wide{max-width:18ch}
+  .gt-mosaic{display:grid;grid-template-columns:1fr 1.35fr;grid-template-rows:auto auto;gap:clamp(12px,1.6vw,22px);margin-top:clamp(2.5rem,5vw,4rem)}
+  .gt-mosaic .m1{grid-row:1/3}
+  .gt-mosaic :global(img){width:100%;height:100%;object-fit:cover;display:block}
+  .gt-mosaic .m1 :global(img){aspect-ratio:auto;height:calc(100% - 1.9rem);min-height:100%}
+  .gt-mosaic .m2 :global(img),.gt-mosaic .m3 :global(img){aspect-ratio:16/9;height:auto}
+  .gt-risk-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:clamp(1.8rem,4vw,3.5rem);margin-top:clamp(3rem,6vw,5rem)}
+  .gt-risk-list h3{font:500 1.15rem var(--display)!important;color:var(--green-deep);margin-bottom:.5rem!important;padding-top:1rem;border-top:1px solid var(--gold)}
+  @media (min-width:1100px){.gt-risk-list{grid-template-columns:repeat(5,1fr)}}
+  .gt-risk-list p{font-size:.98rem;line-height:1.75;color:#3d433c}
+
+  /* Futuro */
+  .gt-futuro{background:#FBFAF4}
+  .gt-futuro-fig :global(img){width:100%;height:clamp(300px,62vh,680px);object-fit:cover;display:block}
+  .gt-futuro-in{padding:clamp(3.5rem,8vw,7rem) 0 clamp(5rem,10vw,8rem)}
+  .gt-futuro-head{max-width:40rem;margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+  .gt-paths{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:clamp(2rem,4vw,3.5rem) clamp(2rem,6vw,5rem);counter-reset:p}
+  .gt-paths li{counter-increment:p;position:relative;padding-left:3.2rem}
+  .gt-paths li::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:.25rem;font:300 1rem var(--sans);letter-spacing:.12em;color:var(--green)}
+  .gt-paths h3{font:500 1.3rem var(--display)!important;color:var(--green-deep);margin-bottom:.5rem!important}
+  .gt-paths p{line-height:1.8}
+
+  /* Papel */
+  .gt-papel{background:var(--ivory);padding:clamp(5rem,10vw,9rem) 0 clamp(4rem,8vw,6rem)}
+  .gt-papel-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(2.5rem,7vw,7rem);align-items:start}
+  .gt-papel-fig{margin-top:2.5rem}
+  .gt-papel-fig :global(img){width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+  .gt-steps{list-style:none;padding:0;margin:0;counter-reset:s}
+  .gt-steps li{counter-increment:s;padding:1.6rem 0 1.6rem 3.4rem;border-bottom:1px solid var(--line);position:relative;line-height:1.75}
+  .gt-steps li:first-child{border-top:1px solid var(--line)}
+  .gt-steps li::before{content:counter(s);position:absolute;left:0;top:1.35rem;font:300 1.8rem var(--display);color:var(--gold)}
+  .gt-steps strong{font-weight:500;color:var(--green-deep)}
+  .gt-honest{margin-top:clamp(3rem,6vw,5rem)!important;font-size:.98rem;color:var(--muted);text-align:center}
+
+  /* Fontes */
+  .gt-fontes{background:var(--ivory);padding:0 0 clamp(4rem,8vw,6rem);font-size:.88rem;color:var(--muted)}
+  .gt-fontes h2{font:500 1rem var(--sans)!important;letter-spacing:.14em!important;text-transform:uppercase;color:var(--green-deep);padding-top:2rem;border-top:1px solid var(--line)}
+  .gt-fontes ol{padding-left:1.3em;margin:0 0 1.4rem}
+  .gt-fontes li{margin-bottom:.5rem}
+  .gt-fontes a{color:var(--green-deep)}
+
+  /* Homenagem */
+  .gt-fim{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;background:#3b4a3a;color:#fff;text-align:center}
+  .gt-fim :global(.gt-fim-img){position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .gt-fim::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(10,20,15,.42) 0%,rgba(10,20,15,.18) 60%,rgba(10,20,15,.3) 100%);pointer-events:none}
+  .gt-fim-in{position:relative;z-index:1;width:min(46rem,100% - 40px);padding:4rem 0}
+  .gt-fim-q{font:300 clamp(1.7rem,3.6vw,3.2rem)/1.25 var(--display)!important;letter-spacing:-.02em;margin:0 0 1.6rem!important;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+  .gt-fim-s{font:400 .82rem var(--sans);letter-spacing:.22em;text-transform:uppercase;margin:0!important;opacity:.92}
+  .gt-fim-cr{position:absolute;z-index:1;right:20px;bottom:14px;font-size:.68rem;color:rgba(255,255,255,.82)}
+  .gt-fim-cr a{color:inherit;text-decoration:none}
+
+  @media (max-width:860px){
+    .gt-ch-split,.gt-ch-split.gt-rev{grid-template-columns:1fr;padding:3.5rem 20px}
+    .gt-ch-split.gt-rev .gt-ch-fig{order:0}
+    .gt-ch-fig.gt-tall :global(img){aspect-ratio:4/3}
+    .gt-mosaic{grid-template-columns:1fr}
+    .gt-mosaic .m1{grid-row:auto}
+    .gt-mosaic .m1 :global(img){aspect-ratio:4/3;height:auto}
+    .gt-papel-grid{grid-template-columns:1fr}
+    .gt-full-fig :global(img){height:72svh}
+    .gt-paths li{padding-left:2.6rem}
+  }
+  @media (prefers-reduced-motion: reduce){ .gt-line{transition-delay:0ms!important} }
+</style>

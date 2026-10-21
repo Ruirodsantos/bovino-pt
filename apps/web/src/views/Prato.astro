@@ -127,6 +127,7 @@ const stages: Stage[] = [
           <h2>{s.t}</h2>
 
           {s.general.map((p) => <p>{p}</p>)}
+          {s.id === "criacao" && <p class="guardioes-link"><a href={href(lang, "guardioes-da-terra/")}>{T("Por trás de cada animal há um criador. Conheça os Guardiões da Terra →", "Behind every animal there is a farmer. Meet the Guardians of the Land →")}</a></p>}
           {s.extra === "cuts" && <CortesViewer lang={lang} />}
           {s.ex.length > 0 && <details class="stage-detail"><summary>{T("Exemplos de raças", "Breed examples")}</summary>
             <h3>{T("Exemplos", "Examples")}</h3>
@@ -164,6 +165,8 @@ const stages: Stage[] = [
   .exs { padding-left: 1.1em; } .exs li { margin-bottom: .6em; }
   .maybe { margin-top: 1rem; padding: 14px 16px; border-radius: 14px; background: var(--ivory-2); border: 1px dashed var(--gold); }
   .links { margin-top: 1.2rem; font-size: .92rem; }
+  .guardioes-link { margin: 1.4rem 0 0; padding-left: .9em; border-left: 2px solid var(--gold); font-style: italic; }
+  .guardioes-link a { color: var(--green-deep); text-decoration-thickness: 1px; text-underline-offset: .3em; }
   .note { margin-top: 3rem; padding: 28px; background: #fff; border: 1px solid var(--line); border-radius: 20px; }
   .note .small { font-size: .85rem; color: var(--muted); }
   .stg-wide { grid-template-columns: minmax(0, 1fr); } .stg-wide > .stg-fig { display: none; } .stg-wide .lead { font-size: 1.1rem; max-width: 46rem; color: var(--green-deep); }

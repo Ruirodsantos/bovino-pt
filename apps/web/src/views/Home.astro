@@ -78,6 +78,18 @@ const stages: [string, string, string][] = lang === "en" ? [
     </div>
   </section>
 
+  <!-- Última imagem antes do rodapé: os Guardiões da Terra -->
+  <section class="guardian" aria-label={T("Os Guardiões da Terra", "Guardians of the Land")}>
+    <img class="guardian-img" src={`${b}img/guardiao-ia-lg.webp`} srcset={`${b}img/guardiao-ia-sm.webp 480w, ${b}img/guardiao-ia-md.webp 900w, ${b}img/guardiao-ia-lg.webp 1536w`}
+      sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" width="1536" height="1024" loading="lazy" decoding="async"
+      alt={T("Ilustração: pastor idoso apoiado numa vara olha para a câmara, com vacas castanhas e serras atrás", "Illustration: an elderly shepherd leaning on a staff looks at the camera, with brown cows and hills behind him")} />
+    <div class="guardian-in rv">
+      <p class="guardian-q">«{T("Há quem passe uma vida inteira a cuidar da terra. E quem cuida deles?", "Some people spend a whole lifetime caring for the land. And who cares for them?")}»</p>
+      <a class="guardian-link" href={href(lang, "guardioes-da-terra/")}>{T("Conhecer os Guardiões da Terra →", "Meet the Guardians of the Land →")}</a>
+    </div>
+    <span class="guardian-ia">{T("Ilustração editorial gerada por IA", "AI-generated editorial illustration")}</span>
+  </section>
+
 <style>
 .journey-opening{display:grid;grid-template-columns:1fr 1.1fr;background:#f5f2e9;color:#263e30;min-height:78vh}
 .journey-opening-copy{padding:clamp(4rem,8vw,9rem) clamp(1.5rem,6vw,7rem);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
@@ -93,5 +105,15 @@ const stages: [string, string, string][] = lang === "en" ? [
 .journey-table-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(3rem,7vw,7rem)}
 @media(max-width:760px){.journey-opening,.journey-table{grid-template-columns:1fr}.journey-opening-photo{min-height:48vh;order:-1}.journey-opening-copy,.journey-table-copy{padding:3.5rem 1.5rem 4.5rem}.journey-table-photo{min-height:43vh}.journey-welfare{min-height:70vh}.journey-welfare-copy{padding:5rem 1.5rem}}
 .journey-welfare .eyebrow,.journey-table .eyebrow{color:#e6efdc;text-shadow:0 1px 6px rgba(0,0,0,.55)}
+.guardian{position:relative;height:100svh;min-height:540px;overflow:hidden;background:#21382d;color:#fff}
+.guardian-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 30%}
+.guardian::before{content:"";position:absolute;inset:0 0 auto;height:22vh;z-index:1;background:linear-gradient(180deg,#21382d 0%,rgba(33,56,45,0) 100%);pointer-events:none}
+.guardian::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,18,15,0) 50%,rgba(12,18,15,.62) 100%);pointer-events:none}
+.guardian-in{position:absolute;z-index:2;right:clamp(20px,6vw,96px);bottom:clamp(48px,11vh,120px);width:min(34rem,44vw)}
+.guardian-q{font:300 clamp(1.6rem,2.9vw,2.7rem)/1.25 var(--display);letter-spacing:-.02em;margin:0 0 1.4rem;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.guardian-link{color:#fff!important;text-decoration:none;font-weight:400;letter-spacing:.02em;border-bottom:1px solid rgba(255,255,255,.55);padding-bottom:3px;transition:border-color .3s}
+.guardian-link:hover{border-color:#fff}
+.guardian-ia{position:absolute;z-index:2;left:20px;bottom:14px;font-size:.68rem;color:rgba(255,255,255,.8)}
+@media (max-aspect-ratio: 1/1){.guardian-img{object-position:31% 22%}.guardian::after{background:linear-gradient(180deg,rgba(12,18,15,0) 50%,rgba(12,18,15,.78) 100%)}.guardian-in{left:20px;right:20px;width:auto;bottom:56px}.guardian-q{font-size:clamp(1.45rem,6.2vw,2rem)}}
 </style>
 </Base>
