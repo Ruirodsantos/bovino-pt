@@ -1,0 +1,16 @@
+{
+ "dataset": "bovine_population_regions",
+ "retrieved_at": "2026-10-21T10:12:47+00:00",
+ "requests": [
+  {
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ef_lsk_main?format=JSON&lang=en&sinceTimePeriod=2010&geo=PT11&geo=PT15&geo=PT16&geo=PT17&geo=PT18&geo=PT19&geo=PT1A&geo=PT1B&geo=PT1C&geo=PT1D&geo=PT20&geo=PT30&geo=ES11&geo=ES12&geo=ES13&geo=ES21&geo=ES22&geo=ES23&geo=ES24&geo=ES30&geo=ES41&geo=ES42&geo=ES43&geo=ES51&geo=ES52&geo=ES53&geo=ES61&geo=ES62&geo=ES63&geo=ES64&geo=ES70&animals=A2000&unit=HD&statinfo=TOTAL&uaarea=TOTAL&lsu=TOTAL&farmtype=TOTAL&so_eur=TOTAL",
+   "status": 200,
+   "bytes": 5876,
+   "file": "response_00.json",
+   "sha256": "be1fe76fd4da461f2f2dbabe93bf0b432372d268cd2ba73585cd50f2cf4335a8",
+   "source_updated": "2026-06-17T23:00:00+0200"
+  }
+ ],
+ "used_code": "ef_lsk_main",
+ "attempts": []
+}

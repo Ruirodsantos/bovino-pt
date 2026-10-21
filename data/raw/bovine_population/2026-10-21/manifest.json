@@ -1,0 +1,16 @@
+{
+ "dataset": "bovine_population",
+ "retrieved_at": "2026-10-21T10:12:42+00:00",
+ "requests": [
+  {
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apro_mt_lscatl?format=JSON&lang=en&sinceTimePeriod=2005&geo=PT&geo=ES&unit=THS_HD",
+   "status": 200,
+   "bytes": 27500,
+   "file": "response_00.json",
+   "sha256": "a269f23ec133e7532c06452c5f82c1631a1e47822a2ca01f78220d0706705768",
+   "source_updated": "2026-10-01T23:00:00+0200"
+  }
+ ],
+ "used_code": "apro_mt_lscatl",
+ "attempts": []
+}
