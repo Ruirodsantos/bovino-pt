@@ -8,7 +8,7 @@ name_sources:
 - source_id: S07
   url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
   retrieved_at: '2026-10-17'
-last_verified: '2026-10-17'
+last_verified: '2026-10-21'
 fields:
   geographic_origin:
     value: Antigo concelho do Jarmelo, hoje Guarda
@@ -16,10 +16,10 @@ fields:
     source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
     verified_at: '2026-10-17'
   historical_background:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: not yet researched
+    value: "O arrolamento do gado de 1870 descrevia-a, no antigo concelho do Jarmelo (hoje Guarda), como «a melhor do distrito» e talvez do país; em 1954 Manuel Virgílio Coelho já a dava por extinta. A Acriguarda e os criadores levantaram os animais com as características da raça, e um estudo de 2006 (185 caracteres morfológicos nas fêmeas, 170 nos machos) concluiu que formam um grupo distinto e independente das outras raças autóctones (catálogo DGAV/CAP, p. 35)."
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-21'
   population:
     value: 193 fêmeas e 25 machos em linha pura  em 25 criadores (livro genealógico
       de adultos  2019)
@@ -27,15 +27,15 @@ fields:
     source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
     verified_at: '2026-10-17'
   physical_characteristics:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: not yet researched
+    value: "Bovinos compridos, de estatura grande e esqueleto fino. Pelagem amarela clara com extremidades mais escuras; machos normalmente mais escuros. Cornos médios, claros e escuros na ponta, que saem na horizontal para a frente e para cima; membros altos e temperamento dócil (catálogo DGAV/CAP, p. 35)."
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-21'
   production_systems:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: not yet researched
+    value: "Sistema extensivo em região de montanha, com pastagens de altitude, grandes amplitudes térmicas e predomínio do minifúndio, com poucos animais por exploração. Segundo o catálogo, demonstram maior resistência e robustez do que animais de outras raças explorados no mesmo sistema (catálogo DGAV/CAP, p. 35)."
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-21'
   meat_characteristics:
     value: null
     source_id: null
