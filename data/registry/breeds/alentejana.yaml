@@ -8,7 +8,7 @@ name_sources:
 - source_id: S07
   url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
   retrieved_at: '2026-10-17'
-last_verified: '2026-10-17'
+last_verified: '2026-10-22'
 fields:
   geographic_origin:
     value: Alentejo — sobretudo distritos de Portalegre, Évora e Beja
@@ -16,10 +16,10 @@ fields:
     source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
     verified_at: '2026-10-17'
   historical_background:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: not yet researched
+    value: "Segundo o catálogo, os bovinos do Alentejo representam «uma forma primitiva e milenar da espécie bovina», derivada de uma forma meridional do Bos primigenius (Andrade, 1948). Durante anos a função principal foi o trabalho; com a mecanização passou a ser explorada para carne. A partir da segunda metade do século XX muitos criadores optaram por importar raças exóticas ou fazer cruzamentos indiscriminados, em busca de melhor conformação e crescimento mais rápido (catálogo DGAV/CAP, p. 7)."
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-22'
   population:
     value: 8 362 fêmeas e 200 machos em linha pura  em 133 criadores (livro genealógico
       de adultos  2019)
@@ -27,10 +27,10 @@ fields:
     source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
     verified_at: '2026-10-17'
   physical_characteristics:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: not yet researched
+    value: "Pelagem vermelha, do retinto ao trigueiro, com os pelos todos da mesma cor. Barbela característica «com as suas sete pregas», que aumenta a área de transpiração e ajuda a suportar as amplitudes térmicas. Cornos simétricos e grandes, branco-sujo com pontas quase pretas; nos machos o pescoço acumula gordura, o «murrilho» ou «cachaço». O terço anterior, outrora muito desenvolvido, diminuiu desde que a raça passou a ser criada só para carne (catálogo DGAV/CAP, p. 8)."
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-22'
   production_systems:
     value: null
     source_id: null
@@ -52,10 +52,10 @@ fields:
     verified_at: null
     missing_reason: not yet researched
   geographic_distribution:
-    value: null
-    source_id: null
-    verified_at: null
-    missing_reason: not yet researched
+    value: "Essencialmente o Alentejo — distritos de Portalegre, Évora, Beja e alguns concelhos do distrito de Setúbal. Há também explorações nos distritos de Santarém, Castelo Branco, Guarda e Braga, mas com poucos criadores (catálogo DGAV/CAP, p. 7)."
+    source_id: S07
+    source_url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    verified_at: '2026-10-22'
   photographs:
     value: null
     source_id: null
