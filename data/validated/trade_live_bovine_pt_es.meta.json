@@ -7,8 +7,8 @@
  "first_period": "2005-01",
  "last_period": "2026-08",
  "publication_date": "2026-10-16",
- "retrieved_at": "2026-10-24T09:34:39+00:00",
- "snapshot": "data/raw/trade_live_bovine_pt_es/2026-10-24",
+ "retrieved_at": "2026-10-25T09:50:32+00:00",
+ "snapshot": "data/raw/trade_live_bovine_pt_es/2026-10-25",
  "coverage_of_total_by_subcodes": {
   "VALUE_IN_EUROS": {
    "2012": 1.0,
