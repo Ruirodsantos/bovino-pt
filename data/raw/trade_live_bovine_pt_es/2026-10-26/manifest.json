@@ -1,0 +1,184 @@
+{
+ "dataset": "trade_live_bovine_pt_es",
+ "retrieved_at": "2026-10-26T11:09:46+00:00",
+ "requests": [
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=0102&flow=2&freq=M",
+   "status": 200,
+   "bytes": 17995,
+   "file": "response_00.json",
+   "sha256": "d30776057390fe67be3d0dd4462944b0357f44990f1136ba8a8b79397d965c42",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022910&flow=2&freq=M",
+   "status": 200,
+   "bytes": 13840,
+   "file": "response_01.json",
+   "sha256": "e54d753dba1c5c5095a2b55102e941c8e97ff8bd5d8db714b271db4a54e9b70a",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022921&flow=2&freq=M",
+   "status": 200,
+   "bytes": 14172,
+   "file": "response_02.json",
+   "sha256": "e8b11274fde1871113198cf7e76536be60cfb0851bd5f91fbacb39acdf0377df",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022929&flow=2&freq=M",
+   "status": 200,
+   "bytes": 13075,
+   "file": "response_03.json",
+   "sha256": "7ca526f5eee457ad59d4b70f09f94fa3d7370e0b6b6d54bde3da3890c6e54df6",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022941&flow=2&freq=M",
+   "status": 200,
+   "bytes": 17588,
+   "file": "response_04.json",
+   "sha256": "7501c34b4f7092eb5eacd2b035aa2a312b9b588303f1bed5ee41ba5aee036518",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022949&flow=2&freq=M",
+   "status": 200,
+   "bytes": 16926,
+   "file": "response_05.json",
+   "sha256": "14c9fa03e76718e64c8f329ef97e9a6e2993cc54ed9d99369a0eb00d74b18cc5",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022951&flow=2&freq=M",
+   "status": 200,
+   "bytes": 15688,
+   "file": "response_06.json",
+   "sha256": "406d18e48716edcfa9e5c994670c9e0229d17ccdb1d9ef87a6130ac1e48631ab",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022959&flow=2&freq=M",
+   "status": 200,
+   "bytes": 12627,
+   "file": "response_07.json",
+   "sha256": "6b02d6fe6c0027e369a502c0ab00f47573325ee36425e856a22467a20b66c277",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022961&flow=2&freq=M",
+   "status": 200,
+   "bytes": 17397,
+   "file": "response_08.json",
+   "sha256": "c87a415115733dd1a9337c9761bbf4a55771c0bc42e980ce4d9aed45ca3f584c",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022969&flow=2&freq=M",
+   "status": 200,
+   "bytes": 12783,
+   "file": "response_09.json",
+   "sha256": "70031f3c169dd87f99df68a4d1c33bfd5a3c2ab0790aa5e3a4bfc77070629139",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022991&flow=2&freq=M",
+   "status": 200,
+   "bytes": 16950,
+   "file": "response_10.json",
+   "sha256": "987db96d64c736bb6fd60745a098982ee231472878ff9f95e7a129f9247f78ee",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022999&flow=2&freq=M",
+   "status": 200,
+   "bytes": 15835,
+   "file": "response_11.json",
+   "sha256": "2ef80961e5d03fdbdb68a7841b636787e9a29ec3bc31950d0f4f22df0cfe4431",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022110&flow=2&freq=M",
+   "status": 200,
+   "bytes": 12521,
+   "file": "response_12.json",
+   "sha256": "0323454ca56b2860882c2062125da56dbefd4626affe5585234415762948ee26",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022130&flow=2&freq=M",
+   "status": 200,
+   "bytes": 16022,
+   "file": "response_13.json",
+   "sha256": "80a214da2d66d83c825599acd96d7e1f8ad1727660b8fed037cf50c553ad2024",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022190&flow=2&freq=M",
+   "status": 200,
+   "bytes": 14496,
+   "file": "response_14.json",
+   "sha256": "99d62363600b8ff885f3522235f648d9ec851d1ce699b0b56e40dbef2e535341",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01029020&flow=2&freq=M",
+   "status": 200,
+   "bytes": 16706,
+   "file": "response_15.json",
+   "sha256": "4f2e2b5c09520197fd08ea97b98932ac9a7f41112a321da26c2cc2db7bca8ff3",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01022905&flow=2&freq=M",
+   "status": 200,
+   "bytes": 11758,
+   "file": "response_16.json",
+   "sha256": "9469c5508fac462b883ecb23018125d8a62e1e34cae8cedb86c79ab9322d76ce",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01023100&flow=2&freq=M",
+   "status": 200,
+   "bytes": 11710,
+   "file": "response_17.json",
+   "sha256": "bb50a411a0dd32f05eab5b025c5f6a7ca375058594f1957a99ee3dd858503350",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01023910&flow=2&freq=M",
+   "status": 200,
+   "bytes": 11732,
+   "file": "response_18.json",
+   "sha256": "707a3f72b0bb35e9224f66d413972b45d8cba72cb2d6fdfadb3c661767910cad",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01023990&flow=2&freq=M",
+   "status": 200,
+   "bytes": 11744,
+   "file": "response_19.json",
+   "sha256": "2eba49bb0908c460657ff322054ae7f7aafc0d4e73164ad15fd426f214c75036",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01029091&flow=2&freq=M",
+   "status": 200,
+   "bytes": 16864,
+   "file": "response_20.json",
+   "sha256": "0b79aa4a39a4b88437b6f3519c8a73505e44cd68c1825be74c15a25685ef09d1",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=01029099&flow=2&freq=M",
+   "status": 200,
+   "bytes": 17336,
+   "file": "response_21.json",
+   "sha256": "4a9baa0d9573bddf9506f663065079ba75c75125a7bd19a2336b0dcf3fd0570a",
+   "source_updated": "2026-10-16T11:00:00+0200"
+  }
+ ],
+ "used_code": "DS-045409",
+ "attempts": []
+}
