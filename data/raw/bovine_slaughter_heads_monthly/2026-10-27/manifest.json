@@ -1,0 +1,16 @@
+{
+ "dataset": "bovine_slaughter_heads_monthly",
+ "retrieved_at": "2026-10-27T10:37:47+00:00",
+ "requests": [
+  {
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apro_mt_pheadm?format=JSON&lang=en&sinceTimePeriod=2005&geo=PT&geo=ES&meat=B1000&unit=THS_HD",
+   "status": 200,
+   "bytes": 19994,
+   "file": "response_00.json",
+   "sha256": "7b32111a51d4c038ef4eb626a450d32cb84dfdf9745f3ced41bc816bf5ffe806",
+   "source_updated": "2026-10-27T11:00:00+0100"
+  }
+ ],
+ "used_code": "apro_mt_pheadm",
+ "attempts": []
+}

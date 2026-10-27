@@ -1,5 +1,5 @@
 {
- "finished_at": "2026-10-26T11:10:25+00:00",
+ "finished_at": "2026-10-27T10:38:30+00:00",
  "datasets": [
   {
    "dataset": "bovine_population",
@@ -10,8 +10,8 @@
   {
    "dataset": "bovine_slaughter_heads_monthly",
    "state": "ok",
-   "rows": 518,
-   "last_period": "2026-07"
+   "rows": 519,
+   "last_period": "2026-08"
   },
   {
    "dataset": "bovine_slaughter_tonnes",
@@ -39,5 +39,5 @@
   }
  ],
  "review_rows": 6,
- "revisions": 0
+ "revisions": 1
 }

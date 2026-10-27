@@ -1,0 +1,2 @@
+dataset_id,geo,series,period,old,new,detected_at
+bovine_slaughter_heads_monthly,ES,slaughter/meatitem=SLAUGHT/meat=B1000,2026-07,208480.0,208630.0,2026-10-27T10:38:30+00:00
