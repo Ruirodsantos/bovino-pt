@@ -1,5 +1,5 @@
 {
- "finished_at": "2026-10-27T10:38:30+00:00",
+ "finished_at": "2026-10-28T11:23:09+00:00",
  "datasets": [
   {
    "dataset": "bovine_population",
@@ -39,5 +39,5 @@
   }
  ],
  "review_rows": 6,
- "revisions": 1
+ "revisions": 0
 }
