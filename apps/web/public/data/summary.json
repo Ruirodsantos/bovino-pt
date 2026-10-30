@@ -17,7 +17,7 @@
     "period": "nov.–dez. 2025",
     "period_en": "Nov–Dec 2025",
     "published": "2026-10-26",
-    "verified": "2026-10-29"
+    "verified": "2026-10-30"
    }
   },
   {
@@ -38,7 +38,7 @@
     "period": "set. 2025 – ago. 2026",
     "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-16",
-    "verified": "2026-10-29"
+    "verified": "2026-10-30"
    }
   },
   {
@@ -56,7 +56,7 @@
     "period": "set. 2025 – ago. 2026",
     "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-16",
-    "verified": "2026-10-29"
+    "verified": "2026-10-30"
    }
   },
   {
@@ -74,25 +74,25 @@
     "period": "set. 2025 – ago. 2026",
     "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-16",
-    "verified": "2026-10-29"
+    "verified": "2026-10-30"
    }
   },
   {
    "id": "pt_slaughter_heads",
    "label": "bovinos abatidos em matadouros portugueses",
-   "value": 349050.0,
+   "value": 346610.0,
    "unit": "cabeças",
    "label_en": "cattle slaughtered in Portuguese abattoirs",
-   "context_en": "Aug 2025 – Jul 2026 (12 months)",
-   "context": "ago. 2025 – jul. 2026 (12 meses)",
+   "context_en": "Sep 2025 – Aug 2026 (12 months)",
+   "context": "set. 2025 – ago. 2026 (12 meses)",
    "footnote": {
     "source": "Eurostat",
     "source_code": "apro_mt_pheadm",
     "dataset": "bovine_slaughter_heads_monthly",
-    "period": "ago. 2025 – jul. 2026",
-    "period_en": "Aug 2025 – Jul 2026",
+    "period": "set. 2025 – ago. 2026",
+    "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-29",
-    "verified": "2026-10-29"
+    "verified": "2026-10-30"
    }
   },
   {
@@ -110,7 +110,7 @@
     "period": "2025",
     "period_en": "2025",
     "published": "2026-10-06",
-    "verified": "2026-10-29"
+    "verified": "2026-10-30"
    }
   }
  ],
@@ -124,7 +124,7 @@
    "first_period": "2005",
    "last_period": "2025",
    "publication_date": "2026-10-26",
-   "retrieved_at": "2026-10-29T11:33:04+00:00",
+   "retrieved_at": "2026-10-30T11:25:33+00:00",
    "source_code": "apro_mt_lscatl"
   },
   {
@@ -132,11 +132,11 @@
    "title_pt": "Bovinos abatidos em matadouros (cabeças, mensal)",
    "title_en": "Cattle slaughtered in abattoirs (head, monthly)",
    "state": "ok",
-   "rows": 519,
+   "rows": 520,
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-29",
-   "retrieved_at": "2026-10-29T11:33:05+00:00",
+   "retrieved_at": "2026-10-30T11:25:35+00:00",
    "source_code": "apro_mt_pheadm"
   },
   {
@@ -148,7 +148,7 @@
    "first_period": "2005",
    "last_period": "2025",
    "publication_date": "2026-10-06",
-   "retrieved_at": "2026-10-29T11:33:07+00:00",
+   "retrieved_at": "2026-10-30T11:25:37+00:00",
    "source_code": "apro_mt_pann"
   },
   {
@@ -160,7 +160,7 @@
    "first_period": "2010",
    "last_period": "2023",
    "publication_date": "2026-06-17",
-   "retrieved_at": "2026-10-29T11:33:09+00:00",
+   "retrieved_at": "2026-10-30T11:25:38+00:00",
    "source_code": "ef_lsk_main"
   },
   {
@@ -172,7 +172,7 @@
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-16",
-   "retrieved_at": "2026-10-29T11:33:10+00:00",
+   "retrieved_at": "2026-10-30T11:25:40+00:00",
    "source_code": "DS-045409"
   },
   {
@@ -184,12 +184,12 @@
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-16",
-   "retrieved_at": "2026-10-29T11:33:44+00:00",
+   "retrieved_at": "2026-10-30T11:26:14+00:00",
    "source_code": "DS-045409"
   }
  ],
  "last_run": {
-  "finished_at": "2026-10-29T11:33:47+00:00",
+  "finished_at": "2026-10-30T11:26:17+00:00",
   "datasets": [
    {
     "dataset": "bovine_population",
@@ -200,7 +200,7 @@
    {
     "dataset": "bovine_slaughter_heads_monthly",
     "state": "ok",
-    "rows": 519,
+    "rows": 520,
     "last_period": "2026-08"
    },
    {
