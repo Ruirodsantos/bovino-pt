@@ -89,6 +89,17 @@ const stages: [string, string, string][] = lang === "en" ? [
     </div>
   </section>
 
+  <!-- Porquê este projeto: inspiração (pedido do Rui, 2026-11-03) -->
+  <section class="origem" aria-labelledby="origem-t">
+    <div class="origem-in rv">
+      <span class="eyebrow">{T("Porquê este projeto", "Why this project")}</span>
+      <h2 id="origem-t">{T("Por amor aos animais, e com enorme respeito.", "For love of the animals, and with deep respect.")}</h2>
+      <p>{T("Este projeto nasceu inspirado por José Gordón e pelo El Capricho, em Jiménez de Jamuz (León), e pela experiência La Cúpula: uma vida dedicada a compreender os animais, a dar-lhes tempo e liberdade, e a tratá-los com respeito do pasto à mesa.", "This project was inspired by José Gordón and El Capricho, in Jiménez de Jamuz (León), and by its La Cúpula experience: a life devoted to understanding the animals, giving them time and freedom, and treating them with respect from pasture to table.")}</p>
+      <p>{T("E nasceu de uma constatação: muitos portugueses não têm noção da qualidade da carne que temos — das nossas raças autóctones, das nossas pastagens e de quem cuida delas. Queremos mostrá-la, com rigor e com cuidado.", "And it grew from a realisation: many Portuguese people have no idea of the quality of the beef we have — our native breeds, our pastures and the people who look after them. We want to show it, carefully and accurately.")}</p>
+      <p class="origem-nota">{T("Projeto independente, sem ligação ao El Capricho.", "An independent project, not affiliated with El Capricho.")}</p>
+    </div>
+  </section>
+
 <style>
 .journey-opening{display:grid;grid-template-columns:1fr 1.1fr;background:#f5f2e9;color:#263e30;min-height:78vh}
 .journey-opening-copy{padding:clamp(4rem,8vw,9rem) clamp(1.5rem,6vw,7rem);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
@@ -113,5 +124,10 @@ const stages: [string, string, string][] = lang === "en" ? [
 .guardian-link{color:#fff!important;text-decoration:none;font-weight:400;letter-spacing:.02em;border-bottom:1px solid rgba(255,255,255,.55);padding-bottom:3px;transition:border-color .3s}
 .guardian-link:hover{border-color:#fff}
 @media (max-aspect-ratio: 1/1){.guardian-img{object-position:31% 22%}.guardian::after{background:linear-gradient(180deg,rgba(12,18,15,0) 50%,rgba(12,18,15,.78) 100%)}.guardian-in{left:20px;right:20px;width:auto;bottom:56px}.guardian-q{font-size:clamp(1.45rem,6.2vw,2rem)}}
+.origem{background:#f5f2e9;color:#263e30;padding:clamp(4.5rem,10vw,9rem) 1.5rem}
+.origem-in{max-width:42rem;margin:0 auto}
+.origem h2{font-size:clamp(2rem,3.8vw,3.6rem);line-height:1.1;letter-spacing:-.03em;margin:1rem 0 1.6rem}
+.origem p{font-size:clamp(1.02rem,1.25vw,1.18rem);line-height:1.85;margin:0 0 1.2rem}
+.origem-nota{font-size:.85rem!important;color:#5b6b60;margin-top:2rem!important}
 </style>
 </Base>
