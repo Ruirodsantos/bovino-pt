@@ -42,7 +42,6 @@ const vida = lang === "en" ? [
 ];
 
 const quote = T("Há quem passe uma vida inteira a cuidar da terra. E quem cuida deles?", "Some people spend a whole lifetime caring for the land. And who cares for them?");
-const iaNote = T("Ilustração editorial gerada por IA. Não retrata um agricultor real.", "AI-generated editorial illustration. It does not depict a real farmer.");
 ---
 <Base lang={lang} overlay title={T("Os Guardiões da Terra", "Guardians of the Land")} image={`${b}img/guardiao-ia-lg.webp`}
   description={T("Uma homenagem aos agricultores e criadores de bovinos de Portugal: o seu trabalho, as dificuldades que enfrentam e o que o país pode perder se esta atividade desaparecer.", "A tribute to Portugal's farmers and cattle breeders: their work, the difficulties they face and what the country could lose if this activity disappears.")}>
@@ -56,7 +55,6 @@ const iaNote = T("Ilustração editorial gerada por IA. Não retrata um agricult
       <h1 class="gt-kicker">{T("Os Guardiões da Terra", "Guardians of the Land")}</h1>
       <p class="gt-quote">«{quote}»</p>
     </div>
-    <span class="gt-ia">{iaNote}</span>
   </header>
 
   <!-- 2. Uma vida inteira -->
@@ -204,7 +202,7 @@ const iaNote = T("Ilustração editorial gerada por IA. Não retrata um agricult
       <h2 id="gt-fontes-t">{T("Fontes e notas", "Sources and notes")}</h2>
       <ol>{ordem.map((k) => { const s = (S as any)[k]; return <li><a href={s.u} rel="noopener">{s.l} ↗</a>{s.n && <span> — {s.n}</span>}</li>; })}</ol>
       <p>{T("Os números citados têm fonte e ano de referência. Os parágrafos sem número de fonte são texto editorial de enquadramento: descrevem realidades conhecidas do setor, sem as quantificar, e não devem ser lidos como dados. Não usamos testemunhos nem citações de pessoas reais. Os inquéritos às explorações agrícolas do Eurostat mudaram de método ao longo dos anos (limiares e cobertura); por isso comparamos sobretudo a tendência, não diferenças pequenas.", "Figures quoted carry a source and a reference year. Paragraphs without a source number are editorial framing: they describe well-known realities of the sector without quantifying them and should not be read as data. We do not use testimonies or quotes from real people. Eurostat farm surveys have changed method over the years (thresholds and coverage), so we compare the trend rather than small differences.")}</p>
-      <p>{T("A imagem do pastor é uma ilustração gerada por IA, usada como imagem editorial; não representa um agricultor real. As restantes fotografias indicam autor, licença e origem.", "The image of the shepherd is an AI-generated illustration used as an editorial image; it does not represent a real farmer. The other photographs credit author, licence and source.")}</p>
+      <p>{T("As fotografias de terceiros indicam autor, licença e origem.", "Third-party photographs credit author, licence and source.")}</p>
     </div>
   </section>
 
@@ -239,7 +237,6 @@ const iaNote = T("Ilustração editorial gerada por IA. Não retrata um agricult
   .gt-cover-in{position:absolute;z-index:2;right:clamp(20px,6vw,96px);bottom:clamp(48px,11vh,120px);width:min(34rem,44vw);text-align:left}
   .gt-kicker{font:500 clamp(.8rem,1.1vw,.95rem) var(--sans)!important;letter-spacing:.32em!important;text-transform:uppercase;color:#fff;margin:0 0 1.2rem!important}
   .gt-quote{font:300 clamp(1.6rem,2.9vw,2.7rem)/1.25 var(--display);letter-spacing:-.02em;margin:0;text-shadow:0 2px 24px rgba(0,0,0,.45)}
-  .gt-ia{position:absolute;z-index:2;left:20px;bottom:14px;font-size:.68rem;color:rgba(255,255,255,.8)}
   @media (max-aspect-ratio: 1/1){
     .gt-cover-img{object-position:31% 22%}
     .gt-cover::after{background:linear-gradient(180deg,rgba(12,18,15,.3) 0%,rgba(12,18,15,0) 18%,rgba(12,18,15,0) 50%,rgba(12,18,15,.78) 100%)}

@@ -48,7 +48,7 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
       ))}
     </div>
     <p class="srcs" style="margin-top:var(--s4);color:var(--muted);font-size:.88rem;max-width:62ch">
-      {T(`${gaps.length} das 15 raças ainda não têm fotografia própria autorizada: ${gaps.map((g) => g.name).join(", ")}. Nesses casos mostra-se uma paisagem do território, nunca uma fotografia de outra raça. As duas paisagens de grande formato (Terceira e Alentejo) são ilustrações geradas por IA, não fotografias documentais.`, `${gaps.length} of the 15 breeds still have no authorised photograph of their own: ${gaps.map((g) => g.name).join(", ")}. In those cases a landscape of the territory is shown, never a photograph of another breed. The two large landscapes (Terceira and Alentejo) are AI-generated illustrations, not documentary photographs.`)}
+      {T(`${gaps.length} das 15 raças ainda não têm fotografia própria autorizada: ${gaps.map((g) => g.name).join(", ")}. Nesses casos mostra-se uma paisagem do território, nunca uma fotografia de outra raça.`, `${gaps.length} of the 15 breeds still have no authorised photograph of their own: ${gaps.map((g) => g.name).join(", ")}. In those cases a landscape of the territory is shown, never a photograph of another breed.`)}
     </p>
   </section>
   <section class="alentejo-ending"><img src={`${import.meta.env.BASE_URL}img/paisagem-alentejo-ia-lg.webp`} alt="Paisagem artística das planícies alentejanas" loading="lazy"/><div><span>{T("Alentejo", "Alentejo")}</span><h2>{T("A mesma terra. Outras paisagens. Histórias que merecem ser contadas.", "The same land. Different landscapes. Stories worth telling.")}</h2></div></section>

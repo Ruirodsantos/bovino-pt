@@ -37,7 +37,7 @@ const stages: [string, string, string][] = lang === "en" ? [
 <Base lang={lang} home overlay title={T("Início", "Home")} image={`${b}img/home-hero-ia-lg.webp`}
   description={T("As 15 raças bovinas autóctones de Portugal, a carne e o caminho da pastagem ao prato, com fontes oficiais.", "Portugal's 15 native cattle breeds, the meat and the path from pasture to plate, with official sources.")}>
   <section class="hero">
-    <img class="bg" src={`${b}img/home-hero-ia-lg.webp`} srcset={`${b}img/home-hero-ia-sm.webp 480w, ${b}img/home-hero-ia-md.webp 900w, ${b}img/home-hero-ia-lg.webp 1672w`} sizes="100vw" alt={T("Vacas castanhas ao nascer do sol sobre um vale com rio e aldeia (ilustração gerada por IA)", "Brown cows at sunrise above a valley with a river and village (AI-generated illustration)")} width="1672" height="941" fetchpriority="high" />
+    <img class="bg" src={`${b}img/home-hero-ia-lg.webp`} srcset={`${b}img/home-hero-ia-sm.webp 480w, ${b}img/home-hero-ia-md.webp 900w, ${b}img/home-hero-ia-lg.webp 1672w`} sizes="100vw" alt={T("Vacas castanhas ao nascer do sol sobre um vale com rio e aldeia", "Brown cows at sunrise above a valley with a river and village")} width="1672" height="941" fetchpriority="high" />
     <div class="wrap in">
       <span class="tag">{T("Bovino Português", "Portuguese Cattle")}</span>
       <h1>{T("15 raças.", "15 breeds.")}<br />{T("Um património extraordinário.", "An extraordinary heritage.")}</h1>
@@ -70,7 +70,7 @@ const stages: [string, string, string][] = lang === "en" ? [
   </section>
 
   <section class="journey-welfare">
-    <img src={`${b}img/paisagem-alentejo-ia-lg.webp`} alt={T("Interpretação artística de bovinos a pastar no Alentejo, criada com IA", "AI-generated artistic interpretation of cattle grazing in Alentejo")} loading="lazy" />
+    <img src={`${b}img/paisagem-alentejo-ia-lg.webp`} alt={T("Bovinos a pastar no Alentejo", "Cattle grazing in Alentejo")} loading="lazy" />
     <div class="journey-welfare-copy"><span class="eyebrow">{T("Antes da carne, há uma vida", "Before the meat, there is a life")}</span>
       <h2>{T("O respeito começa no campo.", "Respect begins in the field.")}</h2>
       <p>{T("Conhecer as condições de criação, o bem-estar dos animais e o trabalho dos produtores ajuda-nos a compreender o verdadeiro valor daquilo que chega à mesa.", "Understanding rearing conditions, animal welfare and farmers' work helps us appreciate what reaches the table.")}</p>
@@ -87,7 +87,6 @@ const stages: [string, string, string][] = lang === "en" ? [
       <p class="guardian-q">«{T("Há quem passe uma vida inteira a cuidar da terra. E quem cuida deles?", "Some people spend a whole lifetime caring for the land. And who cares for them?")}»</p>
       <a class="guardian-link" href={href(lang, "guardioes-da-terra/")}>{T("Conhecer os Guardiões da Terra →", "Meet the Guardians of the Land →")}</a>
     </div>
-    <span class="guardian-ia">{T("Ilustração editorial gerada por IA", "AI-generated editorial illustration")}</span>
   </section>
 
 <style>
@@ -113,7 +112,6 @@ const stages: [string, string, string][] = lang === "en" ? [
 .guardian-q{font:300 clamp(1.6rem,2.9vw,2.7rem)/1.25 var(--display);letter-spacing:-.02em;margin:0 0 1.4rem;text-shadow:0 2px 24px rgba(0,0,0,.45)}
 .guardian-link{color:#fff!important;text-decoration:none;font-weight:400;letter-spacing:.02em;border-bottom:1px solid rgba(255,255,255,.55);padding-bottom:3px;transition:border-color .3s}
 .guardian-link:hover{border-color:#fff}
-.guardian-ia{position:absolute;z-index:2;left:20px;bottom:14px;font-size:.68rem;color:rgba(255,255,255,.8)}
 @media (max-aspect-ratio: 1/1){.guardian-img{object-position:31% 22%}.guardian::after{background:linear-gradient(180deg,rgba(12,18,15,0) 50%,rgba(12,18,15,.78) 100%)}.guardian-in{left:20px;right:20px;width:auto;bottom:56px}.guardian-q{font-size:clamp(1.45rem,6.2vw,2rem)}}
 </style>
 </Base>

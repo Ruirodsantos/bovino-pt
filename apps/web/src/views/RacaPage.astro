@@ -80,7 +80,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
       <p class="breed-hero-line">{lang === "en" ? FRASE_EN[b.slug] : FRASE[b.slug]}</p>
       <a class="breed-discover" href="#conhecer">{T("Descobrir a raça", "Discover the breed")} ↓</a>
     </div>
-    <div class="breed-hero-bottom">{bgId.endsWith("-ia") ? T("Paisagem do Alentejo · ilustração gerada por IA", "Alentejo landscape · AI-generated illustration") : <>{lang === "en" ? ((credits as any)[bgId]?.caption_en ?? (credits as any)[bgId]?.caption) : (credits as any)[bgId]?.caption}{(credits as any)[bgId] && <> · {T("Foto", "Photo")}: <a href={(credits as any)[bgId].source_page} rel="noopener" style="color:inherit">{(credits as any)[bgId].author}</a>, {licenseLabel(lang, (credits as any)[bgId].license)}</>}</>}</div>
+    <div class="breed-hero-bottom">{bgId.endsWith("-ia") ? T("Paisagem do Alentejo", "Alentejo landscape") : <>{lang === "en" ? ((credits as any)[bgId]?.caption_en ?? (credits as any)[bgId]?.caption) : (credits as any)[bgId]?.caption}{(credits as any)[bgId] && <> · {T("Foto", "Photo")}: <a href={(credits as any)[bgId].source_page} rel="noopener" style="color:inherit">{(credits as any)[bgId].author}</a>, {licenseLabel(lang, (credits as any)[bgId].license)}</>}</>}</div>
   </section>
 
   <section class="breed-introduction sec" id="conhecer">

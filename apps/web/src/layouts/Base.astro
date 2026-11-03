@@ -56,9 +56,7 @@ const alt = { pt: switchTo(Astro.url, lang, "pt"), en: switchTo(Astro.url, lang,
   <main id="main" class:list={[!overlay && "pad"]}><slot /></main>
   <footer class="pf">
     <div class="wrap">
-      <p><strong>{brand}</strong> — {T("projeto independente de dados abertos. Cada número indica a fonte, o período a que se refere e quando foi verificado. Nenhum valor é estimado ou inventado.", "an independent open-data project. Every number states its source, the period it refers to and when it was checked. No value is estimated or made up.")}</p>
-      <p>{T("Dados", "Data")}: Eurostat, INE {T("e outras fontes oficiais (ver", "and other official sources (see")} <a href={`${pre}metodologia/`}>{T("método e fontes", "method and sources")}</a>). {T("Fronteiras", "Boundaries")}: © EuroGeographics. {T("Código e histórico de dados", "Code and data history")}: <a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a>.</p>
-      <p>{T("Fotografias com autor, licença e origem indicados em cada imagem. Quando não há fotografia autorizada da raça, a imagem é identificada como paisagem e a lacuna é assinalada.", "Photographs credit author, licence and source. When no authorised photograph of the breed exists, the image is labelled as a landscape and the gap is flagged.")}</p>
+      <p><strong>{brand}</strong> · <a href={`${pre}metodologia/`}>{T("Método e fontes", "Method and sources")}</a> · <a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a> · {T("Fronteiras", "Boundaries")} © EuroGeographics</p>
     </div>
   </footer>
   <script>
