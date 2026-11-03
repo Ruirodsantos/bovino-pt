@@ -19,7 +19,7 @@ const heroC = heroC0 && lang === "en" ? { ...heroC0, alt: heroC0.alt_en ?? heroC
 const FRAMED = new Set(["ramo-grande-feira", "arouquesa-touro", "barrosa-festa"]);
 const framed = !own || FRAMED.has(own.id);
 const BG_LAND: Record<string, string> = { alentejana: "hero-alentejo", mertolenga: "mertola", preta: "montado-pasto", garvonesa: "montado-pasto", algarvia: "monchique", "brava-de-lide": "leziria", arouquesa: "montalegre", maronesa: "montalegre", cachena: "montalegre", barrosa: "montalegre", minhota: "rio-lima", mirandesa: "miranda-douro", jarmelista: "montado-pasto", marinhoa: "baixo-vouga" };
-const bgId = b.slug === "ramo-grande" ? "reflexo-mundo-acoriano" : (own?.kind === "raça" ? (BG_LAND[b.slug] ?? "montado-pasto") : own?.id ?? "montado-pasto");
+const bgId = b.slug === "ramo-grande" ? "terceira" : (own?.kind === "raça" ? (BG_LAND[b.slug] ?? "montado-pasto") : own?.id ?? "montado-pasto");
 const isBreedPhoto = own?.kind === "raça";
 const ficha = (await getEntry(lang === "en" ? "fichas_en" : "fichas", b.slug))?.data ?? null;
 const prof = await getEntry(lang === "en" ? "racas_en" : "racas", b.slug);
