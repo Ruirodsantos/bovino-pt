@@ -13,10 +13,8 @@ const T = tr(lang);
 // Cada secção (por ordem de aparição dos «##») pode ter uma figura: fotografia (ilustrativa) ou esquema.
 const FIG: Record<string, Record<number, { photo?: string; diagram?: string }>> = {
   "01-carne-crua": { 0: { diagram: "myoglobin" }, 1: { photo: "bife-rump" }, 4: { photo: "bife-embalado" } },
-  "02-maturacao": { 5: { photo: "bife-prato" } },
-  "03-cortes": { 0: { diagram: "cuts" }, 1: { photo: "bife-malpassado" }, 3: { photo: "bife-tabua" } },
-  "04-cozedura": { 1: { photo: "bife-malpassado" }, 2: { photo: "bife-crosta" } },
-  "05-servir": { 0: { photo: "bife-prato" }, 2: { photo: "bife-tabua" } },
+  "03-cortes": { 0: { diagram: "cuts" }, 3: { photo: "bife-tabua" } },
+  "04-cozedura": { 1: { photo: "bife-malpassado" } },
 };
 const figs = FIG[d.id] ?? {};
 const body: string = d.body ?? "";

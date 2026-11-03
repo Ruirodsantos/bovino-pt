@@ -98,5 +98,13 @@ export function cardPhoto(slug: string): { id: string; kind: "raça" | "solar" |
   return { id: b.photo, kind: (b.photo_kind ?? "solar") as any };
 }
 
+/** Foto do cartão/herói: uma paisagem partilhada por várias raças não se repete (mostra-se só a foto própria ou uma paisagem exclusiva da raça). */
+export function uniquePhoto(slug: string): { id: string; kind: "raça" | "solar" | "paisagem" } | null {
+  const p = cardPhoto(slug);
+  if (!p || p.kind === "raça") return p;
+  const n = breeds().filter((x) => cardPhoto(x.slug)?.id === p.id).length;
+  return n > 1 ? null : p;
+}
+
 /** Where the page hero should be a landscape (e.g. when the only breed photo is cluttered); the breed photo then appears in level 1. */
 export const HERO_OVERRIDE: Record<string, string> = {};

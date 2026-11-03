@@ -16,7 +16,7 @@ const L = (l: string, u: string) => ({ l, u });
 type Ex = { b: string; slug?: string; p: string };
 type Stage = { id: string; t: string; img?: string; general: string[]; ex: Ex[]; maybe: string[]; links: { l: string; u: string }[]; extra?: "classificacao" | "cuts" };
 const stages: Stage[] = [
-  { id: "nascimento", t: T("Nascimento", "Birth"), img: "mertolenga-rebanho",
+  { id: "nascimento", t: T("Nascimento", "Birth"),
     general: [T("O percurso começa numa vaca de cria. Nos sistemas de carne, o vitelo vive junto da mãe e mama durante os primeiros meses; nos sistemas de leite, é separado mais cedo. Cada animal tem de ser identificado (brinco auricular e registo) pouco depois de nascer, e é essa identificação que permite seguir o animal até ao prato.", "The route starts with a suckler cow. In beef systems the calf stays with its mother and nurses for its first months; in dairy systems it is separated earlier. Every animal must be identified (ear tag and registration) soon after birth, and that identification is what lets it be traced all the way to the plate.")],
     ex: [
       { b: "Mertolenga", slug: "mertolenga", p: T("O catálogo destaca a facilidade de parto, a longevidade produtiva e a boa capacidade maternal da raça.", "The catalogue highlights the breed's easy calving, productive longevity and good mothering ability.") },
@@ -25,7 +25,7 @@ const stages: Stage[] = [
     ],
     maybe: [T("Em todas as regiões há também vitelos de bovinos leiteiros e de cruzamentos; a sua proporção ainda não está documentada aqui.", "In every region there are also calves from dairy cattle and crosses; their share is not documented here yet.")],
     links: [L(T("Catálogo das raças autóctones (DGAV/CAP)", "Native breeds catalogue (DGAV/CAP)"), CAT)] },
-  { id: "criacao", t: T("Criação", "Rearing"), img: "montalegre",
+  { id: "criacao", t: T("Criação", "Rearing"),
     general: [T("Em sistemas extensivos os animais pastam ao ar livre durante grande parte do ano; em sistemas intensivos passam mais tempo em estábulo ou em parque. A raça, o clima e o que o criador pretende produzir (vitelo, novilho, vaca de refugo, boi) decidem o sistema.", "In extensive systems animals graze outdoors for much of the year; in intensive systems they spend more time indoors or in pens. Breed, climate and what the farmer wants to produce (veal, young bullock, culled cow, ox) decide the system.")],
     ex: [
       { b: "Barrosã", slug: "barrosa", p: T("Sistema extensivo, em montanha e meia encosta, aproveitando a carqueja e o tojo. A zona de produção da Carne Barrosã DOP abrange 21 concelhos do Norte.", "Extensive system on mountain and mid-slope land, using heather and gorse. The production area of Carne Barrosã PDO covers 21 municipalities in the north.") },
@@ -36,7 +36,7 @@ const stages: Stage[] = [
     ],
     maybe: [T("Falta documentar a dimensão média das explorações e o peso dos sistemas intensivos de leite.", "Still to document: average farm size and the weight of intensive dairy systems.")],
     links: [L(T("Carne Barrosã DOP", "Carne Barrosã PDO"), BARROSA), L("Carnalentejana DOP", CARNAL), L(T("Catálogo DGAV/CAP", "DGAV/CAP catalogue"), CAT)] },
-  { id: "alimentacao", t: T("Alimentação", "Feeding"), img: "mirandesa-pasto",
+  { id: "alimentacao", t: T("Alimentação", "Feeding"),
     general: [T("A base da dieta é a erva: fresca no pasto, ou conservada em feno ou silagem para as épocas secas e frias. Os alimentos compostos (cereais, proteaginosas) completam a dieta quando o pasto não chega. A alimentação influencia a cor da gordura e o sabor da carne.", "The basis of the diet is grass: fresh at pasture, or preserved as hay or silage for dry and cold seasons. Compound feeds (cereals, protein crops) complete the diet when pasture falls short. Feeding influences fat colour and meat flavour.")],
     ex: [
       { b: "Arouquesa", slug: "arouquesa", p: T("Vive de pastos pobres da serra e de rebentos de tojo, carqueja, giesta e carvalho.", "It lives on poor mountain pasture and shoots of gorse, heather, broom and oak.") },
@@ -44,14 +44,14 @@ const stages: Stage[] = [
       { b: "Marinhoa", slug: "marinhoa", p: T("Pastagens naturais ou semeadas, complementadas com cereais, palhas e leguminosas.", "Natural or sown pastures, supplemented with cereals, straw and legumes.") },
     ],
     maybe: [], links: [L(T("Catálogo DGAV/CAP", "DGAV/CAP catalogue"), CAT)] },
-  { id: "transporte", t: T("Transporte", "Transport"), img: "mertolenga-tejo",
+  { id: "transporte", t: T("Transporte", "Transport"),
     general: [T("Os animais vivos seguem para o matadouro ou para outra exploração em camiões licenciados, com regras europeias sobre duração, descanso, água, espaço e aptidão dos animais (Regulamento (CE) n.º 1/2005). Nas ilhas, o transporte pode incluir uma viagem marítima.", "Live animals travel to the abattoir or another farm in licensed vehicles, under European rules on duration, rest, water, space and fitness of the animals (Regulation (EC) No 1/2005). On islands the journey may include a sea crossing.")],
     ex: [
       { b: "Minhota", slug: "minhota", p: T("O catálogo aponta a exportação para Espanha, que absorve grande parte da produção, como um dos motivos da recuperação dos bois castrados.", "The catalogue points to exports to Spain, which absorbs much of the output, as one reason for the recovery of castrated oxen.") },
     ],
     maybe: [T("Por documentar: os percursos concretos até ao matadouro em cada região e o envio de bovinos entre ilhas ou para o continente. Os dados de comércio de bovinos vivos entre Portugal e Espanha estão no Observatório.", "To document: the actual routes to the abattoir in each region and shipping cattle between islands or to the mainland. Data on live cattle trade between Portugal and Spain is in the Observatory.")],
     links: [L(T("Regulamento (CE) n.º 1/2005", "Regulation (EC) No 1/2005"), eur("32005R0001")), L(T("Observatório", "Observatory"), href(lang, "observatorio/"))] },
-  { id: "abate", t: T("Abate", "Slaughter"), img: "bife-rump",
+  { id: "abate", t: T("Abate", "Slaughter"),
     general: [T("O abate faz-se em matadouros licenciados, com inspeção veterinária e regras de bem-estar no atordoamento e na sangria (Regulamento (CE) n.º 1099/2009). Daqui em diante já não se fala de animais vivos mas de carcaças: a unidade passa a ser o peso de carne, não a cabeça de gado.", "Slaughter takes place in licensed abattoirs, with veterinary inspection and welfare rules for stunning and bleeding (Regulation (EC) No 1099/2009). From here on we no longer speak of live animals but of carcasses: the unit becomes weight of meat, not head of cattle.")],
     ex: [
       { b: "Minhota", slug: "minhota", p: T("O catálogo refere vitelas vendidas em média aos 6,2 meses, com carcaças de peso médio de 149,6 kg, e bois castrados abatidos normalmente depois dos três anos.", "The catalogue reports veal sold at an average of 6.2 months, with an average carcass weight of 149.6 kg, and castrated oxen normally slaughtered after three years.") },
@@ -59,26 +59,26 @@ const stages: Stage[] = [
     ],
     maybe: [T("Por documentar: a rede de matadouros e os volumes por região.", "To document: the abattoir network and volumes by region.")],
     links: [L(T("Regulamento (CE) n.º 1099/2009", "Regulation (EC) No 1099/2009"), eur("32009R1099")), L(T("Abates no Observatório", "Slaughter data in the Observatory"), href(lang, "observatorio/"))] },
-  { id: "classificacao", t: T("Classificação", "Grading"), img: "carne-madeira", extra: "classificacao",
+  { id: "classificacao", t: T("Classificação", "Grading"), extra: "classificacao",
     general: [T("Depois do abate, a carcaça é classificada por um classificador oficial segundo a escala europeia SEUROP: uma letra para a conformação (a forma e o desenvolvimento muscular) e um número de 1 a 5 para a cobertura de gordura (Regulamento (UE) n.º 1308/2013). A classificação é a base do preço pago ao produtor.", "After slaughter the carcass is graded by an official classifier on the European SEUROP scale: a letter for conformation (shape and muscle development) and a number from 1 to 5 for fat cover (Regulation (EU) No 1308/2013). Grading is the basis of the price paid to the producer.")],
     ex: [
       { b: "Minhota", slug: "minhota", p: T("O catálogo refere que 52,5 % dos abates de animais Minhotos dão carcaças de categoria V (animais com menos de 8 meses).", "The catalogue states that 52.5% of Minhota slaughters give category V carcasses (animals under 8 months).") },
     ],
     maybe: [], links: [L(T("Regulamento (UE) n.º 1308/2013", "Regulation (EU) No 1308/2013"), eur("32013R1308"))] },
-  { id: "desmancha", t: T("Desmancha", "Cutting"), img: "carne-cortes", extra: "cuts",
+  { id: "desmancha", t: T("Desmancha", "Cutting"), extra: "cuts",
     general: [T("A carcaça arrefece e matura em câmara; depois é dividida em quartos, peças e cortes. É aqui que a mesma vaca dá o lombo, a vazia, o acém ou a carne para estufar, e se decide o que vai para bife e o que vai para guisado ou carne picada. Os nomes dos cortes variam de região para região; o esquema usa uma nomenclatura comum e está em revisão.", "The carcass chills and ages in a cold room; it is then divided into quarters, primals and cuts. This is where one animal gives the loin, flank, chuck or stewing meat, and where it is decided what becomes steak and what becomes stew or mince. Cut names vary from region to region; the diagram uses a common nomenclature and is under review.")],
     ex: [
       { b: "Carnalentejana", p: T("Além da carne fresca, a DOP tem linhas embaladas de carne picada, almôndegas e hambúrgueres.", "Besides fresh meat, the PDO has packaged lines of mince, meatballs and burgers.") },
     ],
     maybe: [], links: [L(T("Guia de cortes", "Cuts guide"), href(lang, "carne/03-cortes/")), L(T("Maturação", "Ageing"), href(lang, "carne/02-maturacao/"))] },
-  { id: "distribuicao", t: T("Distribuição", "Distribution"), img: "carne-variedade",
+  { id: "distribuicao", t: T("Distribuição", "Distribution"),
     general: [T("A carne chega ao consumidor por talhos, supermercados, restauração e venda direta. A rotulagem da carne de bovino é obrigatória e inclui o número de identificação do animal ou do lote, o país de nascimento, de criação e de abate, e o número de aprovação do matadouro e do centro de corte (Regulamento (CE) n.º 1760/2000).", "Beef reaches the consumer through butchers, supermarkets, restaurants and direct sales. Beef labelling is mandatory and includes the animal or batch reference, the country of birth, rearing and slaughter, and the approval number of the abattoir and cutting plant (Regulation (EC) No 1760/2000).")],
     ex: [
       { b: "Barrosã", slug: "barrosa", p: T("A Carne Barrosã DOP tem como entidade produtora indicada a CAPOLIB, a cooperativa agrícola de Boticas.", "Carne Barrosã PDO lists CAPOLIB, the Boticas agricultural cooperative, as its producer.") },
     ],
     maybe: [T("Por documentar: o comércio entre regiões e para o estrangeiro, para além dos dados do Observatório.", "To document: trade between regions and abroad, beyond the Observatory data.")],
     links: [L(T("Regulamento (CE) n.º 1760/2000", "Regulation (EC) No 1760/2000"), eur("32000R1760")), L(T("Comércio de carne no Observatório", "Meat trade in the Observatory"), href(lang, "observatorio/"))] },
-  { id: "consumidor", t: T("Consumidor", "Consumer"), img: "bife-prato",
+  { id: "consumidor", t: T("Consumidor", "Consumer"),
     general: [T("No fim do percurso, o rótulo e a denominação dizem de onde vem a carne. Cozinhar bem uma boa peça é a última etapa: ponto, descanso e corte decidem o resultado tanto como a raça.", "At the end of the route, the label and designation say where the meat comes from. Cooking a good cut well is the last stage: doneness, resting and slicing decide the result as much as the breed.")],
     ex: [
       { b: "Mirandesa", slug: "mirandesa", p: T("A posta mirandesa é o prato que dá fama à raça.", "The posta mirandesa is the dish that gives the breed its fame.") },
@@ -89,7 +89,6 @@ const stages: Stage[] = [
 ---
 <Base lang={lang} overlay title={T("Da Terra à Mesa", "From Land to Table")} description={T("As nove etapas do percurso do bovino e da carne em Portugal, do nascimento ao consumidor, com exemplos de várias raças e regiões.", "The nine stages of the journey of cattle and beef in Portugal, from birth to consumer, with examples from several breeds and regions.")}>
   <header class="hero ph-hero">
-    <Img id="mirandesa-pasto" sizes="100vw" eager lang={lang} class="bg" />
     <div class="hero-in">
       <span class="eyebrow">{T("Do Minho ao Algarve e às ilhas", "From the Minho to the Algarve and the islands")}</span>
       <h1>{T("Da Terra à Mesa", "From Land to Table")}</h1>
@@ -159,6 +158,7 @@ const stages: Stage[] = [
   .stepnav a span { font-size: .72rem; opacity: .65; }
   .legend { font-size: .9rem; margin: 0 0 2.4rem; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
   .stg { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; padding: 44px 0; border-top: 1px solid var(--line); scroll-margin-top: 90px; }
+  .stg-fig:empty { display: none; } .stg:has(> .stg-fig:empty) { grid-template-columns: minmax(0, 1fr); }
   .stg-fig .frame { aspect-ratio: 4/5; position: sticky; top: 100px; margin: 0; }
   .stg-fig .frame img { width: 100%; height: 100%; object-fit: cover; }
   .stg-body h3 { font-size: 1rem; margin: 1.4em 0 .4em; color: var(--muted); font-weight: 500; }

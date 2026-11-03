@@ -15,8 +15,7 @@ const nav: [string, string, string[]][] = [
   ["racas/", T("As raças", "The breeds"), ["racas/"]],
   ["carne/", T("A carne", "The meat"), ["carne/"]],
   ["da-pastagem-ao-prato/", T("Da Terra à Mesa", "From Land to Table"), ["da-pastagem-ao-prato/"]],
-  ["aprender/", T("Aprender", "Learn"), ["aprender/", "descobertas/", "metodologia/"]],
-  ["observatorio/", T("Observatório", "Observatory"), ["observatorio/", "dados/"]],
+  ["dados/", T("Dados", "Data"), ["dados/", "observatorio/", "descobertas/", "metodologia/"]],
 ];
 const active = (p: string, g: string[]) => (p === "" ? path === pre : g.some((x) => path.startsWith(`${pre}${x}`)));
 const fullTitle = home ? brand : `${title} · ${brand}`;
@@ -56,7 +55,7 @@ const alt = { pt: switchTo(Astro.url, lang, "pt"), en: switchTo(Astro.url, lang,
   <main id="main" class:list={[!overlay && "pad"]}><slot /></main>
   <footer class="pf">
     <div class="wrap">
-      <p><strong>{brand}</strong> · <a href={`${pre}metodologia/`}>{T("Método e fontes", "Method and sources")}</a> · <a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a> · {T("Fronteiras", "Boundaries")} © EuroGeographics</p>
+      <p><strong>{brand}</strong> · <a href={`${pre}observatorio/`}>{T("Observatório", "Observatory")}</a> · <a href={`${pre}descobertas/`}>{T("Descobertas", "Discoveries")}</a> · <a href={`${pre}metodologia/`}>{T("Método e fontes", "Method and sources")}</a> · <a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a> · {T("Fronteiras", "Boundaries")} © EuroGeographics</p>
     </div>
   </footer>
   <script>

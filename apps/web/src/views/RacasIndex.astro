@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Photo from "../components/Photo.astro";
 import Img from "../components/proto/Img.astro";
-import { breeds, breedEn, cardPhoto, REGIONS, REGION_LABELS } from "../lib/data";
+import { breeds, breedEn, uniquePhoto, REGIONS, REGION_LABELS } from "../lib/data";
 import { ORDEM, TERRA, FRASE, FRASE_EN } from "../lib/proto";
 import { href, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
@@ -12,7 +12,7 @@ const all = breeds();
 const labels = REGION_LABELS(lang);
 const tiles = ORDEM.map(([slug, size]) => {
   const br = all.find((x) => x.slug === slug)!;
-  return { slug, size, name: br.official_name, photo: cardPhoto(slug), regions: REGIONS[slug] ?? [] };
+  return { slug, size, name: br.official_name, photo: uniquePhoto(slug), regions: REGIONS[slug] ?? [] };
 });
 const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
 ---
@@ -51,7 +51,6 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
       {T(`${gaps.length} das 15 raças ainda não têm fotografia própria autorizada: ${gaps.map((g) => g.name).join(", ")}. Nesses casos mostra-se uma paisagem do território, nunca uma fotografia de outra raça.`, `${gaps.length} of the 15 breeds still have no authorised photograph of their own: ${gaps.map((g) => g.name).join(", ")}. In those cases a landscape of the territory is shown, never a photograph of another breed.`)}
     </p>
   </section>
-  <section class="alentejo-ending"><img src={`${import.meta.env.BASE_URL}img/paisagem-alentejo-ia-lg.webp`} alt="Paisagem artística das planícies alentejanas" loading="lazy"/><div><span>{T("Alentejo", "Alentejo")}</span><h2>{T("A mesma terra. Outras paisagens. Histórias que merecem ser contadas.", "The same land. Different landscapes. Stories worth telling.")}</h2></div></section>
 </Base>
 <script>
   const mapEl = document.querySelector("[data-chart='breeds-map']");

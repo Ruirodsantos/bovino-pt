@@ -50,23 +50,9 @@ const stages: [string, string, string][] = lang === "en" ? [
     <div class="journey-opening-copy"><span class="eyebrow">{T("A terra e os animais", "Land and animals")}</span>
       <h2>{T("Cada raça conta a história de um lugar.", "Every breed tells the story of a place.")}</h2>
       <p>{T("Dos lameiros de Trás-os-Montes às ilhas dos Açores, a paisagem e os animais cresceram juntos. Descubra este património ao seu ritmo.", "From the northern meadows to the Azores, landscape and cattle have grown together. Discover this heritage at your own pace.")}</p>
-      <a class="journey-next" href="#descobrir">{T("Descobrir as raças ↓", "Discover the breeds ↓")}</a>
+      <a class="journey-next" href={href(lang, "racas/")}>{T("Descobrir as 15 raças →", "Discover the 15 breeds →")}</a>
     </div>
     <div class="journey-opening-photo"><img src={`${b}img/mirandesa-pasto-lg.webp`} alt={T("Bovinos em pastagem portuguesa", "Cattle in a Portuguese pasture")} loading="lazy" /></div>
-  </section>
-
-  <section class="sec" id="descobrir">
-    <div class="wrap"><div class="rv" style="max-width:34rem"><span class="eyebrow">{T("Conhecer as raças", "Meet the breeds")}</span><h2 style="margin:.2em 0 .4em">{T("Cada raça, uma paisagem.", "Every breed, a landscape.")}</h2></div></div>
-    <div class="strip rv" role="list" aria-label={T("Algumas raças", "Some breeds")}>
-      {strip.map((s) => (
-        <a role="listitem" href={`${href(lang, "racas/")}${s.slug}/`}>
-          <div class="frame"><Img id={s.photo.id} sizes="360px" lang={lang} /></div>
-          <h3>{s.name}</h3>
-          {s.photo.kind !== "raça" && <span class="gap">{T("Paisagem · foto da raça por obter", "Landscape · breed photo to be found")}</span>}
-        </a>
-      ))}
-    </div>
-    <div class="wrap"><a class="btn rv" href={href(lang, "racas/")}>{T("Ver as 15 raças →", "See all 15 breeds →")}</a></div>
   </section>
 
   <section class="journey-welfare">
@@ -80,9 +66,6 @@ const stages: [string, string, string][] = lang === "en" ? [
 
   <!-- Última imagem antes do rodapé: os Guardiões da Terra -->
   <section class="guardian" aria-label={T("Os Guardiões da Terra", "Guardians of the Land")}>
-    <img class="guardian-img" src={`${b}img/guardiao-ia-lg.webp`} srcset={`${b}img/guardiao-ia-sm.webp 480w, ${b}img/guardiao-ia-md.webp 900w, ${b}img/guardiao-ia-lg.webp 1536w`}
-      sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" width="1536" height="1024" loading="lazy" decoding="async"
-      alt={T("Ilustração: pastor idoso apoiado numa vara olha para a câmara, com vacas castanhas e serras atrás", "Illustration: an elderly shepherd leaning on a staff looks at the camera, with brown cows and hills behind him")} />
     <div class="guardian-in rv">
       <p class="guardian-q">«{T("Há quem passe uma vida inteira a cuidar da terra. E quem cuida deles?", "Some people spend a whole lifetime caring for the land. And who cares for them?")}»</p>
       <a class="guardian-link" href={href(lang, "guardioes-da-terra/")}>{T("Conhecer os Guardiões da Terra →", "Meet the Guardians of the Land →")}</a>
@@ -116,15 +99,15 @@ const stages: [string, string, string][] = lang === "en" ? [
 .journey-table-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(3rem,7vw,7rem)}
 @media(max-width:760px){.journey-opening,.journey-table{grid-template-columns:1fr}.journey-opening-photo{min-height:48vh;order:-1}.journey-opening-copy,.journey-table-copy{padding:3.5rem 1.5rem 4.5rem}.journey-table-photo{min-height:43vh}.journey-welfare{min-height:70vh}.journey-welfare-copy{padding:5rem 1.5rem}}
 .journey-welfare .eyebrow,.journey-table .eyebrow{color:#e6efdc;text-shadow:0 1px 6px rgba(0,0,0,.55)}
-.guardian{position:relative;height:100svh;min-height:540px;overflow:hidden;background:#21382d;color:#fff}
+.guardian{position:relative;padding:clamp(5rem,12vw,9rem) 0;overflow:hidden;background:#21382d;color:#fff}
 .guardian-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 30%}
-.guardian::before{content:"";position:absolute;inset:0 0 auto;height:22vh;z-index:1;background:linear-gradient(180deg,#21382d 0%,rgba(33,56,45,0) 100%);pointer-events:none}
-.guardian::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,18,15,0) 50%,rgba(12,18,15,.62) 100%);pointer-events:none}
-.guardian-in{position:absolute;z-index:2;right:clamp(20px,6vw,96px);bottom:clamp(48px,11vh,120px);width:min(34rem,44vw)}
+.guardian::before{display:none;content:"";position:absolute;inset:0 0 auto;height:22vh;z-index:1;background:linear-gradient(180deg,#21382d 0%,rgba(33,56,45,0) 100%);pointer-events:none}
+.guardian::after{display:none;content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,18,15,0) 50%,rgba(12,18,15,.62) 100%);pointer-events:none}
+.guardian-in{position:relative;z-index:2;margin:0 auto;width:min(42rem,calc(100% - 3rem))}
 .guardian-q{font:300 clamp(1.6rem,2.9vw,2.7rem)/1.25 var(--display);letter-spacing:-.02em;margin:0 0 1.4rem;text-shadow:0 2px 24px rgba(0,0,0,.45)}
 .guardian-link{color:#fff!important;text-decoration:none;font-weight:400;letter-spacing:.02em;border-bottom:1px solid rgba(255,255,255,.55);padding-bottom:3px;transition:border-color .3s}
 .guardian-link:hover{border-color:#fff}
-@media (max-aspect-ratio: 1/1){.guardian-img{object-position:31% 22%}.guardian::after{background:linear-gradient(180deg,rgba(12,18,15,0) 50%,rgba(12,18,15,.78) 100%)}.guardian-in{left:20px;right:20px;width:auto;bottom:56px}.guardian-q{font-size:clamp(1.45rem,6.2vw,2rem)}}
+@media (max-aspect-ratio: 1/1){.guardian-img{object-position:31% 22%}.guardian::after{display:none;background:linear-gradient(180deg,rgba(12,18,15,0) 50%,rgba(12,18,15,.78) 100%)}.guardian-q{font-size:clamp(1.45rem,6.2vw,2rem)}}
 .origem{background:#f5f2e9;color:#263e30;padding:clamp(4.5rem,10vw,9rem) 1.5rem}
 .origem-in{max-width:42rem;margin:0 auto}
 .origem h2{font-size:clamp(2rem,3.8vw,3.6rem);line-height:1.1;letter-spacing:-.03em;margin:1rem 0 1.6rem}
