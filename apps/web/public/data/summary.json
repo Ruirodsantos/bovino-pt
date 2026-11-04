@@ -17,7 +17,7 @@
     "period": "nov.–dez. 2025",
     "period_en": "Nov–Dec 2025",
     "published": "2026-10-26",
-    "verified": "2026-11-03"
+    "verified": "2026-11-04"
    }
   },
   {
@@ -38,7 +38,7 @@
     "period": "set. 2025 – ago. 2026",
     "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-16",
-    "verified": "2026-11-03"
+    "verified": "2026-11-04"
    }
   },
   {
@@ -56,7 +56,7 @@
     "period": "set. 2025 – ago. 2026",
     "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-16",
-    "verified": "2026-11-03"
+    "verified": "2026-11-04"
    }
   },
   {
@@ -74,7 +74,7 @@
     "period": "set. 2025 – ago. 2026",
     "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-16",
-    "verified": "2026-11-03"
+    "verified": "2026-11-04"
    }
   },
   {
@@ -92,7 +92,7 @@
     "period": "set. 2025 – ago. 2026",
     "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-10-29",
-    "verified": "2026-11-03"
+    "verified": "2026-11-04"
    }
   },
   {
@@ -110,7 +110,7 @@
     "period": "2025",
     "period_en": "2025",
     "published": "2026-10-06",
-    "verified": "2026-11-03"
+    "verified": "2026-11-04"
    }
   }
  ],
@@ -124,7 +124,7 @@
    "first_period": "2005",
    "last_period": "2025",
    "publication_date": "2026-10-26",
-   "retrieved_at": "2026-11-03T12:49:15+00:00",
+   "retrieved_at": "2026-11-04T13:01:38+00:00",
    "source_code": "apro_mt_lscatl"
   },
   {
@@ -136,7 +136,7 @@
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-29",
-   "retrieved_at": "2026-11-03T12:49:16+00:00",
+   "retrieved_at": "2026-11-04T13:01:40+00:00",
    "source_code": "apro_mt_pheadm"
   },
   {
@@ -148,7 +148,7 @@
    "first_period": "2005",
    "last_period": "2025",
    "publication_date": "2026-10-06",
-   "retrieved_at": "2026-11-03T12:49:18+00:00",
+   "retrieved_at": "2026-11-04T13:01:41+00:00",
    "source_code": "apro_mt_pann"
   },
   {
@@ -160,7 +160,7 @@
    "first_period": "2010",
    "last_period": "2023",
    "publication_date": "2026-06-17",
-   "retrieved_at": "2026-11-03T12:49:19+00:00",
+   "retrieved_at": "2026-11-04T13:01:43+00:00",
    "source_code": "ef_lsk_main"
   },
   {
@@ -172,7 +172,7 @@
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-16",
-   "retrieved_at": "2026-11-03T12:49:21+00:00",
+   "retrieved_at": "2026-11-04T13:01:45+00:00",
    "source_code": "DS-045409"
   },
   {
@@ -184,12 +184,12 @@
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-10-16",
-   "retrieved_at": "2026-11-03T12:49:52+00:00",
+   "retrieved_at": "2026-11-04T13:02:19+00:00",
    "source_code": "DS-045409"
   }
  ],
  "last_run": {
-  "finished_at": "2026-11-04T11:12:44+00:00",
+  "finished_at": "2026-11-04T13:02:23+00:00",
   "datasets": [
    {
     "dataset": "bovine_population",
