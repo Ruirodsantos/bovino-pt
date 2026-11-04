@@ -1,38 +1,53 @@
 ---
 import Base from "../layouts/Base.astro";
 import Img from "../components/proto/Img.astro";
+import Myoglobin from "../components/diagrams/Myoglobin.astro";
+import CortesViewer from "../components/diagrams/CortesViewer.astro";
+import Classificacao from "../components/diagrams/Classificacao.astro";
 import credits from "../data/images.json";
 import { marked } from "marked";
 import { href, licenseLabel, tr, type Lang } from "../i18n";
-interface Props { lang: Lang; d: any; next?: any }
-const { lang, d, next } = Astro.props;
+interface Props { lang: Lang; d: any; prev?: any; next?: any }
+const { lang, d, prev, next } = Astro.props;
 const T = tr(lang);
+const prato = d.data.parent === "prato";
+const root = prato ? "da-pastagem-ao-prato/" : "carne/";
+const hubName = prato ? "Da Terra à Mesa" : "A carne";
 const has = (id?: string) => !!id && !!(credits as Record<string, any>)[id];
-const cr = (id: string) => { const c = (credits as Record<string, any>)[id]; return c ? { ...c } : null; };
+const cr = (id: string) => (credits as Record<string, any>)[id];
 const more = marked.parse(d.body ?? "") as string;
 const heroOk = has(d.data.photo);
+const num = String(d.data.order).padStart(2, "0");
+const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
 ---
-<Base lang={lang} overlay title={d.data.title} description={d.data.lead}>
+<Base lang={lang} overlay title={d.data.title} description={d.data.lead} enPath={href("en", root)}>
   <header class:list={["tp-hero", !heroOk && "tp-plain"]}>
     {heroOk && <Img id={d.data.photo} sizes="100vw" eager lang={lang} class="tp-bg" />}
+    {!heroOk && <div class="tp-slotlabel"><b>FOTO · CAPA</b> {d.data.photo}<br />2400 × 1350 px · 16:9 · horizontal</div>}
     <div class="tp-in">
-      <a class="tp-back" href={href(lang, "carne/")}>← {T("A carne", "The meat")}</a>
-      <span class="tp-k">{d.data.kicker}</span>
+      <a class="tp-back" href={href(lang, root)}>← {hubName}</a>
+      <span class="tp-k">{prato ? d.data.kicker : `${d.data.kicker} · ${num}`}</span>
       <h1>{d.data.title}</h1>
       <p>{d.data.lead}</p>
-      <span class="tp-chip">{T("Texto original · em revisão", "Original text · under review")}</span>
+      {!prato && <span class="tp-chip">{T("Texto original · em revisão", "Original text · under review")}</span>}
     </div>
-    {heroOk && (() => { const c = cr(d.data.photo)!; return <p class="tp-cr">{c.caption} · {T("Foto", "Photo")}: <a href={c.source_page} rel="noopener">{c.author}</a> · {licenseLabel(lang, c.license)}</p>; })()}
+    {heroOk && <p class="tp-cr">{cr(d.data.photo).caption} · {T("Foto", "Photo")}: <a href={cr(d.data.photo).source_page} rel="noopener">{cr(d.data.photo).author}</a> · {licenseLabel(lang, cr(d.data.photo).license)}</p>}
   </header>
   {d.data.scenes.map((s: any, i: number) => {
-    const ok = has(s.photo); const c = ok ? cr(s.photo) : null;
+    const slot = !!s.photo; const ok = has(s.photo); const c = ok ? cr(s.photo) : null;
     return (
-      <section class:list={["tp-s", ok ? (i % 2 ? "tp-split tp-rev" : "tp-split") : "tp-text"]}>
-        {ok && <figure class="tp-fig"><Img id={s.photo} sizes="(max-width:860px) 100vw, 55vw" lang={lang} pos={s.pos} />{c && <figcaption>{c.caption} · {T("Foto", "Photo")}: <a href={c.source_page} rel="noopener">{c.author}</a> · {licenseLabel(lang, c.license)}</figcaption>}</figure>}
+      <section class:list={["tp-s", slot ? (i % 2 ? "tp-split tp-rev" : "tp-split") : "tp-text", slot && !ok && "noimg"]}>
+        {slot && ok && <figure class="tp-fig"><Img id={s.photo} sizes="(max-width:860px) 100vw, 55vw" lang={lang} pos={s.pos} /><figcaption>{c.caption} · {T("Foto", "Photo")}: <a href={c.source_page} rel="noopener">{c.author}</a> · {licenseLabel(lang, c.license)}</figcaption></figure>}
+        {slot && !ok && <figure class="tp-fig tp-slot"><div class="tp-slotlabel"><b>FOTO · CENA</b> {s.photo}<br />2000 × 1600 px · 5:4 · assunto ao centro</div></figure>}
         <div class="tp-copy"><span class="tp-n">{String(i + 1).padStart(2, "0")}</span><h2>{s.title}</h2><p>{s.text}</p></div>
       </section>
     );
   })}
+  {d.data.diagram && <section class="tp-diag"><div class="tp-diag-in">
+    {d.data.diagram === "myoglobin" && <Myoglobin lang={lang} />}
+    {d.data.diagram === "cuts" && <CortesViewer lang={lang} />}
+    {d.data.diagram === "classificacao" && <Classificacao lang={lang} />}
+  </div></section>}
   <section class="tp-more">
     <details><summary>{T("Saber mais e fontes", "More and sources")}</summary>
       <div class="tp-more-in">
@@ -41,11 +56,12 @@ const heroOk = has(d.data.photo);
       </div>
     </details>
   </section>
-  {next && <a class="tp-next" href={href(lang, `carne/${next.id}/`)}><span>{T("Seguinte", "Next")}</span><strong>{next.data.title} →</strong></a>}
+  <a class="tp-next" href={next ? href(lang, `${root}${next.id}/`) : href(lang, root)}><span>{next ? T("Seguinte", "Next") : T("Voltar a", "Back to")}</span><strong>{next ? next.data.title : hubName} →</strong></a>
 </Base>
+<script is:inline>if(/[?&]fotos/.test(location.search))document.documentElement.classList.add("show-slots");</script>
 <style is:global>
   .tp-hero{position:relative;min-height:88svh;display:flex;align-items:flex-end;color:#fff;background:#21382d;overflow:hidden}
-  .tp-hero .tp-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6)}
+  .tp-hero .tp-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62)}
   .tp-in{position:relative;z-index:1;width:min(60rem,calc(100% - 3rem));margin:0 auto;padding:9rem 0 clamp(3rem,8vh,6rem)}
   .tp-in h1{font-size:clamp(3rem,8vw,7rem);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .25em;color:#fff}
   .tp-in p{font-size:clamp(1.15rem,2vw,1.6rem);font-weight:300;max-width:30ch;line-height:1.4;margin:0}
@@ -53,19 +69,29 @@ const heroOk = has(d.data.photo);
   .tp-back{display:block;color:#e6efdc;margin-bottom:1.4rem;text-decoration:none;font-size:.9rem}
   .tp-chip{display:inline-block;margin-top:1.6rem;font-size:.72rem;padding:4px 10px;border:1px solid rgba(255,255,255,.4);border-radius:99px;color:#e6efdc}
   .tp-cr{position:absolute;right:1.5rem;bottom:.8rem;z-index:1;font-size:.68rem;color:rgba(255,255,255,.75);margin:0}.tp-cr a{color:inherit}
+  .tp-slotlabel{display:none;position:absolute;right:1.5rem;top:6rem;z-index:2;border:2px dashed rgba(255,255,255,.7);padding:.8rem 1rem;font:500 .8rem/1.5 ui-monospace,monospace;color:#fff;background:rgba(0,0,0,.25);text-align:left}
+  html.show-slots .tp-slotlabel{display:block}
   .tp-s{background:#f5f2e9;color:#263e30}
-  .tp-text{padding:clamp(4.5rem,11vw,9rem) 1.5rem}.tp-text .tp-copy{max-width:42rem;margin:0 auto}
+  .tp-text,.tp-split.noimg{padding:clamp(4.5rem,11vw,9rem) 1.5rem}.tp-text .tp-copy,.tp-split.noimg .tp-copy{max-width:42rem;margin:0 auto;padding:0}
+  .tp-split.noimg{display:block;min-height:0}.tp-split.noimg .tp-fig{display:none}
+  html.show-slots .tp-split.noimg{display:grid;padding:0;min-height:80svh}html.show-slots .tp-split.noimg .tp-fig{display:grid}
+  html.show-slots .tp-split.noimg .tp-copy{max-width:none;margin:0;padding:clamp(3rem,7vw,7rem)}
   .tp-split{display:grid;grid-template-columns:1.2fr 1fr;min-height:80svh}
   .tp-split.tp-rev{grid-template-columns:1fr 1.2fr}.tp-split.tp-rev .tp-fig{order:2}
   .tp-fig{margin:0;position:relative;min-height:60svh}.tp-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tp-slot{background:#3d5a4a;place-items:center}.tp-slot .tp-slotlabel{display:block;position:static}
   .tp-fig figcaption{position:absolute;left:1rem;bottom:.6rem;font-size:.66rem;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.6);max-width:90%}.tp-fig figcaption a{color:inherit}
   .tp-split .tp-copy{padding:clamp(3rem,7vw,7rem);display:flex;flex-direction:column;justify-content:center}
   .tp-n{font-size:.8rem;letter-spacing:.2em;color:#6b8a6b}
   .tp-copy h2{font-size:clamp(2.2rem,4.4vw,4.2rem);line-height:1.08;letter-spacing:-.035em;margin:.6rem 0 1.2rem}
   .tp-copy p{font-size:clamp(1.05rem,1.4vw,1.3rem);line-height:1.8;max-width:34rem;margin:0}
   .tp-text+.tp-text{padding-top:0}
+  html:not(.show-slots) .tp-text+.tp-split.noimg,html:not(.show-slots) .tp-split.noimg+.tp-text,html:not(.show-slots) .tp-split.noimg+.tp-split.noimg{padding-top:0}
+  .tp-split:not(.noimg)+.tp-text,.tp-split:not(.noimg)+.tp-split.noimg{padding-top:clamp(4.5rem,11vw,9rem)}
+  .tp-diag{background:#f5f2e9;color:#263e30;padding:2rem 1.5rem 3rem}.tp-diag-in{max-width:64rem;margin:0 auto}
   .tp-more{background:#f5f2e9;color:#263e30;padding:2rem 1.5rem 4rem}.tp-more details{max-width:42rem;margin:0 auto;border-top:1px solid #d9d4c4;padding-top:1.2rem}
   .tp-more summary{cursor:pointer;font-weight:650}.tp-more-in{padding-top:1rem;line-height:1.7}.tp-more-in ul{font-size:.9rem}
+  .tp-more-in table{width:100%;border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}.tp-more-in th,.tp-more-in td{text-align:left;padding:8px 10px;border-bottom:1px solid #d9d4c4;vertical-align:top;min-width:100px}
   .tp-next{display:block;background:#21382d;color:#fff!important;text-decoration:none;padding:clamp(3rem,8vw,6rem) 1.5rem;text-align:center}
   .tp-next span{display:block;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#e6efdc}.tp-next strong{font:500 clamp(1.8rem,4vw,3.2rem) var(--display)}
   @media(max-width:860px){.tp-split,.tp-split.tp-rev{grid-template-columns:1fr}.tp-split.tp-rev .tp-fig{order:0}.tp-fig{min-height:48svh}}

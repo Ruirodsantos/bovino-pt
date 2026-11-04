@@ -2,8 +2,8 @@
 import "../styles/global.css";
 import "../styles/proto.css";
 import { BASE, href, htmlLang, switchTo, tr, type Lang } from "../i18n";
-interface Props { title: string; description?: string; lang?: Lang; home?: boolean; overlay?: boolean; image?: string; noindex?: boolean }
-const { title, lang = "pt", home = false, overlay = false, image, noindex = false } = Astro.props;
+interface Props { title: string; description?: string; lang?: Lang; home?: boolean; overlay?: boolean; image?: string; noindex?: boolean; enPath?: string }
+const { title, lang = "pt", home = false, overlay = false, image, noindex = false, enPath } = Astro.props;
 const T = tr(lang);
 const description = Astro.props.description ?? T("Dados oficiais, raças autóctones e o comércio de bovinos entre Portugal e Espanha — atualizado todos os dias.", "Official data, native breeds and the cattle trade between Portugal and Spain — updated every day.");
 const base = BASE;
@@ -20,7 +20,7 @@ const nav: [string, string, string[]][] = [
 const active = (p: string, g: string[]) => (p === "" ? path === pre : g.some((x) => path.startsWith(`${pre}${x}`)));
 const fullTitle = home ? brand : `${title} · ${brand}`;
 const other: Lang = lang === "en" ? "pt" : "en";
-const alt = { pt: switchTo(Astro.url, lang, "pt"), en: switchTo(Astro.url, lang, "en") };
+const alt = { pt: switchTo(Astro.url, lang, "pt"), en: enPath ?? switchTo(Astro.url, lang, "en") };
 ---
 <!doctype html>
 <html lang={htmlLang(lang)}>

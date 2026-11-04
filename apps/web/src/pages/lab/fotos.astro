@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+import credits from "../../data/images.json";
+import { getCollection } from "astro:content";
+const all = (await getCollection("temas")).sort((a, b) => (a.data.parent === b.data.parent ? a.data.order - b.data.order : a.data.parent === "carne" ? -1 : 1));
+const has = (id: string) => !!(credits as Record<string, any>)[id];
+type Row = { id: string; role: string; spec: string; page: string; url: string; what: string };
+const rows: Row[] = [
+  { id: "prato-capa", role: "Capa", spec: "2400×1350", page: "Da Terra à Mesa (hub)", url: "da-pastagem-ao-prato/", what: "Imagem de abertura de Da Terra à Mesa" },
+];
+for (const t of all) {
+  const root = t.data.parent === "prato" ? "da-pastagem-ao-prato/" : "carne/";
+  rows.push({ id: t.data.photo!, role: "Capa", spec: "2400×1350", page: t.data.title, url: `${root}${t.id}/`, what: t.data.lead });
+  for (const s of t.data.scenes) if (s.photo) rows.push({ id: s.photo, role: "Cena", spec: "2000×1600", page: t.data.title, url: `${root}${t.id}/`, what: `${s.title} ${s.text}` });
+}
+const done = rows.filter((r) => has(r.id)).length;
+---
+<Base lang="pt" title="Fotografias necessárias" noindex>
+  <section class="sec" style="padding-top:7rem"><div class="wrap">
+    <h1>Fotografias necessárias</h1>
+    <p>{done} de {rows.length} preenchidas. <strong>Capa</strong>: 2400×1350 px (16:9), ocupa o ecrã todo. <strong>Cena</strong>: 2000×1600 px (5:4), ocupa metade do ecrã, assunto ao centro. JPG, até 4 MB. Junte <code>?fotos</code> ao endereço de qualquer página para ver os espaços.</p>
+    <table class="ft"><thead><tr><th>Estado</th><th>Id</th><th>Tipo</th><th>Tamanho</th><th>Página</th><th>O que mostrar</th></tr></thead><tbody>
+      {rows.map((r) => <tr><td>{has(r.id) ? "✓" : "—"}</td><td><code>{r.id}</code></td><td>{r.role}</td><td>{r.spec}</td><td><a href={`${import.meta.env.BASE_URL}${r.url}?fotos`}>{r.page}</a></td><td>{r.what}</td></tr>)}
+    </tbody></table>
+  </div></section>
+</Base>
+<style>.ft{border-collapse:collapse;width:100%;font-size:.88rem}.ft th,.ft td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}</style>
