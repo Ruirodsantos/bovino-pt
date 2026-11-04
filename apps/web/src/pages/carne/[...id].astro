@@ -1,10 +1,15 @@
 ---
 import CarneEntry from "../../views/CarneEntry.astro";
+import TemaPage from "../../views/TemaPage.astro";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const all = (await getCollection("carne")).sort((a, b) => a.data.order - b.data.order);
-  return all.map((d, i) => ({ params: { id: d.id }, props: { d, prev: all[i - 1], next: all[i + 1] } }));
+  const temas = (await getCollection("temas")).sort((a, b) => a.data.order - b.data.order);
+  return [
+    ...all.map((d, i) => ({ params: { id: d.id }, props: { kind: "artigo", d, prev: all[i - 1], next: all[i + 1] } })),
+    ...temas.map((d, i) => ({ params: { id: d.id }, props: { kind: "tema", d, next: temas[i + 1] } })),
+  ];
 }
-const { d, prev, next } = Astro.props;
+const { kind, d, prev, next } = Astro.props;
 ---
-<CarneEntry lang="pt" d={d} prev={prev} next={next} />
+{kind === "tema" ? <TemaPage lang="pt" d={d} next={next} /> : <CarneEntry lang="pt" d={d} prev={prev} next={next} />}

@@ -12,6 +12,9 @@ const descobertasSchema = z.object({
   sources: src.min(1),
 });
 const carneSchema = z.object({ title: z.string(), order: z.number(), summary: z.string(), photo: z.string().optional(), sources: src.default([]) });
+const temaSchema = z.object({ title: z.string(), kicker: z.string(), lead: z.string(), order: z.number(), photo: z.string().optional(),
+  scenes: z.array(z.object({ title: z.string(), text: z.string(), photo: z.string().optional(), pos: z.string().optional() })),
+  sources: src.default([]) });
 const racasSchema = z.object({ title: z.string(), summary: z.string(), catalogue_page: z.number().optional() });
 
 const block = z.object({ title: z.string(), paras: z.array(z.string()).optional(), list: z.array(z.string()).optional(),
@@ -26,5 +29,6 @@ const make = (dir: string, schema: z.ZodTypeAny) => defineCollection({ loader: g
 export const collections = {
   descobertas: make("descobertas", descobertasSchema), carne: make("carne", carneSchema), racas: make("racas", racasSchema),
   descobertas_en: make("en/descobertas", descobertasSchema), carne_en: make("en/carne", carneSchema), racas_en: make("en/racas", racasSchema),
+  temas: make("temas", temaSchema),
   fichas: ficha("fichas"), fichas_en: ficha("en/fichas"),
 };
