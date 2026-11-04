@@ -17,6 +17,8 @@ const heroOk = has(heroId) || !prato;
 const b = import.meta.env.BASE_URL;
 const title = prato ? "Da Terra à Mesa" : "A carne";
 const lead = prato ? "Do nascimento ao prato, em nove etapas." : "Da origem ao sabor: cada tema, uma página.";
+const intro = prato ? "Cada etapa responde a uma pergunta. Siga na ordem, como o animal faz o caminho: do pasto à mesa." : "Três momentos: o que ver antes do lume, o que fazer no lume, o que servir à mesa. Cada paragem responde a uma pergunta.";
+const promise: Record<string, string> = { "Antes do lume": "Aprender a olhar: cor, gordura, fibra, cortes e tempo.", "O lume": "Cada temperatura muda a carne. Saber o quê, e quando parar.", "À mesa": "O último minuto decide o que o cliente recorda." };
 const idx = (t: any) => all.indexOf(t) + 1;
 ---
 <Base lang="pt" overlay title={title} description={lead} enPath={href("en", root)}>
@@ -27,22 +29,26 @@ const idx = (t: any) => all.indexOf(t) + 1;
     <div class="hb-in"><h1>{title}</h1><p>{lead}</p></div>
   </header>
   <div class="hb-body">
+    <p class="hb-intro">{intro}</p>
+    <a class="hb-start" href={href("pt", `${root}${all[0].id}/`)}>{prato ? "Começar pelo nascimento" : "Começar a viagem"} →</a>
     {groups.map((g) => (
-      <section class="hb-group">
+      <section class="hb-chap">
         {g.name && <h2>{g.name}</h2>}
-        <div class="hb-grid">
+        {g.name && <p class="hb-promise">{promise[g.name]}</p>}
+        <ol class="hb-trail">
           {g.items.map((t) => (
-            <a class={["hb-card", has(t.data.photo) && "has"].filter(Boolean).join(" ")} href={href("pt", `${root}${t.id}/`)}>
-              {has(t.data.photo) && <Img id={t.data.photo!} sizes="(max-width:760px) 100vw, 33vw" />}
-              <span class="hb-n">{String(idx(t)).padStart(2, "0")}</span>
-              <span class="hb-t">{t.data.title}</span>
-              {!has(t.data.photo) && <span class="hb-slot">FOTO · {t.data.photo}</span>}
-            </a>
+            <li>
+              <a href={href("pt", `${root}${t.id}/`)}>
+                <span class="hb-dot">{idx(t)}</span>
+                <span class="hb-txt"><strong>{t.data.title}</strong><em>{t.data.hook}</em></span>
+                {has(t.data.photo) && <span class="hb-th"><Img id={t.data.photo!} sizes="160px" /></span>}
+              </a>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
     ))}
-    {!prato && <section class="hb-group"><h2>Em 3D</h2><div class="hb-grid"><a class="hb-card hb-3d" href={href("pt", "anatomia-cortes/")}><span class="hb-n">3D</span><span class="hb-t">Anatomia e cortes</span></a></div></section>}
+    {!prato && <section class="hb-chap"><h2>E em 3D</h2><p class="hb-promise">Veja onde fica cada corte no animal.</p><ol class="hb-trail"><li><a href={href("pt", "anatomia-cortes/")}><span class="hb-dot">3D</span><span class="hb-txt"><strong>Anatomia e cortes</strong><em>Rode o animal e toque numa peça.</em></span></a></li></ol></section>}
   </div>
 </Base>
 <script is:inline>if(/[?&]fotos/.test(location.search))document.documentElement.classList.add("show-slots");</script>
@@ -52,14 +58,14 @@ const idx = (t: any) => all.indexOf(t) + 1;
   .hb-in{position:relative;z-index:1;width:min(70rem,calc(100% - 3rem));margin:0 auto;padding:9rem 0 clamp(3rem,9vh,6rem)}
   .hb-in h1{font-size:clamp(3.2rem,9vw,8rem);line-height:1;letter-spacing:-.045em;color:#fff;margin:0 0 .2em}.hb-in p{font-size:clamp(1.15rem,2vw,1.6rem);font-weight:300;margin:0}
   .hb-body{background:#f5f2e9;color:#263e30;padding:clamp(3rem,7vw,6rem) 1.5rem clamp(4rem,9vw,8rem)}
-  .hb-group{max-width:72rem;margin:0 auto clamp(2.5rem,6vw,5rem)}.hb-group h2{font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:#6b8a6b;margin:0 0 1.2rem;font-weight:600}
-  .hb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));gap:14px}
-  .hb-card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:4/3;padding:1.1rem;border-radius:14px;overflow:hidden;text-decoration:none;color:#fff;background:#21382d;transition:transform .4s}
-  .hb-card:hover{transform:translateY(-3px)}
-  .hb-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}.hb-card:hover img{transform:scale(1.05)}
-  .hb-card.has::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.7))}
-  .hb-n,.hb-t{position:relative;z-index:1}.hb-card .hb-n{font-size:.75rem;letter-spacing:.2em;color:#cfe3cf!important}.hb-card .hb-t{font:500 1.6rem/1.15 var(--display);color:#fff!important}
-  .hb-slot{display:none;position:relative;z-index:1;font:500 .66rem ui-monospace,monospace;margin-top:.4rem;color:#e6efdc}html.show-slots .hb-slot{display:block}
-  .hb-3d{background:#3d5a4a}
+  .hb-intro{max-width:36rem;margin:0 auto 1.5rem;font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.5;text-align:center}
+  .hb-start{display:block;width:max-content;margin:0 auto clamp(3rem,7vw,5rem);background:#21382d;color:#fff!important;padding:1rem 2rem;border-radius:99px;text-decoration:none;font-weight:600}
+  .hb-chap{max-width:44rem;margin:0 auto clamp(3rem,7vw,5rem)}
+  .hb-chap h2{font:500 clamp(2rem,4.5vw,3.2rem)/1.05 var(--display);letter-spacing:-.03em;margin:0}.hb-promise{margin:.4rem 0 1.8rem;color:#5d7a5d}
+  .hb-trail{list-style:none;margin:0;padding:0 0 0 1.4rem;border-left:2px solid #b9c9b0}
+  .hb-trail li{position:relative;margin:0}.hb-trail a{display:flex;align-items:center;gap:1rem;padding:1.1rem 0 1.1rem 1.6rem;text-decoration:none;color:#263e30;transition:transform .3s}.hb-trail a:hover{transform:translateX(6px)}
+  .hb-dot{position:absolute;left:-2.15rem;width:1.7rem;height:1.7rem;border-radius:50%;background:#21382d;color:#fff;font-size:.7rem;display:grid;place-items:center}
+  .hb-txt{flex:1}.hb-txt strong{display:block;font:500 clamp(1.4rem,2.6vw,1.9rem)/1.15 var(--display)}.hb-txt em{display:block;font-style:normal;color:#5d7a5d;margin-top:.2rem}
+  .hb-th{width:84px;height:84px;border-radius:12px;overflow:hidden;flex:none}.hb-th img{width:100%;height:100%;object-fit:cover}
   .hb-hero .tp-slotlabel{display:none;position:absolute;right:1.5rem;top:6rem;z-index:2;border:2px dashed rgba(255,255,255,.7);padding:.8rem 1rem;font:500 .8rem/1.5 ui-monospace,monospace;color:#fff;background:rgba(0,0,0,.25)}html.show-slots .hb-hero .tp-slotlabel{display:block}
 </style>

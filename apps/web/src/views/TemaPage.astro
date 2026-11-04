@@ -15,7 +15,8 @@ const root = prato ? "da-pastagem-ao-prato/" : "carne/";
 const hubName = prato ? "Da Terra à Mesa" : "A carne";
 const has = (id?: string) => !!id && !!(credits as Record<string, any>)[id];
 const cr = (id: string) => (credits as Record<string, any>)[id];
-const more = marked.parse(d.body ?? "") as string;
+const md = (t: string) => marked.parse(t) as string;
+const N = d.data.scenes.length;
 const heroOk = has(d.data.photo);
 const num = String(d.data.order).padStart(2, "0");
 const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
@@ -33,29 +34,27 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
     </div>
     {heroOk && <p class="tp-cr">{cr(d.data.photo).caption} · {T("Foto", "Photo")}: <a href={cr(d.data.photo).source_page} rel="noopener">{cr(d.data.photo).author}</a> · {licenseLabel(lang, cr(d.data.photo).license)}</p>}
   </header>
+  <div class="tp-hook"><span>{T("A pergunta", "The question")}</span><p>{d.data.hook}</p></div>
   {d.data.scenes.map((s: any, i: number) => {
     const slot = !!s.photo; const ok = has(s.photo); const c = ok ? cr(s.photo) : null;
     return (
       <section class:list={["tp-s", slot ? (i % 2 ? "tp-split tp-rev" : "tp-split") : "tp-text", slot && !ok && "noimg"]}>
         {slot && ok && <figure class="tp-fig"><Img id={s.photo} sizes="(max-width:860px) 100vw, 55vw" lang={lang} pos={s.pos} /><figcaption>{c.caption} · {T("Foto", "Photo")}: <a href={c.source_page} rel="noopener">{c.author}</a> · {licenseLabel(lang, c.license)}</figcaption></figure>}
         {slot && !ok && <figure class="tp-fig tp-slot"><div class="tp-slotlabel"><b>FOTO · CENA</b> {s.photo}<br />2000 × 1600 px · 5:4 · assunto ao centro</div></figure>}
-        <div class="tp-copy"><span class="tp-n">{String(i + 1).padStart(2, "0")}</span><h2>{s.title}</h2><p>{s.text}</p></div>
+        <div class="tp-copy"><span class="tp-n">{i + 1} / {N}</span><h2>{s.title}</h2><div class="tp-md" set:html={md(s.text)} />
+          {s.diagram && <div class="tp-diag-in">
+            {s.diagram === "myoglobin" && <Myoglobin lang={lang} />}
+            {s.diagram === "cuts" && <CortesViewer lang={lang} />}
+            {s.diagram === "classificacao" && <Classificacao lang={lang} />}
+          </div>}
+        </div>
       </section>
     );
   })}
-  {d.data.diagram && <section class="tp-diag"><div class="tp-diag-in">
-    {d.data.diagram === "myoglobin" && <Myoglobin lang={lang} />}
-    {d.data.diagram === "cuts" && <CortesViewer lang={lang} />}
-    {d.data.diagram === "classificacao" && <Classificacao lang={lang} />}
-  </div></section>}
-  <section class="tp-more">
-    <details><summary>{T("Saber mais e fontes", "More and sources")}</summary>
-      <div class="tp-more-in">
-        <div set:html={more} />
-        {d.data.sources.length > 0 && <ul>{d.data.sources.map((s: any) => <li>{s.url ? <a href={s.url} rel="noopener">{s.label}</a> : s.label}</li>)}</ul>}
-      </div>
-    </details>
-  </section>
+  <section class="tp-end"><div class="tp-end-in">
+    {d.data.note && <p class="tp-note"><b>{T("Estado do texto", "Status")}:</b> {d.data.note}</p>}
+    {d.data.sources.length > 0 && <><h3>{T("Fontes", "Sources")}</h3><ul>{d.data.sources.map((s: any) => <li>{s.url ? <a href={s.url} rel="noopener">{s.label}</a> : s.label}</li>)}</ul></>}
+  </div></section>
   <a class="tp-next" href={next ? href(lang, `${root}${next.id}/`) : href(lang, root)}><span>{next ? T("Seguinte", "Next") : T("Voltar a", "Back to")}</span><strong>{next ? next.data.title : hubName} →</strong></a>
 </Base>
 <script is:inline>if(/[?&]fotos/.test(location.search))document.documentElement.classList.add("show-slots");</script>
@@ -64,7 +63,7 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
   .tp-hero .tp-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62)}
   .tp-in{position:relative;z-index:1;width:min(60rem,calc(100% - 3rem));margin:0 auto;padding:9rem 0 clamp(3rem,8vh,6rem)}
   .tp-in h1{font-size:clamp(3rem,8vw,7rem);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .25em;color:#fff}
-  .tp-in p{font-size:clamp(1.15rem,2vw,1.6rem);font-weight:300;max-width:30ch;line-height:1.4;margin:0}
+  .tp-in>p{font-size:clamp(1.15rem,2vw,1.6rem);font-weight:300;max-width:30ch;line-height:1.4;margin:0}
   .tp-k{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#e6efdc}
   .tp-back{display:block;color:#e6efdc;margin-bottom:1.4rem;text-decoration:none;font-size:.9rem}
   .tp-chip{display:inline-block;margin-top:1.6rem;font-size:.72rem;padding:4px 10px;border:1px solid rgba(255,255,255,.4);border-radius:99px;color:#e6efdc}
@@ -84,14 +83,16 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
   .tp-split .tp-copy{padding:clamp(3rem,7vw,7rem);display:flex;flex-direction:column;justify-content:center}
   .tp-n{font-size:.8rem;letter-spacing:.2em;color:#6b8a6b}
   .tp-copy h2{font-size:clamp(2.2rem,4.4vw,4.2rem);line-height:1.08;letter-spacing:-.035em;margin:.6rem 0 1.2rem}
-  .tp-copy p{font-size:clamp(1.05rem,1.4vw,1.3rem);line-height:1.8;max-width:34rem;margin:0}
+  .tp-md{font-size:clamp(1.05rem,1.4vw,1.25rem);line-height:1.75;max-width:36rem}.tp-md p{margin:0 0 1em}.tp-md ul,.tp-md ol{padding-left:1.2em;margin:0 0 1em}.tp-md li{margin-bottom:.5em}.tp-md a{color:#2f6b3f;text-decoration:underline}
+  .tp-text .tp-md,.tp-text .tp-diag-in{max-width:42rem}.tp-text .tp-md table,.tp-split .tp-md table{max-width:none}
+  .tp-md table{width:100%;border-collapse:collapse;font-size:.92rem;margin:1rem 0;display:block;overflow-x:auto}.tp-md th,.tp-md td{text-align:left;padding:8px 10px;border-bottom:1px solid #d9d4c4;vertical-align:top;min-width:110px}.tp-md th{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#6b8a6b}
+  .tp-s .tp-diag-in{margin-top:1.5rem;max-width:none}
+  .tp-hook{background:#21382d;color:#fff;text-align:center;padding:clamp(3rem,8vw,6rem) 1.5rem}.tp-hook span{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#cfe3cf}.tp-hook p{font:500 clamp(1.8rem,4.5vw,3.4rem)/1.15 var(--display);margin:.5rem auto 0;max-width:22ch;color:#fff}
+  .tp-end{background:#f5f2e9;color:#263e30;padding:2rem 1.5rem 4rem}.tp-end-in{max-width:42rem;margin:0 auto;border-top:1px solid #d9d4c4;padding-top:1.5rem;font-size:.9rem;line-height:1.6}.tp-end h3{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:#6b8a6b}
   .tp-text+.tp-text{padding-top:0}
   html:not(.show-slots) .tp-text+.tp-split.noimg,html:not(.show-slots) .tp-split.noimg+.tp-text,html:not(.show-slots) .tp-split.noimg+.tp-split.noimg{padding-top:0}
   .tp-split:not(.noimg)+.tp-text,.tp-split:not(.noimg)+.tp-split.noimg{padding-top:clamp(4.5rem,11vw,9rem)}
-  .tp-diag{background:#f5f2e9;color:#263e30;padding:2rem 1.5rem 3rem}.tp-diag-in{max-width:64rem;margin:0 auto}
-  .tp-more{background:#f5f2e9;color:#263e30;padding:2rem 1.5rem 4rem}.tp-more details{max-width:42rem;margin:0 auto;border-top:1px solid #d9d4c4;padding-top:1.2rem}
-  .tp-more summary{cursor:pointer;font-weight:650}.tp-more-in{padding-top:1rem;line-height:1.7}.tp-more-in ul{font-size:.9rem}
-  .tp-more-in table{width:100%;border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}.tp-more-in th,.tp-more-in td{text-align:left;padding:8px 10px;border-bottom:1px solid #d9d4c4;vertical-align:top;min-width:100px}
+  
   .tp-next{display:block;background:#21382d;color:#fff!important;text-decoration:none;padding:clamp(3rem,8vw,6rem) 1.5rem;text-align:center}
   .tp-next span{display:block;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#e6efdc}.tp-next strong{font:500 clamp(1.8rem,4vw,3.2rem) var(--display)}
   @media(max-width:860px){.tp-split,.tp-split.tp-rev{grid-template-columns:1fr}.tp-split.tp-rev .tp-fig{order:0}.tp-fig{min-height:48svh}}
