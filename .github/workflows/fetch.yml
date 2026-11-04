@@ -6,7 +6,7 @@ name: Buscar imagens e documentos
 on:
   push:
     branches: [main]
-    paths: ["assets/images.yaml", "assets/candidates.yaml", "research/fetch.yaml", "pipeline/fetch_assets.py", "pipeline/image_candidates.py", "pipeline/commons_candidates.py", "pipeline/commons_categories.py"]
+    paths: ["assets/images.yaml", "assets/candidates.yaml", "research/fetch.yaml", "pipeline/fetch_assets.py", "pipeline/image_candidates.py", "pipeline/commons_candidates.py", "pipeline/commons_categories.py", "pipeline/commons_topics.py"]
   workflow_dispatch:
 
 permissions:
@@ -28,6 +28,9 @@ jobs:
         continue-on-error: true
       - run: python pipeline/commons_categories.py
         timeout-minutes: 12
+        continue-on-error: true
+      - run: python pipeline/commons_topics.py
+        timeout-minutes: 15
         continue-on-error: true
       - run: python pipeline/fetch_assets.py
       - run: python pipeline/image_candidates.py
