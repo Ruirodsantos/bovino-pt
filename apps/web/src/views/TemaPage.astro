@@ -17,144 +17,89 @@ const has = (id?: string) => !!id && !!(credits as Record<string, any>)[id];
 const cr = (id: string) => (credits as Record<string, any>)[id];
 const md = (t: string) => marked.parse(t) as string;
 const N = d.data.scenes.length;
-const heroOk = has(d.data.photo);
-const groups: { photo?: string; items: { s: any; i: number }[] }[] = [];
-d.data.scenes.forEach((s: any, i: number) => { if (s.photo || !groups.length) groups.push({ photo: s.photo, items: [] }); groups[groups.length - 1].items.push({ s, i }); });
+const OWN = ["nascimento", "criacao", "alimentacao", "transporte"]; // capas de paisagem/animais: servem de fundo
+const POOL = ["carne-capa", "criacao-capa", "montado-pasto", "transporte-capa", "prato-capa", "mirandesa-pasto", "hero-alentejo", "alimentacao-capa", "mertolenga-tejo", "nascimento-capa"];
+const slugs: string[] = [];
+const idx = Math.max(0, ["cor","gordura","fibra","como-comprar","cortes","maturacao","pontos","crosta","sal","descanso","tecnicas","servir","vinhos","abate","classificacao","desmancha","distribuicao","consumidor"].indexOf(d.id));
+const ownBg = OWN.includes(d.id) && has(d.data.photo);
+const bgId = ownBg ? d.data.photo : POOL[idx % POOL.length];
+const capaFig = !ownBg && has(d.data.photo) ? d.data.photo : null;
 const wide = (s: any) => !!s.diagram || /\n\|/.test(s.text) || s.text.startsWith("|");
 const num = String(d.data.order).padStart(2, "0");
-const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
+const bgCredit = has(bgId) && !cr(bgId).ai ? cr(bgId) : null;
 ---
 <Base lang={lang} overlay title={d.data.title} description={d.data.lead} enPath={href("en", root)}>
-  {d.data.capa === "figure" ? (
-    <header class="tp-fhead">
-      <div class="tp-fin">
-        <a class="tp-back" href={href(lang, root)}>← {hubName}</a>
-        <span class="tp-k">{prato ? d.data.kicker : `${d.data.kicker} · ${num}`}</span>
-        <h1>{d.data.title}</h1>
-        <p class="tp-flead">{d.data.lead}</p>
-      </div>
-      {heroOk ? <figure class="tp-cfig"><Img id={d.data.photo} sizes="(min-width:1100px) 1100px, 100vw" eager lang={lang} /></figure>
-        : <figure class="tp-cfig tp-cslot"><div class="tp-slotlabel"><b>FOTO · CAPA</b> {d.data.photo}</div></figure>}
-    </header>
-  ) : (
-  <header class:list={["tp-hero", !heroOk && "tp-plain"]}>
-    {heroOk && <Img id={d.data.photo} sizes="100vw" eager lang={lang} class="tp-bg" />}
-    {!heroOk && <div class="tp-slotlabel"><b>FOTO · CAPA</b> {d.data.photo}<br />1920 × 1080 px · 16:9 · assunto ao centro<br />telemóvel: {d.data.photo}-m · 1080 × 1920 px</div>}
-    <div class="tp-in">
-      <a class="tp-back" href={href(lang, root)}>← {hubName}</a>
-      <span class="tp-k">{prato ? d.data.kicker : `${d.data.kicker} · ${num}`}</span>
-      <h1>{d.data.title}</h1>
-      <p>{d.data.lead}</p>
-    </div>
-    {heroOk && !cr(d.data.photo).ai && <p class="tp-cr">{cr(d.data.photo).caption} · {T("Foto", "Photo")}: <a href={cr(d.data.photo).source_page} rel="noopener">{cr(d.data.photo).author}</a> · {licenseLabel(lang, cr(d.data.photo).license)}</p>}
-    <span class="tp-scroll" aria-hidden="true">↓</span>
-  </header>
-  )}
-  <div class:list={["tp-body", d.data.capa === "figure" && "tp-warm"]}>
-  <div class="tp-hook"><span>{T("A pergunta", "The question")}</span><p>{d.data.hook}</p></div>
-  {groups.map((g) => {
-    const ok = has(g.photo);
-    return (
-      <div class:list={["tp-g", g.photo ? "tp-cine" : "tp-flat"]}>
-        {g.photo && <div class="tp-stick">
-          {ok ? <Img id={g.photo} sizes="100vw" lang={lang} class="tp-sbg" /> : <div class="tp-slotlabel"><b>FOTO · CENA</b> {g.photo}<br />1920 × 1080 px · 16:9 · assunto ao centro<br />telemóvel: {g.photo}-m · 1080 × 1920 px</div>}
-          {ok && !cr(g.photo).ai && <p class="tp-cr">{cr(g.photo).caption} · {T("Foto", "Photo")}: <a href={cr(g.photo).source_page} rel="noopener">{cr(g.photo).author}</a> · {licenseLabel(lang, cr(g.photo).license)}</p>}
-        </div>}
-        <div class="tp-over">
-          {g.items.map(({ s, i }) => (
-            <Fragment>
-            {s.fig && (has(s.fig) ? <figure class="tp-cmp"><Img id={s.fig} sizes="(min-width:1100px) 1000px, 100vw" lang={lang} /><figcaption>{cr(s.fig).caption}</figcaption></figure> : <figure class="tp-cmp tp-cslot"><div class="tp-slotlabel"><b>FOTO · COMPARAÇÃO</b> {s.fig}</div></figure>)}
-            <section class:list={["tp-s", wide(s) && "is-wide"]}>
-              <div class="tp-copy"><span class="tp-n">{i + 1} / {N}</span><h2>{s.title}</h2><div class="tp-md" set:html={md(s.text)} />
-                {s.diagram && <div class="tp-diag-in">
-                  {s.diagram === "myoglobin" && <Myoglobin lang={lang} />}
-                  {s.diagram === "cuts" && <CortesViewer lang={lang} />}
-                  {s.diagram === "classificacao" && <Classificacao lang={lang} />}
-                </div>}
-              </div>
-            </section>
-            </Fragment>
-          ))}
+  <div class="tp-fixed" aria-hidden="true">{has(bgId) && <Img id={bgId} sizes="100vw" eager lang={lang} class="tp-fbg" />}</div>
+  <div class="tp-page">
+    <header class="tp-top">
+      <div class="tp-top-in">
+        <div class="tp-top-txt">
+          <a class="tp-back" href={href(lang, root)}>← {hubName}</a>
+          <span class="tp-k">{prato ? d.data.kicker : `${d.data.kicker} · ${num}`}</span>
+          <h1>{d.data.title}</h1>
+          <p class="tp-lead">{d.data.lead}</p>
         </div>
+        {capaFig && <figure class="tp-ph"><Img id={capaFig} sizes="(min-width:900px) 420px, 100vw" eager flat lang={lang} /></figure>}
+        {!capaFig && !ownBg && <figure class="tp-ph tp-slot"><div class="tp-slotlabel"><b>FOTO · CAPA</b> {d.data.photo}</div></figure>}
       </div>
-    );
-  })}
-  <section class="tp-end"><div class="tp-end-in">
-    {d.data.note && <p class="tp-note"><b>{T("Estado do texto", "Status")}:</b> {d.data.note}</p>}
-    {d.data.sources.length > 0 && <><h3>{T("Fontes", "Sources")}</h3><ul>{d.data.sources.map((s: any) => <li>{s.url ? <a href={s.url} rel="noopener">{s.label}</a> : s.label}</li>)}</ul></>}
-  </div></section>
+    </header>
+    <div class="tp-hook"><span>{T("A pergunta", "The question")}</span><p>{d.data.hook}</p></div>
+    {d.data.scenes.map((s: any, i: number) => {
+      const fid = s.fig ?? s.photo;
+      return (
+        <section class="tp-s">
+          <div class:list={["tp-card", fid && "has-fig", wide(s) && "is-wide"]}>
+            <div class="tp-txt"><span class="tp-n">{i + 1} / {N}</span><h2>{s.title}</h2><div class="tp-md" set:html={md(s.text)} /></div>
+            {fid && (has(fid) ? <figure class="tp-ph"><Img id={fid} sizes="(min-width:900px) 420px, 100vw" flat lang={lang} />{s.fig && <figcaption>{cr(fid).caption}</figcaption>}</figure> : <figure class="tp-ph tp-slot"><div class="tp-slotlabel"><b>FOTO · CENA</b> {fid}</div></figure>)}
+            {s.diagram && <div class="tp-diag-in">
+              {s.diagram === "myoglobin" && <Myoglobin lang={lang} />}
+              {s.diagram === "cuts" && <CortesViewer lang={lang} />}
+              {s.diagram === "classificacao" && <Classificacao lang={lang} />}
+            </div>}
+          </div>
+        </section>
+      );
+    })}
+    <section class="tp-s"><div class="tp-card tp-end">
+      {d.data.note && <p class="tp-note"><b>{T("Estado do texto", "Status")}:</b> {d.data.note}</p>}
+      {d.data.sources.length > 0 && <><h3>{T("Fontes", "Sources")}</h3><ul>{d.data.sources.map((s: any) => <li>{s.url ? <a href={s.url} rel="noopener">{s.label}</a> : s.label}</li>)}</ul></>}
+      {bgCredit && <p class="tp-bgc">{T("Imagem de fundo", "Background image")}: {bgCredit.caption} · {T("Foto", "Photo")}: <a href={bgCredit.source_page} rel="noopener">{bgCredit.author}</a> · {licenseLabel(lang, bgCredit.license)}</p>}
+    </div></section>
+    <section class="tp-s tp-nx"><a class="tp-card tp-next" href={next ? href(lang, `${root}${next.id}/`) : href(lang, root)}><span>{next ? T("Seguinte", "Next") : T("Voltar a", "Back to")}</span><strong>{next ? next.data.title : hubName} →</strong></a></section>
   </div>
-  <a class="tp-next" href={next ? href(lang, `${root}${next.id}/`) : href(lang, root)}><span>{next ? T("Seguinte", "Next") : T("Voltar a", "Back to")}</span><strong>{next ? next.data.title : hubName} →</strong></a>
 </Base>
 <script is:inline>if(/[?&]fotos/.test(location.search))document.documentElement.classList.add("show-slots");</script>
 <style is:global>
-  /* Estética cinematográfica: ecrã inteiro, pouco texto sobre a imagem, fundo escuro */
-  :root{--tp-bg:#111a15;--tp-fg:#e9e5d6;--tp-mute:#a9bfa0;--tp-line:rgba(255,255,255,.16)}
-  .tp-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:radial-gradient(120% 90% at 70% 20%,#2a4435,#111a15);overflow:hidden}
-  .tp-hero .tp-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.8)}
-  .tp-hero:not(.tp-plain)::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,10,.45) 0%,rgba(8,12,10,0) 30%,rgba(8,12,10,.2) 55%,rgba(8,12,10,.82) 100%)}
-  .tp-in{position:relative;z-index:1;width:min(84rem,calc(100% - 3rem));margin:0 auto;padding:9rem 0 clamp(4rem,10vh,7rem)}
-  .tp-in h1{font-size:clamp(2.8rem,6.5vw,6rem);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .3em;color:#fff;font-weight:300;text-shadow:0 2px 40px rgba(0,0,0,.35)}
-  .tp-in>p{font-size:clamp(1.05rem,1.5vw,1.4rem);font-weight:300;opacity:.9;max-width:36ch;line-height:1.4;margin:0;text-shadow:0 1px 20px rgba(0,0,0,.5)}
+  /* Fundo: paisagem fixa (sem carne). Conteúdo em painéis sobre ela; fotos de carne pequenas, junto ao texto. */
+  .tp-fixed{position:fixed;inset:0;z-index:0;background:#111a15}
+  .tp-fixed .tp-fbg{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.9)}
+  .tp-fixed::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,7,.35),rgba(6,9,7,.15) 40%,rgba(6,9,7,.4))}
+  .tp-page{position:relative;z-index:1;color:#ece8da;--tp-mute:#b6c8ad;--tp-line:rgba(255,255,255,.2)}
+  .tp-top{min-height:88svh;display:flex;align-items:flex-end;padding:8rem 1.5rem clamp(3rem,8vh,5rem)}
+  .tp-top-in{width:min(72rem,100%);margin:0 auto;display:grid;grid-template-columns:1fr;gap:2rem;align-items:end}
+  .tp-top h1{font-size:clamp(2.8rem,6.5vw,6rem);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .3em;color:#fff;font-weight:300;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+  .tp-lead{font-size:clamp(1.15rem,1.6vw,1.5rem);font-weight:300;max-width:34ch;line-height:1.5;margin:0;text-shadow:0 1px 18px rgba(0,0,0,.5)}
   .tp-k{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#dfe9d2}
   .tp-back{display:block;color:#dfe9d2!important;margin-bottom:1.4rem;text-decoration:none;font-size:.9rem}
-  .tp-scroll{position:absolute;z-index:1;left:50%;bottom:1.2rem;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:1.4rem;animation:tpb 2.4s ease-in-out infinite}
-  @keyframes tpb{50%{transform:translate(-50%,8px)}}
-  .tp-cr{position:absolute;right:1.5rem;bottom:.8rem;z-index:2;font-size:.68rem;color:rgba(255,255,255,.7);margin:0;max-width:60%;text-align:right}.tp-cr a{color:inherit}
-  .tp-slotlabel{display:none;position:absolute;right:1.5rem;top:6rem;z-index:3;border:2px dashed rgba(255,255,255,.75);padding:.8rem 1rem;font:500 .8rem/1.5 ui-monospace,monospace;color:#fff;background:rgba(0,0,0,.35);text-align:left}
-  html.show-slots .tp-slotlabel{display:block}
-  .tp-hook{background:var(--tp-bg);color:#fff;text-align:center;padding:clamp(5rem,14vh,9rem) 1.5rem clamp(4rem,10vh,7rem)}
+  .tp-hook{text-align:center;padding:clamp(2rem,6vh,4rem) 1.5rem clamp(2rem,6vh,4rem);text-shadow:0 1px 20px rgba(0,0,0,.5)}
   .tp-hook span{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tp-mute)}
-  .tp-hook p{font:300 clamp(1.9rem,4.2vw,3.4rem)/1.15 var(--display);letter-spacing:-.03em;margin:.7rem auto 0;max-width:20ch;color:#fff}
-  .tp-g{position:relative;background:var(--tp-bg);color:var(--tp-fg)}
-  /* grupos com foto: imagem fixa a ecrã inteiro, cenas passam por cima */
-  .tp-stick{position:sticky;top:0;height:100svh;margin-bottom:-100svh;overflow:hidden;background:radial-gradient(120% 90% at 30% 30%,#27402f,#101813)}
-  .tp-stick .tp-sbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.8)}
-  .tp-stick::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,10,.55),rgba(8,12,10,0) 60%)}
-  .tp-stick .tp-slotlabel{top:50%;left:50%;right:auto;transform:translate(-50%,-50%);text-align:center}
-  .tp-over{position:relative;z-index:1}
-  .tp-cine .tp-s{max-width:84rem;margin:0 auto;padding:9svh clamp(1.5rem,5vw,4rem) 0}
-  .tp-cine .tp-over>.tp-s:first-child{padding-top:30svh}
-  .tp-cine .tp-over>.tp-s:last-child{padding-bottom:12svh}
-  .tp-cine .tp-copy{width:min(38rem,100%);background:rgba(8,12,10,.78);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:clamp(1.6rem,3vw,2.6rem);border-left:1px solid rgba(255,255,255,.22)}
-  .tp-cine .tp-s.is-wide .tp-copy{width:min(66rem,100%)}
-  /* grupos sem foto: duas colunas, fundo escuro */
-  .tp-flat .tp-s{padding:clamp(3.5rem,6vw,5.5rem) 1.5rem;border-top:1px solid var(--tp-line)}
-  .tp-flat .tp-copy{max-width:44rem;margin:0 auto}
+  .tp-hook p{font:300 clamp(1.9rem,4vw,3.2rem)/1.15 var(--display);letter-spacing:-.03em;margin:.7rem auto 0;max-width:20ch;color:#fff}
+  .tp-s{padding:clamp(1rem,3vh,2rem) clamp(.75rem,3vw,2rem)}
+  .tp-card{margin:0 auto;width:min(46rem,100%);background:rgba(10,15,11,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:clamp(1.5rem,3vw,2.8rem);border-left:1px solid rgba(255,255,255,.22);display:grid;grid-template-columns:minmax(0,1fr);gap:1.6rem 2.5rem;align-items:start}
+  .tp-card.has-fig{width:min(66rem,100%)}.tp-card.is-wide{width:min(74rem,100%)}
+  @media(min-width:900px){.tp-card.has-fig{grid-template-columns:minmax(0,1fr) minmax(0,24rem)}.tp-top-in:has(.tp-ph){grid-template-columns:minmax(0,1fr) minmax(0,24rem)}.tp-card .tp-diag-in{grid-column:1/-1}}
   .tp-n{font-size:.8rem;letter-spacing:.2em;color:var(--tp-mute);display:block}
-  .tp-copy h2{font-size:clamp(1.8rem,3vw,3rem);line-height:1.12;letter-spacing:-.03em;margin:.6rem 0 1.2rem;color:#fff;font-weight:300}
-  .tp-md{font-size:clamp(1.05rem,1.1vw + .55rem,1.3rem);line-height:1.8;font-weight:400}
-  .tp-md p{margin:0 0 1em}.tp-md ul,.tp-md ol{padding-left:1.2em;margin:0 0 1em}.tp-md li{margin-bottom:.5em}.tp-md a{color:#bcd9a8;text-decoration:underline}.tp-md strong{color:#fff}
+  .tp-card h2{font-size:clamp(1.8rem,2.8vw,2.8rem);line-height:1.12;letter-spacing:-.03em;margin:.5rem 0 1.1rem;color:#fff;font-weight:300}
+  .tp-md{font-size:clamp(1.05rem,.9vw + .6rem,1.3rem);line-height:1.8;font-weight:400}
+  .tp-md p{margin:0 0 1em}.tp-md ul,.tp-md ol{padding-left:1.2em;margin:0 0 1em}.tp-md li{margin-bottom:.5em}.tp-md a,.tp-end a{color:#bcd9a8;text-decoration:underline}.tp-md strong{color:#fff}
   .tp-md table{width:100%;border-collapse:collapse;font-size:.98rem;margin:1rem 0;display:block;overflow-x:auto}.tp-md th,.tp-md td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--tp-line);vertical-align:top;min-width:110px}.tp-md th{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tp-mute)}
-  .tp-s .tp-diag-in{margin-top:1.5rem;color:#263e30}
-  @media(min-width:900px){
-    .tp-flat .tp-copy{max-width:84rem;width:calc(100% - 6rem);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(3rem,6vw,7rem);align-items:start}
-    .tp-flat .tp-copy .tp-n,.tp-flat .tp-copy h2{grid-column:1}.tp-flat .tp-copy h2{font-size:clamp(2.2rem,3.4vw,3.6rem)}
-    .tp-flat .tp-copy .tp-md{grid-column:2;grid-row:1/span 3;font-size:clamp(1.15rem,1vw + .6rem,1.4rem);line-height:1.75;padding-top:.4rem}
-    .tp-flat .tp-copy .tp-diag-in{grid-column:1/-1;margin-top:3rem}
-    .tp-end-in{max-width:84rem;width:calc(100% - 6rem)}
-  }
-  .tp-end{background:var(--tp-bg);color:var(--tp-mute);padding:3rem 1.5rem 4rem}.tp-end-in{max-width:44rem;margin:0 auto;border-top:1px solid var(--tp-line);padding-top:1.5rem;font-size:.92rem;line-height:1.6}.tp-end a{color:#bcd9a8}.tp-end h3{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--tp-mute)}
-  .tp-next{display:block;background:#1c2d23;color:#fff!important;text-decoration:none;padding:clamp(4rem,10vw,8rem) 1.5rem;text-align:center}
-  .tp-next span{display:block;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tp-mute)}.tp-next strong{font:300 clamp(2rem,4.5vw,3.6rem) var(--display)}
-  @media(max-width:760px){
-    .tp-cine .tp-s{padding:12svh 1rem 0}.tp-cine .tp-over>.tp-s:first-child{padding-top:45svh}
-    .tp-cine .tp-copy,.tp-cine .tp-s.is-wide .tp-copy{width:100%}
-    .tp-stick::after{background:linear-gradient(180deg,rgba(8,12,10,0) 30%,rgba(8,12,10,.5))}
-  }
-  /* variante «figura»: imagem contida, junto do conteúdo; fundo claro e acolhedor */
-  .tp-fhead{background:#1c2d23;color:#fff;padding:clamp(7rem,12vh,9rem) 1.5rem clamp(2.5rem,6vh,4rem)}
-  .tp-fin{max-width:72rem;margin:0 auto 2.5rem}
-  .tp-fin h1{font-size:clamp(2.8rem,6vw,5.5rem);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .3em;color:#fff;font-weight:300}
-  .tp-flead{font-size:clamp(1.1rem,1.5vw,1.45rem);font-weight:300;max-width:40ch;line-height:1.5;margin:0;opacity:.92}
-  .tp-cfig,.tp-cmp{margin:0 auto;max-width:min(72rem,100%)}.tp-cfig img,.tp-cmp img{display:block;width:100%;height:auto;max-height:68svh;object-fit:contain;border-radius:4px}
-  .tp-cslot{aspect-ratio:16/9;background:#27402f;position:relative}.tp-cslot .tp-slotlabel{top:1rem}
-  .tp-cmp{margin:clamp(1.5rem,3vw,2.5rem) auto clamp(2.5rem,5vw,4rem);padding:0 1.5rem;max-width:min(66rem,100%)}.tp-cmp figcaption{font-size:.92rem;color:var(--tp-mute);margin-top:.8rem;text-align:center}
-  .tp-warm{--tp-bg:#f3efe4;--tp-fg:#2a3a30;--tp-mute:#6b7f6b;--tp-line:#d9d4c4;--tp-h:#1f3326}
-  .tp-warm .tp-hook{background:#f3efe4;color:var(--tp-h);padding-bottom:clamp(2rem,5vh,3.5rem)}.tp-warm .tp-hook p{color:var(--tp-h)}
-  .tp-warm .tp-copy h2,.tp-warm .tp-md strong{color:var(--tp-h)}.tp-warm .tp-md a,.tp-warm .tp-end a{color:#2f6b3f}
-  .tp-warm .tp-flat .tp-s:first-child{border-top:0}
-  .tp-warm .tp-end{background:#f3efe4}
-  @media(min-width:2200px){.tp-fin,.tp-cfig{max-width:84rem}.tp-md{font-size:1.45rem}.tp-flat .tp-copy{max-width:100rem}}
-  .tp-md{max-width:46rem}
+  .tp-ph{margin:0}.tp-ph img{display:block;width:100%;height:auto;border-radius:3px}.tp-ph figcaption{font-size:.85rem;color:var(--tp-mute);margin-top:.6rem}
+  .tp-slot{display:none;aspect-ratio:3/2;background:rgba(255,255,255,.08);position:relative}html.show-slots .tp-slot{display:block}
+  .tp-slotlabel{display:none;position:absolute;right:1.5rem;top:6rem;z-index:3;border:2px dashed rgba(255,255,255,.75);padding:.8rem 1rem;font:500 .8rem/1.5 ui-monospace,monospace;color:#fff;background:rgba(0,0,0,.35)}html.show-slots .tp-slotlabel{display:block}.tp-slot .tp-slotlabel{top:1rem;left:1rem;right:auto}
+  .tp-diag-in{color:#263e30}
+  .tp-end{font-size:.92rem;line-height:1.6;color:var(--tp-mute)}.tp-end h3{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--tp-mute);margin:1rem 0 .4rem}.tp-bgc{font-size:.8rem;margin-top:1rem}
+  .tp-nx{padding-bottom:clamp(3rem,8vh,5rem)}.tp-next{display:block;text-align:center;text-decoration:none;color:#fff!important}
+  .tp-next span{display:block;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tp-mute)}.tp-next strong{font:300 clamp(1.8rem,4vw,3rem) var(--display)}
+  @media(min-width:2200px){.tp-md{font-size:1.45rem}.tp-card{width:min(56rem,100%)}.tp-card.has-fig{width:min(80rem,100%)}.tp-card.is-wide{width:min(90rem,100%)}.tp-top-in{width:min(90rem,100%)}}
+  @media(max-width:760px){.tp-top{min-height:78svh}}
 </style>
