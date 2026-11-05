@@ -166,3 +166,7 @@ body.p .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){body.p .reveal{opacity:1;transform:none}}
 .hero h1{font-size:clamp(2.4rem,6.2vw,5rem);font-weight:600;letter-spacing:-.03em}
 .p .cue-link{color:#fff}.p .tag a{color:#fff}
+
+/* ecrãs muito largos: escala geral */
+@media(min-width:2200px){html{font-size:118%}}
+@media(min-width:3000px){html{font-size:140%}}

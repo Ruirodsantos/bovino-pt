@@ -12,7 +12,9 @@ const all = breeds();
 const labels = REGION_LABELS(lang);
 const tiles = ORDEM.map(([slug, size]) => {
   const br = all.find((x) => x.slug === slug)!;
-  return { slug, size, name: br.official_name, photo: uniquePhoto(slug), regions: REGIONS[slug] ?? [] };
+  const FB: Record<string, string> = { sul: "montado-pasto", norte: "mirandesa-pasto", centro: "criacao-capa", ilhas: "paisagem-terceira-ia" };
+  const ph = uniquePhoto(slug) ?? { id: FB[(REGIONS[slug] ?? ["centro"])[0]], kind: "paisagem" as const };
+  return { slug, size, name: br.official_name, photo: ph, regions: REGIONS[slug] ?? [] };
 });
 const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
 ---
@@ -78,7 +80,7 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
 .alentejo-ending{min-height:75svh}
 @media(max-width:700px){.terceira-immersive{min-height:80svh}.terceira-message h2,.alentejo-ending h2{font-size:clamp(2rem,9vw,3.5rem)}}
 .terceira-immersive{display:block!important;min-height:0!important;background:#163b35;position:relative}
-.terceira-immersive img{position:static!important;display:block;width:100%;height:auto!important;aspect-ratio:16/9;object-fit:cover}
+.terceira-immersive img{position:static!important;display:block;width:100%;height:calc(100svh - 72px)!important;min-height:480px;object-fit:cover;object-position:30% 92%}
 .terceira-immersive:after{display:block!important;background:linear-gradient(180deg,transparent 45%,rgba(5,28,22,.72) 100%)}
 .terceira-immersive .terceira-message{position:absolute;left:0;right:0;bottom:0;padding:0 0 clamp(14px,3.5vw,56px)}
 .terceira-immersive .terceira-message h2{max-width:22ch;font-size:clamp(1.15rem,3.8vw,3.6rem);margin-top:8px;text-shadow:0 2px 12px rgba(0,0,0,.45)}
