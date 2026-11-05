@@ -48,7 +48,7 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
         </div>}
         <div class="tp-over">
           {g.items.map(({ s, i }) => (
-            <section class:list={["tp-s", wide(s) && "is-wide", (i % 2) && "is-r"]}>
+            <section class:list={["tp-s", wide(s) && "is-wide"]}>
               <div class="tp-copy"><span class="tp-n">{i + 1} / {N}</span><h2>{s.title}</h2><div class="tp-md" set:html={md(s.text)} />
                 {s.diagram && <div class="tp-diag-in">
                   {s.diagram === "myoglobin" && <Myoglobin lang={lang} />}
@@ -73,7 +73,7 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
   /* Estética cinematográfica: ecrã inteiro, pouco texto sobre a imagem, fundo escuro */
   :root{--tp-bg:#111a15;--tp-fg:#e9e5d6;--tp-mute:#a9bfa0;--tp-line:rgba(255,255,255,.16)}
   .tp-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:radial-gradient(120% 90% at 70% 20%,#2a4435,#111a15);overflow:hidden}
-  .tp-hero .tp-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tp-hero .tp-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.8)}
   .tp-hero:not(.tp-plain)::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,10,.45) 0%,rgba(8,12,10,0) 30%,rgba(8,12,10,.2) 55%,rgba(8,12,10,.82) 100%)}
   .tp-in{position:relative;z-index:1;width:min(84rem,calc(100% - 3rem));margin:0 auto;padding:9rem 0 clamp(4rem,10vh,7rem)}
   .tp-in h1{font-size:clamp(2.8rem,6.5vw,6rem);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .3em;color:#fff;font-weight:300;text-shadow:0 2px 40px rgba(0,0,0,.35)}
@@ -91,13 +91,14 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
   .tp-g{position:relative;background:var(--tp-bg);color:var(--tp-fg)}
   /* grupos com foto: imagem fixa a ecrã inteiro, cenas passam por cima */
   .tp-stick{position:sticky;top:0;height:100svh;margin-bottom:-100svh;overflow:hidden;background:radial-gradient(120% 90% at 30% 30%,#27402f,#101813)}
-  .tp-stick .tp-sbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tp-stick .tp-sbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.8)}
   .tp-stick::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,10,.55),rgba(8,12,10,0) 60%)}
   .tp-stick .tp-slotlabel{top:50%;left:50%;right:auto;transform:translate(-50%,-50%);text-align:center}
   .tp-over{position:relative;z-index:1}
-  .tp-cine .tp-s{min-height:100svh;display:flex;align-items:center;padding:6rem clamp(1.5rem,6vw,6rem)}
-  .tp-cine .tp-s.is-r{justify-content:flex-end}
-  .tp-cine .tp-copy{width:min(40rem,100%);background:linear-gradient(90deg,rgba(6,9,7,.72),rgba(6,9,7,.35));-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:clamp(1.6rem,3vw,3rem);border-left:1px solid rgba(255,255,255,.25)}
+  .tp-cine .tp-s{max-width:84rem;margin:0 auto;padding:9svh clamp(1.5rem,5vw,4rem) 0}
+  .tp-cine .tp-over>.tp-s:first-child{padding-top:30svh}
+  .tp-cine .tp-over>.tp-s:last-child{padding-bottom:12svh}
+  .tp-cine .tp-copy{width:min(38rem,100%);background:rgba(8,12,10,.78);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:clamp(1.6rem,3vw,2.6rem);border-left:1px solid rgba(255,255,255,.22)}
   .tp-cine .tp-s.is-wide .tp-copy{width:min(66rem,100%)}
   /* grupos sem foto: duas colunas, fundo escuro */
   .tp-flat .tp-s{padding:clamp(3.5rem,6vw,5.5rem) 1.5rem;border-top:1px solid var(--tp-line)}
@@ -119,7 +120,7 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
   .tp-next{display:block;background:#1c2d23;color:#fff!important;text-decoration:none;padding:clamp(4rem,10vw,8rem) 1.5rem;text-align:center}
   .tp-next span{display:block;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tp-mute)}.tp-next strong{font:300 clamp(2rem,4.5vw,3.6rem) var(--display)}
   @media(max-width:760px){
-    .tp-cine .tp-s,.tp-cine .tp-s.is-r{justify-content:center;align-items:flex-end;padding:5rem 1rem 2.5rem}
+    .tp-cine .tp-s{padding:12svh 1rem 0}.tp-cine .tp-over>.tp-s:first-child{padding-top:45svh}
     .tp-cine .tp-copy,.tp-cine .tp-s.is-wide .tp-copy{width:100%}
     .tp-stick::after{background:linear-gradient(180deg,rgba(8,12,10,0) 30%,rgba(8,12,10,.5))}
   }
