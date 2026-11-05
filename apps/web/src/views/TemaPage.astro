@@ -24,6 +24,7 @@ const idx = Math.max(0, ["cor","gordura","fibra","como-comprar","cortes","matura
 const ownBg = OWN.includes(d.id) && has(d.data.photo);
 const bgId = ownBg ? d.data.photo : POOL[idx % POOL.length];
 const capaFig = !ownBg && has(d.data.photo) ? d.data.photo : null;
+const capaIdx = capaFig ? d.data.scenes.findIndex((x: any) => !(x.fig ?? x.photo)) : -1;
 const wide = (s: any) => !!s.diagram || /\n\|/.test(s.text) || s.text.startsWith("|");
 const num = String(d.data.order).padStart(2, "0");
 const bgCredit = has(bgId) && !cr(bgId).ai ? cr(bgId) : null;
@@ -39,13 +40,11 @@ const bgCredit = has(bgId) && !cr(bgId).ai ? cr(bgId) : null;
           <h1>{d.data.title}</h1>
           <p class="tp-lead">{d.data.lead}</p>
         </div>
-        {capaFig && <figure class="tp-ph"><Img id={capaFig} sizes="(min-width:900px) 420px, 100vw" eager flat lang={lang} /></figure>}
-        {!capaFig && !ownBg && <figure class="tp-ph tp-slot"><div class="tp-slotlabel"><b>FOTO · CAPA</b> {d.data.photo}</div></figure>}
       </div>
     </header>
     <div class="tp-hook"><span>{T("A pergunta", "The question")}</span><p>{d.data.hook}</p></div>
     {d.data.scenes.map((s: any, i: number) => {
-      const fid = s.fig ?? s.photo;
+      const fid = s.fig ?? s.photo ?? (i === capaIdx ? capaFig : null);
       return (
         <section class="tp-s">
           <div class:list={["tp-card", fid && "has-fig", wide(s) && "is-wide"]}>
