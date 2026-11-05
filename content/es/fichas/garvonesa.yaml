@@ -1,0 +1,88 @@
+intro: Los «farruscos» del Alentejo litoral y del suroeste.
+facts:
+- label: Cuna
+  value: Baixo Alentejo
+- label: Efectivo
+  value: '607'
+  note: '2019'
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y trayectoria de la raza, según el catálogo oficial.
+  blocks:
+  - title: La historia
+    paras:
+    - La Garvonesa procede de las zonas de transición entre las llanuras del Alentejo y las sierras del Algarve. El nombre viene de la feria de Garvão. Fue conocida como «gado chamusco» o «farrusco», por su pelo oscuro con una distribución característica. Valía por su rusticidad y su buen temperamento en el trabajo del campo, y cuando llegó la mecanización fue siendo sustituida por razas más productoras de carne. Quedó casi extinguida.
+    - Desde 1994, la Associação de Agricultores do Campo Branco y el Parque Natural do Sudoeste Alentejano e Costa Vicentina trabajan en su conservación, y el efectivo ha ido creciendo despacio.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoy
+    paras:
+    - Los rebaños están sobre todo en Santiago do Cacém, Odemira, Ourique, Castro Verde, Almodôvar, Barrancos, Vila Nova de São Bento y Alcáçovas. El catálogo dice que el número de animales todavía es insuficiente para lanzar un programa de mejora, y que la raza sigue entre las muy amenazadas.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado del texto
+    paras:
+    - Texto original del proyecto, reescrito a partir del Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 30. Ningún párrafo es copia del catálogo. Los hechos se han contrastado con el catálogo; la revisión independiente (ChatGPT/especialista) está pendiente. Todas las cifras y estados de conservación son los del catálogo de 2019, no efectivos actuales; faltan por localizar datos oficiales más recientes.
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - En las hembras, pelo castaño rojizo, con el chanfrón, la cruz y las extremidades negros y el dorso más claro. En los machos domina el negro. Los cuernos son blancos, oscurecidos en las puntas.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territorio
+  summary: La cuna de la raza y el efectivo registrado.
+  blocks:
+  - title: Cuna
+    paras:
+    - 'Baixo Alentejo: Santiago do Cacém, Odemira, Ourique, Castro Verde…'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efectivo registrado (2019)
+    paras:
+    - 585 hembras, 22 machos y 16 criadores, según el catálogo oficial (2019). No son efectivos actuales.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - En régimen extensivo, de pastoreo de recursos naturales. La mayoría de los criadores recurre también a pastos sembrados y a heno, cereales y concentrados cuando falta pasto.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    paras:
+    - La descripción de la carne de esta raza (color, grasa, maduración, cortes) aún no se ha confirmado en una fuente. No la publicamos hasta que haya una referencia.
+    status: en investigación
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    paras:
+    - 'Estado de DOP/IGP y otros reconocimientos de esta raza: pendiente de confirmar en la lista oficial de la DGADR y en eAmbrosia.'
+    status: en investigación
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Dónde encontrar
+    paras:
+    - 'Puntos de venta, productores y asociación de criadores: pendiente de investigar. No indicamos puntos de venta ni precios que no hayamos verificado.'
+    status: en investigación

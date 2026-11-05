@@ -1,0 +1,87 @@
+intro: L’un des plus petits bovins du monde, dans la serra da Peneda-Gerês.
+facts:
+- label: Berceau
+  value: Parque Nacional da Peneda-Gerês
+- label: Effectif
+  value: 6 126
+  note: '2019'
+sections:
+- id: historia
+  title: Histoire
+  summary: Origine et parcours de la race, selon le catalogue officiel.
+  blocks:
+  - title: L’histoire
+    paras:
+    - 'La Cachena a vécu pendant des siècles isolée en haute montagne, en petits effectifs, et n’a reçu un nom dans la littérature officielle qu’en 1981, dans une monographie sur les bovins portugais. Elle aurait évolué à partir des mêmes animaux que ceux qui ont donné la Barrosã, mais sélectionnés par le froid et la rareté : seuls survivaient les plus rustiques, capables de passer des hivers rudes dans la montagne sans aide humaine. L’enregistrement zootechnique a commencé en 1994 et le livre généalogique, qui l’a reconnue comme race autochtone, en 1998. En 2010, l’effectif dépassait à peine 2500 femelles et 140 mâles.'
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Aujourd’hui
+    paras:
+    - Le catalogue la considère comme en danger d’extinction. Les animaux sont répartis sur 10 districts et 26 communes, avec une prédominance de Viana do Castelo (Arcos de Valdevez en est le centre), mais aussi un effectif nombreux dans le Sud (Beja et Évora).
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: État du texte
+    paras:
+    - Texte original du projet, réécrit à partir du Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 26. Aucun paragraphe n’est une copie du catalogue. Les faits ont été vérifiés avec le catalogue ; la relecture indépendante (ChatGPT/spécialiste) est en attente. Tous les chiffres et statuts de conservation sont ceux du catalogue de 2019, et non des effectifs actuels ; des données officielles plus récentes restent à rechercher.
+- id: caracteristicas
+  title: Caractéristiques
+  summary: Comment reconnaître l’animal.
+  blocks:
+  - title: Comment la reconnaître
+    paras:
+    - 'Elle est petite : la hauteur au garrot peut être inférieure à 1,10 m. Les cornes, de section ronde, poussent vers le haut et sur les côtés comme une vis, à l’inverse de la lyre de la Barrosã. La tête est longue, de profil droit. Le poil est brun clair, et en hiver elle se couvre d’un pelage épais.'
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territoire
+  summary: Le berceau de la race et l’effectif enregistré.
+  blocks:
+  - title: Berceau
+    paras:
+    - Parque Nacional da Peneda-Gerês (Arcos de Valdevez).
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Effectif enregistré (2019)
+    paras:
+    - 5 869 femelles, 257 mâles et 662 éleveurs, selon le catalogue officiel (2019). Ce ne sont pas des effectifs actuels.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Élevage
+  summary: Comment et où elle est élevée.
+  blocks:
+  - title: Comment elle est élevée
+    paras:
+    - C’est une race de haute montagne, au tempérament sauvage et au fort instinct maternel. Le berceau se trouve dans le Parque Nacional da Peneda-Gerês, entre Castro Laboreiro et la serra da Mourela.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 26
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Viande
+  summary: La viande de cette race.
+  blocks:
+  - title: La viande
+    paras:
+    - La description de la viande de cette race (couleur, gras, maturation, morceaux) n’a pas encore été confirmée par une source. Nous ne la publions pas tant qu’il n’y a pas de référence.
+    status: en cours d'investigation
+- id: certificacao
+  title: Certification
+  summary: Certification et reconnaissances.
+  blocks:
+  - title: Certification
+    paras:
+    - 'Statut d’AOP/IGP et autres reconnaissances de cette race : à confirmer dans la liste officielle de la DGADR et dans eAmbrosia.'
+    status: en cours d'investigation
+- id: onde
+  title: Où en trouver
+  summary: Où en trouver.
+  blocks:
+  - title: Où en trouver
+    paras:
+    - 'Points de vente, producteurs et association d’éleveurs : à rechercher. Nous n’indiquons ni points de vente ni prix que nous n’aurions pas vérifiés.'
+    status: en cours d'investigation

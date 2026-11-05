@@ -1,0 +1,254 @@
+intro: La race des Açores, de grand gabarit et à la robe rouge, élevée au pâturage presque toute l’année. Sa viande bénéficie d’une appellation d’origine protégée (AOP).
+facts:
+- label: Berceau
+  value: Terceira, Açores
+  note: Praia da Vitória
+- label: Robe
+  value: Rouge
+  note: d’intensité variable
+- label: Effectif
+  value: 679 femelles
+  note: 84 mâles · 581 éleveurs (2019)
+- label: Viande
+  value: AOP
+  note: Carne Ramo Grande
+sections:
+- id: historia
+  title: Histoire
+  summary: Elle descend des bovins amenés du continent lors du peuplement du XVe siècle et s’est adaptée aux îles au fil des siècles.
+  blocks:
+  - title: Origine de la race
+    paras:
+    - Lors du peuplement des Açores, au XVe siècle, des bovins de plusieurs régions du continent sont arrivés. À Terceira, les premiers colons étaient originaires du Minho et de l’Algarve et ont apporté les animaux qu’ils connaissaient. L’isolement et la vie insulaire ont peu à peu façonné un type rougeâtre, la « race du pays » (« raça da terra »), d’où est sorti le Ramo Grande.
+    - Les sources n’indiquent pas exactement les mêmes races de départ. Le catalogue officiel cite l’Alentejana, la Mirandesa, la Minhota et l’Algarvia. Le cahier des charges cite une étude de 1943 (Leitão et al.) qui indique la Minhota, l’Alentejana, la Mirandesa et la Flamenga, avec le rôle principal pour l’Alentejana. Le nom vient d’une zone de Terceira.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP), p. 62
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+    - label: Cahier des charges Carne Ramo Grande DOP (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Utilisation traditionnelle
+    paras:
+    - Les mâles servaient à la reproduction pendant une ou deux saisons, puis étaient castrés et dressés pour le travail des champs et pour le portage. La race a aussi donné de la viande et du lait. Aujourd’hui, on l’exploite surtout pour la viande.
+    sources:
+    - label: Carne Ramo Grande DOP (DGADR)
+      url: https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop
+  - title: Importance culturelle
+    paras:
+    - Les animaux étaient traités presque comme des membres de la famille et sont liés aux fêtes du Saint-Esprit et aux défilés ethnographiques des îles. La viande de Ramo Grande a été traditionnellement la préférée pour les plats servis lors des « funções » du Saint-Esprit, et chaque île et chaque localité a ses recettes.
+    sources:
+    - label: Carne Ramo Grande DOP (DGADR)
+      url: https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Livre généalogique
+    paras:
+    - Le livre généalogique a été créé en 1996 et est géré par la Direção Regional da Agricultura dos Açores. En 2019, il comptait 679 femelles et 84 mâles de race pure, chez 581 éleveurs.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP), p. 62
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Documentation historique
+    paras:
+    - Dans sa bibliographie, le cahier des charges cite des textes de Gaspar Frutuoso (XVIe siècle), de Bettencourt (1887) et de Bruges (1915), qui mentionne des bœufs envoyés à l’abattoir de Lisbonne à quatre ou cinq ans.
+    - 'En cours de recherche : lire les ouvrages originaux avant de les citer directement.'
+    status: en cours de recherche
+    sources:
+    - label: Cahier des charges (DGADR), bibliographie
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+- id: caracteristicas
+  title: Caractéristiques
+  summary: Des animaux de grande stature, à l’ossature forte et à la robe rouge.
+  blocks:
+  - title: Comment la reconnaître
+    paras:
+    - 'Le catalogue décrit des animaux de très grande stature, à l’ossature forte et aux articulations larges, avec le tiers avant plus développé, ce qui se rattache aux qualités de travail exceptionnelles de la race. La robe est rouge, plus ou moins intense : à Terceira domine le rouge fauve, à São Jorge le rouge cerise.'
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP), p. 62
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Poids et mesures
+    paras:
+    - 'En cours de recherche : aucune des sources lues n’indique de poids moyens ni de hauteurs.'
+    status: en cours de recherche
+- id: territorio
+  title: Territoire
+  summary: Du pâturage vert tous les jours de l’année, sous un climat maritime doux.
+  blocks:
+  - title: Où on l’élève
+    paras:
+    - 'Le berceau de la race est l’île de Terceira, à Praia da Vitória. Le cahier des charges indique que c’est à São Jorge que se trouve la plus grande population. L’aire de l’AOP couvre les neuf îles : Santa Maria, São Miguel, Terceira, Graciosa, São Jorge, Pico, Faial, Flores et Corvo.'
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Climat et sol
+    paras:
+    - Le cahier des charges décrit un climat maritime tempéré, aux faibles amplitudes thermiques, à l’humidité et aux précipitations élevées, et des sols volcaniques de texture limoneuse, limono-sableuse ou limono-argileuse, riches en matière organique et en potassium. De l’herbe est disponible 365 jours par an.
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+- id: criacao
+  title: Élevage et alimentation
+  summary: Pâturage presque toute l’année, avec des compléments quand l’herbe ne suffit pas.
+  blocks:
+  - title: Pâturage
+    paras:
+    - La base est le pâturage direct sur des prairies permanentes ou améliorées de graminées et de légumineuses, parmi lesquelles le ray-grass anglais (Lolium perenne), le ray-grass d’Italie (Lolium multiflorum), le trèfle blanc (Trifolium repens), le trèfle violet (Trifolium pratense) et le dactyle aggloméré (Dactylis glomerata).
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Veaux
+    paras:
+    - Ils tètent le lait maternel pendant au moins trois mois, pâturent avec leurs mères et sont sevrés à 6–7 mois. L’éleveur cherche à faire coïncider les pics d’herbe du printemps avec les besoins des animaux ; c’est pourquoi les mises bas se concentrent de février à mai.
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+    - label: Catalogue officiel (DGAV/CAP), p. 62
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Adultes
+    paras:
+    - Ils mangent de l’herbe fraîche, avec de l’ensilage d’herbe, du foin, du maïs vert ou de l’ensilage de maïs et des sous-produits de l’exploitation. Quand le pâturage ne suffit pas, par exemple à la finition ou par mauvais temps, ils peuvent recevoir des aliments composés.
+    - Les aliments provenant de l’extérieur des Açores ne peuvent pas dépasser 50 % de la matière sèche de la ration, en moyenne annuelle.
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Lots d’abattage
+    paras:
+    - Les animaux des exploitations agréées sont séparés et regroupés en lots d’abattage dans les abegoarias (installations de regroupement).
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+- id: carne
+  title: Viande
+  summary: Rouge vif, ferme, avec un gras blanc nacré qui n’est pas onctueux au toucher.
+  blocks:
+  - title: Comment est la viande
+    paras:
+    - La couleur est rouge vif et fonce au contact de l’air et avec l’âge de l’animal. La texture est ferme, en raison du tissu conjonctif entre les faisceaux de fibres, et l’odeur est aromatique. Le gras est bien réparti (sous la peau, dans la cavité, entre les muscles et à l’intérieur de ceux-ci), blanc nacré, ferme une fois la carcasse refroidie et non onctueux au toucher. Le cahier des charges la décrit comme tendre, juteuse et savoureuse, et considère que le vitelão et le novilho sont les plus tendres.
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Âge et catégorie des animaux
+    table:
+      head:
+      - Catégorie
+      - Code
+      - Âge
+      - Carcasse minimale
+      rows:
+      - - Vitelão (jeune bovin)
+        - Z
+        - 8 à moins de 12 mois
+        - 110 kg
+      - - Novilho (mâle entier)
+        - A
+        - 12 à moins de 24 mois
+        - 130 kg
+      - - Novilha (génisse)
+        - E
+        - 12 mois ou plus
+        - 120 kg
+      - - Taureau
+        - B
+        - 24 mois ou plus
+        - 200 kg
+      - - Castré
+        - C
+        - 12 mois ou plus
+        - 130 kg
+      - - Vache (ayant déjà vêlé)
+        - D
+        - —
+        - 200 kg
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Classification des carcasses
+    paras:
+    - Chez le novilho, le taureau et le castré, les classes de conformation S, E, U, R et O sont acceptées ; pour les autres catégories, la classe P l’est aussi, compte tenu de la morphologie et du mode d’élevage de la race. Les carcasses dont la couverture de gras est de classe 1 ne sont pas admises.
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Découpe et présentation
+    paras:
+    - Le désossage ne peut se faire que 48 à 144 heures après l’abattage, afin de garantir le refroidissement nécessaire. La viande peut être présentée en carcasses, demi-carcasses, quartiers, pièces entières ou tranchées et viande hachée emballée, toujours avec la mention « CARNE RAMO GRANDE – DENOMINAÇÃO DE ORIGEM PROTEGIDA » ou « CARNE RAMO GRANDE DOP ».
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Morceaux, maturation et gastronomie
+    paras:
+    - 'En cours de recherche : les sources lues ne décrivent ni morceaux, ni maturation, ni recettes concrètes. La DGADR mentionne seulement les plats des « funções » du Saint-Esprit.'
+    status: en cours de recherche
+- id: certificacao
+  title: Certification
+  summary: 'Carne Ramo Grande est une AOP : elle lie le produit à la race et aux Açores.'
+  blocks:
+  - title: Ce qu’est une AOP
+    paras:
+    - 'L’appellation d’origine protégée est le régime européen au lien le plus fort avec le lieu : selon la Commission européenne, toutes les étapes de production, de transformation et de préparation doivent avoir lieu dans la région. Pour l’IGP, une seule des étapes suffit.'
+    sources:
+    - label: Commission européenne — Geographical indications and quality schemes explained
+      url: https://agriculture.ec.europa.eu/farming/geographical-indications-and-quality-schemes/geographical-indications-and-quality-schemes-explained_en
+  - title: Exigences
+    list:
+    - Animaux de race Ramo Grande, inscrits au livre généalogique.
+    - Nés, élevés et abattus aux Açores.
+    - Alimentation fondée sur le pâturage ; aliments venus de l’extérieur des Açores jusqu’à 50 % de la matière sèche annuelle.
+    - Catégories d’âge et poids minimaux de carcasse définis dans le cahier des charges.
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Aire géographique
+    paras:
+    - Les neuf îles des Açores.
+    sources:
+    - label: Carne Ramo Grande DOP (DGADR)
+      url: https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop
+  - title: Cahier des charges
+    paras:
+    - Le document officiel décrit le produit, l’aire, la preuve d’origine, le mode de production, l’abattage, l’étiquetage et le lien avec le milieu. Il le classe dans la classe 1.1 (viande fraîche et abats), selon l’annexe XI du règlement d’exécution (UE) n° 668/2014. La version et la date du cahier des charges lui-même ne figurent pas dans le document que nous avons lu.
+    sources:
+    - label: Cahier des charges Carne Ramo Grande DOP (PDF, DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Organismes responsables
+    list:
+    - 'Groupement de producteurs : Associação de Criadores de Bovinos da Raça Ramo Grande.'
+    - 'Contrôle et certification : IAMA, IPR (Instituto de Alimentação e Mercados Agrícolas), selon la DGADR. Le cahier des charges évoque un organisme auquel l’autorité compétente délègue ces fonctions, sans le nommer.'
+    sources:
+    - label: Carne Ramo Grande DOP (DGADR)
+      url: https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop
+  - title: Contrôle et traçabilité
+    paras:
+    - Les producteurs s’engagent par écrit auprès du groupement gestionnaire à respecter le cahier des charges et à placer toute l’exploitation sous contrôle. L’inscription au livre généalogique et l’abattage dans des abattoirs de l’aire permettent de retracer l’origine.
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Enregistrement européen
+    paras:
+    - La dénomination figure au registre européen eAmbrosia sous le numéro EUGI00000017632.
+    sources:
+    - label: eAmbrosia — EUGI00000017632
+      url: https://ec.europa.eu/agriculture/eambrosia/geographical-indications-register/details/EUGI00000017632
+    - label: GI View — EUGI00000017632
+      url: https://www.tmdn.org/giview/gi/EUGI00000017632
+- id: onde
+  title: Où la trouver
+  summary: En cours de recherche.
+  blocks:
+  - title: Points de vente
+    paras:
+    - 'En cours de recherche : la page de la DGADR ne liste pas de points de vente et ne vend rien. Les boucheries, l’abattoir et la commercialisation entre les îles et vers le continent ne seront publiés qu’avec une source.'
+    status: en cours de recherche
+- id: curiosidades
+  title: Curiosités
+  summary: Un nom de lieu, un bœuf de travail et une fête.
+  blocks:
+  - title: Du lieu au nom
+    paras:
+    - Ramo Grande est le nom d’une zone de l’île de Terceira et a donné son nom à la race.
+    sources:
+    - label: Cahier des charges (DGADR)
+      url: https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf
+  - title: Deux rouges
+    paras:
+    - À Terceira domine le rouge fauve et à São Jorge le rouge cerise.
+    sources:
+    - label: Catalogue officiel (DGAV/CAP), p. 62
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf

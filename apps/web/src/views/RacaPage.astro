@@ -4,16 +4,16 @@ import path from "node:path";
 import Base from "../layouts/Base.astro";
 import Img from "../components/proto/Img.astro";
 import credits from "../data/images.json";
-import { breeds, breedEn, cardPhoto, fmtDate, num, type Breed } from "../lib/data";
-import { TERRA, FRASE, FRASE_EN } from "../lib/proto";
+import { breeds, breedL, cardPhoto, fmtDate, num, type Breed } from "../lib/data";
+import { TERRA, frase } from "../lib/proto";
 import { render } from "astro:content";
 import { entryL } from "../lib/content";
-import { locImg, href, licenseLabel, tr, type Lang } from "../i18n";
+import { locImg, lf, href, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { lang: Lang; b: Breed }
 const { lang, b } = Astro.props;
 const T = tr(lang);
 const base = import.meta.env.BASE_URL;
-const en = breedEn(b.slug);
+const bd = breedL(b.slug, lang);
 const own = cardPhoto(b.slug);
 const heroC0 = own ? (credits as any)[own.id] : null;
 const heroC = locImg(heroC0, lang);
@@ -30,17 +30,21 @@ const Profile = prof ? (await render(prof)).Content : null;
 const all = breeds();
 const i = all.findIndex((x) => x.slug === b.slug);
 const prev = all[(i + all.length - 1) % all.length], next = all[(i + 1) % all.length];
-const solar = lang !== "pt" ? (en.solar ?? b.solar) : b.solar;
+const solar = lang !== "pt" ? (bd.solar ?? b.solar) : b.solar;
 const fallbackFacts = [
-  { label: T("Solar", "Homeland"), value: TERRA[b.slug] ?? (solar ?? "").split(" — ")[0] },
-  ...(b.herd ? [{ label: T("Efetivo", "Herd"), value: `${num(b.herd.females, lang)} ${T("fêmeas", "females")}` }, { label: T("Criadores", "Breeders"), value: num(b.herd.breeders, lang) }] : []),
+  { label: T("Solar", "Homeland", "Solar", "Terroir d'origine"), value: TERRA[b.slug] ?? (solar ?? "").split(" — ")[0] },
+  ...(b.herd ? [{ label: T("Efetivo", "Herd", "Efectivo", "Cheptel"), value: `${num(b.herd.females, lang)} ${T("fêmeas", "females", "hembras", "femelles")}` }, { label: T("Criadores", "Breeders", "Criadores", "Éleveurs"), value: num(b.herd.breeders, lang) }] : []),
 ];
 const facts = (ficha?.facts ?? fallbackFacts).map((f) => ({ label: f.label, value: f.value }));
 const intro = ficha?.intro ?? prof?.data.summary ?? "";
 const sec: Record<string, any> = ficha ? Object.fromEntries(ficha.sections.map((s) => [s.id, s])) : {};
-const NAV: Record<string, string> = lang !== "pt"
-  ? { historia: "History", territorio: "Territory", caracteristicas: "Characteristics", criacao: "Rearing", carne: "Meat", certificacao: "Certification", onde: "Where to find it", curiosidades: "Curiosities" }
-  : { historia: "História", territorio: "Território", caracteristicas: "Características", criacao: "Criação", carne: "Carne", certificacao: "Certificação", onde: "Onde encontrar", curiosidades: "Curiosidades" };
+const NAVS: Record<Lang, Record<string, string>> = {
+  pt: { historia: "História", territorio: "Território", caracteristicas: "Características", criacao: "Criação", carne: "Carne", certificacao: "Certificação", onde: "Onde encontrar", curiosidades: "Curiosidades" },
+  en: { historia: "History", territorio: "Territory", caracteristicas: "Characteristics", criacao: "Rearing", carne: "Meat", certificacao: "Certification", onde: "Where to find it", curiosidades: "Curiosities" },
+  es: { historia: "Historia", territorio: "Territorio", caracteristicas: "Características", criacao: "Cría", carne: "Carne", certificacao: "Certificación", onde: "Dónde encontrarla", curiosidades: "Curiosidades" },
+  fr: { historia: "Histoire", territorio: "Territoire", caracteristicas: "Caractéristiques", criacao: "Élevage", carne: "Viande", certificacao: "Certification", onde: "Où la trouver", curiosidades: "Curiosités" },
+};
+const NAV = NAVS[lang];
 const SECFIG: Record<string, string> = { historia: "acores-sao-jorge", criacao: "acores-pico-lagoa", curiosidades: "acores-corvo" };
 const MORE: Record<string, { l: string; u: string }[]> = {
   historia: [{ l: "Catálogo de raças autóctones (DGAV/CAP)", u: "https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf" }],
@@ -48,9 +52,13 @@ const MORE: Record<string, { l: string; u: string }[]> = {
   certificacao: [{ l: "Carne Ramo Grande DOP (DGADR)", u: "https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" }, { l: "Caderno de especificações (PDF)", u: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }],
 };
 const order = ["historia", "territorio", "caracteristicas", "criacao", "carne", "certificacao", "onde", "curiosidades"].filter((id) => sec[id]);
-const H2: Record<string, string> = lang !== "pt"
-  ? { historia: "A breed born of the islands.", territorio: "Nine islands. One production area.", caracteristicas: "Red, strong, large.", criacao: "Grazing almost all year.", carne: "Bright red and firm.", certificacao: "Carne Ramo Grande PDO.", onde: "Under research.", curiosidades: "Small curiosities." }
-  : { historia: "Uma raça nascida da ilha.", territorio: "Nove ilhas. Uma só área de produção.", caracteristicas: "Vermelha, forte, de grande porte.", criacao: "Pastoreio quase todo o ano.", carne: "Vermelho-vivo e firme.", certificacao: "Carne Ramo Grande DOP.", onde: "Em investigação.", curiosidades: "Pequenas curiosidades." };
+const H2S: Record<Lang, Record<string, string>> = {
+  pt: { historia: "Uma raça nascida da ilha.", territorio: "Nove ilhas. Uma só área de produção.", caracteristicas: "Vermelha, forte, de grande porte.", criacao: "Pastoreio quase todo o ano.", carne: "Vermelho-vivo e firme.", certificacao: "Carne Ramo Grande DOP.", onde: "Em investigação.", curiosidades: "Pequenas curiosidades." },
+  en: { historia: "A breed born of the islands.", territorio: "Nine islands. One production area.", caracteristicas: "Red, strong, large.", criacao: "Grazing almost all year.", carne: "Bright red and firm.", certificacao: "Carne Ramo Grande PDO.", onde: "Under research.", curiosidades: "Small curiosities." },
+  es: { historia: "Una raza nacida de la isla.", territorio: "Nueve islas. Una sola área de producción.", caracteristicas: "Roja, fuerte, de gran porte.", criacao: "Pastoreo casi todo el año.", carne: "Rojo vivo y firme.", certificacao: "Carne Ramo Grande DOP.", onde: "En investigación.", curiosidades: "Pequeñas curiosidades." },
+  fr: { historia: "Une race née de l'île.", territorio: "Neuf îles. Une seule zone de production.", caracteristicas: "Rouge, forte, de grand gabarit.", criacao: "Pâturage presque toute l'année.", carne: "Rouge vif et ferme.", certificacao: "Carne Ramo Grande AOP.", onde: "En cours de recherche.", curiosidades: "Petites curiosités." },
+};
+const H2 = H2S[lang];
 const rg = b.slug === "ramo-grande";
 const Src = (s?: { label: string; url: string }[]) => s;
 // Mapa esquemático dos Açores (só para o Ramo Grande), a partir da geometria NUTS do repositório.
@@ -72,35 +80,35 @@ if (rg) {
 }
 const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s : null;
 ---
-<Base lang={lang} overlay title={T(`Raça ${b.official_name}`, `${b.official_name} breed`)} description={intro}
+<Base lang={lang} overlay title={T(`Raça ${b.official_name}`, `${b.official_name} breed`, `Raza ${b.official_name}`, `Race ${b.official_name}`)} description={intro}
   image={own ? `${base}img/${own.id}-lg.webp` : undefined}>
   <section class:list={["hero", "rg", "breed-quiet-hero"]} style="min-height:92svh">
     {bgId && <img class="bg" src={`${base}img/${bgId}-lg.webp`} srcset={`${base}img/${bgId}-md.webp 900w, ${base}img/${bgId}-lg.webp 1800w`} sizes="100vw" alt={framed ? "" : (heroC?.alt ?? "")} width={(credits as any)[bgId]?.width} height={(credits as any)[bgId]?.height} fetchpriority="high" />}
     <div class="wrap breed-hero-content">
-      <a class="breed-back" href={href(lang, "racas/")}>← {T("As 15 raças", "The 15 breeds")}</a>
-      <span class="breed-counter">{T("Raça autóctone portuguesa", "Portuguese native breed")} · {String(i + 1).padStart(2, "0")}/15</span>
+      <a class="breed-back" href={href(lang, "racas/")}>← {T("As 15 raças", "The 15 breeds", "Las 15 razas", "Les 15 races")}</a>
+      <span class="breed-counter">{T("Raça autóctone portuguesa", "Portuguese native breed", "Raza autóctona portuguesa", "Race autochtone portugaise")} · {String(i + 1).padStart(2, "0")}/15</span>
       <h1>{b.official_name}</h1>
-      <p class="breed-hero-line">{lang !== "pt" ? FRASE_EN[b.slug] : FRASE[b.slug]}</p>
-      <a class="breed-discover" href="#conhecer">{T("Descobrir a raça", "Discover the breed")} ↓</a>
+      <p class="breed-hero-line">{frase(lang, b.slug)}</p>
+      <a class="breed-discover" href="#conhecer">{T("Descobrir a raça", "Discover the breed", "Descubrir la raza", "Découvrir la race")} ↓</a>
     </div>
-    <div class="breed-hero-bottom">{!bgId ? null : bgId.endsWith("-ia") ? T("Paisagem do Alentejo", "Alentejo landscape") : <>{lang !== "pt" ? ((credits as any)[bgId]?.caption_en ?? (credits as any)[bgId]?.caption) : (credits as any)[bgId]?.caption}{(credits as any)[bgId] && <> · {T("Foto", "Photo")}: <a href={(credits as any)[bgId].source_page} rel="noopener" style="color:inherit">{(credits as any)[bgId].author}</a>, {licenseLabel(lang, (credits as any)[bgId].license)}</>}</>}</div>
+    <div class="breed-hero-bottom">{!bgId ? null : bgId.endsWith("-ia") ? T("Paisagem do Alentejo", "Alentejo landscape", "Paisaje del Alentejo", "Paysage de l'Alentejo") : <>{lf((credits as any)[bgId], "caption", lang)}{(credits as any)[bgId] && <> · {T("Foto", "Photo", "Foto", "Photo")}: <a href={(credits as any)[bgId].source_page} rel="noopener" style="color:inherit">{(credits as any)[bgId].author}</a>, {licenseLabel(lang, (credits as any)[bgId].license)}</>}</>}</div>
   </section>
 
   <section class="breed-introduction sec" id="conhecer">
     <div class="wrap breed-intro-grid">
       <div class="breed-intro-copy rv">
-        <span class="eyebrow">{T("Conhecer a raça", "Meet the breed")}</span>
+        <span class="eyebrow">{T("Conhecer a raça", "Meet the breed", "Conocer la raza", "Connaître la race")}</span>
         <h2>{b.official_name}</h2>
         <p class="lead">{intro}</p>
         <dl class="breed-facts">{facts.slice(0, 4).map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl>
       </div>
-      {own && <figure class="breed-intro-photo rv"><Img id={own.id} sizes="(max-width:850px) 100vw, 640px" credit lang={lang} /><figcaption>{T("Fotografia documental identificada da raça", "Documentary photograph identified as this breed")}{own.kind !== "raça" ? T(" · imagem do território, não do animal", " · landscape, not the animal") : ""}</figcaption></figure>}
+      {own && <figure class="breed-intro-photo rv"><Img id={own.id} sizes="(max-width:850px) 100vw, 640px" credit lang={lang} /><figcaption>{T("Fotografia documental identificada da raça", "Documentary photograph identified as this breed", "Fotografía documental identificada de la raza", "Photographie documentaire identifiée de la race")}{own.kind !== "raça" ? T(" · imagem do território, não do animal", " · landscape, not the animal", " · imagen del territorio, no del animal", " · image du territoire, pas de l'animal") : ""}</figcaption></figure>}
     </div>
   </section>
 
   {ficha ? (
     <>
-      <div class="subnav" id="subnav"><div class="wrap" role="navigation" aria-label={T("Neste tema", "On this page")}>{order.map((id) => <a href={`#${id}`}>{NAV[id]}</a>)}</div></div>
+      <div class="subnav" id="subnav"><div class="wrap" role="navigation" aria-label={T("Neste tema", "On this page", "En este tema", "Dans cette rubrique")}>{order.map((id) => <a href={`#${id}`}>{NAV[id]}</a>)}</div></div>
       {order.map((id, n) => {
         const s = sec[id];
         const blocks = s.blocks as any[];
@@ -114,38 +122,38 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                 <span class="eyebrow">{NAV[id]}</span><h2 style="margin:.2em 0 .5em">{rg ? H2[id] : s.title}</h2>
                 <p class="lead">{s.summary}</p>
                 {id === "historia" && rg && (
-                  <ol class="timeline" aria-label={T("Datas-chave", "Key dates")}>
-                    <li><b>{T("Séc. XV", "15th c.")}</b> {T("Povoamento: chegam bovinos de várias regiões do continente.", "Settlement: cattle arrive from several mainland regions.")}</li>
-                    <li><b>1943</b> {T("Estudo citado no caderno de especificações sobre as raças de origem.", "Study cited in the product specification on the founding breeds.")}</li>
-                    <li><b>1996</b> {T("Criação do livro genealógico.", "Herd book created.")}</li>
+                  <ol class="timeline" aria-label={T("Datas-chave", "Key dates", "Fechas clave", "Dates clés")}>
+                    <li><b>{T("Séc. XV", "15th c.", "Siglo XV", "XVe s.")}</b> {T("Povoamento: chegam bovinos de várias regiões do continente.", "Settlement: cattle arrive from several mainland regions.", "Poblamiento: llegan bovinos de varias regiones del continente.", "Peuplement : des bovins arrivent de plusieurs régions du continent.")}</li>
+                    <li><b>1943</b> {T("Estudo citado no caderno de especificações sobre as raças de origem.", "Study cited in the product specification on the founding breeds.", "Estudio citado en el pliego de condiciones sobre las razas de origen.", "Étude citée dans le cahier des charges sur les races d'origine.")}</li>
+                    <li><b>1996</b> {T("Criação do livro genealógico.", "Herd book created.", "Creación del libro genealógico.", "Création du livre généalogique.")}</li>
                   </ol>
                 )}
-                {id === "territorio" && rg && <ul class="legend"><li><i class="k solar"></i> {T("Solar da raça: Terceira", "Breed homeland: Terceira")}</li><li><i class="k area"></i> {T("Área geográfica da DOP: as nove ilhas do arquipélago, segundo o caderno de especificações", "PDO geographical area: all nine islands, according to the product specification")}</li></ul>}
+                {id === "territorio" && rg && <ul class="legend"><li><i class="k solar"></i> {T("Solar da raça: Terceira", "Breed homeland: Terceira", "Solar de la raza: Terceira", "Terroir de la race : Terceira")}</li><li><i class="k area"></i> {T("Área geográfica da DOP: as nove ilhas do arquipélago, segundo o caderno de especificações", "PDO geographical area: all nine islands, according to the product specification", "Área geográfica de la DOP: las nueve islas del archipiélago, según el pliego de condiciones", "Aire géographique de l'AOP : les neuf îles de l'archipel, selon le cahier des charges")}</li></ul>}
                 <div style="margin-top:var(--s3)">
                   {blocks.map((bl, k) => (
                     <article class="atlas-story-block">
-                      <h3>{bl.title}{bl.status && <span class="status-pill">{T("em investigação", "under research")}</span>}</h3>
+                      <h3>{bl.title}{bl.status && <span class="status-pill">{T("em investigação", "under research", "en investigación", "en cours de recherche")}</span>}</h3>
                       <div class="body">
                         {bl.paras?.map((p: string) => <p>{p}</p>)}
                         {bl.list && <ul>{bl.list.map((x: string) => <li>{x}</li>)}</ul>}
                         {bl.table && <div class="tbl"><table><thead><tr>{bl.table.head.map((h: string) => <th>{h}</th>)}</tr></thead><tbody>{bl.table.rows.map((r: string[]) => <tr>{r.map((c) => <td>{c}</td>)}</tr>)}</tbody></table></div>}
-                        {srcLine(bl.sources) && <p class="srcs">{T("Fontes", "Sources")}: {bl.sources.map((x: any, q: number) => <>{q > 0 && " · "}<a href={x.url} rel="noopener">{x.label}</a></>)}</p>}
+                        {srcLine(bl.sources) && <p class="srcs">{T("Fontes", "Sources", "Fuentes", "Sources")}: {bl.sources.map((x: any, q: number) => <>{q > 0 && " · "}<a href={x.url} rel="noopener">{x.label}</a></>)}</p>}
                       </div>
                     </article>
                   ))}
                 </div>
-                {rg && MORE[id] && <p class="srcs" style="margin-top:1em"><strong>{T("Saber mais", "Learn more")}:</strong> {MORE[id].map((x, q) => <>{q > 0 && " · "}<a href={x.u} rel="noopener">{x.l} ↗</a></>)}</p>}
-                {id === "caracteristicas" && own && own.kind === "raça" && FRAMED.has(own.id) && <p class="srcs">{T("A fotografia mostra animais numa feira ou recinto; procura-se uma fotografia melhor da raça em pastoreio.", "The photograph shows animals at a fair or enclosure; a better photograph of the breed grazing is being sought.")}</p>}
-                {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, "viagem/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →")}</a></p>}
+                {rg && MORE[id] && <p class="srcs" style="margin-top:1em"><strong>{T("Saber mais", "Learn more", "Saber más", "En savoir plus")}:</strong> {MORE[id].map((x, q) => <>{q > 0 && " · "}<a href={x.u} rel="noopener">{x.l} ↗</a></>)}</p>}
+                {id === "caracteristicas" && own && own.kind === "raça" && FRAMED.has(own.id) && <p class="srcs">{T("A fotografia mostra animais numa feira ou recinto; procura-se uma fotografia melhor da raça em pastoreio.", "The photograph shows animals at a fair or enclosure; a better photograph of the breed grazing is being sought.", "La fotografía muestra animales en una feria o un recinto; se busca una fotografía mejor de la raza en pastoreo.", "La photographie montre des animaux dans une foire ou un enclos ; on cherche une meilleure photographie de la race au pâturage.")}</p>}
+                {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, "viagem/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →", "Ver el recorrido hasta el plato →", "Voir le parcours jusqu'à l'assiette →")}</a></p>}
                 {id === "onde" && rg && <p style="margin-top:1.5em"><a class="btn" href="https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" rel="noopener">DGADR — Carne Ramo Grande DOP ↗</a></p>}
-                {id === "onde" && <p class="srcs">{T("Não indicamos pontos de venda nem preços que não tenhamos verificado.", "We do not list points of sale or prices we have not verified.")}</p>}
+                {id === "onde" && <p class="srcs">{T("Não indicamos pontos de venda nem preços que não tenhamos verificado.", "We do not list points of sale or prices we have not verified.", "No indicamos puntos de venta ni precios que no hayamos verificado.", "Nous n'indiquons ni points de vente ni prix que nous n'avons pas vérifiés.")}</p>}
               </div>
               {id === "territorio" && rg && (
                 <div class="mapbox rv">
-                  <svg viewBox={`0 0 920 ${H.toFixed(0)}`} role="img" aria-label={T("Mapa esquemático dos Açores com a ilha Terceira destacada", "Schematic map of the Azores with Terceira island highlighted")}>
+                  <svg viewBox={`0 0 920 ${H.toFixed(0)}`} role="img" aria-label={T("Mapa esquemático dos Açores com a ilha Terceira destacada", "Schematic map of the Azores with Terceira island highlighted", "Mapa esquemático de las Azores con la isla Terceira destacada", "Carte schématique des Açores avec l'île de Terceira mise en évidence")}>
                     {islands.map((is) => <g><path d={is.d} fill={is.name === "Terceira" ? "#183C32" : "#7FA07F"} stroke="#fff" stroke-width="1.2" stroke-linejoin="round"><title>{is.name}</title></path><text x={is.x} y={is.y + (is.name === "Terceira" ? 26 : 22)} text-anchor="middle" style="font:500 14px var(--sans);fill:#183C32">{is.name}</text></g>)}
                   </svg>
-                  <p class="srcs" style="margin:.6em 0 0">{T("Mapa esquemático, geometria generalizada (Eurostat/GISCO, © EuroGeographics).", "Schematic map, generalised geometry (Eurostat/GISCO, © EuroGeographics).")}</p>
+                  <p class="srcs" style="margin:.6em 0 0">{T("Mapa esquemático, geometria generalizada (Eurostat/GISCO, © EuroGeographics).", "Schematic map, generalised geometry (Eurostat/GISCO, © EuroGeographics).", "Mapa esquemático, geometría generalizada (Eurostat/GISCO, © EuroGeographics).", "Carte schématique, géométrie généralisée (Eurostat/GISCO, © EuroGeographics).")}</p>
                 </div>
               )}
               {id === "historia" && rg && <div class="frame rv" style="aspect-ratio:4/5"><Img id="acores-sao-jorge" sizes="(max-width:820px) 100vw, 560px" credit lang={lang} /></div>}
@@ -158,14 +166,14 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
     <section class="sec">
       <div class="wrap split">
         <div class="rv">
-          <span class="eyebrow">{T("Descobrir", "Discover")}</span><h2 style="margin:.2em 0 .5em">{T("A raça em poucas palavras", "The breed in brief")}</h2>
+          <span class="eyebrow">{T("Descobrir", "Discover", "Descubrir", "Découvrir")}</span><h2 style="margin:.2em 0 .5em">{T("A raça em poucas palavras", "The breed in brief", "La raza en pocas palabras", "La race en quelques mots")}</h2>
           <p class="lead">{intro}</p>
-          {b.herd && <p class="srcs">{T("Efetivo: livro genealógico de adultos", "Herd: adult herd book")}, {b.herd.year}. {T("Fonte", "Source")}: <a href={b.name_sources?.[0]?.url}>{T("Catálogo Oficial de Raças Autóctones Portuguesas", "Official Catalogue of Portuguese Native Breeds")}</a> (DGAV/CAP), p. {b.herd.source_page}. {T("Verificado", "Verified")} {fmtDate(b.last_verified, lang)}.</p>}
-          {b.solar && <p class="srcs">{T("Solar", "Homeland")}: {solar}</p>}
+          {b.herd && <p class="srcs">{T("Efetivo: livro genealógico de adultos", "Herd: adult herd book", "Efectivo: libro genealógico de adultos", "Cheptel : livre généalogique des adultes")}, {b.herd.year}. {T("Fonte", "Source", "Fuente", "Source")}: <a href={b.name_sources?.[0]?.url}>{T("Catálogo Oficial de Raças Autóctones Portuguesas", "Official Catalogue of Portuguese Native Breeds", "Catálogo Oficial de Razas Autóctonas Portuguesas", "Catalogue officiel des races autochtones portugaises")}</a> (DGAV/CAP), p. {b.herd.source_page}. {T("Verificado", "Verified", "Verificado", "Vérifié")} {fmtDate(b.last_verified, lang)}.</p>}
+          {b.solar && <p class="srcs">{T("Solar", "Homeland", "Solar", "Terroir d'origine")}: {solar}</p>}
         </div>
         <div class="rv">
           {Profile && <div class="atlas-story-block prose"><Profile /></div>}
-          <div class="atlas-story-block"><div class="body"><p>{T("A ficha completa desta raça seguirá o modelo da do Ramo Grande (História, Território, Características, Criação, Carne, Certificação, Onde encontrar) e será publicada à medida que cada fonte for confirmada. Não publicamos o que não conseguimos verificar.", "The full profile for this breed will follow the Ramo Grande model (History, Territory, Characteristics, Rearing, Meat, Certification, Where to find it) and be published as each source is confirmed. We do not publish what we cannot verify.")}</p></div></div>
+          <div class="atlas-story-block"><div class="body"><p>{T("A ficha completa desta raça seguirá o modelo da do Ramo Grande (História, Território, Características, Criação, Carne, Certificação, Onde encontrar) e será publicada à medida que cada fonte for confirmada. Não publicamos o que não conseguimos verificar.", "The full profile for this breed will follow the Ramo Grande model (History, Territory, Characteristics, Rearing, Meat, Certification, Where to find it) and be published as each source is confirmed. We do not publish what we cannot verify.", "La ficha completa de esta raza seguirá el modelo de la del Ramo Grande (Historia, Territorio, Características, Cría, Carne, Certificación, Dónde encontrarla) y se publicará a medida que se confirme cada fuente. No publicamos lo que no podemos verificar.", "La fiche complète de cette race suivra le modèle de celle du Ramo Grande (Histoire, Territoire, Caractéristiques, Élevage, Viande, Certification, Où la trouver) et sera publiée au fur et à mesure que chaque source sera confirmée. Nous ne publions pas ce que nous ne pouvons pas vérifier.")}</p></div></div>
         </div>
       </div>
     </section>
@@ -173,10 +181,10 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
 
   <section class="sec tight soft">
     <div class="wrap">
-      <span class="eyebrow">{T("Continuar a descobrir", "Keep discovering")}</span>
+      <span class="eyebrow">{T("Continuar a descobrir", "Keep discovering", "Seguir descubriendo", "Continuer à découvrir")}</span>
       <nav class="pn" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;margin-top:var(--s2)">
         <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `racas/${prev.slug}/`)}>← {prev.official_name}</a>
-        <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, "viagem/")}>{T("Da pastagem ao prato", "Pasture to plate")}</a>
+        <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, "viagem/")}>{T("Da pastagem ao prato", "Pasture to plate", "Del pasto al plato", "Du pâturage à l'assiette")}</a>
         <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `racas/${next.slug}/`)}>{next.official_name} →</a>
       </nav>
     </div>

@@ -1,0 +1,87 @@
+intro: La race des versants entre le Vouga et le Douro.
+facts:
+- label: Berceau
+  value: Versants montagneux entre les vallées du Vouga et du Douro
+- label: Effectif
+  value: 3 814
+  note: '2019'
+sections:
+- id: historia
+  title: Histoire
+  summary: Origine et parcours de la race, selon le catalogue officiel.
+  blocks:
+  - title: L’histoire
+    paras:
+    - 'L’Arouquesa est une race de montagne. Elle n’a jamais beaucoup quitté le territoire où elle est née : les versants entre la vallée du Vouga et le Douro. Son nom vient peut-être de l’aurochs, l’ancêtre sauvage des bovins, aujourd’hui disparu, ou de la ville d’Arouca ; les auteurs divergent. Par le passé, on reconnaissait des variétés locales, aux noms de Sulanos (S. Pedro do Sul), Paivotos (rio Paiva), Caramuleiros (serra do Caramulo) et Canaveses (Marco de Canaveses et Baião).'
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Aujourd’hui
+    paras:
+    - Les communes comptant le plus d’animaux sont Cinfães, Castro Daire, S. Pedro do Sul, Arouca, Vale de Cambra, Resende et Castelo de Paiva, au sud du Douro, et Baião, Amarante et Marco de Canaveses, au nord.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: État du texte
+    paras:
+    - Texte original du projet, réécrit à partir du Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 14. Aucun paragraphe n’est une copie du catalogue. Les faits ont été vérifiés avec le catalogue ; la relecture indépendante (ChatGPT/spécialiste) est en attente. Tous les chiffres et statuts de conservation sont ceux du catalogue de 2019, et non des effectifs actuels ; des données officielles plus récentes restent à rechercher.
+- id: caracteristicas
+  title: Caractéristiques
+  summary: Comment reconnaître l’animal.
+  blocks:
+  - title: Comment la reconnaître
+    paras:
+    - C’est une race de taille petite à moyenne, aux formes arrondies et à l’expression docile mais vive. La robe est brune, du ton paille au ton cerise, plus foncée autour des yeux et des oreilles. Les cornes ont la forme d’une lyre basse, claires sur la plus grande partie de leur longueur et aux pointes sombres.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territoire
+  summary: Le berceau de la race et l’effectif enregistré.
+  blocks:
+  - title: Berceau
+    paras:
+    - Versants montagneux entre les vallées du Vouga et du Douro (Arouca, Cinfães, Castro Daire…).
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Effectif enregistré (2019)
+    paras:
+    - 3 680 femelles, 134 mâles et 3 315 éleveurs, selon le catalogue officiel (2019). Ce ne sont pas des effectifs actuels.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Élevage
+  summary: Comment et où elle est élevée.
+  blocks:
+  - title: Comment elle est élevée
+    paras:
+    - 'Elle vit des maigres pâturages de la montagne et des jeunes pousses d’ajonc, de carqueja, de genêt et de chêne. Les systèmes varient : pâturage sur les terrains communaux (baldios, rare aujourd’hui), stabulation permanente, stabulation seulement l’hiver, ou régime semi-extensif dans lequel les animaux ne font que dormir à l’étable. Le catalogue met en avant trois aptitudes : la viande, le travail et le lait.'
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Viande
+  summary: La viande de cette race.
+  blocks:
+  - title: La viande
+    paras:
+    - La description de la viande de cette race (couleur, gras, maturation, morceaux) n’a pas encore été confirmée par une source. Nous ne la publions pas tant qu’il n’y a pas de référence.
+    status: en cours d'investigation
+- id: certificacao
+  title: Certification
+  summary: Certification et reconnaissances.
+  blocks:
+  - title: Certification
+    paras:
+    - 'Statut d’AOP/IGP et autres reconnaissances de cette race : à confirmer dans la liste officielle de la DGADR et dans eAmbrosia.'
+    status: en cours d'investigation
+- id: onde
+  title: Où en trouver
+  summary: Où en trouver.
+  blocks:
+  - title: Où en trouver
+    paras:
+    - 'Points de vente, producteurs et association d’éleveurs : à rechercher. Nous n’indiquons ni points de vente ni prix que nous n’aurions pas vérifiés.'
+    status: en cours d'investigation

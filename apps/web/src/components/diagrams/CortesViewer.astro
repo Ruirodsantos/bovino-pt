@@ -7,26 +7,26 @@ const T = tr(lang);
 ---
 <figure class="cv" data-cv>
   <div class="cv-stage">
-    <canvas tabindex="0" aria-label={T("Bovino em três dimensões. Arraste para rodar, use a roda ou dois dedos para aproximar. Clique numa região para ver a ficha do corte.", "Bovine in three dimensions. Drag to rotate, use the wheel or two fingers to zoom. Click a region to see the cut’s card.")}></canvas>
-    <div class="cv-modes" role="tablist" aria-label={T("Modo de visualização", "View mode")}>
-      <button role="tab" data-mode="animal" aria-selected="false">{T("O animal", "The animal")}</button>
-      <button role="tab" data-mode="cortes" aria-selected="true">{T("Os cortes", "The cuts")}</button>
+    <canvas tabindex="0" aria-label={T("Bovino em três dimensões. Arraste para rodar, use a roda ou dois dedos para aproximar. Clique numa região para ver a ficha do corte.", "Bovine in three dimensions. Drag to rotate, use the wheel or two fingers to zoom. Click a region to see the cut’s card.", "Bovino en tres dimensiones. Arrastre para girar, use la rueda o dos dedos para acercar. Haga clic en una región para ver la ficha del corte.", "Bovin en trois dimensions. Faites glisser pour tourner, utilisez la molette ou deux doigts pour zoomer. Cliquez sur une région pour voir la fiche du morceau.")}></canvas>
+    <div class="cv-modes" role="tablist" aria-label={T("Modo de visualização", "View mode", "Modo de visualización", "Mode d’affichage")}>
+      <button role="tab" data-mode="animal" aria-selected="false">{T("O animal", "The animal", "El animal", "L’animal")}</button>
+      <button role="tab" data-mode="cortes" aria-selected="true">{T("Os cortes", "The cuts", "Los cortes", "Les morceaux")}</button>
     </div>
     <div class="cv-tip" hidden></div>
-    <p class="cv-hint">{T("Arraste para rodar · Ctrl + roda ou dois dedos para aproximar · clique numa região", "Drag to rotate · Ctrl + wheel or two fingers to zoom · click a region")}</p>
-    <div class="cv-loading" hidden><div class="bar"><i></i></div><span>{T("A carregar o modelo 3D…", "Loading the 3D model…")}</span></div>
+    <p class="cv-hint">{T("Arraste para rodar · Ctrl + roda ou dois dedos para aproximar · clique numa região", "Drag to rotate · Ctrl + wheel or two fingers to zoom · click a region", "Arrastre para girar · Ctrl + rueda o dos dedos para acercar · haga clic en una región", "Faites glisser pour tourner · Ctrl + molette ou deux doigts pour zoomer · cliquez sur une région")}</p>
+    <div class="cv-loading" hidden><div class="bar"><i></i></div><span>{T("A carregar o modelo 3D…", "Loading the 3D model…", "Cargando el modelo 3D…", "Chargement du modèle 3D…")}</span></div>
     <div class="cv-state" hidden></div>
-    <nav class="cv-list" aria-label={T("Cortes", "Cuts")}><ul>{CUTS.map((c) => <li><button data-id={c.id}><i style={`background:${c.cor}`}></i>{c.nome}</button></li>)}</ul></nav>
+    <nav class="cv-list" aria-label={T("Cortes", "Cuts", "Cortes", "Morceaux")}><ul>{CUTS.map((c) => <li><button data-id={c.id}><i style={`background:${c.cor}`}></i>{c.nome}</button></li>)}</ul></nav>
     <aside class="cv-panel" hidden aria-live="polite">
-      <button class="x" aria-label={T("Fechar ficha", "Close card")}>×</button>
+      <button class="x" aria-label={T("Fechar ficha", "Close card", "Cerrar ficha", "Fermer la fiche")}>×</button>
       <span class="eyebrow cv-cat"></span>
       <h3 class="cv-name"></h3>
       <div class="cv-flag" hidden></div>
       <dl class="cv-dl"></dl>
-      <details class="cv-src"><summary>{T("Fontes consultadas", "Sources consulted")}</summary><ul class="cv-srcl"></ul></details>
+      <details class="cv-src"><summary>{T("Fontes consultadas", "Sources consulted", "Fuentes consultadas", "Sources consultées")}</summary><ul class="cv-srcl"></ul></details>
     </aside>
   </div>
-  <figcaption>{T("Modelo 3D de um bovino com as regiões sobrepostas à própria superfície. Os limites são aproximados e os nomes dos cortes variam entre regiões e talhos; as peças assinaladas «a validar» aguardam confirmação de um profissional de desmancha. A fotografia real de cada corte está em recolha.", "3D model of a bovine with the regions laid on its own surface. Boundaries are approximate and cut names vary between regions and butchers; pieces marked “to be validated” await confirmation by a cutting professional. A real photograph of each cut is being sourced.")}</figcaption>
+  <figcaption>{T("Modelo 3D de um bovino com as regiões sobrepostas à própria superfície. Os limites são aproximados e os nomes dos cortes variam entre regiões e talhos; as peças assinaladas «a validar» aguardam confirmação de um profissional de desmancha. A fotografia real de cada corte está em recolha.", "3D model of a bovine with the regions laid on its own surface. Boundaries are approximate and cut names vary between regions and butchers; pieces marked “to be validated” await confirmation by a cutting professional. A real photograph of each cut is being sourced.", "Modelo 3D de un bovino con las regiones superpuestas a su propia superficie. Los límites son aproximados y los nombres de los cortes varían entre regiones y carnicerías; las piezas marcadas «por validar» esperan la confirmación de un profesional del despiece. La fotografía real de cada corte está en proceso de recopilación.", "Modèle 3D d’un bovin avec les régions superposées à sa propre surface. Les limites sont approximatives et les noms des morceaux varient selon les régions et les bouchers ; les pièces signalées « à valider » attendent la confirmation d’un professionnel de la découpe. La photographie réelle de chaque morceau est en cours de collecte.")}</figcaption>
   <script type="application/json" data-lang-json set:html={JSON.stringify({ lang })} />
 </figure>
 
@@ -34,11 +34,22 @@ const T = tr(lang);
   import { startCutsViewer } from "../../scripts/cow-anatomy/viewer.ts";
   import { CUTS, FONTES } from "../../scripts/cow-anatomy/cuts-data";
   const base = import.meta.env.BASE_URL;
-  const rows: [string, string, string][] = [["onde", "Localização anatómica", "Anatomical location"], ["caracteristicas", "Características da carne", "Meat characteristics"], ["textura", "Textura", "Texture"], ["gordura", "Teor de gordura", "Fat content"], ["metodos", "Melhores métodos de confeção", "Best cooking methods"], ["pratos", "Pratos tradicionais portugueses", "Traditional Portuguese dishes"]];
+  type L4 = [string, string, string, string];
+  const rows: [string, L4][] = [
+    ["onde", ["Localização anatómica", "Anatomical location", "Localización anatómica", "Emplacement anatomique"]],
+    ["caracteristicas", ["Características da carne", "Meat characteristics", "Características de la carne", "Caractéristiques de la viande"]],
+    ["textura", ["Textura", "Texture", "Textura", "Texture"]],
+    ["gordura", ["Teor de gordura", "Fat content", "Contenido de grasa", "Teneur en matières grasses"]],
+    ["metodos", ["Melhores métodos de confeção", "Best cooking methods", "Mejores métodos de cocinado", "Meilleures méthodes de cuisson"]],
+    ["pratos", ["Pratos tradicionais portugueses", "Traditional Portuguese dishes", "Platos tradicionales portugueses", "Plats traditionnels portugais"]],
+  ];
+  const LANGS = ["pt", "en", "es", "fr"];
   const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]!));
   const byId = new Map(CUTS.map((c) => [c.id, c]));
   document.querySelectorAll<HTMLElement>("[data-cv]").forEach((root) => {
-    const en = JSON.parse(root.querySelector("[data-lang-json]")!.textContent || "{}").lang !== "pt";
+    const lg = JSON.parse(root.querySelector("[data-lang-json]")!.textContent || "{}").lang as string;
+    const li = Math.max(0, LANGS.indexOf(lg));
+    const L = (...a: string[]) => a[li] ?? a[1];
     const $ = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
     const panel = $(".cv-panel"), tip = $(".cv-tip"), loading = $(".cv-loading"), state = $(".cv-state"), list = $(".cv-list");
     let v: any = null, started = false;
@@ -46,9 +57,9 @@ const T = tr(lang);
       panel.hidden = !id; root.classList.toggle("sel", !!id);
       list.querySelectorAll("button").forEach((b) => b.classList.toggle("on", (b as HTMLElement).dataset.id === id));
       if (!id) return; const c: any = byId.get(id)!; panel.scrollTop = 0;
-      $(".cv-name").textContent = c.nome; $(".cv-cat").textContent = c.categoria || (en ? "Beef cut" : "Corte de bovino");
-      const f = $(".cv-flag"); f.hidden = c.estado !== "validar"; f.textContent = (en ? "To be validated" : "A validar") + (c.nota ? " · " + c.nota : "");
-      $(".cv-dl").innerHTML = rows.map(([k, pt, e]) => `<dt>${en ? e : pt}</dt><dd class="${c[k] === "Por validar" ? "pv" : ""}">${esc(c[k] === "Por validar" && en ? "To be validated" : c[k])}</dd>`).join("");
+      $(".cv-name").textContent = c.nome; $(".cv-cat").textContent = c.categoria || L("Corte de bovino", "Beef cut", "Corte de vacuno", "Morceau de bœuf");
+      const f = $(".cv-flag"); f.hidden = c.estado !== "validar"; f.textContent = L("A validar", "To be validated", "Por validar", "À valider") + (c.nota ? " · " + c.nota : "");
+      $(".cv-dl").innerHTML = rows.map(([k, names]) => `<dt>${names[li]}</dt><dd class="${c[k] === "Por validar" ? "pv" : ""}">${esc(c[k] === "Por validar" ? L("Por validar", "To be validated", "Por validar", "À valider") : c[k])}</dd>`).join("");
       $(".cv-srcl").innerHTML = c.fontes.map((s: string) => `<li><a href="${(FONTES as any)[s].url}" target="_blank" rel="noopener">${esc((FONTES as any)[s].nome)}</a></li>`).join("");
     };
     const setMode = (m: "animal" | "cortes") => {
@@ -61,7 +72,7 @@ const T = tr(lang);
       v = await startCutsViewer({
         root: $(".cv-stage"), base, embed: true,
         onProgress: (p) => { ($(".cv-loading .bar i") as HTMLElement).style.width = `${Math.round(p * 100)}%`; },
-        onState: (s, m) => { loading.hidden = s !== "loading"; if (s === "error") { state.hidden = false; state.textContent = m === "WebGL" ? (en ? "This browser does not support WebGL." : "Este navegador não suporta WebGL.") : (en ? "Could not load the model." : "Não foi possível carregar o modelo."); } },
+        onState: (s, m) => { loading.hidden = s !== "loading"; if (s === "error") { state.hidden = false; state.textContent = m === "WebGL" ? L("Este navegador não suporta WebGL.", "This browser does not support WebGL.", "Este navegador no es compatible con WebGL.", "Ce navigateur ne prend pas en charge WebGL.") : L("Não foi possível carregar o modelo.", "Could not load the model.", "No se pudo cargar el modelo.", "Impossible de charger le modèle."); } },
         onHover: (id) => { if (!id) { tip.hidden = true; return; } tip.hidden = false; tip.textContent = byId.get(id)!.nome; },
         onSelect: (id) => { show(id); if (id) tip.hidden = true; },
       });

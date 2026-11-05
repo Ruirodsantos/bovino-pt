@@ -1,0 +1,81 @@
+intro: El ganado «charnequeiro» del Sul do Tejo, hoy criado para carne.
+facts:
+- label: Solar
+  value: Sul do Tejo
+- label: Efectivo
+  value: 1 844
+  note: '2019'
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y trayectoria de la raza, según el catálogo oficial.
+  blocks:
+  - title: La historia
+    paras:
+    - A partir de mediados del siglo XIX se registran bovinos negros con nombres como «Gado Charnequeiro do Sul do Tejo» y «Gado da Terra». Eran sobre todo animales de tracción, valorados por su fuerza, por tolerar una alimentación pobre y un clima extremo, y por el estiércol, que fertilizaba la tierra; la carne contaba poco. Con la modernización agrícola, perdieron su función, y en los años 80 la entrada de razas exóticas redujo aún más el efectivo, hasta el punto de que la raza fue considerada en vías de extinción. Sobrevivió gracias a criadores que mantuvieron núcleos de hembras puras para producir cruzados.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado del texto
+    paras:
+    - Texto original del proyecto, reescrito a partir del Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 58. Ningún párrafo es copia del catálogo. Los hechos se contrastaron con el catálogo; la revisión independiente (ChatGPT/especialista) está pendiente. Todas las cifras y estados de conservación son los del catálogo de 2019, no efectivos actuales; datos oficiales más recientes por buscar.
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - 'Pelaje tendente al negro uniforme, a veces pardo o atigrado. Es un animal de gran corpulencia: vacas de 400 a 600 kg y toros de 700 a 1000 kg. Los cuernos son en gancho alto. Los machos tienen un gran morrillo.'
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territorio
+  summary: El solar de la raza y el efectivo registrado.
+  blocks:
+  - title: Solar
+    paras:
+    - Sul do Tejo — el antiguo «Gado Charnequeiro do Sul do Tejo».
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efectivo registrado (2019)
+    paras:
+    - 1 774 hembras, 70 machos y 30 criadores, según el catálogo oficial (2019). No son efectivos actuales.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - Hoy el objetivo es casi solo la carne, en régimen extensivo. Se alimenta de pastos naturales, en general bajo cubierta de montado, rastrojos, bellota y productos del aclareo del montado. Los criadores señalan la adaptación a zonas desfavorecidas como la principal ventaja.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 58
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    paras:
+    - La descripción de la carne de esta raza (color, grasa, maduración, cortes) aún no se ha confirmado en fuente. No la publicamos hasta que haya referencia.
+    status: en investigación
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    paras:
+    - 'Estado de DOP/IGP y otros reconocimientos de esta raza: por confirmar en la lista oficial de la DGADR y en eAmbrosia.'
+    status: en investigación
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Dónde encontrar
+    paras:
+    - 'Puntos de venta, productores y asociación de criadores: por investigar. No indicamos puntos de venta ni precios que no hayamos verificado.'
+    status: en investigación

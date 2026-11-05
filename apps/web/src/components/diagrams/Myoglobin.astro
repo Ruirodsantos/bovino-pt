@@ -4,19 +4,19 @@ interface Props { lang?: Lang }
 const { lang = "pt" } = Astro.props;
 const T = tr(lang);
 const st = [
-  { c: "#6B2D4A", n: T("Vermelho-arroxeado", "Purplish red"), m: T("Deoximioglobina", "Deoxymyoglobin"), f: "Fe²⁺", d: T("Sem oxigénio: peça acabada de cortar ou em vácuo.", "No oxygen: freshly cut or vacuum-packed.") },
-  { c: "#C21E2F", n: T("Vermelho vivo (cereja)", "Bright cherry red"), m: T("Oximioglobina", "Oxymyoglobin"), f: "Fe²⁺ + O₂", d: T("Minutos ao ar: a cor da carne fresca.", "Minutes in air: the colour of fresh meat.") },
-  { c: "#7A4A2C", n: T("Castanho", "Brown"), m: T("Metamioglobina", "Metmyoglobin"), f: "Fe³⁺", d: T("O ferro oxidou: muito tempo exposta ao ar.", "The iron has oxidised: long exposure to air.") },
+  { c: "#6B2D4A", n: T("Vermelho-arroxeado", "Purplish red", "Rojo violáceo", "Rouge violacé"), m: T("Deoximioglobina", "Deoxymyoglobin", "Desoximioglobina", "Désoxymyoglobine"), f: "Fe²⁺", d: T("Sem oxigénio: peça acabada de cortar ou em vácuo.", "No oxygen: freshly cut or vacuum-packed.", "Sin oxígeno: pieza recién cortada o envasada al vacío.", "Sans oxygène : pièce fraîchement coupée ou sous vide.") },
+  { c: "#C21E2F", n: T("Vermelho vivo (cereja)", "Bright cherry red", "Rojo vivo (cereza)", "Rouge vif (cerise)"), m: T("Oximioglobina", "Oxymyoglobin", "Oximioglobina", "Oxymyoglobine"), f: "Fe²⁺ + O₂", d: T("Minutos ao ar: a cor da carne fresca.", "Minutes in air: the colour of fresh meat.", "Minutos al aire: el color de la carne fresca.", "Quelques minutes à l’air : la couleur de la viande fraîche.") },
+  { c: "#7A4A2C", n: T("Castanho", "Brown", "Marrón", "Brun"), m: T("Metamioglobina", "Metmyoglobin", "Metamioglobina", "Métmyoglobine"), f: "Fe³⁺", d: T("O ferro oxidou: muito tempo exposta ao ar.", "The iron has oxidised: long exposure to air.", "El hierro se ha oxidado: mucho tiempo expuesta al aire.", "Le fer s’est oxydé : longue exposition à l’air.") },
 ];
 ---
 <figure class="mg">
-  <div class="row" role="img" aria-label={T("Três estados da mioglobina e a cor da carne", "Three states of myoglobin and meat colour")}>
+  <div class="row" role="img" aria-label={T("Três estados da mioglobina e a cor da carne", "Three states of myoglobin and meat colour", "Tres estados de la mioglobina y el color de la carne", "Trois états de la myoglobine et couleur de la viande")}>
     {st.map((s, i) => (<>
       <div class="s"><i style={`background:${s.c}`}></i><b>{s.n}</b><span class="m">{s.m} · {s.f}</span><span>{s.d}</span></div>
-      {i < 2 && <span class="ar" aria-hidden="true">{i === 0 ? T("+ oxigénio →", "+ oxygen →") : T("oxidação →", "oxidation →")}</span>}
+      {i < 2 && <span class="ar" aria-hidden="true">{i === 0 ? T("+ oxigénio →", "+ oxygen →", "+ oxígeno →", "+ oxygène →") : T("oxidação →", "oxidation →", "oxidación →", "oxydation →")}</span>}
     </>))}
   </div>
-  <figcaption>{T("Esquema ilustrativo do que se descreve no texto; as cores são aproximadas. Fonte da explicação: Meat Science and Nutrition (eCampus Ontario / BCcampus).", "Illustrative diagram of what the text describes; colours are approximate. Source of the explanation: Meat Science and Nutrition (eCampus Ontario / BCcampus).")}</figcaption>
+  <figcaption>{T("Esquema ilustrativo do que se descreve no texto; as cores são aproximadas. Fonte da explicação: Meat Science and Nutrition (eCampus Ontario / BCcampus).", "Illustrative diagram of what the text describes; colours are approximate. Source of the explanation: Meat Science and Nutrition (eCampus Ontario / BCcampus).", "Esquema ilustrativo de lo que describe el texto; los colores son aproximados. Fuente de la explicación: Meat Science and Nutrition (eCampus Ontario / BCcampus).", "Schéma illustratif de ce que décrit le texte ; les couleurs sont approximatives. Source de l’explication : Meat Science and Nutrition (eCampus Ontario / BCcampus).")}</figcaption>
 </figure>
 <style>
   .mg { margin: 1.5rem 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px; }

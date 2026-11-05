@@ -6,15 +6,15 @@ const T = tr(lang);
 const conf = ["S", "E", "U", "R", "O", "P"], fat = [1, 2, 3, 4, 5];
 ---
 <figure class="sg">
-  <div class="tbl2" role="img" aria-label={T("Grelha de classificação SEUROP: conformação (S a P) por cobertura de gordura (1 a 5)", "SEUROP grading grid: conformation (S to P) by fat cover (1 to 5)")}>
-    <div class="corner">{T("conformação ↓ · gordura →", "conformation ↓ · fat cover →")}</div>
+  <div class="tbl2" role="img" aria-label={T("Grelha de classificação SEUROP: conformação (S a P) por cobertura de gordura (1 a 5)", "SEUROP grading grid: conformation (S to P) by fat cover (1 to 5)", "Cuadrícula de clasificación SEUROP: conformación (S a P) por cobertura grasa (1 a 5)", "Grille de classification SEUROP : conformation (S à P) par état d’engraissement (1 à 5)")}>
+    <div class="corner">{T("conformação ↓ · gordura →", "conformation ↓ · fat cover →", "conformación ↓ · grasa →", "conformation ↓ · engraissement →")}</div>
     {fat.map((f) => <div class="h">{f}</div>)}
     {conf.map((c) => (<>
       <div class="h">{c}</div>
       {fat.map((f) => <div class:list={["c", ]}>{c}{f}</div>)}
     </>))}
   </div>
-  <figcaption>{T("Classificação europeia SEUROP: conformação da carcaça (S, a melhor, a P, a mais pobre) e cobertura de gordura (1 a 5). Algumas denominações de origem restringem as classes aceites; consulte sempre o caderno de especificações de cada produto.", "European SEUROP grading: carcass conformation (S, best, to P, poorest) and fat cover (1 to 5). Some designations of origin restrict the accepted classes; always check the specification document of each product.")}</figcaption>
+  <figcaption>{T("Classificação europeia SEUROP: conformação da carcaça (S, a melhor, a P, a mais pobre) e cobertura de gordura (1 a 5). Algumas denominações de origem restringem as classes aceites; consulte sempre o caderno de especificações de cada produto.", "European SEUROP grading: carcass conformation (S, best, to P, poorest) and fat cover (1 to 5). Some designations of origin restrict the accepted classes; always check the specification document of each product.", "Clasificación europea SEUROP: conformación de la canal (de S, la mejor, a P, la más pobre) y cobertura grasa (1 a 5). Algunas denominaciones de origen restringen las clases aceptadas; consulte siempre el pliego de condiciones de cada producto.", "Classification européenne SEUROP : conformation de la carcasse (de S, la meilleure, à P, la plus faible) et état d’engraissement (1 à 5). Certaines appellations d’origine restreignent les classes admises ; consultez toujours le cahier des charges de chaque produit.")}</figcaption>
 </figure>
 <style>
   .sg { margin: 1.5rem 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; }

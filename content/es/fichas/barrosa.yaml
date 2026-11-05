@@ -1,0 +1,87 @@
+intro: La raza de grandes cuernos en lira, de la meseta del Barroso.
+facts:
+- label: Cuna
+  value: Zonas de meseta del Barroso
+- label: Efectivo
+  value: 7 130
+  note: '2019'
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y trayectoria de la raza, según el catálogo oficial.
+  blocks:
+  - title: La historia
+    paras:
+    - La Barrosã tiene un origen muy discutido. Una de las hipótesis que menciona el catálogo la vincula con bovinos del norte de África, de cuernos grandes y gruesos, que habrían llegado a la península ibérica en época de presencia mora. Más tarde habría sido empujada por otros grupos de bovinos hacia las tierras altas del Barroso, donde se quedó. Sea cual sea el origen, es una raza de morfología muy propia, difícil de encajar en las demás razas ibéricas.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoy
+    paras:
+    - El catálogo indica que la Barrosã se explota cada vez más para carne, y menciona la Denominación de Origen Protegida «Carne Barrosã». El registro exacto de la denominación se confirmará en la base de datos europea eAmbrosia antes de mostrarse como dato verificado.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado del texto
+    paras:
+    - Texto original del proyecto, reescrito a partir del Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 18. Ningún párrafo es copia del catálogo. Los hechos se han contrastado con el catálogo; la revisión independiente (ChatGPT/especialista) está pendiente. Todas las cifras y estados de conservación son los del catálogo de 2019, no efectivos actuales; faltan por localizar datos oficiales más recientes.
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - Lo primero que se ve son los cuernos, gruesos y largos, en lira alta. El pelo es castaño claro, entre el pajizo y el cerezo, y la piel es gruesa pero suave, con pliegues en el cuello. La papada está muy desarrollada. Es una raza dócil, con fuerte instinto maternal.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territorio
+  summary: La cuna de la raza y el efectivo registrado.
+  blocks:
+  - title: Cuna
+    paras:
+    - Zonas de meseta del Barroso.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efectivo registrado (2019)
+    paras:
+    - 6 775 hembras, 355 machos y 1 926 criadores, según el catálogo oficial (2019). No son efectivos actuales.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - 'Se cría en sistema extensivo, en montaña y media ladera, aprovechando recursos como la carqueja y el tojo. El catálogo subraya su papel en el paisaje rural: trabajaba pequeñas parcelas y bancales, y proporcionaba estiércol para suelos pobres.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    paras:
+    - La descripción de la carne de esta raza (color, grasa, maduración, cortes) aún no se ha confirmado en una fuente. No la publicamos hasta que haya una referencia.
+    status: en investigación
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    paras:
+    - 'Estado de DOP/IGP y otros reconocimientos de esta raza: pendiente de confirmar en la lista oficial de la DGADR y en eAmbrosia.'
+    status: en investigación
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Dónde encontrar
+    paras:
+    - 'Puntos de venta, productores y asociación de criadores: pendiente de investigar. No indicamos puntos de venta ni precios que no hayamos verificado.'
+    status: en investigación

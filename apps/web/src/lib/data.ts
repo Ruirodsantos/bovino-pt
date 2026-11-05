@@ -42,7 +42,39 @@ function enData(): Record<string, any> {
   return _en;
 }
 export function breedEn(slug: string): BreedEn { return (enData()[slug] ?? {}) as BreedEn; }
-export function fieldLabels(lang: Lang): Record<string, string> { return lang !== "pt" ? { ...FIELD_LABELS, ...(enData()._field_labels ?? {}) } : FIELD_LABELS; }
+const _lx: Record<string, Record<string, any>> = {};
+function langData(lang: Lang): Record<string, any> {
+  if (lang === "pt" || lang === "en") return enData();
+  if (!_lx[lang]) {
+    const f = path.join(ROOT, `data/registry/breeds_${lang}.yaml`);
+    _lx[lang] = fs.existsSync(f) ? (parse(fs.readFileSync(f, "utf-8")) as Record<string, any>) : {};
+  }
+  return _lx[lang];
+}
+/** Localised breed texts (solar, solar_quote, fields): data/registry/breeds_<lang>.yaml, falling back per key to breeds_en.yaml. */
+export function breedL(slug: string, lang: Lang): BreedEn {
+  const e = breedEn(slug);
+  if (lang === "pt" || lang === "en") return e;
+  const o = (langData(lang)[slug] ?? {}) as BreedEn;
+  return { ...e, ...o, fields: { ...(e.fields ?? {}), ...(o.fields ?? {}) } };
+}
+const FIELD_LABELS_ES: Record<string, string> = {
+  geographic_origin: "Solar (región de origen)", historical_background: "Historia", population: "Efectivo",
+  physical_characteristics: "Características", production_systems: "Sistema de producción", meat_characteristics: "La carne",
+  certifications: "Certificaciones (DOP/IGP)", producer_organizations: "Asociación de criadores", geographic_distribution: "Distribución",
+  photographs: "Fotografías", economic_information: "Economía", historical_trends: "Evolución",
+};
+const FIELD_LABELS_FR: Record<string, string> = {
+  geographic_origin: "Terroir d\u2019origine (région)", historical_background: "Histoire", population: "Cheptel",
+  physical_characteristics: "Caractéristiques", production_systems: "Système de production", meat_characteristics: "La viande",
+  certifications: "Certifications (AOP/IGP)", producer_organizations: "Association d\u2019éleveurs", geographic_distribution: "Répartition",
+  photographs: "Photographies", economic_information: "Économie", historical_trends: "Évolution",
+};
+export function fieldLabels(lang: Lang): Record<string, string> {
+  if (lang === "pt") return FIELD_LABELS;
+  const en = { ...FIELD_LABELS, ...(enData()._field_labels ?? {}) };
+  return lang === "es" ? { ...en, ...FIELD_LABELS_ES } : lang === "fr" ? { ...en, ...FIELD_LABELS_FR } : en;
+}
 
 export function filledFields(b: Breed): number {
   return Object.values(b.fields ?? {}).filter((f) => f.value !== null && f.value !== undefined && f.source_id).length;
@@ -59,11 +91,12 @@ export function num(v: number, lang: Lang = "pt", digits = 0): string {
   return new Intl.NumberFormat(locale(lang), { maximumFractionDigits: digits }).format(v);
 }
 export function fmt(v: number, unit = "", lang: Lang = "pt"): string {
+  const en = lang === "en", sp = lang === "pt" ? " " : "\u00a0";
   if (unit === "€") {
-    if (v >= 1e6) return lang !== "pt" ? `€${num(v / 1e6, lang, 1)} million` : `${num(v / 1e6, lang, 1)} M€`;
-    return lang !== "pt" ? `€${num(v, lang)}` : `${num(v, lang)} €`;
+    if (v >= 1e6) return en ? `€${num(v / 1e6, lang, 1)} million` : `${num(v / 1e6, lang, 1)}${sp}M€`;
+    return en ? `€${num(v, lang)}` : `${num(v, lang)}${sp}€`;
   }
-  if (v >= 1e6) return `${num(v / 1e6, lang, 1)} ${lang !== "pt" ? "million" : "milhões"}`;
+  if (v >= 1e6) return `${num(v / 1e6, lang, 1)} ${lang === "pt" ? "milhões" : lang === "es" ? "millones" : lang === "fr" ? "millions" : "million"}`;
   return num(v, lang);
 }
 export function fmtDate(iso?: string | null, lang: Lang = "pt"): string {
@@ -87,9 +120,13 @@ export const REGIONS: Record<string, string[]> = {
   cachena: ["norte"], garvonesa: ["sul"], jarmelista: ["centro"], marinhoa: ["centro"], maronesa: ["norte"], mertolenga: ["sul"],
   minhota: ["norte"], mirandesa: ["norte"], preta: ["sul"], "ramo-grande": ["ilhas"],
 };
-export const REGION_LABELS = (lang: Lang): Record<string, string> => lang !== "pt"
-  ? { norte: "North", centro: "Centre", sul: "Alentejo and Algarve", ilhas: "Islands" }
-  : { norte: "Norte", centro: "Centro", sul: "Alentejo e Algarve", ilhas: "Ilhas" };
+const REGION_L: Record<Lang, Record<string, string>> = {
+  pt: { norte: "Norte", centro: "Centro", sul: "Alentejo e Algarve", ilhas: "Ilhas" },
+  en: { norte: "North", centro: "Centre", sul: "Alentejo and Algarve", ilhas: "Islands" },
+  es: { norte: "Norte", centro: "Centro", sul: "Alentejo y Algarve", ilhas: "Islas" },
+  fr: { norte: "Nord", centro: "Centre", sul: "Alentejo et Algarve", ilhas: "Îles" },
+};
+export const REGION_LABELS = (lang: Lang): Record<string, string> => REGION_L[lang];
 
 /** Best available image for a breed card: the breed itself, else a landscape of its homeland (clearly tagged), else none. */
 export function cardPhoto(slug: string): { id: string; kind: "raça" | "solar" | "paisagem" } | null {

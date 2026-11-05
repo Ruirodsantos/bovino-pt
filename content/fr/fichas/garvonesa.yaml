@@ -1,0 +1,88 @@
+intro: Les « farruscos » de l’Alentejo littoral et du sud-ouest.
+facts:
+- label: Berceau
+  value: Baixo Alentejo
+- label: Effectif
+  value: '607'
+  note: '2019'
+sections:
+- id: historia
+  title: Histoire
+  summary: Origine et parcours de la race, selon le catalogue officiel.
+  blocks:
+  - title: L’histoire
+    paras:
+    - La Garvonesa vient des zones de transition entre les plaines de l’Alentejo et les montagnes de l’Algarve. Son nom vient de la foire de Garvão. Elle était connue comme « gado chamusco » ou « farrusco », en raison de son poil sombre à la répartition caractéristique. Elle valait par sa rusticité et son bon tempérament au travail des champs, et, quand la mécanisation est arrivée, elle a peu à peu été remplacée par des races plus productrices de viande. Elle a failli s’éteindre.
+    - Depuis 1994, l’Associação de Agricultores do Campo Branco et le Parque Natural do Sudoeste Alentejano e Costa Vicentina œuvrent à sa conservation, et l’effectif augmente lentement.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Aujourd’hui
+    paras:
+    - Les troupeaux se trouvent surtout à Santiago do Cacém, Odemira, Ourique, Castro Verde, Almodôvar, Barrancos, Vila Nova de São Bento et Alcáçovas. Le catalogue indique que le nombre d’animaux est encore insuffisant pour lancer un programme d’amélioration, et que la race reste parmi les très menacées.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: État du texte
+    paras:
+    - Texte original du projet, réécrit à partir du Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 30. Aucun paragraphe n’est une copie du catalogue. Les faits ont été vérifiés avec le catalogue ; la relecture indépendante (ChatGPT/spécialiste) est en attente. Tous les chiffres et statuts de conservation sont ceux du catalogue de 2019, et non des effectifs actuels ; des données officielles plus récentes restent à rechercher.
+- id: caracteristicas
+  title: Caractéristiques
+  summary: Comment reconnaître l’animal.
+  blocks:
+  - title: Comment la reconnaître
+    paras:
+    - Chez les femelles, poil brun-rouge, avec chanfrein, garrot et extrémités noirs et le dos plus clair. Chez les mâles, le noir domine. Les cornes sont blanches, noircies aux pointes.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territoire
+  summary: Le berceau de la race et l’effectif enregistré.
+  blocks:
+  - title: Berceau
+    paras:
+    - Baixo Alentejo — Santiago do Cacém, Odemira, Ourique, Castro Verde….
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Effectif enregistré (2019)
+    paras:
+    - 585 femelles, 22 mâles et 16 éleveurs, selon le catalogue officiel (2019). Ce ne sont pas des effectifs actuels.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Élevage
+  summary: Comment et où elle est élevée.
+  blocks:
+  - title: Comment elle est élevée
+    paras:
+    - En régime extensif, de pâturage des ressources naturelles. La plupart des éleveurs recourent aussi à des pâturages semés, ainsi qu’à du foin, des céréales et des concentrés quand le pâturage vient à manquer.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 30
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Viande
+  summary: La viande de cette race.
+  blocks:
+  - title: La viande
+    paras:
+    - La description de la viande de cette race (couleur, gras, maturation, morceaux) n’a pas encore été confirmée par une source. Nous ne la publions pas tant qu’il n’y a pas de référence.
+    status: en cours d'investigation
+- id: certificacao
+  title: Certification
+  summary: Certification et reconnaissances.
+  blocks:
+  - title: Certification
+    paras:
+    - 'Statut d’AOP/IGP et autres reconnaissances de cette race : à confirmer dans la liste officielle de la DGADR et dans eAmbrosia.'
+    status: en cours d'investigation
+- id: onde
+  title: Où en trouver
+  summary: Où en trouver.
+  blocks:
+  - title: Où en trouver
+    paras:
+    - 'Points de vente, producteurs et association d’éleveurs : à rechercher. Nous n’indiquons ni points de vente ni prix que nous n’aurions pas vérifiés.'
+    status: en cours d'investigation

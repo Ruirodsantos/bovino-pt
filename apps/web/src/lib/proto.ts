@@ -20,3 +20,16 @@ export const FRASE_EN: Record<string, string> = {
   cachena: "The breed of Peneda-Gerês.", garvonesa: "The breed of the Lower Alentejo.", jarmelista: "The breed of Jarmelo, in Guarda.", marinhoa: "The breed of the Lower Vouga.", maronesa: "The breed of the Alvão and Marão mountains.",
   mertolenga: "The breed of Mértola.", minhota: "The breed of Entre Douro e Minho.", mirandesa: "The breed of Miranda do Douro and the posta mirandesa.", preta: "The breed south of the Tagus.", "ramo-grande": "The native breed of the Azores.",
 };
+export const FRASE_ES: Record<string, string> = {
+  alentejana: "La raza del Alentejo.", algarvia: "La raza del Algarve.", arouquesa: "La raza de las laderas de Arouca.", barrosa: "La raza de la meseta del Barroso.", "brava-de-lide": "El toro bravo, del Ribatejo a las Azores.",
+  cachena: "La raza de Peneda-Gerês.", garvonesa: "La raza del Bajo Alentejo.", jarmelista: "La raza de Jarmelo, en Guarda.", marinhoa: "La raza del Bajo Vouga.", maronesa: "La raza de las sierras del Alvão y el Marão.",
+  mertolenga: "La raza de Mértola.", minhota: "La raza de Entre Douro e Minho.", mirandesa: "La raza de Miranda do Douro y de la posta mirandesa.", preta: "La raza del sur del Tajo.", "ramo-grande": "La raza autóctona de las Azores.",
+};
+export const FRASE_FR: Record<string, string> = {
+  alentejana: "La race de l'Alentejo.", algarvia: "La race de l'Algarve.", arouquesa: "La race des coteaux d'Arouca.", barrosa: "La race du plateau du Barroso.", "brava-de-lide": "Le taureau de combat, du Ribatejo aux Açores.",
+  cachena: "La race de Peneda-Gerês.", garvonesa: "La race du Bas Alentejo.", jarmelista: "La race de Jarmelo, à Guarda.", marinhoa: "La race du Bas Vouga.", maronesa: "La race des montagnes de l'Alvão et du Marão.",
+  mertolenga: "La race de Mértola.", minhota: "La race d'Entre Douro e Minho.", mirandesa: "La race de Miranda do Douro et de la posta mirandesa.", preta: "La race du sud du Tage.", "ramo-grande": "La race autochtone des Açores.",
+};
+/** Tagline of a breed in the given language. */
+export const frase = (lang: "pt" | "en" | "es" | "fr", slug: string): string =>
+  (lang === "pt" ? FRASE : lang === "es" ? FRASE_ES : lang === "fr" ? FRASE_FR : FRASE_EN)[slug] ?? FRASE_EN[slug] ?? FRASE[slug];

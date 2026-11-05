@@ -1,28 +1,29 @@
 ---
 import { fmt, fmtDate, num, type Stat } from "../lib/data";
-import { href, tr, type Lang } from "../i18n";
+import { href, lf, tr, type Lang } from "../i18n";
 interface Props { stat: Stat; big?: boolean; lang?: Lang }
 const { stat, big = false, lang = "pt" } = Astro.props;
 const T = tr(lang);
 const display = fmt(stat.value, stat.unit, lang);
-const UNITS: Record<string, string> = { "cabeças": "head", "toneladas": "tonnes" };
-const unit = lang !== "pt" ? (UNITS[stat.unit] ?? stat.unit) : stat.unit;
+const UNITS: Record<string, [string, string, string]> = { "cabeças": ["head", "cabezas", "têtes"], "toneladas": ["tonnes", "toneladas", "tonnes"] };
+const unit = lang !== "pt" && UNITS[stat.unit] ? UNITS[stat.unit][lang === "es" ? 1 : lang === "fr" ? 2 : 0] : stat.unit;
+const colon = lang === "fr" ? "\u00a0:" : ":";
 const unitShown = stat.unit === "€" ? "" : unit;
-const label = lang !== "pt" ? (stat.label_en ?? stat.label) : stat.label;
-const context = lang !== "pt" ? (stat.context_en ?? stat.context) : stat.context;
-const changeRef = lang !== "pt" ? (stat.change_ref_en ?? stat.change_ref) : stat.change_ref;
-const period = lang !== "pt" ? (stat.footnote.period_en ?? stat.footnote.period) : stat.footnote.period;
+const label = lf(stat, "label", lang);
+const context = lf(stat, "context", lang);
+const changeRef = lf(stat, "change_ref", lang);
+const period = lf(stat.footnote, "period", lang);
 const ch = stat.change;
 ---
 <article class:list={["stat card reveal", { big }]}>
   <div class="value" data-count={stat.value} data-unit={stat.unit}>{display}<span class="unit"> {unitShown}</span></div>
   <div class="label">{label}</div>
   <div class="context">{context}
-    {typeof ch === "number" && <span class:list={["delta", ch >= 0 ? "up" : "down"]}>{ch >= 0 ? "▲" : "▼"} {num(Math.abs(ch * 100), lang, 1)}% {T("vs", "vs")} {changeRef}</span>}
+    {typeof ch === "number" && <span class:list={["delta", ch >= 0 ? "up" : "down"]}>{ch >= 0 ? "▲" : "▼"} {num(Math.abs(ch * 100), lang, 1)}% {T("vs", "vs", "vs", "vs")} {changeRef}</span>}
   </div>
   <footer>
-    <span class="chip ok">{T("Verificado", "Verified")}</span>
-    <span>{T("Fonte", "Source")}: {stat.footnote.source} (<a href={href(lang, `dados/#${stat.footnote.dataset}`)} class="mono">{stat.footnote.source_code}</a>) · {T("Ref.", "Ref.")}: {period} · {T("Publicado", "Published")}: {fmtDate(stat.footnote.published, lang)} · {T("Verificado", "Verified")}: {fmtDate(stat.footnote.verified, lang)}</span>
+    <span class="chip ok">{T("Verificado", "Verified", "Verificado", "Vérifié")}</span>
+    <span>{T("Fonte", "Source", "Fuente", "Source")}{colon} {stat.footnote.source} (<a href={href(lang, `dados/#${stat.footnote.dataset}`)} class="mono">{stat.footnote.source_code}</a>) · {T("Ref.", "Ref.", "Ref.", "Réf.")}{colon} {period} · {T("Publicado", "Published", "Publicado", "Publié")}{colon} {fmtDate(stat.footnote.published, lang)} · {T("Verificado", "Verified", "Verificado", "Vérifié")}{colon} {fmtDate(stat.footnote.verified, lang)}</span>
   </footer>
 </article>
 <style>

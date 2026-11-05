@@ -1,0 +1,81 @@
+intro: El buey de cabestro que se hizo raza.
+facts:
+- label: Solar
+  value: Baixo Alentejo
+- label: Efectivo
+  value: 8 565
+  note: '2019'
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y trayectoria de la raza, según el catálogo oficial.
+  blocks:
+  - title: La historia
+    paras:
+    - 'La Mertolenga nace en el Baixo Alentejo, en las tierras de Mértola, Alcoutim y Martim Longo. Era conocida como el «buey de cabestro»: el manso que acompañaba al ganado de lidia en el Ribatejo. Hacia 1900, con la apertura de la frontera al ganado de los dos países ibéricos, llegaron de España bovinos manchados, con fama de rústicos. En las primeras décadas del siglo XX, las zonas arroceras del Tejo, del Sado y del Sorraia necesitaban un animal enérgico, que las otras razas no satisfacían, y surgió el tipo rojo bragado, ligado a Coruche. La mezcla de varias líneas, con un tipo rosillo («mil-flores»), consolidó la raza, y la Herdade da Abóboda sirvió de lugar de estandarización.'
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado del texto
+    paras:
+    - Texto original del proyecto, reescrito a partir del Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 46. Ningún párrafo es copia del catálogo. Los hechos se contrastaron con el catálogo; la revisión independiente (ChatGPT/especialista) está pendiente. Todas las cifras y estados de conservación son los del catálogo de 2019, no efectivos actuales; datos oficiales más recientes por buscar.
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - El pelaje puede ser rojo, rosillo, rojo manchado o manchado de rojo. Los cuernos son finos, blancos, de punta oscura, en gancho o en lira baja. Es un animal de tamaño medio y esqueleto fino, de temperamento nervioso.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territorio
+  summary: El solar de la raza y el efectivo registrado.
+  blocks:
+  - title: Solar
+    paras:
+    - Baixo Alentejo — tierras de Mértola, Alcoutim y Martinlongo.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efectivo registrado (2019)
+    paras:
+    - 8 358 hembras, 207 machos y 216 criadores, según el catálogo oficial (2019). No son efectivos actuales.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - El catálogo destaca la rusticidad, la facilidad de parto, la longevidad productiva y la buena capacidad maternal, lo que la convierte en una buena madre para líneas maternas.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 46
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    paras:
+    - La descripción de la carne de esta raza (color, grasa, maduración, cortes) aún no se ha confirmado en fuente. No la publicamos hasta que haya referencia.
+    status: en investigación
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    paras:
+    - 'Estado de DOP/IGP y otros reconocimientos de esta raza: por confirmar en la lista oficial de la DGADR y en eAmbrosia.'
+    status: en investigación
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Dónde encontrar
+    paras:
+    - 'Puntos de venta, productores y asociación de criadores: por investigar. No indicamos puntos de venta ni precios que no hayamos verificado.'
+    status: en investigación

@@ -1,0 +1,87 @@
+intro: La única raza seleccionada por su comportamiento.
+facts:
+- label: Cuna
+  value: Ribatejo e Oeste
+- label: Efectivo
+  value: 6 413
+  note: '2019'
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y trayectoria de la raza, según el catálogo oficial.
+  blocks:
+  - title: La historia
+    paras:
+    - 'La Brava de Lide es distinta de todas las demás razas autóctonas: fue seleccionada no por el cuerpo, sino por el carácter. El catálogo asocia su origen al uro, el bovino salvaje que sobrevivió en Europa hasta el siglo XVII; se trata de una tesis sobre el origen, no de una filiación directa demostrada en este texto. En Portugal, los animales más agresivos que aparecían entre los bovinos locales acabaron dando origen a una línea propia, cultivada por su bravura, y la lidia se convirtió en la razón de ser de la raza.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 22
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoy
+    paras:
+    - Las regiones de cría son el Alentejo, el Ribatejo e Oeste, la Beira Interior y la Beira Litoral, y las Azores. Esta raza tiene una función cultural y ecológica propia; el proyecto no trata su carne.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 22
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado del texto
+    paras:
+    - Texto original del proyecto, reescrito a partir del Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 22. Ningún párrafo es copia del catálogo. Los hechos se han contrastado con el catálogo; la revisión independiente (ChatGPT/especialista) está pendiente. Todas las cifras y estados de conservación son los del catálogo de 2019, no efectivos actuales; faltan por localizar datos oficiales más recientes.
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - Tiene esqueleto fino, piel fina, tronco bien musculado, poca papada y cuernos finos, en forma de gancho. Las capas son muy variadas y forman parte del vocabulario de la cría. Los pesos medios que indica el catálogo son de unos 500 kg en los machos y 280 kg en las hembras.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 22
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territorio
+  summary: La cuna de la raza y el efectivo registrado.
+  blocks:
+  - title: Cuna
+    paras:
+    - Ribatejo e Oeste, Alentejo, Beiras y Azores.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 22
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efectivo registrado (2019)
+    paras:
+    - 5 938 hembras, 475 machos y 97 criadores, según el catálogo oficial (2019). No son efectivos actuales.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 22
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - Vive en explotaciones extensas, en llanuras y valles con agua y pasto. La cría se hace por líneas de sangre, los «encastes», y la selección se basa en pruebas de comportamiento.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 22
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    paras:
+    - La descripción de la carne de esta raza (color, grasa, maduración, cortes) aún no se ha confirmado en una fuente. No la publicamos hasta que haya una referencia.
+    status: en investigación
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    paras:
+    - 'Estado de DOP/IGP y otros reconocimientos de esta raza: pendiente de confirmar en la lista oficial de la DGADR y en eAmbrosia.'
+    status: en investigación
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Dónde encontrar
+    paras:
+    - 'Puntos de venta, productores y asociación de criadores: pendiente de investigar. No indicamos puntos de venta ni precios que no hayamos verificado.'
+    status: en investigación

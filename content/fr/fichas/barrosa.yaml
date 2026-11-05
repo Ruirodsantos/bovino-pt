@@ -1,0 +1,87 @@
+intro: La race aux grandes cornes en lyre, du plateau du Barroso.
+facts:
+- label: Berceau
+  value: Zones de plateau du Barroso
+- label: Effectif
+  value: 7 130
+  note: '2019'
+sections:
+- id: historia
+  title: Histoire
+  summary: Origine et parcours de la race, selon le catalogue officiel.
+  blocks:
+  - title: L’histoire
+    paras:
+    - L’origine de la Barrosã est très débattue. L’une des hypothèses citées par le catalogue la relie à des bovins d’Afrique du Nord, aux cornes grandes et épaisses, qui seraient arrivés dans la péninsule Ibérique à l’époque de la présence maure. Elle aurait ensuite été repoussée par d’autres groupes de bovins vers les hautes terres du Barroso, où elle est restée. Quelle que soit son origine, c’est une race à la morphologie très particulière, difficile à rattacher aux autres races ibériques.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Aujourd’hui
+    paras:
+    - Le catalogue indique que la Barrosã est de plus en plus exploitée pour la viande, et mentionne l’appellation d’origine protégée « Carne Barrosã ». L’enregistrement exact de cette appellation sera confirmé dans la base européenne eAmbrosia avant d’être présenté comme une donnée vérifiée.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: État du texte
+    paras:
+    - Texte original du projet, réécrit à partir du Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 18. Aucun paragraphe n’est une copie du catalogue. Les faits ont été vérifiés avec le catalogue ; la relecture indépendante (ChatGPT/spécialiste) est en attente. Tous les chiffres et statuts de conservation sont ceux du catalogue de 2019, et non des effectifs actuels ; des données officielles plus récentes restent à rechercher.
+- id: caracteristicas
+  title: Caractéristiques
+  summary: Comment reconnaître l’animal.
+  blocks:
+  - title: Comment la reconnaître
+    paras:
+    - Ce sont les cornes, épaisses et longues, en lyre haute, que l’on voit d’abord. Le poil est brun clair, entre le paille et le cerise, et la peau est épaisse mais souple, avec des plis sur le cou. Le fanon est très développé. C’est une race docile, au fort instinct maternel.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territoire
+  summary: Le berceau de la race et l’effectif enregistré.
+  blocks:
+  - title: Berceau
+    paras:
+    - Zones de plateau du Barroso.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Effectif enregistré (2019)
+    paras:
+    - 6 775 femelles, 355 mâles et 1 926 éleveurs, selon le catalogue officiel (2019). Ce ne sont pas des effectifs actuels.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Élevage
+  summary: Comment et où elle est élevée.
+  blocks:
+  - title: Comment elle est élevée
+    paras:
+    - 'Elle est élevée en système extensif, en montagne et à mi-pente, en tirant parti de ressources comme la carqueja et l’ajonc. Le catalogue souligne son rôle pour le paysage rural : elle travaillait de petites parcelles et des terrasses, et fournissait du fumier pour les sols pauvres.'
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 18
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Viande
+  summary: La viande de cette race.
+  blocks:
+  - title: La viande
+    paras:
+    - La description de la viande de cette race (couleur, gras, maturation, morceaux) n’a pas encore été confirmée par une source. Nous ne la publions pas tant qu’il n’y a pas de référence.
+    status: en cours d'investigation
+- id: certificacao
+  title: Certification
+  summary: Certification et reconnaissances.
+  blocks:
+  - title: Certification
+    paras:
+    - 'Statut d’AOP/IGP et autres reconnaissances de cette race : à confirmer dans la liste officielle de la DGADR et dans eAmbrosia.'
+    status: en cours d'investigation
+- id: onde
+  title: Où en trouver
+  summary: Où en trouver.
+  blocks:
+  - title: Où en trouver
+    paras:
+    - 'Points de vente, producteurs et association d’éleveurs : à rechercher. Nous n’indiquons ni points de vente ni prix que nous n’aurions pas vérifiés.'
+    status: en cours d'investigation

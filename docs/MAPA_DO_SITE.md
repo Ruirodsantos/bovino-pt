@@ -55,3 +55,8 @@ EN (provisório): ainda com a estrutura antiga; EN/ES/FR serão refeitos sobre e
 | `desmancha-cena` | Cena | Desmancha |
 | `distribuicao-capa` | Capa | Distribuição |
 | `consumidor-capa` | Capa | Consumidor |
+
+## Línguas
+O site existe em PT (sem prefixo), EN (`/en/`), ES (`/es/`) e FR (`/fr/`) com a mesma estrutura de URLs (rotas em `pages/[lang]/`).
+Conteúdo traduzido em `content/<lang>/{temas,racas,fichas,descobertas}` e `data/registry/breeds_<lang>.yaml`. Ordem de recurso: es/fr → en → pt.
+Traduções ES/FR/EN feitas por IA a partir do PT, **sem revisão nativa** (marcar como tal até haver revisão). Ainda só em PT/EN: legendas das fotografias (`caption_*`), rótulos dos indicadores (`label_*`) e nomes dos cortes no visualizador 3D.

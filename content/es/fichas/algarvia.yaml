@@ -1,0 +1,88 @@
+intro: La raza que llegó a darse por extinta y fue recuperada.
+facts:
+- label: Cuna
+  value: Algarve
+- label: Efectivo
+  value: '4'
+  note: '2019'
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y trayectoria de la raza, según el catálogo oficial.
+  blocks:
+  - title: La historia
+    paras:
+    - 'La Algarvia es un caso raro: en 2004, el informe nacional sobre los recursos genéticos animales la clasificó como una de las razas extintas en Portugal en el siglo XX. La razón era la práctica de los criadores: cruzar las vacas con razas como la Limousine y la Charolesa para obtener terneros de crecimiento rápido, los llamados «chamuscos». A lo largo de las generaciones, los animales puros fueron desapareciendo.'
+    - En 2005 comenzó un proyecto de recuperación. Encontró 43 hembras y 4 machos, con variabilidad suficiente para representar una población genéticamente distinta de las demás razas autóctonas del sur.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 10
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoy
+    paras:
+    - El libro genealógico de adultos contaba, en 2019, con solo 2 machos y 2 hembras en pureza, en 3 criadores. Es el efectivo más pequeño de todas las razas bovinas autóctonas registradas, y justifica la clasificación de raza gravemente amenazada.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 10
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado del texto
+    paras:
+    - Texto original del proyecto, reescrito a partir del Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 10. Ningún párrafo es copia del catálogo. Los hechos se han contrastado con el catálogo; la revisión independiente (ChatGPT/especialista) está pendiente. Todas las cifras y estados de conservación son los del catálogo de 2019, no efectivos actuales; faltan por localizar datos oficiales más recientes.
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - Capa uniforme, roja o castaña, de pelo corto. La cabeza es grande y de forma piramidal; los cuernos están poco desarrollados y crecen hacia atrás y hacia los lados en espiral. Las extremidades son cortas y fuertes.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 10
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territorio
+  summary: La cuna de la raza y el efectivo registrado.
+  blocks:
+  - title: Cuna
+    paras:
+    - Algarve, de Aljezur y Monchique al Barrocal y Castro Marim.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 10
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efectivo registrado (2019)
+    paras:
+    - 2 hembras, 2 machos y 3 criadores, según el catálogo oficial (2019). No son efectivos actuales.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 10
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - La cuna tradicional va desde Aljezur y la meseta de Monchique, por el Barrocal, hasta el municipio de Castro Marim y la margen derecha del Guadiana. Es una raza rústica, criada en pastoreo continuo de vegetación espontánea, adaptada a suelos pobres.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 10
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    paras:
+    - La descripción de la carne de esta raza (color, grasa, maduración, cortes) aún no se ha confirmado en una fuente. No la publicamos hasta que haya una referencia.
+    status: en investigación
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    paras:
+    - 'Estado de DOP/IGP y otros reconocimientos de esta raza: pendiente de confirmar en la lista oficial de la DGADR y en eAmbrosia.'
+    status: en investigación
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Dónde encontrar
+    paras:
+    - 'Puntos de venta, productores y asociación de criadores: pendiente de investigar. No indicamos puntos de venta ni precios que no hayamos verificado.'
+    status: en investigación

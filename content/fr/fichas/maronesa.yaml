@@ -1,0 +1,82 @@
+intro: La « Serrana » des serras do Alvão et do Marão.
+facts:
+- label: Berceau
+  value: Serra do Alvão et Serra do Marão
+- label: Effectif
+  value: 3 879
+  note: '2019'
+sections:
+- id: historia
+  title: Histoire
+  summary: Origine et parcours de la race, d’après le catalogue officiel.
+  blocks:
+  - title: L’histoire
+    paras:
+    - La Maronesa est une race de montagne, primitive et rustique. Le nom officiel vient de la serra do Marão, mais le catalogue dit que le nom le plus juste serait Alvanesa, car son véritable berceau est la serra do Alvão. Dans la région, on l’appelle « Serrana ». En dehors, dans les zones d’expansion, elle est devenue connue sous le nom de « Penato », à cause de Ribeira de Pena, centre de commerce, et sous celui de « bétail de charroi » (« gado carreiro »), pour sa capacité de travail.
+    - En 1919, Bernardo Lima attribua son origine à un croisement de Barrosã et de Mirandesa. Les études de génétique moléculaire de ces dernières années pointent, selon le catalogue, vers un lien avec l’aurochs ; le projet n’a pas confirmé les études originales, de sorte que ce lien reste une hypothèse attribuée au catalogue et non un fait établi. Lorsque la mécanisation a mis fin à la demande d’animaux de travail, le pari pour sauver la race a été la viande.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: État du texte
+    paras:
+    - Texte original du projet, réécrit à partir du Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 42. Aucun paragraphe n’est une copie du catalogue. Les faits ont été confrontés au catalogue ; la relecture indépendante (ChatGPT/spécialiste) est en attente. Tous les chiffres et statuts de conservation sont ceux du catalogue de 2019, et non des effectifs actuels ; des données officielles plus récentes restent à trouver.
+- id: caracteristicas
+  title: Caractéristiques
+  summary: Comment reconnaître l’animal.
+  blocks:
+  - title: Comment la reconnaître
+    paras:
+    - Tête courte et sèche, au front large. Les cornes partent à l’horizontale puis se tournent vers l’avant et vers le bas, avec les pointes relevées. La robe d’origine est noire avec une raie dorso-lombaire rougeâtre ; aujourd’hui, les femelles brunes prédominent.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territoire
+  summary: Le berceau de la race et l’effectif enregistré.
+  blocks:
+  - title: Berceau
+    paras:
+    - Serra do Alvão et Serra do Marão.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Effectif enregistré (2019)
+    paras:
+    - 3 733 femelles, 146 mâles et 894 éleveurs, selon le catalogue officiel (2019). Ce ne sont pas des effectifs actuels.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Élevage
+  summary: Comment et où on l’élève.
+  blocks:
+  - title: Comment on l’élève
+    paras:
+    - 'Dans un système complexe, lié au relief et aux petites propriétés : semi-stabulation et pâturage pour les animaux adultes, stabulation permanente avec alimentation à la mangeoire pour les jeunes.'
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 42
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Viande
+  summary: La viande de cette race.
+  blocks:
+  - title: La viande
+    paras:
+    - La description de la viande de cette race (couleur, gras, maturation, morceaux) n’a pas encore été confirmée par une source. Nous ne la publions pas tant qu’il n’y a pas de référence.
+    status: en cours de recherche
+- id: certificacao
+  title: Certification
+  summary: Certification et reconnaissances.
+  blocks:
+  - title: Certification
+    paras:
+    - 'Statut AOP/IGP et autres reconnaissances de cette race : à confirmer dans la liste officielle de la DGADR et dans eAmbrosia.'
+    status: en cours de recherche
+- id: onde
+  title: Où la trouver
+  summary: Où la trouver.
+  blocks:
+  - title: Où la trouver
+    paras:
+    - 'Points de vente, producteurs et association d’éleveurs : à rechercher. Nous n’indiquons ni points de vente ni prix que nous n’aurions pas vérifiés.'
+    status: en cours de recherche

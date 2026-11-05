@@ -1,0 +1,87 @@
+intro: La race que l’on croyait éteinte et que les éleveurs de la Guarda ont relevée.
+facts:
+- label: Berceau
+  value: Ancienne commune de Jarmelo
+- label: Effectif
+  value: '218'
+  note: '2019'
+sections:
+- id: historia
+  title: Histoire
+  summary: Origine et parcours de la race, selon le catalogue officiel.
+  blocks:
+  - title: L’histoire
+    paras:
+    - En 1870, le recensement du bétail décrivait la race Jarmelista, concentrée dans l’ancienne commune de Jarmelo (aujourd’hui partie de la Guarda), comme la meilleure du district, peut-être du pays. Puis, en une cinquantaine d’années, elle a connu un déclin si grand qu’en 1954 un auteur la donnait pour éteinte. Ce qui l’a sauvée, c’est la persévérance des gens de la région et de l’association d’éleveurs (Acriguarda), qui ont repéré les animaux présentant les caractéristiques de la race. En 2006, une étude portant sur 185 caractères morphologiques chez les femelles et 170 chez les mâles a montré qu’ils forment un groupe distinct et indépendant de toutes les autres races autochtones.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Aujourd’hui
+    paras:
+    - Le livre généalogique enregistre 25 mâles et 193 femelles chez 25 éleveurs (2019).
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: État du texte
+    paras:
+    - Texte original du projet, réécrit à partir du Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 34. Aucun paragraphe n’est une copie du catalogue. Les faits ont été vérifiés avec le catalogue ; la relecture indépendante (ChatGPT/spécialiste) est en attente. Tous les chiffres et statuts de conservation sont ceux du catalogue de 2019, et non des effectifs actuels ; des données officielles plus récentes restent à rechercher.
+- id: caracteristicas
+  title: Caractéristiques
+  summary: Comment reconnaître l’animal.
+  blocks:
+  - title: Comment la reconnaître
+    paras:
+    - C’est un bovin long, de grande stature et à squelette fin, au poil jaune clair avec les extrémités plus foncées. Les mâles sont généralement plus foncés. Les cornes sont moyennes, claires et à pointe sombre. Les jambes sont hautes.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territoire
+  summary: Le berceau de la race et l’effectif enregistré.
+  blocks:
+  - title: Berceau
+    paras:
+    - Ancienne commune de Jarmelo, aujourd’hui Guarda.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Effectif enregistré (2019)
+    paras:
+    - 193 femelles, 25 mâles et 25 éleveurs, selon le catalogue officiel (2019). Ce ne sont pas des effectifs actuels.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Élevage
+  summary: Comment et où elle est élevée.
+  blocks:
+  - title: Comment elle est élevée
+    paras:
+    - En régime extensif, en montagne, avec des pâturages d’altitude, de grandes amplitudes thermiques et de nombreuses petites exploitations comptant peu d’animaux. Elle est très rustique et docile, et résiste mieux que d’autres races élevées dans le même système, selon le catalogue.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Viande
+  summary: La viande de cette race.
+  blocks:
+  - title: La viande
+    paras:
+    - La description de la viande de cette race (couleur, gras, maturation, morceaux) n’a pas encore été confirmée par une source. Nous ne la publions pas tant qu’il n’y a pas de référence.
+    status: en cours d'investigation
+- id: certificacao
+  title: Certification
+  summary: Certification et reconnaissances.
+  blocks:
+  - title: Certification
+    paras:
+    - 'Statut d’AOP/IGP et autres reconnaissances de cette race : à confirmer dans la liste officielle de la DGADR et dans eAmbrosia.'
+    status: en cours d'investigation
+- id: onde
+  title: Où en trouver
+  summary: Où en trouver.
+  blocks:
+  - title: Où en trouver
+    paras:
+    - 'Points de vente, producteurs et association d’éleveurs : à rechercher. Nous n’indiquons ni points de vente ni prix que nous n’aurions pas vérifiés.'
+    status: en cours d'investigation

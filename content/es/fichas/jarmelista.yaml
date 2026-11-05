@@ -1,0 +1,87 @@
+intro: La raza que se creyó extinta y que los criadores de la Guarda levantaron.
+facts:
+- label: Cuna
+  value: Antiguo municipio de Jarmelo
+- label: Efectivo
+  value: '218'
+  note: '2019'
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y trayectoria de la raza, según el catálogo oficial.
+  blocks:
+  - title: La historia
+    paras:
+    - En 1870, el censo del ganado describía la raza Jarmelista, concentrada en el antiguo municipio de Jarmelo (hoy parte de la Guarda), como la mejor del distrito, quizá del país. Después, en unos cincuenta años, sufrió un declive tan grande que en 1954 un autor la daba por extinta. Lo que la salvó fue la persistencia de las gentes de la región y de la asociación de criadores (Acriguarda), que identificaron los animales con las características de la raza. En 2006, un estudio con 185 caracteres morfológicos en las hembras y 170 en los machos mostró que forman un grupo distinto e independiente de todas las demás razas autóctonas.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoy
+    paras:
+    - El libro genealógico registra 25 machos y 193 hembras en 25 criadores (2019).
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado del texto
+    paras:
+    - Texto original del proyecto, reescrito a partir del Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34. Ningún párrafo es copia del catálogo. Los hechos se han contrastado con el catálogo; la revisión independiente (ChatGPT/especialista) está pendiente. Todas las cifras y estados de conservación son los del catálogo de 2019, no efectivos actuales; faltan por localizar datos oficiales más recientes.
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - Es un bovino largo, de gran estatura y esqueleto fino, de pelo amarillo claro con las extremidades más oscuras. Los machos suelen ser más oscuros. Los cuernos son medianos, claros y de punta oscura. Las patas son altas.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territorio
+  summary: La cuna de la raza y el efectivo registrado.
+  blocks:
+  - title: Cuna
+    paras:
+    - Antiguo municipio de Jarmelo, hoy Guarda.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efectivo registrado (2019)
+    paras:
+    - 193 hembras, 25 machos y 25 criadores, según el catálogo oficial (2019). No son efectivos actuales.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - En régimen extensivo, en montaña, con pastos de altitud, grandes amplitudes térmicas y muchas explotaciones pequeñas con pocos animales. Es muy rústica y dócil, y resiste mejor que otras razas criadas en el mismo sistema, según el catálogo.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 34
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    paras:
+    - La descripción de la carne de esta raza (color, grasa, maduración, cortes) aún no se ha confirmado en una fuente. No la publicamos hasta que haya una referencia.
+    status: en investigación
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    paras:
+    - 'Estado de DOP/IGP y otros reconocimientos de esta raza: pendiente de confirmar en la lista oficial de la DGADR y en eAmbrosia.'
+    status: en investigación
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Dónde encontrar
+    paras:
+    - 'Puntos de venta, productores y asociación de criadores: pendiente de investigar. No indicamos puntos de venta ni precios que no hayamos verificado.'
+    status: en investigación

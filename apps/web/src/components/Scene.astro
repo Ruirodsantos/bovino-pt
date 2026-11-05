@@ -16,6 +16,6 @@ const cap = c ? lf(c, "caption", lang) : undefined;
     {text && <p>{text}</p>}
     {href && <p><a class="link-arrow" href={href}>{linkText} <span aria-hidden="true">→</span></a></p>}
   </div>
-  {cue && <a class="cue" href={cue}>{T("Descobrir", "Discover")} ↓</a>}
-  {c && <p class="credit-line">{cap} · {T("Foto", "Photo")}: <a href={c.source_page} rel="noopener">{c.author}</a> · {licenseLabel(lang, c.license)}</p>}
+  {cue && <a class="cue" href={cue}>{T("Descobrir", "Discover", "Descubrir", "Découvrir")} ↓</a>}
+  {c && <p class="credit-line">{cap} · {T("Foto", "Photo", "Foto", "Photo")}: <a href={c.source_page} rel="noopener">{c.author}</a> · {licenseLabel(lang, c.license)}</p>}
 </section>

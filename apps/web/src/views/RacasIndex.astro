@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import Photo from "../components/Photo.astro";
 import Img from "../components/proto/Img.astro";
 import { breeds, breedEn, uniquePhoto, REGIONS, REGION_LABELS } from "../lib/data";
-import { ORDEM, TERRA, FRASE, FRASE_EN } from "../lib/proto";
+import { ORDEM, TERRA, frase } from "../lib/proto";
 import { href, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -16,23 +16,23 @@ const tiles = ORDEM.map(([slug, size]) => {
 });
 const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
 ---
-<Base lang={lang} title={T("As raças", "The breeds")} description={T("As 15 raças bovinas autóctones de Portugal: fotografias, solar e história.", "Portugal's 15 native cattle breeds: photographs, homeland and history.")}>
-  <section class="terceira-immersive" aria-label="Paisagem inspirada na ilha Terceira"><img src={`${import.meta.env.BASE_URL}img/paisagem-terceira-ia-lg.webp`} alt="Paisagem artística de pastagens verdes na ilha Terceira"/><div class="terceira-message"><span>{T("Açores · Portugal", "Azores · Portugal")}</span><h2>{T("Há lugares onde a terra ainda dita o ritmo da vida.", "Some places still follow the rhythm of the land.")}</h2></div></section>
+<Base lang={lang} title={T("As raças", "The breeds", "Las razas", "Les races")} description={T("As 15 raças bovinas autóctones de Portugal: fotografias, solar e história.", "Portugal's 15 native cattle breeds: photographs, homeland and history.", "Las 15 razas bovinas autóctonas de Portugal: fotografías, solar e historia.", "Les 15 races bovines autochtones du Portugal : photographies, terroir d'origine et histoire.")}>
+  <section class="terceira-immersive" aria-label={T("Paisagem inspirada na ilha Terceira", "Landscape inspired by Terceira island", "Paisaje inspirado en la isla Terceira", "Paysage inspiré de l'île de Terceira")}><img src={`${import.meta.env.BASE_URL}img/paisagem-terceira-ia-lg.webp`} alt={T("Paisagem artística de pastagens verdes na ilha Terceira", "Artistic landscape of green pastures on Terceira island", "Paisaje artístico de verdes pastos en la isla Terceira", "Paysage artistique de verts pâturages sur l'île de Terceira")}/><div class="terceira-message"><span>{T("Açores · Portugal", "Azores · Portugal", "Azores · Portugal", "Açores · Portugal")}</span><h2>{T("Há lugares onde a terra ainda dita o ritmo da vida.", "Some places still follow the rhythm of the land.", "Hay lugares donde la tierra aún marca el ritmo de la vida.", "Il est des lieux où la terre dicte encore le rythme de la vie.")}</h2></div></section>
   <section class="ghead"><div class="wrap">
-    <span class="eyebrow">{T("15 raças autóctones", "15 native breeds")}</span>
-    <h1 style="font-size:clamp(2.2rem,6vw,4.4rem);margin:.15em 0 .3em">{T("As raças", "The breeds")}</h1>
-    <p class="lead">{T("Escolha uma paisagem e siga a raça que a habita.", "Pick a landscape and follow the breed that lives there.")}</p>
+    <span class="eyebrow">{T("15 raças autóctones", "15 native breeds", "15 razas autóctonas", "15 races autochtones")}</span>
+    <h1 style="font-size:clamp(2.2rem,6vw,4.4rem);margin:.15em 0 .3em">{T("As raças", "The breeds", "Las razas", "Les races")}</h1>
+    <p class="lead">{T("Escolha uma paisagem e siga a raça que a habita.", "Pick a landscape and follow the breed that lives there.", "Elija un paisaje y siga a la raza que lo habita.", "Choisissez un paysage et suivez la race qui l'habite.")}</p>
   </div></section>
   <section class="block map" id="mapa">
     <div class="wrap">
-      <span class="eyebrow">{T("Mapa", "Map")}</span>
-      <h2>{T("De onde vem cada raça", "Where each breed comes from")}</h2>
-      <p class="lede">{T("O solar de cada raça, segundo o Catálogo Oficial da DGAV/CAP. Toque num ponto para ver a raça.", "The homeland of each breed, according to the official DGAV/CAP Catalogue. Tap a point to see the breed.")}</p>
+      <span class="eyebrow">{T("Mapa", "Map", "Mapa", "Carte")}</span>
+      <h2>{T("De onde vem cada raça", "Where each breed comes from", "De dónde viene cada raza", "D'où vient chaque race")}</h2>
+      <p class="lede">{T("O solar de cada raça, segundo o Catálogo Oficial da DGAV/CAP. Toque num ponto para ver a raça.", "The homeland of each breed, according to the official DGAV/CAP Catalogue. Tap a point to see the breed.", "El solar de cada raza, según el Catálogo Oficial de la DGAV/CAP. Toque un punto para ver la raza.", "Le terroir d'origine de chaque race, selon le Catalogue officiel de la DGAV/CAP. Touchez un point pour voir la race.")}</p>
       <div class="map-grid">
-        <div class="card map-card"><div class="chart map" data-chart="breeds-map" role="img" aria-label={T("Mapa de Portugal com a localização aproximada do solar de cada raça bovina autóctone", "Map of Portugal showing the approximate homeland of each native cattle breed")}></div>
-          <div id="map-chips" class="map-chips" aria-label={T("Escolher raça", "Choose a breed")}></div>
-          <p class="note">{T("Localização aproximada do solar (não são explorações). Fronteiras © EuroGeographics. Açores e Madeira fora de escala geográfica.", "Approximate location of each homeland (not farms). Boundaries © EuroGeographics. Azores and Madeira are not shown to geographic scale.")}</p></div>
-        <aside class="map-side" id="map-side" aria-live="polite"><Photo id="barrosa" sizes="(max-width: 860px) 100vw, 380px" lang={lang} /><p class="hint">{T("Escolha uma raça no mapa.", "Choose a breed on the map.")}</p></aside>
+        <div class="card map-card"><div class="chart map" data-chart="breeds-map" role="img" aria-label={T("Mapa de Portugal com a localização aproximada do solar de cada raça bovina autóctone", "Map of Portugal showing the approximate homeland of each native cattle breed", "Mapa de Portugal con la localización aproximada del solar de cada raza bovina autóctona", "Carte du Portugal avec la localisation approximative du terroir d'origine de chaque race bovine autochtone")}></div>
+          <div id="map-chips" class="map-chips" aria-label={T("Escolher raça", "Choose a breed", "Elegir raza", "Choisir une race")}></div>
+          <p class="note">{T("Localização aproximada do solar (não são explorações). Fronteiras © EuroGeographics. Açores e Madeira fora de escala geográfica.", "Approximate location of each homeland (not farms). Boundaries © EuroGeographics. Azores and Madeira are not shown to geographic scale.", "Localización aproximada del solar (no son explotaciones). Fronteras © EuroGeographics. Azores y Madeira fuera de escala geográfica.", "Localisation approximative du terroir d'origine (il ne s'agit pas d'exploitations). Frontières © EuroGeographics. Açores et Madère hors échelle géographique.")}</p></div>
+        <aside class="map-side" id="map-side" aria-live="polite"><Photo id="barrosa" sizes="(max-width: 860px) 100vw, 380px" lang={lang} /><p class="hint">{T("Escolha uma raça no mapa.", "Choose a breed on the map.", "Elija una raza en el mapa.", "Choisissez une race sur la carte.")}</p></aside>
       </div>
     </div>
   </section>
@@ -41,14 +41,14 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
       {tiles.map((t) => (
         <a class:list={["btile", t.size, !t.photo && "nophoto"]} id={t.slug} data-regions={t.regions.join(" ")} href={`${href(lang, "racas/")}${t.slug}/`}>
           {t.photo && <Img id={t.photo.id} sizes="(max-width:820px) 100vw, 60vw" lang={lang} />}
-          {t.photo && t.photo.kind !== "raça" && <span class="gap">{T("Paisagem · foto da raça por obter", "Landscape · breed photo to be found")}</span>}
-          {!t.photo && <span class="gap">{T("Foto da raça por obter", "Breed photo to be found")}</span>}
-          <div class="t"><span class="r">{TERRA[t.slug]}</span><h3>{t.name}</h3><p class="s">{lang !== "pt" ? FRASE_EN[t.slug] : FRASE[t.slug]}</p></div>
+          {t.photo && t.photo.kind !== "raça" && <span class="gap">{T("Paisagem · foto da raça por obter", "Landscape · breed photo to be found", "Paisaje · foto de la raza por conseguir", "Paysage · photo de la race à trouver")}</span>}
+          {!t.photo && <span class="gap">{T("Foto da raça por obter", "Breed photo to be found", "Foto de la raza por conseguir", "Photo de la race à trouver")}</span>}
+          <div class="t"><span class="r">{TERRA[t.slug]}</span><h3>{t.name}</h3><p class="s">{frase(lang, t.slug)}</p></div>
         </a>
       ))}
     </div>
     <p class="srcs" style="margin-top:var(--s4);color:var(--muted);font-size:.88rem;max-width:62ch">
-      {T(`${gaps.length} das 15 raças ainda não têm fotografia própria autorizada: ${gaps.map((g) => g.name).join(", ")}. Nesses casos mostra-se uma paisagem do território, nunca uma fotografia de outra raça.`, `${gaps.length} of the 15 breeds still have no authorised photograph of their own: ${gaps.map((g) => g.name).join(", ")}. In those cases a landscape of the territory is shown, never a photograph of another breed.`)}
+      {T(`${gaps.length} das 15 raças ainda não têm fotografia própria autorizada: ${gaps.map((g) => g.name).join(", ")}. Nesses casos mostra-se uma paisagem do território, nunca uma fotografia de outra raça.`, `${gaps.length} of the 15 breeds still have no authorised photograph of their own: ${gaps.map((g) => g.name).join(", ")}. In those cases a landscape of the territory is shown, never a photograph of another breed.`, `${gaps.length} de las 15 razas aún no tienen fotografía propia autorizada: ${gaps.map((g) => g.name).join(", ")}. En esos casos se muestra un paisaje del territorio, nunca una fotografía de otra raza.`, `${gaps.length} des 15 races n'ont pas encore de photographie propre autorisée : ${gaps.map((g) => g.name).join(", ")}. Dans ces cas, on montre un paysage du territoire, jamais une photographie d'une autre race.`)}
     </p>
   </section>
 </Base>

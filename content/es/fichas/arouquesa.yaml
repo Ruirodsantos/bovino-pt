@@ -1,0 +1,87 @@
+intro: La raza de las laderas entre el Vouga y el Duero.
+facts:
+- label: Cuna
+  value: Laderas montañosas entre los valles del Vouga y del Duero
+- label: Efectivo
+  value: 3 814
+  note: '2019'
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y trayectoria de la raza, según el catálogo oficial.
+  blocks:
+  - title: La historia
+    paras:
+    - 'La Arouquesa es una raza de montaña. Nunca salió mucho del territorio donde nació: las laderas entre el valle del Vouga y el Duero. El nombre puede venir del uro, el antepasado salvaje de los bovinos, hoy extinto, o de la villa de Arouca; los autores discrepan. En el pasado se reconocían variedades locales, con nombres como Sulanos (S. Pedro do Sul), Paivotos (río Paiva), Caramuleiros (sierra del Caramulo) y Canaveses (Marco de Canaveses y Baião).'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoy
+    paras:
+    - Los municipios con más animales son Cinfães, Castro Daire, S. Pedro do Sul, Arouca, Vale de Cambra, Resende y Castelo de Paiva, al sur del Duero, y Baião, Amarante y Marco de Canaveses, al norte.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado del texto
+    paras:
+    - Texto original del proyecto, reescrito a partir del Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 14. Ningún párrafo es copia del catálogo. Los hechos se han contrastado con el catálogo; la revisión independiente (ChatGPT/especialista) está pendiente. Todas las cifras y estados de conservación son los del catálogo de 2019, no efectivos actuales; faltan por localizar datos oficiales más recientes.
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - Es una raza de porte pequeño a mediano, de formas redondeadas y expresión dócil pero viva. El pelo es castaño, del tono pajizo al cerezo, más oscuro alrededor de los ojos y de las orejas. Los cuernos tienen forma de lira baja, claros en la mayor parte de su longitud y con las puntas oscuras.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territorio
+  summary: La cuna de la raza y el efectivo registrado.
+  blocks:
+  - title: Cuna
+    paras:
+    - Laderas montañosas entre los valles del Vouga y del Duero (Arouca, Cinfães, Castro Daire…).
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efectivo registrado (2019)
+    paras:
+    - 3 680 hembras, 134 machos y 3 315 criadores, según el catálogo oficial (2019). No son efectivos actuales.
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - 'Vive de los pastos pobres de la sierra y de los brotes de tojo, carqueja, retama y roble. Los sistemas varían: pastoreo en terrenos baldíos comunales (raro hoy), estabulación permanente, estabulación solo en invierno o un régimen semiextensivo en el que los animales solo duermen en el establo. El catálogo destaca tres aptitudes: la carne, el trabajo y la leche.'
+    sources:
+    - label: Catálogo Oficial de Raças Autóctones Portuguesas (DGAV/CAP, 2019), p. 14
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    paras:
+    - La descripción de la carne de esta raza (color, grasa, maduración, cortes) aún no se ha confirmado en una fuente. No la publicamos hasta que haya una referencia.
+    status: en investigación
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    paras:
+    - 'Estado de DOP/IGP y otros reconocimientos de esta raza: pendiente de confirmar en la lista oficial de la DGADR y en eAmbrosia.'
+    status: en investigación
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Dónde encontrar
+    paras:
+    - 'Puntos de venta, productores y asociación de criadores: pendiente de investigar. No indicamos puntos de venta ni precios que no hayamos verificado.'
+    status: en investigación

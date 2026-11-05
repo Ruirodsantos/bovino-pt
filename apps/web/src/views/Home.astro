@@ -12,78 +12,68 @@ const h0 = (credits as any)["mertolenga-tejo"];
 const hero = locImg(h0, lang);
 const names = Object.fromEntries(breeds().map((x) => [x.slug, x.official_name]));
 const strip = ["mirandesa", "barrosa", "maronesa", "cachena", "alentejana", "mertolenga"].map((s) => ({ slug: s, name: names[s], photo: cardPhoto(s) })).filter((s) => s.photo) as { slug: string; name: string; photo: { id: string; kind: string } }[];
-const stages: [string, string, string][] = lang !== "pt" ? [
-  ["Birth", "It all starts on the farm, with the calf next to its mother.", "In several breeds calves suckle for months before weaning."],
-  ["Rearing", "Months or years in the field, depending on breed and production system.", "Each breed has its own territory and rhythm."],
-  ["Feeding", "Pasture, forage and, when grass is short, supplements.", "For certified meats, the product specification sets what the animal may eat."],
-  ["Transport", "The animal goes to the slaughterhouse; live animals may also go on for fattening.", "Live animals and meat are two different trades: one is sold before slaughter, the other after."],
-  ["Slaughter", "Carried out in a licensed slaughterhouse under veterinary control.", ""],
-  ["Grading", "The carcase is graded for conformation and fat cover.", "This is the European SEUROP scheme, used in Portugal."],
-  ["Cutting", "The carcase is divided into joints and cuts.", "Cuts vary with the market and regional tradition."],
-  ["Distribution", "Butcher, retail chain, restaurants or direct sales.", "Each certified meat has its own labelling."],
-  ["Consumer", "It reaches the table — and with labelling and traceability you can know where it comes from.", ""],
-] : [
-  ["Nascimento", "Tudo começa na exploração, com o vitelo junto da mãe.", "Em várias raças os vitelos mamam durante meses antes do desmame."],
-  ["Criação", "Meses ou anos no campo, conforme a raça e o sistema de produção.", "Cada raça tem o seu território e o seu ritmo."],
-  ["Alimentação", "Pasto, forragens e, quando a erva não chega, complementos.", "Nas carnes certificadas, o caderno de especificações define o que o animal pode comer."],
-  ["Transporte", "O animal segue para o matadouro; há também animais vivos que seguem para engorda.", "Animais vivos e carne são dois negócios diferentes: um vende-se antes do abate, o outro depois."],
-  ["Abate", "Feito em matadouro licenciado, sob controlo veterinário.", ""],
-  ["Classificação", "A carcaça é classificada por conformação e estado de gordura.", "É a classificação europeia SEUROP, usada em Portugal."],
-  ["Desmancha", "A carcaça é dividida em peças e cortes.", "Os cortes variam consoante o mercado e a tradição regional."],
-  ["Distribuição", "Talho, grande distribuição, restauração ou venda direta.", "Cada carne certificada tem rotulagem própria."],
-  ["Consumidor", "Chega à mesa — e, com rotulagem e rastreabilidade, é possível saber de onde vem.", ""],
+const stages: [string, string, string][] = [
+  [T("Nascimento", "Birth", "Nacimiento", "Naissance"), T("Tudo começa na exploração, com o vitelo junto da mãe.", "It all starts on the farm, with the calf next to its mother.", "Todo empieza en la explotación, con el ternero junto a su madre.", "Tout commence à l'exploitation, avec le veau auprès de sa mère."), T("Em várias raças os vitelos mamam durante meses antes do desmame.", "In several breeds calves suckle for months before weaning.", "En varias razas los terneros maman durante meses antes del destete.", "Dans plusieurs races, les veaux tètent pendant des mois avant le sevrage.")],
+  [T("Criação", "Rearing", "Cría", "Élevage"), T("Meses ou anos no campo, conforme a raça e o sistema de produção.", "Months or years in the field, depending on breed and production system.", "Meses o años en el campo, según la raza y el sistema de producción.", "Des mois ou des années aux champs, selon la race et le système de production."), T("Cada raça tem o seu território e o seu ritmo.", "Each breed has its own territory and rhythm.", "Cada raza tiene su territorio y su ritmo.", "Chaque race a son territoire et son rythme.")],
+  [T("Alimentação", "Feeding", "Alimentación", "Alimentation"), T("Pasto, forragens e, quando a erva não chega, complementos.", "Pasture, forage and, when grass is short, supplements.", "Pasto, forrajes y, cuando la hierba no alcanza, complementos.", "Pâturage, fourrages et, quand l'herbe vient à manquer, compléments."), T("Nas carnes certificadas, o caderno de especificações define o que o animal pode comer.", "For certified meats, the product specification sets what the animal may eat.", "En las carnes certificadas, el pliego de condiciones define lo que el animal puede comer.", "Pour les viandes certifiées, le cahier des charges définit ce que l'animal peut manger.")],
+  [T("Transporte", "Transport", "Transporte", "Transport"), T("O animal segue para o matadouro; há também animais vivos que seguem para engorda.", "The animal goes to the slaughterhouse; live animals may also go on for fattening.", "El animal va al matadero; también hay animales vivos que siguen a engorde.", "L'animal part à l'abattoir ; certains animaux vivants partent aussi à l'engraissement."), T("Animais vivos e carne são dois negócios diferentes: um vende-se antes do abate, o outro depois.", "Live animals and meat are two different trades: one is sold before slaughter, the other after.", "Animales vivos y carne son dos negocios distintos: uno se vende antes del sacrificio, el otro después.", "Animaux vivants et viande sont deux commerces différents : l'un se vend avant l'abattage, l'autre après.")],
+  [T("Abate", "Slaughter", "Sacrificio", "Abattage"), T("Feito em matadouro licenciado, sob controlo veterinário.", "Carried out in a licensed slaughterhouse under veterinary control.", "Se realiza en un matadero autorizado, bajo control veterinario.", "Réalisé dans un abattoir agréé, sous contrôle vétérinaire."), T("", "", "", "")],
+  [T("Classificação", "Grading", "Clasificación", "Classement"), T("A carcaça é classificada por conformação e estado de gordura.", "The carcase is graded for conformation and fat cover.", "La canal se clasifica por conformación y estado de engrasamiento.", "La carcasse est classée selon sa conformation et son état d'engraissement."), T("É a classificação europeia SEUROP, usada em Portugal.", "This is the European SEUROP scheme, used in Portugal.", "Es la clasificación europea SEUROP, usada en Portugal.", "C'est la classification européenne SEUROP, utilisée au Portugal.")],
+  [T("Desmancha", "Cutting", "Despiece", "Découpe"), T("A carcaça é dividida em peças e cortes.", "The carcase is divided into joints and cuts.", "La canal se divide en piezas y cortes.", "La carcasse est divisée en morceaux et en coupes."), T("Os cortes variam consoante o mercado e a tradição regional.", "Cuts vary with the market and regional tradition.", "Los cortes varían según el mercado y la tradición regional.", "Les coupes varient selon le marché et la tradition régionale.")],
+  [T("Distribuição", "Distribution", "Distribución", "Distribution"), T("Talho, grande distribuição, restauração ou venda direta.", "Butcher, retail chain, restaurants or direct sales.", "Carnicería, gran distribución, restauración o venta directa.", "Boucherie, grande distribution, restauration ou vente directe."), T("Cada carne certificada tem rotulagem própria.", "Each certified meat has its own labelling.", "Cada carne certificada tiene su propio etiquetado.", "Chaque viande certifiée a son propre étiquetage.")],
+  [T("Consumidor", "Consumer", "Consumidor", "Consommateur"), T("Chega à mesa — e, com rotulagem e rastreabilidade, é possível saber de onde vem.", "It reaches the table — and with labelling and traceability you can know where it comes from.", "Llega a la mesa — y, con etiquetado y trazabilidad, es posible saber de dónde viene.", "Elle arrive sur la table — et, grâce à l'étiquetage et à la traçabilité, on peut savoir d'où elle vient."), T("", "", "", "")],
 ];
 ---
-<Base lang={lang} home overlay title={T("Início", "Home")} image={`${b}img/home-hero-ia-lg.webp`}
-  description={T("As 15 raças bovinas autóctones de Portugal, a carne e o caminho da pastagem ao prato, com fontes oficiais.", "Portugal's 15 native cattle breeds, the meat and the path from pasture to plate, with official sources.")}>
+<Base lang={lang} home overlay title={T("Início", "Home", "Inicio", "Accueil")} image={`${b}img/home-hero-ia-lg.webp`}
+  description={T("As 15 raças bovinas autóctones de Portugal, a carne e o caminho da pastagem ao prato, com fontes oficiais.", "Portugal's 15 native cattle breeds, the meat and the path from pasture to plate, with official sources.", "Las 15 razas bovinas autóctonas de Portugal, la carne y el camino del pasto al plato, con fuentes oficiales.", "Les 15 races bovines autochtones du Portugal, la viande et le chemin du pâturage à l'assiette, avec des sources officielles.")}>
   <section class="hero">
-    <img class="bg" src={`${b}img/home-hero-ia-lg.webp`} srcset={`${b}img/home-hero-ia-sm.webp 480w, ${b}img/home-hero-ia-md.webp 900w, ${b}img/home-hero-ia-lg.webp 1672w`} sizes="100vw" alt={T("Vacas castanhas ao nascer do sol sobre um vale com rio e aldeia", "Brown cows at sunrise above a valley with a river and village")} width="1672" height="941" fetchpriority="high" />
+    <img class="bg" src={`${b}img/home-hero-ia-lg.webp`} srcset={`${b}img/home-hero-ia-sm.webp 480w, ${b}img/home-hero-ia-md.webp 900w, ${b}img/home-hero-ia-lg.webp 1672w`} sizes="100vw" alt={T("Vacas castanhas ao nascer do sol sobre um vale com rio e aldeia", "Brown cows at sunrise above a valley with a river and village", "Vacas pardas al amanecer sobre un valle con río y aldea", "Vaches brunes au lever du soleil au-dessus d'une vallée avec rivière et village")} width="1672" height="941" fetchpriority="high" />
     <div class="wrap in">
-      <span class="tag">{T("Bovino Português", "Portuguese Cattle")}</span>
-      <h1>{T("15 raças.", "15 breeds.")}<br />{T("Um património extraordinário.", "An extraordinary heritage.")}</h1>
-      <a class="cue-link" href="#descobrir">{T("Começar a descobrir", "Start exploring")} <i aria-hidden="true">↓</i></a>
+      <span class="tag">{T("Bovino Português", "Portuguese Cattle", "Ganado bovino portugués", "Bovins portugais")}</span>
+      <h1>{T("15 raças.", "15 breeds.", "15 razas.", "15 races.")}<br />{T("Um património extraordinário.", "An extraordinary heritage.", "Un patrimonio extraordinario.", "Un patrimoine extraordinaire.")}</h1>
+      <a class="cue-link" href="#descobrir">{T("Começar a descobrir", "Start exploring", "Empezar a descubrir", "Commencer à découvrir")} <i aria-hidden="true">↓</i></a>
     </div>
   </section>
 
   <!-- Um percurso editorial sem menus repetidos: paisagem, raças, vida, carne, mesa. -->
   <section class="journey-opening" id="viagem">
-    <div class="journey-opening-copy"><span class="eyebrow">{T("A terra e os animais", "Land and animals")}</span>
-      <h2>{T("Cada raça conta a história de um lugar.", "Every breed tells the story of a place.")}</h2>
-      <p>{T("Dos lameiros de Trás-os-Montes às ilhas dos Açores, a paisagem e os animais cresceram juntos. Descubra este património ao seu ritmo.", "From the northern meadows to the Azores, landscape and cattle have grown together. Discover this heritage at your own pace.")}</p>
-      <a class="journey-next" href={href(lang, "racas/")}>{T("Descobrir as 15 raças →", "Discover the 15 breeds →")}</a>
+    <div class="journey-opening-copy"><span class="eyebrow">{T("A terra e os animais", "Land and animals", "La tierra y los animales", "La terre et les animaux")}</span>
+      <h2>{T("Cada raça conta a história de um lugar.", "Every breed tells the story of a place.", "Cada raza cuenta la historia de un lugar.", "Chaque race raconte l'histoire d'un lieu.")}</h2>
+      <p>{T("Dos lameiros de Trás-os-Montes às ilhas dos Açores, a paisagem e os animais cresceram juntos. Descubra este património ao seu ritmo.", "From the northern meadows to the Azores, landscape and cattle have grown together. Discover this heritage at your own pace.", "De los prados del norte a las islas Azores, el paisaje y los animales han crecido juntos. Descubra este patrimonio a su ritmo.", "Des prairies du nord aux îles des Açores, le paysage et les animaux ont grandi ensemble. Découvrez ce patrimoine à votre rythme.")}</p>
+      <a class="journey-next" href={href(lang, "racas/")}>{T("Descobrir as 15 raças →", "Discover the 15 breeds →", "Descubrir las 15 razas →", "Découvrir les 15 races →")}</a>
     </div>
-    <div class="journey-opening-photo"><img src={`${b}img/mirandesa-pasto-lg.webp`} alt={T("Bovinos em pastagem portuguesa", "Cattle in a Portuguese pasture")} loading="lazy" /></div>
+    <div class="journey-opening-photo"><img src={`${b}img/mirandesa-pasto-lg.webp`} alt={T("Bovinos em pastagem portuguesa", "Cattle in a Portuguese pasture", "Bovinos en un pasto portugués", "Bovins dans un pâturage portugais")} loading="lazy" /></div>
   </section>
 
   <section class="journey-welfare">
-    <img src={`${b}img/paisagem-alentejo-ia-lg.webp`} alt={T("Bovinos a pastar no Alentejo", "Cattle grazing in Alentejo")} loading="lazy" />
-    <div class="journey-welfare-copy"><span class="eyebrow">{T("Antes da carne, há uma vida", "Before the meat, there is a life")}</span>
-      <h2>{T("O respeito começa no campo.", "Respect begins in the field.")}</h2>
-      <p>{T("Conhecer as condições de criação, o bem-estar dos animais e o trabalho dos produtores ajuda-nos a compreender o verdadeiro valor daquilo que chega à mesa.", "Understanding rearing conditions, animal welfare and farmers' work helps us appreciate what reaches the table.")}</p>
-      <a class="journey-next" href={href(lang, "viagem/")}>{T("Acompanhar o percurso →", "Follow the journey →")}</a>
+    <img src={`${b}img/paisagem-alentejo-ia-lg.webp`} alt={T("Bovinos a pastar no Alentejo", "Cattle grazing in Alentejo", "Bovinos pastando en el Alentejo", "Bovins au pâturage dans l'Alentejo")} loading="lazy" />
+    <div class="journey-welfare-copy"><span class="eyebrow">{T("Antes da carne, há uma vida", "Before the meat, there is a life", "Antes de la carne, hay una vida", "Avant la viande, il y a une vie")}</span>
+      <h2>{T("O respeito começa no campo.", "Respect begins in the field.", "El respeto empieza en el campo.", "Le respect commence aux champs.")}</h2>
+      <p>{T("Conhecer as condições de criação, o bem-estar dos animais e o trabalho dos produtores ajuda-nos a compreender o verdadeiro valor daquilo que chega à mesa.", "Understanding rearing conditions, animal welfare and farmers' work helps us appreciate what reaches the table.", "Conocer las condiciones de cría, el bienestar de los animales y el trabajo de los productores nos ayuda a comprender el verdadero valor de lo que llega a la mesa.", "Connaître les conditions d'élevage, le bien-être des animaux et le travail des éleveurs nous aide à comprendre la vraie valeur de ce qui arrive sur la table.")}</p>
+      <a class="journey-next" href={href(lang, "viagem/")}>{T("Acompanhar o percurso →", "Follow the journey →", "Seguir el recorrido →", "Suivre le parcours →")}</a>
     </div>
   </section>
 
   <!-- Última imagem antes do rodapé: os Guardiões da Terra -->
-  <section class="guardian" aria-label={T("Os Guardiões da Terra", "Guardians of the Land")}>
+  <section class="guardian" aria-label={T("Os Guardiões da Terra", "Guardians of the Land", "Guardianes de la Tierra", "Gardiens de la Terre")}>
     <img class="guardian-img" src={`${b}img/guardiao-ia-lg.webp`} srcset={`${b}img/guardiao-ia-sm.webp 480w, ${b}img/guardiao-ia-md.webp 900w, ${b}img/guardiao-ia-lg.webp 1536w`}
       sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" width="1536" height="1024" loading="lazy" decoding="async"
-      alt={T("Ilustração: pastor idoso apoiado numa vara olha para a câmara, com vacas castanhas e serras atrás", "Illustration: an elderly shepherd leaning on a staff looks at the camera, with brown cows and hills behind him")} />
+      alt={T("Ilustração: pastor idoso apoiado numa vara olha para a câmara, com vacas castanhas e serras atrás", "Illustration: an elderly shepherd leaning on a staff looks at the camera, with brown cows and hills behind him", "Ilustración: un pastor anciano apoyado en un bastón mira a la cámara, con vacas pardas y sierras detrás", "Illustration : un vieux berger appuyé sur un bâton regarde la caméra, avec des vaches brunes et des collines derrière lui")} />
     <div class="guardian-in rv">
-      <p class="guardian-q">«{T("Há quem passe uma vida inteira a cuidar da terra. E quem cuida deles?", "Some people spend a whole lifetime caring for the land. And who cares for them?")}»</p>
-      <a class="guardian-link" href={href(lang, "guardioes-da-terra/")}>{T("Conhecer os Guardiões da Terra →", "Meet the Guardians of the Land →")}</a>
+      <p class="guardian-q">«{lang === "fr" ? " " : ""}{T("Há quem passe uma vida inteira a cuidar da terra. E quem cuida deles?", "Some people spend a whole lifetime caring for the land. And who cares for them?", "Hay quien pasa toda una vida cuidando de la tierra. ¿Y quién cuida de ellos?", "Certains passent toute une vie à prendre soin de la terre. Et qui prend soin d'eux ?")}{lang === "fr" ? " " : ""}»</p>
+      <a class="guardian-link" href={href(lang, "guardioes-da-terra/")}>{T("Conhecer os Guardiões da Terra →", "Meet the Guardians of the Land →", "Conocer a los Guardianes de la Tierra →", "Découvrir les Gardiens de la Terre →")}</a>
     </div>
   </section>
 
   <!-- Porquê este projeto: inspiração (pedido do Rui, 2026-11-03) -->
   <section class="origem" aria-labelledby="origem-t">
     <div class="origem-in rv">
-      <span class="eyebrow">{T("Porquê este projeto", "Why this project")}</span>
-      <h2 id="origem-t">{T("Por amor aos animais, e com enorme respeito.", "For love of the animals, and with deep respect.")}</h2>
-      <p>{T("Este projeto nasceu inspirado por José Gordón e pelo El Capricho, em Jiménez de Jamuz (León), e pela experiência La Cúpula: uma vida dedicada a compreender os animais, a dar-lhes tempo e liberdade, e a tratá-los com respeito do pasto à mesa.", "This project was inspired by José Gordón and El Capricho, in Jiménez de Jamuz (León), and by its La Cúpula experience: a life devoted to understanding the animals, giving them time and freedom, and treating them with respect from pasture to table.")}</p>
-      <p>{T("E nasceu de uma constatação: muitos portugueses não têm noção da qualidade da carne que temos — das nossas raças autóctones, das nossas pastagens e de quem cuida delas. Queremos mostrá-la, com rigor e com cuidado.", "And it grew from a realisation: many Portuguese people have no idea of the quality of the beef we have — our native breeds, our pastures and the people who look after them. We want to show it, carefully and accurately.")}</p>
+      <span class="eyebrow">{T("Porquê este projeto", "Why this project", "Por qué este proyecto", "Pourquoi ce projet")}</span>
+      <h2 id="origem-t">{T("Por amor aos animais, e com enorme respeito.", "For love of the animals, and with deep respect.", "Por amor a los animales, y con enorme respeto.", "Par amour des animaux, et avec un immense respect.")}</h2>
+      <p>{T("Este projeto nasceu inspirado por José Gordón e pelo El Capricho, em Jiménez de Jamuz (León), e pela experiência La Cúpula: uma vida dedicada a compreender os animais, a dar-lhes tempo e liberdade, e a tratá-los com respeito do pasto à mesa.", "This project was inspired by José Gordón and El Capricho, in Jiménez de Jamuz (León), and by its La Cúpula experience: a life devoted to understanding the animals, giving them time and freedom, and treating them with respect from pasture to table.", "Este proyecto nació inspirado por José Gordón y El Capricho, en Jiménez de Jamuz (León), y por la experiencia La Cúpula: una vida dedicada a comprender a los animales, a darles tiempo y libertad, y a tratarlos con respeto del pasto a la mesa.", "Ce projet est né de l'inspiration de José Gordón et d'El Capricho, à Jiménez de Jamuz (León), et de l'expérience La Cúpula : une vie consacrée à comprendre les animaux, à leur donner du temps et de la liberté, et à les traiter avec respect du pâturage à la table.")}</p>
+      <p>{T("E nasceu de uma constatação: muitos portugueses não têm noção da qualidade da carne que temos — das nossas raças autóctones, das nossas pastagens e de quem cuida delas. Queremos mostrá-la, com rigor e com cuidado.", "And it grew from a realisation: many Portuguese people have no idea of the quality of the beef we have — our native breeds, our pastures and the people who look after them. We want to show it, carefully and accurately.", "Y nació de una constatación: muchos portugueses no tienen idea de la calidad de la carne que tenemos — de nuestras razas autóctonas, de nuestros pastos y de quienes los cuidan. Queremos mostrarla, con rigor y con cuidado.", "Et il est né d'un constat : beaucoup de Portugais n'ont pas idée de la qualité de la viande que nous avons — de nos races autochtones, de nos pâturages et de ceux qui en prennent soin. Nous voulons la montrer, avec rigueur et avec soin.")}</p>
       <p class="origem-links"><a href="https://bodegaelcapricho.com/" rel="noopener" target="_blank">El Capricho ↗</a> · <a href="https://lacupuladelcapricho.com/" rel="noopener" target="_blank">La Cúpula ↗</a></p>
-      <p class="origem-nota">{T("Projeto independente, sem ligação ao El Capricho.", "An independent project, not affiliated with El Capricho.")}</p>
+      <p class="origem-nota">{T("Projeto independente, sem ligação ao El Capricho.", "An independent project, not affiliated with El Capricho.", "Proyecto independiente, sin vínculo con El Capricho.", "Projet indépendant, sans lien avec El Capricho.")}</p>
     </div>
   </section>
 

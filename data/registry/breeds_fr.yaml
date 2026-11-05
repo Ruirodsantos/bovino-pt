@@ -1,0 +1,88 @@
+_field_labels:
+  geographic_origin: Berceau (région d'origine)
+  historical_background: Histoire
+  population: Effectif
+  physical_characteristics: Caractéristiques
+  production_systems: Système de production
+  meat_characteristics: La viande
+  certifications: Certifications (AOP/IGP)
+  producer_organizations: Association d'éleveurs
+  geographic_distribution: Répartition
+  photographs: Photographies
+  economic_information: Économie
+  historical_trends: Évolution dans le temps
+alentejana:
+  solar: Alentejo — surtout les districts de Portalegre, Évora et Beja
+  fields:
+    geographic_origin: Alentejo — surtout les districts de Portalegre, Évora et Beja
+    population: 8 362 femelles et 200 mâles de race pure, avec 133 éleveurs (livre généalogique des adultes, 2019)
+algarvia:
+  solar: Algarve — d'Aljezur et Monchique au Barrocal et à Castro Marim
+  fields:
+    geographic_origin: Algarve — d'Aljezur et Monchique au Barrocal et à Castro Marim
+    population: 2 femelles et 2 mâles de race pure, avec 3 éleveurs (livre généalogique des adultes, 2019)
+arouquesa:
+  solar: Versants montagneux entre les vallées du Vouga et du Douro (Arouca, Cinfães, Castro Daire…)
+  fields:
+    geographic_origin: Versants montagneux entre les vallées du Vouga et du Douro (Arouca, Cinfães, Castro Daire…)
+    population: 3 680 femelles et 134 mâles de race pure, avec 3 315 éleveurs (livre généalogique des adultes, 2019)
+barrosa:
+  solar: Zones de plateau du Barroso
+  fields:
+    geographic_origin: Zones de plateau du Barroso
+    population: 6 775 femelles et 355 mâles de race pure, avec 1 926 éleveurs (livre généalogique des adultes, 2019)
+brava-de-lide:
+  solar: Ribatejo et Oeste, Alentejo, Beiras et Açores
+  fields:
+    geographic_origin: Ribatejo et Oeste, Alentejo, Beiras et Açores
+    population: 5 938 femelles et 475 mâles de race pure, avec 97 éleveurs (livre généalogique des adultes, 2019)
+cachena:
+  solar: Parc national de Peneda-Gerês (Arcos de Valdevez)
+  fields:
+    geographic_origin: Parc national de Peneda-Gerês (Arcos de Valdevez)
+    population: 5 869 femelles et 257 mâles de race pure, avec 662 éleveurs (livre généalogique des adultes, 2019)
+garvonesa:
+  solar: Baixo Alentejo — Santiago do Cacém, Odemira, Ourique, Castro Verde…
+  fields:
+    geographic_origin: Baixo Alentejo — Santiago do Cacém, Odemira, Ourique, Castro Verde…
+    population: 585 femelles et 22 mâles de race pure, avec 16 éleveurs (livre généalogique des adultes, 2019)
+jarmelista:
+  solar: Ancienne commune de Jarmelo, aujourd'hui Guarda
+  fields:
+    geographic_origin: Ancienne commune de Jarmelo, aujourd'hui Guarda
+    population: 193 femelles et 25 mâles de race pure, avec 25 éleveurs (livre généalogique des adultes, 2019)
+marinhoa:
+  solar: Terres de l'estuaire du Vouga, du Cértima et de l'Antuã (Baixo Vouga)
+  fields:
+    geographic_origin: Terres de l'estuaire du Vouga, du Cértima et de l'Antuã (Baixo Vouga)
+    population: 884 femelles et 91 mâles de race pure, avec 280 éleveurs (livre généalogique des adultes, 2019)
+maronesa:
+  solar: Serra do Alvão et Serra do Marão
+  fields:
+    geographic_origin: Serra do Alvão et Serra do Marão
+    population: 3 733 femelles et 146 mâles de race pure, avec 894 éleveurs (livre généalogique des adultes, 2019)
+mertolenga:
+  solar: Baixo Alentejo — terres de Mértola, Alcoutim et Martinlongo
+  fields:
+    geographic_origin: Baixo Alentejo — terres de Mértola, Alcoutim et Martinlongo
+    population: 8 358 femelles et 207 mâles de race pure, avec 216 éleveurs (livre généalogique des adultes, 2019)
+minhota:
+  solar: Entre Douro e Minho
+  fields:
+    geographic_origin: Entre Douro e Minho
+    population: 5 912 femelles et 164 mâles de race pure, avec 1 721 éleveurs (livre généalogique des adultes, 2019)
+mirandesa:
+  solar: Terres de Miranda (Miranda do Douro, Mogadouro, Vimioso)
+  fields:
+    geographic_origin: Terres de Miranda (Miranda do Douro, Mogadouro, Vimioso)
+    population: 4 492 femelles et 305 mâles de race pure, avec 344 éleveurs (livre généalogique des adultes, 2019)
+preta:
+  solar: Sud du Tage — l'ancien « Gado Charnequeiro do Sul do Tejo » (bétail de lande du sud du Tage)
+  fields:
+    geographic_origin: Sud du Tage — l'ancien « Gado Charnequeiro do Sul do Tejo » (bétail de lande du sud du Tage)
+    population: 1 774 femelles et 70 mâles de race pure, avec 30 éleveurs (livre généalogique des adultes, 2019)
+ramo-grande:
+  solar: Île de Terceira, Açores (Praia da Vitória)
+  fields:
+    geographic_origin: Île de Terceira, Açores (Praia da Vitória)
+    population: 679 femelles et 84 mâles de race pure, avec 581 éleveurs (livre généalogique des adultes, 2019)

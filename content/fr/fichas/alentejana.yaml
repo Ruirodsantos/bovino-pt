@@ -1,0 +1,87 @@
+intro: Une race façonnée par la chaleur et par la pauvreté des pâturages du Sud.
+facts:
+- label: Berceau
+  value: Alentejo
+- label: Effectif
+  value: 8 562
+  note: '2019'
+sections:
+- id: historia
+  title: Histoire
+  summary: Origine et parcours de la race, selon le catalogue officiel.
+  blocks:
+  - title: L’histoire
+    paras:
+    - 'L’Alentejana est la race du sud continental par excellence. Pendant longtemps, elle fut avant tout un animal de travail : elle tirait charrues et charrettes dans une agriculture qui dépendait de la force des bœufs. Avec la mécanisation et la hausse de la demande de viande, la seconde moitié du XXe siècle apporta la tentation de la remplacer ou de la croiser avec des races étrangères, dans une course aux animaux à croissance plus rapide. La race a résisté, et elle est aujourd’hui élevée surtout pour la viande.'
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Aujourd’hui
+    paras:
+    - Selon les données de 2019 du catalogue, c’est la race bovine autochtone qui compte le plus de femelles inscrites au livre généalogique (8362, contre 8358 pour la Mertolenga, une différence minime), et celle dont la présence est la plus forte dans les districts de Portalegre, Évora et Beja.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: État du texte
+    paras:
+    - Texte original du projet, réécrit à partir du Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 6. Aucun paragraphe n’est une copie du catalogue. Les faits ont été vérifiés avec le catalogue ; la relecture indépendante (ChatGPT/spécialiste) est en attente. Tous les chiffres et statuts de conservation sont ceux du catalogue de 2019, et non des effectifs actuels ; des données officielles plus récentes restent à rechercher.
+- id: caracteristicas
+  title: Caractéristiques
+  summary: Comment reconnaître l’animal.
+  blocks:
+  - title: Comment la reconnaître
+    paras:
+    - 'Le pelage est rouge, d’un ton foncé (retinto) à un ton plus clair (trigueiro), sans poils blancs ou noirs mêlés. Le signe le plus caractéristique est le fanon, le repli de peau sous le cou, formé de plusieurs plis. Selon le catalogue, c’est une adaptation à la chaleur : il augmente la surface par laquelle l’animal se rafraîchit. Les cornes sont d’un blanc sale, aux pointes presque noires.'
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territoire
+  summary: Le berceau de la race et l’effectif enregistré.
+  blocks:
+  - title: Berceau
+    paras:
+    - Alentejo — surtout les districts de Portalegre, Évora et Beja.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Effectif enregistré (2019)
+    paras:
+    - 8 362 femelles, 200 mâles et 133 éleveurs, selon le catalogue officiel (2019). Ce ne sont pas des effectifs actuels.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Élevage
+  summary: Comment et où elle est élevée.
+  blocks:
+  - title: Comment elle est élevée
+    paras:
+    - Le berceau de la race est l’Alentejo, au climat continental marqué par de grandes amplitudes thermiques, avec peu de pluie, concentrée en hiver, et des étés longs et secs. Les pâturages pauvres ont conduit la race à développer un appareil digestif volumineux et un squelette robuste. Le catalogue note que, depuis qu’elle n’est plus élevée que pour la viande, la conformation, autrefois très déséquilibrée vers l’avant, s’est améliorée.
+    sources:
+    - label: Catalogue officiel des races autochtones portugaises (DGAV/CAP, 2019), p. 6
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Viande
+  summary: La viande de cette race.
+  blocks:
+  - title: La viande
+    paras:
+    - La description de la viande de cette race (couleur, gras, maturation, morceaux) n’a pas encore été confirmée par une source. Nous ne la publions pas tant qu’il n’y a pas de référence.
+    status: en cours d'investigation
+- id: certificacao
+  title: Certification
+  summary: Certification et reconnaissances.
+  blocks:
+  - title: Certification
+    paras:
+    - 'Statut d’AOP/IGP et autres reconnaissances de cette race : à confirmer dans la liste officielle de la DGADR et dans eAmbrosia.'
+    status: en cours d'investigation
+- id: onde
+  title: Où en trouver
+  summary: Où en trouver.
+  blocks:
+  - title: Où en trouver
+    paras:
+    - 'Points de vente, producteurs et association d’éleveurs : à rechercher. Nous n’indiquons ni points de vente ni prix que nous n’aurions pas vérifiés.'
+    status: en cours d'investigation

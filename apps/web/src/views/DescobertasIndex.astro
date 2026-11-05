@@ -8,11 +8,11 @@ const { lang } = Astro.props;
 const T = tr(lang);
 const all = (await coll("descobertas", lang)).sort((a: any, b: any) => +b.data.date - +a.data.date);
 ---
-<Base lang={lang} title={T("Descobertas", "Discoveries")} description={T("Novas descobertas sobre o bovino português, verificadas e com fontes, todos os dias.", "New, verified and sourced discoveries about Portuguese cattle, every day.")}>
+<Base lang={lang} title={T("Descobertas", "Discoveries", "Descubrimientos", "Découvertes")} description={T("Novas descobertas sobre o bovino português, verificadas e com fontes, todos os dias.", "New, verified and sourced discoveries about Portuguese cattle, every day.", "Nuevos descubrimientos sobre el bovino portugués, verificados y con fuentes, cada día.", "De nouvelles découvertes sur les bovins portugais, vérifiées et sourcées, chaque jour.")}>
   <section class="block" style="border-top:0"><div class="wrap">
-    <span class="eyebrow">{T("Diário de investigação", "Research journal")}</span>
-    <h1>{T("Descobertas", "Discoveries")}</h1>
-    <p class="lede">{T("Uma nova peça de conhecimento quase todos os dias: um número que mudou, um facto confirmado, uma pergunta respondida. Todas indicam as fontes.", "A new piece of knowledge almost every day: a number that changed, a confirmed fact, a question answered. All state their sources.")}</p>
+    <span class="eyebrow">{T("Diário de investigação", "Research journal", "Diario de investigación", "Journal de recherche")}</span>
+    <h1>{T("Descobertas", "Discoveries", "Descubrimientos", "Découvertes")}</h1>
+    <p class="lede">{T("Uma nova peça de conhecimento quase todos os dias: um número que mudou, um facto confirmado, uma pergunta respondida. Todas indicam as fontes.", "A new piece of knowledge almost every day: a number that changed, a confirmed fact, a question answered. All state their sources.", "Una nueva pieza de conocimiento casi todos los días: una cifra que cambió, un hecho confirmado, una pregunta respondida. Todas indican las fuentes.", "Un nouvel élément de savoir presque chaque jour : un chiffre qui a changé, un fait confirmé, une question résolue. Tous indiquent leurs sources.")}</p>
     <ol class="feed">
       {all.map((d) => (
         <li><a href={href(lang, `descobertas/${d.id}/`)}>

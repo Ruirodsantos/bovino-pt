@@ -8,25 +8,25 @@ const T = tr(lang);
 const s = summary();
 const base = import.meta.env.BASE_URL;
 ---
-<Base lang={lang} title={T("Dados", "Data")} description={T("Todos os conjuntos de dados do Bovino Português, com fonte, período e download.", "Every dataset in the Portuguese Cattle, with source, period and download.")}>
+<Base lang={lang} title={T("Dados", "Data", "Datos", "Données")} description={T("Todos os conjuntos de dados do Bovino Português, com fonte, período e download.", "Every dataset in the Portuguese Cattle, with source, period and download.", "Todos los conjuntos de datos de Bovino Portugués, con fuente, período y descarga.", "Tous les jeux de données de Bovin Portugais, avec source, période et téléchargement.")}>
   <section class="block" style="border-top:0"><div class="wrap">
-        <h1>{T("Os dados, todos", "All the data")}</h1>
-    <p class="dnav"><a href={href(lang, "observatorio/")}>{T("Observatório", "Observatory")}</a> · <a href={href(lang, "descobertas/")}>{T("Descobertas", "Discoveries")}</a> · <a href={href(lang, "metodologia/")}>{T("Método e fontes", "Method and sources")}</a></p>
-    <p class="lede">{T("Cada conjunto vem de uma fonte oficial, é verificado automaticamente todos os dias e pode ser descarregado. As revisões feitas pelas fontes ficam registadas no ", "Each dataset comes from an official source, is checked automatically every day and can be downloaded. Revisions made by the sources are recorded in the ")}<a href="https://github.com/Ruirodsantos/bovino-pt/tree/main/data/history">{T("histórico", "history")}</a>.</p>
+        <h1>{T("Os dados, todos", "All the data", "Todos los datos", "Toutes les données")}</h1>
+    <p class="dnav"><a href={href(lang, "observatorio/")}>{T("Observatório", "Observatory", "Observatorio", "Observatoire")}</a> · <a href={href(lang, "descobertas/")}>{T("Descobertas", "Discoveries", "Descubrimientos", "Découvertes")}</a> · <a href={href(lang, "metodologia/")}>{T("Método e fontes", "Method and sources", "Método y fuentes", "Méthode et sources")}</a></p>
+    <p class="lede">{T("Cada conjunto vem de uma fonte oficial, é verificado automaticamente todos os dias e pode ser descarregado. As revisões feitas pelas fontes ficam registadas no ", "Each dataset comes from an official source, is checked automatically every day and can be downloaded. Revisions made by the sources are recorded in the ", "Cada conjunto procede de una fuente oficial, se verifica automáticamente todos los días y puede descargarse. Las revisiones hechas por las fuentes quedan registradas en el ", "Chaque jeu de données provient d’une source officielle, est vérifié automatiquement chaque jour et peut être téléchargé. Les révisions effectuées par les sources sont consignées dans l’")}<a href="https://github.com/Ruirodsantos/bovino-pt/tree/main/data/history">{T("histórico", "history", "historial", "historique")}</a>.</p>
     <div class="tbl" role="table">
       {s.catalog.map((c) => (
         <div class="card ds" id={c.id}>
-          <div><h2>{lang !== "pt" ? (c.title_en ?? c.title_pt) : c.title_pt}</h2><code>{c.id}</code></div>
+          <div><h2>{lang === "pt" ? c.title_pt : (c[`title_${lang}`] ?? c.title_en ?? c.title_pt)}</h2><code>{c.id}</code></div>
           {c.state === "ok" ? (
             <dl>
-              <div><dt>{T("Fonte", "Source")}</dt><dd>Eurostat <span class="mono">{c.source_code}</span></dd></div>
-              <div><dt>{T("Período", "Period")}</dt><dd>{c.first_period} → {c.last_period}</dd></div>
-              <div><dt>{T("Valores", "Values")}</dt><dd>{c.rows}</dd></div>
-              <div><dt>{T("Publicado pela fonte", "Published by the source")}</dt><dd>{fmtDate(c.publication_date, lang)}</dd></div>
-              <div><dt>{T("Verificado", "Verified")}</dt><dd>{fmtDate(c.retrieved_at?.slice(0, 10), lang)}</dd></div>
-              <div><dt>{T("Descarregar", "Download")}</dt><dd><a href={`${base}data/${c.id}.json`}>JSON</a> · <a href={`https://github.com/Ruirodsantos/bovino-pt/blob/main/data/validated/${c.id}.csv`}>CSV</a></dd></div>
+              <div><dt>{T("Fonte", "Source", "Fuente", "Source")}</dt><dd>Eurostat <span class="mono">{c.source_code}</span></dd></div>
+              <div><dt>{T("Período", "Period", "Período", "Période")}</dt><dd>{c.first_period} → {c.last_period}</dd></div>
+              <div><dt>{T("Valores", "Values", "Valores", "Valeurs")}</dt><dd>{c.rows}</dd></div>
+              <div><dt>{T("Publicado pela fonte", "Published by the source", "Publicado por la fuente", "Publié par la source")}</dt><dd>{fmtDate(c.publication_date, lang)}</dd></div>
+              <div><dt>{T("Verificado", "Verified", "Verificado", "Vérifié")}</dt><dd>{fmtDate(c.retrieved_at?.slice(0, 10), lang)}</dd></div>
+              <div><dt>{T("Descarregar", "Download", "Descargar", "Télécharger")}</dt><dd><a href={`${base}data/${c.id}.json`}>JSON</a> · <a href={`https://github.com/Ruirodsantos/bovino-pt/blob/main/data/validated/${c.id}.csv`}>CSV</a></dd></div>
             </dl>
-          ) : <p class="chip wait">{T("Em preparação: a fonte ainda não respondeu com dados válidos", "In preparation: the source has not yet responded with valid data")}</p>}
+          ) : <p class="chip wait">{T("Em preparação: a fonte ainda não respondeu com dados válidos", "In preparation: the source has not yet responded with valid data", "En preparación: la fuente aún no ha respondido con datos válidos", "En préparation : la source n’a pas encore répondu avec des données valides")}</p>}
         </div>
       ))}
     </div>

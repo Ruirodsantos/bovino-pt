@@ -10,13 +10,13 @@ const { Content } = await render(d);
 ---
 <Base lang={lang} title={d.data.title} description={d.data.summary}>
   <article class="block" style="border-top:0"><div class="wrap narrow">
-    <a href={href(lang, "descobertas/")}>← {T("Descobertas", "Discoveries")}</a>
-    <p class="meta"><span class="mono">{fmtDate(d.data.date.toISOString().slice(0, 10), lang)}</span> <span class:list={["chip", d.data.status === "verificado" ? "ok" : "wait"]}>{d.data.status === "verificado" ? T("Verificado", "Verified") : T("Em revisão", "Under review")}</span></p>
+    <a href={href(lang, "descobertas/")}>← {T("Descobertas", "Discoveries", "Descubrimientos", "Découvertes")}</a>
+    <p class="meta"><span class="mono">{fmtDate(d.data.date.toISOString().slice(0, 10), lang)}</span> <span class:list={["chip", d.data.status === "verificado" ? "ok" : "wait"]}>{d.data.status === "verificado" ? T("Verificado", "Verified", "Verificado", "Vérifié") : T("Em revisão", "Under review", "En revisión", "En cours de révision")}</span></p>
     <h1>{d.data.title}</h1>
     <p class="lede">{d.data.summary}</p>
     <div class="prose"><Content /></div>
-    <aside class="card sources"><span class="eyebrow">{T("Fontes", "Sources")}</span><ul>{d.data.sources.map((s: any) => <li><a href={s.url}>{s.label}</a></li>)}</ul>
-      {d.data.dataset && <p>{T("Dados completos", "Full data")}: <a href={href(lang, `dados/#${d.data.dataset}`)}>{d.data.dataset}</a></p>}</aside>
+    <aside class="card sources"><span class="eyebrow">{T("Fontes", "Sources", "Fuentes", "Sources")}</span><ul>{d.data.sources.map((s: any) => <li><a href={s.url}>{s.label}</a></li>)}</ul>
+      {d.data.dataset && <p>{T("Dados completos", "Full data", "Datos completos", "Données complètes")}{lang === "fr" ? "\u00a0" : ""}: <a href={href(lang, `dados/#${d.data.dataset}`)}>{d.data.dataset}</a></p>}</aside>
   </div></article>
 </Base>
 <style>

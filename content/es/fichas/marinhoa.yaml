@@ -1,0 +1,87 @@
+intro: Una raza de labor, del estuario del Vouga.
+facts:
+- label: Solar
+  value: Tierras del estuario del Vouga
+- label: Efectivo
+  value: '975'
+  note: '2019'
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y trayectoria de la raza, según el catálogo oficial.
+  blocks:
+  - title: La historia
+    paras:
+    - La Marinhoa está ligada a las «marinhas» de la Beira Litoral, las tierras bajas y fértiles del estuario del Vouga, del Cértima y del Antuã. Era un animal poderoso y de patas altas, ideal para el cultivo del arroz, para la recogida del moliço en la ría y para el Arte Xávega. Estaba presente en casi todas las casas y ayudó a fijar a las poblaciones en las aldeas de una región de parcelas pequeñas. La mecanización redujo el trabajo de los animales, y la cuenca lechera que se desarrolló en la región sustituyó a muchas Marinhoas por vacas lecheras. Sobrevivió porque muchas familias mantuvieron algunos ejemplares como complemento económico.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 38
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Hoy
+    paras:
+    - Se explota sobre todo la aptitud cárnica; el trabajo es residual.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 38
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Estado del texto
+    paras:
+    - Texto original del proyecto, reescrito a partir del Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 38. Ningún párrafo es copia del catálogo. Los hechos se contrastaron con el catálogo; la revisión independiente (ChatGPT/especialista) está pendiente. Todas las cifras y estados de conservación son los del catálogo de 2019, no efectivos actuales; datos oficiales más recientes por buscar.
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - 'Es un animal de gran tamaño: unos 135 cm de altura a la cruz, y de 600 a 700 kg en las hembras adultas, de 900 a 1000 kg en los machos. El pelaje es amarillo, en tonos de paja, a veces tirando a cereza, con pelos más oscuros en el borde de las orejas, en la papada, alrededor de los ojos y en la punta de la cola. Es dócil y de fácil manejo.'
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 38
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: territorio
+  title: Territorio
+  summary: El solar de la raza y el efectivo registrado.
+  blocks:
+  - title: Solar
+    paras:
+    - Tierras del estuario del Vouga, Cértima y Antuã (Baixo Vouga).
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 38
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+  - title: Efectivo registrado (2019)
+    paras:
+    - 884 hembras, 91 machos y 280 criadores, según el catálogo oficial (2019). No son efectivos actuales.
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 38
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - 'El sistema más tradicional es el intensivo al aire libre: pastoreo durante algunos meses al año y regreso diario al establo. La alimentación se basa en pastos naturales o sembrados, complementados con cereales, pajas y leguminosas.'
+    sources:
+    - label: Catálogo Oficial de Razas Autóctonas Portuguesas (DGAV/CAP, 2019), p. 38
+      url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    paras:
+    - La descripción de la carne de esta raza (color, grasa, maduración, cortes) aún no se ha confirmado en fuente. No la publicamos hasta que haya referencia.
+    status: en investigación
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    paras:
+    - 'Estado de DOP/IGP y otros reconocimientos de esta raza: por confirmar en la lista oficial de la DGADR y en eAmbrosia.'
+    status: en investigación
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Dónde encontrar
+    paras:
+    - 'Puntos de venta, productores y asociación de criadores: por investigar. No indicamos puntos de venta ni precios que no hayamos verificado.'
+    status: en investigación
