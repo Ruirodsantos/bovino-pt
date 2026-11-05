@@ -88,19 +88,20 @@ const stages: [string, string, string][] = lang === "en" ? [
   </section>
 
 <style>
-.journey-opening{display:grid;grid-template-columns:1fr 1.1fr;background:#f5f2e9;color:#263e30;min-height:78vh}
-.journey-opening-copy{padding:clamp(4rem,8vw,9rem) clamp(1.5rem,6vw,7rem);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.journey-opening{position:relative;display:flex;align-items:center;background:#111a15;color:#e9e5d6;min-height:100svh}
+.journey-opening-photo{position:absolute;inset:0}.journey-opening-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,10,.6),rgba(8,12,10,0) 65%)}
+.journey-opening-copy{position:relative;z-index:1;margin:clamp(4rem,8vw,8rem) clamp(1.5rem,6vw,6rem);width:min(34rem,100%);padding:clamp(1.6rem,3vw,3rem);background:rgba(10,16,12,.62);backdrop-filter:blur(14px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.journey-opening h2{color:#fff}
 .journey-opening h2,.journey-welfare h2,.journey-table h2{font-size:clamp(2.4rem,4.7vw,5.2rem);line-height:1.09;letter-spacing:-.04em;margin:1.1rem 0 1.5rem}
 .journey-opening p,.journey-welfare p,.journey-table p{font-size:clamp(1.02rem,1.3vw,1.22rem);line-height:1.85;max-width:560px}
 .journey-next{display:inline-block;margin-top:1.8rem;color:inherit;font-weight:650;text-underline-offset:.5rem}
 .journey-opening-photo,.journey-table-photo{min-height:450px;overflow:hidden}
 .journey-opening-photo img,.journey-table-photo img,.journey-welfare>img{width:100%;height:100%;object-fit:cover;display:block}
-.journey-welfare{position:relative;min-height:78vh;display:flex;align-items:center;color:white;background:#21382d;overflow:hidden}
+.journey-welfare{position:relative;min-height:100svh;display:flex;align-items:center;color:white;background:#21382d;overflow:hidden}
 .journey-welfare>img{position:absolute;inset:0;filter:brightness(.57)}
 .journey-welfare-copy{position:relative;z-index:1;padding:clamp(4rem,8vw,9rem) clamp(24px,8vw,150px);width:min(100%,880px);box-sizing:border-box}.journey-welfare-copy p{max-width:54ch}.journey-welfare>img{object-position:center 45%}
 .journey-table{display:grid;grid-template-columns:1.1fr 1fr;background:#243d31;color:#fff;min-height:650px}
 .journey-table-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(3rem,7vw,7rem)}
-@media(max-width:760px){.journey-opening,.journey-table{grid-template-columns:1fr}.journey-opening-photo{min-height:48vh;order:-1}.journey-opening-copy,.journey-table-copy{padding:3.5rem 1.5rem 4.5rem}.journey-table-photo{min-height:43vh}.journey-welfare{min-height:70vh}.journey-welfare-copy{padding:5rem 1.5rem}}
+@media(max-width:760px){.journey-opening,.journey-table{grid-template-columns:1fr}.journey-opening{align-items:flex-end}.journey-opening-copy{margin:5rem 1rem 2.5rem;width:auto}.journey-opening-copy,.journey-table-copy{padding:3.5rem 1.5rem 4.5rem}.journey-table-photo{min-height:43vh}.journey-welfare{min-height:70vh}.journey-welfare-copy{padding:5rem 1.5rem}}
 .journey-welfare .eyebrow,.journey-table .eyebrow{color:#e6efdc;text-shadow:0 1px 6px rgba(0,0,0,.55)}
 .guardian{position:relative;height:100svh;min-height:540px;overflow:hidden;background:#21382d;color:#fff}
 .guardian-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 30%}
@@ -111,11 +112,11 @@ const stages: [string, string, string][] = lang === "en" ? [
 .guardian-link{color:#fff!important;text-decoration:none;font-weight:400;letter-spacing:.02em;border-bottom:1px solid rgba(255,255,255,.55);padding-bottom:3px;transition:border-color .3s}
 .guardian-link:hover{border-color:#fff}
 @media (max-aspect-ratio: 1/1){.guardian-img{object-position:31% 22%}.guardian::after{background:linear-gradient(180deg,rgba(12,18,15,0) 50%,rgba(12,18,15,.78) 100%)}.guardian-in{left:20px;right:20px;width:auto;bottom:56px}.guardian-q{font-size:clamp(1.45rem,6.2vw,2rem)}}
-.origem{background:#f5f2e9;color:#263e30;padding:clamp(4.5rem,10vw,9rem) 1.5rem}
+.origem{background:#111a15;color:#e9e5d6;padding:clamp(4.5rem,10vw,9rem) 1.5rem}
 .origem-in{max-width:42rem;margin:0 auto}
-.origem h2{font-size:clamp(2rem,3.8vw,3.6rem);line-height:1.1;letter-spacing:-.03em;margin:1rem 0 1.6rem}
+.origem h2{color:#fff;font-size:clamp(2rem,3.8vw,3.6rem);line-height:1.1;letter-spacing:-.03em;margin:1rem 0 1.6rem}
 .origem p{font-size:clamp(1.02rem,1.25vw,1.18rem);line-height:1.85;margin:0 0 1.2rem}
 .origem-links{font-weight:600;margin-top:1.6rem!important}.origem-links a{color:inherit;text-underline-offset:.3rem}
-.origem-nota{font-size:.85rem!important;color:#5b6b60;margin-top:2rem!important}
+.origem-nota{font-size:.85rem!important;color:#a9bfa0;margin-top:2rem!important}
 </style>
 </Base>
