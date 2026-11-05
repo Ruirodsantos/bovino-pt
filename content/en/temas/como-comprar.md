@@ -13,7 +13,10 @@ scenes:
     Dry-aged meat has aromas of walnut, aged cheese and mushroom and, with long ageing, of ripe fruit and broth.
 
 
-    Sweet-sour, sour or ammonia smells are a sign of spoilage.'
+    Sweet-sour, sour or ammonia smells are a sign of spoilage.
+
+
+    But colour and smell alone do not prove that meat is safe: always follow the date on the label and keep the cold chain, especially with packaged meat.'
 - title: What does the label say?
   text: 'In the European Union, beef must be labelled with traceability information under Regulation (EC) No 1760/2000:
 

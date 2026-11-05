@@ -13,7 +13,10 @@ scenes:
     A carne maturada a seco tem aromas de noz, de queijo curado, de cogumelo e, nas maturações longas, de fruta madura e de caldo.
 
 
-    Cheiros agridoces, azedos ou a amoníaco são sinal de deterioração.'
+    Cheiros agridoces, azedos ou a amoníaco são sinal de deterioração.
+
+
+    Mas a cor e o cheiro, sozinhos, não provam que a carne é segura: respeite sempre a data indicada no rótulo e a cadeia de frio, sobretudo em carne embalada.'
 - title: O que diz o rótulo?
   text: 'Na União Europeia a carne de bovino tem de ser rotulada com informação de rastreabilidade, ao abrigo do Regulamento (CE) n.º 1760/2000:
 

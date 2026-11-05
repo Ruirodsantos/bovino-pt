@@ -13,7 +13,10 @@ scenes:
     La carne madurada en seco tiene aromas de nuez, de queso curado, de champiñón y, en las maduraciones largas, de fruta madura y de caldo.
 
 
-    Los olores agridulces, agrios o a amoníaco son señal de deterioro.'
+    Los olores agridulces, agrios o a amoníaco son señal de deterioro.
+
+
+    Pero el color y el olor, por sí solos, no demuestran que la carne sea segura: respete siempre la fecha de la etiqueta y la cadena de frío, sobre todo en la carne envasada.'
 - title: ¿Qué dice la etiqueta?
   text: 'En la Unión Europea la carne de bovino debe etiquetarse con información de trazabilidad, al amparo del Reglamento (CE) n.º 1760/2000:
 

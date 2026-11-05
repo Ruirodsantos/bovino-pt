@@ -13,7 +13,10 @@ scenes:
     La viande maturée à sec a des arômes de noix, de fromage affiné, de champignon et, dans les maturations longues, de fruit mûr et de bouillon.
 
 
-    Les odeurs aigres-douces, acides ou d’ammoniaque sont signe d’altération.'
+    Les odeurs aigres-douces, acides ou d’ammoniaque sont signe d’altération.
+
+
+    Mais la couleur et l’odeur seules ne prouvent pas que la viande est sûre : respectez toujours la date indiquée sur l’étiquette et la chaîne du froid, surtout pour la viande emballée.'
 - title: Que dit l’étiquette ?
   text: 'Dans l’Union européenne, la viande bovine doit être étiquetée avec des informations de traçabilité, en vertu du Règlement (CE) n° 1760/2000 :
 
