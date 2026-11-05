@@ -34,7 +34,7 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
       <h1>{d.data.title}</h1>
       <p>{d.data.lead}</p>
     </div>
-    {heroOk && <p class="tp-cr">{cr(d.data.photo).caption} · {T("Foto", "Photo")}: <a href={cr(d.data.photo).source_page} rel="noopener">{cr(d.data.photo).author}</a> · {licenseLabel(lang, cr(d.data.photo).license)}</p>}
+    {heroOk && !cr(d.data.photo).ai && <p class="tp-cr">{cr(d.data.photo).caption} · {T("Foto", "Photo")}: <a href={cr(d.data.photo).source_page} rel="noopener">{cr(d.data.photo).author}</a> · {licenseLabel(lang, cr(d.data.photo).license)}</p>}
     <span class="tp-scroll" aria-hidden="true">↓</span>
   </header>
   <div class="tp-hook"><span>{T("A pergunta", "The question")}</span><p>{d.data.hook}</p></div>
@@ -44,7 +44,7 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
       <div class:list={["tp-g", g.photo ? "tp-cine" : "tp-flat"]}>
         {g.photo && <div class="tp-stick">
           {ok ? <Img id={g.photo} sizes="100vw" lang={lang} class="tp-sbg" /> : <div class="tp-slotlabel"><b>FOTO · CENA</b> {g.photo}<br />1920 × 1080 px · 16:9 · assunto ao centro<br />telemóvel: {g.photo}-m · 1080 × 1920 px</div>}
-          {ok && <p class="tp-cr">{cr(g.photo).caption} · {T("Foto", "Photo")}: <a href={cr(g.photo).source_page} rel="noopener">{cr(g.photo).author}</a> · {licenseLabel(lang, cr(g.photo).license)}</p>}
+          {ok && !cr(g.photo).ai && <p class="tp-cr">{cr(g.photo).caption} · {T("Foto", "Photo")}: <a href={cr(g.photo).source_page} rel="noopener">{cr(g.photo).author}</a> · {licenseLabel(lang, cr(g.photo).license)}</p>}
         </div>}
         <div class="tp-over">
           {g.items.map(({ s, i }) => (
@@ -79,7 +79,7 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
   .tp-in h1{font-size:clamp(2.8rem,6.5vw,6rem);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .3em;color:#fff;font-weight:300;text-shadow:0 2px 40px rgba(0,0,0,.35)}
   .tp-in>p{font-size:clamp(1.05rem,1.5vw,1.4rem);font-weight:300;opacity:.9;max-width:36ch;line-height:1.4;margin:0;text-shadow:0 1px 20px rgba(0,0,0,.5)}
   .tp-k{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#dfe9d2}
-  .tp-back{display:block;color:#dfe9d2;margin-bottom:1.4rem;text-decoration:none;font-size:.9rem}
+  .tp-back{display:block;color:#dfe9d2!important;margin-bottom:1.4rem;text-decoration:none;font-size:.9rem}
   .tp-scroll{position:absolute;z-index:1;left:50%;bottom:1.2rem;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:1.4rem;animation:tpb 2.4s ease-in-out infinite}
   @keyframes tpb{50%{transform:translate(-50%,8px)}}
   .tp-cr{position:absolute;right:1.5rem;bottom:.8rem;z-index:2;font-size:.68rem;color:rgba(255,255,255,.7);margin:0;max-width:60%;text-align:right}.tp-cr a{color:inherit}

@@ -13,7 +13,7 @@ const has = (id?: string) => !!id && !!(credits as Record<string, any>)[id];
 const groups: { name: string; items: typeof all }[] = [];
 for (const t of all) { const g = prato ? "" : (t.data.group ?? ""); let x = groups.find((y) => y.name === g); if (!x) groups.push((x = { name: g, items: [] })); x.items.push(t); }
 const heroId = prato ? "prato-capa" : "carne-capa";
-const heroOk = has(heroId) || !prato;
+const heroOk = has(heroId);
 const b = import.meta.env.BASE_URL;
 const title = prato ? "Da Terra à Mesa" : "A carne";
 const lead = prato ? "Do nascimento ao prato, em nove etapas." : "Da origem ao sabor: cada tema, uma página.";
@@ -23,8 +23,7 @@ const idx = (t: any) => all.indexOf(t) + 1;
 ---
 <Base lang="pt" overlay title={title} description={lead} enPath={href("en", root)}>
   <header class:list={["hb-hero", !heroOk && "hb-plain"]}>
-    {heroOk && !prato && <img class="hb-bg" src={`${b}img/carne-capa-lg.webp`} srcset={`${b}img/carne-capa-sm.webp 500w, ${b}img/carne-capa-md.webp 1000w, ${b}img/carne-capa-lg.webp 1800w`} sizes="100vw" alt="" />}
-    {heroOk && prato && <Img id={heroId} sizes="100vw" eager class="hb-bg" />}
+    {heroOk && <Img id={heroId} sizes="100vw" eager class="hb-bg" />}
     {!heroOk && <div class="tp-slotlabel"><b>FOTO · CAPA</b> {heroId}<br />2400 × 1350 px · 16:9 · horizontal</div>}
     <div class="hb-in"><h1>{title}</h1><p>{lead}</p></div>
   </header>
@@ -58,7 +57,7 @@ const idx = (t: any) => all.indexOf(t) + 1;
   .hb-in{position:relative;z-index:1;width:min(70rem,calc(100% - 3rem));margin:0 auto;padding:9rem 0 clamp(3rem,9vh,6rem)}
   .hb-in h1{font-size:clamp(3.2rem,9vw,8rem);line-height:1;letter-spacing:-.045em;color:#fff;margin:0 0 .2em}.hb-in p{font-size:clamp(1.15rem,2vw,1.6rem);font-weight:300;margin:0}
   .hb-body{background:#111a15;color:#e9e5d6;padding:clamp(3rem,7vw,6rem) 1.5rem clamp(4rem,9vw,8rem)}
-  .hb-intro{max-width:36rem;margin:0 auto 1.5rem;font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.5;text-align:center}
+  .hb-body .hb-intro{max-width:36rem;margin:0 auto 1.5rem!important;font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.5;text-align:center}
   .hb-start{display:block;width:max-content;margin:0 auto clamp(3rem,7vw,5rem);background:#e9e5d6;color:#111a15!important;padding:1rem 2rem;border-radius:99px;text-decoration:none;font-weight:600}
   .hb-chap{max-width:44rem;margin:0 auto clamp(3rem,7vw,5rem)}
   .hb-chap h2{color:#fff;font:500 clamp(2rem,4.5vw,3.2rem)/1.05 var(--display);letter-spacing:-.03em;margin:0}.hb-promise{margin:.4rem 0 1.8rem;color:#a9bfa0}
