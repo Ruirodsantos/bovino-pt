@@ -1,7 +1,6 @@
 ---
 title: Desmancha
-parent: prato
-kicker: Etapa 7
+kicker: O caminho
 lead: Uma vaca, muitos cortes.
 hook: O que se faz a uma carcaça?
 order: 7
@@ -19,8 +18,9 @@ scenes:
   text: 'Os nomes dos cortes variam de região para região; o esquema usa uma nomenclatura comum e está em revisão.
 
 
-    [Guia de cortes →](../../carne/cortes/) · [Maturação →](../../carne/maturacao/)'
+    [Guia de cortes →](../cortes/) · [Maturação →](../maturacao/)'
 - title: Um exemplo.
   text: '- **Carnalentejana**: Além da carne fresca, a DOP tem linhas embaladas de carne picada, almôndegas e hambúrgueres.'
 note: Texto de enquadramento geral, assinalado como tal e ligado à legislação. Confirme as versões dos diplomas na fonte oficial antes de qualquer uso profissional.
+chapter: 2
 ---

@@ -60,7 +60,7 @@ const stages: [string, string, string][] = lang === "en" ? [
     <div class="journey-welfare-copy"><span class="eyebrow">{T("Antes da carne, há uma vida", "Before the meat, there is a life")}</span>
       <h2>{T("O respeito começa no campo.", "Respect begins in the field.")}</h2>
       <p>{T("Conhecer as condições de criação, o bem-estar dos animais e o trabalho dos produtores ajuda-nos a compreender o verdadeiro valor daquilo que chega à mesa.", "Understanding rearing conditions, animal welfare and farmers' work helps us appreciate what reaches the table.")}</p>
-      <a class="journey-next" href={href(lang,"da-pastagem-ao-prato/")}>{T("Acompanhar o percurso →", "Follow the journey →")}</a>
+      <a class="journey-next" href={href(lang, lang === "en" ? "da-pastagem-ao-prato/" : "viagem/")}>{T("Acompanhar o percurso →", "Follow the journey →")}</a>
     </div>
   </section>
 

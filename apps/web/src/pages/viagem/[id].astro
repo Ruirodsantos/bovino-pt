@@ -1,9 +1,8 @@
 ---
-import CarneEntry from "../../views/CarneEntry.astro";
 import TemaPage from "../../views/TemaPage.astro";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
-  const temas = (await getCollection("temas")).filter((t) => t.data.parent === "carne").sort((a, b) => a.data.order - b.data.order);
+  const temas = (await getCollection("temas")).sort((a, b) => a.data.order - b.data.order);
   return temas.map((d, i) => ({ params: { id: d.id }, props: { d, prev: temas[i - 1], next: temas[i + 1] } }));
 }
 const { d, prev, next } = Astro.props;

@@ -1,10 +1,9 @@
 ---
 title: A cor
-parent: carne
-kicker: Carne crua
+kicker: A carne
 lead: Antes de acender o lume, a carne já diz muito. Comece pela cor.
 hook: Porque é que a mesma carne muda de cor?
-order: 1
+order: 8
 photo: cor-capa
 scenes:
 - title: De que cor deve ser a carne?
@@ -38,7 +37,6 @@ scenes:
 
 
     Para um restaurante exigente, é para devolver.'
-group: Antes do lume
 note: As afirmações sobre a cor da mioglobina e a carne DFD foram conferidas com o manual citado; as restantes aguardam revisão independente.
 sources:
 - label: Meat Science and Nutrition — Meat colour (eCampus Ontario / BCcampus)
@@ -48,4 +46,5 @@ sources:
 - label: Regulamento de Execução (UE) 2017/1182 — classificação de carcaças
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32017R1182
 capa: figure
+chapter: 3
 ---

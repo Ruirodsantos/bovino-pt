@@ -1,10 +1,9 @@
 ---
 title: Como comprar
-parent: carne
-kicker: Carne crua
+kicker: Do talho ao lume
 lead: O cheiro e o rótulo dizem o que os olhos não veem.
 hook: O que tenho de ver antes de pagar?
-order: 4
+order: 14
 photo: como-comprar-capa
 scenes:
 - title: Cheira a quê?
@@ -33,7 +32,7 @@ scenes:
     O sistema europeu de classificação de carcaças (Regulamento de Execução (UE) 2017/1182) classifica a conformação (S, E, U, R, O, P) e o estado de gordura (de 1 a 5). É uma ferramenta comercial e não um índice de qualidade gastronómica, mas ajuda a perceber o que se está a comprar.
 
 
-    [Ver como funciona a classificação →](../../da-pastagem-ao-prato/classificacao/)'
+    [Ver como funciona a classificação →](../classificacao/)'
 - title: A lista de verificação.
   text: '- Cor do interior: vermelho vivo ao fim de alguns minutos de ar.
 
@@ -46,7 +45,6 @@ scenes:
     - Rastreabilidade completa no rótulo.
 
     - Peça com temperatura entre 0 e 4 °C desde a origem.'
-group: Antes do lume
 note: 'Texto original do projeto, em revisão: ainda não foi conferido por um profissional.'
 sources:
 - label: Meat Science and Nutrition — Meat colour (eCampus Ontario / BCcampus)
@@ -55,4 +53,5 @@ sources:
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32000R1760
 - label: Regulamento de Execução (UE) 2017/1182 — classificação de carcaças
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32017R1182
+chapter: 4
 ---

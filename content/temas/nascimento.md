@@ -1,7 +1,6 @@
 ---
 title: Nascimento
-parent: prato
-kicker: Etapa 1
+kicker: O animal
 lead: O percurso começa numa vaca de cria.
 hook: Como começa a vida de um bovino?
 order: 1
@@ -24,4 +23,6 @@ note: Texto de enquadramento geral, assinalado como tal e ligado à legislação
 sources:
 - label: Catálogo Oficial das Raças Autóctones Portuguesas (DGAV/CAP)
   url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+chapter: 1
 ---
+

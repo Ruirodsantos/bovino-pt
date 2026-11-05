@@ -1,7 +1,6 @@
 ---
 title: Transporte
-parent: prato
-kicker: Etapa 4
+kicker: O caminho
 lead: Do campo ao matadouro, com regras europeias.
 hook: Como viajam os animais?
 order: 4
@@ -25,4 +24,6 @@ note: Texto de enquadramento geral, assinalado como tal e ligado à legislação
 sources:
 - label: Regulamento (CE) n.º 1/2005
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32005R0001
+chapter: 2
 ---
+

@@ -1,7 +1,6 @@
 ---
 title: Abate
-parent: prato
-kicker: Etapa 5
+kicker: O caminho
 lead: De animais a carcaças.
 hook: O que acontece no matadouro?
 order: 5
@@ -25,4 +24,5 @@ note: Texto de enquadramento geral, assinalado como tal e ligado à legislação
 sources:
 - label: Regulamento (CE) n.º 1099/2009
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32009R1099
+chapter: 2
 ---

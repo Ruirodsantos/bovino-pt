@@ -17,7 +17,7 @@ export const FONTES: Record<string, { nome: string; url: string }> = {
   bm: { nome: "Bourmet, «Cortes de vaca em Portugal»", url: "https://bourmet.pt/cozinha-explicada/ingredientes/cortes-vaca-portugal" },
   sp: { nome: "The Sounds of Portuguese, «Beef cuts in Portugal»", url: "https://thesoundsofportuguese.com/portugal-beef-cuts-in-portugal/" },
   mb: { nome: "Matadouros da Beira Litoral, «Chã de fora»", url: "https://matadourosbl.pt/produto/cha-de-fora/" },
-  pj: { nome: "Projeto: guia de cortes (texto editorial em revisão)", url: "../../carne/" },
+  pj: { nome: "Projeto: guia de cortes (texto editorial em revisão)", url: "../../viagem/cortes/" },
 };
 
 export const CUTS: Cut[] = [

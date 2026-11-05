@@ -1,10 +1,9 @@
 ---
 title: As técnicas
-parent: carne
-kicker: O lume
+kicker: Do talho ao lume
 lead: Brasa, frigideira, forno e estufado.
 hook: Brasa, frigideira ou forno?
-order: 11
+order: 19
 photo: tecnicas-capa
 scenes:
 - title: Brasa de lenha ou carvão.
@@ -29,11 +28,11 @@ scenes:
     A segurança não depende só da temperatura: conta a temperatura realmente atingida no centro, o tempo de exposição, a espessura, a preparação (peça inteira ou picada), a conservação antes e depois e o tratamento posterior. Não use temperaturas genéricas como garantia: siga combinações de tempo e temperatura validadas por fontes oficiais de segurança alimentar (por exemplo, tabelas do USDA/FSIS, por conferir) e, em restauração, o plano HACCP do estabelecimento.'
 - title: E o ponto, como se sabe?
   text: Num restaurante exigente o ponto não se adivinha. Use um **termómetro de sonda** e meça no centro, sem tocar no osso.
-group: O lume
 note: 'Texto original do projeto, em revisão: ainda não foi conferido por um profissional.'
 sources:
 - label: Harold McGee, On Food and Cooking (obra de referência; páginas a conferir)
   url: https://www.haroldmcgee.com/
 - label: USDA FSIS — Safe minimum internal temperature (a verificar)
   url: https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-minimum-internal-temperature
+chapter: 4
 ---

@@ -1,7 +1,6 @@
 ---
 title: Classificação
-parent: prato
-kicker: Etapa 6
+kicker: O caminho
 lead: Uma letra e um número.
 hook: Como se decide o preço de uma carcaça?
 order: 6
@@ -20,4 +19,6 @@ note: Texto de enquadramento geral, assinalado como tal e ligado à legislação
 sources:
 - label: Regulamento (UE) n.º 1308/2013
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32013R1308
+chapter: 2
 ---
+

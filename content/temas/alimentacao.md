@@ -1,7 +1,6 @@
 ---
 title: Alimentação
-parent: prato
-kicker: Etapa 3
+kicker: O animal
 lead: A base da dieta é a erva.
 hook: De que se alimenta um bovino?
 order: 3
@@ -23,4 +22,5 @@ note: Texto de enquadramento geral, assinalado como tal e ligado à legislação
 sources:
 - label: Catálogo Oficial das Raças Autóctones Portuguesas (DGAV/CAP)
   url: https://www.dgav.pt/wp-content/uploads/2021/04/Catalogo-Oficial-Racas-Autoctones-Portuguesas.pdf
+chapter: 1
 ---

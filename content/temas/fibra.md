@@ -1,10 +1,9 @@
 ---
 title: A fibra
-parent: carne
-kicker: Carne crua
+kicker: A carne
 lead: Olhar para o corte transversal diz quase tudo.
 hook: Como se sabe se uma carne vai ser macia?
-order: 3
+order: 10
 photo: fibra-capa
 scenes:
 - title: O que se vê no corte?
@@ -25,7 +24,6 @@ scenes:
 
     [Ver a explicação ilustrada →](../contra-a-fibra/)'
   photo: fibra-cena
-group: Antes do lume
 note: 'Texto original do projeto, em revisão: ainda não foi conferido por um profissional.'
 sources:
 - label: Meat Science and Nutrition — Meat colour (eCampus Ontario / BCcampus)
@@ -34,4 +32,6 @@ sources:
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32000R1760
 - label: Regulamento de Execução (UE) 2017/1182 — classificação de carcaças
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32017R1182
+chapter: 3
 ---
+

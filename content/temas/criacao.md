@@ -1,7 +1,6 @@
 ---
 title: Criação
-parent: prato
-kicker: Etapa 2
+kicker: O animal
 lead: Fora ou dentro, depende da raça, do clima e do criador.
 hook: Onde vive o animal até ao abate?
 order: 2
@@ -37,4 +36,5 @@ sources:
   url: https://www.ptpt.pt/en/produtos/68
 - label: Carnalentejana DOP
   url: https://ptpt.pt/en/produtos/8
+chapter: 1
 ---

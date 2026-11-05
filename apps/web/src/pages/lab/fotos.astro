@@ -2,14 +2,13 @@
 import Base from "../../layouts/Base.astro";
 import credits from "../../data/images.json";
 import { getCollection } from "astro:content";
-const all = (await getCollection("temas")).sort((a, b) => (a.data.parent === b.data.parent ? a.data.order - b.data.order : a.data.parent === "carne" ? -1 : 1));
+const all = (await getCollection("temas")).sort((a, b) => a.data.order - b.data.order);
 const has = (id: string) => !!(credits as Record<string, any>)[id];
 type Row = { id: string; role: string; spec: string; page: string; url: string; what: string };
 const rows: Row[] = [
-  { id: "prato-capa", role: "Capa", spec: "2400×1350", page: "Da Terra à Mesa (hub)", url: "da-pastagem-ao-prato/", what: "Imagem de abertura de Da Terra à Mesa" },
 ];
 for (const t of all) {
-  const root = t.data.parent === "prato" ? "da-pastagem-ao-prato/" : "carne/";
+  const root = "viagem/";
   rows.push({ id: t.data.photo!, role: "Capa", spec: "2400×1350", page: t.data.title, url: `${root}${t.id}/`, what: t.data.lead });
   for (const s of t.data.scenes) if (s.photo) rows.push({ id: s.photo, role: "Cena", spec: "2000×1600", page: t.data.title, url: `${root}${t.id}/`, what: `${s.title} ${s.text}` });
 }

@@ -1,10 +1,9 @@
 ---
 title: Os cortes
-parent: carne
-kicker: Antes do lume
+kicker: A carne
 lead: Onde fica cada peça e o que pede.
 hook: De que parte do animal vem cada corte?
-order: 5
+order: 11
 photo: cortes-capa
 scenes:
 - title: A regra de ouro.
@@ -57,9 +56,9 @@ scenes:
 
 
     [Explorar anatomia e cortes em 3D →](../../anatomia-cortes/)'
-group: Antes do lume
 note: 'Texto original do projeto, em revisão: ainda não foi conferido por um profissional. Nomes de cortes e equivalências anatómicas podem variar por região e talho.'
 sources:
 - label: Meat Science and Nutrition (eCampus Ontario / BCcampus)
   url: https://opentextbc.ca/meatcutting/
+chapter: 3
 ---

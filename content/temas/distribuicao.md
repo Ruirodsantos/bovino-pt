@@ -1,10 +1,9 @@
 ---
 title: Distribuição
-parent: prato
-kicker: Etapa 8
+kicker: Do talho ao lume
 lead: Do talho ao prato.
 hook: Por onde chega a carne a casa?
-order: 8
+order: 13
 photo: distribuicao-capa
 scenes:
 - title: Vários caminhos.
@@ -20,4 +19,5 @@ note: Texto de enquadramento geral, assinalado como tal e ligado à legislação
 sources:
 - label: Regulamento (CE) n.º 1760/2000
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32000R1760
+chapter: 4
 ---

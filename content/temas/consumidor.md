@@ -1,10 +1,9 @@
 ---
 title: Consumidor
-parent: prato
-kicker: Etapa 9
+kicker: À mesa
 lead: No fim do percurso, a mesa.
 hook: E agora, que carne levo?
-order: 9
+order: 22
 photo: consumidor-capa
 scenes:
 - title: O rótulo diz de onde vem.
@@ -13,7 +12,7 @@ scenes:
   text: 'Ponto, descanso e corte decidem o resultado tanto como a raça.
 
 
-    [Os pontos de cozedura →](../../carne/pontos/) · [Servir →](../../carne/servir/)'
+    [Os pontos de cozedura →](../pontos/) · [Servir →](../servir/)'
 - title: Uma raça, um prato.
   text: '- **[Mirandesa](../../racas/mirandesa/)**: A posta mirandesa é o prato que dá fama à raça.
 
@@ -23,4 +22,6 @@ scenes:
 
     [Conhecer as 15 raças →](../../racas/)'
 note: Texto de enquadramento geral, assinalado como tal e ligado à legislação. Confirme as versões dos diplomas na fonte oficial antes de qualquer uso profissional.
+chapter: 5
 ---
+

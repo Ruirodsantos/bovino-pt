@@ -1,10 +1,9 @@
 ---
 title: A gordura
-parent: carne
-kicker: Carne crua
+kicker: A carne
 lead: Onde mora o sabor.
 hook: Qual das três gorduras faz o sabor?
-order: 2
+order: 9
 photo: gordura-capa
 scenes:
 - title: Onde mora o sabor?
@@ -29,7 +28,6 @@ scenes:
     E a [maturação](../maturacao/) acentua o sabor que a gordura transporta.'
 - title: E nas raças portuguesas?
   text: Como cada raça portuguesa se comporta nestes aspetos é matéria de pesquisa em curso. Só será publicada quando houver fonte.
-group: Antes do lume
 note: 'Texto original do projeto, em revisão: ainda não foi conferido por um profissional.'
 sources:
 - label: Meat Science and Nutrition — Meat colour (eCampus Ontario / BCcampus)
@@ -38,4 +36,5 @@ sources:
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32000R1760
 - label: Regulamento de Execução (UE) 2017/1182 — classificação de carcaças
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32017R1182
+chapter: 3
 ---

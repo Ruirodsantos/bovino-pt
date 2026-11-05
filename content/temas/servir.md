@@ -1,10 +1,9 @@
 ---
 title: Servir
-parent: carne
 kicker: À mesa
 lead: O prato é a última etapa e a que o cliente vê.
 hook: O que decide o último minuto?
-order: 12
+order: 20
 photo: servir-capa
 scenes:
 - title: Um bom produto perde-se num mau prato.
@@ -39,9 +38,9 @@ scenes:
 
 
     Isso exige trabalho que não se faz num texto: provas, medições, visitas a criadores e a câmaras de maturação, conversas com chefs e talhantes. Estão previstas na lista de pesquisa do projeto e serão publicadas só quando verificadas.'
-group: À mesa
 note: 'Texto original do projeto, em revisão: ainda não foi conferido por um profissional.'
 sources:
 - label: Guia Michelin — maturação e El Capricho
   url: https://guide.michelin.com/es/es/articulo/features/en-que-consiste-la-maduracion-de-la-carne
+chapter: 5
 ---

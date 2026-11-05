@@ -4,50 +4,44 @@ import Img from "../components/proto/Img.astro";
 import credits from "../data/images.json";
 import { getCollection } from "astro:content";
 import { href } from "../i18n";
-interface Props { parent: "carne" | "prato" }
-const { parent } = Astro.props;
-const prato = parent === "prato";
-const root = prato ? "da-pastagem-ao-prato/" : "carne/";
-const all = (await getCollection("temas")).filter((t) => t.data.parent === parent).sort((a, b) => a.data.order - b.data.order);
+import { CHAPTERS, EXTRAS } from "../lib/viagem";
+const all = (await getCollection("temas")).sort((a, b) => a.data.order - b.data.order);
 const has = (id?: string) => !!id && !!(credits as Record<string, any>)[id];
-const groups: { name: string; items: typeof all }[] = [];
-for (const t of all) { const g = prato ? "" : (t.data.group ?? ""); let x = groups.find((y) => y.name === g); if (!x) groups.push((x = { name: g, items: [] })); x.items.push(t); }
-const heroId = prato ? "prato-capa" : "carne-capa";
+const heroId = "carne-capa";
 const heroOk = has(heroId);
-const b = import.meta.env.BASE_URL;
-const title = prato ? "Da Terra à Mesa" : "A carne";
-const lead = prato ? "Do nascimento ao prato, em nove etapas." : "Da origem ao sabor: cada tema, uma página.";
-const intro = prato ? "Cada etapa responde a uma pergunta. Siga na ordem, como o animal faz o caminho: do pasto à mesa." : "Três momentos: o que ver antes do lume, o que fazer no lume, o que servir à mesa. Cada paragem responde a uma pergunta.";
-const promise: Record<string, string> = { "Antes do lume": "Aprender a olhar: cor, gordura, fibra, cortes e tempo.", "O lume": "Cada temperatura muda a carne. Saber o quê, e quando parar.", "À mesa": "O último minuto decide o que o cliente recorda." };
-const idx = (t: any) => all.indexOf(t) + 1;
+const title = "A viagem";
+const lead = `Do pasto ao prato, em ${all.length} paragens.`;
+const intro = "Cinco capítulos, pela ordem em que o animal faz o caminho. Cada paragem responde a uma pergunta.";
 ---
-<Base lang="pt" overlay title={title} description={lead} enPath={href("en", root)}>
+<Base lang="pt" overlay title={title} description={lead} enPath={href("en", "da-pastagem-ao-prato/")}>
   <header class:list={["hb-hero", !heroOk && "hb-plain"]}>
     {heroOk && <Img id={heroId} sizes="100vw" eager class="hb-bg" />}
-    {!heroOk && <div class="tp-slotlabel"><b>FOTO · CAPA</b> {heroId}<br />2400 × 1350 px · 16:9 · horizontal</div>}
     <div class="hb-in"><h1>{title}</h1><p>{lead}</p></div>
   </header>
   <div class="hb-body">
     <p class="hb-intro">{intro}</p>
-    <a class="hb-start" href={href("pt", `${root}${all[0].id}/`)}>{prato ? "Começar pelo nascimento" : "Começar a viagem"} →</a>
-    {groups.map((g) => (
+    <a class="hb-start" href={href("pt", `viagem/${all[0].id}/`)}>Começar a viagem →</a>
+    {CHAPTERS.map((c) => (
       <section class="hb-chap">
-        {g.name && <h2>{g.name}</h2>}
-        {g.name && <p class="hb-promise">{promise[g.name]}</p>}
+        <span class="hb-cn">{c.n} / {CHAPTERS.length}</span>
+        <h2>{c.name}</h2>
+        <p class="hb-promise">{c.promise}</p>
         <ol class="hb-trail">
-          {g.items.map((t) => (
+          {all.filter((t) => t.data.chapter === c.n).map((t) => (
+            <>
             <li>
-              <a href={href("pt", `${root}${t.id}/`)}>
-                <span class="hb-dot">{idx(t)}</span>
+              <a href={href("pt", `viagem/${t.id}/`)}>
+                <span class="hb-dot">{t.data.order}</span>
                 <span class="hb-txt"><strong>{t.data.title}</strong><em>{t.data.hook}</em></span>
-                {has(t.data.photo) && <span class="hb-th"><Img id={t.data.photo!} sizes="160px" /></span>}
+                {has(t.data.photo) && <span class="hb-th"><Img id={t.data.photo!} sizes="160px" flat /></span>}
               </a>
             </li>
+            {EXTRAS[t.id] && <li class="hb-extra"><a href={href("pt", EXTRAS[t.id].href)}><span class="hb-dot">+</span><span class="hb-txt"><strong>{EXTRAS[t.id].title}</strong><em>{EXTRAS[t.id].hook}</em></span></a></li>}
+            </>
           ))}
         </ol>
       </section>
     ))}
-    {!prato && <section class="hb-chap"><h2>E em 3D</h2><p class="hb-promise">Veja onde fica cada corte no animal.</p><ol class="hb-trail"><li><a href={href("pt", "anatomia-cortes/")}><span class="hb-dot">3D</span><span class="hb-txt"><strong>Anatomia e cortes</strong><em>Rode o animal e toque numa peça.</em></span></a></li></ol></section>}
   </div>
 </Base>
 <script is:inline>if(/[?&]fotos/.test(location.search))document.documentElement.classList.add("show-slots");</script>
@@ -60,7 +54,7 @@ const idx = (t: any) => all.indexOf(t) + 1;
   .hb-body .hb-intro{max-width:36rem;margin:0 auto 1.5rem!important;font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.5;text-align:center}
   .hb-start{display:block;width:max-content;margin:0 auto clamp(3rem,7vw,5rem);background:#e9e5d6;color:#111a15!important;padding:1rem 2rem;border-radius:99px;text-decoration:none;font-weight:600}
   .hb-chap{max-width:44rem;margin:0 auto clamp(3rem,7vw,5rem)}
-  .hb-chap h2{color:#fff;font:500 clamp(2rem,4.5vw,3.2rem)/1.05 var(--display);letter-spacing:-.03em;margin:0}.hb-promise{margin:.4rem 0 1.8rem;color:#a9bfa0}
+  .hb-cn{display:block;font-size:.8rem;letter-spacing:.2em;color:#a9bfa0;margin-bottom:.4rem}.hb-extra .hb-dot{background:transparent;border:1px solid #6b8a6b}.hb-extra strong{font-size:1.2rem!important}.hb-chap h2{color:#fff;font:500 clamp(2rem,4.5vw,3.2rem)/1.05 var(--display);letter-spacing:-.03em;margin:0}.hb-promise{margin:.4rem 0 1.8rem;color:#a9bfa0}
   .hb-trail{list-style:none;margin:0;padding:0 0 0 1.4rem;border-left:2px solid #3a5546}
   .hb-trail li{position:relative;margin:0}.hb-trail a{display:flex;align-items:center;gap:1rem;padding:1.1rem 0 1.1rem 1.6rem;text-decoration:none;color:#e9e5d6;transition:transform .3s}.hb-trail a:hover{transform:translateX(6px)}
   .hb-dot{position:absolute;left:-2.15rem;width:1.7rem;height:1.7rem;border-radius:50%;background:#3a5546;color:#fff;font-size:.7rem;display:grid;place-items:center}

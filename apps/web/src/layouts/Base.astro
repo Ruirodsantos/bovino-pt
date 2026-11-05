@@ -13,8 +13,13 @@ const brand = T("Bovino Português", "Portuguese Cattle");
 const nav: [string, string, string[]][] = [
   ["", T("Início", "Home"), []],
   ["racas/", T("As raças", "The breeds"), ["racas/"]],
-  ["carne/", T("A carne", "The meat"), ["carne/"]],
-  ["da-pastagem-ao-prato/", T("Da Terra à Mesa", "From Land to Table"), ["da-pastagem-ao-prato/"]],
+  ...(lang === "en" ? [
+    ["carne/", "The meat", ["carne/"]],
+    ["da-pastagem-ao-prato/", "From Land to Table", ["da-pastagem-ao-prato/"]],
+  ] as [string, string, string[]][] : [
+    ["viagem/", "A viagem", ["viagem/", "anatomia-cortes/"]],
+    ["guardioes-da-terra/", "Guardiões", ["guardioes-da-terra/"]],
+  ] as [string, string, string[]][]),
   ["dados/", T("Dados", "Data"), ["dados/", "observatorio/", "descobertas/", "metodologia/"]],
 ];
 const active = (p: string, g: string[]) => (p === "" ? path === pre : g.some((x) => path.startsWith(`${pre}${x}`)));

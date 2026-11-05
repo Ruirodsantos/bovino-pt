@@ -135,7 +135,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                 </div>
                 {rg && MORE[id] && <p class="srcs" style="margin-top:1em"><strong>{T("Saber mais", "Learn more")}:</strong> {MORE[id].map((x, q) => <>{q > 0 && " · "}<a href={x.u} rel="noopener">{x.l} ↗</a></>)}</p>}
                 {id === "caracteristicas" && own && own.kind === "raça" && FRAMED.has(own.id) && <p class="srcs">{T("A fotografia mostra animais numa feira ou recinto; procura-se uma fotografia melhor da raça em pastoreio.", "The photograph shows animals at a fair or enclosure; a better photograph of the breed grazing is being sought.")}</p>}
-                {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, "da-pastagem-ao-prato/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →")}</a></p>}
+                {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, lang === "en" ? "da-pastagem-ao-prato/" : "viagem/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →")}</a></p>}
                 {id === "onde" && rg && <p style="margin-top:1.5em"><a class="btn" href="https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" rel="noopener">DGADR — Carne Ramo Grande DOP ↗</a></p>}
                 {id === "onde" && <p class="srcs">{T("Não indicamos pontos de venda nem preços que não tenhamos verificado.", "We do not list points of sale or prices we have not verified.")}</p>}
               </div>
@@ -175,7 +175,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
       <span class="eyebrow">{T("Continuar a descobrir", "Keep discovering")}</span>
       <nav class="pn" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;margin-top:var(--s2)">
         <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `racas/${prev.slug}/`)}>← {prev.official_name}</a>
-        <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, "da-pastagem-ao-prato/")}>{T("Da pastagem ao prato", "Pasture to plate")}</a>
+        <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, lang === "en" ? "da-pastagem-ao-prato/" : "viagem/")}>{T("Da pastagem ao prato", "Pasture to plate")}</a>
         <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `racas/${next.slug}/`)}>{next.official_name} →</a>
       </nav>
     </div>

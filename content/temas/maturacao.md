@@ -1,10 +1,9 @@
 ---
 title: A maturação
-parent: carne
-kicker: Antes do lume
+kicker: A carne
 lead: Dar tempo à carne.
 hook: O que faz o tempo à carne?
-order: 6
+order: 12
 photo: maturacao-capa
 scenes:
 - title: 'Maturar: deixar a carne repousar.'
@@ -77,7 +76,6 @@ scenes:
 
 
     [Ver os pontos de cozedura →](../pontos/)'
-group: Antes do lume
 note: 'Texto original do projeto, em revisão: ainda não foi conferido por um profissional. Os intervalos de temperatura, humidade, perdas e prazos são ordens de grandeza da literatura técnica e ainda não foram conferidos com fontes primárias. Os dados sobre El Capricho vêm do Guia Michelin e do Diario de León.'
 sources:
 - label: Guia Michelin — «En qué consiste la maduración de la carne»
@@ -86,4 +84,5 @@ sources:
   url: https://www.diariodeleon.es/ocio/gastronomia/251224/2070416/restaurante-leon-time-mejor-carne-buey_amp.html
 - label: Dry aging of beef; Review (J Anim Sci Technol, 2016) — a consultar, não lida nesta sessão
   url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4872334
+chapter: 3
 ---

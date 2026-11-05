@@ -12,7 +12,7 @@ const descobertasSchema = z.object({
   sources: src.min(1),
 });
 const carneSchema = z.object({ title: z.string(), order: z.number(), summary: z.string(), photo: z.string().optional(), sources: src.default([]) });
-const temaSchema = z.object({ parent: z.enum(["carne", "prato"]), group: z.string().optional(), title: z.string(), hook: z.string().optional(), capa: z.enum(["full", "figure"]).optional(), note: z.string().optional(), kicker: z.string(), lead: z.string(), order: z.number(), photo: z.string().optional(),
+const temaSchema = z.object({ chapter: z.number(), title: z.string(), hook: z.string().optional(), capa: z.enum(["full", "figure"]).optional(), note: z.string().optional(), kicker: z.string(), lead: z.string(), order: z.number(), photo: z.string().optional(),
   scenes: z.array(z.object({ title: z.string(), text: z.string(), photo: z.string().optional(), fig: z.string().optional(), pos: z.string().optional(), diagram: z.enum(["myoglobin", "cuts", "classificacao"]).optional() })),
   sources: src.default([]) });
 const racasSchema = z.object({ title: z.string(), summary: z.string(), catalogue_page: z.number().optional() });

@@ -1,10 +1,9 @@
 ---
 title: Os pontos
-parent: carne
-kicker: O lume
+kicker: Do talho ao lume
 lead: Cada temperatura, uma mudança.
 hook: Como se escolhe o ponto da carne?
-order: 7
+order: 15
 photo: pontos-capa
 scenes:
 - title: Cozer não é «queimar até ficar pronto».
@@ -47,11 +46,11 @@ scenes:
 
 
     Quem serve carne mal passada a clientes assume essa responsabilidade e deve comprar carne de origem controlada.'
-group: O lume
 note: 'Texto original do projeto, em revisão: ainda não foi conferido por um profissional. As temperaturas são as de uso corrente em cozinha profissional e aproximações de manuais de ciência culinária. A recomendação do USDA ainda será verificada na fonte.'
 sources:
 - label: Harold McGee, On Food and Cooking (obra de referência; páginas a conferir)
   url: https://www.haroldmcgee.com/
 - label: USDA FSIS — Safe minimum internal temperature (a verificar)
   url: https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-minimum-internal-temperature
+chapter: 4
 ---

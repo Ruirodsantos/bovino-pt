@@ -1,10 +1,9 @@
 ---
 title: O sal
-parent: carne
-kicker: O lume
+kicker: Do talho ao lume
 lead: Quando se salga muda a crosta, e não apenas o sabor.
 hook: Quando se deve salgar a carne?
-order: 9
+order: 17
 photo: sal-capa
 scenes:
 - title: 'Cedo: o sal tem tempo.'
@@ -16,11 +15,11 @@ scenes:
   text: Uma superfície seca ajuda a crosta. Salgar pouco antes de levar ao lume deixa a superfície húmida, o que atrapalha a crosta.
 - title: Teste na sua cozinha.
   text: É um ponto a testar na prática com a peça em causa.
-group: O lume
 note: 'Texto original do projeto, em revisão: ainda não foi conferido por um profissional.'
 sources:
 - label: Harold McGee, On Food and Cooking (obra de referência; páginas a conferir)
   url: https://www.haroldmcgee.com/
 - label: USDA FSIS — Safe minimum internal temperature (a verificar)
   url: https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-minimum-internal-temperature
+chapter: 4
 ---
