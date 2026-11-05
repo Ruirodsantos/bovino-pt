@@ -24,11 +24,14 @@ const fichaSchema = z.object({
   sections: z.array(z.object({ id: z.string(), title: z.string(), summary: z.string(), blocks: z.array(block) })),
 });
 const ficha = (dir: string) => defineCollection({ loader: glob({ pattern: "*.yaml", base: `../../content/${dir}` }), schema: fichaSchema });
-// Portuguese (default) and English editions. English files live in content/en/<collection>/ with the same file names.
+// Portuguese (default) + en/es/fr editions: content/<lang>/<collection>/ with the same file names. Missing translations fall back en → pt (see lib/content.ts).
 const make = (dir: string, schema: z.ZodTypeAny) => defineCollection({ loader: glob({ pattern: "*.md", base: `../../content/${dir}` }), schema });
-export const collections = {
-  descobertas: make("descobertas", descobertasSchema), carne: make("carne", carneSchema), racas: make("racas", racasSchema),
-  descobertas_en: make("en/descobertas", descobertasSchema), carne_en: make("en/carne", carneSchema), racas_en: make("en/racas", racasSchema),
-  temas: make("temas", temaSchema),
-  fichas: ficha("fichas"), fichas_en: ficha("en/fichas"),
+const sets: Record<string, any> = {
+  descobertas: (d: string) => make(d, descobertasSchema), racas: (d: string) => make(d, racasSchema),
+  temas: (d: string) => make(d, temaSchema), fichas: (d: string) => ficha(d),
 };
+export const collections: Record<string, any> = {};
+for (const [name, f] of Object.entries(sets)) {
+  collections[name] = f(name);
+  for (const l of ["en", "es", "fr"]) collections[`${name}_${l}`] = f(`${l}/${name}`);
+}

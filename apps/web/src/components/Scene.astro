@@ -1,12 +1,12 @@
 ---
 import Photo from "./Photo.astro";
 import credits from "../data/images.json";
-import { licenseLabel, tr, type Lang } from "../i18n";
+import { lf, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { id: string; lang: Lang; kicker?: string; title: string; text?: string; href?: string; linkText?: string; pos?: string; eager?: boolean; h1?: boolean; cue?: string; }
 const { id, lang, kicker, title, text, href, linkText, pos = "50% 50%", eager = false, h1 = false, cue } = Astro.props;
 const T = tr(lang);
 const c = (credits as Record<string, any>)[id];
-const cap = c && lang === "en" ? (c.caption_en ?? c.caption) : c?.caption;
+const cap = c ? lf(c, "caption", lang) : undefined;
 ---
 <section class="scene" style={`--pos:${pos}`}>
   <Photo id={id} sizes="100vw" caption={false} eager={eager} lang={lang} />

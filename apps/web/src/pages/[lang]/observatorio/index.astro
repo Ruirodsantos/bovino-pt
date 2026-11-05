@@ -1,0 +1,7 @@
+---
+import View from "../../../views/Observatorio.astro";
+import { NONPT } from "../../../lib/langs";
+export const getStaticPaths = () => NONPT.map((lang) => ({ params: { lang }, props: { lang } }));
+const { lang } = Astro.props;
+---
+<View lang={lang} />

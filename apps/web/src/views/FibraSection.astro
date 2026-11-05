@@ -30,10 +30,10 @@ const more = [
     a: [T("Sim, muito. Uma carne com bastante tecido conjuntivo pode precisar de uma confeção lenta e prolongada para ficar tenra, e cortá-la contra a fibra não compensa uma confeção inadequada.", "Yes, a lot. Meat with plenty of connective tissue may need slow, prolonged cooking to become tender, and slicing it against the grain will not make up for unsuitable cooking.")] },
 ];
 ---
-<Base lang={lang} enPath={lang === "pt" ? href("en", "carne/against-the-grain/") : undefined} title={T("Como cortar carne contra a fibra", "How to cut meat against the grain")} description={T("Um pequeno detalhe que pode fazer uma grande diferença na tenrura.", "A small detail that can make a big difference to tenderness.")}>
+<Base lang={lang} title={T("Como cortar carne contra a fibra", "How to cut meat against the grain")} description={T("Um pequeno detalhe que pode fazer uma grande diferença na tenrura.", "A small detail that can make a big difference to tenderness.")}>
   <article class="fb">
     <header class="fb-hero reveal">
-      <a class="back" href={href(lang, lang === "en" ? "carne/" : "viagem/fibra/")}>← {T("A fibra", "The meat")}</a>
+      <a class="back" href={href(lang, "viagem/fibra/")}>← {T("A fibra", "The meat")}</a>
       <span class="eyebrow">{T("A carne · técnica", "The meat · technique")}</span>
       <h1>{T("Como cortar carne contra a fibra", "How to cut meat against the grain")}</h1>
       <p class="sub">{T("Um pequeno detalhe que pode fazer uma grande diferença na tenrura.", "A small detail that can make a big difference to tenderness.")}</p>

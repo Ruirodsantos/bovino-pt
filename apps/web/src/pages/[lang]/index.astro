@@ -1,0 +1,7 @@
+---
+import Home from "../../views/Home.astro";
+import { NONPT } from "../../lib/langs";
+export const getStaticPaths = () => NONPT.map((lang) => ({ params: { lang }, props: { lang } }));
+const { lang } = Astro.props;
+---
+<Home lang={lang} />

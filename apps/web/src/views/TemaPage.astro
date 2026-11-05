@@ -7,11 +7,12 @@ import Classificacao from "../components/diagrams/Classificacao.astro";
 import credits from "../data/images.json";
 import { marked } from "marked";
 import { href, licenseLabel, tr, type Lang } from "../i18n";
+import { HUB } from "../lib/viagem";
 interface Props { lang: Lang; d: any; prev?: any; next?: any }
 const { lang, d, prev, next } = Astro.props;
 const T = tr(lang);
 const root = "viagem/";
-const hubName = "A viagem";
+const hubName = HUB.title[lang];
 const has = (id?: string) => !!id && !!(credits as Record<string, any>)[id];
 const cr = (id: string) => (credits as Record<string, any>)[id];
 const md = (t: string) => marked.parse(t) as string;
@@ -28,7 +29,7 @@ const wide = (s: any) => !!s.diagram || /\n\|/.test(s.text) || s.text.startsWith
 const num = String(d.data.order).padStart(2, "0");
 const bgCredit = has(bgId) && !cr(bgId).ai ? cr(bgId) : null;
 ---
-<Base lang={lang} overlay title={d.data.title} description={d.data.lead} enPath={href("en", "da-pastagem-ao-prato/")}>
+<Base lang={lang} overlay title={d.data.title} description={d.data.lead}>
   <div class="tp-fixed" aria-hidden="true">{has(bgId) && <Img id={bgId} sizes="100vw" eager lang={lang} class="tp-fbg" />}</div>
   <div class="tp-page">
     <header class="tp-top">
@@ -41,7 +42,7 @@ const bgCredit = has(bgId) && !cr(bgId).ai ? cr(bgId) : null;
         </div>
       </div>
     </header>
-    <div class="tp-hook"><span>{T("A pergunta", "The question")}</span><p>{d.data.hook}</p></div>
+    <div class="tp-hook"><span>{T("A pergunta", "The question", "La pregunta", "La question")}</span><p>{d.data.hook}</p></div>
     {d.data.scenes.map((s: any, i: number) => {
       const fid = s.fig ?? s.photo ?? (i === capaIdx ? capaFig : null);
       return (
@@ -59,11 +60,11 @@ const bgCredit = has(bgId) && !cr(bgId).ai ? cr(bgId) : null;
       );
     })}
     <section class="tp-s"><div class="tp-card tp-end">
-      {d.data.note && <p class="tp-note"><b>{T("Estado do texto", "Status")}:</b> {d.data.note}</p>}
-      {d.data.sources.length > 0 && <><h3>{T("Fontes", "Sources")}</h3><ul>{d.data.sources.map((s: any) => <li>{s.url ? <a href={s.url} rel="noopener">{s.label}</a> : s.label}</li>)}</ul></>}
-      {bgCredit && <p class="tp-bgc">{T("Imagem de fundo", "Background image")}: {bgCredit.caption} · {T("Foto", "Photo")}: <a href={bgCredit.source_page} rel="noopener">{bgCredit.author}</a> · {licenseLabel(lang, bgCredit.license)}</p>}
+      {d.data.note && <p class="tp-note"><b>{T("Estado do texto", "Status", "Estado del texto", "Statut du texte")}:</b> {d.data.note}</p>}
+      {d.data.sources.length > 0 && <><h3>{T("Fontes", "Sources", "Fuentes", "Sources")}</h3><ul>{d.data.sources.map((s: any) => <li>{s.url ? <a href={s.url} rel="noopener">{s.label}</a> : s.label}</li>)}</ul></>}
+      {bgCredit && <p class="tp-bgc">{T("Imagem de fundo", "Background image", "Imagen de fondo", "Image de fond")}: {bgCredit.caption} · {T("Foto", "Photo", "Foto", "Photo")}: <a href={bgCredit.source_page} rel="noopener">{bgCredit.author}</a> · {licenseLabel(lang, bgCredit.license)}</p>}
     </div></section>
-    <section class="tp-s tp-nx"><a class="tp-card tp-next" href={next ? href(lang, `${root}${next.id}/`) : href(lang, root)}><span>{next ? T("Seguinte", "Next") : T("Voltar a", "Back to")}</span><strong>{next ? next.data.title : hubName} →</strong></a></section>
+    <section class="tp-s tp-nx"><a class="tp-card tp-next" href={next ? href(lang, `${root}${next.id}/`) : href(lang, root)}><span>{next ? T("Seguinte", "Next", "Siguiente", "Suivant") : T("Voltar a", "Back to", "Volver a", "Retour à")}</span><strong>{next ? next.data.title : hubName} →</strong></a></section>
   </div>
 </Base>
 <script is:inline>if(/[?&]fotos/.test(location.search))document.documentElement.classList.add("show-slots");</script>

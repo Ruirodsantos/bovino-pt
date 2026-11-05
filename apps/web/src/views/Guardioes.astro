@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Img from "../components/proto/Img.astro";
 import credits from "../data/images.json";
-import { href, licenseLabel, tr, type Lang } from "../i18n";
+import { lf, href, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = tr(lang);
@@ -10,7 +10,7 @@ const b = import.meta.env.BASE_URL;
 const cr = (id: string) => {
   const c0 = (credits as Record<string, any>)[id];
   if (!c0) return "";
-  const cap = lang === "en" ? c0.caption_en ?? c0.caption : c0.caption;
+  const cap = lf(c0, "caption", lang);
   return `${cap} · ${T("Foto", "Photo")}: ${c0.author} · ${licenseLabel(lang, c0.license)}`;
 };
 const crUrl = (id: string) => (credits as Record<string, any>)[id]?.source_page;
@@ -24,12 +24,12 @@ const S = {
   gpp: { l: T("GPP — PEPAC, ficha da intervenção E.7.1 Apoio à Instalação de Jovens Agricultores", "GPP — CAP Strategic Plan, intervention sheet E.7.1 Support for the Setting-up of Young Farmers"), u: "https://www.gpp.pt/images/PEPAC/Fichas_PEPAC/Intervencoes_PEPAC/E_7_1.pdf" },
   lsk: { l: T("Eurostat — ef_lsk_main, explorações com bovinos e número de bovinos, Portugal, 2005–2023 (atualizado a 17.06.2026)", "Eurostat — ef_lsk_main, holdings with cattle and number of cattle, Portugal, 2005–2023 (updated 17.06.2026)"), u: "https://ec.europa.eu/eurostat/databrowser/view/ef_lsk_main/default/table" },
   mgr: { l: T("Eurostat — ef_m_farmang, explorações por idade do dirigente, Portugal e UE-27, 2010–2023 (atualizado a 17.06.2026)", "Eurostat — ef_m_farmang, farms by age of the manager, Portugal and EU-27, 2010–2023 (updated 17.06.2026)"), u: "https://ec.europa.eu/eurostat/databrowser/view/ef_m_farmang/default/table" },
-  rot: { l: T("Regulamento (CE) n.º 1760/2000 — identificação e registo de bovinos e rotulagem da carne", "Regulation (EC) No 1760/2000 — identification and registration of cattle and beef labelling"), u: `https://eur-lex.europa.eu/legal-content/${lang === "en" ? "EN" : "PT"}/TXT/?uri=CELEX:32000R1760` },
+  rot: { l: T("Regulamento (CE) n.º 1760/2000 — identificação e registo de bovinos e rotulagem da carne", "Regulation (EC) No 1760/2000 — identification and registration of cattle and beef labelling"), u: `https://eur-lex.europa.eu/legal-content/${lang !== "pt" ? "EN" : "PT"}/TXT/?uri=CELEX:32000R1760` },
 };
 const ordem = ["ra2019", "drem", "cat", "dgadr", "gpp", "rot", "lsk", "mgr"] as const;
 const num = Object.fromEntries(ordem.map((k, i) => [k, i + 1])) as Record<(typeof ordem)[number], number>;
 
-const vida = lang === "en" ? [
+const vida = lang !== "pt" ? [
   "Long before daybreak, someone is already at work.",
   "There are no guaranteed weekends. Animals don’t take public holidays. There is no day when the land stops needing care.",
   "For generations, Portuguese farmers have kept alive breeds, landscapes and knowledge that cannot be learned from books.",

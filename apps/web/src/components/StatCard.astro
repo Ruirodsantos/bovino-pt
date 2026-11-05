@@ -6,12 +6,12 @@ const { stat, big = false, lang = "pt" } = Astro.props;
 const T = tr(lang);
 const display = fmt(stat.value, stat.unit, lang);
 const UNITS: Record<string, string> = { "cabeças": "head", "toneladas": "tonnes" };
-const unit = lang === "en" ? (UNITS[stat.unit] ?? stat.unit) : stat.unit;
+const unit = lang !== "pt" ? (UNITS[stat.unit] ?? stat.unit) : stat.unit;
 const unitShown = stat.unit === "€" ? "" : unit;
-const label = lang === "en" ? (stat.label_en ?? stat.label) : stat.label;
-const context = lang === "en" ? (stat.context_en ?? stat.context) : stat.context;
-const changeRef = lang === "en" ? (stat.change_ref_en ?? stat.change_ref) : stat.change_ref;
-const period = lang === "en" ? (stat.footnote.period_en ?? stat.footnote.period) : stat.footnote.period;
+const label = lang !== "pt" ? (stat.label_en ?? stat.label) : stat.label;
+const context = lang !== "pt" ? (stat.context_en ?? stat.context) : stat.context;
+const changeRef = lang !== "pt" ? (stat.change_ref_en ?? stat.change_ref) : stat.change_ref;
+const period = lang !== "pt" ? (stat.footnote.period_en ?? stat.footnote.period) : stat.footnote.period;
 const ch = stat.change;
 ---
 <article class:list={["stat card reveal", { big }]}>

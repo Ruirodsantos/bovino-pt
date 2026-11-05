@@ -6,8 +6,9 @@ import Img from "../components/proto/Img.astro";
 import credits from "../data/images.json";
 import { breeds, breedEn, cardPhoto, fmtDate, num, type Breed } from "../lib/data";
 import { TERRA, FRASE, FRASE_EN } from "../lib/proto";
-import { getEntry, render } from "astro:content";
-import { href, licenseLabel, tr, type Lang } from "../i18n";
+import { render } from "astro:content";
+import { entryL } from "../lib/content";
+import { locImg, href, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { lang: Lang; b: Breed }
 const { lang, b } = Astro.props;
 const T = tr(lang);
@@ -15,7 +16,7 @@ const base = import.meta.env.BASE_URL;
 const en = breedEn(b.slug);
 const own = cardPhoto(b.slug);
 const heroC0 = own ? (credits as any)[own.id] : null;
-const heroC = heroC0 && lang === "en" ? { ...heroC0, alt: heroC0.alt_en ?? heroC0.alt, caption: heroC0.caption_en ?? heroC0.caption } : heroC0;
+const heroC = locImg(heroC0, lang);
 const FRAMED = new Set(["ramo-grande-feira", "arouquesa-touro", "barrosa-festa"]);
 const framed = !own || FRAMED.has(own.id);
 const BG_LAND: Record<string, string> = { alentejana: "hero-alentejo", mertolenga: "mertola", preta: "montado-pasto", garvonesa: "montado-pasto", algarvia: "monchique", "brava-de-lide": "leziria", arouquesa: "montalegre", maronesa: "montalegre", cachena: "montalegre", barrosa: "montalegre", minhota: "rio-lima", mirandesa: "miranda-douro", jarmelista: "montado-pasto", marinhoa: "baixo-vouga" };
@@ -23,13 +24,13 @@ const bgId0: string = b.slug === "ramo-grande" ? "terceira" : (own?.kind === "ra
 const bgCount = breeds().reduce((m: Record<string, number>, x) => { const k = x.slug === "ramo-grande" ? "terceira" : (BG_LAND[x.slug] ?? "montado-pasto"); m[k] = (m[k] ?? 0) + 1; return m; }, {});
 const bgId: string | null = bgCount[bgId0] > 1 && own?.id !== bgId0 ? null : bgId0;
 const isBreedPhoto = own?.kind === "raça";
-const ficha = (await getEntry(lang === "en" ? "fichas_en" : "fichas", b.slug))?.data ?? null;
-const prof = await getEntry(lang === "en" ? "racas_en" : "racas", b.slug);
+const ficha = (await entryL("fichas", b.slug, lang))?.data ?? null;
+const prof = await entryL("racas", b.slug, lang);
 const Profile = prof ? (await render(prof)).Content : null;
 const all = breeds();
 const i = all.findIndex((x) => x.slug === b.slug);
 const prev = all[(i + all.length - 1) % all.length], next = all[(i + 1) % all.length];
-const solar = lang === "en" ? (en.solar ?? b.solar) : b.solar;
+const solar = lang !== "pt" ? (en.solar ?? b.solar) : b.solar;
 const fallbackFacts = [
   { label: T("Solar", "Homeland"), value: TERRA[b.slug] ?? (solar ?? "").split(" — ")[0] },
   ...(b.herd ? [{ label: T("Efetivo", "Herd"), value: `${num(b.herd.females, lang)} ${T("fêmeas", "females")}` }, { label: T("Criadores", "Breeders"), value: num(b.herd.breeders, lang) }] : []),
@@ -37,7 +38,7 @@ const fallbackFacts = [
 const facts = (ficha?.facts ?? fallbackFacts).map((f) => ({ label: f.label, value: f.value }));
 const intro = ficha?.intro ?? prof?.data.summary ?? "";
 const sec: Record<string, any> = ficha ? Object.fromEntries(ficha.sections.map((s) => [s.id, s])) : {};
-const NAV: Record<string, string> = lang === "en"
+const NAV: Record<string, string> = lang !== "pt"
   ? { historia: "History", territorio: "Territory", caracteristicas: "Characteristics", criacao: "Rearing", carne: "Meat", certificacao: "Certification", onde: "Where to find it", curiosidades: "Curiosities" }
   : { historia: "História", territorio: "Território", caracteristicas: "Características", criacao: "Criação", carne: "Carne", certificacao: "Certificação", onde: "Onde encontrar", curiosidades: "Curiosidades" };
 const SECFIG: Record<string, string> = { historia: "acores-sao-jorge", criacao: "acores-pico-lagoa", curiosidades: "acores-corvo" };
@@ -47,7 +48,7 @@ const MORE: Record<string, { l: string; u: string }[]> = {
   certificacao: [{ l: "Carne Ramo Grande DOP (DGADR)", u: "https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" }, { l: "Caderno de especificações (PDF)", u: "https://tradicional.dgadr.gov.pt/images/prod_imagens/carne/docs/CE_Ramo_Grande_DOP.pdf" }],
 };
 const order = ["historia", "territorio", "caracteristicas", "criacao", "carne", "certificacao", "onde", "curiosidades"].filter((id) => sec[id]);
-const H2: Record<string, string> = lang === "en"
+const H2: Record<string, string> = lang !== "pt"
   ? { historia: "A breed born of the islands.", territorio: "Nine islands. One production area.", caracteristicas: "Red, strong, large.", criacao: "Grazing almost all year.", carne: "Bright red and firm.", certificacao: "Carne Ramo Grande PDO.", onde: "Under research.", curiosidades: "Small curiosities." }
   : { historia: "Uma raça nascida da ilha.", territorio: "Nove ilhas. Uma só área de produção.", caracteristicas: "Vermelha, forte, de grande porte.", criacao: "Pastoreio quase todo o ano.", carne: "Vermelho-vivo e firme.", certificacao: "Carne Ramo Grande DOP.", onde: "Em investigação.", curiosidades: "Pequenas curiosidades." };
 const rg = b.slug === "ramo-grande";
@@ -79,10 +80,10 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
       <a class="breed-back" href={href(lang, "racas/")}>← {T("As 15 raças", "The 15 breeds")}</a>
       <span class="breed-counter">{T("Raça autóctone portuguesa", "Portuguese native breed")} · {String(i + 1).padStart(2, "0")}/15</span>
       <h1>{b.official_name}</h1>
-      <p class="breed-hero-line">{lang === "en" ? FRASE_EN[b.slug] : FRASE[b.slug]}</p>
+      <p class="breed-hero-line">{lang !== "pt" ? FRASE_EN[b.slug] : FRASE[b.slug]}</p>
       <a class="breed-discover" href="#conhecer">{T("Descobrir a raça", "Discover the breed")} ↓</a>
     </div>
-    <div class="breed-hero-bottom">{!bgId ? null : bgId.endsWith("-ia") ? T("Paisagem do Alentejo", "Alentejo landscape") : <>{lang === "en" ? ((credits as any)[bgId]?.caption_en ?? (credits as any)[bgId]?.caption) : (credits as any)[bgId]?.caption}{(credits as any)[bgId] && <> · {T("Foto", "Photo")}: <a href={(credits as any)[bgId].source_page} rel="noopener" style="color:inherit">{(credits as any)[bgId].author}</a>, {licenseLabel(lang, (credits as any)[bgId].license)}</>}</>}</div>
+    <div class="breed-hero-bottom">{!bgId ? null : bgId.endsWith("-ia") ? T("Paisagem do Alentejo", "Alentejo landscape") : <>{lang !== "pt" ? ((credits as any)[bgId]?.caption_en ?? (credits as any)[bgId]?.caption) : (credits as any)[bgId]?.caption}{(credits as any)[bgId] && <> · {T("Foto", "Photo")}: <a href={(credits as any)[bgId].source_page} rel="noopener" style="color:inherit">{(credits as any)[bgId].author}</a>, {licenseLabel(lang, (credits as any)[bgId].license)}</>}</>}</div>
   </section>
 
   <section class="breed-introduction sec" id="conhecer">
@@ -135,7 +136,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                 </div>
                 {rg && MORE[id] && <p class="srcs" style="margin-top:1em"><strong>{T("Saber mais", "Learn more")}:</strong> {MORE[id].map((x, q) => <>{q > 0 && " · "}<a href={x.u} rel="noopener">{x.l} ↗</a></>)}</p>}
                 {id === "caracteristicas" && own && own.kind === "raça" && FRAMED.has(own.id) && <p class="srcs">{T("A fotografia mostra animais numa feira ou recinto; procura-se uma fotografia melhor da raça em pastoreio.", "The photograph shows animals at a fair or enclosure; a better photograph of the breed grazing is being sought.")}</p>}
-                {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, lang === "en" ? "da-pastagem-ao-prato/" : "viagem/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →")}</a></p>}
+                {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, "viagem/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →")}</a></p>}
                 {id === "onde" && rg && <p style="margin-top:1.5em"><a class="btn" href="https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" rel="noopener">DGADR — Carne Ramo Grande DOP ↗</a></p>}
                 {id === "onde" && <p class="srcs">{T("Não indicamos pontos de venda nem preços que não tenhamos verificado.", "We do not list points of sale or prices we have not verified.")}</p>}
               </div>
@@ -175,7 +176,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
       <span class="eyebrow">{T("Continuar a descobrir", "Keep discovering")}</span>
       <nav class="pn" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;margin-top:var(--s2)">
         <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `racas/${prev.slug}/`)}>← {prev.official_name}</a>
-        <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, lang === "en" ? "da-pastagem-ao-prato/" : "viagem/")}>{T("Da pastagem ao prato", "Pasture to plate")}</a>
+        <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, "viagem/")}>{T("Da pastagem ao prato", "Pasture to plate")}</a>
         <a class="btn ghost" style="color:var(--green-deep)!important" href={href(lang, `racas/${next.slug}/`)}>{next.official_name} →</a>
       </nav>
     </div>

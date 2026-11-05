@@ -42,7 +42,7 @@ function enData(): Record<string, any> {
   return _en;
 }
 export function breedEn(slug: string): BreedEn { return (enData()[slug] ?? {}) as BreedEn; }
-export function fieldLabels(lang: Lang): Record<string, string> { return lang === "en" ? { ...FIELD_LABELS, ...(enData()._field_labels ?? {}) } : FIELD_LABELS; }
+export function fieldLabels(lang: Lang): Record<string, string> { return lang !== "pt" ? { ...FIELD_LABELS, ...(enData()._field_labels ?? {}) } : FIELD_LABELS; }
 
 export function filledFields(b: Breed): number {
   return Object.values(b.fields ?? {}).filter((f) => f.value !== null && f.value !== undefined && f.source_id).length;
@@ -60,10 +60,10 @@ export function num(v: number, lang: Lang = "pt", digits = 0): string {
 }
 export function fmt(v: number, unit = "", lang: Lang = "pt"): string {
   if (unit === "€") {
-    if (v >= 1e6) return lang === "en" ? `€${num(v / 1e6, lang, 1)} million` : `${num(v / 1e6, lang, 1)} M€`;
-    return lang === "en" ? `€${num(v, lang)}` : `${num(v, lang)} €`;
+    if (v >= 1e6) return lang !== "pt" ? `€${num(v / 1e6, lang, 1)} million` : `${num(v / 1e6, lang, 1)} M€`;
+    return lang !== "pt" ? `€${num(v, lang)}` : `${num(v, lang)} €`;
   }
-  if (v >= 1e6) return `${num(v / 1e6, lang, 1)} ${lang === "en" ? "million" : "milhões"}`;
+  if (v >= 1e6) return `${num(v / 1e6, lang, 1)} ${lang !== "pt" ? "million" : "milhões"}`;
   return num(v, lang);
 }
 export function fmtDate(iso?: string | null, lang: Lang = "pt"): string {
@@ -87,7 +87,7 @@ export const REGIONS: Record<string, string[]> = {
   cachena: ["norte"], garvonesa: ["sul"], jarmelista: ["centro"], marinhoa: ["centro"], maronesa: ["norte"], mertolenga: ["sul"],
   minhota: ["norte"], mirandesa: ["norte"], preta: ["sul"], "ramo-grande": ["ilhas"],
 };
-export const REGION_LABELS = (lang: Lang): Record<string, string> => lang === "en"
+export const REGION_LABELS = (lang: Lang): Record<string, string> => lang !== "pt"
   ? { norte: "North", centro: "Centre", sul: "Alentejo and Algarve", ilhas: "Islands" }
   : { norte: "Norte", centro: "Centro", sul: "Alentejo e Algarve", ilhas: "Ilhas" };
 

@@ -43,7 +43,7 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
           {t.photo && <Img id={t.photo.id} sizes="(max-width:820px) 100vw, 60vw" lang={lang} />}
           {t.photo && t.photo.kind !== "raça" && <span class="gap">{T("Paisagem · foto da raça por obter", "Landscape · breed photo to be found")}</span>}
           {!t.photo && <span class="gap">{T("Foto da raça por obter", "Breed photo to be found")}</span>}
-          <div class="t"><span class="r">{TERRA[t.slug]}</span><h3>{t.name}</h3><p class="s">{lang === "en" ? FRASE_EN[t.slug] : FRASE[t.slug]}</p></div>
+          <div class="t"><span class="r">{TERRA[t.slug]}</span><h3>{t.name}</h3><p class="s">{lang !== "pt" ? FRASE_EN[t.slug] : FRASE[t.slug]}</p></div>
         </a>
       ))}
     </div>

@@ -1,0 +1,7 @@
+---
+import HubTemas from "../../../views/HubTemas.astro";
+import { NONPT } from "../../../lib/langs";
+export const getStaticPaths = () => NONPT.map((lang) => ({ params: { lang }, props: { lang } }));
+const { lang } = Astro.props;
+---
+<HubTemas lang={lang} />

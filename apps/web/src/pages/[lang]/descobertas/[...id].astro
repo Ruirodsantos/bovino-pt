@@ -1,0 +1,12 @@
+---
+import DescobertaEntry from "../../../views/DescobertaEntry.astro";
+import { coll } from "../../../lib/content";
+import { NONPT } from "../../../lib/langs";
+export async function getStaticPaths() {
+  const out: any[] = [];
+  for (const lang of NONPT) for (const d of await coll("descobertas", lang)) out.push({ params: { lang, id: d.id }, props: { lang, d } });
+  return out;
+}
+const { lang, d } = Astro.props;
+---
+<DescobertaEntry lang={lang} d={d} />

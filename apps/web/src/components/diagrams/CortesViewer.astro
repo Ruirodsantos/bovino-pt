@@ -38,7 +38,7 @@ const T = tr(lang);
   const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]!));
   const byId = new Map(CUTS.map((c) => [c.id, c]));
   document.querySelectorAll<HTMLElement>("[data-cv]").forEach((root) => {
-    const en = JSON.parse(root.querySelector("[data-lang-json]")!.textContent || "{}").lang === "en";
+    const en = JSON.parse(root.querySelector("[data-lang-json]")!.textContent || "{}").lang !== "pt";
     const $ = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
     const panel = $(".cv-panel"), tip = $(".cv-tip"), loading = $(".cv-loading"), state = $(".cv-state"), list = $(".cv-list");
     let v: any = null, started = false;

@@ -40,7 +40,7 @@ const photos = Object.entries(credits as Record<string, any>);
     <p>{T("Todo o código, os dados e o histórico estão públicos no ", "All code, data and history are public on ")}<a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a>.</p>
     <h2 id="fotografias">{T("Fotografias", "Photographs")}</h2>
     <p>{T("As fotografias das raças são reais, com licença livre: Unsplash, Pexels, Wikimedia Commons ou Creative Commons. Só dizemos que uma fotografia mostra uma raça quando o próprio autor a identifica. Nos outros casos, a legenda indica apenas o local. As imagens de ambiente das páginas «A carne» e «Da Terra à Mesa» são ilustrações geradas por IA: dão atmosfera, não documentam animais, locais ou processos reais.", "The breed photographs are real, under a free licence: Unsplash, Pexels, Wikimedia Commons or Creative Commons. We only say a photograph shows a breed when the author identifies it as such. Otherwise, the caption gives only the place. The atmosphere images on the “Meat” and “Pasture to plate” pages are AI-generated illustrations: they set the mood and do not document real animals, places or processes.")}</p>
-    <ul class="credits">{photos.map(([id, c]) => <li><a href={c.source_page}>{lang === "en" ? (c.caption_en ?? c.caption) : c.caption}</a> — {c.author} · {c.license}</li>)}</ul>
+    <ul class="credits">{photos.map(([id, c]) => <li><a href={c.source_page}>{lang !== "pt" ? (c.caption_en ?? c.caption) : c.caption}</a> — {c.author} · {c.license}</li>)}</ul>
   </div></article>
 </Base>
 <style>.credits { font-size: .85rem; } .narrow { max-width: 760px; } h2 { margin-top: 1.6em; }</style>

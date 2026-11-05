@@ -3,16 +3,16 @@ import Base from "../layouts/Base.astro";
 import Img from "../components/proto/Img.astro";
 import credits from "../data/images.json";
 import { breeds, cardPhoto } from "../lib/data";
-import { href, licenseLabel, tr, type Lang } from "../i18n";
+import { locImg, href, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = tr(lang);
 const b = import.meta.env.BASE_URL;
 const h0 = (credits as any)["mertolenga-tejo"];
-const hero = lang === "en" ? { ...h0, alt: h0.alt_en ?? h0.alt, caption: h0.caption_en ?? h0.caption } : h0;
+const hero = locImg(h0, lang);
 const names = Object.fromEntries(breeds().map((x) => [x.slug, x.official_name]));
 const strip = ["mirandesa", "barrosa", "maronesa", "cachena", "alentejana", "mertolenga"].map((s) => ({ slug: s, name: names[s], photo: cardPhoto(s) })).filter((s) => s.photo) as { slug: string; name: string; photo: { id: string; kind: string } }[];
-const stages: [string, string, string][] = lang === "en" ? [
+const stages: [string, string, string][] = lang !== "pt" ? [
   ["Birth", "It all starts on the farm, with the calf next to its mother.", "In several breeds calves suckle for months before weaning."],
   ["Rearing", "Months or years in the field, depending on breed and production system.", "Each breed has its own territory and rhythm."],
   ["Feeding", "Pasture, forage and, when grass is short, supplements.", "For certified meats, the product specification sets what the animal may eat."],
@@ -60,7 +60,7 @@ const stages: [string, string, string][] = lang === "en" ? [
     <div class="journey-welfare-copy"><span class="eyebrow">{T("Antes da carne, há uma vida", "Before the meat, there is a life")}</span>
       <h2>{T("O respeito começa no campo.", "Respect begins in the field.")}</h2>
       <p>{T("Conhecer as condições de criação, o bem-estar dos animais e o trabalho dos produtores ajuda-nos a compreender o verdadeiro valor daquilo que chega à mesa.", "Understanding rearing conditions, animal welfare and farmers' work helps us appreciate what reaches the table.")}</p>
-      <a class="journey-next" href={href(lang, lang === "en" ? "da-pastagem-ao-prato/" : "viagem/")}>{T("Acompanhar o percurso →", "Follow the journey →")}</a>
+      <a class="journey-next" href={href(lang, "viagem/")}>{T("Acompanhar o percurso →", "Follow the journey →")}</a>
     </div>
   </section>
 

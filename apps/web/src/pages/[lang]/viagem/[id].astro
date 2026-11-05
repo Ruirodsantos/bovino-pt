@@ -1,0 +1,15 @@
+---
+import TemaPage from "../../../views/TemaPage.astro";
+import { coll } from "../../../lib/content";
+import { NONPT } from "../../../lib/langs";
+export async function getStaticPaths() {
+  const out: any[] = [];
+  for (const lang of NONPT) {
+    const temas = (await coll("temas", lang)).sort((a, b) => a.data.order - b.data.order);
+    temas.forEach((d, i) => out.push({ params: { lang, id: d.id }, props: { lang, d, prev: temas[i - 1], next: temas[i + 1] } }));
+  }
+  return out;
+}
+const { lang, d, prev, next } = Astro.props;
+---
+<TemaPage lang={lang} d={d} prev={prev} next={next} />

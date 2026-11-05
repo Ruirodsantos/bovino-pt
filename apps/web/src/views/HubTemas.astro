@@ -2,41 +2,43 @@
 import Base from "../layouts/Base.astro";
 import Img from "../components/proto/Img.astro";
 import credits from "../data/images.json";
-import { getCollection } from "astro:content";
-import { href } from "../i18n";
-import { CHAPTERS, EXTRAS } from "../lib/viagem";
-const all = (await getCollection("temas")).sort((a, b) => a.data.order - b.data.order);
+import { href, type Lang } from "../i18n";
+import { CHAPTERS, EXTRAS, HUB } from "../lib/viagem";
+import { coll } from "../lib/content";
+interface Props { lang?: Lang }
+const lang: Lang = Astro.props.lang ?? "pt";
+const all = (await coll("temas", lang)).sort((a: any, b: any) => a.data.order - b.data.order);
 const has = (id?: string) => !!id && !!(credits as Record<string, any>)[id];
 const heroId = "carne-capa";
 const heroOk = has(heroId);
-const title = "A viagem";
-const lead = `Do pasto ao prato, em ${all.length} paragens.`;
-const intro = "Cinco capítulos, pela ordem em que o animal faz o caminho. Cada paragem responde a uma pergunta.";
+const title = HUB.title[lang];
+const lead = HUB.lead(all.length)[lang];
+const intro = HUB.intro[lang];
 ---
-<Base lang="pt" overlay title={title} description={lead} enPath={href("en", "da-pastagem-ao-prato/")}>
+<Base lang={lang} overlay title={title} description={lead}>
   <header class:list={["hb-hero", !heroOk && "hb-plain"]}>
-    {heroOk && <Img id={heroId} sizes="100vw" eager class="hb-bg" />}
+    {heroOk && <Img id={heroId} sizes="100vw" eager lang={lang} class="hb-bg" />}
     <div class="hb-in"><h1>{title}</h1><p>{lead}</p></div>
   </header>
   <div class="hb-body">
     <p class="hb-intro">{intro}</p>
-    <a class="hb-start" href={href("pt", `viagem/${all[0].id}/`)}>Começar a viagem →</a>
+    <a class="hb-start" href={href(lang, `viagem/${all[0].id}/`)}>{HUB.start[lang]}</a>
     {CHAPTERS.map((c) => (
       <section class="hb-chap">
         <span class="hb-cn">{c.n} / {CHAPTERS.length}</span>
-        <h2>{c.name}</h2>
-        <p class="hb-promise">{c.promise}</p>
+        <h2>{c.name[lang]}</h2>
+        <p class="hb-promise">{c.promise[lang]}</p>
         <ol class="hb-trail">
-          {all.filter((t) => t.data.chapter === c.n).map((t) => (
+          {all.filter((t: any) => t.data.chapter === c.n).map((t: any) => (
             <>
             <li>
-              <a href={href("pt", `viagem/${t.id}/`)}>
+              <a href={href(lang, `viagem/${t.id}/`)}>
                 <span class="hb-dot">{t.data.order}</span>
                 <span class="hb-txt"><strong>{t.data.title}</strong><em>{t.data.hook}</em></span>
-                {has(t.data.photo) && <span class="hb-th"><Img id={t.data.photo!} sizes="160px" flat /></span>}
+                {has(t.data.photo) && <span class="hb-th"><Img id={t.data.photo!} sizes="160px" flat lang={lang} /></span>}
               </a>
             </li>
-            {EXTRAS[t.id] && <li class="hb-extra"><a href={href("pt", EXTRAS[t.id].href)}><span class="hb-dot">+</span><span class="hb-txt"><strong>{EXTRAS[t.id].title}</strong><em>{EXTRAS[t.id].hook}</em></span></a></li>}
+            {EXTRAS[t.id] && <li class="hb-extra"><a href={href(lang, EXTRAS[t.id].href)}><span class="hb-dot">+</span><span class="hb-txt"><strong>{EXTRAS[t.id].title[lang]}</strong><em>{EXTRAS[t.id].hook[lang]}</em></span></a></li>}
             </>
           ))}
         </ol>

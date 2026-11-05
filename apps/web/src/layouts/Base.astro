@@ -1,31 +1,26 @@
 ---
 import "../styles/global.css";
 import "../styles/proto.css";
-import { BASE, href, htmlLang, switchTo, tr, type Lang } from "../i18n";
-interface Props { title: string; description?: string; lang?: Lang; home?: boolean; overlay?: boolean; image?: string; noindex?: boolean; enPath?: string }
-const { title, lang = "pt", home = false, overlay = false, image, noindex = false, enPath } = Astro.props;
+import { BASE, href, htmlLang, ogLocale, switchTo, tr, LANGS, LANG_NAME, type Lang } from "../i18n";
+interface Props { title: string; description?: string; lang?: Lang; home?: boolean; overlay?: boolean; image?: string; noindex?: boolean; enPath?: string; alts?: Partial<Record<Lang, string>> }
+const { title, lang = "pt", home = false, overlay = false, image, noindex = false, enPath, alts = {} } = Astro.props;
 const T = tr(lang);
-const description = Astro.props.description ?? T("Dados oficiais, raças autóctones e o comércio de bovinos entre Portugal e Espanha — atualizado todos os dias.", "Official data, native breeds and the cattle trade between Portugal and Spain — updated every day.");
+const description = Astro.props.description ?? T("Dados oficiais, raças autóctones e o comércio de bovinos entre Portugal e Espanha — atualizado todos os dias.", "Official data, native breeds and the cattle trade between Portugal and Spain — updated every day.", "Datos oficiales, razas autóctonas y el comercio de bovinos entre Portugal y España, actualizado a diario.", "Données officielles, races autochtones et commerce de bovins entre le Portugal et l’Espagne, mis à jour chaque jour.");
 const base = BASE;
 const path = Astro.url.pathname;
 const pre = href(lang);
-const brand = T("Bovino Português", "Portuguese Cattle");
+const brand = T("Bovino Português", "Portuguese Cattle", "Bovino Portugués", "Bovin portugais");
 const nav: [string, string, string[]][] = [
-  ["", T("Início", "Home"), []],
-  ["racas/", T("As raças", "The breeds"), ["racas/"]],
-  ...(lang === "en" ? [
-    ["carne/", "The meat", ["carne/"]],
-    ["da-pastagem-ao-prato/", "From Land to Table", ["da-pastagem-ao-prato/"]],
-  ] as [string, string, string[]][] : [
-    ["viagem/", "A viagem", ["viagem/", "anatomia-cortes/"]],
-    ["guardioes-da-terra/", "Guardiões", ["guardioes-da-terra/"]],
-  ] as [string, string, string[]][]),
-  ["dados/", T("Dados", "Data"), ["dados/", "observatorio/", "descobertas/", "metodologia/"]],
+  ["", T("Início", "Home", "Inicio", "Accueil"), []],
+  ["racas/", T("As raças", "The breeds", "Las razas", "Les races"), ["racas/"]],
+  ["viagem/", T("A viagem", "The journey", "El viaje", "Le voyage"), ["viagem/", "anatomia-cortes/"]],
+  ["guardioes-da-terra/", T("Guardiões", "Guardians", "Guardianes", "Gardiens"), ["guardioes-da-terra/"]],
+  ["dados/", T("Dados", "Data", "Datos", "Données"), ["dados/", "observatorio/", "descobertas/", "metodologia/"]],
 ];
 const active = (p: string, g: string[]) => (p === "" ? path === pre : g.some((x) => path.startsWith(`${pre}${x}`)));
 const fullTitle = home ? brand : `${title} · ${brand}`;
-const other: Lang = lang === "en" ? "pt" : "en";
-const alt = { pt: switchTo(Astro.url, lang, "pt"), en: enPath ?? switchTo(Astro.url, lang, "en") };
+const alt = Object.fromEntries(LANGS.map((l) => [l, alts[l] ?? (l === "en" && enPath ? enPath : switchTo(Astro.url, lang, l))])) as Record<Lang, string>;
+const HL: Record<Lang, string> = { pt: "pt-PT", en: "en", es: "es", fr: "fr" };
 ---
 <!doctype html>
 <html lang={htmlLang(lang)}>
@@ -36,31 +31,30 @@ const alt = { pt: switchTo(Astro.url, lang, "pt"), en: enPath ?? switchTo(Astro.
   <meta name="description" content={description} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={new URL(path, Astro.site)} />
-  <link rel="alternate" hreflang="pt-PT" href={new URL(alt.pt, Astro.site)} />
-  <link rel="alternate" hreflang="en" href={new URL(alt.en, Astro.site)} />
+  {LANGS.map((l) => <link rel="alternate" hreflang={HL[l]} href={new URL(alt[l], Astro.site)} />)}
   <link rel="alternate" hreflang="x-default" href={new URL(alt.pt, Astro.site)} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
-  <meta property="og:locale" content={lang === "en" ? "en_GB" : "pt_PT"} />
+  <meta property="og:locale" content={ogLocale(lang)} />
   <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
 </head>
 <body class="p" data-lang={lang}>
-  <a class="sr-only" href="#main">{T("Saltar para o conteúdo", "Skip to content")}</a>
+  <a class="sr-only" href="#main">{T("Saltar para o conteúdo", "Skip to content", "Saltar al contenido", "Aller au contenu")}</a>
   <header class:list={["ph", !overlay && "solid"]} id="ph" data-hero={overlay}>
     <div class="wrap bar">
       <a class="brand" href={pre}>{brand}</a>
-      <button class="burger" aria-expanded="false" aria-controls="nav">{T("MENU", "MENU")}</button>
-      <nav id="nav" aria-label={T("Principal", "Main")}>
+      <button class="burger" aria-expanded="false" aria-controls="nav">{T("MENU", "MENU", "MENÚ", "MENU")}</button>
+      <nav id="nav" aria-label={T("Principal", "Main", "Principal", "Principal")}>
         {nav.map(([p, label, g]) => <a href={`${pre}${p}`} aria-current={active(p, g) ? "page" : undefined}>{label}</a>)}
-        <a class="lang" href={alt[other]} hreflang={other === "en" ? "en" : "pt-PT"} lang={other === "en" ? "en" : "pt-PT"} aria-label={T("Read this page in English", "Ler esta página em português")}>{other === "en" ? "EN" : "PT"}</a>
+        <span class="langs">{LANGS.filter((l) => l !== lang).map((l) => <a class="lang" href={alt[l]} hreflang={HL[l]} lang={HL[l]} title={LANG_NAME[l]} aria-label={LANG_NAME[l]}>{l.toUpperCase()}</a>)}</span>
       </nav>
     </div>
   </header>
   <main id="main" class:list={[!overlay && "pad"]}><slot /></main>
   <footer class="pf">
     <div class="wrap">
-      <p><strong>{brand}</strong> · <a href={`${pre}observatorio/`}>{T("Observatório", "Observatory")}</a> · <a href={`${pre}descobertas/`}>{T("Descobertas", "Discoveries")}</a> · <a href={`${pre}metodologia/`}>{T("Método e fontes", "Method and sources")}</a> · <a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a> · {T("Fronteiras", "Boundaries")} © EuroGeographics</p>
+      <p><strong>{brand}</strong> · <a href={`${pre}observatorio/`}>{T("Observatório", "Observatory", "Observatorio", "Observatoire")}</a> · <a href={`${pre}descobertas/`}>{T("Descobertas", "Discoveries", "Descubrimientos", "Découvertes")}</a> · <a href={`${pre}metodologia/`}>{T("Método e fontes", "Method and sources", "Método y fuentes", "Méthode et sources")}</a> · <a href="https://github.com/Ruirodsantos/bovino-pt">GitHub</a> · {T("Fronteiras", "Boundaries", "Fronteras", "Frontières")} © EuroGeographics</p>
     </div>
   </footer>
   <script>
@@ -70,7 +64,7 @@ const alt = { pt: switchTo(Astro.url, lang, "pt"), en: enPath ?? switchTo(Astro.
     upd(); addEventListener("scroll", upd, { passive: true });
     const bt = ph.querySelector<HTMLButtonElement>(".burger")!;
     const label = bt.textContent;
-    bt.addEventListener("click", () => { const o = ph.classList.toggle("menu-open"); bt.setAttribute("aria-expanded", String(o)); bt.textContent = o ? (document.documentElement.lang.startsWith("en") ? "CLOSE" : "FECHAR") : label; });
+    bt.addEventListener("click", () => { const o = ph.classList.toggle("menu-open"); bt.setAttribute("aria-expanded", String(o)); bt.textContent = o ? ({ en: "CLOSE", es: "CERRAR", fr: "FERMER" } as Record<string, string>)[document.documentElement.lang.slice(0, 2)] ?? "FECHAR" : label; });
     ph.querySelectorAll("nav a").forEach((a) => a.addEventListener("click", () => ph.classList.remove("menu-open")));
     addEventListener("keydown", (e) => { if (e.key === "Escape") ph.classList.remove("menu-open"); });
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });

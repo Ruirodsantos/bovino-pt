@@ -1,12 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getCollection } from "astro:content";
+import { coll } from "../lib/content";
 import { fmtDate } from "../lib/data";
 import { href, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = tr(lang);
-const all = (await getCollection(lang === "en" ? "descobertas_en" : "descobertas")).sort((a, b) => +b.data.date - +a.data.date);
+const all = (await coll("descobertas", lang)).sort((a: any, b: any) => +b.data.date - +a.data.date);
 ---
 <Base lang={lang} title={T("Descobertas", "Discoveries")} description={T("Novas descobertas sobre o bovino português, verificadas e com fontes, todos os dias.", "New, verified and sourced discoveries about Portuguese cattle, every day.")}>
   <section class="block" style="border-top:0"><div class="wrap">

@@ -1,0 +1,8 @@
+---
+import RacaPage from "../../../views/RacaPage.astro";
+import { breeds } from "../../../lib/data";
+import { NONPT } from "../../../lib/langs";
+export function getStaticPaths() { return NONPT.flatMap((lang) => breeds().map((b) => ({ params: { lang, slug: b.slug }, props: { lang, b } }))); }
+const { lang, b } = Astro.props;
+---
+<RacaPage lang={lang} b={b} />

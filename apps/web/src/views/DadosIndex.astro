@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL;
     <div class="tbl" role="table">
       {s.catalog.map((c) => (
         <div class="card ds" id={c.id}>
-          <div><h2>{lang === "en" ? (c.title_en ?? c.title_pt) : c.title_pt}</h2><code>{c.id}</code></div>
+          <div><h2>{lang !== "pt" ? (c.title_en ?? c.title_pt) : c.title_pt}</h2><code>{c.id}</code></div>
           {c.state === "ok" ? (
             <dl>
               <div><dt>{T("Fonte", "Source")}</dt><dd>Eurostat <span class="mono">{c.source_code}</span></dd></div>

@@ -7,7 +7,7 @@ const {lang} = Astro.props;
 const T = tr(lang);
 ---
 <Base lang={lang} title={T("Anatomia e cortes", "Anatomy and cuts")} description={T("Explore os cortes do bovino num modelo tridimensional educativo.", "Explore cattle cuts with an educational 3D model.")}>
-  <section class="anatomy-head"><div class="wrap"><a href={href(lang, lang === "en" ? "carne/03-cortes/" : "viagem/cortes/")}>← {T("Voltar aos cortes", "Back to cuts")}</a><span class="eyebrow">{T("Explorar o bovino", "Explore the animal")}</span><h1>{T("Anatomia e cortes", "Anatomy and cuts")}</h1><p>{T("Rode o modelo, selecione uma região e descubra os cortes. No telemóvel, rode o ecrã para uma experiência mais ampla.", "Rotate the model and select a region. On mobile, rotate your device for a wider view.")}</p><button class="wide-btn" id="wide-3d" type="button">{T("Explorar em ecrã inteiro ↗", "Explore fullscreen ↗")}</button></div></section>
+  <section class="anatomy-head"><div class="wrap"><a href={href(lang, "viagem/cortes/")}>← {T("Voltar aos cortes", "Back to cuts")}</a><span class="eyebrow">{T("Explorar o bovino", "Explore the animal")}</span><h1>{T("Anatomia e cortes", "Anatomy and cuts")}</h1><p>{T("Rode o modelo, selecione uma região e descubra os cortes. No telemóvel, rode o ecrã para uma experiência mais ampla.", "Rotate the model and select a region. On mobile, rotate your device for a wider view.")}</p><button class="wide-btn" id="wide-3d" type="button">{T("Explorar em ecrã inteiro ↗", "Explore fullscreen ↗")}</button></div></section>
   <div class="anatomy-stage" id="anatomy-stage"><button type="button" class="close-btn" id="close-3d" aria-label={T("Fechar ecrã inteiro", "Close fullscreen")}>✕</button><CortesViewer lang={lang}/></div>
 </Base>
 <script>

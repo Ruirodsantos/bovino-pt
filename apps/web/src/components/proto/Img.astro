@@ -1,14 +1,15 @@
 ---
 import credits from "../../data/images.json";
-import type { Lang } from "../../i18n";
+import { locImg, licenseLabel, tr, type Lang } from "../../i18n";
 interface Props { id: string; sizes?: string; eager?: boolean; class?: string; credit?: boolean; pos?: string; lang?: Lang; flat?: boolean }
 const { id, sizes = "100vw", eager = false, class: cls, credit = false, pos, lang = "pt", flat = false } = Astro.props;
+const T = tr(lang);
 const c0 = (credits as Record<string, any>)[id];
-const c = c0 && lang === "en" ? { ...c0, alt: c0.alt_en ?? c0.alt, caption: c0.caption_en ?? c0.caption } : c0;
+const c = locImg(c0, lang);
 const b = import.meta.env.BASE_URL;
 const s = (k: string) => `${b}img/${id}-${k}.webp`;
 const m = !flat && (credits as Record<string, any>)[`${id}-m`] ? (k: string) => `${b}img/${id}-m-${k}.webp` : null;
 ---
 {c && m && <picture><source media="(max-width: 760px)" srcset={`${m("sm")} 480w, ${m("md")} 810w, ${m("lg")} 1080w`} sizes="100vw" /><img class={cls} src={s("md")} srcset={`${s("sm")} 480w, ${s("md")} 900w, ${s("lg")} 1800w`} sizes={sizes} alt={c.alt} width={c.width} height={c.height} loading={eager ? "eager" : "lazy"} decoding="async" style={pos ? `object-position:${pos}` : undefined} /></picture>}
 {c && !m && <img class={cls} src={s("md")} srcset={`${s("sm")} 480w, ${s("md")} 900w, ${s("lg")} 1800w`} sizes={sizes} alt={c.alt} width={c.width} height={c.height} loading={eager ? "eager" : "lazy"} decoding="async" style={pos ? `object-position:${pos}` : undefined} />}
-{c && credit && !c.ai && <span class="cr">{c.caption} · {lang === "en" ? "Photo" : "Foto"}: <a href={c.source_page} rel="noopener">{c.author}</a> · {lang === "en" ? ({ "Licença Pexels": "Pexels licence", "Licença Unsplash": "Unsplash licence", "Domínio público": "Public domain" } as any)[c.license] ?? c.license : c.license}</span>}
+{c && credit && !c.ai && <span class="cr">{c.caption} · {T("Foto", "Photo", "Foto", "Photo")}: <a href={c.source_page} rel="noopener">{c.author}</a> · {licenseLabel(lang, c.license)}</span>}

@@ -160,7 +160,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .facts4{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
 @media(max-width:600px){.facts4{grid-template-columns:1fr 1fr}.proto-bar{font-size:.66rem;padding:4px 10px;bottom:8px}}
 main.pad{padding-top:72px;min-height:60vh}
-.ph nav a.lang{border:1px solid currentColor;opacity:.8}
+.ph nav .langs{display:inline-flex;gap:.4rem;margin-left:.4rem}.ph nav a.lang{border:1px solid currentColor;opacity:.8}
 body.p .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 body.p .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){body.p .reveal{opacity:1;transform:none}}
