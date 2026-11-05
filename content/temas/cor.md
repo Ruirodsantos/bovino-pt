@@ -15,7 +15,7 @@ scenes:
 
 
     **Não é defeito.**'
-  photo: cor-cena
+  fig: cor-cena
 - title: 'Vermelho vivo: a cor da carne fresca.'
   text: Poucos minutos depois de a peça ficar exposta ao ar, a mioglobina oxigena-se e fica cor de cereja. É a cor que associamos a carne fresca.
 - title: 'Castanho: ficou muito tempo ao ar.'
@@ -47,4 +47,5 @@ sources:
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32000R1760
 - label: Regulamento de Execução (UE) 2017/1182 — classificação de carcaças
   url: https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32017R1182
+capa: figure
 ---

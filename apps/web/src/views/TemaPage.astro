@@ -25,6 +25,18 @@ const num = String(d.data.order).padStart(2, "0");
 const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
 ---
 <Base lang={lang} overlay title={d.data.title} description={d.data.lead} enPath={href("en", root)}>
+  {d.data.capa === "figure" ? (
+    <header class="tp-fhead">
+      <div class="tp-fin">
+        <a class="tp-back" href={href(lang, root)}>← {hubName}</a>
+        <span class="tp-k">{prato ? d.data.kicker : `${d.data.kicker} · ${num}`}</span>
+        <h1>{d.data.title}</h1>
+        <p class="tp-flead">{d.data.lead}</p>
+      </div>
+      {heroOk ? <figure class="tp-cfig"><Img id={d.data.photo} sizes="(min-width:1100px) 1100px, 100vw" eager lang={lang} /></figure>
+        : <figure class="tp-cfig tp-cslot"><div class="tp-slotlabel"><b>FOTO · CAPA</b> {d.data.photo}</div></figure>}
+    </header>
+  ) : (
   <header class:list={["tp-hero", !heroOk && "tp-plain"]}>
     {heroOk && <Img id={d.data.photo} sizes="100vw" eager lang={lang} class="tp-bg" />}
     {!heroOk && <div class="tp-slotlabel"><b>FOTO · CAPA</b> {d.data.photo}<br />1920 × 1080 px · 16:9 · assunto ao centro<br />telemóvel: {d.data.photo}-m · 1080 × 1920 px</div>}
@@ -37,6 +49,8 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
     {heroOk && !cr(d.data.photo).ai && <p class="tp-cr">{cr(d.data.photo).caption} · {T("Foto", "Photo")}: <a href={cr(d.data.photo).source_page} rel="noopener">{cr(d.data.photo).author}</a> · {licenseLabel(lang, cr(d.data.photo).license)}</p>}
     <span class="tp-scroll" aria-hidden="true">↓</span>
   </header>
+  )}
+  <div class:list={["tp-body", d.data.capa === "figure" && "tp-warm"]}>
   <div class="tp-hook"><span>{T("A pergunta", "The question")}</span><p>{d.data.hook}</p></div>
   {groups.map((g) => {
     const ok = has(g.photo);
@@ -48,6 +62,8 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
         </div>}
         <div class="tp-over">
           {g.items.map(({ s, i }) => (
+            <Fragment>
+            {s.fig && (has(s.fig) ? <figure class="tp-cmp"><Img id={s.fig} sizes="(min-width:1100px) 1000px, 100vw" lang={lang} /><figcaption>{cr(s.fig).caption}</figcaption></figure> : <figure class="tp-cmp tp-cslot"><div class="tp-slotlabel"><b>FOTO · COMPARAÇÃO</b> {s.fig}</div></figure>)}
             <section class:list={["tp-s", wide(s) && "is-wide"]}>
               <div class="tp-copy"><span class="tp-n">{i + 1} / {N}</span><h2>{s.title}</h2><div class="tp-md" set:html={md(s.text)} />
                 {s.diagram && <div class="tp-diag-in">
@@ -57,6 +73,7 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
                 </div>}
               </div>
             </section>
+            </Fragment>
           ))}
         </div>
       </div>
@@ -66,6 +83,7 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
     {d.data.note && <p class="tp-note"><b>{T("Estado do texto", "Status")}:</b> {d.data.note}</p>}
     {d.data.sources.length > 0 && <><h3>{T("Fontes", "Sources")}</h3><ul>{d.data.sources.map((s: any) => <li>{s.url ? <a href={s.url} rel="noopener">{s.label}</a> : s.label}</li>)}</ul></>}
   </div></section>
+  </div>
   <a class="tp-next" href={next ? href(lang, `${root}${next.id}/`) : href(lang, root)}><span>{next ? T("Seguinte", "Next") : T("Voltar a", "Back to")}</span><strong>{next ? next.data.title : hubName} →</strong></a>
 </Base>
 <script is:inline>if(/[?&]fotos/.test(location.search))document.documentElement.classList.add("show-slots");</script>
@@ -105,14 +123,14 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
   .tp-flat .tp-copy{max-width:44rem;margin:0 auto}
   .tp-n{font-size:.8rem;letter-spacing:.2em;color:var(--tp-mute);display:block}
   .tp-copy h2{font-size:clamp(1.8rem,3vw,3rem);line-height:1.12;letter-spacing:-.03em;margin:.6rem 0 1.2rem;color:#fff;font-weight:300}
-  .tp-md{font-size:clamp(1rem,1.2vw,1.15rem);line-height:1.8;font-weight:300}
+  .tp-md{font-size:clamp(1.05rem,1.1vw + .55rem,1.3rem);line-height:1.8;font-weight:400}
   .tp-md p{margin:0 0 1em}.tp-md ul,.tp-md ol{padding-left:1.2em;margin:0 0 1em}.tp-md li{margin-bottom:.5em}.tp-md a{color:#bcd9a8;text-decoration:underline}.tp-md strong{color:#fff}
   .tp-md table{width:100%;border-collapse:collapse;font-size:.98rem;margin:1rem 0;display:block;overflow-x:auto}.tp-md th,.tp-md td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--tp-line);vertical-align:top;min-width:110px}.tp-md th{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tp-mute)}
   .tp-s .tp-diag-in{margin-top:1.5rem;color:#263e30}
   @media(min-width:900px){
     .tp-flat .tp-copy{max-width:84rem;width:calc(100% - 6rem);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(3rem,6vw,7rem);align-items:start}
     .tp-flat .tp-copy .tp-n,.tp-flat .tp-copy h2{grid-column:1}.tp-flat .tp-copy h2{font-size:clamp(2.2rem,3.4vw,3.6rem)}
-    .tp-flat .tp-copy .tp-md{grid-column:2;grid-row:1/span 3;font-size:clamp(1.1rem,1.3vw,1.3rem);line-height:1.75;padding-top:.4rem}
+    .tp-flat .tp-copy .tp-md{grid-column:2;grid-row:1/span 3;font-size:clamp(1.15rem,1vw + .6rem,1.4rem);line-height:1.75;padding-top:.4rem}
     .tp-flat .tp-copy .tp-diag-in{grid-column:1/-1;margin-top:3rem}
     .tp-end-in{max-width:84rem;width:calc(100% - 6rem)}
   }
@@ -124,4 +142,19 @@ const credit = (c: any) => `${c.caption} · ${T("Foto", "Photo")}: `;
     .tp-cine .tp-copy,.tp-cine .tp-s.is-wide .tp-copy{width:100%}
     .tp-stick::after{background:linear-gradient(180deg,rgba(8,12,10,0) 30%,rgba(8,12,10,.5))}
   }
+  /* variante «figura»: imagem contida, junto do conteúdo; fundo claro e acolhedor */
+  .tp-fhead{background:#1c2d23;color:#fff;padding:clamp(7rem,12vh,9rem) 1.5rem clamp(2.5rem,6vh,4rem)}
+  .tp-fin{max-width:72rem;margin:0 auto 2.5rem}
+  .tp-fin h1{font-size:clamp(2.8rem,6vw,5.5rem);line-height:1.02;letter-spacing:-.04em;margin:.2em 0 .3em;color:#fff;font-weight:300}
+  .tp-flead{font-size:clamp(1.1rem,1.5vw,1.45rem);font-weight:300;max-width:40ch;line-height:1.5;margin:0;opacity:.92}
+  .tp-cfig,.tp-cmp{margin:0 auto;max-width:min(72rem,100%)}.tp-cfig img,.tp-cmp img{display:block;width:100%;height:auto;max-height:68svh;object-fit:contain;border-radius:4px}
+  .tp-cslot{aspect-ratio:16/9;background:#27402f;position:relative}.tp-cslot .tp-slotlabel{top:1rem}
+  .tp-cmp{margin:clamp(1.5rem,3vw,2.5rem) auto clamp(2.5rem,5vw,4rem);padding:0 1.5rem;max-width:min(66rem,100%)}.tp-cmp figcaption{font-size:.92rem;color:var(--tp-mute);margin-top:.8rem;text-align:center}
+  .tp-warm{--tp-bg:#f3efe4;--tp-fg:#2a3a30;--tp-mute:#6b7f6b;--tp-line:#d9d4c4;--tp-h:#1f3326}
+  .tp-warm .tp-hook{background:#f3efe4;color:var(--tp-h);padding-bottom:clamp(2rem,5vh,3.5rem)}.tp-warm .tp-hook p{color:var(--tp-h)}
+  .tp-warm .tp-copy h2,.tp-warm .tp-md strong{color:var(--tp-h)}.tp-warm .tp-md a,.tp-warm .tp-end a{color:#2f6b3f}
+  .tp-warm .tp-flat .tp-s:first-child{border-top:0}
+  .tp-warm .tp-end{background:#f3efe4}
+  @media(min-width:2200px){.tp-fin,.tp-cfig{max-width:84rem}.tp-md{font-size:1.45rem}.tp-flat .tp-copy{max-width:100rem}}
+  .tp-md{max-width:46rem}
 </style>
