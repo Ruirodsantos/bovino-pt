@@ -1,5 +1,5 @@
 {
- "finished_at": "2026-11-12T13:48:56+00:00",
+ "finished_at": "2026-11-13T13:10:34+00:00",
  "datasets": [
   {
    "dataset": "bovine_population",
@@ -28,16 +28,16 @@
   {
    "dataset": "trade_live_bovine_pt_es",
    "state": "ok",
-   "rows": 6391,
-   "last_period": "2026-08"
+   "rows": 6429,
+   "last_period": "2026-09"
   },
   {
    "dataset": "trade_beef_pt_es",
    "state": "ok",
-   "rows": 2080,
-   "last_period": "2026-08"
+   "rows": 2088,
+   "last_period": "2026-09"
   }
  ],
  "review_rows": 6,
- "revisions": 0
+ "revisions": 79
 }

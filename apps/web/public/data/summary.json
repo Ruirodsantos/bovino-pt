@@ -17,64 +17,64 @@
     "period": "nov.–dez. 2025",
     "period_en": "Nov–Dec 2025",
     "published": "2026-10-26",
-    "verified": "2026-11-12"
+    "verified": "2026-11-13"
    }
   },
   {
    "id": "pt_es_live_eur",
    "label": "em bovinos vivos vendidos por Portugal a Espanha",
-   "value": 73245621.0,
+   "value": 63119594.0,
    "unit": "€",
    "label_en": "worth of live cattle sold by Portugal to Spain",
-   "context_en": "Sep 2025 – Aug 2026 (12 months)",
-   "context": "set. 2025 – ago. 2026 (12 meses)",
-   "change": 0.01338814894218158,
+   "context_en": "Oct 2025 – Sep 2026 (12 months)",
+   "context": "out. 2025 – set. 2026 (12 meses)",
+   "change": -0.2057567753396865,
    "change_ref": "12 meses anteriores",
    "change_ref_en": "the previous 12 months",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
     "dataset": "trade_live_bovine_pt_es",
-    "period": "set. 2025 – ago. 2026",
-    "period_en": "Sep 2025 – Aug 2026",
-    "published": "2026-10-16",
-    "verified": "2026-11-12"
+    "period": "out. 2025 – set. 2026",
+    "period_en": "Oct 2025 – Sep 2026",
+    "published": "2026-11-13",
+    "verified": "2026-11-13"
    }
   },
   {
    "id": "pt_es_live_heads",
    "label": "bovinos vivos atravessaram a fronteira para Espanha — pelo menos",
-   "value": 45314.0,
+   "value": 39474.0,
    "unit": "cabeças",
    "label_en": "live cattle crossed the border into Spain — at least",
-   "context_en": "Sep 2025 – Aug 2026 · sum of the detailed categories; the real total is higher",
-   "context": "set. 2025 – ago. 2026 · soma das categorias detalhadas; o total real é superior",
+   "context_en": "Oct 2025 – Sep 2026 · sum of the detailed categories; the real total is higher",
+   "context": "out. 2025 – set. 2026 · soma das categorias detalhadas; o total real é superior",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
     "dataset": "trade_live_bovine_pt_es",
-    "period": "set. 2025 – ago. 2026",
-    "period_en": "Sep 2025 – Aug 2026",
-    "published": "2026-10-16",
-    "verified": "2026-11-12"
+    "period": "out. 2025 – set. 2026",
+    "period_en": "Oct 2025 – Sep 2026",
+    "published": "2026-11-13",
+    "verified": "2026-11-13"
    }
   },
   {
    "id": "pt_beef_imports_es",
    "label": "carne de bovino que Portugal compra a Espanha",
-   "value": 75081.997,
+   "value": 75105.09,
    "unit": "toneladas",
    "label_en": "of beef that Portugal buys from Spain",
-   "context_en": "Sep 2025 – Aug 2026 · fresh, chilled and frozen",
-   "context": "set. 2025 – ago. 2026 · fresca, refrigerada e congelada",
+   "context_en": "Oct 2025 – Sep 2026 · fresh, chilled and frozen",
+   "context": "out. 2025 – set. 2026 · fresca, refrigerada e congelada",
    "footnote": {
     "source": "Eurostat — Comext",
     "source_code": "DS-045409",
     "dataset": "trade_beef_pt_es",
-    "period": "set. 2025 – ago. 2026",
-    "period_en": "Sep 2025 – Aug 2026",
-    "published": "2026-10-16",
-    "verified": "2026-11-12"
+    "period": "out. 2025 – set. 2026",
+    "period_en": "Oct 2025 – Sep 2026",
+    "published": "2026-11-13",
+    "verified": "2026-11-13"
    }
   },
   {
@@ -92,7 +92,7 @@
     "period": "set. 2025 – ago. 2026",
     "period_en": "Sep 2025 – Aug 2026",
     "published": "2026-11-04",
-    "verified": "2026-11-12"
+    "verified": "2026-11-13"
    }
   },
   {
@@ -110,7 +110,7 @@
     "period": "2025",
     "period_en": "2025",
     "published": "2026-10-06",
-    "verified": "2026-11-12"
+    "verified": "2026-11-13"
    }
   }
  ],
@@ -124,7 +124,7 @@
    "first_period": "2005",
    "last_period": "2025",
    "publication_date": "2026-10-26",
-   "retrieved_at": "2026-11-12T13:48:18+00:00",
+   "retrieved_at": "2026-11-13T13:09:29+00:00",
    "source_code": "apro_mt_lscatl"
   },
   {
@@ -136,7 +136,7 @@
    "first_period": "2005-01",
    "last_period": "2026-08",
    "publication_date": "2026-11-04",
-   "retrieved_at": "2026-11-12T13:48:19+00:00",
+   "retrieved_at": "2026-11-13T13:09:31+00:00",
    "source_code": "apro_mt_pheadm"
   },
   {
@@ -148,7 +148,7 @@
    "first_period": "2005",
    "last_period": "2025",
    "publication_date": "2026-10-06",
-   "retrieved_at": "2026-11-12T13:48:21+00:00",
+   "retrieved_at": "2026-11-13T13:09:32+00:00",
    "source_code": "apro_mt_pann"
   },
   {
@@ -160,7 +160,7 @@
    "first_period": "2010",
    "last_period": "2023",
    "publication_date": "2026-06-17",
-   "retrieved_at": "2026-11-12T13:48:22+00:00",
+   "retrieved_at": "2026-11-13T13:09:34+00:00",
    "source_code": "ef_lsk_main"
   },
   {
@@ -168,11 +168,11 @@
    "title_pt": "Bovinos vivos de Portugal para Espanha",
    "title_en": "Live cattle from Portugal to Spain",
    "state": "ok",
-   "rows": 6391,
+   "rows": 6429,
    "first_period": "2005-01",
-   "last_period": "2026-08",
-   "publication_date": "2026-10-16",
-   "retrieved_at": "2026-11-12T13:48:23+00:00",
+   "last_period": "2026-09",
+   "publication_date": "2026-11-13",
+   "retrieved_at": "2026-11-13T13:09:35+00:00",
    "source_code": "DS-045409"
   },
   {
@@ -180,16 +180,16 @@
    "title_pt": "Comércio de carne de bovino Portugal ↔ Espanha",
    "title_en": "Beef trade Portugal ↔ Spain",
    "state": "ok",
-   "rows": 2080,
+   "rows": 2088,
    "first_period": "2005-01",
-   "last_period": "2026-08",
-   "publication_date": "2026-10-16",
-   "retrieved_at": "2026-11-12T13:48:53+00:00",
+   "last_period": "2026-09",
+   "publication_date": "2026-11-13",
+   "retrieved_at": "2026-11-13T13:10:29+00:00",
    "source_code": "DS-045409"
   }
  ],
  "last_run": {
-  "finished_at": "2026-11-12T13:48:56+00:00",
+  "finished_at": "2026-11-13T13:10:34+00:00",
   "datasets": [
    {
     "dataset": "bovine_population",
@@ -218,17 +218,17 @@
    {
     "dataset": "trade_live_bovine_pt_es",
     "state": "ok",
-    "rows": 6391,
-    "last_period": "2026-08"
+    "rows": 6429,
+    "last_period": "2026-09"
    },
    {
     "dataset": "trade_beef_pt_es",
     "state": "ok",
-    "rows": 2080,
-    "last_period": "2026-08"
+    "rows": 2088,
+    "last_period": "2026-09"
    }
   ],
   "review_rows": 6,
-  "revisions": 0
+  "revisions": 79
  }
 }

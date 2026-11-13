@@ -1,0 +1,24 @@
+{
+ "dataset": "trade_beef_pt_es",
+ "retrieved_at": "2026-11-13T13:10:29+00:00",
+ "requests": [
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=0201&flow=1&flow=2&freq=M",
+   "status": 200,
+   "bytes": 25986,
+   "file": "response_00.json",
+   "sha256": "fbe1b85b2de19302181d5c9ebf850f3057dd7bdc5d8ca4f1cf72af3a1b7b8b88",
+   "source_updated": "2026-11-13T11:00:00+0100"
+  },
+  {
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&sinceTimePeriod=2005&reporter=PT&partner=ES&product=0202&flow=1&flow=2&freq=M",
+   "status": 200,
+   "bytes": 24862,
+   "file": "response_01.json",
+   "sha256": "6e747baebde4c89325f8073059747591157f2d0f2209767baf0c7e24c5759569",
+   "source_updated": "2026-11-13T11:00:00+0100"
+  }
+ ],
+ "used_code": "DS-045409",
+ "attempts": []
+}

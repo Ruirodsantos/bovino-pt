@@ -1,0 +1,66 @@
+{
+ "freq": {
+  "A": "Annual"
+ },
+ "statinfo": {
+  "TOTAL": "Total"
+ },
+ "farmtype": {
+  "TOTAL": "Total"
+ },
+ "so_eur": {
+  "TOTAL": "Total"
+ },
+ "uaarea": {
+  "TOTAL": "Total"
+ },
+ "lsu": {
+  "TOTAL": "Total"
+ },
+ "animals": {
+  "A2000": "Live bovine animals"
+ },
+ "unit": {
+  "HD": "Head (animal)"
+ },
+ "geo": {
+  "ES11": "Galicia",
+  "ES12": "Principado de Asturias",
+  "ES13": "Cantabria",
+  "ES21": "País Vasco",
+  "ES22": "Comunidad Foral de Navarra",
+  "ES23": "La Rioja",
+  "ES24": "Aragón",
+  "ES30": "Comunidad de Madrid",
+  "ES41": "Castilla y León",
+  "ES42": "Castilla-La Mancha",
+  "ES43": "Extremadura",
+  "ES51": "Cataluña",
+  "ES52": "Comunitat Valenciana",
+  "ES53": "Illes Balears",
+  "ES61": "Andalucía",
+  "ES62": "Región de Murcia",
+  "ES63": "Ciudad de Ceuta",
+  "ES64": "Ciudad de Melilla",
+  "ES70": "Canarias",
+  "PT11": "Norte",
+  "PT15": "Algarve",
+  "PT16": "Centro (PT) (NUTS 2021)",
+  "PT17": "Área Metropolitana de Lisboa (NUTS 2021)",
+  "PT18": "Alentejo (NUTS 2021)",
+  "PT19": "Centro (PT)",
+  "PT1A": "Grande Lisboa",
+  "PT1B": "Península de Setúbal",
+  "PT1C": "Alentejo",
+  "PT1D": "Oeste e Vale do Tejo",
+  "PT20": "Região Autónoma dos Açores",
+  "PT30": "Região Autónoma da Madeira"
+ },
+ "time": {
+  "2010": "2010",
+  "2013": "2013",
+  "2016": "2016",
+  "2020": "2020",
+  "2023": "2023"
+ }
+}
