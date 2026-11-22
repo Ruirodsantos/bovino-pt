@@ -1,0 +1,65 @@
+{
+ "freq": {
+  "A": "Annual"
+ },
+ "month": {
+  "M05_M06": "May-June",
+  "M11_M12": "November - December"
+ },
+ "animals": {
+  "A2000": "Live bovine animals",
+  "A2010": "Bovine animals, less than 1 year old",
+  "A2010B": "Bovine animals, less than 1 year old, for slaughter",
+  "A2010C": "Bovine animals, less than 1 year old, not for slaughter",
+  "A2020": "Bovine animals, 1 to less than 2 years old",
+  "A2030": "Bovine animals, 2 years old or over",
+  "A2110C": "Male calves, less than 1 year old, not for slaughter",
+  "A2120": "Male bovine animals, 1 to less than 2 years old",
+  "A2130": "Male bovine animals, 2 years old or over",
+  "A2230_2330": "Female bovine animals, 2 years old or over",
+  "A2210C": "Female calves, less than 1 year old, not for slaughter",
+  "A2220": "Heifers, 1 to less than 2 years old",
+  "A2220B": "Heifers, 1 year old, for slaughter",
+  "A2220C": "Heifers, 1 year old, not for slaughter",
+  "A2230": "Heifers, 2 years old or over",
+  "A2230B": "Heifers, 2 years old or over, for slaughter",
+  "A2230C": "Heifers, 2 years old or over, not for slaughter",
+  "A2300": "Cows",
+  "A2300F": "Dairy cows",
+  "A2300G": "Non dairy cows",
+  "A2400": "Buffaloes",
+  "A2410": "Breeding female buffaloes",
+  "A2420": "Other buffaloes"
+ },
+ "unit": {
+  "THS_HD": "Thousand heads (animals)"
+ },
+ "geo": {
+  "ES": "Spain",
+  "PT": "Portugal"
+ },
+ "time": {
+  "2005": "2005",
+  "2006": "2006",
+  "2007": "2007",
+  "2008": "2008",
+  "2009": "2009",
+  "2010": "2010",
+  "2011": "2011",
+  "2012": "2012",
+  "2013": "2013",
+  "2014": "2014",
+  "2015": "2015",
+  "2016": "2016",
+  "2017": "2017",
+  "2018": "2018",
+  "2019": "2019",
+  "2020": "2020",
+  "2021": "2021",
+  "2022": "2022",
+  "2023": "2023",
+  "2024": "2024",
+  "2025": "2025",
+  "2026": "2026"
+ }
+}
