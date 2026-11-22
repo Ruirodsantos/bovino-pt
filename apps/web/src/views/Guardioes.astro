@@ -2,10 +2,12 @@
 import Base from "../layouts/Base.astro";
 import Img from "../components/proto/Img.astro";
 import credits from "../data/images.json";
+import { breeds } from "../lib/data";
 import { lf, href, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = tr(lang);
+const N = breeds().length;
 const b = import.meta.env.BASE_URL;
 const cr = (id: string) => {
   const c0 = (credits as Record<string, any>)[id];
@@ -203,7 +205,7 @@ const quote = T("Há quem passe uma vida inteira a cuidar da terra. E quem cuida
       </div>
       <ol class="gt-steps">
         <li class="rv"><strong>{T("Ler o rótulo.", "Read the label.", "Leer la etiqueta.", "Lire l’étiquette.")}</strong> {T("A rotulagem da carne de bovino indica onde o animal nasceu, foi criado e abatido.", "Beef labels state where the animal was born, reared and slaughtered.", "El etiquetado de la carne de vacuno indica dónde nació, se crió y se sacrificó el animal.", "L’étiquetage de la viande bovine indique où l’animal est né, a été élevé et abattu.")}<a class="gt-ref" href="#gt-fontes" aria-label={T("Fonte 6", "Source 6", "Fuente 6", "Source 6")}>{num.rot}</a> <a href={href(lang, "viagem/")}>{T("Saber mais sobre a carne →", "More about the meat →", "Saber más sobre la carne →", "En savoir plus sur la viande →")}</a></li>
-        <li class="rv"><strong>{T("Conhecer as raças.", "Get to know the breeds.", "Conocer las razas.", "Connaître les races.")}</strong> {T("Cada uma tem a sua terra e a sua história.", "Each has its own land and its own story.", "Cada una tiene su tierra y su historia.", "Chacune a sa terre et son histoire.")} <a href={href(lang, "racas/")}>{T("As 15 raças autóctones →", "The 15 native breeds →", "Las 15 razas autóctonas →", "Les 15 races autochtones →")}</a></li>
+        <li class="rv"><strong>{T("Conhecer as raças.", "Get to know the breeds.", "Conocer las razas.", "Connaître les races.")}</strong> {T("Cada uma tem a sua terra e a sua história.", "Each has its own land and its own story.", "Cada una tiene su tierra y su historia.", "Chacune a sa terre et son histoire.")} <a href={href(lang, "racas/")}>{T(`As ${N} raças autóctones →`, `The ${N} native breeds →`, `Las ${N} razas autóctonas →`, `Les ${N} races autochtones →`)}</a></li>
         <li class="rv"><strong>{T("Compreender as certificações.", "Understand certifications.", "Entender las certificaciones.", "Comprendre les certifications.")}</strong> {T("DOP e IGP garantem uma origem e um caderno de especificações controlado — não garantem, só por si, mais qualidade em todos os aspetos.", "PDO and PGI guarantee an origin and a controlled product specification — they do not, by themselves, guarantee higher quality in every respect.", "La DOP y la IGP garantizan un origen y un pliego de condiciones controlado; no garantizan, por sí solas, más calidad en todos los aspectos.", "L’AOP et l’IGP garantissent une origine et un cahier des charges contrôlé — elles ne garantissent pas, à elles seules, une meilleure qualité sur tous les plans.")}</li>
         <li class="rv"><strong>{T("Perguntar.", "Ask.", "Preguntar.", "Demander.")}</strong> {T("No talho ou no restaurante, perguntar de onde vem a carne mostra que a origem importa.", "At the butcher's or in a restaurant, asking where the meat comes from shows that origin matters.", "En la carnicería o en el restaurante, preguntar de dónde viene la carne demuestra que el origen importa.", "Chez le boucher ou au restaurant, demander d’où vient la viande montre que l’origine compte.")}</li>
         <li class="rv"><strong>{T("Comprar diretamente, quando possível.", "Buy direct when you can.", "Comprar directamente, cuando sea posible.", "Acheter en direct quand c’est possible.")}</strong> {T("Em feiras, mercados ou na própria exploração.", "At fairs, markets or on the farm itself.", "En ferias, mercados o en la propia explotación.", "Sur les foires, les marchés ou à l’exploitation même.")}</li>

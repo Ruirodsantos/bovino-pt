@@ -12,6 +12,7 @@ import { locImg, lf, href, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { lang: Lang; b: Breed }
 const { lang, b } = Astro.props;
 const T = tr(lang);
+const N = breeds().length;
 const base = import.meta.env.BASE_URL;
 const bd = breedL(b.slug, lang);
 const own = cardPhoto(b.slug);
@@ -63,7 +64,7 @@ const rg = b.slug === "ramo-grande";
 const Src = (s?: { label: string; url: string }[]) => s;
 // Mapa esquemático dos Açores (só para o Ramo Grande), a partir da geometria NUTS do repositório.
 let islands: { name: string; d: string; x: number; y: number }[] = [], H = 0;
-if (rg) {
+if (rg || b.slug === "catrina") {
   const geo = JSON.parse(fs.readFileSync(path.join(process.cwd(), "public/geo/nuts3_pt.json"), "utf-8"));
   const polys: number[][][][] = geo.features.find((f: any) => f.properties.name === "PT200").geometry.coordinates;
   const NAMES: [string, number, number][] = [["Santa Maria", 36.97, -25.08], ["São Miguel", 37.78, -25.5], ["Terceira", 38.72, -27.22], ["Graciosa", 39.05, -28.0], ["São Jorge", 38.65, -28.05], ["Pico", 38.47, -28.33], ["Faial", 38.58, -28.71], ["Flores", 39.45, -31.18], ["Corvo", 39.7, -31.11]];
@@ -78,6 +79,23 @@ if (rg) {
     return { name: n, d: "M" + c.map((q) => `${X(q[0]).toFixed(1)},${Y(q[1]).toFixed(1)}`).join("L") + "Z", x: X(cx), y: Y(cy) };
   });
 }
+// Mapa de dispersão dos criadores (continente): pontos lidos das fichas da DGAV + geometria NUTS3 (Eurostat/GISCO).
+let dist: any = null, mainland: { d: string; label: string }[] = [], dots: { x: number; y: number; r: number }[] = [], MH = 0;
+const az = rg || b.slug === "catrina";
+{
+  const fp = path.join(process.cwd(), "../../data/registry/distribution", `${b.slug}.json`);
+  if (!az && fs.existsSync(fp)) {
+    dist = JSON.parse(fs.readFileSync(fp, "utf-8"));
+    const geo = JSON.parse(fs.readFileSync(path.join(process.cwd(), "public/geo/nuts3_pt.json"), "utf-8"));
+    const feats = geo.features.filter((f: any) => !["PT200", "PT300"].includes(f.properties.name));
+    const k = Math.cos(39.5 * Math.PI / 180);
+    const S0 = 36.96, N0 = 42.154, W0 = -9.5, E0 = -6.19;
+    const sc = 560 / ((E0 - W0) * k); MH = (N0 - S0) * sc + 24;
+    const X = (x: number) => 12 + (x - W0) * k * sc, Y = (y: number) => 12 + (N0 - y) * sc;
+    mainland = feats.map((f: any) => ({ label: f.properties.label, d: f.geometry.coordinates.map((poly: number[][][]) => poly.map((ring) => "M" + ring.map((q) => `${X(q[0]).toFixed(1)},${Y(q[1]).toFixed(1)}`).join("L") + "Z").join("")).join("") }));
+    dots = dist.pontos.map((q: any) => ({ x: X(q.lon), y: Y(q.lat), r: Math.max(2.2, (q.raio_rel / 100) * (N0 - S0) * sc) }));
+  }
+}
 const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s : null;
 ---
 <Base lang={lang} overlay title={T(`Raça ${b.official_name}`, `${b.official_name} breed`, `Raza ${b.official_name}`, `Race ${b.official_name}`)} description={intro}
@@ -85,8 +103,8 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
   <section class:list={["hero", "rg", "breed-quiet-hero"]} style="min-height:92svh">
     {bgId && <img class="bg" src={`${base}img/${bgId}-lg.webp`} srcset={`${base}img/${bgId}-md.webp 900w, ${base}img/${bgId}-lg.webp 1800w`} sizes="100vw" alt={framed ? "" : (heroC?.alt ?? "")} width={(credits as any)[bgId]?.width} height={(credits as any)[bgId]?.height} fetchpriority="high" />}
     <div class="wrap breed-hero-content">
-      <a class="breed-back" href={href(lang, "racas/")}>← {T("As 15 raças", "The 15 breeds", "Las 15 razas", "Les 15 races")}</a>
-      <span class="breed-counter">{T("Raça autóctone portuguesa", "Portuguese native breed", "Raza autóctona portuguesa", "Race autochtone portugaise")} · {String(i + 1).padStart(2, "0")}/15</span>
+      <a class="breed-back" href={href(lang, "racas/")}>← {T(`As ${N} raças`, `The ${N} breeds`, `Las ${N} razas`, `Les ${N} races`)}</a>
+      <span class="breed-counter">{T("Raça autóctone portuguesa", "Portuguese native breed", "Raza autóctona portuguesa", "Race autochtone portugaise")} · {String(i + 1).padStart(2, "0")}/{all.length}</span>
       <h1>{b.official_name}</h1>
       <p class="breed-hero-line">{frase(lang, b.slug)}</p>
       <a class="breed-discover" href="#conhecer">{T("Descobrir a raça", "Discover the breed", "Descubrir la raza", "Découvrir la race")} ↓</a>
@@ -148,12 +166,21 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                 {id === "onde" && rg && <p style="margin-top:1.5em"><a class="btn" href="https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" rel="noopener">DGADR — Carne Ramo Grande DOP ↗</a></p>}
                 {id === "onde" && <p class="srcs">{T("Não indicamos pontos de venda nem preços que não tenhamos verificado.", "We do not list points of sale or prices we have not verified.", "No indicamos puntos de venta ni precios que no hayamos verificado.", "Nous n'indiquons ni points de vente ni prix que nous n'avons pas vérifiés.")}</p>}
               </div>
-              {id === "territorio" && rg && (
+              {id === "territorio" && az && (
                 <div class="mapbox rv">
                   <svg viewBox={`0 0 920 ${H.toFixed(0)}`} role="img" aria-label={T("Mapa esquemático dos Açores com a ilha Terceira destacada", "Schematic map of the Azores with Terceira island highlighted", "Mapa esquemático de las Azores con la isla Terceira destacada", "Carte schématique des Açores avec l'île de Terceira mise en évidence")}>
                     {islands.map((is) => <g><path d={is.d} fill={is.name === "Terceira" ? "#183C32" : "#7FA07F"} stroke="#fff" stroke-width="1.2" stroke-linejoin="round"><title>{is.name}</title></path><text x={is.x} y={is.y + (is.name === "Terceira" ? 26 : 22)} text-anchor="middle" style="font:500 14px var(--sans);fill:#183C32">{is.name}</text></g>)}
                   </svg>
                   <p class="srcs" style="margin:.6em 0 0">{T("Mapa esquemático, geometria generalizada (Eurostat/GISCO, © EuroGeographics).", "Schematic map, generalised geometry (Eurostat/GISCO, © EuroGeographics).", "Mapa esquemático, geometría generalizada (Eurostat/GISCO, © EuroGeographics).", "Carte schématique, géométrie généralisée (Eurostat/GISCO, © EuroGeographics).")}</p>
+                </div>
+              )}
+              {id === "territorio" && dist && (
+                <div class="mapbox rv">
+                  <svg viewBox={`0 0 584 ${MH.toFixed(0)}`} role="img" aria-label={T(`Mapa de Portugal continental com a dispersão aproximada dos criadores da raça ${b.official_name}`, `Map of mainland Portugal showing the approximate spread of ${b.official_name} breeders`, `Mapa de Portugal continental con la dispersión aproximada de los criadores de la raza ${b.official_name}`, `Carte du Portugal continental avec la dispersion approximative des éleveurs de la race ${b.official_name}`)}>
+                    <g fill="#F8F9F4" stroke="#B9C7B0" stroke-width=".9" stroke-linejoin="round">{mainland.map((m) => <path d={m.d}><title>{m.label}</title></path>)}</g>
+                    <g fill="#183C32" fill-opacity=".72" stroke="#fff" stroke-width=".8">{dots.map((c) => <circle cx={c.x.toFixed(1)} cy={c.y.toFixed(1)} r={c.r.toFixed(1)} />)}</g>
+                  </svg>
+                  <p class="srcs" style="margin:.6em 0 0">{T("Dispersão aproximada dos criadores (área do ponto proporcional ao número de criadores no local; não são moradas). Lida do mapa da ficha da raça, DGAV (censo de 2019).", "Approximate spread of breeders (dot size reflects the number of breeders there; not addresses). Read from the DGAV breed sheet map (2019 census).", "Dispersión aproximada de los criadores (el tamaño del punto refleja el número de criadores; no son direcciones). Leída del mapa de la ficha de la raza, DGAV (censo de 2019).", "Dispersion approximative des éleveurs (la taille du point reflète le nombre d'éleveurs ; ce ne sont pas des adresses). Lue sur la carte de la fiche de la race, DGAV (recensement 2019).")} <a href={dist.fonte.url} rel="noopener">{dist.fonte.titulo} ↗</a> · {T("Fronteiras", "Boundaries", "Fronteras", "Frontières")} © EuroGeographics</p>
                 </div>
               )}
               {id === "historia" && rg && <div class="frame rv" style="aspect-ratio:4/5"><Img id="acores-sao-jorge" sizes="(max-width:820px) 100vw, 560px" credit lang={lang} /></div>}

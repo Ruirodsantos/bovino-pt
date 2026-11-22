@@ -1,0 +1,71 @@
+intro: A raça da Terceira, pequena, rústica e ágil, que vive nas zonas altas da ilha.
+facts:
+- label: Solar
+  value: Ilha Terceira, Açores
+- label: Efetivo
+  value: cerca de 39 fêmeas
+  note: ficha DGAV, sem ano indicado
+sections:
+- id: historia
+  title: História
+  summary: Origem e nome da raça, segundo a ficha da DGAV.
+  blocks:
+  - title: Uma raça da ilha
+    paras:
+    - A Catrina tem o seu solar na Terceira e distingue-se das outras populações bovinas da ilha, em particular do gado bravo. Embora tenha sido usada em manifestações taurinas, o temperamento arisco, formado em liberdade e relativo abandono, separa-a tanto da raça brava como dos bois mansos da Terceira. A ficha estima que as raças portuguesas levadas para as ilhas por volta de 1427 estejam na base genética do gado açoriano.
+    - O nome só aparece no início do século XX, mas já era conhecido no mundo rural da ilha como sinónimo de gado da terra, de curral ou "de cima", por viver nas zonas altas e ser recolhido todos os dias em currais para a ordenha. Há várias teorias sobre a origem do nome; uma liga-o a um touro chamado "Catrina Velho", cujas crias tinham uma mancha branca junto à virilha.
+    sources: &id001
+    - label: Ficha da raça Catrina (DGAV, Livros Genealógicos)
+      url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+- id: caracteristicas
+  title: Características
+  summary: Como se reconhece o animal.
+  blocks:
+  - title: Como se reconhece
+    paras:
+    - 'É um animal pequeno, de perfil longilíneo, ágil, bem musculado mas sem muita gordura, de cascos rijos. A pelagem varia: vermelha ou preta bragada, preta, rosilha de mil-flores, malhada de vermelho ou preto e castanha riscada, muitas vezes com uma malha branca bem definida na testa e, por vezes, na virilha. A cabeça é grande e piramidal, com cornos de secção elíptica, brancos-sujos de pontas pretas. O temperamento é nervoso e a rusticidade, muito grande.'
+    sources: *id001
+- id: territorio
+  title: Território
+  summary: O solar da raça e o efetivo registado.
+  blocks:
+  - title: Solar
+    paras:
+    - Ilha Terceira, nas zonas de média e alta altitude, em pastagens seminaturais. A ficha refere ainda animais por registar, sobretudo no concelho de Angra do Heroísmo.
+    sources: *id001
+  - title: Efetivo registado
+    paras:
+    - Cerca de 39 fêmeas em linha pura e 12 machos registados. A ficha não indica o ano de referência, por isso não o assumimos; é uma raça com um efetivo muito reduzido.
+    sources: *id001
+- id: criacao
+  title: Criação
+  summary: Como e onde se cria.
+  blocks:
+  - title: Como se cria
+    paras:
+    - Vive em pastagens seminaturais de baixo valor nutritivo, em sistemas de baixo impacto ambiental. Tradicionalmente foi um gado de aptidão múltipla (leite, trabalho e lazer), recolhido em currais de manhã e de tarde para a ordenha.
+    sources: *id001
+- id: carne
+  title: Carne
+  summary: A carne desta raça.
+  blocks:
+  - title: A carne
+    status: em investigação
+    paras:
+    - A descrição da carne desta raça ainda não foi confirmada em fonte. Não a publicamos até haver referência.
+- id: certificacao
+  title: Certificação
+  summary: Certificação e reconhecimentos.
+  blocks:
+  - title: Certificação
+    status: em investigação
+    paras:
+    - Por confirmar nas listas oficiais da DGADR e no eAmbrosia.
+- id: onde
+  title: Onde encontrar
+  summary: Onde encontrar.
+  blocks:
+  - title: Livro genealógico
+    paras:
+    - O livro genealógico é gerido pela Associação de Criadores de Gado Catrina (ACGC).
+    sources: *id001

@@ -17,7 +17,7 @@ def test_repository_registry_is_valid():
 
 
 def test_fifteen_bovine_breeds_registered():
-    assert len(list((ROOT / "data/registry/breeds").glob("*.yaml"))) == 15
+    assert len(list((ROOT / "data/registry/breeds").glob("*.yaml"))) == 16
 
 
 @pytest.fixture

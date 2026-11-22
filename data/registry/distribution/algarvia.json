@@ -1,0 +1,25 @@
+{
+ "slug": "algarvia",
+ "tipo": "continente",
+ "metodo": "pipeline/extract_dispersion.py",
+ "fonte": {
+  "titulo": "Ficha da raça Algarvia (DGAV, Livros Genealógicos)",
+  "url": "https://www.dgav.pt/wp-content/uploads/2021/04/Algarvia_GRGA.pdf",
+  "publicado": "2021-04",
+  "censo_ano": 2019
+ },
+ "nota": "Dispersão aproximada dos criadores, lida do mapa da ficha da DGAV. O tamanho do ponto reflete o número de criadores no local. Não são moradas.",
+ "n_pontos": 2,
+ "pontos": [
+  {
+   "lat": 37.768,
+   "lon": -7.379,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 37.69,
+   "lon": -7.683,
+   "raio_rel": 0.62
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+{
+ "slug": "preta",
+ "tipo": "continente",
+ "metodo": "pipeline/extract_dispersion.py",
+ "fonte": {
+  "titulo": "Ficha da raça Preta (DGAV, Livros Genealógicos)",
+  "url": "https://www.dgav.pt/wp-content/uploads/2021/04/Preta_GRGA.pdf",
+  "publicado": "2021-04",
+  "censo_ano": 2019
+ },
+ "nota": "Dispersão aproximada dos criadores, lida do mapa da ficha da DGAV. O tamanho do ponto reflete o número de criadores no local. Não são moradas.",
+ "n_pontos": 19,
+ "pontos": [
+  {
+   "lat": 39.387,
+   "lon": -7.407,
+   "raio_rel": 0.89
+  },
+  {
+   "lat": 38.997,
+   "lon": -7.864,
+   "raio_rel": 0.89
+  },
+  {
+   "lat": 39.918,
+   "lon": -7.179,
+   "raio_rel": 0.84
+  },
+  {
+   "lat": 39.825,
+   "lon": -7.426,
+   "raio_rel": 0.84
+  },
+  {
+   "lat": 39.281,
+   "lon": -7.369,
+   "raio_rel": 0.84
+  },
+  {
+   "lat": 38.924,
+   "lon": -8.863,
+   "raio_rel": 0.84
+  },
+  {
+   "lat": 38.575,
+   "lon": -8.225,
+   "raio_rel": 0.84
+  },
+  {
+   "lat": 38.892,
+   "lon": -8.558,
+   "raio_rel": 0.8
+  },
+  {
+   "lat": 40.19,
+   "lon": -7.113,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 39.492,
+   "lon": -7.621,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.997,
+   "lon": -7.621,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.928,
+   "lon": -9.148,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.889,
+   "lon": -9.037,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.648,
+   "lon": -7.973,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.628,
+   "lon": -7.355,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.49,
+   "lon": -7.888,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.275,
+   "lon": -8.525,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 37.573,
+   "lon": -8.083,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.766,
+   "lon": -7.108,
+   "raio_rel": 0.7
+  }
+ ]
+}

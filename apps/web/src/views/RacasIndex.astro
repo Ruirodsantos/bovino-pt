@@ -8,6 +8,7 @@ import { href, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = tr(lang);
+const N = breeds().length;
 const all = breeds();
 const labels = REGION_LABELS(lang);
 const tiles = ORDEM.map(([slug, size]) => {
@@ -18,10 +19,10 @@ const tiles = ORDEM.map(([slug, size]) => {
 });
 const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
 ---
-<Base lang={lang} title={T("As raças", "The breeds", "Las razas", "Les races")} description={T("As 15 raças bovinas autóctones de Portugal: fotografias, solar e história.", "Portugal's 15 native cattle breeds: photographs, homeland and history.", "Las 15 razas bovinas autóctonas de Portugal: fotografías, solar e historia.", "Les 15 races bovines autochtones du Portugal : photographies, terroir d'origine et histoire.")}>
+<Base lang={lang} title={T("As raças", "The breeds", "Las razas", "Les races")} description={T(`As ${N} raças bovinas autóctones de Portugal: fotografias, solar e história.`, `Portugal's ${N} native cattle breeds: photographs, homeland and history.`, `Las ${N} razas bovinas autóctonas de Portugal: fotografías, solar e historia.`, `Les ${N} races bovines autochtones du Portugal : photographies, terroir d'origine et histoire.`)}>
   <section class="terceira-immersive" aria-label={T("Paisagem inspirada na ilha Terceira", "Landscape inspired by Terceira island", "Paisaje inspirado en la isla Terceira", "Paysage inspiré de l'île de Terceira")}><img src={`${import.meta.env.BASE_URL}img/paisagem-terceira-ia-lg.webp`} alt={T("Paisagem artística de pastagens verdes na ilha Terceira", "Artistic landscape of green pastures on Terceira island", "Paisaje artístico de verdes pastos en la isla Terceira", "Paysage artistique de verts pâturages sur l'île de Terceira")}/><div class="terceira-message"><span>{T("Açores · Portugal", "Azores · Portugal", "Azores · Portugal", "Açores · Portugal")}</span><h2>{T("Há lugares onde a terra ainda dita o ritmo da vida.", "Some places still follow the rhythm of the land.", "Hay lugares donde la tierra aún marca el ritmo de la vida.", "Il est des lieux où la terre dicte encore le rythme de la vie.")}</h2></div></section>
   <section class="ghead"><div class="wrap">
-    <span class="eyebrow">{T("15 raças autóctones", "15 native breeds", "15 razas autóctonas", "15 races autochtones")}</span>
+    <span class="eyebrow">{T(`${N} raças autóctones`, `${N} native breeds`, `${N} razas autóctonas`, `${N} races autochtones`)}</span>
     <h1 style="font-size:clamp(2.2rem,6vw,4.4rem);margin:.15em 0 .3em">{T("As raças", "The breeds", "Las razas", "Les races")}</h1>
     <p class="lead">{T("Escolha uma paisagem e siga a raça que a habita.", "Pick a landscape and follow the breed that lives there.", "Elija un paisaje y siga a la raza que lo habita.", "Choisissez un paysage et suivez la race qui l'habite.")}</p>
   </div></section>
@@ -50,7 +51,7 @@ const gaps = tiles.filter((t) => !t.photo || t.photo.kind !== "raça");
       ))}
     </div>
     <p class="srcs" style="margin-top:var(--s4);color:var(--muted);font-size:.88rem;max-width:62ch">
-      {T(`${gaps.length} das 15 raças ainda não têm fotografia própria autorizada: ${gaps.map((g) => g.name).join(", ")}. Nesses casos mostra-se uma paisagem do território, nunca uma fotografia de outra raça.`, `${gaps.length} of the 15 breeds still have no authorised photograph of their own: ${gaps.map((g) => g.name).join(", ")}. In those cases a landscape of the territory is shown, never a photograph of another breed.`, `${gaps.length} de las 15 razas aún no tienen fotografía propia autorizada: ${gaps.map((g) => g.name).join(", ")}. En esos casos se muestra un paisaje del territorio, nunca una fotografía de otra raza.`, `${gaps.length} des 15 races n'ont pas encore de photographie propre autorisée : ${gaps.map((g) => g.name).join(", ")}. Dans ces cas, on montre un paysage du territoire, jamais une photographie d'une autre race.`)}
+      {T(`${gaps.length} das ${N} raças ainda não têm fotografia própria autorizada: ${gaps.map((g) => g.name).join(", `)}. Nesses casos mostra-se uma paisagem do território, nunca uma fotografia de outra raça.`, `${gaps.length} of the ${N} breeds still have no authorised photograph of their own: ${gaps.map((g) => g.name).join(`, `)}. In those cases a landscape of the territory is shown, never a photograph of another breed.`, `${gaps.length} de las ${N} razas aún no tienen fotografía propia autorizada: ${gaps.map((g) => g.name).join(`, `)}. En esos casos se muestra un paisaje del territorio, nunca una fotografía de otra raza.`, `${gaps.length} des ${N} races n'ont pas encore de photographie propre autorisée : ${gaps.map((g) => g.name).join(`, ")}. Dans ces cas, on montre un paysage du territoire, jamais une photographie d'une autre race.`)}
     </p>
   </section>
 </Base>

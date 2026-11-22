@@ -1,0 +1,50 @@
+{
+ "slug": "jarmelista",
+ "tipo": "continente",
+ "metodo": "pipeline/extract_dispersion.py",
+ "fonte": {
+  "titulo": "Ficha da raça Jarmelista (DGAV, Livros Genealógicos)",
+  "url": "https://www.dgav.pt/wp-content/uploads/2021/04/Jarmelista_GRGA.pdf",
+  "publicado": "2021-04",
+  "censo_ano": 2019
+ },
+ "nota": "Dispersão aproximada dos criadores, lida do mapa da ficha da DGAV. O tamanho do ponto reflete o número de criadores no local. Não são moradas.",
+ "n_pontos": 7,
+ "pontos": [
+  {
+   "lat": 40.501,
+   "lon": -7.312,
+   "raio_rel": 0.82
+  },
+  {
+   "lat": 40.757,
+   "lon": -7.043,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 40.706,
+   "lon": -6.876,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 40.383,
+   "lon": -7.683,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 40.25,
+   "lon": -7.497,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 40.128,
+   "lon": -7.145,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 40.757,
+   "lon": -7.33,
+   "raio_rel": 0.48
+  }
+ ]
+}

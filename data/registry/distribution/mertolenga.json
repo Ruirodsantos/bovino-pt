@@ -1,0 +1,393 @@
+{
+ "slug": "mertolenga",
+ "tipo": "continente",
+ "metodo": "pipeline/extract_dispersion.py",
+ "fonte": {
+  "titulo": "Ficha da raça Mertolenga (DGAV, Livros Genealógicos)",
+  "url": "https://www.dgav.pt/wp-content/uploads/2021/04/Mertolenga_GRGA.pdf",
+  "publicado": "2021-04",
+  "censo_ano": 2019
+ },
+ "nota": "Dispersão aproximada dos criadores, lida do mapa da ficha da DGAV. O tamanho do ponto reflete o número de criadores no local. Não são moradas.",
+ "n_pontos": 63,
+ "pontos": [
+  {
+   "lat": 38.908,
+   "lon": -8.501,
+   "raio_rel": 0.66,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.664,
+   "lon": -7.931,
+   "raio_rel": 0.62,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.307,
+   "lon": -8.473,
+   "raio_rel": 0.62,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 37.617,
+   "lon": -8.035,
+   "raio_rel": 0.62,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 39.914,
+   "lon": -7.151,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 39.159,
+   "lon": -7.655,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 39.127,
+   "lon": -8.815,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.794,
+   "lon": -7.636,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.62,
+   "lon": -8.939,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.599,
+   "lon": -8.178,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.514,
+   "lon": -7.845,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.51,
+   "lon": -8.882,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.376,
+   "lon": -9.148,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.364,
+   "lon": -7.465,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.234,
+   "lon": -7.636,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.218,
+   "lon": -7.931,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.047,
+   "lon": -7.426,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 37.934,
+   "lon": -8.73,
+   "raio_rel": 0.56,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 39.013,
+   "lon": -7.826,
+   "raio_rel": 0.5,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.94,
+   "lon": -8.796,
+   "raio_rel": 0.5,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.896,
+   "lon": -9.024,
+   "raio_rel": 0.5,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.624,
+   "lon": -8.473,
+   "raio_rel": 0.5,
+   "variedade_cor": "verde-claro"
+  },
+  {
+   "lat": 37.869,
+   "lon": -7.526,
+   "raio_rel": 0.5,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 39.5,
+   "lon": -7.583,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 39.468,
+   "lon": -7.407,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 39.366,
+   "lon": -8.501,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 39.281,
+   "lon": -7.393,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 39.245,
+   "lon": -7.636,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 39.208,
+   "lon": -8.021,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.896,
+   "lon": -7.655,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.883,
+   "lon": -8.154,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.786,
+   "lon": -7.075,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.713,
+   "lon": -7.217,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.689,
+   "lon": -9.005,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.64,
+   "lon": -7.374,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.433,
+   "lon": -9.01,
+   "raio_rel": 0.44,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 38.307,
+   "lon": -7.312,
+   "raio_rel": 0.44,
+   "variedade_cor": "verde"
+  },
+  {
+   "lat": 38.121,
+   "lon": -7.793,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.104,
+   "lon": -8.592,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.064,
+   "lon": -6.903,
+   "raio_rel": 0.44,
+   "variedade_cor": "vermelho"
+  },
+  {
+   "lat": 37.966,
+   "lon": -8.126,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 37.95,
+   "lon": -7.878,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 37.828,
+   "lon": -8.178,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 37.565,
+   "lon": -8.235,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 37.536,
+   "lon": -7.488,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 37.496,
+   "lon": -8.668,
+   "raio_rel": 0.44,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 39.305,
+   "lon": -8.492,
+   "raio_rel": 0.34,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 39.224,
+   "lon": -8.611,
+   "raio_rel": 0.34,
+   "variedade_cor": "verde"
+  },
+  {
+   "lat": 39.082,
+   "lon": -7.203,
+   "raio_rel": 0.34,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 39.906,
+   "lon": -7.217,
+   "raio_rel": 0.31,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 39.484,
+   "lon": -7.645,
+   "raio_rel": 0.31,
+   "variedade_cor": "verde"
+  },
+  {
+   "lat": 39.07,
+   "lon": -7.265,
+   "raio_rel": 0.31,
+   "variedade_cor": "verde"
+  },
+  {
+   "lat": 39.005,
+   "lon": -7.893,
+   "raio_rel": 0.31,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.932,
+   "lon": -8.867,
+   "raio_rel": 0.31,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.656,
+   "lon": -7.997,
+   "raio_rel": 0.31,
+   "variedade_cor": "verde"
+  },
+  {
+   "lat": 38.587,
+   "lon": -8.244,
+   "raio_rel": 0.31,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.356,
+   "lon": -7.531,
+   "raio_rel": 0.31,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.295,
+   "lon": -8.539,
+   "raio_rel": 0.31,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.206,
+   "lon": -7.997,
+   "raio_rel": 0.31,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.084,
+   "lon": -7.897,
+   "raio_rel": 0.31,
+   "variedade_cor": "azul"
+  },
+  {
+   "lat": 38.052,
+   "lon": -6.951,
+   "raio_rel": 0.31,
+   "variedade_cor": "verde"
+  },
+  {
+   "lat": 37.861,
+   "lon": -7.598,
+   "raio_rel": 0.31,
+   "variedade_cor": "verde"
+  },
+  {
+   "lat": 37.609,
+   "lon": -8.102,
+   "raio_rel": 0.31,
+   "variedade_cor": "azul"
+  }
+ ]
+}

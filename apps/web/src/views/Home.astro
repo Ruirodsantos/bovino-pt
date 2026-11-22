@@ -7,6 +7,7 @@ import { locImg, href, licenseLabel, tr, type Lang } from "../i18n";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = tr(lang);
+const N = breeds().length;
 const b = import.meta.env.BASE_URL;
 const h0 = (credits as any)["mertolenga-tejo"];
 const hero = locImg(h0, lang);
@@ -30,7 +31,7 @@ const stages: [string, string, string][] = [
     <img class="bg" src={`${b}img/home-hero-ia-lg.webp`} srcset={`${b}img/home-hero-ia-sm.webp 480w, ${b}img/home-hero-ia-md.webp 900w, ${b}img/home-hero-ia-lg.webp 1672w`} sizes="100vw" alt={T("Vacas castanhas ao nascer do sol sobre um vale com rio e aldeia", "Brown cows at sunrise above a valley with a river and village", "Vacas pardas al amanecer sobre un valle con río y aldea", "Vaches brunes au lever du soleil au-dessus d'une vallée avec rivière et village")} width="1672" height="941" fetchpriority="high" />
     <div class="wrap in">
       <span class="tag">{T("Bovino Português", "Portuguese Cattle", "Ganado bovino portugués", "Bovins portugais")}</span>
-      <h1>{T("15 raças.", "15 breeds.", "15 razas.", "15 races.")}<br />{T("Um património extraordinário.", "An extraordinary heritage.", "Un patrimonio extraordinario.", "Un patrimoine extraordinaire.")}</h1>
+      <h1>{T(`${N} raças.`, `${N} breeds.`, `${N} razas.`, `${N} races.`)}<br />{T("Um património extraordinário.", "An extraordinary heritage.", "Un patrimonio extraordinario.", "Un patrimoine extraordinaire.")}</h1>
       <a class="cue-link" href="#descobrir">{T("Começar a descobrir", "Start exploring", "Empezar a descubrir", "Commencer à découvrir")} <i aria-hidden="true">↓</i></a>
     </div>
   </section>
@@ -40,7 +41,7 @@ const stages: [string, string, string][] = [
     <div class="journey-opening-copy"><span class="eyebrow">{T("A terra e os animais", "Land and animals", "La tierra y los animales", "La terre et les animaux")}</span>
       <h2>{T("Cada raça conta a história de um lugar.", "Every breed tells the story of a place.", "Cada raza cuenta la historia de un lugar.", "Chaque race raconte l'histoire d'un lieu.")}</h2>
       <p>{T("Dos lameiros de Trás-os-Montes às ilhas dos Açores, a paisagem e os animais cresceram juntos. Descubra este património ao seu ritmo.", "From the northern meadows to the Azores, landscape and cattle have grown together. Discover this heritage at your own pace.", "De los prados del norte a las islas Azores, el paisaje y los animales han crecido juntos. Descubra este patrimonio a su ritmo.", "Des prairies du nord aux îles des Açores, le paysage et les animaux ont grandi ensemble. Découvrez ce patrimoine à votre rythme.")}</p>
-      <a class="journey-next" href={href(lang, "racas/")}>{T("Descobrir as 15 raças →", "Discover the 15 breeds →", "Descubrir las 15 razas →", "Découvrir les 15 races →")}</a>
+      <a class="journey-next" href={href(lang, "racas/")}>{T(`Descobrir as ${N} raças →`, `Discover the ${N} breeds →`, `Descubrir las ${N} razas →`, `Découvrir les ${N} races →`)}</a>
     </div>
     <div class="journey-opening-photo"><img src={`${b}img/mirandesa-pasto-lg.webp`} alt={T("Bovinos em pastagem portuguesa", "Cattle in a Portuguese pasture", "Bovinos en un pasto portugués", "Bovins dans un pâturage portugais")} loading="lazy" /></div>
   </section>

@@ -1,0 +1,365 @@
+{
+ "slug": "arouquesa",
+ "tipo": "continente",
+ "metodo": "pipeline/extract_dispersion.py",
+ "fonte": {
+  "titulo": "Ficha da raça Arouquesa (DGAV, Livros Genealógicos)",
+  "url": "https://www.dgav.pt/wp-content/uploads/2021/04/Arouquesa_GRGA.pdf",
+  "publicado": "2021-04",
+  "censo_ano": 2019
+ },
+ "nota": "Dispersão aproximada dos criadores, lida do mapa da ficha da DGAV. O tamanho do ponto reflete o número de criadores no local. Não são moradas.",
+ "n_pontos": 70,
+ "pontos": [
+  {
+   "lat": 40.644,
+   "lon": -7.916,
+   "raio_rel": 0.89
+  },
+  {
+   "lat": 40.888,
+   "lon": -7.474,
+   "raio_rel": 0.84
+  },
+  {
+   "lat": 40.888,
+   "lon": -6.951,
+   "raio_rel": 0.84
+  },
+  {
+   "lat": 40.819,
+   "lon": -7.255,
+   "raio_rel": 0.84
+  },
+  {
+   "lat": 40.709,
+   "lon": -6.884,
+   "raio_rel": 0.84
+  },
+  {
+   "lat": 40.969,
+   "lon": -7.607,
+   "raio_rel": 0.8
+  },
+  {
+   "lat": 41.756,
+   "lon": -7.526,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 41.691,
+   "lon": -7.66,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 41.659,
+   "lon": -8.435,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 41.61,
+   "lon": -7.303,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 41.57,
+   "lon": -8.268,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 41.468,
+   "lon": -8.406,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 41.448,
+   "lon": -8.178,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 41.282,
+   "lon": -7.797,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 41.188,
+   "lon": -8.292,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 41.123,
+   "lon": -8.625,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.722,
+   "lon": -7.731,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.644,
+   "lon": -7.674,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.612,
+   "lon": -7.393,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.539,
+   "lon": -8.454,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.405,
+   "lon": -7.997,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.387,
+   "lon": -7.696,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.369,
+   "lon": -8.235,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.25,
+   "lon": -7.509,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.085,
+   "lon": -7.541,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 39.857,
+   "lon": -8.135,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 39.618,
+   "lon": -8.834,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 39.506,
+   "lon": -8.0,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 39.492,
+   "lon": -8.711,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 39.103,
+   "lon": -8.791,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.997,
+   "lon": -9.029,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 38.591,
+   "lon": -8.216,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 37.885,
+   "lon": -7.588,
+   "raio_rel": 0.78
+  },
+  {
+   "lat": 40.369,
+   "lon": -8.639,
+   "raio_rel": 0.7
+  },
+  {
+   "lat": 40.066,
+   "lon": -8.336,
+   "raio_rel": 0.7
+  },
+  {
+   "lat": 39.882,
+   "lon": -8.672,
+   "raio_rel": 0.7
+  },
+  {
+   "lat": 41.383,
+   "lon": -7.997,
+   "raio_rel": 0.66
+  },
+  {
+   "lat": 41.367,
+   "lon": -8.197,
+   "raio_rel": 0.66
+  },
+  {
+   "lat": 40.085,
+   "lon": -8.249,
+   "raio_rel": 0.66
+  },
+  {
+   "lat": 41.188,
+   "lon": -8.34,
+   "raio_rel": 0.64
+  },
+  {
+   "lat": 41.415,
+   "lon": -8.768,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 41.115,
+   "lon": -7.835,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 41.038,
+   "lon": -8.321,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 40.881,
+   "lon": -7.815,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 40.78,
+   "lon": -7.931,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 40.697,
+   "lon": -8.083,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 40.653,
+   "lon": -8.197,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 40.633,
+   "lon": -8.543,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 40.304,
+   "lon": -8.596,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 41.359,
+   "lon": -8.107,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 40.985,
+   "lon": -8.634,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 40.929,
+   "lon": -8.439,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 40.912,
+   "lon": -8.487,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 41.302,
+   "lon": -8.178,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 41.172,
+   "lon": -7.864,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 41.01,
+   "lon": -7.769,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 40.807,
+   "lon": -7.845,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 41.31,
+   "lon": -7.959,
+   "raio_rel": 0.47
+  },
+  {
+   "lat": 40.92,
+   "lon": -8.558,
+   "raio_rel": 0.47
+  },
+  {
+   "lat": 40.669,
+   "lon": -8.368,
+   "raio_rel": 0.47
+  },
+  {
+   "lat": 41.261,
+   "lon": -8.187,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 41.253,
+   "lon": -7.959,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 41.237,
+   "lon": -8.216,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 41.14,
+   "lon": -8.235,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 40.985,
+   "lon": -8.359,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 40.847,
+   "lon": -8.149,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 40.839,
+   "lon": -8.054,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 40.823,
+   "lon": -8.178,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 40.636,
+   "lon": -8.435,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 40.766,
+   "lon": -8.173,
+   "raio_rel": 0.31
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+intro: 'The breed of Terceira: small, hardy and agile, living in the island''s upland areas.'
+facts:
+- label: Homeland
+  value: Terceira island, Azores
+- label: Herd
+  value: about 39 females
+  note: DGAV sheet, no year given
+sections:
+- id: historia
+  title: History
+  summary: Origin and name of the breed, according to the DGAV sheet.
+  blocks:
+  - title: A breed of the island
+    paras:
+    - The Catrina is rooted in Terceira and differs from the island's other cattle populations, in particular from fighting cattle. Although it was used in bullfighting events, its skittish temperament, shaped by freedom and neglect, sets it apart both from the Brava breed and from the island's tame oxen. The sheet estimates that the Portuguese breeds taken to the islands around 1427 form the genetic base of Azorean cattle.
+    - The name only appears in the early twentieth century, but it was already known in the island's rural world as a synonym for local, corral or "upland" cattle, because it lived in the high areas and was penned daily for milking. There are several theories about the name; one links it to a bull called "Catrina Velho", whose offspring had a white patch near the groin.
+    sources: &id001
+    - label: Ficha da raça Catrina (DGAV, Livros Genealógicos)
+      url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+- id: caracteristicas
+  title: Characteristics
+  summary: How to recognise the animal.
+  blocks:
+  - title: How to recognise it
+    paras:
+    - 'It is a small animal with a long, lean profile, agile and well muscled but without much fat, with hard hooves. Coat colour varies: red or black brindle, black, thousand-flower roan, red or black piebald and striped brown, often with a clearly defined white blaze on the forehead and sometimes on the groin. The head is large and pyramidal, with elliptical-section horns, off-white with black tips. The temperament is nervous and the breed is very hardy.'
+    sources: *id001
+- id: territorio
+  title: Territory
+  summary: The breed's homeland and registered herd.
+  blocks:
+  - title: Homeland
+    paras:
+    - Terceira island, in mid and high altitude areas, on semi-natural pastures. The sheet also mentions unregistered animals, mostly in the municipality of Angra do Heroísmo.
+    sources: *id001
+  - title: Registered herd
+    paras:
+    - About 39 purebred females and 12 registered males. The sheet gives no reference year, so we do not assume one; it is a breed with a very small herd.
+    sources: *id001
+- id: criacao
+  title: Rearing
+  summary: How and where it is reared.
+  blocks:
+  - title: How it is reared
+    paras:
+    - It lives on semi-natural pastures of low nutritional value, in low-impact systems. Traditionally it was a multi-purpose animal (milk, work and leisure), penned morning and afternoon for milking.
+    sources: *id001
+- id: carne
+  title: Meat
+  summary: The meat of this breed.
+  blocks:
+  - title: The meat
+    status: em investigação
+    paras:
+    - The description of this breed's meat has not been confirmed in a source yet. We do not publish it until there is a reference.
+- id: certificacao
+  title: Certification
+  summary: Certification and recognition.
+  blocks:
+  - title: Certification
+    status: em investigação
+    paras:
+    - To be confirmed in the official DGADR lists and in eAmbrosia.
+- id: onde
+  title: Where to find
+  summary: Where to find.
+  blocks:
+  - title: Herd book
+    paras:
+    - The herd book is managed by the Associação de Criadores de Gado Catrina (ACGC).
+    sources: *id001

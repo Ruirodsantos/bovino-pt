@@ -1,0 +1,75 @@
+slug: catrina
+official_name: Catrina
+species: bovine
+status: yellow
+status_reason: Nome, solar e efetivo na ficha da DGAV (Livros Genealógicos, nov. 2022); a ficha não indica
+  o ano de referência do efetivo.
+name_sources:
+- url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+last_verified: '2026-11-22'
+fields:
+  geographic_origin:
+    value: Ilha Terceira, Açores
+    source_id: S07
+    verified_at: '2026-11-22'
+    source_url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+  historical_background:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+  population:
+    value: Cerca de 39 fêmeas em linha pura e 12 machos registados (ficha DGAV, sem ano de referência)
+    source_id: S07
+    verified_at: '2026-11-22'
+    source_url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+  physical_characteristics:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+  production_systems:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+  meat_characteristics:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+  certifications:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+  producer_organizations:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+  geographic_distribution:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+  photographs:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+  economic_information:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+  historical_trends:
+    value: null
+    source_id: null
+    verified_at: null
+    missing_reason: por pesquisar
+solar: Ilha Terceira, Açores (zonas de média e alta altitude)
+lat: 38.72
+lon: -27.22
+photo: terceira
+photo_kind: solar

@@ -118,7 +118,7 @@ export function photoFor(slug: string): { id: string; kind: string } | null {
 export const REGIONS: Record<string, string[]> = {
   alentejana: ["sul"], algarvia: ["sul"], arouquesa: ["norte", "centro"], barrosa: ["norte"], "brava-de-lide": ["centro", "sul", "ilhas"],
   cachena: ["norte"], garvonesa: ["sul"], jarmelista: ["centro"], marinhoa: ["centro"], maronesa: ["norte"], mertolenga: ["sul"],
-  minhota: ["norte"], mirandesa: ["norte"], preta: ["sul"], "ramo-grande": ["ilhas"],
+  minhota: ["norte"], mirandesa: ["norte"], preta: ["sul"], "ramo-grande": ["ilhas"], catrina: ["ilhas"],
 };
 const REGION_L: Record<Lang, Record<string, string>> = {
   pt: { norte: "Norte", centro: "Centro", sul: "Alentejo e Algarve", ilhas: "Ilhas" },

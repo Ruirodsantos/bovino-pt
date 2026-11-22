@@ -1,0 +1,160 @@
+{
+ "slug": "mirandesa",
+ "tipo": "continente",
+ "metodo": "pipeline/extract_dispersion.py",
+ "fonte": {
+  "titulo": "Ficha da raça Mirandesa (DGAV, Livros Genealógicos)",
+  "url": "https://www.dgav.pt/wp-content/uploads/2021/04/Mirandesa_GRGA.pdf",
+  "publicado": "2021-04",
+  "censo_ano": 2019
+ },
+ "nota": "Dispersão aproximada dos criadores, lida do mapa da ficha da DGAV. O tamanho do ponto reflete o número de criadores no local. Não são moradas.",
+ "n_pontos": 29,
+ "pontos": [
+  {
+   "lat": 41.808,
+   "lon": -6.737,
+   "raio_rel": 1.64
+  },
+  {
+   "lat": 41.839,
+   "lon": -6.987,
+   "raio_rel": 1.35
+  },
+  {
+   "lat": 41.58,
+   "lon": -6.718,
+   "raio_rel": 1.18
+  },
+  {
+   "lat": 41.493,
+   "lon": -6.468,
+   "raio_rel": 1.18
+  },
+  {
+   "lat": 41.532,
+   "lon": -6.922,
+   "raio_rel": 0.97
+  },
+  {
+   "lat": 41.32,
+   "lon": -6.774,
+   "raio_rel": 0.86
+  },
+  {
+   "lat": 40.879,
+   "lon": -6.941,
+   "raio_rel": 0.61
+  },
+  {
+   "lat": 40.69,
+   "lon": -8.109,
+   "raio_rel": 0.61
+  },
+  {
+   "lat": 40.501,
+   "lon": -7.312,
+   "raio_rel": 0.61
+  },
+  {
+   "lat": 39.47,
+   "lon": -7.636,
+   "raio_rel": 0.61
+  },
+  {
+   "lat": 38.896,
+   "lon": -8.536,
+   "raio_rel": 0.61
+  },
+  {
+   "lat": 38.88,
+   "lon": -8.142,
+   "raio_rel": 0.61
+  },
+  {
+   "lat": 41.823,
+   "lon": -7.771,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 41.753,
+   "lon": -7.516,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 41.339,
+   "lon": -6.941,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 41.296,
+   "lon": -7.131,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 40.312,
+   "lon": -8.165,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 40.214,
+   "lon": -8.452,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 40.076,
+   "lon": -8.248,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 39.872,
+   "lon": -7.21,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 39.793,
+   "lon": -7.451,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 39.431,
+   "lon": -8.536,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 39.368,
+   "lon": -7.432,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 39.297,
+   "lon": -8.485,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 39.268,
+   "lon": -7.398,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 38.593,
+   "lon": -8.211,
+   "raio_rel": 0.55
+  },
+  {
+   "lat": 41.595,
+   "lon": -7.293,
+   "raio_rel": 0.48
+  },
+  {
+   "lat": 40.722,
+   "lon": -8.499,
+   "raio_rel": 0.48
+  },
+  {
+   "lat": 41.564,
+   "lon": -8.262,
+   "raio_rel": 0.45
+  }
+ ]
+}

@@ -1,0 +1,200 @@
+{
+ "slug": "brava-de-lide",
+ "tipo": "continente",
+ "metodo": "pipeline/extract_dispersion.py",
+ "fonte": {
+  "titulo": "Ficha da raça Brava Lide (DGAV, Livros Genealógicos)",
+  "url": "https://www.dgav.pt/wp-content/uploads/2021/04/Brava-Lide_GRGA.pdf",
+  "publicado": "2021-04",
+  "censo_ano": 2019
+ },
+ "nota": "Dispersão aproximada dos criadores, lida do mapa da ficha da DGAV. O tamanho do ponto reflete o número de criadores no local. Não são moradas.",
+ "n_pontos": 37,
+ "pontos": [
+  {
+   "lat": 38.94,
+   "lon": -8.825,
+   "raio_rel": 0.66
+  },
+  {
+   "lat": 38.518,
+   "lon": -7.902,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 40.131,
+   "lon": -8.609,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 39.557,
+   "lon": -8.42,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 39.451,
+   "lon": -7.431,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 39.305,
+   "lon": -8.492,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 39.273,
+   "lon": -7.417,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 39.07,
+   "lon": -7.284,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 39.005,
+   "lon": -7.883,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.904,
+   "lon": -8.539,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.786,
+   "lon": -7.16,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.721,
+   "lon": -7.246,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.668,
+   "lon": -7.983,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.599,
+   "lon": -8.216,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.599,
+   "lon": -7.55,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.518,
+   "lon": -8.91,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.332,
+   "lon": -7.341,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.202,
+   "lon": -7.988,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.121,
+   "lon": -7.902,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.088,
+   "lon": -6.979,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 37.987,
+   "lon": -7.883,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 37.869,
+   "lon": -8.168,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 37.544,
+   "lon": -8.644,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 39.151,
+   "lon": -8.711,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 39.021,
+   "lon": -8.872,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 38.701,
+   "lon": -8.977,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 38.38,
+   "lon": -7.541,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 38.319,
+   "lon": -8.501,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 38.072,
+   "lon": -7.493,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 37.899,
+   "lon": -7.591,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 37.609,
+   "lon": -8.225,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 39.878,
+   "lon": -7.227,
+   "raio_rel": 0.47
+  },
+  {
+   "lat": 39.24,
+   "lon": -7.645,
+   "raio_rel": 0.47
+  },
+  {
+   "lat": 39.103,
+   "lon": -8.791,
+   "raio_rel": 0.47
+  },
+  {
+   "lat": 38.973,
+   "lon": -7.065,
+   "raio_rel": 0.47
+  },
+  {
+   "lat": 39.423,
+   "lon": -8.202,
+   "raio_rel": 0.44
+  },
+  {
+   "lat": 38.904,
+   "lon": -8.991,
+   "raio_rel": 0.44
+  }
+ ]
+}

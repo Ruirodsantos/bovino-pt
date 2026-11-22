@@ -1,0 +1,60 @@
+{
+ "slug": "garvonesa",
+ "tipo": "continente",
+ "metodo": "pipeline/extract_dispersion.py",
+ "fonte": {
+  "titulo": "Ficha da raça Garvonesa (DGAV, Livros Genealógicos)",
+  "url": "https://www.dgav.pt/wp-content/uploads/2021/04/Garvonesa_GRGA.pdf",
+  "publicado": "2021-04",
+  "censo_ano": 2019
+ },
+ "nota": "Dispersão aproximada dos criadores, lida do mapa da ficha da DGAV. O tamanho do ponto reflete o número de criadores no local. Não são moradas.",
+ "n_pontos": 9,
+ "pontos": [
+  {
+   "lat": 37.609,
+   "lon": -8.216,
+   "raio_rel": 0.62
+  },
+  {
+   "lat": 38.522,
+   "lon": -7.902,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.088,
+   "lon": -6.979,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.072,
+   "lon": -7.493,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 37.991,
+   "lon": -7.883,
+   "raio_rel": 0.56
+  },
+  {
+   "lat": 38.656,
+   "lon": -9.177,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 38.234,
+   "lon": -7.988,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 37.544,
+   "lon": -8.644,
+   "raio_rel": 0.5
+  },
+  {
+   "lat": 37.893,
+   "lon": -7.588,
+   "raio_rel": 0.47
+  }
+ ]
+}
