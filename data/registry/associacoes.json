@@ -1,0 +1,68 @@
+{
+ "alentejana": {
+  "nome": "Site da associação de criadores (bovinoalentejano.pt)",
+  "site": "https://bovinoalentejano.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "arouquesa": {
+  "nome": "Site da associação de criadores (ancra.pt)",
+  "site": "https://ancra.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "barrosa": {
+  "nome": "Site da associação de criadores (amiba.pt)",
+  "site": "https://amiba.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "cachena": {
+  "nome": "Site da associação de criadores (cachena.pt)",
+  "site": "https://cachena.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "marinhoa": {
+  "nome": "Site da associação de criadores (eabl.pt)",
+  "site": "https://eabl.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "maronesa": {
+  "nome": "Site da associação de criadores (marones.pt)",
+  "site": "https://marones.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "mertolenga": {
+  "nome": "Site da associação de criadores (mertolenga.com)",
+  "site": "https://mertolenga.com/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "minhota": {
+  "nome": "Site da associação de criadores (apacra.pt)",
+  "site": "https://apacra.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "mirandesa": {
+  "nome": "Associação de Criadores de Bovinos da Raça Mirandesa",
+  "site": "https://mirandesa.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "preta": {
+  "nome": "Site da associação de criadores (racapreta.com.pt)",
+  "site": "https://racapreta.com.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ },
+ "ramo-grande": {
+  "nome": "Site da associação de criadores (bovinoramogrande.pt)",
+  "site": "https://bovinoramogrande.pt/",
+  "fonte": "https://www.dgav.pt/animais/conteudo/recursos-geneticos-animais/racas-autoctones/bovinos/",
+  "verificado": "2026-11-22"
+ }
+}

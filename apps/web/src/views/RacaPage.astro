@@ -96,6 +96,8 @@ const az = rg || b.slug === "catrina";
     dots = dist.pontos.map((q: any) => ({ x: X(q.lon), y: Y(q.lat), r: Math.max(2.2, (q.raio_rel / 100) * (N0 - S0) * sc) }));
   }
 }
+const assocFp = path.join(process.cwd(), "../../data/registry/associacoes.json");
+const assoc: any = fs.existsSync(assocFp) ? (JSON.parse(fs.readFileSync(assocFp, "utf-8"))[b.slug] ?? null) : null;
 const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s : null;
 ---
 <Base lang={lang} overlay title={T(`Raça ${b.official_name}`, `${b.official_name} breed`, `Raza ${b.official_name}`, `Race ${b.official_name}`)} description={intro}
@@ -138,7 +140,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
               
               <div class="rv">
                 <span class="eyebrow">{NAV[id]}</span><h2 style="margin:.2em 0 .5em">{rg ? H2[id] : s.title}</h2>
-                <p class="lead">{s.summary}</p>
+                {s.summary.replace(/\.$/, "") !== s.title && <p class="lead">{s.summary}</p>}
                 {id === "historia" && rg && (
                   <ol class="timeline" aria-label={T("Datas-chave", "Key dates", "Fechas clave", "Dates clés")}>
                     <li><b>{T("Séc. XV", "15th c.", "Siglo XV", "XVe s.")}</b> {T("Povoamento: chegam bovinos de várias regiões do continente.", "Settlement: cattle arrive from several mainland regions.", "Poblamiento: llegan bovinos de varias regiones del continente.", "Peuplement : des bovins arrivent de plusieurs régions du continent.")}</li>
@@ -150,7 +152,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                 <div style="margin-top:var(--s3)">
                   {blocks.map((bl, k) => (
                     <article class="atlas-story-block">
-                      <h3>{bl.title}{bl.status && <span class="status-pill">{T("em investigação", "under research", "en investigación", "en cours de recherche")}</span>}</h3>
+                      <h3 style={bl.title === s.title && !bl.status ? "display:none" : undefined}>{bl.title}{bl.status && <span class="status-pill">{T("em investigação", "under research", "en investigación", "en cours de recherche")}</span>}</h3>
                       <div class="body">
                         {bl.paras?.map((p: string) => <p>{p}</p>)}
                         {bl.list && <ul>{bl.list.map((x: string) => <li>{x}</li>)}</ul>}
@@ -164,6 +166,16 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                 {id === "caracteristicas" && own && own.kind === "raça" && FRAMED.has(own.id) && <p class="srcs">{T("A fotografia mostra animais numa feira ou recinto; procura-se uma fotografia melhor da raça em pastoreio.", "The photograph shows animals at a fair or enclosure; a better photograph of the breed grazing is being sought.", "La fotografía muestra animales en una feria o un recinto; se busca una fotografía mejor de la raza en pastoreo.", "La photographie montre des animaux dans une foire ou un enclos ; on cherche une meilleure photographie de la race au pâturage.")}</p>}
                 {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, "viagem/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →", "Ver el recorrido hasta el plato →", "Voir le parcours jusqu'à l'assiette →")}</a></p>}
                 {id === "onde" && rg && <p style="margin-top:1.5em"><a class="btn" href="https://tradicional.dgadr.gov.pt/pt/cat/carne/carne-de-bovino/1080-carne-ramo-grande-dop" rel="noopener">DGADR — Carne Ramo Grande DOP ↗</a></p>}
+                {id === "onde" && assoc && (
+                  <article class="atlas-story-block">
+                    <h3>{T("Associação de criadores", "Breeders' association", "Asociación de criadores", "Association d'éleveurs")}</h3>
+                    <div class="body">
+                      <p>{T("Para saber mais sobre a raça, contactos, eventos e vídeos, o melhor ponto de partida é o site da associação de criadores.", "For more about the breed, contacts, events and videos, the breeders' association website is the best starting point.", "Para saber más sobre la raza, contactos, eventos y vídeos, el mejor punto de partida es la web de la asociación de criadores.", "Pour en savoir plus sur la race, les contacts, les événements et les vidéos, le site de l'association d'éleveurs est le meilleur point de départ.")}</p>
+                      <p><a class="btn" href={assoc.site} rel="noopener">{assoc.nome} ↗</a></p>
+                      <p class="srcs">{T("Fonte da indicação", "Listed by", "Indicado por", "Indiqué par")}: <a href={assoc.fonte} rel="noopener">DGAV</a> · {T("verificado em", "checked on", "verificado el", "vérifié le")} {assoc.verificado}</p>
+                    </div>
+                  </article>
+                )}
                 {id === "onde" && <p class="srcs">{T("Não indicamos pontos de venda nem preços que não tenhamos verificado.", "We do not list points of sale or prices we have not verified.", "No indicamos puntos de venta ni precios que no hayamos verificado.", "Nous n'indiquons ni points de vente ni prix que nous n'avons pas vérifiés.")}</p>}
               </div>
               {id === "territorio" && az && (
