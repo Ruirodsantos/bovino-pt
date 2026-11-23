@@ -179,3 +179,6 @@ body.p .reveal.in{opacity:1;transform:none}
 .factcard{background:var(--green-soft);border-radius:var(--r);padding:clamp(18px,2.4vw,32px);align-self:start}
 .factcard dl{display:grid;grid-template-columns:auto 1fr;gap:.5em 1.2em;margin:.8em 0}
 .factcard dt{opacity:.7}.factcard dd{margin:0;font-weight:600}.factcard small{font-weight:400;opacity:.7}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
+.vid{margin:0}.vid iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--r);background:#000}
+.vid figcaption{font-size:.85rem;opacity:.8;margin-top:.4em}

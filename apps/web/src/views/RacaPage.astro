@@ -99,6 +99,8 @@ const az = rg || b.slug === "catrina";
 const assocFp = path.join(process.cwd(), "../../data/registry/associacoes.json");
 const assoc: any = fs.existsSync(assocFp) ? (JSON.parse(fs.readFileSync(assocFp, "utf-8"))[b.slug] ?? null) : null;
 const hasRight = (id: string) => (id === "territorio" && (az || !!dist)) || (id === "historia" && rg);
+const vidFp = path.join(process.cwd(), "../../data/registry/videos.json");
+const vids: any[] = fs.existsSync(vidFp) ? (JSON.parse(fs.readFileSync(vidFp, "utf-8"))[b.slug] ?? []) : [];
 const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s : null;
 ---
 <Base lang={lang} overlay title={T(`Raça ${b.official_name}`, `${b.official_name} breed`, `Raza ${b.official_name}`, `Race ${b.official_name}`)} description={intro}
@@ -182,6 +184,20 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                       <p>{T("Para saber mais sobre a raça, contactos, eventos e vídeos, o melhor ponto de partida é o site da associação de criadores.", "For more about the breed, contacts, events and videos, the breeders' association website is the best starting point.", "Para saber más sobre la raza, contactos, eventos y vídeos, el mejor punto de partida es la web de la asociación de criadores.", "Pour en savoir plus sur la race, les contacts, les événements et les vidéos, le site de l'association d'éleveurs est le meilleur point de départ.")}</p>
                       <p><a class="btn" href={assoc.site} rel="noopener">{assoc.nome} ↗</a></p>
                       <p class="srcs">{T("Fonte da indicação", "Listed by", "Indicado por", "Indiqué par")}: <a href={assoc.fonte} rel="noopener">DGAV</a> · {T("verificado em", "checked on", "verificado el", "vérifié le")} {assoc.verificado}</p>
+                    </div>
+                  </article>
+                )}
+                {id === "onde" && vids.length > 0 && (
+                  <article class="atlas-story-block">
+                    <h3>{T("Vídeos", "Videos", "Vídeos", "Vidéos")}</h3>
+                    <div class="body">
+                      <div class="vgrid">{vids.map((vd) => (
+                        <figure class="vid">
+                          <iframe src={`https://www.youtube-nocookie.com/embed/${vd.id}`} title={vd.titulo} loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                          <figcaption>{vd.titulo} · {vd.canal} · <a href={`https://www.youtube.com/watch?v=${vd.id}`} rel="noopener">YouTube ↗</a></figcaption>
+                        </figure>
+                      ))}</div>
+                      <p class="srcs">{T("Vídeos de terceiros, incorporados com o leitor oficial do YouTube; os direitos pertencem aos canais indicados.", "Third-party videos embedded with the official YouTube player; rights belong to the channels shown.", "Vídeos de terceros incrustados con el reproductor oficial de YouTube; los derechos pertenecen a los canales indicados.", "Vidéos de tiers intégrées avec le lecteur officiel de YouTube ; les droits appartiennent aux chaînes indiquées.")}</p>
                     </div>
                   </article>
                 )}
