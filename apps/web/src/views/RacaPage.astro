@@ -98,6 +98,7 @@ const az = rg || b.slug === "catrina";
 }
 const assocFp = path.join(process.cwd(), "../../data/registry/associacoes.json");
 const assoc: any = fs.existsSync(assocFp) ? (JSON.parse(fs.readFileSync(assocFp, "utf-8"))[b.slug] ?? null) : null;
+const hasRight = (id: string) => (id === "territorio" && (az || !!dist)) || (id === "historia" && rg);
 const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s : null;
 ---
 <Base lang={lang} overlay title={T(`Raça ${b.official_name}`, `${b.official_name} breed`, `Raza ${b.official_name}`, `Race ${b.official_name}`)} description={intro}
@@ -136,7 +137,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
         return (
           <section class:list={["sec", tone]} id={id}>
             {rg && SECFIG[id] && id !== "historia" && <figure class="frame rv secfig" style="width:min(820px,100% - 40px);margin:0 auto var(--s3);aspect-ratio:21/9"><Img id={SECFIG[id]} sizes="(max-width:820px) 100vw, 820px" credit lang={lang} /></figure>}
-            <div class:list={["wrap", id === "caracteristicas" || id === "carne" || id === "territorio" || id === "historia" ? "split" : "narrow"]} style={id === "certificacao" || id === "criacao" ? "width:min(820px,100% - 40px)" : undefined}>
+            <div class:list={["wrap", hasRight(id) ? "split" : "solo"]}>
               
               <div class="rv">
                 <span class="eyebrow">{NAV[id]}</span><h2 style="margin:.2em 0 .5em">{rg ? H2[id] : s.title}</h2>
@@ -149,8 +150,8 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                   </ol>
                 )}
                 {id === "territorio" && rg && <ul class="legend"><li><i class="k solar"></i> {T("Solar da raça: Terceira", "Breed homeland: Terceira", "Solar de la raza: Terceira", "Terroir de la race : Terceira")}</li><li><i class="k area"></i> {T("Área geográfica da DOP: as nove ilhas do arquipélago, segundo o caderno de especificações", "PDO geographical area: all nine islands, according to the product specification", "Área geográfica de la DOP: las nueve islas del archipiélago, según el pliego de condiciones", "Aire géographique de l'AOP : les neuf îles de l'archipel, selon le cahier des charges")}</li></ul>}
-                <div style="margin-top:var(--s3)">
-                  {blocks.map((bl, k) => (
+                <div class:list={[!hasRight(id) && "blocks2"]} style="margin-top:var(--s3)">
+                  {blocks.filter((bl: any) => bl.title !== "Estado do texto").map((bl, k) => (
                     <article class="atlas-story-block">
                       <h3 style={bl.title === s.title && !bl.status ? "display:none" : undefined}>{bl.title}{bl.status && <span class="status-pill">{T("em investigação", "under research", "en investigación", "en cours de recherche")}</span>}</h3>
                       <div class="body">
@@ -162,6 +163,7 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                     </article>
                   ))}
                 </div>
+                {blocks.filter((bl: any) => bl.title === "Estado do texto").map((bl: any) => <p class="srcs" style="margin-top:1.5em;max-width:90ch"><strong>{bl.title}:</strong> {bl.paras?.join(" ")}</p>)}
                 {rg && MORE[id] && <p class="srcs" style="margin-top:1em"><strong>{T("Saber mais", "Learn more", "Saber más", "En savoir plus")}:</strong> {MORE[id].map((x, q) => <>{q > 0 && " · "}<a href={x.u} rel="noopener">{x.l} ↗</a></>)}</p>}
                 {id === "caracteristicas" && own && own.kind === "raça" && FRAMED.has(own.id) && <p class="srcs">{T("A fotografia mostra animais numa feira ou recinto; procura-se uma fotografia melhor da raça em pastoreio.", "The photograph shows animals at a fair or enclosure; a better photograph of the breed grazing is being sought.", "La fotografía muestra animales en una feria o un recinto; se busca una fotografía mejor de la raza en pastoreo.", "La photographie montre des animaux dans une foire ou un enclos ; on cherche une meilleure photographie de la race au pâturage.")}</p>}
                 {id === "certificacao" && <p style="margin-top:1.5em"><a class="btn" href={href(lang, "viagem/")}>{T("Ver o percurso até ao prato →", "See the journey to the plate →", "Ver el recorrido hasta el plato →", "Voir le parcours jusqu'à l'assiette →")}</a></p>}
