@@ -162,6 +162,13 @@ const srcLine = (s?: { label: string; url: string }[]) => s && s.length > 0 ? s 
                       </div>
                     </article>
                   ))}
+                  {id === "caracteristicas" && !hasRight(id) && ficha?.facts?.length > 0 && (
+                    <aside class="factcard" aria-label={T("A raça em resumo", "The breed at a glance", "La raza en resumen", "La race en bref")}>
+                      <span class="eyebrow">{T("A raça em resumo", "The breed at a glance", "La raza en resumen", "La race en bref")}</span>
+                      <dl>{ficha.facts.map((f: any) => <><dt>{f.label}</dt><dd>{f.value}{f.note && <small> ({f.note})</small>}</dd></>)}</dl>
+                      {b.herd && <p class="srcs">{T("Censo", "Census", "Censo", "Recensement")} {b.herd.year}: {b.herd.females != null ? `${num(b.herd.females, lang)} ${T("fêmeas", "females", "hembras", "femelles")}, ` : ""}{b.herd.males != null ? `${num(b.herd.males, lang)} ${T("machos", "males", "machos", "mâles")}, ` : ""}{b.herd.breeders != null ? `${num(b.herd.breeders, lang)} ${T("criadores", "breeders", "criadores", "éleveurs")}` : ""}</p>}
+                    </aside>
+                  )}
                 </div>
                 {blocks.filter((bl: any) => bl.title === "Estado do texto").map((bl: any) => <p class="srcs" style="margin-top:1.5em;max-width:90ch"><strong>{bl.title}:</strong> {bl.paras?.join(" ")}</p>)}
                 {rg && MORE[id] && <p class="srcs" style="margin-top:1em"><strong>{T("Saber mais", "Learn more", "Saber más", "En savoir plus")}:</strong> {MORE[id].map((x, q) => <>{q > 0 && " · "}<a href={x.u} rel="noopener">{x.l} ↗</a></>)}</p>}
