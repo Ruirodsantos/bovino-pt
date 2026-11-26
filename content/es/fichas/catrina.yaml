@@ -1,0 +1,71 @@
+intro: La raza de la Terceira, pequeña, rústica y ágil, que vive en las zonas altas de la isla.
+facts:
+- label: Solar
+  value: Isla Terceira, Azores
+- label: Efectivo
+  value: unas 39 hembras
+  note: ficha de la DGAV, sin año indicado
+sections:
+- id: historia
+  title: Historia
+  summary: Origen y nombre de la raza, según la ficha de la DGAV.
+  blocks:
+  - title: Una raza de la isla
+    paras:
+    - La Catrina tiene su solar en la Terceira y se distingue de las otras poblaciones bovinas de la isla, en particular del ganado bravo. Aunque se ha utilizado en festejos taurinos, el temperamento arisco, formado en libertad y relativo abandono, la separa tanto de la raza brava como de los bueyes mansos de la Terceira. La ficha estima que las razas portuguesas llevadas a las islas hacia 1427 están en la base genética del ganado azoriano.
+    - El nombre solo aparece a comienzos del siglo XX, pero ya era conocido en el mundo rural de la isla como sinónimo de ganado de la tierra, de corral o «de arriba», por vivir en las zonas altas y ser recogido todos los días en corrales para el ordeño. Hay varias teorías sobre el origen del nombre; una lo une a un toro llamado «Catrina Velho», cuyas crías tenían una mancha blanca junto a la ingle.
+    sources: &id001
+    - label: Ficha de la raza Catrina (DGAV, Libros Genealógicos)
+      url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+- id: caracteristicas
+  title: Características
+  summary: Cómo se reconoce al animal.
+  blocks:
+  - title: Cómo se reconoce
+    paras:
+    - 'Es un animal pequeño, de perfil longilíneo, ágil, bien musculado pero sin mucha grasa, de pezuñas duras. El pelaje varía: roja o negra bragada, negra, rosilla de mil-flores, manchada de rojo o negro y castaña rayada, muchas veces con una mancha blanca bien definida en la frente y, a veces, en la ingle. La cabeza es grande y piramidal, con cuernos de sección elíptica, blancos sucios de puntas negras. El temperamento es nervioso y la rusticidad, muy grande.'
+    sources: *id001
+- id: territorio
+  title: Territorio
+  summary: El solar de la raza y el efectivo registrado.
+  blocks:
+  - title: Solar
+    paras:
+    - Isla Terceira, en las zonas de media y alta altitud, en pastos seminaturales. La ficha menciona además animales sin registrar, sobre todo en el municipio de Angra do Heroísmo.
+    sources: *id001
+  - title: Efectivo registrado
+    paras:
+    - Unas 39 hembras en línea pura y 12 machos registrados. La ficha no indica el año de referencia, por lo que no lo asumimos; es una raza con un efectivo muy reducido.
+    sources: *id001
+- id: criacao
+  title: Cría
+  summary: Cómo y dónde se cría.
+  blocks:
+  - title: Cómo se cría
+    paras:
+    - Vive en pastos seminaturales de bajo valor nutritivo, en sistemas de bajo impacto ambiental. Tradicionalmente fue un ganado de aptitud múltiple (leche, trabajo y ocio), recogido en corrales por la mañana y por la tarde para el ordeño.
+    sources: *id001
+- id: carne
+  title: Carne
+  summary: La carne de esta raza.
+  blocks:
+  - title: La carne
+    status: en investigación
+    paras:
+    - La descripción de la carne de esta raza aún no se ha confirmado en fuente. No la publicamos hasta que haya referencia.
+- id: certificacao
+  title: Certificación
+  summary: Certificación y reconocimientos.
+  blocks:
+  - title: Certificación
+    status: en investigación
+    paras:
+    - Por confirmar en las listas oficiales de la DGADR y en eAmbrosia.
+- id: onde
+  title: Dónde encontrar
+  summary: Dónde encontrar.
+  blocks:
+  - title: Libro genealógico
+    paras:
+    - El libro genealógico lo gestiona la Asociación de Criadores de Ganado Catrina (ACGC).
+    sources: *id001

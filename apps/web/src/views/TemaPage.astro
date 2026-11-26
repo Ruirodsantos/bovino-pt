@@ -29,7 +29,7 @@ const wide = (s: any) => !!s.diagram || /\n\|/.test(s.text) || s.text.startsWith
 const num = String(d.data.order).padStart(2, "0");
 const bgCredit = has(bgId) && !cr(bgId).ai ? cr(bgId) : null;
 ---
-<Base lang={lang} overlay title={d.data.title} description={d.data.lead}>
+<Base lang={lang} overlay title={d.data.title} description={d.data.lead.length < 40 && d.data.hook ? `${d.data.lead} ${d.data.hook}` : d.data.lead}>
   <div class="tp-fixed" aria-hidden="true">{has(bgId) && <Img id={bgId} sizes="100vw" eager lang={lang} class="tp-fbg" />}</div>
   <div class="tp-page">
     <header class="tp-top">

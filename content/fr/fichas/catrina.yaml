@@ -1,0 +1,81 @@
+intro: La race de la Terceira, petite, rustique et agile, qui vit dans les zones hautes de l’île.
+facts:
+- label: Berceau
+  value: Île de Terceira, Açores
+- label: Effectif
+  value: environ 39 femelles
+  note: fiche de la DGAV, sans année indiquée
+sections:
+- id: historia
+  title: Histoire
+  summary: Origine et nom de la race, d’après la fiche de la DGAV.
+  blocks:
+  - title: Une race de l’île
+    paras:
+    - La Catrina a son berceau à Terceira et se distingue des autres populations bovines de l’île, en particulier du bétail de combat. Bien qu’elle ait été utilisée dans des spectacles taurins, son tempérament farouche, formé dans la liberté et un relatif abandon, la sépare aussi bien de la race de combat que des bœufs placides de Terceira. La fiche estime que les races portugaises amenées dans les îles vers 1427 sont à la base génétique du bétail açorien.
+    - Le nom n’apparaît qu’au début du XXe siècle, mais il était déjà connu dans le monde rural de l’île comme synonyme de bétail du pays, de parc ou « d’en haut », parce qu’il vit dans les zones hautes et qu’il est rentré chaque jour dans des parcs pour la traite. Il existe plusieurs théories sur l’origine du nom ; l’une le relie à un taureau appelé « Catrina Velho », dont les petits avaient une tache blanche près de l’aine.
+    sources:
+    - label: Fiche de la race Catrina (DGAV, Livres généalogiques)
+      url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+- id: caracteristicas
+  title: Caractéristiques
+  summary: Comment reconnaître l’animal.
+  blocks:
+  - title: Comment la reconnaître
+    paras:
+    - 'C’est un animal petit, au profil longiligne, agile, bien musclé mais sans beaucoup de graisse, aux sabots durs. La robe varie : rouge ou noire bragada, noire, rouanne « mil-flores », tachetée de rouge ou de noir et châtain rayée, souvent avec une tache blanche bien définie au front et, parfois, à l’aine. La tête est grande et pyramidale, avec des cornes de section elliptique, blanc sale à pointes noires. Le tempérament est nerveux et la rusticité très grande.'
+    sources:
+    - label: Fiche de la race Catrina (DGAV, Livres généalogiques)
+      url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+- id: territorio
+  title: Territoire
+  summary: Le berceau de la race et l’effectif enregistré.
+  blocks:
+  - title: Berceau
+    paras:
+    - Île de Terceira, dans les zones de moyenne et haute altitude, en pâturages semi-naturels. La fiche mentionne en outre des animaux non enregistrés, surtout dans la municipalité d’Angra do Heroísmo.
+    sources:
+    - label: Fiche de la race Catrina (DGAV, Livres généalogiques)
+      url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+  - title: Effectif enregistré
+    paras:
+    - Environ 39 femelles en lignée pure et 12 mâles enregistrés. La fiche n’indique pas l’année de référence, nous ne la supposons donc pas ; c’est une race à l’effectif très réduit.
+    sources:
+    - label: Fiche de la race Catrina (DGAV, Livres généalogiques)
+      url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+- id: criacao
+  title: Élevage
+  summary: Comment et où on l’élève.
+  blocks:
+  - title: Comment on l’élève
+    paras:
+    - Elle vit dans des pâturages semi-naturels de faible valeur nutritive, dans des systèmes à faible impact environnemental. Traditionnellement, c’était un bétail à aptitudes multiples (lait, travail et loisir), rentré dans des parcs le matin et le soir pour la traite.
+    sources:
+    - label: Fiche de la race Catrina (DGAV, Livres généalogiques)
+      url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
+- id: carne
+  title: Viande
+  summary: La viande de cette race.
+  blocks:
+  - title: La viande
+    status: en cours de recherche
+    paras:
+    - La description de la viande de cette race n’a pas encore été confirmée par une source. Nous ne la publions pas tant qu’il n’y a pas de référence.
+- id: certificacao
+  title: Certification
+  summary: Certification et reconnaissances.
+  blocks:
+  - title: Certification
+    status: en cours de recherche
+    paras:
+    - À confirmer dans les listes officielles de la DGADR et dans eAmbrosia.
+- id: onde
+  title: Où la trouver
+  summary: Où la trouver.
+  blocks:
+  - title: Livre généalogique
+    paras:
+    - Le livre généalogique est géré par l’Association des éleveurs de bétail Catrina (ACGC).
+    sources:
+    - label: Fiche de la race Catrina (DGAV, Livres généalogiques)
+      url: https://www.dgav.pt/wp-content/uploads/2022/11/Catrina.pdf
