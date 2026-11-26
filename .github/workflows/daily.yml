@@ -62,7 +62,10 @@ jobs:
           git add -A data apps/web/public/data apps/web/public/geo PROJECT_STATUS.json
           if git diff --cached --quiet; then echo "sem alterações"; else
             git commit -m "dados: atualização automática $(date -u +%F)"
-            git pull --rebase -X theirs && git push   # another run or agent may have pushed meanwhile; this run's data wins
+            for i in 1 2 3 4; do   # another run or agent may push meanwhile: rebase (this run's data wins) and retry
+              git pull --rebase -X theirs && git push && break
+              sleep $((i * 5))
+            done
           fi
 
   site:
